@@ -1,0 +1,29 @@
+experiment_name: derpp_split_tinyimagenet
+
+dataset:
+  name: split_tiny_imagenet
+  data_root: ./dataset
+  n_tasks: 10
+
+model:
+  name: resnet18
+
+method:
+  name: derpp
+  alpha: 0.3
+  beta: 0.5
+  buffer_size: 2000
+
+training:
+  epochs: 50
+  batch_size: 128
+  optimizer: sgd
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 0.0
+  scheduler: multistep
+  milestones: [35, 45]
+  gamma: 0.1
+  grad_clip: 5.0
+  use_amp: true
+  num_workers: 4

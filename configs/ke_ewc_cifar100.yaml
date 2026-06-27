@@ -1,0 +1,27 @@
+experiment_name: ke_ewc_cifar100
+
+dataset:
+  name: knowledge_editing
+  data_root: ./dataset
+  n_edit_rounds: 5
+  n_edit_classes: 10
+
+model:
+  name: resnet18
+
+method:
+  name: ewc
+  lambda_ewc: 400.0
+  online: false
+  fisher_samples: 2000
+
+training:
+  epochs: 10
+  batch_size: 512
+  optimizer: sgd
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 0.0
+  grad_clip: 5.0
+  use_amp: true
+  num_workers: 4

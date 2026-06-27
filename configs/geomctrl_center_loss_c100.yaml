@@ -1,0 +1,32 @@
+experiment_name: geomctrl_center_loss_c100
+
+dataset:
+  name: split_cifar100
+  n_tasks: 10
+  data_root: ./dataset
+
+model:
+  name: resnet18
+
+method:
+  name: geometry_controls
+  control_type: center_loss
+  lambda_control: 0.0005
+  lambda_distill: 5.0
+  temperature: 3.0
+  center_lr_scale: 0.5
+  use_seen_mask: true
+
+training:
+  epochs: 50
+  batch_size: 512
+  optimizer: sgd
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 0.0
+  scheduler: multistep
+  milestones: [35, 45]
+  gamma: 0.1
+  grad_clip: 5.0
+  use_amp: true
+  num_workers: 4

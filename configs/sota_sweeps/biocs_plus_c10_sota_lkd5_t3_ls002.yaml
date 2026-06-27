@@ -1,0 +1,40 @@
+dataset:
+  data_root: ./dataset
+  n_tasks: 5
+  name: split_cifar10
+experiment_name: biocs_plus_c10_sota_lkd5_t3_ls002
+method:
+  A_exc: 1.0
+  A_inh: 0.8
+  biocs_targets:
+  - classifier
+  buffer_size: 0
+  label_smoothing: 0.02
+  lambda_distill: 5.0
+  lambda_feat: 0.0
+  lambda_replay: 0.0
+  lambda_spatial: 0.002
+  lambda_spectral: 0.0
+  name: biocs_plus
+  sigma_exc: 0.2
+  sigma_inh: 0.5
+  temperature: 3.0
+model:
+  name: resnet18
+training:
+  batch_size: 128
+  epochs: 60
+  gamma: 0.1
+  grad_clip: 5.0
+  lr: 0.1
+  milestones:
+  - 35
+  - 45
+  momentum: 0.9
+  num_workers: 4
+  optimizer: sgd
+  scheduler: cosine
+  use_amp: true
+  weight_decay: 0.0
+  warmup_epochs: 3
+  save_final_model: true

@@ -1,0 +1,24 @@
+dataset:
+  data_root: ./dataset
+  n_edit_classes: 10
+  n_edit_rounds: 5
+  name: knowledge_editing
+experiment_name: ke_cls_er_cifar100
+method:
+  buffer_size: 2000
+  ema_alpha_plastic: 0.999
+  ema_alpha_stable: 0.9999
+  name: cls_er
+  reg_weight: 0.5
+model:
+  name: resnet18
+training:
+  batch_size: 512
+  epochs: 10
+  grad_clip: 5.0
+  lr: 0.01
+  momentum: 0.9
+  num_workers: 4
+  optimizer: sgd
+  use_amp: true
+  weight_decay: 0.0

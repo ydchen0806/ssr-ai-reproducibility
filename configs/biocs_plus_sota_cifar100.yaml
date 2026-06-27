@@ -1,0 +1,37 @@
+experiment_name: biocs_plus_sota_cifar100
+
+dataset:
+  name: split_cifar100
+  data_root: ./dataset
+  n_tasks: 10
+
+model:
+  name: resnet18
+
+method:
+  name: biocs_plus
+  lambda_spatial: 0.005
+  lambda_distill: 5.0
+  lambda_replay: 0.0
+  lambda_spectral: 0.0
+  temperature: 2.0
+  buffer_size: 0
+  biocs_targets: ["classifier"]
+  A_exc: 1.0
+  A_inh: 0.8
+  sigma_exc: 0.2
+  sigma_inh: 0.5
+
+training:
+  epochs: 50
+  batch_size: 512
+  optimizer: sgd
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 0.0
+  scheduler: multistep
+  milestones: [35, 45]
+  gamma: 0.1
+  grad_clip: 5.0
+  use_amp: true
+  num_workers: 4

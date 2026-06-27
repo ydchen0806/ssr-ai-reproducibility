@@ -1,0 +1,21 @@
+dataset:
+  data_root: ./dataset
+  n_edit_classes: 10
+  n_edit_rounds: 5
+  name: knowledge_editing
+experiment_name: ke_er_ace_cifar100
+method:
+  buffer_size: 2000
+  name: er_ace
+model:
+  name: resnet18
+training:
+  batch_size: 512
+  epochs: 10
+  grad_clip: 5.0
+  lr: 0.01
+  momentum: 0.9
+  num_workers: 4
+  optimizer: sgd
+  use_amp: true
+  weight_decay: 0.0

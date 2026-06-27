@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the SSR manuscript and this repository."
+title: "Spatial Synaptic Competition Regularization: AI Reproducibility"
+authors:
+  - family-names: "Chen"
+    given-names: "Yinda"
+repository-code: "https://github.com/ydchen0806/ssr-ai-reproducibility"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-06-27"
+
