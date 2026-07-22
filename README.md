@@ -163,9 +163,24 @@ Run the CUB-200 continual fine-grained benchmark:
 python experiments/cub200_continual_benchmark.py \
   --data_root data/cub200 \
   --output_dir results/cub200_continual \
-  --methods baseline biocs biocs_kd \
+  --methods baseline kd biocs biocs_kd \
   --seeds 0 1 2 \
   --tasks classification segmentation \
+  --device cuda
+```
+
+For the same-base CUB classification control used in the paper, run only the
+KD and SSR+KD methods with the reported 100 epochs per task:
+
+```bash
+python experiments/cub200_continual_benchmark.py \
+  --data_root data/cub200 \
+  --classification_cache data/cub200/cub200_resnet18_features.pt \
+  --output_dir results/cub200_kd_control \
+  --methods kd biocs_kd \
+  --seeds 0 1 2 \
+  --tasks classification \
+  --cls_epochs 100 \
   --device cuda
 ```
 
@@ -175,12 +190,13 @@ Run the frozen-feature low-rank adapter probe after creating the CUB ResNet-18 f
 python experiments/lowrank_adapter_probe.py \
   --feature_cache data/cub200/cub200_resnet18_features.pt \
   --output_dir results/lowrank_adapter_probe \
-  --methods baseline kd biocs biocs_kd \
+  --methods kd biocs_cls_kd biocs_adapter_kd biocs_kd \
   --seeds 0 1 2 \
+  --epochs 20 \
   --device cuda
 ```
 
-The internal method names `biocs` and `biocs_kd` in these legacy experiment scripts correspond to SSR-only and SSR+KD.
+The internal method names `biocs` and `biocs_kd` in these legacy experiment scripts correspond to SSR-only and SSR+KD. For the adapter factorization, `biocs_cls_kd` applies SSR only to classifier prototypes and `biocs_adapter_kd` applies SSR only to adapter output-basis directions.
 
 ## Optional LLM Editing Probe
 
@@ -241,4 +257,3 @@ For larger open-source LLMs, set `KE_MODEL_NAME_OR_PATH` to a local Hugging Face
 ## Citation
 
 If you use this code, please cite the SSR manuscript once it is available. Until then, cite the repository URL and include the commit hash used for experiments.
-

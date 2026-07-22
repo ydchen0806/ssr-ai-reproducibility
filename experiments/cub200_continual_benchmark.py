@@ -291,7 +291,7 @@ def run_classification(args: argparse.Namespace, method: str, seed: int, device:
                 loss = F.cross_entropy(logits, yb)
                 if method in {"biocs", "biocs_kd"}:
                     loss = loss + args.lambda_sp * biocs_loss(model.classifier.weight)
-                if method == "biocs_kd" and teacher is not None:
+                if method in {"kd", "biocs_kd"} and teacher is not None:
                     with torch.no_grad():
                         target = teacher(xb)
                     t = args.kd_temperature
@@ -306,7 +306,7 @@ def run_classification(args: argparse.Namespace, method: str, seed: int, device:
         acc_matrix.append(evaluate_classification_til(model, x_test, y_test, tasks, tid + 1, args.cls_batch_size, device))
         seen_classes = [c for task in tasks[: tid + 1] for c in task]
         cil_curve.append(evaluate_classification_cil(model, x_test, y_test, seen_classes, args.cls_batch_size, device))
-        if method == "biocs_kd":
+        if method in {"kd", "biocs_kd"}:
             teacher = LinearHead(x_train.shape[1], num_classes).to(device)
             teacher.load_state_dict(model.state_dict())
             teacher.eval()
@@ -584,7 +584,7 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                         else:
                             reg_weight = model.classifier.weight
                     loss = loss + args.lambda_sp * biocs_loss(reg_weight)
-                if method == "biocs_kd" and teacher is not None:
+                if method in {"kd", "biocs_kd"} and teacher is not None:
                     with torch.no_grad():
                         target = teacher(feats, cls, mask.shape[-2:])
                     loss = loss + args.lambda_kd_seg * F.binary_cross_entropy_with_logits(logits, torch.sigmoid(target))
@@ -607,7 +607,7 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                 )
                 seen_ious.append(evaluate_segmentation(encoder, model, test_loader, device)[0] * 100.0)
         iou_matrix.append(seen_ious)
-        if method == "biocs_kd":
+        if method in {"kd", "biocs_kd"}:
             teacher = ClassConditionedMaskDecoder(num_classes, args.seg_hidden_dim).to(device)
             teacher.load_state_dict(model.state_dict())
             teacher.eval()

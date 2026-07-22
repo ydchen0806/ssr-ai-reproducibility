@@ -171,10 +171,11 @@ def run_one(args: argparse.Namespace, method: str, seed: int, device: torch.devi
                 xb, yb = xb.to(device), yb.to(device)
                 logits = model(xb)
                 loss = F.cross_entropy(logits, yb)
-                if method in {"biocs", "biocs_kd"}:
+                if method in {"biocs", "biocs_kd", "biocs_cls_kd"}:
                     loss = loss + args.lambda_cls * biocs_loss(model.classifier.weight)
+                if method in {"biocs", "biocs_kd", "biocs_adapter_kd"}:
                     loss = loss + args.lambda_adapter * biocs_loss(model.adapter_basis())
-                if method in {"kd", "biocs_kd"} and teacher is not None:
+                if method in {"kd", "biocs_kd", "biocs_cls_kd", "biocs_adapter_kd"} and teacher is not None:
                     with torch.no_grad():
                         target = teacher(xb)
                     t = args.kd_temperature
@@ -188,7 +189,7 @@ def run_one(args: argparse.Namespace, method: str, seed: int, device: torch.devi
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.grad_clip)
                 opt.step()
         acc_matrix.append(evaluate_til(model, x_test, y_test, tasks, tid + 1, args.batch_size, device))
-        if method in {"kd", "biocs_kd"}:
+        if method in {"kd", "biocs_kd", "biocs_cls_kd", "biocs_adapter_kd"}:
             teacher = AdapterHead(x_train.shape[1], args.num_classes, args.rank, args.tau, args.adapter_scale).to(device)
             teacher.load_state_dict(model.state_dict())
             teacher.eval()
