@@ -1,20 +1,22 @@
-experiment_name: geomctrl_spectral_c100
+experiment_name: biocs_plus_kd_only_lkd2_c100
 
 dataset:
-  name: split_cifar100
-  n_tasks: 10
   data_root: ./dataset
+  n_tasks: 10
+  name: split_cifar100
 
 model:
   name: resnet18
 
 method:
-  name: geometry_controls
-  control_type: spectral
-  lambda_control: 0.01
+  name: biocs_plus
+  biocs_targets: [classifier]
+  lambda_spatial: 0.0
   lambda_distill: 2.0
+  lambda_feat: 0.0
+  lambda_replay: 0.0
+  lambda_spectral: 0.0
   temperature: 3.0
-  use_seen_mask: true
 
 training:
   epochs: 50

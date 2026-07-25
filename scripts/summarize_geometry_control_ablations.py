@@ -19,8 +19,8 @@ import yaml
 
 DEFAULT_METHODS = [
     "lwf_split_cifar100",
-    "biocs_plus_s05_c100",
-    "biocs_plus_kd_only_s05_c100",
+    "biocs_plus_lkd2p0_c100",
+    "biocs_plus_kd_only_lkd2_c100",
     "geomctrl_cosorth_c100",
     "geomctrl_proto_decor_c100",
     "geomctrl_spectral_c100",
@@ -30,7 +30,7 @@ DEFAULT_METHODS = [
 ]
 
 REQUIRED_CONTROLS = [
-    "biocs_plus_kd_only_s05_c100",
+    "biocs_plus_kd_only_lkd2_c100",
     "geomctrl_cosorth_c100",
     "geomctrl_proto_decor_c100",
     "geomctrl_spectral_c100",
@@ -41,8 +41,8 @@ REQUIRED_CONTROLS = [
 
 METHOD_QUESTIONS = {
     "lwf_split_cifar100": "KD anchor baseline",
-    "biocs_plus_s05_c100": "SSR+KD selected frontier",
-    "biocs_plus_kd_only_s05_c100": "same-code SSR+ path with spatial loss disabled",
+    "biocs_plus_lkd2p0_c100": "SSR+KD reference",
+    "biocs_plus_kd_only_lkd2_c100": "same-code SSR+KD path with spatial loss disabled",
     "geomctrl_cosorth_c100": "generic pairwise cosine orthogonality",
     "geomctrl_proto_decor_c100": "prototype decorrelation / covariance reduction",
     "geomctrl_spectral_c100": "spectral regularization",
@@ -60,12 +60,13 @@ EXPECTED_PROTOCOL = {
     "training.optimizer": "sgd",
     "training.lr": 0.1,
     "training.weight_decay": 0.0,
-    "method.lambda_distill": 5.0,
+    "method.lambda_distill": 2.0,
     "method.temperature": 3.0,
 }
 
 CONFIG_PATHS = {
-    "biocs_plus_kd_only_s05_c100": "configs/biocs_plus_kd_only_s05_c100.yaml",
+    "biocs_plus_lkd2p0_c100": "configs/biocs_plus_lkd2p0_c100.yaml",
+    "biocs_plus_kd_only_lkd2_c100": "configs/biocs_plus_kd_only_lkd2_c100.yaml",
     "geomctrl_cosorth_c100": "configs/geomctrl_cosorth_c100.yaml",
     "geomctrl_proto_decor_c100": "configs/geomctrl_proto_decor_c100.yaml",
     "geomctrl_spectral_c100": "configs/geomctrl_spectral_c100.yaml",
@@ -75,7 +76,8 @@ CONFIG_PATHS = {
 }
 
 EXPECTED_CONTROLS = {
-    "biocs_plus_kd_only_s05_c100": None,
+    "biocs_plus_lkd2p0_c100": None,
+    "biocs_plus_kd_only_lkd2_c100": None,
     "geomctrl_cosorth_c100": "cosine_orthogonal",
     "geomctrl_proto_decor_c100": "prototype_decorrelation",
     "geomctrl_spectral_c100": "spectral",
@@ -130,7 +132,7 @@ def audit_config(method: str, repo_root: Path) -> dict:
                 "observed": observed_control,
             }
         )
-    if method == "biocs_plus_kd_only_s05_c100":
+    if method == "biocs_plus_kd_only_lkd2_c100":
         special_expected = {
             "method.name": "biocs_plus",
             "method.lambda_spatial": 0.0,
@@ -292,7 +294,7 @@ def main() -> None:
     out_lines.append("## Run command")
     out_lines.append("")
     out_lines.append("```bash")
-    out_lines.append("SEEDS=\"42 123 456\" GPUS=\"0 1 2 3\" bash scripts/run_geometry_control_gate_4gpu.sh")
+    out_lines.append("SEEDS=\"42 123 456\" KD_LAMBDA=2.0 bash scripts/run_geometry_control_ablations_c100.sh")
     out_lines.append(f"python scripts/summarize_geometry_control_ablations.py --out {args.out}")
     out_lines.append("```")
     out_lines.append("")

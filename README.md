@@ -126,6 +126,28 @@ python main.py \
   --overrides training.epochs=5 method.lambda_spatial=0.003
 ```
 
+## Matched KD Regularizer Controls
+
+The repository includes six non-SSR controls: cosine orthogonality, prototype
+decorrelation, spectral flattening, class-center loss, supervised contrastive
+learning, and weight decay. The matched control queue runs KD-only, SSR+KD,
+and all six controls with the same Split-CIFAR-100 stream, ResNet-18, seed,
+optimizer, training budget, temperature, and `lambda_distill=2.0`.
+
+```bash
+SEEDS="42 123 456" KD_LAMBDA=2.0 DEVICE=cuda \
+  bash scripts/run_geometry_control_ablations_c100.sh
+
+python scripts/summarize_geometry_control_ablations.py \
+  --result-root results \
+  --required-seeds 42 123 456
+```
+
+`configs/biocs_plus_kd_only_lkd2_c100.yaml` is the KD-only reference on the
+same `biocs_plus` training path, with the spatial term disabled. The controls
+are implementation baselines, not a basis for a superiority claim until their
+strength selection and held-out seed comparison have completed.
+
 ## Metrics
 
 The code evaluates every task after each training stage and stores a task-by-task accuracy matrix. The primary reported metrics are:
