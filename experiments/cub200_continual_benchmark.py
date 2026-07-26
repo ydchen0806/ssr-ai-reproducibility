@@ -36,6 +36,7 @@ from torchvision import models
 
 CUB_IMAGES_URL = "https://data.caltech.edu/records/65de6-vp158/files/CUB_200_2011.tgz?download=1"
 CUB_SEG_URL = "https://data.caltech.edu/records/w9d68-gec53/files/segmentations.tgz?download=1"
+KERNEL_FAMILIES = ("gaussian", "laplace", "cauchy", "inverse")
 
 
 @dataclass
@@ -135,14 +136,58 @@ def read_cub_metadata(cub_dir: Path, max_classes: int | None = None) -> list[dic
     return rows
 
 
-def biocs_loss(weights: torch.Tensor, a_exc=1.0, a_inh=0.8, sigma_exc=0.2, sigma_inh=0.5) -> torch.Tensor:
+def _validate_kernel_parameters(a_exc, a_inh, sigma_exc, sigma_inh, kernel_family: str) -> str:
+    if not isinstance(kernel_family, str):
+        raise TypeError("kernel_family must be a string")
+    family = kernel_family.lower()
+    if family not in KERNEL_FAMILIES:
+        choices = ", ".join(KERNEL_FAMILIES)
+        raise ValueError(f"Unknown kernel_family '{kernel_family}'. Expected one of: {choices}")
+    for name, value in (("a_exc", a_exc), ("a_inh", a_inh)):
+        try:
+            finite = math.isfinite(value)
+        except TypeError as exc:
+            raise TypeError(f"{name} must be a finite number") from exc
+        if not finite or value < 0:
+            raise ValueError(f"{name} must be finite and non-negative")
+    for name, value in (("sigma_exc", sigma_exc), ("sigma_inh", sigma_inh)):
+        try:
+            finite = math.isfinite(value)
+        except TypeError as exc:
+            raise TypeError(f"{name} must be a finite number") from exc
+        if not finite or value <= 0:
+            raise ValueError(f"{name} must be finite and positive")
+    return family
+
+
+def _radial_response(dist: torch.Tensor, sigma: float, kernel_family: str) -> torch.Tensor:
+    if kernel_family == "gaussian":
+        return torch.exp(-(dist ** 2) / (2 * sigma ** 2))
+    if kernel_family == "laplace":
+        return torch.exp(-dist / sigma)
+    if kernel_family == "cauchy":
+        return 1.0 / (1.0 + (dist / sigma) ** 2)
+    return 1.0 / (1.0 + dist / sigma)
+
+
+def biocs_loss(
+    weights: torch.Tensor,
+    a_exc=1.0,
+    a_inh=0.8,
+    sigma_exc=0.2,
+    sigma_inh=0.5,
+    kernel_family: str = "gaussian",
+) -> torch.Tensor:
+    family = _validate_kernel_parameters(
+        a_exc, a_inh, sigma_exc, sigma_inh, kernel_family,
+    )
     if weights.shape[0] < 2:
         return weights.sum() * 0.0
     w = F.normalize(weights, dim=1)
     cos = torch.clamp(w @ w.T, -1.0, 1.0)
     dist = torch.sqrt(torch.clamp(1.0 - cos, min=1e-8))
-    inh = a_inh * torch.exp(-(dist**2) / (2 * sigma_inh**2))
-    exc = a_exc * torch.exp(-(dist**2) / (2 * sigma_exc**2))
+    inh = a_inh * _radial_response(dist, sigma_inh, family)
+    exc = a_exc * _radial_response(dist, sigma_exc, family)
     penalty = (inh - exc) + (a_exc - a_inh)
     penalty = penalty - torch.diag(torch.diag(penalty))
     n = weights.shape[0]
@@ -290,7 +335,14 @@ def run_classification(args: argparse.Namespace, method: str, seed: int, device:
                 logits = model(xb)
                 loss = F.cross_entropy(logits, yb)
                 if method in {"biocs", "biocs_kd"}:
-                    loss = loss + args.lambda_sp * biocs_loss(model.classifier.weight)
+                    loss = loss + args.lambda_sp * biocs_loss(
+                        model.classifier.weight,
+                        args.a_exc,
+                        args.a_inh,
+                        args.sigma_exc,
+                        args.sigma_inh,
+                        args.kernel_family,
+                    )
                 if method in {"kd", "biocs_kd"} and teacher is not None:
                     with torch.no_grad():
                         target = teacher(xb)
@@ -583,7 +635,14 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                             reg_weight = model.classifier.weight[torch.unique(cls)]
                         else:
                             reg_weight = model.classifier.weight
-                    loss = loss + args.lambda_sp * biocs_loss(reg_weight)
+                    loss = loss + args.lambda_sp * biocs_loss(
+                        reg_weight,
+                        args.a_exc,
+                        args.a_inh,
+                        args.sigma_exc,
+                        args.sigma_inh,
+                        args.kernel_family,
+                    )
                 if method in {"kd", "biocs_kd"} and teacher is not None:
                     with torch.no_grad():
                         target = teacher(feats, cls, mask.shape[-2:])
@@ -689,6 +748,11 @@ def main() -> None:
     p.add_argument("--lambda_sp", type=float, default=2.0)
     p.add_argument("--lambda_kd", type=float, default=2.0)
     p.add_argument("--lambda_kd_seg", type=float, default=0.5)
+    p.add_argument("--a-exc", type=float, default=1.0)
+    p.add_argument("--a-inh", type=float, default=0.8)
+    p.add_argument("--sigma-exc", type=float, default=0.2)
+    p.add_argument("--sigma-inh", type=float, default=0.5)
+    p.add_argument("--kernel-family", choices=KERNEL_FAMILIES, default="gaussian")
     p.add_argument("--kd_temperature", type=float, default=3.0)
     p.add_argument("--device", default="cuda")
     p.add_argument("--no_download", action="store_true")

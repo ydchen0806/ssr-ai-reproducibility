@@ -19,6 +19,7 @@ Biological basis (from H01 connectome paper):
 """
 
 import logging
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -28,6 +29,51 @@ from .base import BaseContinualLearner
 
 logger = logging.getLogger(__name__)
 
+KERNEL_FAMILIES = frozenset({"gaussian", "laplace", "cauchy", "inverse"})
+
+
+def validate_spatial_kernel_parameters(
+    A_exc: float,
+    A_inh: float,
+    sigma_exc: float,
+    sigma_inh: float,
+    kernel_family: str,
+) -> str:
+    """Validate a center-surround kernel and return its normalized family."""
+    if not isinstance(kernel_family, str):
+        raise TypeError("kernel_family must be a string")
+    family = kernel_family.lower()
+    if family not in KERNEL_FAMILIES:
+        choices = ", ".join(sorted(KERNEL_FAMILIES))
+        raise ValueError(f"Unknown kernel_family '{kernel_family}'. Expected one of: {choices}")
+
+    for name, value in (("A_exc", A_exc), ("A_inh", A_inh)):
+        try:
+            finite = math.isfinite(value)
+        except TypeError as exc:
+            raise TypeError(f"{name} must be a finite number") from exc
+        if not finite or value < 0:
+            raise ValueError(f"{name} must be finite and non-negative")
+    for name, value in (("sigma_exc", sigma_exc), ("sigma_inh", sigma_inh)):
+        try:
+            finite = math.isfinite(value)
+        except TypeError as exc:
+            raise TypeError(f"{name} must be a finite number") from exc
+        if not finite or value <= 0:
+            raise ValueError(f"{name} must be finite and positive")
+    return family
+
+
+def _radial_response(dist: torch.Tensor, sigma: float, kernel_family: str) -> torch.Tensor:
+    """Evaluate a unit-height radial response using its native scale parameter."""
+    if kernel_family == "gaussian":
+        return torch.exp(-(dist ** 2) / (2 * sigma ** 2))
+    if kernel_family == "laplace":
+        return torch.exp(-dist / sigma)
+    if kernel_family == "cauchy":
+        return 1.0 / (1.0 + (dist / sigma) ** 2)
+    return 1.0 / (1.0 + dist / sigma)
+
 
 def compute_spatial_biocs(
     weights: torch.Tensor,
@@ -36,6 +82,7 @@ def compute_spatial_biocs(
     sigma_exc: float = 0.2,
     sigma_inh: float = 0.5,
     seen_mask: torch.Tensor | None = None,
+    kernel_family: str = "gaussian",
 ) -> torch.Tensor:
     """Mexican-hat center-surround penalty on weight vectors.
 
@@ -46,6 +93,9 @@ def compute_spatial_biocs(
     Forced float32: the normalize→cosine→sqrt→exp chain produces NaN
     gradients under float16 AMP autocast.
     """
+    family = validate_spatial_kernel_parameters(
+        A_exc, A_inh, sigma_exc, sigma_inh, kernel_family,
+    )
     weights = weights.float()
     if seen_mask is not None:
         weights = weights[seen_mask]
@@ -57,8 +107,8 @@ def compute_spatial_biocs(
     cos_sim = torch.clamp(w_norm @ w_norm.T, -1.0, 1.0)
     dist = torch.sqrt(torch.clamp(1.0 - cos_sim, min=1e-8))
 
-    exc = A_exc * torch.exp(-(dist ** 2) / (2 * sigma_exc ** 2))
-    inh = A_inh * torch.exp(-(dist ** 2) / (2 * sigma_inh ** 2))
+    exc = A_exc * _radial_response(dist, sigma_exc, family)
+    inh = A_inh * _radial_response(dist, sigma_inh, family)
     P = (inh - exc) + (A_exc - A_inh)
     P = P - torch.diag(torch.diag(P))
 
@@ -161,6 +211,13 @@ class BioReg(BaseContinualLearner):
         self.A_inh = config.get("A_inh", 0.8)
         self.sigma_exc = config.get("sigma_exc", 0.2)
         self.sigma_inh = config.get("sigma_inh", 0.5)
+        self.kernel_family = validate_spatial_kernel_parameters(
+            self.A_exc,
+            self.A_inh,
+            self.sigma_exc,
+            self.sigma_inh,
+            config.get("kernel_family", "gaussian"),
+        )
         self.biocs_targets = config.get("biocs_targets", ["classifier"])
         self.use_seen_mask = config.get("use_seen_mask", True)
 
@@ -331,6 +388,7 @@ class BioReg(BaseContinualLearner):
                 total = total + compute_spatial_biocs(
                     layer.weight.float(), self.A_exc, self.A_inh,
                     self.sigma_exc, self.sigma_inh, mask,
+                    kernel_family=self.kernel_family,
                 )
             return total
 

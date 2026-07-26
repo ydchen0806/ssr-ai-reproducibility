@@ -16,7 +16,11 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from .base import BaseContinualLearner
-from .bioreg import compute_spatial_biocs, compute_spectral_flatness
+from .bioreg import (
+    compute_spatial_biocs,
+    compute_spectral_flatness,
+    validate_spatial_kernel_parameters,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -67,6 +71,7 @@ class BioCsPlus(BaseContinualLearner):
         temperature:     Distillation temperature (default 2.0)
         buffer_size:     Replay buffer capacity (default 500)
         biocs_targets:   Which layers to apply SSR to (default ["all"])
+        kernel_family:   Radial response: gaussian, laplace, cauchy, or inverse
         lambda_spectral: SVD spectral penalty (default 0.0, set >0 to enable)
         label_smoothing: CE label smoothing (default 0.0)
     """
@@ -87,6 +92,13 @@ class BioCsPlus(BaseContinualLearner):
         self.A_inh = config.get("A_inh", 0.8)
         self.sigma_exc = config.get("sigma_exc", 0.2)
         self.sigma_inh = config.get("sigma_inh", 0.5)
+        self.kernel_family = validate_spatial_kernel_parameters(
+            self.A_exc,
+            self.A_inh,
+            self.sigma_exc,
+            self.sigma_inh,
+            config.get("kernel_family", "gaussian"),
+        )
         biocs_targets = config.get("biocs_targets", ["all"])
 
         self.teacher: nn.Module | None = None
@@ -114,7 +126,7 @@ class BioCsPlus(BaseContinualLearner):
                      f"feat={self.lambda_feat} replay={self.lambda_replay} "
                      f"spectral={self.lambda_spectral} T={self.temperature} "
                      f"buf={self.buffer_size} smooth={self.label_smoothing} "
-                     f"targets={len(self._target_layers)} layers")
+                     f"kernel={self.kernel_family} targets={len(self._target_layers)} layers")
 
     def _setup_feat_hooks(self, model: nn.Module):
         feat_layer = None
@@ -191,6 +203,7 @@ class BioCsPlus(BaseContinualLearner):
                     spatial_loss = spatial_loss + compute_spatial_biocs(
                         layer.weight.float(), self.A_exc, self.A_inh,
                         self.sigma_exc, self.sigma_inh, mask,
+                        kernel_family=self.kernel_family,
                     )
                 loss = loss + self.lambda_spatial * spatial_loss
 
