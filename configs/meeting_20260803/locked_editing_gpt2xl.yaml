@@ -1,0 +1,76 @@
+schema_version: "1.0"
+lock_name: meeting_20260803_gpt2xl_editing
+status: locked_for_confirmation
+
+source:
+  selection_lock: /unify/ydchen/unidit/bioreg/results/ssr_decisive_3node_20260803_r1/node_a/SELECTION_LOCK.json
+  archived_selection_lock: artifacts/meeting_20260803/provenance/editing_lock/SELECTION_LOCK.json
+  selection_protocol_hash: 424b579254f875f3ea86d3f1414f0066573690ed68509744f481fbaf6ccbb7d4
+  selection_lock_file_sha256: 5b73a57120ef5e68cd5f1a833996edefc6aa9f4facd7182d9dcf56b6c68f7dba
+  archived_representative_result: artifacts/meeting_20260803/provenance/editing_lock/zsre_full_projective_seed9325_results.json
+  representative_result_sha256: d9ae85286b73a94841cb2830d3e66ae0fbd4353e9b8960fae6c67bf4065e2c5a
+  selected_candidate_id: gaussian_reference_projective_l0p003
+  selected_at: "2026-08-03T19:05:05+0800"
+  protocol_note: >-
+    Kernel family, primary mapping, SSR strength, sigmas, target layers,
+    row selection, and row budget are locked by the decisive development
+    screen. The anchor, spectral, optimizer, amplitude, target, and stream
+    values below were verified against the archived selected validation
+    results.json on 2026-08-03; they are historical scaffold values rather
+    than quantities selected by the kernel screen.
+  archive_status: verified_2026-08-03
+
+model:
+  name: gpt2-xl
+  default_cluster_path: /unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl
+  target_layers: [16, 17, 18]
+  force_text_only: true
+  local_files_only: true
+
+objective:
+  recipes: [plain, anchor, spectral, stabilized, ssr_only, full]
+  mapping_dependent_recipes: [ssr_only, full]
+  lambda_ssr: 0.003
+  lambda_anchor: 0.001
+  lambda_spectral: 0.01
+
+kernel:
+  family: gaussian
+  primary_distance_mapping: projective
+  confirmation_distance_mappings: [projective, cosine]
+  a_exc: 1.2
+  a_inh: 0.9
+  sigma_exc: 0.22
+  sigma_inh: 0.60
+  target: delta
+  row_selection: active_top
+  max_spatial_rows: 256
+
+optimizer:
+  lr: 0.0001
+  num_steps: 25
+
+phases:
+  screen:
+    datasets: [zsre, cf, recent]
+    seeds: [9301, 9303]
+    data_offset: 300
+    n_edits: 50
+    evaluate_history: true
+    history_checkpoints: []
+    history_max_samples: 0
+  confirm:
+    datasets: [zsre, cf, recent]
+    seeds: [9311, 9313, 9315, 9317, 9319, 9321, 9323, 9325, 9327, 9329]
+    data_offset: 500
+    n_edits: 100
+    evaluate_history: true
+    history_checkpoints: [50]
+    history_max_samples: 0
+
+pairing:
+  identity: [dataset, model, seed, data_offset, n_edits, dataset_hash]
+  invariant: >-
+    Every recipe and distance-mapping condition for a paired seed consumes the
+    identical contiguous dataset slice in source-file order and uses that seed
+    for Python, NumPy, PyTorch, and SSR row selection.

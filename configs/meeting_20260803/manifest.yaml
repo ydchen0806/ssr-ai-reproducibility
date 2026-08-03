@@ -1,0 +1,57 @@
+schema_version: "1.0"
+revision: meeting_20260803
+repository_branch: revision/meeting-20260803
+rules:
+  paired_identity: [task_family, dataset, model, seed, data_offset, n_edits]
+  development_seeds_must_not_enter_confirmation: true
+  preserve_failed_runs: true
+  manuscript_values_must_be_aggregated: true
+
+cohorts:
+  editing_gpt2xl:
+    task_family: editing
+    model: gpt2-xl
+    datasets: [zsre, cf, recent]
+    recipes: [plain, anchor, spectral, stabilized, ssr_only, full]
+    mappings: [cosine, projective]
+    mapping_dependent_recipes: [ssr_only, full]
+    paired_identity: [dataset, model, seed, data_offset, n_edits, dataset_hash]
+    development_seeds: [9301, 9303]
+    confirmation_seeds: [9311, 9313, 9315, 9317, 9319, 9321, 9323, 9325, 9327, 9329]
+    n_edits: 100
+    primary_contrasts:
+      - [ssr_only, plain]
+      - [full, stabilized]
+      - [ssr_only, anchor]
+      - [ssr_only, spectral]
+    transfer_contrast: [full, plain]
+
+  continual_learning_matched_kd:
+    task_family: classification
+    model: resnet18
+    datasets: [split_cifar100, split_tiny_imagenet]
+    recipes: [kd, kd_ewc, kd_mas, kd_si, kd_ssr]
+    mappings: [cosine]
+    mapping_dependent_recipes: [kd_ssr]
+    paired_identity: [dataset, model, seed, dataset_hash, pairing_hash]
+    confirmation_seeds: [3101, 3103, 3105, 3107, 3109]
+    common_scaffold: kd
+    primary_contrasts:
+      - [kd_ewc, kd]
+      - [kd_mas, kd]
+      - [kd_si, kd]
+      - [kd_ssr, kd]
+
+  cub_segmentation:
+    task_family: segmentation
+    model: resnet18_dense_decoder
+    datasets: [cub200_masks]
+    recipes: [plain, kd, ssr_only, ssr_kd]
+    mappings: [cosine]
+    mapping_dependent_recipes: [ssr_only, ssr_kd]
+    paired_identity: [dataset, model, seed, dataset_hash]
+    development_seeds: [9101, 9103, 9105]
+    confirmation_seeds: [9201, 9203, 9205, 9207, 9209, 9211, 9213, 9215, 9217, 9219]
+    primary_contrasts:
+      - [ssr_kd, kd]
+      - [ssr_only, plain]

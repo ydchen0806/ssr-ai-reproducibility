@@ -28,44 +28,171 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset
 from tqdm import tqdm
 
+try:
+    from .locality import (
+        LOCALITY_EVALUATOR,
+        LOCALITY_EVALUATOR_VERSION,
+        evaluate_locality,
+        normalize_text,
+        normalize_text_list,
+    )
+except ImportError:  # Support ``python llm_ke/biocs_editor.py``.
+    from locality import (  # type: ignore
+        LOCALITY_EVALUATOR,
+        LOCALITY_EVALUATOR_VERSION,
+        evaluate_locality,
+        normalize_text,
+        normalize_text_list,
+    )
+
 logger = logging.getLogger(__name__)
 
 
 def _to_text(value) -> str:
     """Normalize KnowEdit answer fields to plain strings."""
-    if value is None:
-        return ""
-    if isinstance(value, str):
-        return value
-    if isinstance(value, dict):
-        for key in ("str", "text", "answer", "label", "name"):
-            if key in value:
-                return _to_text(value[key])
-        return str(value)
-    if isinstance(value, (list, tuple)):
-        if not value:
-            return ""
-        return _to_text(value[0])
-    return str(value)
+    return normalize_text(value)
 
 
 def _to_text_list(value) -> list[str]:
     """Normalize nested KnowEdit labels into a flat list of strings."""
-    if value is None:
-        return []
-    if isinstance(value, (list, tuple)):
-        texts = []
-        for item in value:
-            texts.extend(_to_text_list(item))
-        return [text for text in texts if text]
-    text = _to_text(value)
-    return [text] if text else []
+    return normalize_text_list(value)
 
 # -------------------- SSR core functions ----------------------
 
 KERNEL_FAMILIES = ("gaussian", "laplace", "cauchy", "inverse")
 DISTANCE_METRICS = ("cosine", "projective")
 ROW_SELECTIONS = ("random_each_step", "fixed_random", "active_top")
+
+# Each recipe changes only the listed objective components in addition to the
+# task loss.  Keeping this registry explicit prevents a run label from drifting
+# away from the loss that was actually optimized.
+RECIPES: dict[str, dict[str, bool]] = {
+    "plain": {"ssr": False, "anchor": False, "spectral": False},
+    "anchor": {"ssr": False, "anchor": True, "spectral": False},
+    "spectral": {"ssr": False, "anchor": False, "spectral": True},
+    "stabilized": {"ssr": False, "anchor": True, "spectral": True},
+    "ssr_only": {"ssr": True, "anchor": False, "spectral": False},
+    "ssr_anchor": {"ssr": True, "anchor": True, "spectral": False},
+    "ssr_spectral": {"ssr": True, "anchor": False, "spectral": True},
+    "full": {"ssr": True, "anchor": True, "spectral": True},
+}
+OBJECTIVE_COMPONENTS = ("task", "ssr", "anchor", "spectral")
+
+
+def infer_recipe(
+    lambda_ssr: float,
+    lambda_anchor: float,
+    lambda_spectral: float,
+) -> str:
+    """Infer the named recipe used by legacy coefficient-only callers."""
+    active = {
+        name
+        for name, value in (
+            ("ssr", lambda_ssr),
+            ("anchor", lambda_anchor),
+            ("spectral", lambda_spectral),
+        )
+        if value > 0
+    }
+    for name, component_flags in RECIPES.items():
+        registered = {
+            component for component, enabled in component_flags.items() if enabled
+        }
+        if active == registered:
+            return name
+    raise AssertionError(f"No registered recipe for components {sorted(active)}")
+
+
+def resolve_recipe(
+    recipe: Optional[str] = None,
+    *,
+    lambda_ssr: float = 0.001,
+    lambda_anchor: float = 0.001,
+    lambda_spectral: float = 0.01,
+) -> dict:
+    """Resolve a recipe to the exact coefficients and objective metadata.
+
+    ``recipe=None`` preserves the historical coefficient-driven interface by
+    inferring one of the eight complete component combinations.  With an
+    explicit recipe, coefficients belonging to disabled components are zeroed.
+    Enabled components must have a positive coefficient so the recorded recipe
+    cannot claim a loss term that was inactive in the optimizer.
+    """
+    coefficients = {
+        "ssr": float(lambda_ssr),
+        "anchor": float(lambda_anchor),
+        "spectral": float(lambda_spectral),
+    }
+    if any(value < 0 for value in coefficients.values()):
+        raise ValueError("Recipe coefficients must be non-negative")
+
+    explicit = recipe is not None
+    name = (
+        recipe.strip().lower()
+        if explicit
+        else infer_recipe(
+            lambda_ssr=coefficients["ssr"],
+            lambda_anchor=coefficients["anchor"],
+            lambda_spectral=coefficients["spectral"],
+        )
+    )
+    if name not in RECIPES:
+        raise ValueError(f"Unknown recipe={recipe!r}; choose from {tuple(RECIPES)}")
+
+    enabled = {
+        component for component, is_enabled in RECIPES[name].items() if is_enabled
+    }
+    if explicit:
+        missing = [component for component in enabled if coefficients[component] <= 0]
+        if missing:
+            raise ValueError(
+                f"Recipe {name!r} enables {missing}, so their coefficients must be positive"
+            )
+    effective = {
+        component: coefficients[component] if component in enabled else 0.0
+        for component in ("ssr", "anchor", "spectral")
+    }
+    active_components = (
+        "task",
+        *(component for component in ("ssr", "anchor", "spectral") if component in enabled),
+    )
+    return {
+        "recipe": name,
+        "components": list(active_components),
+        "objective": {
+            component: component in active_components
+            for component in OBJECTIVE_COMPONENTS
+        },
+        "lambda_ssr": effective["ssr"],
+        "lambda_anchor": effective["anchor"],
+        "lambda_spectral": effective["spectral"],
+    }
+
+
+def stable_row_seed(module_name: str, sampler_seed: int, edit_index: int) -> int:
+    """Return a process-independent seed for fixed spatial-row sampling."""
+    digest = hashlib.sha256(module_name.encode("utf-8")).digest()
+    module_seed = int.from_bytes(digest[:8], "little")
+    return (int(sampler_seed) + 1009 * int(edit_index) + module_seed) % (2**63 - 1)
+
+
+def fixed_random_row_indices(
+    module_name: str,
+    n_rows: int,
+    max_rows: int,
+    *,
+    sampler_seed: int = 0,
+    edit_index: int = 0,
+) -> torch.Tensor:
+    """Sample deterministic CPU row indices without constructing an editor."""
+    if n_rows < 0:
+        raise ValueError("n_rows must be non-negative")
+    if max_rows < 0:
+        raise ValueError("max_rows must be non-negative")
+    count = min(n_rows, max_rows)
+    generator = torch.Generator(device="cpu")
+    generator.manual_seed(stable_row_seed(module_name, sampler_seed, edit_index))
+    return torch.randperm(n_rows, generator=generator)[:count]
 
 
 def _radial_kernel(dist: torch.Tensor, sigma: float, family: str) -> torch.Tensor:
@@ -86,6 +213,22 @@ def _radial_kernel(dist: torch.Tensor, sigma: float, family: str) -> torch.Tenso
     if family == "inverse":
         return sigma / torch.sqrt(dist ** 2 + sigma ** 2)
     raise ValueError(f"Unknown kernel_family={family!r}; choose from {KERNEL_FAMILIES}")
+
+
+def pairwise_distance(
+    weights: torch.Tensor,
+    mapping: str = "cosine",
+    eps: float = 1e-8,
+) -> torch.Tensor:
+    """Pairwise directional or sign-invariant projective distance."""
+    if mapping not in DISTANCE_METRICS:
+        raise ValueError(f"Unknown mapping={mapping!r}; choose from {DISTANCE_METRICS}")
+    if weights.ndim != 2:
+        raise ValueError("weights must be a two-dimensional matrix")
+    normalized = F.normalize(weights.float(), dim=1)
+    cosine = torch.clamp(normalized @ normalized.T, -1.0, 1.0)
+    value = 1.0 - (cosine.square() if mapping == "projective" else cosine)
+    return torch.sqrt(torch.clamp(value, min=eps))
 
 
 def compute_spatial_biocs_llm(
@@ -117,17 +260,7 @@ def compute_spatial_biocs_llm(
         w = w[idx]
         n = max_rows
 
-    if distance_metric not in DISTANCE_METRICS:
-        raise ValueError(
-            f"Unknown distance_metric={distance_metric!r}; choose from {DISTANCE_METRICS}"
-        )
-    w_norm = F.normalize(w, dim=1)
-    cos_sim = torch.clamp(w_norm @ w_norm.T, -1.0, 1.0)
-    if distance_metric == "projective":
-        # A basis direction and its sign-flipped version represent the same axis.
-        dist = torch.sqrt(torch.clamp(1.0 - cos_sim.square(), min=1e-8))
-    else:
-        dist = torch.sqrt(torch.clamp(1.0 - cos_sim, min=1e-8))
+    dist = pairwise_distance(w, mapping=distance_metric)
 
     exc = A_exc * _radial_kernel(dist, sigma_exc, kernel_family)
     inh = A_inh * _radial_kernel(dist, sigma_inh, kernel_family)
@@ -210,13 +343,26 @@ class BioCsLLMEditor:
         sigma_inh: float = 0.8,
         biocs_target: str = "weight",
         distance_metric: str = "cosine",
-        row_selection: str = "random_each_step",
+        row_selection: str = "fixed_random",
         max_spatial_rows: int = 256,
         sampler_seed: int = 0,
         lr: float = 1e-4,
         num_steps: int = 25,
         max_length: int = 64,
+        recipe: Optional[str] = None,
+        lambda_ssr: Optional[float] = None,
+        distance_mapping: Optional[str] = None,
     ):
+        requested_lambda_ssr = lambda_biocs if lambda_ssr is None else lambda_ssr
+        recipe_config = resolve_recipe(
+            recipe,
+            lambda_ssr=requested_lambda_ssr,
+            lambda_anchor=lambda_anchor,
+            lambda_spectral=lambda_spectral,
+        )
+        if distance_mapping is not None:
+            distance_metric = distance_mapping
+
         from transformers import (
             AutoConfig,
             AutoModelForCausalLM,
@@ -284,9 +430,15 @@ class BioCsLLMEditor:
         self.input_device = next(self.model.parameters()).device
 
         self.target_layers = target_layers or self._auto_select_layers()
-        self.lambda_biocs = lambda_biocs
-        self.lambda_spectral = lambda_spectral
-        self.lambda_anchor = lambda_anchor
+        self.recipe = recipe_config["recipe"]
+        self.objective_components = recipe_config["components"]
+        self.objective = recipe_config["objective"]
+        self.use_ssr = self.objective["ssr"]
+        self.use_anchor = self.objective["anchor"]
+        self.use_spectral = self.objective["spectral"]
+        self.lambda_biocs = recipe_config["lambda_ssr"]
+        self.lambda_spectral = recipe_config["lambda_spectral"]
+        self.lambda_anchor = recipe_config["lambda_anchor"]
         if kernel_family not in KERNEL_FAMILIES:
             raise ValueError(f"Unknown kernel_family={kernel_family!r}; choose from {KERNEL_FAMILIES}")
         if sigma_exc <= 0 or sigma_inh <= 0:
@@ -326,7 +478,9 @@ class BioCsLLMEditor:
 
         logger.info(f"Target layers: {self.target_layers}")
         logger.info(
-            f"λ_biocs={lambda_biocs}, λ_spectral={lambda_spectral}, λ_anchor={lambda_anchor}; "
+            f"recipe={self.recipe}, components={self.objective_components}; "
+            f"λ_ssr={self.lambda_biocs}, λ_spectral={self.lambda_spectral}, "
+            f"λ_anchor={self.lambda_anchor}; "
             f"kernel={kernel_family}, A=({a_exc},{a_inh}), sigma=({sigma_exc},{sigma_inh}), "
             f"target={biocs_target}, distance={distance_metric}, "
             f"rows={row_selection}:{max_spatial_rows}"
@@ -395,6 +549,13 @@ class BioCsLLMEditor:
             "target_layers": self.target_layers,
             "target_module_regex": self.target_module_regex,
             "max_target_modules": self.max_target_modules,
+            "recipe": self.recipe,
+            "objective_components": self.objective_components,
+            "objective": self.objective,
+            "use_ssr": self.use_ssr,
+            "use_anchor": self.use_anchor,
+            "use_spectral": self.use_spectral,
+            "lambda_ssr": self.lambda_biocs,
             "lambda_biocs": self.lambda_biocs,
             "lambda_spectral": self.lambda_spectral,
             "lambda_anchor": self.lambda_anchor,
@@ -405,6 +566,7 @@ class BioCsLLMEditor:
             "sigma_inh": self.sigma_inh,
             "biocs_target": self.biocs_target,
             "distance_metric": self.distance_metric,
+            "distance_mapping": self.distance_metric if self.objective["ssr"] else None,
             "row_selection": self.row_selection,
             "max_spatial_rows": self.max_spatial_rows,
             "sampler_seed": self.sampler_seed,
@@ -415,6 +577,8 @@ class BioCsLLMEditor:
             "model_dtype": os.environ.get("KE_MODEL_DTYPE", "auto"),
             "device_map": os.environ.get("KE_DEVICE_MAP", ""),
             "force_text_only": os.environ.get("KE_FORCE_TEXT_ONLY", "0"),
+            "locality_evaluator": LOCALITY_EVALUATOR,
+            "locality_evaluator_version": LOCALITY_EVALUATOR_VERSION,
         }
 
     def _save_weight_snapshot(self):
@@ -422,15 +586,16 @@ class BioCsLLMEditor:
             self._weight_snapshots[name] = mod.weight.data.clone()
 
     def _stable_row_seed(self, module_name: str) -> int:
-        digest = hashlib.sha256(module_name.encode("utf-8")).digest()
-        module_seed = int.from_bytes(digest[:8], "little")
-        return (self.sampler_seed + 1009 * self._edit_index + module_seed) % (2**63 - 1)
+        return stable_row_seed(module_name, self.sampler_seed, self._edit_index)
 
     def _fixed_random_rows(self, module_name: str, n_rows: int) -> torch.Tensor:
-        count = min(n_rows, self.max_spatial_rows)
-        generator = torch.Generator(device="cpu")
-        generator.manual_seed(self._stable_row_seed(module_name))
-        return torch.randperm(n_rows, generator=generator)[:count]
+        return fixed_random_row_indices(
+            module_name,
+            n_rows,
+            self.max_spatial_rows,
+            sampler_seed=self.sampler_seed,
+            edit_index=self._edit_index,
+        )
 
     def _prepare_fixed_rows(self, target_modules: list[tuple[str, nn.Module]]) -> None:
         self._edit_row_indices = {}
@@ -462,7 +627,7 @@ class BioCsLLMEditor:
         target_modules = self._get_mlp_modules()
         if not target_modules:
             logger.warning("No target MLP modules found")
-            return {"success": False}
+            return {"success": False, "reason": "no target MLP modules found"}
 
         params = []
         for name, mod in target_modules:
@@ -491,7 +656,7 @@ class BioCsLLMEditor:
 
             with torch.amp.autocast("cuda", enabled=False):
                 for name, mod in target_modules:
-                    if self.lambda_biocs > 0:
+                    if self.use_ssr:
                         spatial_target = mod.weight.float()
                         if self.biocs_target == "delta" and name in self._weight_snapshots:
                             spatial_target = spatial_target - self._weight_snapshots[name].to(mod.weight.device).float()
@@ -508,11 +673,11 @@ class BioCsLLMEditor:
                                 row_indices=row_indices,
                                 max_rows=self.max_spatial_rows,
                             )
-                    if self.lambda_spectral > 0:
+                    if self.use_spectral:
                         spectral_loss = spectral_loss + compute_spectral_flatness_llm(
                             mod.weight.float()
                         )
-                    if self.lambda_anchor > 0 and name in self._weight_snapshots:
+                    if self.use_anchor and name in self._weight_snapshots:
                         anchor_loss = anchor_loss + F.mse_loss(
                             mod.weight.float(), self._weight_snapshots[name].to(mod.weight.device).float()
                         )
@@ -553,24 +718,15 @@ class BioCsLLMEditor:
         prediction = self.generate(prompt).strip()
         efficacy = 1.0 if target_str.lower() in prediction.lower() else 0.0
 
-        locality_score = 0.0
-        locality_count = 0
-        if locality:
-            for key, items in locality.items():
-                if not isinstance(items, list):
-                    continue
-                for item in items:
-                    if "prompt" not in item or "ground_truth" not in item:
-                        continue
-                    loc_pred = self.generate(_to_text(item["prompt"])).strip()
-                    gt_strs = _to_text_list(item["ground_truth"])
-                    match = any(g.lower() in loc_pred.lower() for g in gt_strs)
-                    locality_score += float(match)
-                    locality_count += 1
+        locality_result = evaluate_locality(locality, self.generate)
 
         return {
             "efficacy": efficacy,
-            "locality": locality_score / max(locality_count, 1),
+            "locality": locality_result["score"],
+            "locality_items_evaluated": locality_result["n_items"],
+            "locality_items_matched": locality_result["n_matched"],
+            "locality_evaluator": locality_result["evaluator"],
+            "locality_evaluator_version": locality_result["evaluator_version"],
             "prediction": prediction[:100],
         }
 
@@ -581,6 +737,8 @@ class FTBaselineEditor(BioCsLLMEditor):
     """Standard fine-tuning editor without SSR."""
 
     def __init__(self, *args, **kwargs):
+        kwargs["recipe"] = "plain"
+        kwargs["lambda_ssr"] = 0.0
         kwargs["lambda_biocs"] = 0.0
         kwargs["lambda_spectral"] = 0.0
         kwargs["lambda_anchor"] = 0.0
@@ -667,6 +825,8 @@ def run_sequential_editing(
     history_max_samples: int = 0,
 ):
     """Run sequential knowledge editing and evaluate."""
+    if n_edits <= 0:
+        raise ValueError("n_edits must be positive")
     if history_max_samples < 0:
         raise ValueError("history_max_samples must be non-negative; use 0 for all edits")
     checkpoints = sorted(set(history_checkpoints or []))
@@ -684,6 +844,7 @@ def run_sequential_editing(
     agg = {"efficacy": [], "locality": []}
     history = []
     checkpoint_results = []
+    failures = []
 
     cuda_device = editor.input_device if editor.input_device.type == "cuda" else None
     if cuda_device is not None:
@@ -720,10 +881,18 @@ def run_sequential_editing(
                     }
                 )
 
-            if (i + 1) % 10 == 0:
-                eff = sum(agg["efficacy"]) / len(agg["efficacy"]) * 100
-                loc = sum(agg["locality"]) / len(agg["locality"]) * 100
-                logger.info(f"Edit {i+1}: Efficacy={eff:.1f}%, Locality={loc:.1f}%")
+        else:
+            failures.append(
+                {
+                    "idx": dataset.offset + i,
+                    "reason": str(edit_result.get("reason", "editor returned success=False")),
+                }
+            )
+
+        if (i + 1) % 10 == 0 and agg["efficacy"]:
+            eff = sum(agg["efficacy"]) / len(agg["efficacy"]) * 100
+            loc = sum(agg["locality"]) / len(agg["locality"]) * 100
+            logger.info(f"Edit {i+1}: Efficacy={eff:.1f}%, Locality={loc:.1f}%")
 
         if evaluate_history and (i + 1) in checkpoints:
             snapshot = evaluate_historical_retention(
@@ -744,10 +913,21 @@ def run_sequential_editing(
 
     if cuda_device is not None:
         torch.cuda.synchronize(cuda_device)
+    succeeded = len(results)
+    attempted = total_edits
+    failed = attempted - succeeded
+    status = "complete" if succeeded == n_edits and failed == 0 else (
+        "failed" if attempted > 0 and succeeded == 0 else "incomplete"
+    )
     summary = {
         **editor.metadata(),
-        "n_edits": len(results),
+        # ``n_edits`` retains its historical meaning (successful edits).
+        "n_edits": succeeded,
         "requested_n_edits": n_edits,
+        "attempted": attempted,
+        "succeeded": succeeded,
+        "failed": failed,
+        "status": status,
         "elapsed_s": round(__import__("time").time() - start_time, 1),
         "efficacy": sum(agg["efficacy"]) / max(len(agg["efficacy"]), 1) * 100,
         "locality": sum(agg["locality"]) / max(len(agg["locality"]), 1) * 100,
@@ -761,6 +941,7 @@ def run_sequential_editing(
             if cuda_device is not None else 0.0
         ),
         "results": results,
+        "failures": failures,
     }
 
     if evaluate_history:
@@ -814,7 +995,7 @@ def main():
     parser.add_argument("--sigma_inh", type=float, default=0.8)
     parser.add_argument("--biocs_target", choices=["weight", "delta"], default="weight")
     parser.add_argument("--distance_metric", choices=DISTANCE_METRICS, default="cosine")
-    parser.add_argument("--row_selection", choices=ROW_SELECTIONS, default="random_each_step")
+    parser.add_argument("--row_selection", choices=ROW_SELECTIONS, default="fixed_random")
     parser.add_argument("--max_spatial_rows", type=int, default=256)
     parser.add_argument("--sampler_seed", type=int, default=0)
     parser.add_argument("--data_offset", type=int, default=0)

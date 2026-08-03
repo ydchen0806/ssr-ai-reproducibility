@@ -18,7 +18,10 @@ import argparse
 import json
 import math
 import random
+import subprocess
+import sys
 import tarfile
+import time
 import urllib.request
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -32,10 +35,101 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset, TensorDataset
 from torchvision import models
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from ssr_utils.result_schema import build_result_record
+from ssr_utils.segmentation_kd import old_class_distillation_ids
+from ssr_utils.dataset_fingerprint import cub_dataset_fingerprint
+
 
 CUB_IMAGES_URL = "https://data.caltech.edu/records/65de6-vp158/files/CUB_200_2011.tgz?download=1"
 CUB_SEG_URL = "https://data.caltech.edu/records/w9d68-gec53/files/segmentations.tgz?download=1"
 KERNEL_FAMILIES = ("gaussian", "laplace", "cauchy", "inverse")
+
+
+def current_git_commit() -> str:
+    try:
+        return subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=PROJECT_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown-uncommitted-environment"
+
+
+def objective_for_method(method: str) -> tuple[str, dict[str, bool]]:
+    mapping = {
+        "baseline": ("plain", {"task": True}),
+        "kd": ("kd", {"task": True, "kd": True}),
+        "biocs": ("ssr_only", {"task": True, "ssr": True}),
+        "biocs_kd": ("ssr_kd", {"task": True, "ssr": True, "kd": True}),
+    }
+    return mapping.get(method, (f"{method}_context", {"task": True}))
+
+
+def write_result_record(
+    *,
+    outdir: Path,
+    row: dict,
+    args: argparse.Namespace,
+    elapsed_s: float,
+    dataset_hash: str,
+) -> None:
+    recipe, objective = objective_for_method(row["method"])
+    uses_ssr = bool(objective.get("ssr"))
+    kernel = {}
+    if uses_ssr:
+        kernel = {
+            "family": args.kernel_family,
+            "A_exc": args.a_exc,
+            "A_inh": args.a_inh,
+            "sigma_exc": args.sigma_exc,
+            "sigma_inh": args.sigma_inh,
+        }
+    metrics = {
+        key: float(value)
+        for key, value in row.items()
+        if key not in {"task", "method", "seed"} and isinstance(value, (int, float))
+    }
+    config_payload = dict(vars(args))
+    if row["task"] == "segmentation":
+        config_payload["segmentation_kd_protocol"] = (
+            "old_class_conditions_on_current_features_v1"
+        )
+    record = build_result_record(
+        git_commit=current_git_commit(),
+        run_id=str((outdir / row["task"] / row["method"] / f"seed_{row['seed']}").resolve()),
+        task_family=row["task"],
+        dataset="cub200_masks" if row["task"] == "segmentation" else "cub200",
+        model="resnet18_dense_decoder" if row["task"] == "segmentation" else "resnet18_classifier",
+        seed=int(row["seed"]),
+        objective=objective,
+        distance_mapping="cosine" if uses_ssr else "none",
+        kernel=kernel,
+        metrics=metrics,
+        runtime={"elapsed_s": elapsed_s},
+        config=config_payload,
+        dataset_hash=dataset_hash,
+        recipe=recipe,
+        lambda_ssr=float(args.lambda_sp) if uses_ssr else 0.0,
+        metric_directions={
+            "mean_iou": True,
+            "mean_dice": True,
+            "avg_forgetting_iou": False,
+            "avg_accuracy": True,
+            "avg_forgetting": False,
+            "effective_rank": True,
+            "mean_abs_offdiag_cosine": False,
+        },
+    )
+    path = outdir / "result_records" / row["task"] / row["method"] / f"seed_{row['seed']}" / "result_record.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(record, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 @dataclass
@@ -626,11 +720,22 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
     iou_matrix = []
     for tid, task_classes in enumerate(tasks):
         seen_class_ids = [c for task in tasks[: tid + 1] for c in task]
+        old_class_ids = [c for task in tasks[:tid] for c in task]
         if use_feature_cache:
             train_dataset = CubSegFeatureDataset(train_feats, train_labels, train_masks, task_classes)
         else:
             train_dataset = CubSegDataset(cub_dir, train_rows, args.seg_image_size, task_classes)
-        train_loader = DataLoader(train_dataset, batch_size=args.seg_batch_size, shuffle=True, num_workers=args.workers, pin_memory=True)
+        train_generator = torch.Generator()
+        train_generator.manual_seed(seed + 100_003 * tid)
+        train_loader = DataLoader(
+            train_dataset,
+            batch_size=args.seg_batch_size,
+            shuffle=True,
+            num_workers=args.workers,
+            pin_memory=True,
+            generator=train_generator,
+        )
+        distillation_step = 0
         for _ in range(args.seg_epochs):
             model.train()
             for feats_or_xb, cls, mask in train_loader:
@@ -661,9 +766,20 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                         args.kernel_family,
                     )
                 if uses_kd and teacher is not None:
+                    distill_cls = old_class_distillation_ids(
+                        old_class_ids,
+                        feats.size(0),
+                        distillation_step,
+                        device,
+                    )
+                    student_old = model(feats, distill_cls, mask.shape[-2:])
                     with torch.no_grad():
-                        target = teacher(feats, cls, mask.shape[-2:])
-                    loss = loss + args.lambda_kd_seg * F.binary_cross_entropy_with_logits(logits, torch.sigmoid(target))
+                        target_old = teacher(feats, distill_cls, mask.shape[-2:])
+                    loss = loss + args.lambda_kd_seg * F.binary_cross_entropy_with_logits(
+                        student_old,
+                        torch.sigmoid(target_old),
+                    )
+                    distillation_step += 1
                 opt.zero_grad(set_to_none=True)
                 loss.backward()
                 opt.step()
@@ -740,6 +856,8 @@ def main() -> None:
     p.add_argument("--output_dir", default="results/cub200_continual_20260429")
     p.add_argument("--classification_cache", default="data/cub200/cub200_resnet18_features.pt")
     p.add_argument("--segmentation_cache", default=None)
+    p.add_argument("--segmentation_source_sha256", default=None)
+    p.add_argument("--segmentation_cache_sha256", default=None)
     p.add_argument("--tasks", nargs="+", choices=["classification", "segmentation"], default=["classification", "segmentation"])
     p.add_argument("--methods", nargs="+", default=["baseline", "l2", "biocs", "biocs_kd"])
     p.add_argument("--seeds", nargs="+", type=int, default=[0, 1, 2])
@@ -781,6 +899,18 @@ def main() -> None:
     (outdir / "args.json").write_text(json.dumps(vars(args), indent=2), encoding="utf-8")
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
     ensure_cub(Path(args.data_root), download=not args.no_download)
+    if "segmentation" in args.tasks and (
+        not args.segmentation_source_sha256 or not args.segmentation_cache_sha256
+    ):
+        raise ValueError(
+            "Segmentation runs require --segmentation_source_sha256 and "
+            "--segmentation_cache_sha256 for auditable data identity"
+        )
+    dataset_hash = cub_dataset_fingerprint(
+        Path(args.data_root),
+        segmentation_source_sha256=args.segmentation_source_sha256,
+        segmentation_cache_sha256=args.segmentation_cache_sha256,
+    )
 
     rows = []
     runs_path = outdir / "runs.jsonl"
@@ -788,10 +918,18 @@ def main() -> None:
         for task in args.tasks:
             for method in args.methods:
                 print(f"[cub200] task={task} method={method} seed={seed}", flush=True)
+                started = time.time()
                 if task == "classification":
                     row = asdict(run_classification(args, method, seed, device))
                 else:
                     row = asdict(run_segmentation(args, method, seed, device))
+                write_result_record(
+                    outdir=outdir,
+                    row=row,
+                    args=args,
+                    elapsed_s=time.time() - started,
+                    dataset_hash=dataset_hash,
+                )
                 rows.append(row)
                 with runs_path.open("a", encoding="utf-8") as f:
                     f.write(json.dumps(row, ensure_ascii=False) + "\n")

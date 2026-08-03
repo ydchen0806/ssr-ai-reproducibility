@@ -18,6 +18,7 @@ from .er_ace import ERACE
 from .gdumb import GDumb
 from .cls_er import CLSER
 from .geometry_controls import GeometryControls
+from .kd_matched import KDMatched
 
 
 METHOD_REGISTRY: dict[str, type[BaseContinualLearner]] = {
@@ -44,6 +45,11 @@ METHOD_REGISTRY: dict[str, type[BaseContinualLearner]] = {
     "clser": CLSER,
     "geometry_controls": GeometryControls,
     "geometry_control": GeometryControls,
+    "kd": KDMatched,
+    "kd_ewc": KDMatched,
+    "kd_mas": KDMatched,
+    "kd_si": KDMatched,
+    "kd_ssr": KDMatched,
 }
 
 

@@ -1,0 +1,86 @@
+{
+  "status": "staged_incomplete",
+  "tables": "/Users/dchen02/Downloads/ssr-ai-reproducibility-release-20260803/artifacts/meeting_20260803/tables",
+  "source_sha256": {
+    "kd_matched_cl.csv": "ba8245b3686ad347186f56673c4c5b34521559babf4f20d0ed8a9f3d44a041b0",
+    "cub_segmentation.csv": "ba8245b3686ad347186f56673c4c5b34521559babf4f20d0ed8a9f3d44a041b0",
+    "editing_ablation.csv": "f24f0616c0afcc83a421ddb8783e1f6b0dc0c9ec58e06165918b0d5c440e2151",
+    "editing_mapping.csv": "ba8245b3686ad347186f56673c4c5b34521559babf4f20d0ed8a9f3d44a041b0"
+  },
+  "expected_paired_counts": {
+    "matched_kd": 5,
+    "segmentation": 10,
+    "editing": 10
+  },
+  "issues": [
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_ewc_minus_kd, mapping=none, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_ewc_minus_kd, mapping=none, metric=avg_forgetting, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_mas_minus_kd, mapping=none, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_mas_minus_kd, mapping=none, metric=avg_forgetting, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_si_minus_kd, mapping=none, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_si_minus_kd, mapping=none, metric=avg_forgetting, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_ssr_minus_kd, mapping=cosine, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_cifar100, contrast=kd_ssr_minus_kd, mapping=cosine, metric=avg_forgetting, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_ewc_minus_kd, mapping=none, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_ewc_minus_kd, mapping=none, metric=avg_forgetting, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_mas_minus_kd, mapping=none, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_mas_minus_kd, mapping=none, metric=avg_forgetting, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_si_minus_kd, mapping=none, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_si_minus_kd, mapping=none, metric=avg_forgetting, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_ssr_minus_kd, mapping=cosine, metric=avg_accuracy, required n=5",
+    "missing contrast: kd_matched_cl.csv: dataset=split_tiny_imagenet, contrast=kd_ssr_minus_kd, mapping=cosine, metric=avg_forgetting, required n=5",
+    "missing contrast: cub_segmentation.csv: dataset=cub200_masks, contrast=ssr_kd_minus_kd, mapping=cosine, metric=mean_iou, required n=10",
+    "missing contrast: cub_segmentation.csv: dataset=cub200_masks, contrast=ssr_kd_minus_kd, mapping=cosine, metric=mean_dice, required n=10",
+    "missing contrast: cub_segmentation.csv: dataset=cub200_masks, contrast=ssr_kd_minus_kd, mapping=cosine, metric=avg_forgetting_iou, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=zsre, contrast=ssr_only_minus_plain, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=zsre, contrast=full_minus_stabilized, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=zsre, contrast=full_minus_plain, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=zsre, contrast=ssr_only_minus_plain, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=zsre, contrast=full_minus_stabilized, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=zsre, contrast=full_minus_plain, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=zsre, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=efficacy, recipe=ssr_only, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=zsre, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=locality, recipe=ssr_only, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=zsre, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=efficacy, recipe=full, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=zsre, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=locality, recipe=full, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=cf, contrast=ssr_only_minus_plain, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=cf, contrast=full_minus_stabilized, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=cf, contrast=full_minus_plain, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=cf, contrast=ssr_only_minus_plain, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=cf, contrast=full_minus_stabilized, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=cf, contrast=full_minus_plain, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=cf, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=efficacy, recipe=ssr_only, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=cf, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=locality, recipe=ssr_only, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=cf, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=efficacy, recipe=full, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=cf, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=locality, recipe=full, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=recent, contrast=ssr_only_minus_plain, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_stabilized, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_plain, mapping=cosine, metric=efficacy, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=recent, contrast=ssr_only_minus_plain, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_stabilized, mapping=cosine, metric=locality, required n=10",
+    "missing contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_plain, mapping=cosine, metric=locality, required n=10",
+    "incomplete contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_stabilized, mapping=projective, metric=efficacy, required n=10, observed n=8",
+    "incomplete contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_plain, mapping=projective, metric=efficacy, required n=10, observed n=8",
+    "incomplete contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_stabilized, mapping=projective, metric=locality, required n=10, observed n=8",
+    "incomplete contrast: editing_ablation.csv: dataset=recent, contrast=full_minus_plain, mapping=projective, metric=locality, required n=10, observed n=8",
+    "missing contrast: editing_mapping.csv: dataset=recent, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=efficacy, recipe=ssr_only, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=recent, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=locality, recipe=ssr_only, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=recent, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=efficacy, recipe=full, required n=10",
+    "missing contrast: editing_mapping.csv: dataset=recent, contrast=projective_minus_cosine, mapping=projective_vs_cosine, metric=locality, recipe=full, required n=10"
+  ],
+  "claim_labels": {
+    "ssr_only_minus_plain": "direct attribution",
+    "full_minus_stabilized": "direct attribution",
+    "ssr_kd_minus_kd": "direct attribution",
+    "full_minus_plain": "recipe transfer"
+  },
+  "outputs": {
+    "figure4_evidence_summary": [
+      "/Users/dchen02/Downloads/ssr-ai-reproducibility-release-20260803/artifacts/meeting_20260803/figures/figure4_evidence_summary.pdf",
+      "/Users/dchen02/Downloads/ssr-ai-reproducibility-release-20260803/artifacts/meeting_20260803/figures/figure4_evidence_summary.png"
+    ],
+    "figure5_evidence_summary": [
+      "/Users/dchen02/Downloads/ssr-ai-reproducibility-release-20260803/artifacts/meeting_20260803/figures/figure5_evidence_summary.pdf",
+      "/Users/dchen02/Downloads/ssr-ai-reproducibility-release-20260803/artifacts/meeting_20260803/figures/figure5_evidence_summary.png"
+    ]
+  }
+}

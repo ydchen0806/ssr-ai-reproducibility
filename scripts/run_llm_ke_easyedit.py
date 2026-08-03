@@ -20,7 +20,15 @@ EASYEDIT_DIR = Path(os.environ.get("EASYEDIT_DIR", PROJECT_DIR / "external" / "E
 
 if EASYEDIT_DIR.exists():
     sys.path.insert(0, str(EASYEDIT_DIR))
+if str(PROJECT_DIR) not in sys.path:
+    sys.path.insert(1 if EASYEDIT_DIR.exists() else 0, str(PROJECT_DIR))
 os.chdir(PROJECT_DIR)
+
+from llm_ke.locality import (
+    first_locality_item,
+    normalize_text,
+    normalize_text_list,
+)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -94,12 +102,164 @@ def safe_tag(text: str) -> str:
     return Path(text).name.replace("/", "_").replace(" ", "_")
 
 
+def current_git_commit() -> str:
+    try:
+        return subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=PROJECT_DIR,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown-uncommitted-environment"
+
+
 def _parse_bool(text: str) -> bool:
     return text.strip().lower() in {"1", "true", "yes", "y", "on"}
 
 
 def _parse_int_list(text: str) -> list[int]:
     return [int(part.strip()) for part in text.replace(",", " ").split() if part.strip()]
+
+
+def resolve_history_run_config(args: argparse.Namespace) -> dict | None:
+    """Resolve historical-retention evaluation for the matched custom runners."""
+    enabled = bool(getattr(args, "evaluate_history", False))
+    checkpoints = list(getattr(args, "history_checkpoints", None) or [])
+    max_samples = int(getattr(args, "history_max_samples", 0))
+    requested = enabled or bool(checkpoints) or max_samples != 0
+
+    if args.method not in {"biocs", "ft"}:
+        if requested:
+            raise ValueError(
+                "historical-retention CLI options are only supported by the "
+                "matched custom biocs/ft evaluators"
+            )
+        return None
+    if checkpoints and not enabled:
+        raise ValueError("--history_checkpoints requires --evaluate_history")
+    if max_samples < 0:
+        raise ValueError("--history_max_samples must be non-negative; use 0 for all edits")
+    if max_samples and not enabled:
+        raise ValueError("--history_max_samples requires --evaluate_history")
+    if any(checkpoint <= 0 for checkpoint in checkpoints):
+        raise ValueError("--history_checkpoints must contain positive edit counts")
+    if any(checkpoint > args.n_edits for checkpoint in checkpoints):
+        raise ValueError("--history_checkpoints cannot exceed --n_edits")
+    return {
+        "evaluate_history": enabled,
+        "history_checkpoints": sorted(set(checkpoints)),
+        "history_max_samples": max_samples,
+    }
+
+
+def _compatible_cli_value(args: argparse.Namespace | None, primary: str, legacy: str | None = None):
+    """Read a CLI value while rejecting conflicting new and legacy spellings."""
+    if args is None:
+        return None
+    primary_value = getattr(args, primary, None)
+    legacy_value = getattr(args, legacy, None) if legacy else None
+    if primary_value is not None and legacy_value is not None and primary_value != legacy_value:
+        raise ValueError(
+            f"Conflicting CLI values: --{primary}={primary_value} and "
+            f"--{legacy}={legacy_value}"
+        )
+    return primary_value if primary_value is not None else legacy_value
+
+
+def _env_first(environ: dict[str, str], *names: str, default=None):
+    for name in names:
+        if name in environ and environ[name] != "":
+            return environ[name]
+    return default
+
+
+def resolve_biocs_run_config(
+    args: argparse.Namespace | None = None,
+    environ: dict[str, str] | None = None,
+) -> dict:
+    """Resolve the SSR editing objective with CLI-over-environment precedence."""
+    sys.path.insert(0, str(PROJECT_DIR))
+    from llm_ke.biocs_editor import resolve_recipe
+
+    env = os.environ if environ is None else environ
+
+    cli_recipe = getattr(args, "recipe", None) if args is not None else None
+    recipe = cli_recipe if cli_recipe is not None else _env_first(env, "BIOCS_RECIPE")
+
+    cli_lambda_ssr = _compatible_cli_value(args, "lambda_ssr", "biocs_lambda")
+    cli_lambda_anchor = _compatible_cli_value(args, "lambda_anchor", "biocs_anchor")
+    cli_lambda_spectral = getattr(args, "lambda_spectral", None) if args is not None else None
+    lambda_ssr = float(
+        cli_lambda_ssr
+        if cli_lambda_ssr is not None
+        else _env_first(env, "BIOCS_LAMBDA_SSR", "BIOCS_LAMBDA", default="0.001")
+    )
+    lambda_anchor = float(
+        cli_lambda_anchor
+        if cli_lambda_anchor is not None
+        else _env_first(env, "BIOCS_LAMBDA_ANCHOR", default="0.001")
+    )
+    lambda_spectral = float(
+        cli_lambda_spectral
+        if cli_lambda_spectral is not None
+        else _env_first(env, "BIOCS_LAMBDA_SPECTRAL", default="0.01")
+    )
+
+    cli_mapping = getattr(args, "distance_mapping", None) if args is not None else None
+    distance_mapping = (
+        cli_mapping
+        if cli_mapping is not None
+        else _env_first(
+            env,
+            "BIOCS_DISTANCE_MAPPING",
+            "BIOCS_DISTANCE_METRIC",
+            default="cosine",
+        )
+    )
+    if distance_mapping not in {"cosine", "projective"}:
+        raise ValueError(
+            f"Unknown distance_mapping={distance_mapping!r}; choose cosine or projective"
+        )
+
+    cli_seed = getattr(args, "seed", None) if args is not None else None
+    seed = int(cli_seed if cli_seed is not None else _env_first(env, "KE_SEED", default="0"))
+    sampler_seed = int(
+        cli_seed
+        if cli_seed is not None
+        else _env_first(env, "BIOCS_SAMPLER_SEED", "KE_SEED", default="0")
+    )
+
+    resolved = resolve_recipe(
+        recipe,
+        lambda_ssr=lambda_ssr,
+        lambda_anchor=lambda_anchor,
+        lambda_spectral=lambda_spectral,
+    )
+    return {
+        **resolved,
+        "distance_mapping": distance_mapping,
+        "seed": seed,
+        "sampler_seed": sampler_seed,
+    }
+
+
+def apply_biocs_run_config(config: dict) -> None:
+    """Expose the resolved config to legacy code and subprocess manifests."""
+    canonical = {
+        "KE_SEED": config["seed"],
+        "BIOCS_RECIPE": config["recipe"],
+        "BIOCS_LAMBDA_SSR": config["lambda_ssr"],
+        "BIOCS_LAMBDA": config["lambda_ssr"],
+        "BIOCS_LAMBDA_ANCHOR": config["lambda_anchor"],
+        "BIOCS_LAMBDA_SPECTRAL": config["lambda_spectral"],
+        "BIOCS_DISTANCE_MAPPING": config["distance_mapping"],
+        "BIOCS_DISTANCE_METRIC": config["distance_mapping"],
+        "BIOCS_SAMPLER_SEED": config["sampler_seed"],
+    }
+    for key, value in canonical.items():
+        os.environ[key] = str(value)
 
 
 def apply_hparam_overrides(hparams):
@@ -247,30 +407,17 @@ def load_dataset(name: str, n_edits: int, offset: int = 0):
     rephrase_prompts = []
 
     for item in data:
-        prompts.append(item["prompt"])
-        tn = item.get("target_new", "")
-        if isinstance(tn, dict):
-            tn = tn.get("str", str(tn))
-        targets.append(tn)
-        gt = item.get("ground_truth", "")
-        if isinstance(gt, dict):
-            gt = gt.get("str", str(gt))
-        grounds.append(gt)
-        subjects.append(item.get("subject", ""))
+        prompts.append(normalize_text(item["prompt"]))
+        targets.append(normalize_text(item.get("target_new", "")))
+        grounds.append(normalize_text(item.get("ground_truth", "")))
+        subjects.append(normalize_text(item.get("subject", "")))
 
         loc = item.get("locality", {})
-        if loc:
-            first_key = next(iter(loc), None)
-            if first_key and isinstance(loc[first_key], list) and loc[first_key]:
-                loc_item = loc[first_key][0]
-                locality_inputs.append(loc_item.get("prompt", ""))
-                loc_gt = loc_item.get("ground_truth", "")
-                if isinstance(loc_gt, list):
-                    loc_gt = loc_gt[0] if loc_gt else ""
-                locality_labels.append(str(loc_gt))
-            else:
-                locality_inputs.append("")
-                locality_labels.append("")
+        loc_item = first_locality_item(loc)
+        if loc_item is not None:
+            locality_inputs.append(loc_item["prompt"])
+            labels = normalize_text_list(loc_item["ground_truths"])
+            locality_labels.append(labels[0] if labels else "")
         else:
             locality_inputs.append("")
             locality_labels.append("")
@@ -322,14 +469,21 @@ def run_easyedit_method(
 
     locality_data = None
     if any(data["locality_inputs"]):
-        valid = [(inp, lbl) for inp, lbl in zip(data["locality_inputs"], data["locality_labels"]) if inp]
-        if valid:
-            locality_data = {
-                "neighborhood": {
-                    "prompt": [v[0] for v in valid],
-                    "ground_truth": [v[1] for v in valid],
-                }
+        if len(data["locality_inputs"]) != len(data["prompts"]):
+            raise ValueError("EasyEdit locality prompts are not aligned with edit prompts")
+        if len(data["locality_labels"]) != len(data["prompts"]):
+            raise ValueError("EasyEdit locality labels are not aligned with edit prompts")
+        if not all(data["locality_inputs"]):
+            logger.warning(
+                "Some edits have no locality prompt; retaining empty placeholders to "
+                "preserve one-to-one EasyEdit prompt alignment"
+            )
+        locality_data = {
+            "neighborhood": {
+                "prompt": list(data["locality_inputs"]),
+                "ground_truth": list(data["locality_labels"]),
             }
+        }
 
     with isolated_easyedit_imports():
         patch_transformers_for_easyedit()
@@ -356,8 +510,10 @@ def run_easyedit_method(
         elapsed = time.time() - t0
 
     agg = {"efficacy": [], "locality": [], "generalization": []}
+    succeeded = 0
     for m in metrics:
-        if "post" in m:
+        if isinstance(m, dict) and isinstance(m.get("post"), dict):
+            succeeded += 1
             post = m["post"]
             agg["efficacy"].append(post.get("rewrite_acc", [0])[0] if isinstance(post.get("rewrite_acc"), list) else post.get("rewrite_acc", 0))
             loc_vals = post.get("locality", {})
@@ -368,16 +524,29 @@ def run_easyedit_method(
                     elif isinstance(v, list) and v:
                         agg["locality"].append(v[0])
 
+    attempted = len(data["prompts"])
+    failed = attempted - succeeded
+    status = "complete" if succeeded == n_edits and failed == 0 else (
+        "failed" if attempted > 0 and succeeded == 0 else "incomplete"
+    )
+    easyedit_version = str(getattr(easyeditor, "__version__", "unknown"))
     summary = {
         "method": method_upper,
         "dataset": dataset_name,
         "model": model_name,
         "n_edits": len(data["prompts"]),
+        "requested_n_edits": n_edits,
+        "attempted": attempted,
+        "succeeded": succeeded,
+        "failed": failed,
+        "status": status,
         "data_offset": data_offset,
         "elapsed_s": round(elapsed, 1),
         "efficacy": round(sum(agg["efficacy"]) / max(len(agg["efficacy"]), 1) * 100, 2),
         "locality": round(sum(agg["locality"]) / max(len(agg["locality"]), 1) * 100, 2),
         "raw_metrics": metrics,
+        "locality_evaluator": "easyedit_native_locality",
+        "locality_evaluator_version": easyedit_version,
     }
 
     os.makedirs(output_dir, exist_ok=True)
@@ -389,11 +558,19 @@ def run_easyedit_method(
     return summary
 
 
-def run_biocs_method(dataset_name: str, n_edits: int, output_dir: str, model_name: str):
+def run_biocs_method(
+    dataset_name: str,
+    n_edits: int,
+    output_dir: str,
+    model_name: str,
+    run_config: dict | None = None,
+    history_run_config: dict | None = None,
+):
     """Run our SSR KE method."""
     sys.path.insert(0, str(PROJECT_DIR))
     from llm_ke.biocs_editor import BioCsLLMEditor, KnowEditDataset, run_sequential_editing
 
+    config = run_config or resolve_biocs_run_config()
     data_path = DATASET_MAP[dataset_name]
     target_layers = None
     if os.environ.get("BIOCS_TARGET_LAYERS"):
@@ -402,19 +579,20 @@ def run_biocs_method(dataset_name: str, n_edits: int, output_dir: str, model_nam
         model_name=model_name,
         device="cuda",
         target_layers=target_layers,
-        lambda_biocs=float(os.environ.get("BIOCS_LAMBDA", "0.001")),
-        lambda_spectral=float(os.environ.get("BIOCS_LAMBDA_SPECTRAL", "0.01")),
-        lambda_anchor=float(os.environ.get("BIOCS_LAMBDA_ANCHOR", "0.001")),
+        recipe=config["recipe"],
+        lambda_ssr=config["lambda_ssr"],
+        lambda_spectral=config["lambda_spectral"],
+        lambda_anchor=config["lambda_anchor"],
         kernel_family=os.environ.get("BIOCS_KERNEL_FAMILY", "gaussian"),
         a_exc=float(os.environ.get("BIOCS_A_EXC", "1.0")),
         a_inh=float(os.environ.get("BIOCS_A_INH", "0.8")),
         sigma_exc=float(os.environ.get("BIOCS_SIGMA_EXC", "0.3")),
         sigma_inh=float(os.environ.get("BIOCS_SIGMA_INH", "0.8")),
         biocs_target=os.environ.get("BIOCS_TARGET", "weight"),
-        distance_metric=os.environ.get("BIOCS_DISTANCE_METRIC", "cosine"),
-        row_selection=os.environ.get("BIOCS_ROW_SELECTION", "random_each_step"),
+        distance_mapping=config["distance_mapping"],
+        row_selection=os.environ.get("BIOCS_ROW_SELECTION", "fixed_random"),
         max_spatial_rows=int(os.environ.get("BIOCS_MAX_SPATIAL_ROWS", "256")),
-        sampler_seed=int(os.environ.get("BIOCS_SAMPLER_SEED", os.environ.get("KE_SEED", "0"))),
+        sampler_seed=config["sampler_seed"],
         lr=float(os.environ.get("BIOCS_LR", "1e-4")),
         num_steps=int(os.environ.get("BIOCS_NUM_STEPS", "25")),
     )
@@ -425,11 +603,23 @@ def run_biocs_method(dataset_name: str, n_edits: int, output_dir: str, model_nam
     )
 
     os.makedirs(output_dir, exist_ok=True)
-    summary = run_sequential_editing(editor, dataset, n_edits, os.path.join(output_dir, "results.json"))
+    summary = run_sequential_editing(
+        editor,
+        dataset,
+        n_edits,
+        os.path.join(output_dir, "results.json"),
+        **(history_run_config or {}),
+    )
     return summary
 
 
-def run_ft_method(dataset_name: str, n_edits: int, output_dir: str, model_name: str):
+def run_ft_method(
+    dataset_name: str,
+    n_edits: int,
+    output_dir: str,
+    model_name: str,
+    history_run_config: dict | None = None,
+):
     """Run vanilla FT KE baseline."""
     sys.path.insert(0, str(PROJECT_DIR))
     from llm_ke.biocs_editor import FTBaselineEditor, KnowEditDataset, run_sequential_editing
@@ -460,16 +650,28 @@ def run_ft_method(dataset_name: str, n_edits: int, output_dir: str, model_name: 
     )
 
     os.makedirs(output_dir, exist_ok=True)
-    summary = run_sequential_editing(editor, dataset, n_edits, os.path.join(output_dir, "results.json"))
+    summary = run_sequential_editing(
+        editor,
+        dataset,
+        n_edits,
+        os.path.join(output_dir, "results.json"),
+        **(history_run_config or {}),
+    )
     return summary
 
 
-def write_run_manifest(args: argparse.Namespace) -> None:
+def write_run_manifest(
+    args: argparse.Namespace,
+    resolved_editing_config: dict | None = None,
+    history_run_config: dict | None = None,
+) -> Path:
     """Persist the inputs that control editor construction for this run."""
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
     keys = [
         "KE_SEED",
+        "BIOCS_RECIPE",
+        "BIOCS_LAMBDA_SSR",
         "BIOCS_LAMBDA",
         "BIOCS_LAMBDA_SPECTRAL",
         "BIOCS_LAMBDA_ANCHOR",
@@ -479,6 +681,7 @@ def write_run_manifest(args: argparse.Namespace) -> None:
         "BIOCS_SIGMA_EXC",
         "BIOCS_SIGMA_INH",
         "BIOCS_TARGET",
+        "BIOCS_DISTANCE_MAPPING",
         "BIOCS_DISTANCE_METRIC",
         "BIOCS_ROW_SELECTION",
         "BIOCS_MAX_SPATIAL_ROWS",
@@ -510,6 +713,10 @@ def write_run_manifest(args: argparse.Namespace) -> None:
         "command": vars(args),
         "environment": {key: os.environ[key] for key in keys if key in os.environ},
     }
+    if resolved_editing_config is not None:
+        record["editing_objective"] = resolved_editing_config
+    if history_run_config is not None:
+        record["historical_retention_evaluation"] = history_run_config
     method = args.method.upper()
     if method in {"ROME", "MEMIT", "ALPHAEDIT"}:
         hparams_folder = {"ROME": "ROME", "MEMIT": "MEMIT", "ALPHAEDIT": "AlphaEdit"}[method]
@@ -532,7 +739,129 @@ def write_run_manifest(args: argparse.Namespace) -> None:
         except (OSError, subprocess.CalledProcessError):
             easyedit_commit = None
         record["easyedit_git_commit"] = easyedit_commit
-    (output / "run_manifest.json").write_text(json.dumps(record, indent=2) + "\n")
+    manifest_path = output / "run_manifest.json"
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(json.dumps(record, indent=2) + "\n")
+    return manifest_path
+
+
+def write_result_record(
+    args: argparse.Namespace,
+    summary: dict,
+    resolved_editing_config: dict | None,
+    run_manifest_path: Path,
+) -> Path:
+    """Write the task-independent sidecar consumed by paired aggregation."""
+    sys.path.insert(0, str(PROJECT_DIR))
+    from ssr_utils.result_schema import ResultSchemaError, build_result_record, sha256_file
+
+    if args.method == "biocs":
+        config = resolved_editing_config or resolve_biocs_run_config(args)
+        recipe = config["recipe"]
+        objective = config["objective"]
+        uses_ssr = bool(objective["ssr"])
+        distance_mapping = config["distance_mapping"] if uses_ssr else "none"
+        seed = config["seed"]
+    elif args.method == "ft":
+        recipe = "plain"
+        objective = {"task": True}
+        uses_ssr = False
+        distance_mapping = "none"
+        seed = int(args.seed if args.seed is not None else os.environ.get("KE_SEED", "0"))
+    else:
+        recipe = f"{args.method.lower()}_context"
+        objective = {"task": True}
+        uses_ssr = False
+        distance_mapping = "none"
+        seed = int(args.seed if args.seed is not None else os.environ.get("KE_SEED", "0"))
+
+    kernel = {}
+    if uses_ssr:
+        kernel = {
+            "family": os.environ.get("BIOCS_KERNEL_FAMILY", "gaussian"),
+            "A_exc": float(os.environ.get("BIOCS_A_EXC", "1.0")),
+            "A_inh": float(os.environ.get("BIOCS_A_INH", "0.8")),
+            "sigma_exc": float(os.environ.get("BIOCS_SIGMA_EXC", "0.3")),
+            "sigma_inh": float(os.environ.get("BIOCS_SIGMA_INH", "0.8")),
+        }
+
+    missing_metrics = {"efficacy", "locality"} - set(summary)
+    if missing_metrics:
+        raise ResultSchemaError(
+            f"Editing summary is missing official metrics: {sorted(missing_metrics)}"
+        )
+    metrics = {
+        "efficacy": float(summary["efficacy"]),
+        "locality": float(summary["locality"]),
+    }
+    final = summary.get("historical_retention", {}).get("final")
+    if isinstance(final, dict):
+        metrics.update(
+            {
+                "final_history_efficacy": float(final.get("efficacy", 0.0)),
+                "final_history_locality": float(final.get("locality", 0.0)),
+            }
+        )
+    data_path = Path(DATASET_MAP[args.dataset])
+    config_payload = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+    completion = {
+        name: summary.get(name)
+        for name in ("attempted", "succeeded", "failed", "status")
+    }
+    requested = summary.get("requested_n_edits")
+    if requested is None or any(value is None for value in completion.values()):
+        raise ResultSchemaError(
+            "Editing summary must report requested_n_edits, attempted, succeeded, failed, and status"
+        )
+    evaluator = str(summary.get("locality_evaluator", ""))
+    evaluator_version = str(summary.get("locality_evaluator_version", ""))
+    is_complete = completion["status"] == "complete"
+    record = build_result_record(
+        git_commit=current_git_commit(),
+        run_id=str(Path(args.output).resolve()),
+        task_family="editing",
+        dataset=args.dataset,
+        model=safe_tag(getattr(args, "hparams_model", Path(args.model_name).name)),
+        seed=seed,
+        objective=objective,
+        distance_mapping=distance_mapping,
+        kernel=kernel,
+        metrics=metrics,
+        runtime={
+            "elapsed_s": float(summary.get("elapsed_s", 0.0)),
+            "peak_cuda_allocated_mb": float(summary.get("peak_cuda_allocated_mb", 0.0)),
+            "peak_cuda_reserved_mb": float(summary.get("peak_cuda_reserved_mb", 0.0)),
+        },
+        config=config_payload,
+        dataset_hash=sha256_file(data_path),
+        allow_incomplete=not is_complete,
+        recipe=recipe,
+        n_edits=int(summary.get("n_edits", args.n_edits)),
+        requested=int(requested),
+        attempted=int(completion["attempted"]),
+        succeeded=int(completion["succeeded"]),
+        failed=int(completion["failed"]),
+        status=str(completion["status"]),
+        data_offset=int(summary.get("data_offset", os.environ.get("KE_DATA_OFFSET", "0"))),
+        metric_directions={key: True for key in metrics},
+        evaluator=evaluator,
+        evaluator_version=evaluator_version,
+    )
+    result_manifest = getattr(args, "result_manifest", None)
+    path = Path(result_manifest) if result_manifest else Path(args.output) / "result_record.json"
+    if not is_complete:
+        path = (
+            path.with_name("incomplete_result_record.json")
+            if path.name == "result_record.json"
+            else path.with_name(f"{path.stem}.incomplete{path.suffix}")
+        )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    if not is_complete:
+        raise ResultSchemaError(
+            f"Editing run is not official ({completion}); diagnostic record written to {path}"
+        )
+    return path
 
 
 if __name__ == "__main__":
@@ -551,33 +880,112 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=str, default=None)
     parser.add_argument("--seed", type=int, default=None,
                         help="Set KE_SEED for deterministic Python, NumPy, and PyTorch sampling.")
+    parser.add_argument(
+        "--recipe",
+        choices=[
+            "plain", "anchor", "spectral", "stabilized", "ssr_only",
+            "ssr_anchor", "ssr_spectral", "full",
+        ],
+        default=None,
+        help="Explicit objective recipe. If omitted, infer it from legacy coefficients.",
+    )
+    parser.add_argument("--distance_mapping", "--distance-mapping",
+                        choices=["cosine", "projective"], default=None,
+                        help="Distance used by SSR; CLI overrides BIOCS_DISTANCE_MAPPING/METRIC.")
+    parser.add_argument("--lambda_ssr", type=float, default=None,
+                        help="SSR coefficient; CLI overrides BIOCS_LAMBDA_SSR/BIOCS_LAMBDA.")
+    parser.add_argument("--lambda_anchor", type=float, default=None,
+                        help="Anchor coefficient; CLI overrides BIOCS_LAMBDA_ANCHOR.")
+    parser.add_argument("--lambda_spectral", type=float, default=None,
+                        help="Spectral coefficient; CLI overrides BIOCS_LAMBDA_SPECTRAL.")
+    parser.add_argument("--result_manifest", type=str, default=None,
+                        help="Optional path for the validated per-run result record JSON.")
+    parser.add_argument(
+        "--evaluate_history",
+        action="store_true",
+        help="Re-evaluate prior edits after the stream (custom biocs/ft only).",
+    )
+    parser.add_argument(
+        "--history_checkpoints",
+        type=int,
+        nargs="*",
+        default=None,
+        metavar="N",
+        help="Optional edit counts for interim historical-retention evaluation.",
+    )
+    parser.add_argument(
+        "--history_max_samples",
+        type=int,
+        default=0,
+        help="Maximum retained edits evaluated per checkpoint; 0 evaluates all.",
+    )
     parser.add_argument("--biocs_lambda", type=float, default=None,
-                        help="Override BIOCS_LAMBDA for the SSR editor.")
+                        help="Deprecated alias for --lambda_ssr.")
     parser.add_argument("--biocs_anchor", type=float, default=None,
-                        help="Override BIOCS_LAMBDA_ANCHOR for the SSR editor.")
+                        help="Deprecated alias for --lambda_anchor.")
     parser.add_argument("--biocs_lr", type=float, default=None,
                         help="Override BIOCS_LR for the SSR editor.")
     parser.add_argument("--biocs_steps", type=int, default=None,
                         help="Override BIOCS_NUM_STEPS for the SSR editor.")
     args = parser.parse_args()
+
     cli_env = {
-        "KE_SEED": args.seed,
-        "BIOCS_LAMBDA": args.biocs_lambda,
-        "BIOCS_LAMBDA_ANCHOR": args.biocs_anchor,
         "BIOCS_LR": args.biocs_lr,
         "BIOCS_NUM_STEPS": args.biocs_steps,
     }
     for key, value in cli_env.items():
         if value is not None:
             os.environ[key] = str(value)
+
+    resolved_editing_config = None
+    if args.method == "biocs":
+        try:
+            resolved_editing_config = resolve_biocs_run_config(args)
+        except ValueError as exc:
+            parser.error(str(exc))
+        apply_biocs_run_config(resolved_editing_config)
+    else:
+        if args.recipe not in {None, "plain"}:
+            parser.error("--recipe is only supported by --method biocs (or plain for ft)")
+        if args.seed is not None:
+            os.environ["KE_SEED"] = str(args.seed)
     set_seed_from_env()
 
-    if args.output is None:
-        args.output = f"results/llm_ke/{args.method.lower()}_{safe_tag(args.model_name)}_{args.dataset}_{args.n_edits}"
-    write_run_manifest(args)
+    try:
+        history_run_config = resolve_history_run_config(args)
+    except ValueError as exc:
+        parser.error(str(exc))
 
+    if args.output is None:
+        if args.method == "biocs":
+            recipe_tag = resolved_editing_config["recipe"]
+            mapping_tag = (
+                resolved_editing_config["distance_mapping"]
+                if resolved_editing_config["objective"]["ssr"]
+                else "none"
+            )
+            seed_tag = resolved_editing_config["seed"]
+        else:
+            recipe_tag = "plain" if args.method == "ft" else f"{args.method.lower()}_context"
+            mapping_tag = "none"
+            seed_tag = int(args.seed if args.seed is not None else os.environ.get("KE_SEED", "0"))
+        args.output = str(
+            Path("results/llm_ke")
+            / safe_tag(args.model_name)
+            / args.dataset
+            / recipe_tag
+            / mapping_tag
+            / f"seed_{seed_tag}_n{args.n_edits}"
+        )
+    run_manifest_path = write_run_manifest(
+        args,
+        resolved_editing_config,
+        history_run_config,
+    )
+
+    summary = None
     if args.method in ["ROME", "MEMIT", "AlphaEdit"]:
-        run_easyedit_method(
+        summary = run_easyedit_method(
             args.method,
             args.dataset,
             args.n_edits,
@@ -587,6 +995,21 @@ if __name__ == "__main__":
             args.hparams_dir,
         )
     elif args.method == "biocs":
-        run_biocs_method(args.dataset, args.n_edits, args.output, args.model_name)
+        summary = run_biocs_method(
+            args.dataset,
+            args.n_edits,
+            args.output,
+            args.model_name,
+            resolved_editing_config,
+            history_run_config,
+        )
     elif args.method == "ft":
-        run_ft_method(args.dataset, args.n_edits, args.output, args.model_name)
+        summary = run_ft_method(
+            args.dataset,
+            args.n_edits,
+            args.output,
+            args.model_name,
+            history_run_config,
+        )
+    if summary is not None:
+        write_result_record(args, summary, resolved_editing_config, run_manifest_path)

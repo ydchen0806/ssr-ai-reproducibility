@@ -47,6 +47,9 @@ class BaseContinualLearner(ABC):
                 logger.warning(f"torch.compile failed, falling back: {e}")
 
         n_workers = training_config.get("num_workers", 4)
+        run_seed = int(training_config.get("run_seed", 0))
+        loader_generator = torch.Generator()
+        loader_generator.manual_seed(run_seed + 100_003 * int(task_id))
         loader = DataLoader(
             train_set,
             batch_size=training_config.get("batch_size", 256),
@@ -56,6 +59,7 @@ class BaseContinualLearner(ABC):
             persistent_workers=n_workers > 0,
             prefetch_factor=4 if n_workers > 0 else None,
             drop_last=False,
+            generator=loader_generator,
         )
 
         optimizer = self._build_optimizer(training_config)

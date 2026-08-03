@@ -12,14 +12,18 @@ Evaluation protocol:
 """
 
 import argparse
+import copy
 import json
 import logging
+import subprocess
 import time
 import yaml
 import torch
 import random
 import numpy as np
 from pathlib import Path
+
+from ssr_utils.result_schema import build_result_record, sha256_value
 
 
 def set_seed(seed: int):
@@ -74,6 +78,59 @@ def setup_logging(output_dir: Path):
     )
 
 
+def dataset_fingerprint(benchmark, dataset_config: dict) -> str:
+    """Fingerprint the evaluated cohort without hashing multi-gigabyte image payloads."""
+    payload = {
+        "config": dataset_config,
+        "class_order": list(getattr(benchmark, "class_order", [])),
+        "n_classes": int(getattr(benchmark, "n_classes", 0)),
+        "n_tasks": int(getattr(benchmark, "n_tasks", 0)),
+        "train_targets": getattr(benchmark, "train_targets", []).tolist()
+        if hasattr(getattr(benchmark, "train_targets", None), "tolist")
+        else list(getattr(benchmark, "train_targets", [])),
+        "test_targets": getattr(benchmark, "test_targets", []).tolist()
+        if hasattr(getattr(benchmark, "test_targets", None), "tolist")
+        else list(getattr(benchmark, "test_targets", [])),
+    }
+    for split in ("train_data", "test_data"):
+        dataset = getattr(benchmark, split, None)
+        samples = getattr(dataset, "samples", None)
+        if samples is not None:
+            payload[f"{split}_samples"] = [
+                [str(Path(path).name), int(label)] for path, label in samples
+            ]
+    return sha256_value(payload)
+
+
+def current_git_commit() -> str:
+    try:
+        return subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=Path(__file__).resolve().parent,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown-uncommitted-environment"
+
+
+def objective_for_method(method_name: str) -> dict[str, bool]:
+    method_name = method_name.lower()
+    objective = {"task": True}
+    if method_name.startswith("kd"):
+        objective["kd"] = True
+    suffix_map = {
+        "kd_ewc": "ewc",
+        "kd_mas": "mas",
+        "kd_si": "si",
+        "kd_ssr": "ssr",
+    }
+    if method_name in suffix_map:
+        objective[suffix_map[method_name]] = True
+    return objective
+
+
 def main():
     args = parse_args()
     config = load_config(args.config)
@@ -97,6 +154,7 @@ def main():
 
     from datasets.builder import build_benchmark
     benchmark = build_benchmark(config["dataset"])
+    data_hash = dataset_fingerprint(benchmark, config["dataset"])
 
     from models.builder import build_model
     model = build_model(config["model"], num_classes=benchmark.n_classes)
@@ -105,6 +163,7 @@ def main():
     logger.info(f"Model: {config['model']['name']} | Trainable params: {n_params:,}")
 
     from methods.builder import build_method
+    config.setdefault("training", {})["run_seed"] = args.seed
     method = build_method(config["method"], model=model, device=device)
     logger.info(f"Method: {config['method']['name']}")
 
@@ -188,6 +247,52 @@ def main():
     summary_path = output_dir / "summary.json"
     with open(summary_path, "w") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
+
+    method_name = config["method"]["name"].lower()
+    objective = objective_for_method(method_name)
+    kernel = {}
+    if objective.get("ssr"):
+        kernel = {
+            "family": "gaussian_dog",
+            "A_exc": float(config["method"].get("A_exc", 1.0)),
+            "A_inh": float(config["method"].get("A_inh", 0.8)),
+            "sigma_exc": float(config["method"].get("sigma_exc", 0.16)),
+            "sigma_inh": float(config["method"].get("sigma_inh", 0.45)),
+        }
+    pairing_config = copy.deepcopy(config)
+    pairing_config.pop("experiment_name", None)
+    pairing_method = pairing_config.get("method", {})
+    pairing_method.pop("name", None)
+    pairing_method.pop("regularizer", None)
+    result_record = build_result_record(
+        git_commit=current_git_commit(),
+        run_id=str(output_dir.resolve()),
+        task_family="classification",
+        dataset=config["dataset"]["name"],
+        model=config["model"]["name"],
+        seed=args.seed,
+        objective=objective,
+        distance_mapping="cosine" if objective.get("ssr") else "none",
+        kernel=kernel,
+        metrics={
+            key: float(results[key])
+            for key in ("avg_accuracy", "last_accuracy", "avg_forgetting", "backward_transfer")
+            if key in results
+        },
+        runtime={"elapsed_s": float(total_time)},
+        config=config,
+        dataset_hash=data_hash,
+        recipe=method_name,
+        pairing_hash=sha256_value(pairing_config),
+        metric_directions={
+            "avg_accuracy": True,
+            "last_accuracy": True,
+            "avg_forgetting": False,
+            "backward_transfer": True,
+        },
+    )
+    with (output_dir / "result_record.json").open("w", encoding="utf-8") as handle:
+        json.dump(result_record, handle, indent=2, ensure_ascii=False)
 
     checkpoint_path = None
     if config.get("training", {}).get("save_final_model", False):

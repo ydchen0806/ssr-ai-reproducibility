@@ -1,0 +1,202 @@
+{
+  "protocol": "ssr_llm_decisive_node_20260803",
+  "result_root": "/unify/ydchen/unidit/bioreg/results/ssr_decisive_3node_20260803_r1/node_a",
+  "model": "/unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl",
+  "datasets": [
+    "zsre",
+    "cf",
+    "recent"
+  ],
+  "screen": {
+    "seeds": [
+      9301,
+      9303
+    ],
+    "offset": 300,
+    "n_edits": 50,
+    "candidates": 18,
+    "jobs": 114
+  },
+  "validation": {
+    "seeds": [
+      9311,
+      9313,
+      9315,
+      9317,
+      9319,
+      9321,
+      9323,
+      9325,
+      9327,
+      9329
+    ],
+    "offset": 500,
+    "n_edits": 100,
+    "conditions": [
+      "true_ft",
+      "ssr_only",
+      "anchor_spectral",
+      "full"
+    ],
+    "jobs": 120
+  },
+  "fixed": {
+    "target_layers": [
+      16,
+      17,
+      18
+    ],
+    "row_selection": "active_top",
+    "max_spatial_rows": 256,
+    "lambda_anchor": 0.001,
+    "lambda_spectral": 0.01,
+    "lr": 0.0001,
+    "num_steps": 25
+  },
+  "candidate_grid": [
+    {
+      "candidate_id": "gaussian_narrow_cosine_l0p0003",
+      "kernel_family": "gaussian",
+      "distance_metric": "cosine",
+      "strength": 0.0003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "gaussian_narrow_cosine_l0p001",
+      "kernel_family": "gaussian",
+      "distance_metric": "cosine",
+      "strength": 0.001,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "gaussian_narrow_cosine_l0p003",
+      "kernel_family": "gaussian",
+      "distance_metric": "cosine",
+      "strength": 0.003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "gaussian_reference_cosine_l0p0003",
+      "kernel_family": "gaussian",
+      "distance_metric": "cosine",
+      "strength": 0.0003,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6
+    },
+    {
+      "candidate_id": "gaussian_reference_cosine_l0p001",
+      "kernel_family": "gaussian",
+      "distance_metric": "cosine",
+      "strength": 0.001,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6
+    },
+    {
+      "candidate_id": "gaussian_reference_cosine_l0p003",
+      "kernel_family": "gaussian",
+      "distance_metric": "cosine",
+      "strength": 0.003,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6
+    },
+    {
+      "candidate_id": "laplace_narrow_cosine_l0p0003",
+      "kernel_family": "laplace",
+      "distance_metric": "cosine",
+      "strength": 0.0003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "laplace_narrow_cosine_l0p001",
+      "kernel_family": "laplace",
+      "distance_metric": "cosine",
+      "strength": 0.001,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "laplace_narrow_cosine_l0p003",
+      "kernel_family": "laplace",
+      "distance_metric": "cosine",
+      "strength": 0.003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "cauchy_narrow_cosine_l0p0003",
+      "kernel_family": "cauchy",
+      "distance_metric": "cosine",
+      "strength": 0.0003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "cauchy_narrow_cosine_l0p001",
+      "kernel_family": "cauchy",
+      "distance_metric": "cosine",
+      "strength": 0.001,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "cauchy_narrow_cosine_l0p003",
+      "kernel_family": "cauchy",
+      "distance_metric": "cosine",
+      "strength": 0.003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "inverse_narrow_cosine_l0p0003",
+      "kernel_family": "inverse",
+      "distance_metric": "cosine",
+      "strength": 0.0003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "inverse_narrow_cosine_l0p001",
+      "kernel_family": "inverse",
+      "distance_metric": "cosine",
+      "strength": 0.001,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "inverse_narrow_cosine_l0p003",
+      "kernel_family": "inverse",
+      "distance_metric": "cosine",
+      "strength": 0.003,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45
+    },
+    {
+      "candidate_id": "gaussian_reference_projective_l0p0003",
+      "kernel_family": "gaussian",
+      "distance_metric": "projective",
+      "strength": 0.0003,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6
+    },
+    {
+      "candidate_id": "gaussian_reference_projective_l0p001",
+      "kernel_family": "gaussian",
+      "distance_metric": "projective",
+      "strength": 0.001,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6
+    },
+    {
+      "candidate_id": "gaussian_reference_projective_l0p003",
+      "kernel_family": "gaussian",
+      "distance_metric": "projective",
+      "strength": 0.003,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6
+    }
+  ]
+}
