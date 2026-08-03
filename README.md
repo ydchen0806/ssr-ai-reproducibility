@@ -1,6 +1,6 @@
-# Spatial Synaptic Competition Regularization (SSR): AI Reproducibility
+# Spatial Synaptic Regularization (SSR): AI Reproducibility
 
-This repository contains the code needed to reproduce the artificial-network experiments from the SSR manuscript. SSR stands for **Spatial Synaptic Competition Regularization**. It implements a Mexican-hat / difference-of-Gaussians regularizer that discourages excessive overlap among plastic directions while retaining local stability through knowledge distillation or task-specific constraints.
+This repository contains the code and compact result records for the artificial-network experiments in the SSR manuscript. SSR stands for **Spatial Synaptic Regularization**. It applies a bounded center-surround interaction to learned directions. Task losses determine what is learned, stabilizers such as knowledge distillation (KD) determine what must be retained, and SSR organizes the geometry of the plastic directions.
 
 The repository is intentionally limited to the AI side of the study:
 
@@ -24,6 +24,7 @@ Biological connectomics analyses, raw connectomics tables, and manuscript source
 |-- utils/                          # metrics and plotting helpers
 |-- experiments/                    # CUB, adapter, capacity, and auxiliary probes
 |-- llm_ke/                         # SSR fine-tuning editor and EasyEdit hparams
+|-- artifacts/paper_20260803/       # compact per-seed paper audit bundle
 |-- scripts/run_smoke_test.sh       # short sanity check
 |-- scripts/run_reproducibility_suite.sh
 |-- scripts/collect_results.py
@@ -170,7 +171,7 @@ python experiments/cub200_continual_benchmark.py \
 ```
 
 For the same-base CUB classification control used in the paper, run only the
-KD and SSR+KD methods with the reported 100 epochs per task:
+KD and SSR+KD methods with the locked five-seed, 80-epoch protocol:
 
 ```bash
 python experiments/cub200_continual_benchmark.py \
@@ -178,9 +179,11 @@ python experiments/cub200_continual_benchmark.py \
   --classification_cache data/cub200/cub200_resnet18_features.pt \
   --output_dir results/cub200_kd_control \
   --methods kd biocs_kd \
-  --seeds 0 1 2 \
+  --seeds 3101 3103 3105 3107 3109 \
   --tasks classification \
-  --cls_epochs 100 \
+  --cls_epochs 80 \
+  --a-exc 1.2 --a-inh 0.9 \
+  --sigma-exc 0.22 --sigma-inh 0.60 \
   --device cuda
 ```
 
@@ -197,6 +200,47 @@ python experiments/lowrank_adapter_probe.py \
 ```
 
 The internal method names `biocs` and `biocs_kd` in these legacy experiment scripts correspond to SSR-only and SSR+KD. For the adapter factorization, `biocs_cls_kd` applies SSR only to classifier prototypes and `biocs_adapter_kd` applies SSR only to adapter output-basis directions.
+
+The independent rank, distance-mapping, and radial-family validation uses a
+separate entry point. The example below reproduces one locked rank-16
+all-cosine Gaussian condition and its matched `kd` control.
+
+```bash
+python experiments/lowrank_adapter_mapping.py \
+  --feature_cache data/cub200/cub200_resnet18_features.pt \
+  --output_dir results/adapter_rank16_gaussian_all_cosine \
+  --methods kd biocs_kd \
+  --seeds 8411 8413 8415 8417 8419 8421 8423 8425 8427 8429 \
+  --rank 16 \
+  --epochs 40 \
+  --kernel-family gaussian \
+  --a-exc 1.0 --a-inh 0.8 \
+  --sigma-exc 0.55 --sigma-inh 1.25 \
+  --prototype-distance-metric cosine \
+  --adapter-distance-metric cosine \
+  --device cuda
+```
+
+`experiments/cub200_mechanism_control.py`,
+`experiments/cub200_topology_validation.py`, and
+`experiments/cub200_taxonomy_topology.py` contain the matched geometric
+controls and semantic-neighborhood diagnostics. They keep the feature cache,
+task stream, optimizer, KD scaffold, and training budget fixed while changing
+the geometry term. The frozen 200-class taxonomy used by the held-out audit is
+included in the paper artifact. For example, one selected SSR validation run is:
+
+```bash
+python experiments/cub200_taxonomy_topology.py \
+  --method ssr_dynamic \
+  --seed 9401 \
+  --strength 0.01 \
+  --center-hwhm 0.10 \
+  --surround-hwhm 0.34 \
+  --taxonomy-file artifacts/paper_20260803/raw/mechanism/cub200_gbif_taxonomy_20260730.json \
+  --taxonomy-order taxonomy_blocked \
+  --output-dir results/cub200_mechanism_seed9401 \
+  --device cuda
+```
 
 ## Optional LLM Editing Probe
 
@@ -218,7 +262,7 @@ Run a small ZsRE-style probe:
 
 ```bash
 python scripts/run_llm_ke_easyedit.py \
-  --method BIOCS \
+  --method biocs \
   --dataset zsre \
   --n_edits 50 \
   --model_name "$KE_MODEL_NAME_OR_PATH" \
@@ -239,9 +283,53 @@ python scripts/run_llm_ke_easyedit.py \
 
 For larger open-source LLMs, set `KE_MODEL_NAME_OR_PATH` to a local Hugging Face model directory and make sure the model license permits the intended use.
 
+The LLM editor exposes the exact SSR implementation choices through
+`BIOCS_KERNEL_FAMILY`, `BIOCS_TARGET` (`weight` or `delta`),
+`BIOCS_DISTANCE_METRIC` (`cosine` or `projective`), and the four kernel
+parameters. The `BIOCS_` prefix is a historical compatibility key; it does not
+denote a second method.
+
+## Paper Artifact Bundle
+
+`artifacts/paper_20260803` contains compact per-seed records for the current
+continual-classification, CUB adapter, CUB segmentation, and nested LLM-editing
+audits. It also contains the held-out CUB mechanism report and the recorded
+runtime subset from the source environment. The original private
+workspace commit, full LLM dependency lock, model revision, EasyEdit revision,
+and operating-system build were not retained, so this is an audit bundle rather
+than a bit-for-bit environment snapshot. Verify file integrity,
+seed counts, configurations, manuscript-facing aggregates, and paired
+confidence intervals with:
+
+```bash
+python scripts/verify_paper_artifacts.py
+```
+
+The manifest distinguishes direct SSR attribution (`KD` versus `SSR+KD`) from
+complete-objective transfer. In particular, the segmentation record compares a
+base objective with the complete SSR+KD objective, and the locked nested LLM
+comparison does not resolve a statistically significant SSR increment. These
+records are shipped for auditability and are not represented as positive
+single-component ablations. The segmentation outputs combine seeds 0, 1, and 2
+from an append-only run stream; the exact seed-0 launch manifest is not present
+in the recovered archive, and this limitation is recorded in
+`raw/segmentation/protocol.json`.
+
+Absolute cluster paths in the recovered records are normalized to
+`source_workspace/...`; content digests of the original source files are kept
+where available. See `artifacts/paper_20260803/environment.json` for the exact
+boundary of the captured environment metadata.
+
+The historical `inverse` key is implementation-specific: the classification
+entry point uses `1 / (1 + d / sigma)`, whereas the adapter and LLM entry
+points use `sigma / sqrt(d^2 + sigma^2)`. The selected ZsRE inverse run used a
+scale broader than a true HWHM-matched control. Its measurements are retained,
+but the artifact verifier explicitly prevents treating it as evidence of
+HWHM-matched kernel invariance.
+
 ## Reproducibility Notes
 
-1. Use the seeds reported in the manuscript or `SEEDS="42 123 456"` for the representative queue.
+1. Use the seeds recorded in `artifacts/paper_20260803/manifest.json` for exact paper comparisons; `SEEDS="42 123 456"` is only the representative quick queue.
 2. Keep the same task split and class order unless explicitly testing robustness.
 3. Run each baseline and SSR variant with comparable hardware, batch size, epoch budget, and tuning budget.
 4. Do not compare cached wall-clock times from different machines as an efficiency claim.

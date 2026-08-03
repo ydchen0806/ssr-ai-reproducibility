@@ -1,0 +1,50 @@
+{
+  "question": "Under the same KD scaffold and tuning budget, does SSR improve retention and hard-confusion margins while keeping semantic-neighbour disruption within 1 pp?",
+  "order": "taxonomy_blocked",
+  "development_seeds": [
+    9301,
+    9303,
+    9305
+  ],
+  "validation_seeds": [
+    9401,
+    9403,
+    9405,
+    9407,
+    9409,
+    9411,
+    9413,
+    9415,
+    9417,
+    9419,
+    9421,
+    9423,
+    9425,
+    9427,
+    9429,
+    9431,
+    9433,
+    9435,
+    9437,
+    9439
+  ],
+  "families": [
+    "ssr",
+    "center_component",
+    "surround_component",
+    "cosine_orthogonality",
+    "prototype_decorrelation",
+    "spectral"
+  ],
+  "tuning_candidates_per_family": 12,
+  "selection_uses_mechanism_metrics": false,
+  "preregistered_mechanism_gates": {
+    "top1_confuser_margin_ci_low": 0.0,
+    "semantic_knn_noninferiority_margin": -0.01,
+    "locality_ratio_ci_high": 0.5
+  },
+  "jobs": {
+    "development": 219,
+    "validation": 140
+  }
+}

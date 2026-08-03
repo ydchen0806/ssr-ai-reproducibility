@@ -1,0 +1,800 @@
+{
+  "ewc_5datasets": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "name": "five_datasets"
+      },
+      "experiment_name": "ewc_5datasets",
+      "method": {
+        "fisher_samples": 2000,
+        "lambda_ewc": 400.0,
+        "name": "ewc",
+        "online": false
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 30,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.05,
+        "milestones": [
+          20,
+          25
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "0724b66e2a5695a3b0af934fa8c9d59934d7a88188ca77ca7d8f6cc0e6b73db9",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/ewc_5datasets/seed_123/config.yaml",
+        "sha256": "482606a1cd6fc3348d9850bee340750d90e99ea406415324a0653bf5fb8c6c52"
+      },
+      {
+        "path": "raw/context_baselines/ewc_5datasets/seed_42/config.yaml",
+        "sha256": "482606a1cd6fc3348d9850bee340750d90e99ea406415324a0653bf5fb8c6c52"
+      },
+      {
+        "path": "raw/context_baselines/ewc_5datasets/seed_456/config.yaml",
+        "sha256": "482606a1cd6fc3348d9850bee340750d90e99ea406415324a0653bf5fb8c6c52"
+      }
+    ]
+  },
+  "ewc_split_cifar10": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 5,
+        "name": "split_cifar10"
+      },
+      "experiment_name": "ewc_split_cifar10",
+      "method": {
+        "fisher_samples": 2000,
+        "lambda_ewc": 400.0,
+        "name": "ewc",
+        "online": false
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "102eba04511f48b2ac3e30077f028015537d8df91d5db21f10765c78f5686f91",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/ewc_split_cifar10/seed_123/config.yaml",
+        "sha256": "d19b2d7cba8bdbe5ef394e7e564616a42f69dc7b8d3bd1356de096793b35f9aa"
+      },
+      {
+        "path": "raw/context_baselines/ewc_split_cifar10/seed_42/config.yaml",
+        "sha256": "d19b2d7cba8bdbe5ef394e7e564616a42f69dc7b8d3bd1356de096793b35f9aa"
+      },
+      {
+        "path": "raw/context_baselines/ewc_split_cifar10/seed_456/config.yaml",
+        "sha256": "d19b2d7cba8bdbe5ef394e7e564616a42f69dc7b8d3bd1356de096793b35f9aa"
+      }
+    ]
+  },
+  "ewc_split_cifar100": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_cifar100"
+      },
+      "experiment_name": "ewc_split_cifar100",
+      "method": {
+        "fisher_samples": 2000,
+        "lambda_ewc": 400.0,
+        "name": "ewc",
+        "online": false
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "f71a1f80cc0ea14c94a78a8d7739cc66c319fc1ad23774c66881e9371ec70390",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/ewc_split_cifar100/seed_123/config.yaml",
+        "sha256": "0aa094df0682e7a78f801814d12853230471c723800090659207bd8209584829"
+      },
+      {
+        "path": "raw/context_baselines/ewc_split_cifar100/seed_42/config.yaml",
+        "sha256": "0aa094df0682e7a78f801814d12853230471c723800090659207bd8209584829"
+      },
+      {
+        "path": "raw/context_baselines/ewc_split_cifar100/seed_456/config.yaml",
+        "sha256": "0aa094df0682e7a78f801814d12853230471c723800090659207bd8209584829"
+      }
+    ]
+  },
+  "ewc_split_tinyimagenet": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_tiny_imagenet"
+      },
+      "experiment_name": "ewc_split_tinyimagenet",
+      "method": {
+        "fisher_samples": 2000,
+        "lambda_ewc": 400.0,
+        "name": "ewc",
+        "online": false
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "6fb3ca01edec1b2069ac74188f6cd91146194200545c45c73e21e38c19cfc4f6",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/ewc_split_tinyimagenet/seed_123/config.yaml",
+        "sha256": "c2f7a3c82e47531ce6544a4c8790ca88101c47d7ed76554d05587fe65ebdd75d"
+      },
+      {
+        "path": "raw/context_baselines/ewc_split_tinyimagenet/seed_42/config.yaml",
+        "sha256": "c2f7a3c82e47531ce6544a4c8790ca88101c47d7ed76554d05587fe65ebdd75d"
+      },
+      {
+        "path": "raw/context_baselines/ewc_split_tinyimagenet/seed_456/config.yaml",
+        "sha256": "c2f7a3c82e47531ce6544a4c8790ca88101c47d7ed76554d05587fe65ebdd75d"
+      }
+    ]
+  },
+  "lwf_5datasets": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "name": "five_datasets"
+      },
+      "experiment_name": "lwf_5datasets",
+      "method": {
+        "lambda_lwf": 1.0,
+        "name": "lwf",
+        "temperature": 2.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 30,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.05,
+        "milestones": [
+          20,
+          25
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "877360b8f51ba294a78821c8fbb97c153aa8f983be2279927127efaf93915c56",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/lwf_5datasets/seed_123/config.yaml",
+        "sha256": "6bb6d4860e5184e8e68b5011a42b2dc67519457666d896758ef4f0f72406f601"
+      },
+      {
+        "path": "raw/context_baselines/lwf_5datasets/seed_42/config.yaml",
+        "sha256": "6bb6d4860e5184e8e68b5011a42b2dc67519457666d896758ef4f0f72406f601"
+      },
+      {
+        "path": "raw/context_baselines/lwf_5datasets/seed_456/config.yaml",
+        "sha256": "6bb6d4860e5184e8e68b5011a42b2dc67519457666d896758ef4f0f72406f601"
+      }
+    ]
+  },
+  "lwf_split_cifar10": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 5,
+        "name": "split_cifar10"
+      },
+      "experiment_name": "lwf_split_cifar10",
+      "method": {
+        "lambda_distill": 1.0,
+        "name": "lwf",
+        "temperature": 2.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "4e3eb360a9237f8261096114a87b6847ef12243377262b7fceb40a3684d13d37",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/lwf_split_cifar10/seed_123/config.yaml",
+        "sha256": "fd2a98bb98cefdbc79261c06950eaf9fecbac862a21030a3774335a1e3ab3080"
+      },
+      {
+        "path": "raw/context_baselines/lwf_split_cifar10/seed_42/config.yaml",
+        "sha256": "fd2a98bb98cefdbc79261c06950eaf9fecbac862a21030a3774335a1e3ab3080"
+      },
+      {
+        "path": "raw/context_baselines/lwf_split_cifar10/seed_456/config.yaml",
+        "sha256": "fd2a98bb98cefdbc79261c06950eaf9fecbac862a21030a3774335a1e3ab3080"
+      }
+    ]
+  },
+  "lwf_split_cifar100": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_cifar100"
+      },
+      "experiment_name": "lwf_split_cifar100",
+      "method": {
+        "lambda_lwf": 1.0,
+        "name": "lwf",
+        "temperature": 2.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "3f8c35d24c021727afc65b60958b851a4a839de4d31dabeae9c449620fc470b7",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/lwf_split_cifar100/seed_123/config.yaml",
+        "sha256": "25e730ca894c5dc48f73ad1375e5d4fe4fe1a65f6e4cc024ea2cdcccd42add64"
+      },
+      {
+        "path": "raw/context_baselines/lwf_split_cifar100/seed_42/config.yaml",
+        "sha256": "25e730ca894c5dc48f73ad1375e5d4fe4fe1a65f6e4cc024ea2cdcccd42add64"
+      },
+      {
+        "path": "raw/context_baselines/lwf_split_cifar100/seed_456/config.yaml",
+        "sha256": "25e730ca894c5dc48f73ad1375e5d4fe4fe1a65f6e4cc024ea2cdcccd42add64"
+      }
+    ]
+  },
+  "lwf_split_tinyimagenet": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_tiny_imagenet"
+      },
+      "experiment_name": "lwf_split_tinyimagenet",
+      "method": {
+        "lambda_lwf": 1.0,
+        "name": "lwf",
+        "temperature": 2.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "ea137bbfc5587075098ad166339e2a4bcb6ccadbeef4fba9704459d047185779",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/lwf_split_tinyimagenet/seed_123/config.yaml",
+        "sha256": "9b305b72361307032fb0d028bd1bdb04469e527ebf8aaa4452b52bba655f654a"
+      },
+      {
+        "path": "raw/context_baselines/lwf_split_tinyimagenet/seed_42/config.yaml",
+        "sha256": "9b305b72361307032fb0d028bd1bdb04469e527ebf8aaa4452b52bba655f654a"
+      },
+      {
+        "path": "raw/context_baselines/lwf_split_tinyimagenet/seed_456/config.yaml",
+        "sha256": "9b305b72361307032fb0d028bd1bdb04469e527ebf8aaa4452b52bba655f654a"
+      }
+    ]
+  },
+  "mas_5datasets": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "name": "five_datasets"
+      },
+      "experiment_name": "mas_5datasets",
+      "method": {
+        "lambda_mas": 1.0,
+        "name": "mas"
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 30,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.05,
+        "milestones": [
+          20,
+          25
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "357ebe7dc2d65dc55b94127a78f9e0bd15acbaa64a50019914e3a63777a8b440",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/mas_5datasets/seed_123/config.yaml",
+        "sha256": "bca576e6f6eed1234536ffe605f7feaf01569f01b62e34e240f45e547c06258b"
+      },
+      {
+        "path": "raw/context_baselines/mas_5datasets/seed_42/config.yaml",
+        "sha256": "bca576e6f6eed1234536ffe605f7feaf01569f01b62e34e240f45e547c06258b"
+      },
+      {
+        "path": "raw/context_baselines/mas_5datasets/seed_456/config.yaml",
+        "sha256": "bca576e6f6eed1234536ffe605f7feaf01569f01b62e34e240f45e547c06258b"
+      }
+    ]
+  },
+  "mas_split_cifar10": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 5,
+        "name": "split_cifar10"
+      },
+      "experiment_name": "mas_split_cifar10",
+      "method": {
+        "mas_lambda": 1.0,
+        "name": "mas"
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "a124cc5ef1b4aafb48f8d4353ed1f482bb8e12acf63b873712355c332c946687",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/mas_split_cifar10/seed_123/config.yaml",
+        "sha256": "b61af18ddc492f2659c1e559ab58af21df1caf96b17fcdba19a232ce887b2d66"
+      },
+      {
+        "path": "raw/context_baselines/mas_split_cifar10/seed_42/config.yaml",
+        "sha256": "b61af18ddc492f2659c1e559ab58af21df1caf96b17fcdba19a232ce887b2d66"
+      },
+      {
+        "path": "raw/context_baselines/mas_split_cifar10/seed_456/config.yaml",
+        "sha256": "b61af18ddc492f2659c1e559ab58af21df1caf96b17fcdba19a232ce887b2d66"
+      }
+    ]
+  },
+  "mas_split_cifar100": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_cifar100"
+      },
+      "experiment_name": "mas_split_cifar100",
+      "method": {
+        "lambda_mas": 1.0,
+        "n_importance_samples": 2000,
+        "name": "mas"
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "3022936855d4027ac57d38eca650de3a4d62c507080610ed55eab40538b92d95",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/mas_split_cifar100/seed_123/config.yaml",
+        "sha256": "449b0332e653ec56d1882411887962237c367c63f04e7fcd2a28bcd49246e461"
+      },
+      {
+        "path": "raw/context_baselines/mas_split_cifar100/seed_42/config.yaml",
+        "sha256": "449b0332e653ec56d1882411887962237c367c63f04e7fcd2a28bcd49246e461"
+      },
+      {
+        "path": "raw/context_baselines/mas_split_cifar100/seed_456/config.yaml",
+        "sha256": "449b0332e653ec56d1882411887962237c367c63f04e7fcd2a28bcd49246e461"
+      }
+    ]
+  },
+  "mas_split_tinyimagenet": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_tiny_imagenet"
+      },
+      "experiment_name": "mas_split_tinyimagenet",
+      "method": {
+        "lambda_mas": 1.0,
+        "mas_samples": 2000,
+        "name": "mas"
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "e0ccd3a471c641ba581a3573f043cad1f278b63ec030ca7560b57f4c1baa8730",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/mas_split_tinyimagenet/seed_123/config.yaml",
+        "sha256": "12e1207b3b8d8cb4d86fa995f96d76a7cb1aea0efaf4a59279d69806e6bf1cd2"
+      },
+      {
+        "path": "raw/context_baselines/mas_split_tinyimagenet/seed_42/config.yaml",
+        "sha256": "12e1207b3b8d8cb4d86fa995f96d76a7cb1aea0efaf4a59279d69806e6bf1cd2"
+      },
+      {
+        "path": "raw/context_baselines/mas_split_tinyimagenet/seed_456/config.yaml",
+        "sha256": "12e1207b3b8d8cb4d86fa995f96d76a7cb1aea0efaf4a59279d69806e6bf1cd2"
+      }
+    ]
+  },
+  "si_5datasets": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "name": "five_datasets"
+      },
+      "experiment_name": "si_5datasets",
+      "method": {
+        "damping": 0.001,
+        "lambda_si": 1.0,
+        "name": "si"
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 30,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.05,
+        "milestones": [
+          20,
+          25
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "558c256e5abab6e9afa2c922ff9d3eb1a0d4fea9559887702abf9bc81a3014ee",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/si_5datasets/seed_123/config.yaml",
+        "sha256": "b31a1d4779dac9ae4445314e16148bf758d9a90529764bffab0474f05c8afb8e"
+      },
+      {
+        "path": "raw/context_baselines/si_5datasets/seed_42/config.yaml",
+        "sha256": "b31a1d4779dac9ae4445314e16148bf758d9a90529764bffab0474f05c8afb8e"
+      },
+      {
+        "path": "raw/context_baselines/si_5datasets/seed_456/config.yaml",
+        "sha256": "b31a1d4779dac9ae4445314e16148bf758d9a90529764bffab0474f05c8afb8e"
+      }
+    ]
+  },
+  "si_split_cifar10": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 5,
+        "name": "split_cifar10"
+      },
+      "experiment_name": "si_split_cifar10",
+      "method": {
+        "name": "si",
+        "si_epsilon": 0.1,
+        "si_lambda": 1.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "a0386aa64c73d81def282bd16db197c39b8827299a78c55809185f5e08b1d885",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/si_split_cifar10/seed_123/config.yaml",
+        "sha256": "ecec6691947df39c119e589bddd9a7c102049f8cd1bac76b310bd495ae2456da"
+      },
+      {
+        "path": "raw/context_baselines/si_split_cifar10/seed_42/config.yaml",
+        "sha256": "ecec6691947df39c119e589bddd9a7c102049f8cd1bac76b310bd495ae2456da"
+      },
+      {
+        "path": "raw/context_baselines/si_split_cifar10/seed_456/config.yaml",
+        "sha256": "ecec6691947df39c119e589bddd9a7c102049f8cd1bac76b310bd495ae2456da"
+      }
+    ]
+  },
+  "si_split_cifar100": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_cifar100"
+      },
+      "experiment_name": "si_split_cifar100",
+      "method": {
+        "lambda_si": 1.0,
+        "name": "si",
+        "xi": 0.1
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "aa20a2b4fbb1fd5d346901a219b5e971df1c54f10c47e26c7af8af3c4007af4a",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/si_split_cifar100/seed_123/config.yaml",
+        "sha256": "e49046513a71dde52702801ef8378ab86f27ed7cfc1b402f3e0579a92cbd6055"
+      },
+      {
+        "path": "raw/context_baselines/si_split_cifar100/seed_42/config.yaml",
+        "sha256": "e49046513a71dde52702801ef8378ab86f27ed7cfc1b402f3e0579a92cbd6055"
+      },
+      {
+        "path": "raw/context_baselines/si_split_cifar100/seed_456/config.yaml",
+        "sha256": "e49046513a71dde52702801ef8378ab86f27ed7cfc1b402f3e0579a92cbd6055"
+      }
+    ]
+  },
+  "si_split_tinyimagenet": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_tiny_imagenet"
+      },
+      "experiment_name": "si_split_tinyimagenet",
+      "method": {
+        "damping": 0.001,
+        "lambda_si": 1.0,
+        "name": "si"
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "9f9e03277d939b82e8ab3b9a4fc030c1828cdf6bc00947af8727608018f54c45",
+    "source_configs": [
+      {
+        "path": "raw/context_baselines/si_split_tinyimagenet/seed_123/config.yaml",
+        "sha256": "a1a36fec6732d4115b5f324dd3b2978e5d9fdde2c12d704a3b888dcd360fa61a"
+      },
+      {
+        "path": "raw/context_baselines/si_split_tinyimagenet/seed_42/config.yaml",
+        "sha256": "a1a36fec6732d4115b5f324dd3b2978e5d9fdde2c12d704a3b888dcd360fa61a"
+      },
+      {
+        "path": "raw/context_baselines/si_split_tinyimagenet/seed_456/config.yaml",
+        "sha256": "a1a36fec6732d4115b5f324dd3b2978e5d9fdde2c12d704a3b888dcd360fa61a"
+      }
+    ]
+  }
+}

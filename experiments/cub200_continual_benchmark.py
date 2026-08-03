@@ -3,7 +3,7 @@
 
 The script is intentionally self-contained so it can run outside the main CL
 trainer. It downloads the official CUB-200-2011 images/annotations and
-segmentation masks, then evaluates SSR style regularization in two settings:
+segmentation masks, then evaluates Spatial Synaptic Regularization (SSR) in two settings:
 
 1. Frozen ImageNet ResNet-18 features + sequential classifier head.
 2. Frozen ImageNet ResNet-18 dense features + class-conditioned mask decoder.
@@ -17,7 +17,6 @@ from __future__ import annotations
 import argparse
 import json
 import math
-import os
 import random
 import tarfile
 import urllib.request
@@ -36,6 +35,7 @@ from torchvision import models
 
 CUB_IMAGES_URL = "https://data.caltech.edu/records/65de6-vp158/files/CUB_200_2011.tgz?download=1"
 CUB_SEG_URL = "https://data.caltech.edu/records/w9d68-gec53/files/segmentations.tgz?download=1"
+KERNEL_FAMILIES = ("gaussian", "laplace", "cauchy", "inverse")
 
 
 @dataclass
@@ -135,14 +135,66 @@ def read_cub_metadata(cub_dir: Path, max_classes: int | None = None) -> list[dic
     return rows
 
 
-def biocs_loss(weights: torch.Tensor, a_exc=1.0, a_inh=0.8, sigma_exc=0.2, sigma_inh=0.5) -> torch.Tensor:
+def _validate_kernel_parameters(a_exc, a_inh, sigma_exc, sigma_inh, kernel_family: str) -> str:
+    if not isinstance(kernel_family, str):
+        raise TypeError("kernel_family must be a string")
+    family = kernel_family.lower()
+    if family not in KERNEL_FAMILIES:
+        choices = ", ".join(KERNEL_FAMILIES)
+        raise ValueError(f"Unknown kernel_family '{kernel_family}'. Expected one of: {choices}")
+    for name, value in (("a_exc", a_exc), ("a_inh", a_inh)):
+        try:
+            finite = math.isfinite(value)
+        except TypeError as exc:
+            raise TypeError(f"{name} must be a finite number") from exc
+        if not finite or value < 0:
+            raise ValueError(f"{name} must be finite and non-negative")
+    for name, value in (("sigma_exc", sigma_exc), ("sigma_inh", sigma_inh)):
+        try:
+            finite = math.isfinite(value)
+        except TypeError as exc:
+            raise TypeError(f"{name} must be a finite number") from exc
+        if not finite or value <= 0:
+            raise ValueError(f"{name} must be finite and positive")
+    return family
+
+
+def _radial_response(dist: torch.Tensor, sigma: float, kernel_family: str) -> torch.Tensor:
+    """Evaluate the classification-study radial response.
+
+    For backward compatibility with the recorded classification runs, the
+    ``inverse`` key here denotes ``1 / (1 + distance / sigma)``. The adapter
+    and LLM studies use a separately documented inverse-square-root response.
+    """
+    if kernel_family == "gaussian":
+        return torch.exp(-(dist ** 2) / (2 * sigma ** 2))
+    if kernel_family == "laplace":
+        return torch.exp(-dist / sigma)
+    if kernel_family == "cauchy":
+        return 1.0 / (1.0 + (dist / sigma) ** 2)
+    if kernel_family == "inverse":
+        return 1.0 / (1.0 + dist / sigma)
+    raise ValueError(f"Unknown kernel_family={kernel_family!r}")
+
+
+def biocs_loss(
+    weights: torch.Tensor,
+    a_exc=1.0,
+    a_inh=0.8,
+    sigma_exc=0.2,
+    sigma_inh=0.5,
+    kernel_family: str = "gaussian",
+) -> torch.Tensor:
+    family = _validate_kernel_parameters(
+        a_exc, a_inh, sigma_exc, sigma_inh, kernel_family,
+    )
     if weights.shape[0] < 2:
         return weights.sum() * 0.0
     w = F.normalize(weights, dim=1)
     cos = torch.clamp(w @ w.T, -1.0, 1.0)
     dist = torch.sqrt(torch.clamp(1.0 - cos, min=1e-8))
-    inh = a_inh * torch.exp(-(dist**2) / (2 * sigma_inh**2))
-    exc = a_exc * torch.exp(-(dist**2) / (2 * sigma_exc**2))
+    inh = a_inh * _radial_response(dist, sigma_inh, family)
+    exc = a_exc * _radial_response(dist, sigma_exc, family)
     penalty = (inh - exc) + (a_exc - a_inh)
     penalty = penalty - torch.diag(torch.diag(penalty))
     n = weights.shape[0]
@@ -280,6 +332,8 @@ def run_classification(args: argparse.Namespace, method: str, seed: int, device:
     model = LinearHead(x_train.shape[1], num_classes).to(device)
     opt = torch.optim.AdamW(model.parameters(), lr=args.cls_lr, weight_decay=args.cls_weight_decay if method == "l2" else 0.0)
     teacher: LinearHead | None = None
+    uses_ssr = method in {"biocs", "biocs_kd"}
+    uses_kd = method in {"kd", "biocs_kd"}
     acc_matrix = []
     cil_curve = []
     for tid, task_classes in enumerate(tasks):
@@ -289,9 +343,16 @@ def run_classification(args: argparse.Namespace, method: str, seed: int, device:
                 xb, yb = xb.to(device), yb.to(device)
                 logits = model(xb)
                 loss = F.cross_entropy(logits, yb)
-                if method in {"biocs", "biocs_kd"}:
-                    loss = loss + args.lambda_sp * biocs_loss(model.classifier.weight)
-                if method in {"kd", "biocs_kd"} and teacher is not None:
+                if uses_ssr:
+                    loss = loss + args.lambda_sp * biocs_loss(
+                        model.classifier.weight,
+                        args.a_exc,
+                        args.a_inh,
+                        args.sigma_exc,
+                        args.sigma_inh,
+                        args.kernel_family,
+                    )
+                if uses_kd and teacher is not None:
                     with torch.no_grad():
                         target = teacher(xb)
                     t = args.kd_temperature
@@ -306,7 +367,7 @@ def run_classification(args: argparse.Namespace, method: str, seed: int, device:
         acc_matrix.append(evaluate_classification_til(model, x_test, y_test, tasks, tid + 1, args.cls_batch_size, device))
         seen_classes = [c for task in tasks[: tid + 1] for c in task]
         cil_curve.append(evaluate_classification_cil(model, x_test, y_test, seen_classes, args.cls_batch_size, device))
-        if method in {"kd", "biocs_kd"}:
+        if uses_kd:
             teacher = LinearHead(x_train.shape[1], num_classes).to(device)
             teacher.load_state_dict(model.state_dict())
             teacher.eval()
@@ -513,28 +574,34 @@ def extract_segmentation_features(args: argparse.Namespace, device: torch.device
 def evaluate_segmentation(encoder: nn.Module, model: nn.Module, loader: DataLoader, device: torch.device) -> tuple[float, float]:
     encoder.eval()
     model.eval()
-    ious, dices = [], []
+    iou_sum = dice_sum = 0.0
+    sample_count = 0
     with torch.no_grad():
         for xb, cls, mask in loader:
             xb, cls, mask = xb.to(device), cls.to(device), mask.to(device)
             logits = model(encoder(xb), cls, mask.shape[-2:])
             iou, dice = segmentation_metrics(logits, mask)
-            ious.append(iou)
-            dices.append(dice)
-    return float(np.mean(ious)), float(np.mean(dices))
+            batch_size = int(mask.shape[0])
+            iou_sum += iou * batch_size
+            dice_sum += dice * batch_size
+            sample_count += batch_size
+    return iou_sum / max(sample_count, 1), dice_sum / max(sample_count, 1)
 
 
 def evaluate_segmentation_features(model: nn.Module, loader: DataLoader, device: torch.device, out_size: tuple[int, int]) -> tuple[float, float]:
     model.eval()
-    ious, dices = [], []
+    iou_sum = dice_sum = 0.0
+    sample_count = 0
     with torch.no_grad():
         for feats, cls, mask in loader:
             feats, cls, mask = feats.to(device), cls.to(device), mask.to(device)
             logits = model(feats, cls, out_size)
             iou, dice = segmentation_metrics(logits, mask)
-            ious.append(iou)
-            dices.append(dice)
-    return float(np.mean(ious)), float(np.mean(dices))
+            batch_size = int(mask.shape[0])
+            iou_sum += iou * batch_size
+            dice_sum += dice * batch_size
+            sample_count += batch_size
+    return iou_sum / max(sample_count, 1), dice_sum / max(sample_count, 1)
 
 
 def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: torch.device) -> SegmentationRun:
@@ -554,6 +621,8 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
     model = ClassConditionedMaskDecoder(num_classes, args.seg_hidden_dim).to(device)
     opt = torch.optim.AdamW(model.parameters(), lr=args.seg_lr, weight_decay=args.seg_weight_decay if method == "l2" else 0.0)
     teacher: ClassConditionedMaskDecoder | None = None
+    uses_ssr = method in {"biocs", "biocs_kd"}
+    uses_kd = method in {"kd", "biocs_kd"}
     iou_matrix = []
     for tid, task_classes in enumerate(tasks):
         seen_class_ids = [c for task in tasks[: tid + 1] for c in task]
@@ -573,7 +642,7 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                     feats = encoder(xb)
                 logits = model(feats, cls, mask.shape[-2:])
                 loss = F.binary_cross_entropy_with_logits(logits, mask) + dice_loss(logits, mask)
-                if method in {"biocs", "biocs_kd"} and tid >= args.seg_biocs_start_task:
+                if uses_ssr and tid >= args.seg_biocs_start_task:
                     if args.seg_biocs_target == "channels":
                         reg_weight = model.channel_prototypes()
                     else:
@@ -583,8 +652,15 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                             reg_weight = model.classifier.weight[torch.unique(cls)]
                         else:
                             reg_weight = model.classifier.weight
-                    loss = loss + args.lambda_sp * biocs_loss(reg_weight)
-                if method in {"kd", "biocs_kd"} and teacher is not None:
+                    loss = loss + args.lambda_sp * biocs_loss(
+                        reg_weight,
+                        args.a_exc,
+                        args.a_inh,
+                        args.sigma_exc,
+                        args.sigma_inh,
+                        args.kernel_family,
+                    )
+                if uses_kd and teacher is not None:
                     with torch.no_grad():
                         target = teacher(feats, cls, mask.shape[-2:])
                     loss = loss + args.lambda_kd_seg * F.binary_cross_entropy_with_logits(logits, torch.sigmoid(target))
@@ -607,7 +683,7 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                 )
                 seen_ious.append(evaluate_segmentation(encoder, model, test_loader, device)[0] * 100.0)
         iou_matrix.append(seen_ious)
-        if method in {"kd", "biocs_kd"}:
+        if uses_kd:
             teacher = ClassConditionedMaskDecoder(num_classes, args.seg_hidden_dim).to(device)
             teacher.load_state_dict(model.state_dict())
             teacher.eval()
@@ -689,6 +765,11 @@ def main() -> None:
     p.add_argument("--lambda_sp", type=float, default=2.0)
     p.add_argument("--lambda_kd", type=float, default=2.0)
     p.add_argument("--lambda_kd_seg", type=float, default=0.5)
+    p.add_argument("--a-exc", type=float, default=1.0)
+    p.add_argument("--a-inh", type=float, default=0.8)
+    p.add_argument("--sigma-exc", type=float, default=0.2)
+    p.add_argument("--sigma-inh", type=float, default=0.5)
+    p.add_argument("--kernel-family", choices=KERNEL_FAMILIES, default="gaussian")
     p.add_argument("--kd_temperature", type=float, default=3.0)
     p.add_argument("--device", default="cuda")
     p.add_argument("--no_download", action="store_true")

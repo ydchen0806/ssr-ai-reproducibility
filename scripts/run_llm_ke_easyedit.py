@@ -11,7 +11,7 @@ Usage:
     Or use the combined launch script:
     bash scripts/run_cluster_8gpu_all.sh
 """
-import sys, os, json, argparse, logging, time, random
+import sys, os, json, argparse, logging, time, random, hashlib, subprocess
 from contextlib import contextmanager
 from pathlib import Path
 
@@ -235,11 +235,13 @@ def patch_easyedit_dataset_loading():
         module.load_dataset = load_dataset_with_trust
 
 
-def load_dataset(name: str, n_edits: int):
+def load_dataset(name: str, n_edits: int, offset: int = 0):
+    if offset < 0:
+        raise ValueError("offset must be non-negative")
     path = DATASET_MAP[name]
     with open(path) as f:
         data = json.load(f)
-    data = data[:n_edits]
+    data = data[offset : offset + n_edits]
     prompts, targets, grounds, subjects = [], [], [], []
     locality_inputs, locality_labels = [], []
     rephrase_prompts = []
@@ -314,7 +316,8 @@ def run_easyedit_method(
     if not os.path.exists(yaml_path):
         raise FileNotFoundError(f"EasyEdit hparams not found: {yaml_path}. Set KE_HPARAMS_MODEL to a supported file stem.")
 
-    data = load_dataset(dataset_name, n_edits)
+    data_offset = int(os.environ.get("KE_DATA_OFFSET", "0"))
+    data = load_dataset(dataset_name, n_edits, data_offset)
     logger.info(f"Method={method_upper}, Dataset={dataset_name}, Model={model_name}, N={len(data['prompts'])}")
 
     locality_data = None
@@ -370,6 +373,7 @@ def run_easyedit_method(
         "dataset": dataset_name,
         "model": model_name,
         "n_edits": len(data["prompts"]),
+        "data_offset": data_offset,
         "elapsed_s": round(elapsed, 1),
         "efficacy": round(sum(agg["efficacy"]) / max(len(agg["efficacy"]), 1) * 100, 2),
         "locality": round(sum(agg["locality"]) / max(len(agg["locality"]), 1) * 100, 2),
@@ -401,10 +405,24 @@ def run_biocs_method(dataset_name: str, n_edits: int, output_dir: str, model_nam
         lambda_biocs=float(os.environ.get("BIOCS_LAMBDA", "0.001")),
         lambda_spectral=float(os.environ.get("BIOCS_LAMBDA_SPECTRAL", "0.01")),
         lambda_anchor=float(os.environ.get("BIOCS_LAMBDA_ANCHOR", "0.001")),
+        kernel_family=os.environ.get("BIOCS_KERNEL_FAMILY", "gaussian"),
+        a_exc=float(os.environ.get("BIOCS_A_EXC", "1.0")),
+        a_inh=float(os.environ.get("BIOCS_A_INH", "0.8")),
+        sigma_exc=float(os.environ.get("BIOCS_SIGMA_EXC", "0.3")),
+        sigma_inh=float(os.environ.get("BIOCS_SIGMA_INH", "0.8")),
+        biocs_target=os.environ.get("BIOCS_TARGET", "weight"),
+        distance_metric=os.environ.get("BIOCS_DISTANCE_METRIC", "cosine"),
+        row_selection=os.environ.get("BIOCS_ROW_SELECTION", "random_each_step"),
+        max_spatial_rows=int(os.environ.get("BIOCS_MAX_SPATIAL_ROWS", "256")),
+        sampler_seed=int(os.environ.get("BIOCS_SAMPLER_SEED", os.environ.get("KE_SEED", "0"))),
         lr=float(os.environ.get("BIOCS_LR", "1e-4")),
         num_steps=int(os.environ.get("BIOCS_NUM_STEPS", "25")),
     )
-    dataset = KnowEditDataset(data_path, max_samples=n_edits)
+    dataset = KnowEditDataset(
+        data_path,
+        max_samples=n_edits,
+        offset=int(os.environ.get("KE_DATA_OFFSET", "0")),
+    )
 
     os.makedirs(output_dir, exist_ok=True)
     summary = run_sequential_editing(editor, dataset, n_edits, os.path.join(output_dir, "results.json"))
@@ -416,6 +434,14 @@ def run_ft_method(dataset_name: str, n_edits: int, output_dir: str, model_name: 
     sys.path.insert(0, str(PROJECT_DIR))
     from llm_ke.biocs_editor import FTBaselineEditor, KnowEditDataset, run_sequential_editing
 
+    requested_anchor = float(os.environ.get("FT_LAMBDA_ANCHOR", "0.0"))
+    if requested_anchor != 0.0:
+        raise ValueError(
+            "FTBaselineEditor is the unregularized control; FT_LAMBDA_ANCHOR "
+            "must be zero. Use the SSR editor with BIOCS_LAMBDA=0 for an "
+            "anchor-only control."
+        )
+
     data_path = DATASET_MAP[dataset_name]
     target_layers = None
     if os.environ.get("BIOCS_TARGET_LAYERS"):
@@ -424,15 +450,89 @@ def run_ft_method(dataset_name: str, n_edits: int, output_dir: str, model_name: 
         model_name=model_name,
         device="cuda",
         target_layers=target_layers,
-        lambda_anchor=float(os.environ.get("FT_LAMBDA_ANCHOR", "0.0")),
         lr=float(os.environ.get("FT_LR", "5e-4")),
         num_steps=int(os.environ.get("FT_NUM_STEPS", os.environ.get("BIOCS_NUM_STEPS", "25"))),
     )
-    dataset = KnowEditDataset(data_path, max_samples=n_edits)
+    dataset = KnowEditDataset(
+        data_path,
+        max_samples=n_edits,
+        offset=int(os.environ.get("KE_DATA_OFFSET", "0")),
+    )
 
     os.makedirs(output_dir, exist_ok=True)
     summary = run_sequential_editing(editor, dataset, n_edits, os.path.join(output_dir, "results.json"))
     return summary
+
+
+def write_run_manifest(args: argparse.Namespace) -> None:
+    """Persist the inputs that control editor construction for this run."""
+    output = Path(args.output)
+    output.mkdir(parents=True, exist_ok=True)
+    keys = [
+        "KE_SEED",
+        "BIOCS_LAMBDA",
+        "BIOCS_LAMBDA_SPECTRAL",
+        "BIOCS_LAMBDA_ANCHOR",
+        "BIOCS_KERNEL_FAMILY",
+        "BIOCS_A_EXC",
+        "BIOCS_A_INH",
+        "BIOCS_SIGMA_EXC",
+        "BIOCS_SIGMA_INH",
+        "BIOCS_TARGET",
+        "BIOCS_DISTANCE_METRIC",
+        "BIOCS_ROW_SELECTION",
+        "BIOCS_MAX_SPATIAL_ROWS",
+        "BIOCS_SAMPLER_SEED",
+        "BIOCS_TARGET_MODULE_REGEX",
+        "BIOCS_MAX_TARGET_MODULES",
+        "KE_DATA_OFFSET",
+        "KE_MODEL_DTYPE",
+        "KE_DEVICE_MAP",
+        "KE_FORCE_TEXT_ONLY",
+        "KE_LOCAL_ONLY",
+        "KE_ATTN_IMPLEMENTATION",
+        "KE_MOM2_N_SAMPLES",
+        "KE_MOM2_DATASET",
+        "KE_MOM2_DTYPE",
+        "KE_V_NUM_GRAD_STEPS",
+        "KE_V_LR",
+        "KE_STATS_DIR",
+        "KE_ALPHAEDIT_P_LOC",
+        "KE_MOM2_ADJUSTMENT",
+        "KE_LAYERS",
+        "BIOCS_LR",
+        "BIOCS_NUM_STEPS",
+        "BIOCS_TARGET_LAYERS",
+        "FT_LR",
+        "FT_NUM_STEPS",
+    ]
+    record = {
+        "command": vars(args),
+        "environment": {key: os.environ[key] for key in keys if key in os.environ},
+    }
+    method = args.method.upper()
+    if method in {"ROME", "MEMIT", "ALPHAEDIT"}:
+        hparams_folder = {"ROME": "ROME", "MEMIT": "MEMIT", "ALPHAEDIT": "AlphaEdit"}[method]
+        hparams_path = Path(args.hparams_dir) / hparams_folder / f"{args.hparams_model}.yaml"
+        record["hparams"] = {
+            "path": str(hparams_path),
+            "sha256": (
+                hashlib.sha256(hparams_path.read_bytes()).hexdigest()
+                if hparams_path.is_file()
+                else None
+            ),
+        }
+        try:
+            easyedit_commit = subprocess.run(
+                ["git", "-C", str(EASYEDIT_DIR), "rev-parse", "HEAD"],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip()
+        except (OSError, subprocess.CalledProcessError):
+            easyedit_commit = None
+        record["easyedit_git_commit"] = easyedit_commit
+    (output / "run_manifest.json").write_text(json.dumps(record, indent=2) + "\n")
 
 
 if __name__ == "__main__":
@@ -449,11 +549,32 @@ if __name__ == "__main__":
     parser.add_argument("--hparams_dir", type=str, default=HPARAMS_DIR,
                         help="Directory containing ROME/MEMIT/AlphaEdit hparams subdirectories.")
     parser.add_argument("--output", type=str, default=None)
+    parser.add_argument("--seed", type=int, default=None,
+                        help="Set KE_SEED for deterministic Python, NumPy, and PyTorch sampling.")
+    parser.add_argument("--biocs_lambda", type=float, default=None,
+                        help="Override BIOCS_LAMBDA for the SSR editor.")
+    parser.add_argument("--biocs_anchor", type=float, default=None,
+                        help="Override BIOCS_LAMBDA_ANCHOR for the SSR editor.")
+    parser.add_argument("--biocs_lr", type=float, default=None,
+                        help="Override BIOCS_LR for the SSR editor.")
+    parser.add_argument("--biocs_steps", type=int, default=None,
+                        help="Override BIOCS_NUM_STEPS for the SSR editor.")
     args = parser.parse_args()
+    cli_env = {
+        "KE_SEED": args.seed,
+        "BIOCS_LAMBDA": args.biocs_lambda,
+        "BIOCS_LAMBDA_ANCHOR": args.biocs_anchor,
+        "BIOCS_LR": args.biocs_lr,
+        "BIOCS_NUM_STEPS": args.biocs_steps,
+    }
+    for key, value in cli_env.items():
+        if value is not None:
+            os.environ[key] = str(value)
     set_seed_from_env()
 
     if args.output is None:
         args.output = f"results/llm_ke/{args.method.lower()}_{safe_tag(args.model_name)}_{args.dataset}_{args.n_edits}"
+    write_run_manifest(args)
 
     if args.method in ["ROME", "MEMIT", "AlphaEdit"]:
         run_easyedit_method(

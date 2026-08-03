@@ -1,0 +1,117 @@
+{
+  "cohort_assembly": "The source programs append to runs.jsonl. Seed 0 was already present when a later seeds-[1,2] invocation rewrote args.json and summary.json. The combined six selected rows are retained here; the stale two-seed summaries are intentionally excluded.",
+  "cohort_seeds": [
+    0,
+    1,
+    2
+  ],
+  "comparison": "base objective versus complete SSR+KD objective",
+  "configuration_evidence": {
+    "seed_0": "The exact seed-0 launch manifest was not recoverable from the available archive.",
+    "seeds_1_2": {
+      "base_invocation": {
+        "class_order": "semantic",
+        "classes_per_task": 10,
+        "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+        "cls_batch_size": 128,
+        "cls_epochs": 80,
+        "cls_lr": 0.001,
+        "cls_weight_decay": 0.001,
+        "data_root": "data/cub200",
+        "device": "cuda",
+        "feature_batch_size": 128,
+        "kd_temperature": 3.0,
+        "lambda_kd": 2.0,
+        "lambda_kd_seg": 1.0,
+        "lambda_sp": 0.1,
+        "max_classes": null,
+        "methods": [
+          "baseline",
+          "biocs_kd"
+        ],
+        "no_download": false,
+        "no_segmentation_cache": false,
+        "num_classes": 200,
+        "output_dir": "results/cub200_seg_seen_highres_20260429",
+        "seeds": [
+          1,
+          2
+        ],
+        "seg_batch_size": 24,
+        "seg_biocs_scope": "seen",
+        "seg_biocs_start_task": 0,
+        "seg_biocs_target": "class",
+        "seg_epochs": 24,
+        "seg_hidden_dim": 256,
+        "seg_image_size": 192,
+        "seg_lr": 0.0005,
+        "seg_weight_decay": 0.0001,
+        "segmentation_cache": null,
+        "tasks": [
+          "segmentation"
+        ],
+        "workers": 0
+      },
+      "ssr_kd_invocation": {
+        "class_order": "semantic",
+        "classes_per_task": 10,
+        "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+        "cls_batch_size": 128,
+        "cls_epochs": 80,
+        "cls_lr": 0.001,
+        "cls_weight_decay": 0.001,
+        "data_root": "data/cub200",
+        "device": "cuda",
+        "feature_batch_size": 128,
+        "kd_temperature": 3.0,
+        "lambda_kd": 2.0,
+        "lambda_kd_seg": 2.0,
+        "lambda_sp": 0.05,
+        "max_classes": null,
+        "methods": [
+          "biocs_kd"
+        ],
+        "no_download": false,
+        "no_segmentation_cache": false,
+        "num_classes": 200,
+        "output_dir": "results/cub200_seg_highres_lsp005_kd2_seed0_20260429",
+        "seeds": [
+          1,
+          2
+        ],
+        "seg_batch_size": 24,
+        "seg_biocs_scope": "seen",
+        "seg_biocs_start_task": 0,
+        "seg_biocs_target": "class",
+        "seg_epochs": 24,
+        "seg_hidden_dim": 256,
+        "seg_image_size": 192,
+        "seg_lr": 0.0005,
+        "seg_weight_decay": 0.0001,
+        "segmentation_cache": null,
+        "tasks": [
+          "segmentation"
+        ],
+        "workers": 0
+      }
+    }
+  },
+  "source_files": {
+    "base_args_seeds_1_2": {
+      "path": "raw/segmentation/base/args.json",
+      "sha256": "b162a9085128faa5a084c21a478ff74344a9086d3d81e9ddd05b2dcd48eba70a"
+    },
+    "base_runs": {
+      "path": "raw/segmentation/base/runs.jsonl",
+      "sha256": "bde8f5df3123df50ccc4720ae2440b8873276559c9c29f1c0259c270fe20306f"
+    },
+    "ssr_kd_args_seeds_1_2": {
+      "path": "raw/segmentation/ssr_kd/args.json",
+      "sha256": "e26a68d16368c073b4e014227a3a9fdaf99c8c45bd8c71b51fa65f30f9a233d7"
+    },
+    "ssr_kd_runs": {
+      "path": "raw/segmentation/ssr_kd/runs.jsonl",
+      "sha256": "a34ea5c97e2d29c5d3d16f06510205e344a3640a0494ea106d04cbddb984238b"
+    }
+  }
+}

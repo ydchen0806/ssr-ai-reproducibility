@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "release_id": "paper_20260803",
+  "method_name": "Spatial Synaptic Regularization (SSR)",
+  "historical_internal_key": "biocs",
+  "source": {
+    "repository": "private training workspace",
+    "git_commit": "eac221b68a9459a567b491ebc037d29109965640",
+    "commit_in_public_repository": false,
+    "paths_normalized": true
+  },
+  "integrity_file": "checksums.sha256",
+  "uncertainty": {
+    "classification": "mean and sample standard deviation over seeds",
+    "initial_adapter": "mean and standard error over three seeds",
+    "adapter_validation": "paired mean and 95% Student-t interval (df=9)",
+    "llm_nested": "paired mean and recorded normal-approximation 95% interval over ten locked seeds",
+    "mechanism": "paired mean and 95% Student-t interval (df=19)"
+  },
+  "classification_groups": [
+    {"id": "cub200_kd", "glob": "raw/classification/cub200_kd.jsonl", "format": "jsonl", "seeds": [3101, 3103, 3105, 3107, 3109]},
+    {"id": "cub200_ssr_kd", "glob": "raw/classification/cub200_ssr_kd.jsonl", "format": "jsonl", "seeds": [3101, 3103, 3105, 3107, 3109]},
+    {"id": "cub200_broad", "glob": "raw/classification/cub200_broad.jsonl", "format": "jsonl", "seeds": [3101, 3103, 3105, 3107, 3109]},
+    {"id": "cub200_narrow", "glob": "raw/classification/cub200_narrow.jsonl", "format": "jsonl", "seeds": [3101, 3103, 3105, 3107, 3109]},
+    {"id": "cub200_strong_inhibition", "glob": "raw/classification/cub200_strong_inhibition.jsonl", "format": "jsonl", "seeds": [3101, 3103, 3105, 3107, 3109]},
+    {"id": "cub200_weak_inhibition", "glob": "raw/classification/cub200_weak_inhibition.jsonl", "format": "jsonl", "seeds": [3101, 3103, 3105, 3107, 3109]},
+    {"id": "cifar100_kd", "glob": "raw/classification/cifar100_kd.jsonl", "format": "jsonl", "seeds": [6201, 6203, 6205, 6207, 6209, 6211, 6213, 6215, 6217, 6219, 6221, 6223, 6225, 6227, 6229]},
+    {"id": "cifar100_ssr_kd", "glob": "raw/classification/cifar100_ssr_kd.jsonl", "format": "jsonl", "seeds": [6201, 6203, 6205, 6207, 6209, 6211, 6213, 6215, 6217, 6219, 6221, 6223, 6225, 6227, 6229]},
+    {"id": "tinyimagenet_kd", "glob": "raw/classification/tinyimagenet_kd.jsonl", "format": "jsonl", "seeds": [2301, 2303, 2305, 2307, 2309]},
+    {"id": "tinyimagenet_ssr_kd", "glob": "raw/classification/tinyimagenet_ssr_kd.jsonl", "format": "jsonl", "seeds": [2301, 2303, 2305, 2307, 2309]},
+    {"id": "five_datasets_kd", "glob": "raw/classification/five_datasets_kd.jsonl", "format": "jsonl", "seeds": [3301, 3303, 3305, 3307, 3309]},
+    {"id": "five_datasets_ssr_kd", "glob": "raw/classification/five_datasets_ssr_kd.jsonl", "format": "jsonl", "seeds": [3301, 3303, 3305, 3307, 3309]},
+    {"id": "cifar10_kd", "glob": "raw/classification/cifar10_kd.jsonl", "format": "jsonl", "seeds": [4101, 4103, 4105, 4107, 4109, 4111, 4113, 4115, 4117, 4119]},
+    {"id": "cifar10_ssr_kd", "glob": "raw/classification/cifar10_ssr_kd.jsonl", "format": "jsonl", "seeds": [4101, 4103, 4105, 4107, 4109, 4111, 4113, 4115, 4117, 4119]}
+  ],
+  "context_baselines": {
+    "methods": ["lwf", "ewc", "mas", "si"],
+    "datasets": ["split_cifar10", "split_cifar100", "split_tinyimagenet", "5datasets"],
+    "seeds": [42, 123, 456],
+    "path": "raw/context_baselines/runs.jsonl",
+    "configs": "raw/context_baselines/configs.json"
+  },
+  "segmentation_groups": [
+    {"id": "cub_masks_base", "path": "raw/segmentation/runs.jsonl", "method": "baseline", "seeds": [0, 1, 2]},
+    {"id": "cub_masks_ssr_kd", "path": "raw/segmentation/runs.jsonl", "method": "biocs_kd", "seeds": [0, 1, 2]}
+  ],
+  "adapter_validation": {
+    "path": "raw/adapter/validation_runs.jsonl",
+    "configs": "raw/adapter/configs.json",
+    "seeds": [8411, 8413, 8415, 8417, 8419, 8421, 8423, 8425, 8427, 8429],
+    "conditions": [
+      [8, "gaussian_object_aware"], [8, "gaussian_all_cosine"],
+      [16, "gaussian_object_aware"], [16, "gaussian_all_cosine"],
+      [32, "gaussian_object_aware"], [32, "gaussian_all_cosine"],
+      [16, "gaussian_prototype_only"], [16, "gaussian_basis_projective"],
+      [16, "laplace_object_aware"], [16, "cauchy_object_aware"],
+      [16, "inverse_object_aware"]
+    ]
+  },
+  "llm_nested": {
+    "path": "raw/llm/validation_runs.jsonl",
+    "descriptive_path": "raw/llm/descriptive_runs.jsonl",
+    "datasets": ["zsre", "cf", "recent"],
+    "seeds": [8311, 8313, 8315, 8317, 8319, 8321, 8323, 8325, 8327, 8329],
+    "contrasts": [
+      {
+        "id": "full_vs_spectral_anchor",
+        "treatment": "full",
+        "control": "spectral_anchor"
+      },
+      {
+        "id": "ssr_only_vs_true_ft",
+        "treatment": "ssr_only",
+        "control": "true_ft"
+      }
+    ]
+  },
+  "mechanism": {
+    "csv": "raw/mechanism/CUB_MECHANISM_VALIDATION.csv",
+    "report": "raw/mechanism/ROLE_REPORT.json",
+    "taxonomy": "raw/mechanism/cub200_gbif_taxonomy_20260730.json",
+    "taxonomy_sha256": "151c1e90fc408042a182e14dd7ede720c100c4be8eb12111cfce20b33241adeb",
+    "validation_seeds": [9401, 9403, 9405, 9407, 9409, 9411, 9413, 9415, 9417, 9419, 9421, 9423, 9425, 9427, 9429, 9431, 9433, 9435, 9437, 9439],
+    "families": ["ssr", "center_component", "surround_component", "cosine_orthogonality", "prototype_decorrelation", "spectral"]
+  },
+  "not_verified": [
+    "The exploratory three-seed prototype-only and adapter-basis-only rows lack recoverable per-seed raw records.",
+    "Segmentation is a base-to-complete-objective comparison, not KD-only versus SSR+KD; the exact seed-0 launch manifest is also unavailable.",
+    "The selected ZsRE inverse condition is broader than the intended HWHM-matched control and cannot support HWHM-invariance claims.",
+    "The locked LLM nested intervals include zero and do not establish a resolved SSR-only increment.",
+    "The source workspace commit, full LLM dependency lock, model revision, EasyEdit revision, and OS build were not retained in the public bundle."
+  ]
+}

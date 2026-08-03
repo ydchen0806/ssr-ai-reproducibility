@@ -1,0 +1,91 @@
+{
+  "sha256": "cee87ad3949b06b1d70aeb6c73b8d388549f9d1a30be321bddb63df90286c498",
+  "selection": {
+    "selected": {
+      "ssr": {
+        "family": "ssr",
+        "method": "ssr_dynamic",
+        "strength": 0.01,
+        "center_hwhm": 0.1,
+        "surround_hwhm": 0.34,
+        "a_exc": 1.2,
+        "a_inh": 0.9
+      },
+      "center_component": {
+        "family": "center_component",
+        "method": "center_dynamic",
+        "strength": 0.01,
+        "center_hwhm": 0.1,
+        "surround_hwhm": 0.3,
+        "a_exc": 1.2,
+        "a_inh": 0.9
+      },
+      "surround_component": {
+        "family": "surround_component",
+        "method": "surround_dynamic",
+        "strength": 0.01,
+        "center_hwhm": 0.08,
+        "surround_hwhm": 0.22,
+        "a_exc": 1.2,
+        "a_inh": 0.9
+      },
+      "cosine_orthogonality": {
+        "family": "cosine_orthogonality",
+        "method": "cosine_orthogonal",
+        "strength": 0.3,
+        "center_hwhm": 0.08,
+        "surround_hwhm": 0.3,
+        "a_exc": 1.2,
+        "a_inh": 0.9
+      },
+      "prototype_decorrelation": {
+        "family": "prototype_decorrelation",
+        "method": "prototype_decorrelation",
+        "strength": 0.2,
+        "center_hwhm": 0.08,
+        "surround_hwhm": 0.3,
+        "a_exc": 1.2,
+        "a_inh": 0.9
+      },
+      "spectral": {
+        "family": "spectral",
+        "method": "spectral",
+        "strength": 0.001,
+        "center_hwhm": 0.08,
+        "surround_hwhm": 0.3,
+        "a_exc": 1.2,
+        "a_inh": 0.9
+      }
+    },
+    "selection_rule": "For each family, prefer positive mean AA and AF changes versus KD; then maximize the weaker endpoint, dual wins and endpoint sum. Mechanism metrics are not used.",
+    "equal_candidates_per_family": 12,
+    "development_seeds": [
+      9301,
+      9303,
+      9305
+    ],
+    "validation_seeds_hidden_during_selection": [
+      9401,
+      9403,
+      9405,
+      9407,
+      9409,
+      9411,
+      9413,
+      9415,
+      9417,
+      9419,
+      9421,
+      9423,
+      9425,
+      9427,
+      9429,
+      9431,
+      9433,
+      9435,
+      9437,
+      9439
+    ]
+  },
+  "locked_at": "2026-08-03T17:24:52+0800"
+}
