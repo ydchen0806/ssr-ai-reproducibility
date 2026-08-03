@@ -57,8 +57,8 @@ inventory is `result_manifest_partial.yaml`.
 
 ## Validation and deployment
 
-- Full local test suite: `91 passed`; the committed revision is also validated
-  in the isolated cluster checkout before launch.
+- Full local and isolated-cluster test suites: `91 passed`; the cluster run
+  emitted one upstream `pynvml` deprecation warning.
 - Shell syntax, Python bytecode compilation, manifest validation, result
   aggregation and staged Figure 4/5 generation pass.
 - Isolated remote checkout:
