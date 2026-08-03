@@ -10,6 +10,9 @@ model:
 
 method:
   name: kd
+  teacher_mode: locked_kd_trajectory
+  teacher_model: resnet18
+  teacher_dataset: split_cifar100
   lambda_kd: 5.0
   temperature: 2.0
   lambda_ewc: 400.0
@@ -38,3 +41,4 @@ training:
   grad_clip: 5.0
   use_amp: true
   num_workers: 4
+  save_final_model: false

@@ -116,6 +116,11 @@ def write_result_record(
         config=config_payload,
         dataset_hash=dataset_hash,
         recipe=recipe,
+        selection_lock_hash=(
+            args.selection_lock_sha256
+            if row["task"] == "segmentation"
+            else "not_applicable"
+        ),
         lambda_ssr=float(args.lambda_sp) if uses_ssr else 0.0,
         metric_directions={
             "mean_iou": True,
@@ -858,6 +863,7 @@ def main() -> None:
     p.add_argument("--segmentation_cache", default=None)
     p.add_argument("--segmentation_source_sha256", default=None)
     p.add_argument("--segmentation_cache_sha256", default=None)
+    p.add_argument("--selection_lock_sha256", default="development_screen")
     p.add_argument("--tasks", nargs="+", choices=["classification", "segmentation"], default=["classification", "segmentation"])
     p.add_argument("--methods", nargs="+", default=["baseline", "l2", "biocs", "biocs_kd"])
     p.add_argument("--seeds", nargs="+", type=int, default=[0, 1, 2])

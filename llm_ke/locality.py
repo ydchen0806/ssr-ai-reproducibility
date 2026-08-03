@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 from collections.abc import Callable, Iterator, Mapping
 from typing import Any
 
@@ -11,6 +13,47 @@ from typing import Any
 # changing the meaning of existing locality numbers.
 LOCALITY_EVALUATOR = "custom_substring_any_ground_truth_all_items"
 LOCALITY_EVALUATOR_VERSION = "1.0"
+LOCALITY_PROTOCOL_SPEC = {
+    "normalization": {
+        "mapping_key_precedence": ["str", "text", "answer", "label", "name"],
+        "nested_answers": "recursive_flatten_nonempty",
+        "prompt_list": "first_item",
+    },
+    "items": "all_mapping_groups_in_source_order",
+    "valid_item": "mapping_with_nonempty_prompt_and_ground_truth_field",
+    "match": "case_insensitive_ground_truth_substring_of_generated_continuation",
+    "edit_aggregation": "mean_over_valid_items_empty_is_zero",
+    "run_aggregation": "mean_over_successful_edits_times_100",
+    "history_aggregation": "reevaluate_same_successful_items_mean_times_100",
+}
+LOCALITY_PROTOCOL_HASH = hashlib.sha256(
+    json.dumps(
+        LOCALITY_PROTOCOL_SPEC,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+    ).encode("utf-8")
+).hexdigest()
+
+
+def assert_legacy_compatible_locality(locality: Any) -> None:
+    """Reject input shapes on which the locked legacy evaluator behaved differently."""
+    if not isinstance(locality, Mapping):
+        raise ValueError("locality must be a mapping for legacy-compatible evaluation")
+    for group, items in locality.items():
+        if not isinstance(items, list):
+            raise ValueError(f"locality group {group!r} must contain a list")
+        for item_index, item in enumerate(items):
+            if not isinstance(item, Mapping):
+                raise ValueError(
+                    f"locality item {group!r}[{item_index}] must be a mapping"
+                )
+            if "prompt" in item and "ground_truth" in item and not normalize_text(
+                item["prompt"]
+            ):
+                raise ValueError(
+                    f"locality item {group!r}[{item_index}] has an empty prompt"
+                )
 
 
 def normalize_text(value: Any) -> str:

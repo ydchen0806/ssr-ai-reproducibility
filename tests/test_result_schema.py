@@ -34,6 +34,9 @@ def example_record(**overrides):
         "status": "complete",
         "evaluator": "custom_substring_any_ground_truth_all_items",
         "evaluator_version": "1.0",
+        "evaluation_protocol_hash": "a" * 64,
+        "model_hash": "b" * 64,
+        "pairing_protocol_hash": "c" * 64,
     }
     values.update(overrides)
     return build_result_record(**values)

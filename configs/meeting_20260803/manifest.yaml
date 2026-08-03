@@ -15,10 +15,31 @@ cohorts:
     recipes: [plain, anchor, spectral, stabilized, ssr_only, full]
     mappings: [cosine, projective]
     mapping_dependent_recipes: [ssr_only, full]
-    paired_identity: [dataset, model, seed, data_offset, n_edits, dataset_hash]
+    paired_identity:
+      - dataset
+      - model
+      - seed
+      - data_offset
+      - n_edits
+      - dataset_hash
+      - evaluator
+      - evaluator_version
+      - evaluation_protocol_hash
+      - model_hash
+      - pairing_protocol_hash
     development_seeds: [9301, 9303]
     confirmation_seeds: [9311, 9313, 9315, 9317, 9319, 9321, 9323, 9325, 9327, 9329]
     n_edits: 100
+    data_offset: 500
+    cohort_invariants:
+      - dataset_hash
+      - evaluator
+      - evaluator_version
+      - evaluation_protocol_hash
+      - model_hash
+      - pairing_protocol_hash
+    required_metrics: [efficacy, locality]
+    required_runtime: [elapsed_s, peak_cuda_allocated_mb, peak_cuda_reserved_mb]
     primary_contrasts:
       - [ssr_only, plain]
       - [full, stabilized]
@@ -33,9 +54,27 @@ cohorts:
     recipes: [kd, kd_ewc, kd_mas, kd_si, kd_ssr]
     mappings: [cosine]
     mapping_dependent_recipes: [kd_ssr]
-    paired_identity: [dataset, model, seed, dataset_hash, pairing_hash]
+    paired_identity:
+      - dataset
+      - model
+      - seed
+      - dataset_hash
+      - pairing_hash
+      - teacher_protocol
+      - teacher_trajectory_hash
     confirmation_seeds: [3101, 3103, 3105, 3107, 3109]
     common_scaffold: kd
+    cohort_invariants: [dataset_hash, teacher_protocol]
+    required_metrics:
+      - avg_accuracy
+      - last_accuracy
+      - avg_forgetting
+      - backward_transfer
+      - cil_avg_accuracy
+      - cil_last_accuracy
+      - effective_rank
+      - prototype_overlap
+    required_runtime: [elapsed_s, peak_cuda_allocated_mb, peak_cuda_reserved_mb]
     primary_contrasts:
       - [kd_ewc, kd]
       - [kd_mas, kd]
@@ -49,9 +88,12 @@ cohorts:
     recipes: [plain, kd, ssr_only, ssr_kd]
     mappings: [cosine]
     mapping_dependent_recipes: [ssr_only, ssr_kd]
-    paired_identity: [dataset, model, seed, dataset_hash]
+    paired_identity: [dataset, model, seed, dataset_hash, selection_lock_hash]
     development_seeds: [9101, 9103, 9105]
     confirmation_seeds: [9201, 9203, 9205, 9207, 9209, 9211, 9213, 9215, 9217, 9219]
+    cohort_invariants: [dataset_hash, selection_lock_hash]
+    required_metrics: [mean_iou, mean_dice, avg_forgetting_iou]
+    required_runtime: [elapsed_s]
     primary_contrasts:
       - [ssr_kd, kd]
       - [ssr_only, plain]

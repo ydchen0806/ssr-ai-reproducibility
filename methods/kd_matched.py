@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import copy
+import hashlib
+import json
 import logging
+from pathlib import Path
 
 import torch
 import torch.nn as nn
@@ -12,6 +15,7 @@ from torch.utils.data import DataLoader
 
 from .base import BaseContinualLearner
 from .bioreg import compute_spatial_biocs
+from ssr_utils.teacher_trajectory import TEACHER_PROTOCOL
 
 
 logger = logging.getLogger(__name__)
@@ -55,6 +59,19 @@ class KDMatched(BaseContinualLearner):
         self.fisher_samples = int(config.get("fisher_samples", 2000))
         self.importance_samples = int(config.get("importance_samples", 2000))
         self.xi = float(config.get("xi", 0.1))
+        self.teacher_mode = str(config.get("teacher_mode", "self_previous")).lower()
+        if self.teacher_mode not in {"self_previous", "locked_kd_trajectory"}:
+            raise ValueError(
+                "teacher_mode must be 'self_previous' or 'locked_kd_trajectory'"
+            )
+        teacher_root = config.get("teacher_checkpoint_root")
+        if self.teacher_mode == "locked_kd_trajectory" and not teacher_root:
+            raise ValueError(
+                "locked_kd_trajectory requires method.teacher_checkpoint_root"
+            )
+        self.teacher_checkpoint_root = Path(teacher_root).resolve() if teacher_root else None
+        self.teacher_dataset = str(config.get("teacher_dataset", "unknown"))
+        self.teacher_model = str(config.get("teacher_model", "resnet18"))
 
         self.a_exc = float(config.get("A_exc", 1.0))
         self.a_inh = float(config.get("A_inh", 0.8))
@@ -78,11 +95,130 @@ class KDMatched(BaseContinualLearner):
         targets = config.get("ssr_targets", ["classifier"])
         self._ssr_layers = linears[-1:] if "classifier" in set(targets) else linears
         logger.info(
-            "KDMatched | regularizer=%s lambda_kd=%s T=%s",
+            "KDMatched | regularizer=%s lambda_kd=%s T=%s teacher_mode=%s",
             self.regularizer,
             self.lambda_kd,
             self.temperature,
+            self.teacher_mode,
         )
+
+    @staticmethod
+    def _sha256_file(path: Path) -> str:
+        digest = hashlib.sha256()
+        with path.open("rb") as handle:
+            while chunk := handle.read(1024 * 1024):
+                digest.update(chunk)
+        return digest.hexdigest()
+
+    def _teacher_manifest_path(self) -> Path:
+        if self.teacher_checkpoint_root is None:
+            raise RuntimeError("teacher checkpoint root is not configured")
+        return self.teacher_checkpoint_root / "manifest.json"
+
+    def _load_teacher_manifest(self) -> dict:
+        path = self._teacher_manifest_path()
+        if not path.is_file():
+            raise FileNotFoundError(f"Locked KD teacher manifest is missing: {path}")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        expected = {
+            "protocol": TEACHER_PROTOCOL,
+            "seed": self._run_seed,
+            "dataset": self.teacher_dataset,
+            "model": self.teacher_model,
+        }
+        mismatches = {
+            key: {"expected": value, "observed": payload.get(key)}
+            for key, value in expected.items()
+            if payload.get(key) != value
+        }
+        if mismatches:
+            raise RuntimeError(
+                f"Locked KD teacher manifest identity mismatch: {mismatches}"
+            )
+        return payload
+
+    def _load_locked_teacher(self, previous_task: int) -> None:
+        manifest = self._load_teacher_manifest()
+        entries = {
+            int(entry["task_id"]): entry for entry in manifest.get("checkpoints", [])
+        }
+        if previous_task not in entries:
+            raise RuntimeError(
+                f"Locked KD teacher manifest lacks task {previous_task}: "
+                f"{self._teacher_manifest_path()}"
+            )
+        entry = entries[previous_task]
+        checkpoint = self.teacher_checkpoint_root / entry["file"]
+        observed_hash = self._sha256_file(checkpoint)
+        if observed_hash != entry["sha256"]:
+            raise RuntimeError(
+                f"Locked KD teacher checkpoint hash mismatch for {checkpoint}: "
+                f"expected {entry['sha256']}, observed {observed_hash}"
+            )
+        payload = torch.load(checkpoint, map_location=self.device, weights_only=True)
+        teacher = copy.deepcopy(self.model)
+        teacher.load_state_dict(payload["model_state_dict"], strict=True)
+        teacher.eval()
+        for parameter in teacher.parameters():
+            parameter.requires_grad_(False)
+        self.teacher = teacher
+
+    def _save_locked_teacher(self, task_id: int) -> None:
+        if self.teacher_checkpoint_root is None:
+            raise RuntimeError("teacher checkpoint root is not configured")
+        self.teacher_checkpoint_root.mkdir(parents=True, exist_ok=True)
+        checkpoint = self.teacher_checkpoint_root / f"task_{task_id:02d}.pt"
+        checkpoint_tmp = checkpoint.with_suffix(checkpoint.suffix + ".tmp")
+        torch.save(
+            {
+                "protocol": TEACHER_PROTOCOL,
+                "task_id": int(task_id),
+                "seed": self._run_seed,
+                "dataset": self.teacher_dataset,
+                "model": self.teacher_model,
+                "model_state_dict": self.model.state_dict(),
+            },
+            checkpoint_tmp,
+        )
+        checkpoint_tmp.replace(checkpoint)
+        entry = {
+            "task_id": int(task_id),
+            "file": checkpoint.name,
+            "sha256": self._sha256_file(checkpoint),
+        }
+        manifest_path = self._teacher_manifest_path()
+        if manifest_path.is_file():
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        else:
+            manifest = {
+                "protocol": TEACHER_PROTOCOL,
+                "seed": self._run_seed,
+                "dataset": self.teacher_dataset,
+                "model": self.teacher_model,
+                "checkpoints": [],
+            }
+        entries = {
+            int(item["task_id"]): item for item in manifest.get("checkpoints", [])
+        }
+        entries[int(task_id)] = entry
+        manifest["checkpoints"] = [entries[index] for index in sorted(entries)]
+        manifest_tmp = manifest_path.with_suffix(manifest_path.suffix + ".tmp")
+        manifest_tmp.write_text(
+            json.dumps(manifest, sort_keys=True, indent=2) + "\n", encoding="utf-8"
+        )
+        manifest_tmp.replace(manifest_path)
+
+    def teacher_trajectory_identity(self) -> dict[str, str]:
+        if self.teacher_mode == "self_previous":
+            return {"protocol": "self_previous", "sha256": "self_previous"}
+        manifest = self._load_teacher_manifest()
+        canonical = json.dumps(
+            manifest, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+        )
+        return {
+            "protocol": TEACHER_PROTOCOL,
+            "sha256": hashlib.sha256(canonical.encode("utf-8")).hexdigest(),
+        }
 
     def _kd_loss(self, logits: torch.Tensor, x: torch.Tensor) -> torch.Tensor:
         if self.teacher is None or self.lambda_kd <= 0:
@@ -144,6 +280,10 @@ class KDMatched(BaseContinualLearner):
         self._task_train_set = train_set
         self._run_seed = int(training_config.get("run_seed", 0))
         self._task_id = int(task_id)
+        if self.teacher_mode == "locked_kd_trajectory":
+            self.teacher = None
+            if task_id > 0:
+                self._load_locked_teacher(task_id - 1)
         if self.regularizer == "si":
             self._init_params = {
                 name: parameter.detach().clone()
@@ -263,7 +403,12 @@ class KDMatched(BaseContinualLearner):
                 for name, parameter in self.model.named_parameters()
                 if parameter.requires_grad
             }
-        self.teacher = copy.deepcopy(self.model)
-        self.teacher.eval()
-        for parameter in self.teacher.parameters():
-            parameter.requires_grad_(False)
+        if self.teacher_mode == "locked_kd_trajectory":
+            if self.regularizer == "none":
+                self._save_locked_teacher(task_id)
+            self.teacher = None
+        else:
+            self.teacher = copy.deepcopy(self.model)
+            self.teacher.eval()
+            for parameter in self.teacher.parameters():
+                parameter.requires_grad_(False)

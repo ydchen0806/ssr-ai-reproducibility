@@ -20,6 +20,8 @@ def test_fairness_checker_accepts_complete_same_scaffold(tmp_path):
                     "objective": {"kd": True},
                     "dataset_hash": "data",
                     "pairing_hash": "same",
+                    "teacher_protocol": "locked_kd_only_trajectory_v1",
+                    "teacher_trajectory_hash": "a" * 64,
                 }
             ),
             encoding="utf-8",
@@ -41,6 +43,8 @@ def test_fairness_checker_rejects_missing_method(tmp_path):
                 "objective": {"kd": True},
                 "dataset_hash": "data",
                 "pairing_hash": "same",
+                "teacher_protocol": "locked_kd_only_trajectory_v1",
+                "teacher_trajectory_hash": "a" * 64,
             }
         ),
         encoding="utf-8",

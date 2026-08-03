@@ -16,12 +16,26 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from ssr_utils.result_schema import build_result_record
+from ssr_utils.editing_protocol import (
+    EDITING_PAIRING_PROTOCOL_HASH,
+    GPT2_XL_MODEL_HASH,
+    KNOWEDIT_DATASET_FILES,
+)
+from llm_ke.locality import (
+    LOCALITY_EVALUATOR,
+    LOCALITY_EVALUATOR_VERSION,
+    LOCALITY_PROTOCOL_HASH,
+)
 
 
 DATASET_HASHES = {
-    "zsre": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
-    "cf": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
-    "recent": "e5c4ce6de1e8e2d10d892164ad6f4cbd28c976ed509e29e78ae853b01de1797b",
+    name: specification["sha256"]
+    for name, specification in KNOWEDIT_DATASET_FILES.items()
+}
+LEGACY_EVALUATOR_SOURCE = {
+    "git_commit": "adb8d66",
+    "git_blob": "863690b006eb639563dad987dda7c4727b1779e9",
+    "evaluate_edit_sha256": "4a1a851d26b066164ac48a5a7db3967db27046bfb864341637883a902e63ce64",
 }
 CONDITIONS = {
     "true_ft_control": ("plain", {"task": True}),
@@ -129,6 +143,7 @@ def import_one(
     }
     raw_config["legacy_source_fingerprint"] = source_fingerprint
     raw_config["legacy_results_sha256"] = file_sha256(raw_path)
+    raw_config["legacy_evaluator_source"] = LEGACY_EVALUATOR_SOURCE
 
     record = build_result_record(
         git_commit=f"legacy-source-fingerprint:{source_fingerprint}",
@@ -156,8 +171,11 @@ def import_one(
         succeeded=succeeded,
         failed=failed,
         status=status,
-        evaluator="legacy_custom_substring_any_ground_truth_all_items",
-        evaluator_version="2026-08-03-locked",
+        evaluator=LOCALITY_EVALUATOR,
+        evaluator_version=LOCALITY_EVALUATOR_VERSION,
+        evaluation_protocol_hash=LOCALITY_PROTOCOL_HASH,
+        model_hash=GPT2_XL_MODEL_HASH,
+        pairing_protocol_hash=EDITING_PAIRING_PROTOCOL_HASH,
         metric_directions={metric: True for metric in metrics},
         imported_from=str(raw_path),
         imported_results_sha256=raw_config["legacy_results_sha256"],

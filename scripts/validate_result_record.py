@@ -22,6 +22,7 @@ def validate_identity(
     *,
     expected_git_commit: str | None = None,
     allow_legacy_git: bool = False,
+    required_sha256_fields: tuple[str, ...] = (),
 ) -> dict[str, Any]:
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
@@ -44,6 +45,14 @@ def validate_identity(
                 f"Result git_commit mismatch for {path}: expected {expected_git_commit}, "
                 f"observed {record['git_commit']}"
             )
+    for field in required_sha256_fields:
+        value = record.get(field)
+        if (
+            not isinstance(value, str)
+            or len(value) != 64
+            or any(character not in "0123456789abcdef" for character in value)
+        ):
+            raise ResultSchemaError(f"Result field {field!r} must be a lowercase SHA256")
     return record
 
 
@@ -58,8 +67,15 @@ def main() -> None:
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--data-offset", type=int)
     parser.add_argument("--n-edits", type=int)
+    parser.add_argument("--evaluator")
+    parser.add_argument("--evaluator-version")
+    parser.add_argument("--evaluation-protocol-hash")
+    parser.add_argument("--model-hash")
+    parser.add_argument("--pairing-protocol-hash")
+    parser.add_argument("--teacher-protocol")
     parser.add_argument("--expected-git-commit")
     parser.add_argument("--allow-legacy-git", action="store_true")
+    parser.add_argument("--require-sha256-field", action="append", default=[])
     args = parser.parse_args()
     expected = {
         "task_family": args.task_family,
@@ -70,6 +86,12 @@ def main() -> None:
         "seed": args.seed,
         "data_offset": args.data_offset,
         "n_edits": args.n_edits,
+        "evaluator": args.evaluator,
+        "evaluator_version": args.evaluator_version,
+        "evaluation_protocol_hash": args.evaluation_protocol_hash,
+        "model_hash": args.model_hash,
+        "pairing_protocol_hash": args.pairing_protocol_hash,
+        "teacher_protocol": args.teacher_protocol,
     }
     try:
         validate_identity(
@@ -77,6 +99,7 @@ def main() -> None:
             expected,
             expected_git_commit=args.expected_git_commit,
             allow_legacy_git=args.allow_legacy_git,
+            required_sha256_fields=tuple(args.require_sha256_field),
         )
     except ResultSchemaError as error:
         parser.exit(1, f"invalid result record: {error}\n")

@@ -55,6 +55,9 @@ def _valid_record(*, value: float = 31.0) -> dict:
         status="complete",
         evaluator="test-evaluator",
         evaluator_version="1",
+        evaluation_protocol_hash="a" * 64,
+        model_hash="b" * 64,
+        pairing_protocol_hash="c" * 64,
     )
 
 
@@ -108,6 +111,20 @@ def test_read_records_rejects_conflicting_copies_of_same_cell(tmp_path):
     assert str(paths[0]) in message
     assert str(paths[1]) in message
     assert "metrics" in message
+
+
+def test_read_records_enforces_cohort_metric_contract(tmp_path):
+    path = tmp_path / "run" / "result_record.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(_valid_record()), encoding="utf-8")
+    plan = _editing_plan()
+    plan["cohorts"]["editing"]["required_metrics"] = ["efficacy", "locality"]
+    plan["cohorts"]["editing"]["required_runtime"] = ["elapsed_s"]
+
+    with pytest.raises(ValueError, match="cohort metric contract") as error:
+        read_records(tmp_path, plan)
+
+    assert "efficacy" in str(error.value)
 
 
 def test_aggregation_excludes_development_and_reports_missing_confirm_seed():
@@ -177,6 +194,102 @@ def test_pairing_does_not_join_different_edit_prefixes():
 
     assert summaries == []
     assert exclusions
+
+
+def test_aggregation_rejects_fixed_edit_count_drift():
+    plan = {
+        "cohorts": {
+            "editing": {
+                "task_family": "editing",
+                "datasets": ["zsre"],
+                "model": "gpt2-xl",
+                "recipes": ["plain", "ssr_only"],
+                "mappings": ["cosine"],
+                "mapping_dependent_recipes": ["ssr_only"],
+                "paired_identity": ["dataset", "model", "seed", "n_edits"],
+                "confirmation_seeds": [11, 13],
+                "n_edits": 100,
+                "primary_contrasts": [["ssr_only", "plain"]],
+            }
+        }
+    }
+    records = [
+        _record(recipe, seed, 30.0, "cosine" if recipe == "ssr_only" else "none")
+        for seed in (11, 13)
+        for recipe in ("plain", "ssr_only")
+    ]
+    records[-1]["n_edits"] = 5
+
+    with pytest.raises(ValueError, match="requires n_edits=100"):
+        paired_contrasts(plan, records)
+
+
+def test_aggregation_rejects_mixed_cohort_provenance():
+    plan = {
+        "cohorts": {
+            "editing": {
+                "task_family": "editing",
+                "datasets": ["zsre"],
+                "model": "gpt2-xl",
+                "recipes": ["plain", "ssr_only"],
+                "mappings": ["cosine"],
+                "mapping_dependent_recipes": ["ssr_only"],
+                "paired_identity": [
+                    "dataset", "model", "seed", "pairing_protocol_hash"
+                ],
+                "cohort_invariants": ["pairing_protocol_hash"],
+                "confirmation_seeds": [11, 13],
+                "primary_contrasts": [["ssr_only", "plain"]],
+            }
+        }
+    }
+    records = []
+    for seed, protocol in ((11, "a" * 64), (13, "b" * 64)):
+        for recipe in ("plain", "ssr_only"):
+            row = _record(
+                recipe,
+                seed,
+                30.0,
+                "cosine" if recipe == "ssr_only" else "none",
+            )
+            row["pairing_protocol_hash"] = protocol
+            records.append(row)
+
+    with pytest.raises(ValueError, match="mixes provenance"):
+        paired_contrasts(plan, records)
+
+
+def test_aggregation_rejects_multiple_complete_protocols_per_seed():
+    plan = {
+        "cohorts": {
+            "editing": {
+                "task_family": "editing",
+                "datasets": ["zsre"],
+                "model": "gpt2-xl",
+                "recipes": ["plain", "ssr_only"],
+                "mappings": ["cosine"],
+                "mapping_dependent_recipes": ["ssr_only"],
+                "paired_identity": ["dataset", "model", "seed", "pairing_hash"],
+                "confirmation_seeds": [11, 13],
+                "primary_contrasts": [["ssr_only", "plain"]],
+            }
+        }
+    }
+    records = []
+    for seed in (11, 13):
+        for pairing_hash in ("protocol-a", "protocol-b"):
+            for recipe in ("plain", "ssr_only"):
+                row = _record(
+                    recipe,
+                    seed,
+                    30.0,
+                    "cosine" if recipe == "ssr_only" else "none",
+                )
+                row["pairing_hash"] = pairing_hash
+                records.append(row)
+
+    with pytest.raises(ValueError, match="ambiguous paired protocols"):
+        paired_contrasts(plan, records)
 
 
 def test_kd_ssr_cosine_treatment_pairs_with_mapping_free_kd_control():

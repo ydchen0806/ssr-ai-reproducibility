@@ -25,6 +25,7 @@ if str(PROJECT_DIR) not in sys.path:
 os.chdir(PROJECT_DIR)
 
 from llm_ke.locality import (
+    LOCALITY_PROTOCOL_HASH,
     first_locality_item,
     normalize_text,
     normalize_text_list,
@@ -693,6 +694,12 @@ def write_run_manifest(
         "KE_DEVICE_MAP",
         "KE_FORCE_TEXT_ONLY",
         "KE_LOCAL_ONLY",
+        "KE_MODEL_FINGERPRINT",
+        "KE_PAIRING_PROTOCOL_HASH",
+        "KE_EXPECTED_LOCALITY_EVALUATOR",
+        "KE_EXPECTED_LOCALITY_EVALUATOR_VERSION",
+        "KE_EXPECTED_LOCALITY_PROTOCOL_HASH",
+        "KE_REQUIRE_LEGACY_LOCALITY_COMPATIBLE",
         "KE_ATTN_IMPLEMENTATION",
         "KE_MOM2_N_SAMPLES",
         "KE_MOM2_DATASET",
@@ -753,7 +760,12 @@ def write_result_record(
 ) -> Path:
     """Write the task-independent sidecar consumed by paired aggregation."""
     sys.path.insert(0, str(PROJECT_DIR))
-    from ssr_utils.result_schema import ResultSchemaError, build_result_record, sha256_file
+    from ssr_utils.result_schema import (
+        ResultSchemaError,
+        build_result_record,
+        sha256_file,
+        sha256_value,
+    )
 
     if args.method == "biocs":
         config = resolved_editing_config or resolve_biocs_run_config(args)
@@ -815,6 +827,34 @@ def write_result_record(
         )
     evaluator = str(summary.get("locality_evaluator", ""))
     evaluator_version = str(summary.get("locality_evaluator_version", ""))
+    evaluation_protocol_hash = str(
+        summary.get("locality_evaluator_protocol_hash", LOCALITY_PROTOCOL_HASH)
+    )
+    expected_evaluator = os.environ.get("KE_EXPECTED_LOCALITY_EVALUATOR")
+    expected_evaluator_version = os.environ.get(
+        "KE_EXPECTED_LOCALITY_EVALUATOR_VERSION"
+    )
+    expected_protocol_hash = os.environ.get("KE_EXPECTED_LOCALITY_PROTOCOL_HASH")
+    observed_protocol = (evaluator, evaluator_version, evaluation_protocol_hash)
+    expected_protocol = (
+        expected_evaluator or evaluator,
+        expected_evaluator_version or evaluator_version,
+        expected_protocol_hash or evaluation_protocol_hash,
+    )
+    if observed_protocol != expected_protocol:
+        raise ResultSchemaError(
+            "Locality evaluator does not match the locked protocol: "
+            f"observed={observed_protocol!r}, expected={expected_protocol!r}"
+        )
+    model_hash = os.environ.get("KE_MODEL_FINGERPRINT") or sha256_value(
+        {"model_reference": str(args.model_name)}
+    )
+    pairing_protocol_hash = os.environ.get("KE_PAIRING_PROTOCOL_HASH") or sha256_value(
+        {
+            "run_manifest": config_payload,
+            "evaluation_protocol_hash": evaluation_protocol_hash,
+        }
+    )
     is_complete = completion["status"] == "complete"
     record = build_result_record(
         git_commit=current_git_commit(),
@@ -846,6 +886,9 @@ def write_result_record(
         metric_directions={key: True for key in metrics},
         evaluator=evaluator,
         evaluator_version=evaluator_version,
+        evaluation_protocol_hash=evaluation_protocol_hash,
+        model_hash=model_hash,
+        pairing_protocol_hash=pairing_protocol_hash,
     )
     result_manifest = getattr(args, "result_manifest", None)
     path = Path(result_manifest) if result_manifest else Path(args.output) / "result_record.json"

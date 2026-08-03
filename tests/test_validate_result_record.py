@@ -67,3 +67,13 @@ def test_identity_validator_allows_explicit_legacy_provenance(tmp_path):
         expected_git_commit="current",
         allow_legacy_git=True,
     )
+
+
+def test_identity_validator_can_require_a_sha256_field(tmp_path):
+    path = _record(tmp_path)
+    with pytest.raises(ResultSchemaError, match="teacher_trajectory_hash"):
+        validate_identity(
+            path,
+            {"seed": 7},
+            required_sha256_fields=("teacher_trajectory_hash",),
+        )

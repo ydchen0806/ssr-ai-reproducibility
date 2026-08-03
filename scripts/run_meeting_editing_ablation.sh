@@ -47,9 +47,9 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
   exit 2
 fi
 git_commit="$(git -C "$PROJECT_ROOT" rev-parse HEAD)"
-if [[ "$DRY_RUN" != "1" && -n "$(git -C "$PROJECT_ROOT" status --porcelain --untracked-files=no)" ]]; then
-  printf 'Formal editing runs require a clean tracked worktree.\n' >&2
-  exit 2
+if [[ "$DRY_RUN" != "1" ]]; then
+  "$PYTHON" "$PROJECT_ROOT/scripts/check_experiment_worktree.py" \
+    --project-root "$PROJECT_ROOT"
 fi
 if [[ "$PHASE" != "confirm" && "$PHASE" != "screen" ]]; then
   printf 'Unsupported phase %q; choose confirm or screen.\n' "$PHASE" >&2
@@ -145,6 +145,11 @@ canonical_model="$(yaml_value model.name)"
 lambda_ssr="$(yaml_value objective.lambda_ssr)"
 lambda_anchor="$(yaml_value objective.lambda_anchor)"
 lambda_spectral="$(yaml_value objective.lambda_spectral)"
+model_hash="$(yaml_value model.fingerprint_sha256)"
+evaluator="$(yaml_value evaluation.name)"
+evaluator_version="$(yaml_value evaluation.version)"
+evaluation_protocol_hash="$(yaml_value evaluation.protocol_sha256)"
+pairing_protocol_hash="$(yaml_value pairing.protocol_sha256)"
 
 export BIOCS_KERNEL_FAMILY="$(yaml_value kernel.family)"
 export BIOCS_A_EXC="$(yaml_value kernel.a_exc)"
@@ -162,6 +167,12 @@ export FT_NUM_STEPS="$BIOCS_NUM_STEPS"
 export KE_DATA_OFFSET="$data_offset"
 export KE_FORCE_TEXT_ONLY="$(yaml_value model.force_text_only)"
 export KE_LOCAL_ONLY="$(yaml_value model.local_files_only)"
+export KE_MODEL_FINGERPRINT="$model_hash"
+export KE_PAIRING_PROTOCOL_HASH="$pairing_protocol_hash"
+export KE_EXPECTED_LOCALITY_EVALUATOR="$evaluator"
+export KE_EXPECTED_LOCALITY_EVALUATOR_VERSION="$evaluator_version"
+export KE_EXPECTED_LOCALITY_PROTOCOL_HASH="$evaluation_protocol_hash"
+export KE_REQUIRE_LEGACY_LOCALITY_COMPATIBLE="$(yaml_value evaluation.require_legacy_compatible_input)"
 
 mkdir -p "$RESULT_ROOT"
 plan_file="$RESULT_ROOT/planned_runs.tsv"
@@ -192,6 +203,11 @@ validate_record() {
     --seed "$seed"
     --data-offset "$data_offset"
     --n-edits "$n_edits"
+    --evaluator "$evaluator"
+    --evaluator-version "$evaluator_version"
+    --evaluation-protocol-hash "$evaluation_protocol_hash"
+    --model-hash "$model_hash"
+    --pairing-protocol-hash "$pairing_protocol_hash"
     --expected-git-commit "$git_commit"
   )
   if [[ "$allow_legacy" == "1" ]]; then

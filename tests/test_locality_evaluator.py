@@ -9,7 +9,9 @@ import torch
 from llm_ke.biocs_editor import run_sequential_editing
 from llm_ke.locality import (
     LOCALITY_EVALUATOR,
+    LOCALITY_PROTOCOL_HASH,
     LOCALITY_EVALUATOR_VERSION,
+    assert_legacy_compatible_locality,
     evaluate_locality,
 )
 from ssr_utils.result_schema import ResultSchemaError
@@ -24,6 +26,18 @@ def test_empty_locality_preserves_historical_zero_and_records_no_items():
     assert result["n_matched"] == 0
     assert result["evaluator"] == LOCALITY_EVALUATOR
     assert result["evaluator_version"] == LOCALITY_EVALUATOR_VERSION
+    assert len(LOCALITY_PROTOCOL_HASH) == 64
+
+
+def test_formal_protocol_rejects_shapes_the_legacy_evaluator_did_not_support():
+    with pytest.raises(ValueError, match="must contain a list"):
+        assert_legacy_compatible_locality(
+            {"neighborhood": {"prompt": "p", "ground_truth": "g"}}
+        )
+    with pytest.raises(ValueError, match="empty prompt"):
+        assert_legacy_compatible_locality(
+            {"neighborhood": [{"prompt": "", "ground_truth": "g"}]}
+        )
 
 
 def test_multiple_locality_items_are_all_evaluated():

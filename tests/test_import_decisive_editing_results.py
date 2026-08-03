@@ -48,3 +48,7 @@ def test_locked_full_result_is_imported_with_direct_objective(tmp_path):
     assert record["distance_mapping"] == "projective"
     assert record["status"] == "complete"
     assert record["metrics"]["final_history_locality"] == 15.0
+    assert record["evaluator"] == "custom_substring_any_ground_truth_all_items"
+    assert len(record["evaluation_protocol_hash"]) == 64
+    assert len(record["model_hash"]) == 64
+    assert len(record["pairing_protocol_hash"]) == 64

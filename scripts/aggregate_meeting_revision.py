@@ -7,7 +7,7 @@ import argparse
 import csv
 import json
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -41,6 +41,12 @@ DEFAULT_DIRECTIONS = {
 }
 
 
+def _planned_seeds(cohort: dict[str, Any]) -> set[int]:
+    return set(cohort.get("development_seeds", [])) | set(
+        cohort.get("confirmation_seeds", [])
+    )
+
+
 def _record_identity(plan: dict, record: dict[str, Any]) -> tuple[Any, ...]:
     """Return the experiment cell identity used by the planned aggregation."""
     matching_cohorts = [
@@ -49,6 +55,11 @@ def _record_identity(plan: dict, record: dict[str, Any]) -> tuple[Any, ...]:
         if record["task_family"] == cohort["task_family"]
         and record["dataset"] in cohort["datasets"]
         and record["model"] == cohort["model"]
+        and (
+            not cohort.get("recipes")
+            or record.get("recipe") in cohort.get("recipes", [])
+        )
+        and (not _planned_seeds(cohort) or record["seed"] in _planned_seeds(cohort))
     ]
     if len(matching_cohorts) > 1:
         names = [name for name, _ in matching_cohorts]
@@ -58,6 +69,14 @@ def _record_identity(plan: dict, record: dict[str, Any]) -> tuple[Any, ...]:
         )
     if matching_cohorts:
         cohort_name, cohort = matching_cohorts[0]
+        missing_metrics = sorted(set(cohort.get("required_metrics", [])) - set(record["metrics"]))
+        missing_runtime = sorted(set(cohort.get("required_runtime", [])) - set(record["runtime"]))
+        if missing_metrics or missing_runtime:
+            raise ValueError(
+                "result does not satisfy the cohort metric contract: "
+                f"cohort={cohort_name!r}, missing_metrics={missing_metrics}, "
+                f"missing_runtime={missing_runtime}, path={record.get('_path', '<unknown>')!r}"
+            )
         identity_fields = tuple(
             cohort.get("paired_identity", ("dataset", "model", "seed"))
         )
@@ -127,6 +146,71 @@ def read_records(root: Path, plan: dict) -> list[dict[str, Any]]:
     return list(records_by_identity.values())
 
 
+def _validate_cohort_provenance(
+    cohort_name: str,
+    cohort: dict[str, Any],
+    records: list[dict[str, Any]],
+) -> None:
+    for field in ("n_edits", "data_offset"):
+        if field not in cohort:
+            continue
+        mismatched = [
+            row.get("_path", "<unknown>")
+            for row in records
+            if row.get(field) != cohort[field]
+        ]
+        if mismatched:
+            raise ValueError(
+                f"cohort {cohort_name!r} requires {field}={cohort[field]!r}; "
+                f"mismatched records={mismatched}"
+            )
+
+    invariant_fields = tuple(cohort.get("cohort_invariants", []))
+    if not invariant_fields:
+        return
+    for dataset in cohort["datasets"]:
+        selected = [row for row in records if row["dataset"] == dataset]
+        missing = {
+            field: [
+                row.get("_path", "<unknown>")
+                for row in selected
+                if field not in row
+            ]
+            for field in invariant_fields
+        }
+        missing = {field: paths for field, paths in missing.items() if paths}
+        if missing:
+            raise ValueError(
+                f"cohort {cohort_name!r}/{dataset} lacks invariant fields: {missing}"
+            )
+        identities = {
+            tuple(canonical_json(row[field]) for field in invariant_fields)
+            for row in selected
+        }
+        if len(identities) > 1:
+            raise ValueError(
+                f"cohort {cohort_name!r}/{dataset} mixes provenance across "
+                f"{invariant_fields}: {sorted(identities)}"
+            )
+
+
+def _require_one_pair_per_seed(
+    pairs: list[tuple[dict[str, Any], dict[str, Any]]],
+    *,
+    cohort_name: str,
+    dataset: str,
+    contrast: str,
+    mapping: str,
+) -> None:
+    counts = Counter(int(control["seed"]) for control, _ in pairs)
+    ambiguous = {seed: count for seed, count in sorted(counts.items()) if count != 1}
+    if ambiguous:
+        raise ValueError(
+            f"ambiguous paired protocols in {cohort_name}/{dataset}/"
+            f"{contrast}/{mapping}: pairs_per_seed={ambiguous}"
+        )
+
+
 def write_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
@@ -178,6 +262,7 @@ def paired_contrasts(plan: dict, records: list[dict[str, Any]]) -> tuple[list[di
             and row["model"] == cohort["model"]
             and (not confirmation_seeds or row["seed"] in confirmation_seeds)
         ]
+        _validate_cohort_provenance(cohort_name, cohort, cohort_records)
         identity_fields = tuple(
             cohort.get("paired_identity", ("dataset", "model", "seed"))
         )
@@ -211,6 +296,13 @@ def paired_contrasts(plan: dict, records: list[dict[str, Any]]) -> tuple[list[di
                         mapped_controls,
                         mapped_treatments,
                         identity_fields=identity_fields,
+                    )
+                    _require_one_pair_per_seed(
+                        pairs,
+                        cohort_name=cohort_name,
+                        dataset=dataset,
+                        contrast=f"{treatment_name}_minus_{control_name}",
+                        mapping=mapping,
                     )
                     paired_seeds = {control["seed"] for control, _ in pairs}
                     expected_seeds = confirmation_seeds or {
@@ -295,6 +387,7 @@ def editing_mapping_contrasts(
             and row["model"] == cohort["model"]
             and (not confirmation_seeds or row["seed"] in confirmation_seeds)
         ]
+        _validate_cohort_provenance(cohort_name, cohort, cohort_records)
         for dataset in cohort["datasets"]:
             for recipe in sorted(mapping_recipes):
                 selected = [
@@ -310,6 +403,13 @@ def editing_mapping_contrasts(
                     cosine,
                     projective,
                     identity_fields=identity_fields,
+                )
+                _require_one_pair_per_seed(
+                    pairs,
+                    cohort_name=cohort_name,
+                    dataset=dataset,
+                    contrast=f"{recipe}:projective_minus_cosine",
+                    mapping="projective_vs_cosine",
                 )
                 paired_seeds = {control["seed"] for control, _ in pairs}
                 expected_seeds = confirmation_seeds or {

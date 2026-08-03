@@ -31,7 +31,9 @@ from tqdm import tqdm
 try:
     from .locality import (
         LOCALITY_EVALUATOR,
+        LOCALITY_PROTOCOL_HASH,
         LOCALITY_EVALUATOR_VERSION,
+        assert_legacy_compatible_locality,
         evaluate_locality,
         normalize_text,
         normalize_text_list,
@@ -39,7 +41,9 @@ try:
 except ImportError:  # Support ``python llm_ke/biocs_editor.py``.
     from locality import (  # type: ignore
         LOCALITY_EVALUATOR,
+        LOCALITY_PROTOCOL_HASH,
         LOCALITY_EVALUATOR_VERSION,
+        assert_legacy_compatible_locality,
         evaluate_locality,
         normalize_text,
         normalize_text_list,
@@ -295,6 +299,17 @@ class KnowEditDataset(Dataset):
             raise ValueError("offset must be non-negative")
         self.offset = offset
         self.data = raw[offset : offset + max_samples]
+        if os.environ.get("KE_REQUIRE_LEGACY_LOCALITY_COMPATIBLE", "0").strip().lower() in {
+            "1", "true", "yes", "on",
+        }:
+            for row_index, item in enumerate(self.data, start=offset):
+                try:
+                    assert_legacy_compatible_locality(item.get("locality", {}))
+                except ValueError as error:
+                    raise ValueError(
+                        f"KnowEdit row {row_index} is not compatible with the locked "
+                        f"locality protocol: {error}"
+                    ) from error
         logger.info(
             "Loaded %d editing samples from %s at offset %d",
             len(self.data), json_path, offset,
@@ -579,6 +594,7 @@ class BioCsLLMEditor:
             "force_text_only": os.environ.get("KE_FORCE_TEXT_ONLY", "0"),
             "locality_evaluator": LOCALITY_EVALUATOR,
             "locality_evaluator_version": LOCALITY_EVALUATOR_VERSION,
+            "locality_evaluator_protocol_hash": LOCALITY_PROTOCOL_HASH,
         }
 
     def _save_weight_snapshot(self):

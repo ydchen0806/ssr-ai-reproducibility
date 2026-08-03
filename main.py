@@ -131,6 +131,33 @@ def objective_for_method(method_name: str) -> dict[str, bool]:
     return objective
 
 
+@torch.no_grad()
+def classifier_geometry(model: torch.nn.Module) -> dict[str, float]:
+    """Return auditable anti-crowding summaries for the final classifier."""
+    linear_layers = [module for module in model.modules() if isinstance(module, torch.nn.Linear)]
+    if not linear_layers:
+        return {}
+    weights = linear_layers[-1].weight.detach().float()
+    if weights.ndim != 2 or min(weights.shape) < 2:
+        return {}
+    singular_values = torch.linalg.svdvals(weights)
+    probabilities = singular_values.square()
+    probabilities = probabilities / probabilities.sum().clamp_min(1e-12)
+    effective_rank = torch.exp(
+        -(probabilities * probabilities.clamp_min(1e-12).log()).sum()
+    )
+    normalized = torch.nn.functional.normalize(weights, dim=1)
+    similarities = normalized @ normalized.T
+    mask = ~torch.eye(
+        similarities.size(0), dtype=torch.bool, device=similarities.device
+    )
+    overlap = similarities[mask].abs().mean()
+    return {
+        "effective_rank": float(effective_rank.cpu()),
+        "prototype_overlap": float(overlap.cpu()),
+    }
+
+
 def main():
     args = parse_args()
     config = load_config(args.config)
@@ -170,6 +197,9 @@ def main():
     from utils.metrics import MetricTracker
     tracker = MetricTracker(n_tasks=benchmark.n_tasks)
     total_start = time.time()
+    cil_curve = []
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
 
     cpt = getattr(benchmark, 'classes_per_task', benchmark.n_classes // benchmark.n_tasks)
 
@@ -197,6 +227,7 @@ def main():
 
         cumulative_test = benchmark.get_cumulative_test_set(task_id)
         cil_acc = method.evaluate(task_id, cumulative_test)
+        cil_curve.append(float(cil_acc))
         logger.info(f"  CIL accuracy (all {(task_id+1)*cpt} classes): {cil_acc:.2f}%")
 
         method.after_task(task_id)
@@ -214,6 +245,10 @@ def main():
     total_time = time.time() - total_start
 
     results = tracker.compute_metrics()
+    if cil_curve:
+        results["cil_avg_accuracy"] = float(np.mean(cil_curve))
+        results["cil_last_accuracy"] = float(cil_curve[-1])
+    results.update(classifier_geometry(method.model))
     results["total_time_s"] = total_time
     results["seed"] = args.seed
 
@@ -227,7 +262,8 @@ def main():
     logger.info(f"{'='*60}")
     logger.info(str(tracker))
 
-    tracker.save(output_dir / "metrics.json")
+    with (output_dir / "metrics.json").open("w", encoding="utf-8") as handle:
+        json.dump(results, handle, indent=2)
 
     import datetime
     summary = {k: v for k, v in results.items() if k != "accuracy_matrix"}
@@ -264,6 +300,11 @@ def main():
     pairing_method = pairing_config.get("method", {})
     pairing_method.pop("name", None)
     pairing_method.pop("regularizer", None)
+    teacher_identity = (
+        method.teacher_trajectory_identity()
+        if hasattr(method, "teacher_trajectory_identity")
+        else {"protocol": "not_applicable", "sha256": "not_applicable"}
+    )
     result_record = build_result_record(
         git_commit=current_git_commit(),
         run_id=str(output_dir.resolve()),
@@ -276,19 +317,46 @@ def main():
         kernel=kernel,
         metrics={
             key: float(results[key])
-            for key in ("avg_accuracy", "last_accuracy", "avg_forgetting", "backward_transfer")
+            for key in (
+                "avg_accuracy",
+                "last_accuracy",
+                "avg_forgetting",
+                "backward_transfer",
+                "cil_avg_accuracy",
+                "cil_last_accuracy",
+                "effective_rank",
+                "prototype_overlap",
+            )
             if key in results
         },
-        runtime={"elapsed_s": float(total_time)},
+        runtime={
+            "elapsed_s": float(total_time),
+            "peak_cuda_allocated_mb": (
+                float(torch.cuda.max_memory_allocated(device) / (1024**2))
+                if device.type == "cuda"
+                else 0.0
+            ),
+            "peak_cuda_reserved_mb": (
+                float(torch.cuda.max_memory_reserved(device) / (1024**2))
+                if device.type == "cuda"
+                else 0.0
+            ),
+        },
         config=config,
         dataset_hash=data_hash,
         recipe=method_name,
         pairing_hash=sha256_value(pairing_config),
+        teacher_protocol=teacher_identity["protocol"],
+        teacher_trajectory_hash=teacher_identity["sha256"],
         metric_directions={
             "avg_accuracy": True,
             "last_accuracy": True,
             "avg_forgetting": False,
             "backward_transfer": True,
+            "cil_avg_accuracy": True,
+            "cil_last_accuracy": True,
+            "effective_rank": True,
+            "prototype_overlap": False,
         },
     )
     with (output_dir / "result_record.json").open("w", encoding="utf-8") as handle:

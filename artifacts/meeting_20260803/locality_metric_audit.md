@@ -11,6 +11,13 @@ these edit-level scores and reports percentages.
 This definition is used consistently for plain FT and every componentized SSR recipe, so those
 conditions can be compared with paired seeds and identical edit order.
 
+The evaluator was extracted from the locked implementation at commit `adb8d66`. Its source blob,
+the exact `evaluate_edit` block, the normalized protocol hash and the three dataset hashes are
+recorded in `locality_legacy_equivalence.json`. All 13,761 valid locality items across the three
+hashed KnowEdit files use the legacy-compatible list-of-items shape; no incompatible item was
+found. Formal launchers now reject other input shapes and pair results only when evaluator name,
+version, protocol hash, model hash and pairing-protocol hash are identical.
+
 ## EasyEdit context pipeline
 
 The EasyEdit wrapper passes one extracted neighborhood item per edit to `BaseEditor.edit`, then

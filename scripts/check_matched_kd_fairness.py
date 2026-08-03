@@ -50,6 +50,26 @@ def check(
                     "pairing_hashes": sorted(str(value) for value in hashes),
                 }
             )
+        teacher_identities = {
+            (row.get("teacher_protocol"), row.get("teacher_trajectory_hash"))
+            for row in rows
+        }
+        valid_teacher_identity = (
+            len(teacher_identities) == 1
+            and next(iter(teacher_identities))[0] == "locked_kd_only_trajectory_v1"
+            and isinstance(next(iter(teacher_identities))[1], str)
+            and len(next(iter(teacher_identities))[1]) == 64
+        )
+        if not valid_teacher_identity:
+            invalid.append(
+                {
+                    "identity": key,
+                    "error": "teacher_trajectory_mismatch",
+                    "teacher_identities": sorted(
+                        [str(value) for value in teacher_identities]
+                    ),
+                }
+            )
         kd_settings = {
             (
                 row["objective"].get("kd", False),

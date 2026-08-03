@@ -3,7 +3,6 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 import pytest
-import pytest
 
 from methods.builder import build_method
 from methods.kd_matched import KDMatched
@@ -60,6 +59,51 @@ def test_method_name_rejects_a_contradictory_explicit_regularizer():
             torch.device("cpu"),
             {"name": "kd_ssr", "regularizer": "mas"},
         )
+
+
+def test_locked_teacher_is_shared_from_kd_only_trajectory(tmp_path):
+    teacher_root = tmp_path / "teachers"
+    common = {
+        "teacher_mode": "locked_kd_trajectory",
+        "teacher_checkpoint_root": str(teacher_root),
+        "teacher_dataset": "split_cifar100",
+        "teacher_model": "resnet18",
+    }
+    kd = KDMatched(tiny_model(), torch.device("cpu"), {"name": "kd", **common})
+    kd._run_seed = 7
+    with torch.no_grad():
+        kd.model[-1].weight.fill_(0.25)
+    kd._save_locked_teacher(0)
+
+    treatment = KDMatched(
+        tiny_model(), torch.device("cpu"), {"name": "kd_ssr", **common}
+    )
+    treatment._run_seed = 7
+    with torch.no_grad():
+        treatment.model[-1].weight.fill_(9.0)
+    treatment._load_locked_teacher(0)
+
+    assert treatment.teacher is not None
+    assert torch.allclose(treatment.teacher[-1].weight, kd.model[-1].weight)
+    assert treatment.teacher_trajectory_identity() == kd.teacher_trajectory_identity()
+
+
+def test_locked_teacher_rejects_checkpoint_tampering(tmp_path):
+    config = {
+        "name": "kd",
+        "teacher_mode": "locked_kd_trajectory",
+        "teacher_checkpoint_root": str(tmp_path),
+        "teacher_dataset": "split_cifar100",
+        "teacher_model": "resnet18",
+    }
+    kd = KDMatched(tiny_model(), torch.device("cpu"), config)
+    kd._run_seed = 3
+    kd._save_locked_teacher(0)
+    with (tmp_path / "task_00.pt").open("ab") as handle:
+        handle.write(b"tampered")
+
+    with pytest.raises(RuntimeError, match="checkpoint hash mismatch"):
+        kd._load_locked_teacher(0)
 
 
 def copy_module(module: nn.Module) -> nn.Module:

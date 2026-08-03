@@ -159,9 +159,18 @@ def _validate_editing_completion(
         raise ResultSchemaError(
             f"Editing status must be {expected_status!r} for the recorded completion counts"
         )
-    for name in ("evaluator", "evaluator_version"):
+    for name in (
+        "evaluator",
+        "evaluator_version",
+        "evaluation_protocol_hash",
+        "model_hash",
+        "pairing_protocol_hash",
+    ):
         if not isinstance(record.get(name), str) or not record[name].strip():
             raise ResultSchemaError(f"Editing field {name!r} must be a non-empty string")
+    for name in ("evaluation_protocol_hash", "model_hash", "pairing_protocol_hash"):
+        if len(record[name]) != 64 or any(character not in "0123456789abcdef" for character in record[name]):
+            raise ResultSchemaError(f"Editing field {name!r} must be a lowercase SHA256")
     if not allow_incomplete and expected_status != "complete":
         raise ResultSchemaError(
             "Official editing results require succeeded == requested with no failed edits"
