@@ -21,6 +21,18 @@
 - CUB segmentation: 0/21 development and 0/40 confirmation runs complete under the corrected KD protocol.
 - The remote two-GPU host was not used because both GPUs were already at 90--100% utilization by unrelated jobs.
 
+## Cluster deployment and validation
+
+- The base implementation is committed as `cc3bac0` on `revision/meeting-20260803`; follow-up launch hardening remains on the same branch, and every formal run records its exact current commit.
+- An isolated checkout is deployed at `/unify/ydchen/unidit/bioreg_meeting_20260803_cc3bac0`; the original dirty working directory is not modified.
+- The checkout reuses the existing `dataset`, `data` and `hugging_cache` trees through path links; the locked launchers read the existing assets and disable dataset/model downloads. No new P0 data download is needed.
+- A remote dry run expanded 240 editing conditions (116 reusable, 124 to run), 50 fixed-KD jobs, and 21 development plus 40 confirmation segmentation jobs.
+- A no-GPU reuse smoke test verified exact record identity and copied `condition.json`, `result_record.json` and the original per-edit `results.json` together.
+- Remote bytecode compilation, shell syntax checks, manifest validation, partial aggregation and segmentation manifest generation passed. The system Python has the required CUDA/ML stack but does not include `pytest`; the complete test suite was therefore run in the local release environment (`71 passed`).
+- At the latest check, both remote A800 GPUs were at 100% utilization by pre-existing processes. No new job was started and no existing process was interrupted.
+
+Exact commands and paths are recorded in `cluster_execution.md`.
+
 ## Compute estimate
 
 - The 116 imported editing runs averaged 651.65 seconds (range 350.70--930.70 seconds). The 124 genuinely missing runs therefore require approximately 22.45 GPU-hours: about 2.8 wall-clock hours on eight equivalent GPUs or 11.2 hours on two.

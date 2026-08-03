@@ -18,7 +18,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from ssr_utils.paired_stats import complete_pairs, paired_summary
-from ssr_utils.result_schema import validate_result_record
+from ssr_utils.result_schema import canonical_json, validate_result_record
 
 
 DEFAULT_DIRECTIONS = {
@@ -41,13 +41,90 @@ DEFAULT_DIRECTIONS = {
 }
 
 
-def read_records(root: Path) -> list[dict[str, Any]]:
-    records = []
+def _record_identity(plan: dict, record: dict[str, Any]) -> tuple[Any, ...]:
+    """Return the experiment cell identity used by the planned aggregation."""
+    matching_cohorts = [
+        (name, cohort)
+        for name, cohort in plan["cohorts"].items()
+        if record["task_family"] == cohort["task_family"]
+        and record["dataset"] in cohort["datasets"]
+        and record["model"] == cohort["model"]
+    ]
+    if len(matching_cohorts) > 1:
+        names = [name for name, _ in matching_cohorts]
+        raise ValueError(
+            f"result matches multiple aggregation cohorts {names}: "
+            f"{record.get('_path', '<unknown>')}"
+        )
+    if matching_cohorts:
+        cohort_name, cohort = matching_cohorts[0]
+        identity_fields = tuple(
+            cohort.get("paired_identity", ("dataset", "model", "seed"))
+        )
+        missing = [field for field in identity_fields if field not in record]
+        if missing:
+            raise ValueError(
+                f"result is missing aggregation identity fields {missing}: "
+                f"{record.get('_path', '<unknown>')}"
+            )
+        return (
+            "cohort",
+            cohort_name,
+            record["recipe"],
+            record["distance_mapping"],
+            *(record[field] for field in identity_fields),
+        )
+
+    # Unplanned records still enter the long-form audit. Include execution
+    # identifiers so unrelated exploratory runs are not collapsed together.
+    return (
+        "unplanned",
+        record["task_family"],
+        record["dataset"],
+        record["model"],
+        record["seed"],
+        record["recipe"],
+        record["distance_mapping"],
+        record.get("data_offset"),
+        record.get("n_edits"),
+        record["dataset_hash"],
+        record["config_hash"],
+        record["run_id"],
+    )
+
+
+def read_records(root: Path, plan: dict) -> list[dict[str, Any]]:
+    """Read records once, tolerating only exact copies of one experiment cell."""
+    records_by_identity: dict[tuple[Any, ...], dict[str, Any]] = {}
+    payloads_by_identity: dict[tuple[Any, ...], str] = {}
     for path in sorted(root.rglob("result_record.json")):
         record = validate_result_record(json.loads(path.read_text(encoding="utf-8")))
         record["_path"] = str(path)
-        records.append(record)
-    return records
+        identity = _record_identity(plan, record)
+        payload = {key: value for key, value in record.items() if key != "_path"}
+        canonical_payload = canonical_json(payload)
+        if identity not in records_by_identity:
+            records_by_identity[identity] = record
+            payloads_by_identity[identity] = canonical_payload
+            continue
+        if payloads_by_identity[identity] == canonical_payload:
+            continue
+
+        original = records_by_identity[identity]
+        original_payload = {
+            key: value for key, value in original.items() if key != "_path"
+        }
+        differing_fields = sorted(
+            key
+            for key in set(original_payload) | set(payload)
+            if original_payload.get(key) != payload.get(key)
+        )
+        raise ValueError(
+            "conflicting duplicate aggregation identity "
+            f"{identity!r}: first={original['_path']!r}, duplicate={str(path)!r}, "
+            f"differing_fields={differing_fields}"
+        )
+    return list(records_by_identity.values())
 
 
 def write_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None:
@@ -311,7 +388,7 @@ def main() -> None:
     )
     args = parser.parse_args()
     plan = yaml.safe_load(args.manifest.read_text(encoding="utf-8"))
-    records = read_records(args.results_root)
+    records = read_records(args.results_root, plan)
     output = args.output
     table_root = output / "tables"
     long = long_rows(records)
