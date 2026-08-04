@@ -78,8 +78,8 @@ def test_four_node_dry_run_builds_all_planned_matrices(tmp_path):
         "status": "PASS",
         "editing_cells": 240,
         "editing_unique_cells": 240,
-        "matched_kd_jobs": 50,
-        "matched_kd_unique_jobs": 50,
+        "matched_kd_jobs": 80,
+        "matched_kd_unique_jobs": 80,
         "segmentation_development_jobs": 21,
         "segmentation_confirmation_jobs": 40,
     }

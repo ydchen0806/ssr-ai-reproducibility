@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import os
@@ -20,6 +21,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from ssr_utils.paired_stats import paired_summary
 from ssr_utils.result_schema import ResultSchemaError, sha256_file, validate_result_record
 
 RUNNER = PROJECT_ROOT / "experiments" / "cub200_continual_benchmark.py"
@@ -244,7 +246,14 @@ def run_worker(
 def run_jobs(jobs: list[Job], args: argparse.Namespace, expected_git_commit: str) -> None:
     from concurrent.futures import ThreadPoolExecutor
 
-    assignments = [jobs[index :: len(args.gpus)] for index in range(len(args.gpus))]
+    groups = {}
+    for job in jobs:
+        groups.setdefault(job.seed, []).append(job)
+    ordered_groups = [groups[key] for key in sorted(groups)]
+    assignments = [
+        [job for group in ordered_groups[index :: len(args.gpus)] for job in group]
+        for index in range(len(args.gpus))
+    ]
     with ThreadPoolExecutor(max_workers=len(args.gpus)) as pool:
         futures = [
             pool.submit(run_worker, gpu, assigned, args, expected_git_commit)
@@ -435,6 +444,67 @@ def confirmation_jobs(result_root: Path, spec: Spec) -> list[Job]:
     ]
 
 
+def write_confirmation_summary(
+    jobs: list[Job],
+    result_root: Path,
+    args: argparse.Namespace,
+    git_commit: str,
+) -> None:
+    records = {
+        (job.seed, job.method): validate_job_record(
+            job, git_commit, args.selection_lock_sha256
+        )
+        for job in jobs
+    }
+    contrasts = {
+        "direct_ssr": ("baseline", "biocs"),
+        "matched_kd_ssr": ("kd", "biocs_kd"),
+    }
+    payload = {}
+    rows = []
+    for contrast, (control, treatment) in contrasts.items():
+        payload[contrast] = {
+            "control": control,
+            "treatment": treatment,
+            "metrics": {},
+        }
+        for metric, higher_is_better in (
+            ("mean_iou", True),
+            ("mean_dice", True),
+            ("avg_forgetting_iou", False),
+        ):
+            control_values = [
+                records[(seed, control)]["metrics"][metric]
+                for seed in CONFIRMATION_SEEDS
+            ]
+            treatment_values = [
+                records[(seed, treatment)]["metrics"][metric]
+                for seed in CONFIRMATION_SEEDS
+            ]
+            summary = paired_summary(
+                control_values,
+                treatment_values,
+                higher_is_better=higher_is_better,
+            ).as_dict()
+            payload[contrast]["metrics"][metric] = summary
+            rows.append(
+                {
+                    "contrast": contrast,
+                    "control": control,
+                    "treatment": treatment,
+                    "metric": metric,
+                    **summary,
+                }
+            )
+    write_json(result_root / "CONFIRMATION_SUMMARY.json", payload)
+    with (result_root / "CONFIRMATION_SUMMARY.csv").open(
+        "w", encoding="utf-8", newline=""
+    ) as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--result-root", type=Path, required=True)
@@ -518,7 +588,9 @@ def main() -> None:
         args.selection_lock_sha256 = json.loads(
             lock_path.read_text(encoding="utf-8")
         )["lock_sha256"]
-        run_jobs(confirmation_jobs(result_root, selected), args, git_commit)
+        jobs = confirmation_jobs(result_root, selected)
+        run_jobs(jobs, args, git_commit)
+        write_confirmation_summary(jobs, result_root, args, git_commit)
     print(f"Segmentation phase {args.phase} complete: {result_root}")
 
 

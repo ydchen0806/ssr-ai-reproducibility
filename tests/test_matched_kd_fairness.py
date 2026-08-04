@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts.check_matched_kd_fairness import EXPECTED, check
+from scripts.check_matched_kd_fairness import EXPECTED, REGULARIZERS, check
 
 
 def test_fairness_checker_accepts_complete_same_scaffold(tmp_path):
@@ -22,6 +22,16 @@ def test_fairness_checker_accepts_complete_same_scaffold(tmp_path):
                     "pairing_hash": "same",
                     "teacher_protocol": "locked_kd_only_trajectory_v1",
                     "teacher_trajectory_hash": "a" * 64,
+                    "initial_model_hash": "b" * 64,
+                    "optimizer_steps": 100,
+                    "training_batches": 100,
+                    "kd_weight": 5.0,
+                    "kd_temperature": 2.0,
+                    "active_regularizer": REGULARIZERS[recipe],
+                    "active_regularizer_weight": 0.0 if recipe == "kd" else 1.0,
+                    "auxiliary_trainable_parameter_count": (
+                        32 if recipe == "kd_center" else 0
+                    ),
                 }
             ),
             encoding="utf-8",
@@ -45,6 +55,14 @@ def test_fairness_checker_rejects_missing_method(tmp_path):
                 "pairing_hash": "same",
                 "teacher_protocol": "locked_kd_only_trajectory_v1",
                 "teacher_trajectory_hash": "a" * 64,
+                "initial_model_hash": "b" * 64,
+                "optimizer_steps": 100,
+                "training_batches": 100,
+                "kd_weight": 5.0,
+                "kd_temperature": 2.0,
+                "active_regularizer": "none",
+                "active_regularizer_weight": 0.0,
+                "auxiliary_trainable_parameter_count": 0,
             }
         ),
         encoding="utf-8",

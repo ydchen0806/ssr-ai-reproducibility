@@ -18,7 +18,11 @@ method:
   lambda_ewc: 400.0
   lambda_mas: 1.0
   lambda_si: 1.0
+  lambda_center: 0.0005
+  lambda_protodecor: 0.005
+  lambda_spectral: 0.01
   lambda_ssr: 0.005
+  center_lr_scale: 0.5
   fisher_samples: 2000
   importance_samples: 2000
   xi: 0.1

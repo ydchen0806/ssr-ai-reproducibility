@@ -49,6 +49,9 @@ METHOD_REGISTRY: dict[str, type[BaseContinualLearner]] = {
     "kd_ewc": KDMatched,
     "kd_mas": KDMatched,
     "kd_si": KDMatched,
+    "kd_center": KDMatched,
+    "kd_protodecor": KDMatched,
+    "kd_spectral": KDMatched,
     "kd_ssr": KDMatched,
 }
 

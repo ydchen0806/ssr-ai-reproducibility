@@ -81,6 +81,28 @@ else:
 PY
 }
 
+yaml_value_or_default() {
+  "$PYTHON" - "$CONFIG_FILE" "$1" "$2" <<'PY'
+import sys
+import yaml
+
+path, dotted, default = sys.argv[1:]
+with open(path, encoding="utf-8") as handle:
+    value = yaml.safe_load(handle)
+try:
+    for key in dotted.split("."):
+        value = value[key]
+except (KeyError, TypeError):
+    value = default
+if isinstance(value, bool):
+    print("1" if value else "0")
+elif isinstance(value, list):
+    print(" ".join(str(item) for item in value))
+else:
+    print(value)
+PY
+}
+
 split_words() {
   local raw="$1"
   raw="${raw//,/ }"
@@ -107,7 +129,7 @@ if ((${#datasets[@]} == 0 || ${#recipes[@]} == 0 || ${#mappings[@]} == 0 || ${#s
 fi
 
 for dataset in "${datasets[@]}"; do
-  case "$dataset" in zsre|cf|recent) ;; *) printf 'Unknown dataset: %s\n' "$dataset" >&2; exit 2 ;; esac
+  case "$dataset" in zsre|cf|recent|wikibio) ;; *) printf 'Unknown dataset: %s\n' "$dataset" >&2; exit 2 ;; esac
 done
 for recipe in "${recipes[@]}"; do
   case "$recipe" in
@@ -173,6 +195,9 @@ export KE_EXPECTED_LOCALITY_EVALUATOR="$evaluator"
 export KE_EXPECTED_LOCALITY_EVALUATOR_VERSION="$evaluator_version"
 export KE_EXPECTED_LOCALITY_PROTOCOL_HASH="$evaluation_protocol_hash"
 export KE_REQUIRE_LEGACY_LOCALITY_COMPATIBLE="$(yaml_value evaluation.require_legacy_compatible_input)"
+export KE_EVALUATION_PROTOCOL_HASH="$evaluation_protocol_hash"
+export KE_MAX_LENGTH="$(yaml_value_or_default model.max_length 64)"
+export KE_MAX_NEW_TOKENS="$(yaml_value_or_default evaluation.max_new_tokens 32)"
 
 mkdir -p "$RESULT_ROOT"
 plan_file="$RESULT_ROOT/planned_runs.tsv"
@@ -341,22 +366,22 @@ run_one() {
 
 matrix_index=0
 for dataset in "${datasets[@]}"; do
-  for recipe in "${recipes[@]}"; do
-    if is_mapping_dependent "$recipe" || [[ "$FULL_MATRIX" == "1" ]]; then
-      recipe_mappings=("${mappings[@]}")
-    else
-      recipe_mappings=("$control_mapping")
+  for seed in "${seeds[@]}"; do
+    assigned_index="$matrix_index"
+    matrix_index=$((matrix_index + 1))
+    if ((assigned_index % SHARD_COUNT != SHARD_INDEX)); then
+      continue
     fi
-    for mapping in "${recipe_mappings[@]}"; do
-      mapping_tag="$mapping"
-      if ! is_mapping_dependent "$recipe" && [[ "$FULL_MATRIX" != "1" ]]; then
-        mapping_tag="none"
+    for recipe in "${recipes[@]}"; do
+      if is_mapping_dependent "$recipe" || [[ "$FULL_MATRIX" == "1" ]]; then
+        recipe_mappings=("${mappings[@]}")
+      else
+        recipe_mappings=("$control_mapping")
       fi
-      for seed in "${seeds[@]}"; do
-        assigned_index="$matrix_index"
-        matrix_index=$((matrix_index + 1))
-        if ((assigned_index % SHARD_COUNT != SHARD_INDEX)); then
-          continue
+      for mapping in "${recipe_mappings[@]}"; do
+        mapping_tag="$mapping"
+        if ! is_mapping_dependent "$recipe" && [[ "$FULL_MATRIX" != "1" ]]; then
+          mapping_tag="none"
         fi
         run_one "$dataset" "$recipe" "$mapping" "$mapping_tag" "$seed"
       done

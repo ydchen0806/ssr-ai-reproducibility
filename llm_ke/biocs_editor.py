@@ -319,15 +319,30 @@ class KnowEditDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        item = self.data[idx]
-        return {
-            "prompt": _to_text(item["prompt"]),
-            "target_new": _to_text(item.get("target_new", "")),
-            "ground_truth": _to_text(item.get("ground_truth", "")),
-            "subject": _to_text(item.get("subject", "")),
-            "locality": item.get("locality", {}),
-            "portability": item.get("portability", {}),
-        }
+        return normalize_knowedit_record(self.data[idx])
+
+
+def normalize_knowedit_record(item: dict) -> dict:
+    """Map factual and WikiBio KnowEdit rows to the custom editor schema."""
+    prompt = item.get("prompt", item.get("text"))
+    target_new = item.get("target_new", item.get("labels"))
+    subject = item.get("subject", item.get("concept", ""))
+    if prompt is None or target_new is None:
+        raise ValueError(
+            "KnowEdit rows require prompt/target_new or WikiBio text/labels fields"
+        )
+    locality = item.get("locality", {})
+    portability = item.get("portability", {})
+    if not isinstance(locality, dict) or not isinstance(portability, dict):
+        raise ValueError("KnowEdit locality and portability fields must be mappings")
+    return {
+        "prompt": _to_text(prompt),
+        "target_new": _to_text(target_new),
+        "ground_truth": _to_text(item.get("ground_truth", "")),
+        "subject": _to_text(subject),
+        "locality": locality,
+        "portability": portability,
+    }
 
 
 # -------------------- SSR editor ------------------------------
@@ -364,6 +379,7 @@ class BioCsLLMEditor:
         lr: float = 1e-4,
         num_steps: int = 25,
         max_length: int = 64,
+        max_new_tokens: int = 32,
         recipe: Optional[str] = None,
         lambda_ssr: Optional[float] = None,
         distance_mapping: Optional[str] = None,
@@ -484,7 +500,10 @@ class BioCsLLMEditor:
         self._edit_row_indices: dict[str, torch.Tensor] = {}
         self.lr = lr
         self.num_steps = num_steps
+        if max_length <= 0 or max_new_tokens <= 0:
+            raise ValueError("max_length and max_new_tokens must be positive")
         self.max_length = max_length
+        self.max_new_tokens = max_new_tokens
         self.target_module_regex = os.environ.get("BIOCS_TARGET_MODULE_REGEX", r"(c_proj|down_proj)$").strip()
         self.max_target_modules = int(os.environ.get("BIOCS_MAX_TARGET_MODULES", "0"))
 
@@ -588,13 +607,16 @@ class BioCsLLMEditor:
             "lr": self.lr,
             "num_steps": self.num_steps,
             "max_length": self.max_length,
+            "max_new_tokens": self.max_new_tokens,
             "seed": os.environ.get("KE_SEED", ""),
             "model_dtype": os.environ.get("KE_MODEL_DTYPE", "auto"),
             "device_map": os.environ.get("KE_DEVICE_MAP", ""),
             "force_text_only": os.environ.get("KE_FORCE_TEXT_ONLY", "0"),
             "locality_evaluator": LOCALITY_EVALUATOR,
             "locality_evaluator_version": LOCALITY_EVALUATOR_VERSION,
-            "locality_evaluator_protocol_hash": LOCALITY_PROTOCOL_HASH,
+            "locality_evaluator_protocol_hash": os.environ.get(
+                "KE_EVALUATION_PROTOCOL_HASH", LOCALITY_PROTOCOL_HASH
+            ),
         }
 
     def _save_weight_snapshot(self):
@@ -719,10 +741,10 @@ class BioCsLLMEditor:
         return {"success": True, "final_loss": loss.item()}
 
     @torch.no_grad()
-    def generate(self, prompt: str, max_new_tokens: int = 32) -> str:
+    def generate(self, prompt: str, max_new_tokens: Optional[int] = None) -> str:
         tokens = self._tokenize_text(prompt, padding=False)
         out = self.model.generate(
-            **tokens, max_new_tokens=max_new_tokens,
+            **tokens, max_new_tokens=max_new_tokens or self.max_new_tokens,
             do_sample=False, pad_token_id=self.tokenizer.pad_token_id,
         )
         return self.tokenizer.decode(out[0][tokens["input_ids"].shape[1]:], skip_special_tokens=True)
@@ -1017,6 +1039,8 @@ def main():
     parser.add_argument("--data_offset", type=int, default=0)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--num_steps", type=int, default=25)
+    parser.add_argument("--max_length", type=int, default=64)
+    parser.add_argument("--max_new_tokens", type=int, default=32)
     parser.add_argument("--target_layers", type=int, nargs="*", default=None)
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--output", type=str, default="results/llm_ke")
@@ -1044,6 +1068,8 @@ def main():
         sampler_seed=args.sampler_seed,
         lr=args.lr,
         num_steps=args.num_steps,
+        max_length=args.max_length,
+        max_new_tokens=args.max_new_tokens,
     )
 
     dataset = KnowEditDataset(args.data, max_samples=args.n_edits, offset=args.data_offset)

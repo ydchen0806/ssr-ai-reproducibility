@@ -51,7 +51,7 @@ cohorts:
     task_family: classification
     model: resnet18
     datasets: [split_cifar100, split_tiny_imagenet]
-    recipes: [kd, kd_ewc, kd_mas, kd_si, kd_ssr]
+    recipes: [kd, kd_ewc, kd_mas, kd_si, kd_center, kd_protodecor, kd_spectral, kd_ssr]
     mappings: [cosine]
     mapping_dependent_recipes: [kd_ssr]
     paired_identity:
@@ -79,6 +79,9 @@ cohorts:
       - [kd_ewc, kd]
       - [kd_mas, kd]
       - [kd_si, kd]
+      - [kd_center, kd]
+      - [kd_protodecor, kd]
+      - [kd_spectral, kd]
       - [kd_ssr, kd]
 
   cub_segmentation:

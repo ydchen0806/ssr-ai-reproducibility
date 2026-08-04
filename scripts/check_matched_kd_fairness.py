@@ -9,7 +9,26 @@ from collections import defaultdict
 from pathlib import Path
 
 
-EXPECTED = {"kd", "kd_ewc", "kd_mas", "kd_si", "kd_ssr"}
+EXPECTED = {
+    "kd",
+    "kd_ewc",
+    "kd_mas",
+    "kd_si",
+    "kd_center",
+    "kd_protodecor",
+    "kd_spectral",
+    "kd_ssr",
+}
+REGULARIZERS = {
+    "kd": "none",
+    "kd_ewc": "ewc",
+    "kd_mas": "mas",
+    "kd_si": "si",
+    "kd_center": "center",
+    "kd_protodecor": "protodecor",
+    "kd_spectral": "spectral",
+    "kd_ssr": "ssr",
+}
 
 
 def check(
@@ -74,13 +93,98 @@ def check(
             (
                 row["objective"].get("kd", False),
                 row["dataset_hash"],
+                row.get("kd_weight"),
+                row.get("kd_temperature"),
             )
             for row in rows
         }
-        if kd_settings != {(True, rows[0]["dataset_hash"])}:
+        if len(kd_settings) != 1 or next(iter(kd_settings))[:2] != (
+            True,
+            rows[0]["dataset_hash"],
+        ):
             invalid.append(
                 {"identity": key, "error": "kd_or_dataset_identity_mismatch"}
             )
+        elif any(
+            not isinstance(value, (int, float)) or float(value) <= 0
+            for value in next(iter(kd_settings))[2:]
+        ):
+            invalid.append({"identity": key, "error": "invalid_kd_hyperparameters"})
+        initial_model_hashes = {row.get("initial_model_hash") for row in rows}
+        if (
+            len(initial_model_hashes) != 1
+            or not isinstance(next(iter(initial_model_hashes)), str)
+            or len(next(iter(initial_model_hashes))) != 64
+        ):
+            invalid.append(
+                {
+                    "identity": key,
+                    "error": "initial_model_hash_mismatch",
+                    "initial_model_hashes": sorted(
+                        str(value) for value in initial_model_hashes
+                    ),
+                }
+            )
+        optimizer_steps = {row.get("optimizer_steps") for row in rows}
+        if (
+            len(optimizer_steps) != 1
+            or not isinstance(next(iter(optimizer_steps)), int)
+            or next(iter(optimizer_steps)) <= 0
+        ):
+            invalid.append(
+                {
+                    "identity": key,
+                    "error": "optimizer_budget_mismatch",
+                    "optimizer_steps": sorted(str(value) for value in optimizer_steps),
+                }
+            )
+        training_batches = {row.get("training_batches") for row in rows}
+        if (
+            len(training_batches) != 1
+            or not isinstance(next(iter(training_batches)), int)
+            or next(iter(training_batches)) <= 0
+        ):
+            invalid.append(
+                {
+                    "identity": key,
+                    "error": "training_batch_budget_mismatch",
+                    "training_batches": sorted(
+                        str(value) for value in training_batches
+                    ),
+                }
+            )
+        for row in rows:
+            expected_regularizer = REGULARIZERS[row["recipe"]]
+            weight = row.get("active_regularizer_weight")
+            auxiliary_count = row.get("auxiliary_trainable_parameter_count")
+            if row.get("active_regularizer") != expected_regularizer:
+                invalid.append(
+                    {
+                        "identity": key,
+                        "recipe": row["recipe"],
+                        "error": "active_regularizer_mismatch",
+                    }
+                )
+            if not isinstance(weight, (int, float)) or (
+                row["recipe"] == "kd" and float(weight) != 0.0
+            ) or (row["recipe"] != "kd" and float(weight) <= 0.0):
+                invalid.append(
+                    {
+                        "identity": key,
+                        "recipe": row["recipe"],
+                        "error": "active_regularizer_weight_invalid",
+                    }
+                )
+            if (row["recipe"] == "kd_center") != (
+                isinstance(auxiliary_count, int) and auxiliary_count > 0
+            ):
+                invalid.append(
+                    {
+                        "identity": key,
+                        "recipe": row["recipe"],
+                        "error": "auxiliary_parameter_accounting_mismatch",
+                    }
+                )
 
     if expected_datasets is not None and expected_seeds is not None:
         observed = {(dataset, seed) for dataset, _, seed in groups}

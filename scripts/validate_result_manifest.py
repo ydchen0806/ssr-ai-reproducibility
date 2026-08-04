@@ -14,23 +14,15 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from ssr_utils.result_schema import SCHEMA_VERSION, sha256_file, validate_result_record
+from ssr_utils.result_schema import (
+    KNOWN_RECIPE_COMPONENTS,
+    SCHEMA_VERSION,
+    sha256_file,
+    validate_result_record,
+)
 
 
-RECIPE_KEYS = {
-    "plain",
-    "anchor",
-    "spectral",
-    "stabilized",
-    "ssr_only",
-    "full",
-    "kd",
-    "kd_ewc",
-    "kd_mas",
-    "kd_si",
-    "kd_ssr",
-    "ssr_kd",
-}
+RECIPE_KEYS = set(KNOWN_RECIPE_COMPONENTS)
 
 
 def _ensure_unique(values: list, label: str) -> None:

@@ -6,7 +6,7 @@ PYTHON="${PYTHON:-python3}"
 OUTPUT_ROOT="${OUTPUT_ROOT:-$PROJECT_ROOT/results/meeting_20260803/matched_kd_cl}"
 SEEDS="${SEEDS:-3101 3103 3105 3107 3109}"
 DATASETS="${DATASETS:-split_cifar100 split_tiny_imagenet}"
-METHODS="${METHODS:-kd kd_ewc kd_mas kd_si kd_ssr}"
+METHODS="${METHODS:-kd kd_ewc kd_mas kd_si kd_center kd_protodecor kd_spectral kd_ssr}"
 GPU_LIST="${GPU_LIST:-0}"
 DRY_RUN="${DRY_RUN:-0}"
 RESULT_VALIDATOR="$PROJECT_ROOT/scripts/validate_result_record.py"
@@ -34,7 +34,7 @@ for dataset in "${dataset_array[@]}"; do
 done
 for method in "${method_array[@]}"; do
   case "$method" in
-    kd|kd_ewc|kd_mas|kd_si|kd_ssr) ;;
+    kd|kd_ewc|kd_mas|kd_si|kd_center|kd_protodecor|kd_spectral|kd_ssr) ;;
     *) printf 'Unknown matched-KD method: %s\n' "$method" >&2; exit 2 ;;
   esac
 done
@@ -101,7 +101,7 @@ worker() {
   local worker_index="$2"
   local worker_count="$3"
   local phase="$4"
-  local row_index=0
+  local dataset_index seed_index group_index index
   while IFS=$'\t' read -r dataset method seed config teacher_root output; do
     [[ "$dataset" != "dataset" ]] || continue
     if [[ "$phase" == "teacher" && "$method" != "kd" ]]; then
@@ -110,11 +110,19 @@ worker() {
     if [[ "$phase" == "treatment" && "$method" == "kd" ]]; then
       continue
     fi
-    if ((row_index % worker_count != worker_index)); then
-      row_index=$((row_index + 1))
+    dataset_index=-1
+    seed_index=-1
+    for index in "${!dataset_array[@]}"; do
+      [[ "${dataset_array[$index]}" != "$dataset" ]] || dataset_index="$index"
+    done
+    for index in "${!seed_array[@]}"; do
+      [[ "${seed_array[$index]}" != "$seed" ]] || seed_index="$index"
+    done
+    ((dataset_index >= 0 && seed_index >= 0)) || return 2
+    group_index=$((dataset_index * ${#seed_array[@]} + seed_index))
+    if ((group_index % worker_count != worker_index)); then
       continue
     fi
-    row_index=$((row_index + 1))
     if [[ -s "$output/result_record.json" ]]; then
       validate_record "$output/result_record.json" "$dataset" "$method" "$seed" "$teacher_root" \
         >/dev/null || {
@@ -177,7 +185,7 @@ run_phase() {
 run_phase teacher
 run_phase treatment
 
-expected_methods="kd kd_ewc kd_mas kd_si kd_ssr"
+expected_methods="kd kd_ewc kd_mas kd_si kd_center kd_protodecor kd_spectral kd_ssr"
 observed_methods="$(printf '%s\n' "${method_array[@]}" | sort | tr '\n' ' ' | sed 's/ $//')"
 sorted_expected="$(printf '%s\n' $expected_methods | sort | tr '\n' ' ' | sed 's/ $//')"
 if [[ "$observed_methods" == "$sorted_expected" ]]; then
@@ -186,5 +194,8 @@ if [[ "$observed_methods" == "$sorted_expected" ]]; then
     --output "$OUTPUT_ROOT/fairness_report.json" \
     --expected-datasets "${dataset_array[@]}" \
     --expected-seeds "${seed_array[@]}"
+  "$PYTHON" "$PROJECT_ROOT/scripts/summarize_matched_kd.py" \
+    --plan "$task_file" \
+    --output-dir "$OUTPUT_ROOT/paired_summary"
 fi
 printf 'Matched-KD jobs completed: %s\n' "$OUTPUT_ROOT"

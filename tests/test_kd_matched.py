@@ -18,6 +18,9 @@ def test_registry_selects_one_common_kd_implementation():
         "kd_ewc": "ewc",
         "kd_mas": "mas",
         "kd_si": "si",
+        "kd_center": "center",
+        "kd_protodecor": "protodecor",
+        "kd_spectral": "spectral",
         "kd_ssr": "ssr",
     }.items():
         method = build_method(
@@ -28,6 +31,43 @@ def test_registry_selects_one_common_kd_implementation():
         assert isinstance(method, KDMatched)
         assert method.regularizer == regularizer
         assert method.lambda_kd == 3.0
+
+
+def test_center_control_optimizes_trainable_class_centers():
+    method = KDMatched(
+        tiny_model(),
+        torch.device("cpu"),
+        {"name": "kd_center", "lambda_center": 0.1},
+    )
+    optimizer = method._build_optimizer({"optimizer": "sgd", "lr": 0.05})
+    optimized = {
+        id(parameter)
+        for group in optimizer.param_groups
+        for parameter in group["params"]
+    }
+    assert method.centers is not None
+    assert id(method.centers) in optimized
+
+    loss, _ = method.training_step(
+        torch.randn(4, 1, 2, 2), torch.tensor([0, 1, 2, 0]), 0
+    )
+    loss.backward()
+    assert method.centers.grad is not None
+    assert method.training_batches == 1
+    assert method.optimizer_steps == 0
+    method._after_optimizer_step()
+    assert method.optimizer_steps == 1
+
+
+@pytest.mark.parametrize("name", ["kd_protodecor", "kd_spectral", "kd_ssr"])
+def test_weight_geometry_controls_backpropagate(name):
+    method = KDMatched(tiny_model(), torch.device("cpu"), {"name": name})
+    loss, _ = method.training_step(
+        torch.randn(4, 1, 2, 2), torch.tensor([0, 1, 2, 0]), 0
+    )
+    loss.backward()
+    assert method.model[-1].weight.grad is not None
+    assert torch.isfinite(loss)
 
 
 def test_matched_kd_rejects_method_regularizer_mismatch():
@@ -58,6 +98,28 @@ def test_method_name_rejects_a_contradictory_explicit_regularizer():
             tiny_model(),
             torch.device("cpu"),
             {"name": "kd_ssr", "regularizer": "mas"},
+        )
+
+
+@pytest.mark.parametrize(
+    ("name", "field"),
+    [
+        ("kd", "lambda_kd"),
+        ("kd_ewc", "lambda_ewc"),
+        ("kd_mas", "lambda_mas"),
+        ("kd_si", "lambda_si"),
+        ("kd_center", "lambda_center"),
+        ("kd_protodecor", "lambda_protodecor"),
+        ("kd_spectral", "lambda_spectral"),
+        ("kd_ssr", "lambda_ssr"),
+    ],
+)
+def test_active_kd_objective_requires_positive_weight(name, field):
+    with pytest.raises(ValueError, match="requires|positive"):
+        KDMatched(
+            tiny_model(),
+            torch.device("cpu"),
+            {"name": name, field: 0.0},
         )
 
 

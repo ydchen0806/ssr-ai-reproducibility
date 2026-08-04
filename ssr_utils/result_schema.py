@@ -20,6 +20,8 @@ OBJECTIVE_COMPONENTS = (
     "ewc",
     "mas",
     "si",
+    "center",
+    "protodecor",
 )
 KNOWN_RECIPE_COMPONENTS = {
     "plain": {"task"},
@@ -34,6 +36,9 @@ KNOWN_RECIPE_COMPONENTS = {
     "kd_ewc": {"task", "kd", "ewc"},
     "kd_mas": {"task", "kd", "mas"},
     "kd_si": {"task", "kd", "si"},
+    "kd_center": {"task", "kd", "center"},
+    "kd_protodecor": {"task", "kd", "protodecor"},
+    "kd_spectral": {"task", "kd", "spectral"},
     "kd_ssr": {"task", "kd", "ssr"},
     "ssr_kd": {"task", "kd", "ssr"},
 }
@@ -42,6 +47,9 @@ KD_MATCHED_REGULARIZERS = {
     "kd_ewc": "ewc",
     "kd_mas": "mas",
     "kd_si": "si",
+    "kd_center": "center",
+    "kd_protodecor": "protodecor",
+    "kd_spectral": "spectral",
     "kd_ssr": "ssr",
 }
 REQUIRED_FIELDS = {

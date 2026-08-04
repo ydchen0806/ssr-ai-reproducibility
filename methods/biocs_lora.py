@@ -37,6 +37,25 @@ class LoRALayer(nn.Module):
         return (x @ self.lora_A.T @ self.lora_B.T) * self.scaling
 
 
+class LoRAInjectedLinear(nn.Module):
+    """Registered LoRA residual around a frozen linear projection."""
+
+    def __init__(self, base: nn.Linear, rank: int, alpha: float):
+        super().__init__()
+        self.base = base
+        for parameter in self.base.parameters():
+            parameter.requires_grad = False
+        self.lora = LoRALayer(
+            base.in_features,
+            base.out_features,
+            rank=rank,
+            alpha=alpha,
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.base(x) + self.lora(x)
+
+
 class BioCsLoRA(BaseContinualLearner):
     """Pre-trained model + LoRA adapters + SSR regularization.
 
@@ -48,6 +67,7 @@ class BioCsLoRA(BaseContinualLearner):
     def __init__(self, model: nn.Module, device: torch.device, config: dict):
         super().__init__(model, device)
         self.lambda_spatial = config.get("lambda_spatial", 0.01)
+        self.lambda_adapter = config.get("lambda_adapter", 0.0)
         self.lambda_spectral = config.get("lambda_spectral", 0.0)
         self.A_exc = config.get("A_exc", 1.0)
         self.A_inh = config.get("A_inh", 0.8)
@@ -56,49 +76,96 @@ class BioCsLoRA(BaseContinualLearner):
         self.use_seen_mask = config.get("use_seen_mask", True)
         self.lora_rank = config.get("lora_rank", 8)
         self.lora_alpha = config.get("lora_alpha", 16.0)
+        self.training_batches = 0
+        self.optimizer_steps = 0
 
         self._seen_classes: set[int] = set()
+        self._classifier = self._resolve_classifier()
+        if self._classifier is None:
+            raise ValueError(
+                "BioCsLoRA requires an explicit linear classifier exposed by "
+                "model.get_classifier() or a top-level head/fc/classifier attribute."
+            )
         self._freeze_backbone()
         self._inject_lora(config)
+
+    def _resolve_classifier(self) -> nn.Linear | None:
+        getter = getattr(self.model, "get_classifier", None)
+        if callable(getter):
+            classifier = getter()
+            if isinstance(classifier, nn.Linear):
+                return classifier
+        for attribute in ("head", "fc", "classifier"):
+            classifier = getattr(self.model, attribute, None)
+            if isinstance(classifier, nn.Linear):
+                return classifier
+        return None
 
     def _freeze_backbone(self):
         for param in self.model.parameters():
             param.requires_grad = False
-
-        for name, module in self.model.named_modules():
-            if isinstance(module, nn.Linear) and ("fc" in name or "head" in name or "classifier" in name):
-                for param in module.parameters():
-                    param.requires_grad = True
+        for param in self._classifier.parameters():
+            param.requires_grad = True
 
     def _inject_lora(self, config: dict):
-        """Inject LoRA layers into attention projections."""
-        self.lora_layers = nn.ModuleDict()
+        """Replace target projections with registered LoRA residual modules."""
         target_modules = config.get("lora_targets", ["qkv", "proj"])
 
-        for name, module in self.model.named_modules():
-            if isinstance(module, nn.Linear):
-                should_adapt = any(t in name.lower() for t in target_modules)
-                if should_adapt:
-                    key = name.replace(".", "_")
-                    lora = LoRALayer(
-                        module.in_features, module.out_features,
-                        rank=self.lora_rank, alpha=self.lora_alpha,
-                    )
-                    self.lora_layers[key] = lora
-                    original_forward = module.forward
-                    def make_hook(lora_layer, orig_fwd):
-                        def hooked_forward(x):
-                            return orig_fwd(x) + lora_layer(x)
-                        return hooked_forward
-                    module.forward = make_hook(lora, original_forward)
+        targets = [
+            (name, module)
+            for name, module in self.model.named_modules()
+            if name
+            and isinstance(module, nn.Linear)
+            and any(target.lower() in name.lower() for target in target_modules)
+        ]
+        self._lora_module_names: list[str] = []
+        for name, module in targets:
+            parent_name, _, child_name = name.rpartition(".")
+            parent = self.model.get_submodule(parent_name) if parent_name else self.model
+            parent._modules[child_name] = LoRAInjectedLinear(
+                module,
+                rank=self.lora_rank,
+                alpha=self.lora_alpha,
+            ).to(self.device)
+            self._lora_module_names.append(name)
 
-        self.lora_layers = self.lora_layers.to(self.device)
-        n_lora_params = sum(p.numel() for p in self.lora_layers.parameters())
+        if not self._lora_module_names:
+            raise ValueError(
+                "No LoRA target modules matched. Check method.lora_targets against "
+                "the model's named linear modules."
+            )
+
+        n_lora_params = sum(p.numel() for p in self._lora_parameters())
         n_head_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad)
         import logging
         logging.getLogger(__name__).info(
             f"LoRA params: {n_lora_params:,}, Head params: {n_head_params:,}"
         )
+
+    def _lora_modules(self):
+        for module in self.model.modules():
+            if isinstance(module, LoRAInjectedLinear):
+                yield module
+
+    def _lora_parameters(self):
+        for module in self._lora_modules():
+            yield from module.lora.parameters()
+
+    def _build_optimizer(self, config: dict):
+        optimizer = super()._build_optimizer(config)
+        optimized = {
+            id(parameter)
+            for group in optimizer.param_groups
+            for parameter in group["params"]
+        }
+        missing = [
+            name
+            for name, parameter in self.model.named_parameters()
+            if ".lora." in name and id(parameter) not in optimized
+        ]
+        if missing:
+            raise RuntimeError(f"LoRA parameters missing from optimizer: {missing}")
+        return optimizer
 
     def _get_seen_mask(self, layer: nn.Linear) -> torch.Tensor | None:
         if not self.use_seen_mask or not self._seen_classes:
@@ -111,12 +178,10 @@ class BioCsLoRA(BaseContinualLearner):
         return mask if mask.sum() > 1 else None
 
     def _get_classifier(self) -> nn.Linear | None:
-        for name, module in self.model.named_modules():
-            if isinstance(module, nn.Linear) and ("fc" in name or "head" in name or "classifier" in name):
-                return module
-        return None
+        return self._classifier
 
     def training_step(self, x, y, task_id):
+        self.training_batches += 1
         self._seen_classes.update(y.cpu().tolist())
         logits = self.model(x)
         ce_loss = F.cross_entropy(logits, y)
@@ -135,8 +200,27 @@ class BioCsLoRA(BaseContinualLearner):
                     classifier.weight, mask,
                 )
 
+        if self.lambda_adapter > 0:
+            adapter_penalties = [
+                compute_spatial_biocs(
+                    module.lora.lora_B.T,
+                    self.A_exc,
+                    self.A_inh,
+                    self.sigma_exc,
+                    self.sigma_inh,
+                )
+                for module in self._lora_modules()
+            ]
+            if adapter_penalties:
+                reg_loss = reg_loss + self.lambda_adapter * torch.stack(
+                    adapter_penalties
+                ).mean()
+
         loss = ce_loss + reg_loss
         return loss, logits
+
+    def _after_optimizer_step(self) -> None:
+        self.optimizer_steps += 1
 
     def after_task(self, task_id: int):
         pass

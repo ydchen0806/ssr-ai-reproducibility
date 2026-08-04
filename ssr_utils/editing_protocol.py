@@ -55,3 +55,45 @@ EDITING_PAIRING_PROTOCOL_SPEC = {
     "locality_protocol_hash": LOCALITY_PROTOCOL_HASH,
 }
 EDITING_PAIRING_PROTOCOL_HASH = sha256_value(EDITING_PAIRING_PROTOCOL_SPEC)
+
+
+WIKIBIO_DATASET_FILES = {
+    "wikibio": {
+        "path": "dataset/knowedit/benchmark/WikiBio/wikibio-test-all.json",
+        "sha256": "00933f69b47d8281d01f1f4b84f3f266b7482a65a7d74022e660a8a9ca2264a4",
+    },
+}
+
+WIKIBIO_EVALUATION_PROTOCOL_SPEC = {
+    "base_locality_protocol_hash": LOCALITY_PROTOCOL_HASH,
+    "efficacy": "case_insensitive_full_target_substring_of_generated_continuation",
+    "generation": {"do_sample": False, "max_new_tokens": 96},
+    "empty_locality": "legacy_zero_with_item_count",
+}
+WIKIBIO_EVALUATION_PROTOCOL_HASH = sha256_value(WIKIBIO_EVALUATION_PROTOCOL_SPEC)
+
+WIKIBIO_PAIRING_PROTOCOL_SPEC = {
+    "protocol": "wikibio_direct_editing_matched_v1",
+    "comparison": ["plain", "ssr_only"],
+    "model": "gpt2-xl",
+    "model_hash": GPT2_XL_MODEL_HASH,
+    "target_layers": [16, 17, 18],
+    "target_module_regex": "(c_proj|down_proj)$",
+    "max_target_modules": 0,
+    "optimizer": "adam",
+    "lr": 0.0001,
+    "num_steps": 25,
+    "max_length": 256,
+    "max_new_tokens": 96,
+    "model_dtype": "auto",
+    "device_map": "",
+    "force_text_only": True,
+    "local_files_only": True,
+    "data_order": "contiguous_source_order",
+    "row_sampling_seed": "run_seed",
+    "evaluate_history": True,
+    "history_checkpoints": [50, 100],
+    "history_max_samples": 0,
+    "evaluation_protocol_hash": WIKIBIO_EVALUATION_PROTOCOL_HASH,
+}
+WIKIBIO_PAIRING_PROTOCOL_HASH = sha256_value(WIKIBIO_PAIRING_PROTOCOL_SPEC)

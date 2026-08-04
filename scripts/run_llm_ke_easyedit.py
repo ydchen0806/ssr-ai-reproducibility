@@ -38,6 +38,7 @@ DATASET_MAP = {
     "zsre": str(PROJECT_DIR / "dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json"),
     "cf": str(PROJECT_DIR / "dataset/knowedit/benchmark/wiki_counterfact/test_cf.json"),
     "recent": str(PROJECT_DIR / "dataset/knowedit/benchmark/wiki_recent/recent_test.json"),
+    "wikibio": str(PROJECT_DIR / "dataset/knowedit/benchmark/WikiBio/wikibio-test-all.json"),
 }
 
 MODEL_NAME = os.environ.get("KE_MODEL_NAME_OR_PATH", "gpt2-xl")
@@ -407,11 +408,14 @@ def load_dataset(name: str, n_edits: int, offset: int = 0):
     locality_inputs, locality_labels = [], []
     rephrase_prompts = []
 
-    for item in data:
-        prompts.append(normalize_text(item["prompt"]))
-        targets.append(normalize_text(item.get("target_new", "")))
-        grounds.append(normalize_text(item.get("ground_truth", "")))
-        subjects.append(normalize_text(item.get("subject", "")))
+    from llm_ke.biocs_editor import normalize_knowedit_record
+
+    for raw_item in data:
+        item = normalize_knowedit_record(raw_item)
+        prompts.append(item["prompt"])
+        targets.append(item["target_new"])
+        grounds.append(item["ground_truth"])
+        subjects.append(item["subject"])
 
         loc = item.get("locality", {})
         loc_item = first_locality_item(loc)
@@ -423,7 +427,7 @@ def load_dataset(name: str, n_edits: int, offset: int = 0):
             locality_inputs.append("")
             locality_labels.append("")
 
-        rp = item.get("rephrase_prompt", item.get("rephrase", ""))
+        rp = raw_item.get("rephrase_prompt", raw_item.get("rephrase", ""))
         if isinstance(rp, list):
             rp = rp[0] if rp else ""
         rephrase_prompts.append(rp)
@@ -596,6 +600,8 @@ def run_biocs_method(
         sampler_seed=config["sampler_seed"],
         lr=float(os.environ.get("BIOCS_LR", "1e-4")),
         num_steps=int(os.environ.get("BIOCS_NUM_STEPS", "25")),
+        max_length=int(os.environ.get("KE_MAX_LENGTH", "64")),
+        max_new_tokens=int(os.environ.get("KE_MAX_NEW_TOKENS", "32")),
     )
     dataset = KnowEditDataset(
         data_path,
@@ -641,8 +647,10 @@ def run_ft_method(
         model_name=model_name,
         device="cuda",
         target_layers=target_layers,
-        lr=float(os.environ.get("FT_LR", "5e-4")),
+        lr=float(os.environ.get("FT_LR", os.environ.get("BIOCS_LR", "1e-4"))),
         num_steps=int(os.environ.get("FT_NUM_STEPS", os.environ.get("BIOCS_NUM_STEPS", "25"))),
+        max_length=int(os.environ.get("KE_MAX_LENGTH", "64")),
+        max_new_tokens=int(os.environ.get("KE_MAX_NEW_TOKENS", "32")),
     )
     dataset = KnowEditDataset(
         data_path,
@@ -700,6 +708,9 @@ def write_run_manifest(
         "KE_EXPECTED_LOCALITY_EVALUATOR_VERSION",
         "KE_EXPECTED_LOCALITY_PROTOCOL_HASH",
         "KE_REQUIRE_LEGACY_LOCALITY_COMPATIBLE",
+        "KE_EVALUATION_PROTOCOL_HASH",
+        "KE_MAX_LENGTH",
+        "KE_MAX_NEW_TOKENS",
         "KE_ATTN_IMPLEMENTATION",
         "KE_MOM2_N_SAMPLES",
         "KE_MOM2_DATASET",
@@ -912,7 +923,7 @@ if __name__ == "__main__":
     parser.add_argument("--method", type=str, required=True,
                         choices=["ROME", "MEMIT", "AlphaEdit", "biocs", "ft"])
     parser.add_argument("--dataset", type=str, default="zsre",
-                        choices=["zsre", "cf", "recent"])
+                        choices=["zsre", "cf", "recent", "wikibio"])
     parser.add_argument("--n_edits", type=int, default=200)
     parser.add_argument("--model_name", type=str, default=MODEL_NAME,
                         help="HF model id or local model path. Prefer a local path on offline clusters.")

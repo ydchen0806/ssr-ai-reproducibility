@@ -13,6 +13,7 @@ Evaluation protocol:
 
 import argparse
 import copy
+import hashlib
 import json
 import logging
 import subprocess
@@ -115,7 +116,10 @@ def current_git_commit() -> str:
         return "unknown-uncommitted-environment"
 
 
-def objective_for_method(method_name: str) -> dict[str, bool]:
+def objective_for_method(
+    method_name: str,
+    method_config: dict | None = None,
+) -> dict[str, bool]:
     method_name = method_name.lower()
     objective = {"task": True}
     if method_name.startswith("kd"):
@@ -124,11 +128,53 @@ def objective_for_method(method_name: str) -> dict[str, bool]:
         "kd_ewc": "ewc",
         "kd_mas": "mas",
         "kd_si": "si",
+        "kd_center": "center",
+        "kd_protodecor": "protodecor",
+        "kd_spectral": "spectral",
         "kd_ssr": "ssr",
     }
     if method_name in suffix_map:
         objective[suffix_map[method_name]] = True
+    if method_name == "biocs_lora" and method_config is not None:
+        if float(method_config.get("lambda_spatial", 0.0)) > 0 or float(
+            method_config.get("lambda_adapter", 0.0)
+        ) > 0:
+            objective["ssr"] = True
+        if float(method_config.get("lambda_spectral", 0.0)) > 0:
+            objective["spectral"] = True
     return objective
+
+
+def model_state_sha256(model: torch.nn.Module) -> str:
+    """Hash parameters and buffers after method construction, before training."""
+    digest = hashlib.sha256()
+    for name, tensor in sorted(model.state_dict().items()):
+        digest.update(name.encode("utf-8"))
+        digest.update(tensor.detach().cpu().contiguous().numpy().tobytes())
+    return digest.hexdigest()
+
+
+def auxiliary_state_identity(method) -> tuple[str, int]:
+    """Hash trainable tensors owned by a method but not registered on its model."""
+    model_parameters = {id(parameter) for parameter in method.model.parameters()}
+    auxiliary = sorted(
+        (name, value)
+        for name, value in vars(method).items()
+        if isinstance(value, torch.nn.Parameter)
+        and value.requires_grad
+        and id(value) not in model_parameters
+    )
+    digest = hashlib.sha256()
+    count = 0
+    for name, parameter in auxiliary:
+        digest.update(name.encode("utf-8"))
+        tensor = parameter.detach().cpu().contiguous()
+        digest.update(str(tuple(tensor.shape)).encode("ascii"))
+        digest.update(tensor.numpy().tobytes())
+        count += tensor.numel()
+    if not auxiliary:
+        digest.update(b"no-auxiliary-trainable-state")
+    return digest.hexdigest(), count
 
 
 @torch.no_grad()
@@ -172,6 +218,7 @@ def main():
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
     logger.info(f"Device: {device} | Seed: {args.seed}")
 
+    config.setdefault("training", {})["run_seed"] = args.seed
     with open(output_dir / "config.yaml", "w", encoding="utf-8") as f:
         yaml.dump(config, f, default_flow_style=False, allow_unicode=True)
 
@@ -190,8 +237,9 @@ def main():
     logger.info(f"Model: {config['model']['name']} | Trainable params: {n_params:,}")
 
     from methods.builder import build_method
-    config.setdefault("training", {})["run_seed"] = args.seed
     method = build_method(config["method"], model=model, device=device)
+    initial_model_hash = model_state_sha256(method.model)
+    auxiliary_state_hash, auxiliary_parameter_count = auxiliary_state_identity(method)
     logger.info(f"Method: {config['method']['name']}")
 
     from utils.metrics import MetricTracker
@@ -251,6 +299,8 @@ def main():
     results.update(classifier_geometry(method.model))
     results["total_time_s"] = total_time
     results["seed"] = args.seed
+    if hasattr(method, "optimizer_steps"):
+        results["optimizer_steps"] = int(method.optimizer_steps)
 
     logger.info(f"{'='*60}")
     logger.info("Final Results:")
@@ -285,7 +335,7 @@ def main():
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
     method_name = config["method"]["name"].lower()
-    objective = objective_for_method(method_name)
+    objective = objective_for_method(method_name, config.get("method", {}))
     kernel = {}
     if objective.get("ssr"):
         kernel = {
@@ -300,6 +350,18 @@ def main():
     pairing_method = pairing_config.get("method", {})
     pairing_method.pop("name", None)
     pairing_method.pop("regularizer", None)
+    if method_name == "biocs_lora":
+        for treatment_key in (
+            "recipe",
+            "lambda_spatial",
+            "lambda_adapter",
+            "lambda_spectral",
+            "A_exc",
+            "A_inh",
+            "sigma_exc",
+            "sigma_inh",
+        ):
+            pairing_method.pop(treatment_key, None)
     teacher_identity = (
         method.teacher_trajectory_identity()
         if hasattr(method, "teacher_trajectory_identity")
@@ -344,8 +406,29 @@ def main():
         },
         config=config,
         dataset_hash=data_hash,
-        recipe=method_name,
+        recipe=config.get("method", {}).get("recipe", method_name),
         pairing_hash=sha256_value(pairing_config),
+        initial_model_hash=initial_model_hash,
+        optimizer_steps=int(getattr(method, "optimizer_steps", 0)),
+        training_batches=int(getattr(method, "training_batches", 0)),
+        trainable_parameter_count=int(
+            sum(
+                parameter.numel()
+                for parameter in method.model.parameters()
+                if parameter.requires_grad
+            )
+            + auxiliary_parameter_count
+        ),
+        auxiliary_trainable_parameter_count=int(auxiliary_parameter_count),
+        auxiliary_state_hash=auxiliary_state_hash,
+        active_regularizer=str(getattr(method, "regularizer", "none")),
+        active_regularizer_weight=float(
+            method.active_regularizer_weight()
+            if hasattr(method, "active_regularizer_weight")
+            else 0.0
+        ),
+        kd_weight=float(getattr(method, "lambda_kd", 0.0)),
+        kd_temperature=float(getattr(method, "temperature", 0.0)),
         teacher_protocol=teacher_identity["protocol"],
         teacher_trajectory_hash=teacher_identity["sha256"],
         metric_directions={

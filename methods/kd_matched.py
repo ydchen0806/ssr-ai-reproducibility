@@ -14,16 +14,26 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from .base import BaseContinualLearner
-from .bioreg import compute_spatial_biocs
+from .bioreg import compute_spatial_biocs, compute_spectral_flatness
+from .geometry_controls import prototype_decorrelation_loss
 from ssr_utils.teacher_trajectory import TEACHER_PROTOCOL
 
 
 logger = logging.getLogger(__name__)
-REGULARIZERS = {"none", "ewc", "mas", "si", "ssr"}
+REGULARIZERS = {
+    "none",
+    "ewc",
+    "mas",
+    "si",
+    "center",
+    "protodecor",
+    "spectral",
+    "ssr",
+}
 
 
 class KDMatched(BaseContinualLearner):
-    """One LwF-style KD scaffold shared by KD/EWC/MAS/SI/SSR conditions."""
+    """One KD scaffold shared by memory, geometric, and SSR regularizers."""
 
     def __init__(self, model: nn.Module, device: torch.device, config: dict):
         super().__init__(model, device)
@@ -33,6 +43,9 @@ class KDMatched(BaseContinualLearner):
             "kd_ewc": "ewc",
             "kd_mas": "mas",
             "kd_si": "si",
+            "kd_center": "center",
+            "kd_protodecor": "protodecor",
+            "kd_spectral": "spectral",
             "kd_ssr": "ssr",
         }.get(method_name)
         explicit_regularizer = config.get("regularizer")
@@ -55,7 +68,11 @@ class KDMatched(BaseContinualLearner):
         self.lambda_ewc = float(config.get("lambda_ewc", 400.0))
         self.lambda_mas = float(config.get("lambda_mas", 1.0))
         self.lambda_si = float(config.get("lambda_si", 1.0))
+        self.lambda_center = float(config.get("lambda_center", 0.0005))
+        self.lambda_protodecor = float(config.get("lambda_protodecor", 0.005))
+        self.lambda_spectral = float(config.get("lambda_spectral", 0.01))
         self.lambda_ssr = float(config.get("lambda_ssr", config.get("lambda_spatial", 0.005)))
+        self.center_lr_scale = float(config.get("center_lr_scale", 0.5))
         self.fisher_samples = int(config.get("fisher_samples", 2000))
         self.importance_samples = int(config.get("importance_samples", 2000))
         self.xi = float(config.get("xi", 0.1))
@@ -77,6 +94,25 @@ class KDMatched(BaseContinualLearner):
         self.a_inh = float(config.get("A_inh", 0.8))
         self.sigma_exc = float(config.get("sigma_exc", 0.16))
         self.sigma_inh = float(config.get("sigma_inh", 0.45))
+        if self.lambda_kd <= 0 or self.temperature <= 0:
+            raise ValueError("Matched-KD requires lambda_kd > 0 and temperature > 0")
+        active_weights = {
+            "ewc": self.lambda_ewc,
+            "mas": self.lambda_mas,
+            "si": self.lambda_si,
+            "center": self.lambda_center,
+            "protodecor": self.lambda_protodecor,
+            "spectral": self.lambda_spectral,
+            "ssr": self.lambda_ssr,
+        }
+        if self.regularizer != "none" and active_weights[self.regularizer] <= 0:
+            raise ValueError(
+                f"Matched-KD regularizer {self.regularizer!r} requires a positive weight"
+            )
+        if self.regularizer == "center" and self.center_lr_scale <= 0:
+            raise ValueError("Center regularization requires center_lr_scale > 0")
+        if self.fisher_samples <= 0 or self.importance_samples <= 0 or self.xi <= 0:
+            raise ValueError("Importance sample counts and xi must be positive")
         if self.sigma_exc <= 0 or self.sigma_inh <= 0:
             raise ValueError("SSR sigma values must be positive")
 
@@ -90,10 +126,25 @@ class KDMatched(BaseContinualLearner):
         self._prev_step_params: dict[str, torch.Tensor] = {}
         self._run_seed = 0
         self._task_id = 0
+        self.training_batches = 0
+        self.optimizer_steps = 0
+        self._features: torch.Tensor | None = None
+        self._feature_hook = None
 
         linears = [(name, module) for name, module in model.named_modules() if isinstance(module, nn.Linear)]
+        self._classifier = linears[-1][1]
         targets = config.get("ssr_targets", ["classifier"])
         self._ssr_layers = linears[-1:] if "classifier" in set(targets) else linears
+        self.centers: nn.Parameter | None = None
+        if self.regularizer == "center":
+            self.centers = nn.Parameter(
+                torch.zeros(
+                    self._classifier.out_features,
+                    self._classifier.in_features,
+                    device=device,
+                )
+            )
+            self._register_feature_hook()
         logger.info(
             "KDMatched | regularizer=%s lambda_kd=%s T=%s teacher_mode=%s",
             self.regularizer,
@@ -101,6 +152,59 @@ class KDMatched(BaseContinualLearner):
             self.temperature,
             self.teacher_mode,
         )
+
+    def _capture_classifier_input(self, _module, inputs, _output) -> None:
+        if inputs:
+            features = inputs[0]
+            self._features = features.view(features.size(0), -1)
+
+    def _register_feature_hook(self) -> None:
+        if self.regularizer == "center" and self._feature_hook is None:
+            self._feature_hook = self._classifier.register_forward_hook(
+                self._capture_classifier_input
+            )
+
+    def _remove_feature_hook(self) -> None:
+        if self._feature_hook is not None:
+            self._feature_hook.remove()
+            self._feature_hook = None
+
+    def _copy_teacher_without_feature_hook(self) -> nn.Module:
+        had_hook = self._feature_hook is not None
+        if had_hook:
+            self._remove_feature_hook()
+        try:
+            teacher = copy.deepcopy(self.model)
+        finally:
+            if had_hook:
+                self._register_feature_hook()
+        return teacher
+
+    def _build_optimizer(self, config: dict):
+        if self.centers is None:
+            return super()._build_optimizer(config)
+        name = config.get("optimizer", "sgd").lower()
+        learning_rate = float(config.get("lr", 0.01))
+        weight_decay = float(config.get("weight_decay", 0.0))
+        parameters = [
+            {"params": self.model.parameters(), "weight_decay": weight_decay},
+            {
+                "params": [self.centers],
+                "lr": learning_rate * self.center_lr_scale,
+                "weight_decay": 0.0,
+            },
+        ]
+        if name == "sgd":
+            return torch.optim.SGD(
+                parameters,
+                lr=learning_rate,
+                momentum=float(config.get("momentum", 0.9)),
+            )
+        if name == "adam":
+            return torch.optim.Adam(parameters, lr=learning_rate)
+        if name == "adamw":
+            return torch.optim.AdamW(parameters, lr=learning_rate)
+        raise ValueError(f"Unknown optimizer: {name}")
 
     @staticmethod
     def _sha256_file(path: Path) -> str:
@@ -156,7 +260,7 @@ class KDMatched(BaseContinualLearner):
                 f"expected {entry['sha256']}, observed {observed_hash}"
             )
         payload = torch.load(checkpoint, map_location=self.device, weights_only=True)
-        teacher = copy.deepcopy(self.model)
+        teacher = self._copy_teacher_without_feature_hook()
         teacher.load_state_dict(payload["model_state_dict"], strict=True)
         teacher.eval()
         for parameter in teacher.parameters():
@@ -261,9 +365,38 @@ class KDMatched(BaseContinualLearner):
             )
         return penalty
 
+    def _seen_mask(self) -> torch.Tensor | None:
+        mask = torch.zeros(
+            self._classifier.weight.size(0), dtype=torch.bool, device=self.device
+        )
+        for class_id in self._seen_classes:
+            if class_id < mask.numel():
+                mask[class_id] = True
+        return mask if int(mask.sum()) > 1 else None
+
+    def _geometry_penalty(
+        self,
+        labels: torch.Tensor,
+        features: torch.Tensor | None,
+    ) -> torch.Tensor:
+        if self.regularizer == "center":
+            if features is None or self.centers is None:
+                raise RuntimeError("Center regularization requires classifier features")
+            targets = self.centers[labels].to(features.device)
+            return (features.float() - targets.float()).pow(2).sum(dim=1).mean()
+        mask = self._seen_mask()
+        if self.regularizer == "protodecor":
+            return prototype_decorrelation_loss(self._classifier.weight, mask)
+        if self.regularizer == "spectral":
+            return compute_spectral_flatness(self._classifier.weight.float(), mask)
+        return self._classifier.weight.new_tensor(0.0)
+
     def training_step(self, x, y, task_id):
+        self.training_batches += 1
         self._seen_classes.update(int(value) for value in y.detach().cpu().tolist())
+        self._features = None
         logits = self.model(x)
+        student_features = self._features
         loss = F.cross_entropy(logits, y) + self.lambda_kd * self._kd_loss(logits, x)
         if self.regularizer == "ewc":
             loss = loss + self.lambda_ewc * self._quadratic_penalty()
@@ -271,10 +404,33 @@ class KDMatched(BaseContinualLearner):
             loss = loss + self.lambda_mas * self._quadratic_penalty()
         elif self.regularizer == "si":
             loss = loss + self.lambda_si * self._quadratic_penalty()
+        elif self.regularizer == "center":
+            loss = loss + self.lambda_center * self._geometry_penalty(y, student_features)
+        elif self.regularizer == "protodecor":
+            loss = loss + self.lambda_protodecor * self._geometry_penalty(y, student_features)
+        elif self.regularizer == "spectral":
+            loss = loss + self.lambda_spectral * self._geometry_penalty(y, student_features)
         elif self.regularizer == "ssr":
             with torch.amp.autocast("cuda", enabled=False):
                 loss = loss + self.lambda_ssr * self._ssr_penalty()
         return loss, logits
+
+    def _after_optimizer_step(self) -> None:
+        self.optimizer_steps += 1
+
+    def active_regularizer_weight(self) -> float:
+        return float(
+            {
+                "none": 0.0,
+                "ewc": self.lambda_ewc,
+                "mas": self.lambda_mas,
+                "si": self.lambda_si,
+                "center": self.lambda_center,
+                "protodecor": self.lambda_protodecor,
+                "spectral": self.lambda_spectral,
+                "ssr": self.lambda_ssr,
+            }[self.regularizer]
+        )
 
     def train_task(self, task_id: int, train_set, training_config: dict):
         self._task_train_set = train_set
@@ -408,7 +564,7 @@ class KDMatched(BaseContinualLearner):
                 self._save_locked_teacher(task_id)
             self.teacher = None
         else:
-            self.teacher = copy.deepcopy(self.model)
+            self.teacher = self._copy_teacher_without_feature_hook()
             self.teacher.eval()
             for parameter in self.teacher.parameters():
                 parameter.requires_grad_(False)

@@ -104,6 +104,9 @@ def test_matched_kd_contrasts_are_registered():
         ["kd_ewc", "kd"],
         ["kd_mas", "kd"],
         ["kd_si", "kd"],
+        ["kd_center", "kd"],
+        ["kd_protodecor", "kd"],
+        ["kd_spectral", "kd"],
         ["kd_ssr", "kd"],
     ]
 

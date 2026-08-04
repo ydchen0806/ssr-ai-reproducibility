@@ -113,4 +113,9 @@ elif [[ ! -s "$combined" ]]; then
   printf 'Missing editing plan: %s\n' "$combined" >&2
   exit 1
 fi
+if ((dry_run == 0)); then
+  "$PYTHON" "$SCRIPT_DIR/summarize_direct_editing.py" \
+    --plan "$combined" \
+    --output-dir "$RESULT_ROOT/paired_summary"
+fi
 printf 'All editing shards completed: %s\n' "$RESULT_ROOT"

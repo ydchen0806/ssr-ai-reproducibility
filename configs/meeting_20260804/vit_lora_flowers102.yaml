@@ -1,0 +1,42 @@
+experiment_name: task_ssr
+
+dataset:
+  name: flowers102_cl
+  data_root: ./data
+  n_tasks: 10
+  class_order_seed: 7301
+  image_size: 224
+  download: false
+  deterministic_transform: true
+
+model:
+  name: vit_tiny_patch16_224
+  pretrained: true
+  pretrained_checkpoint: ./data/pretrained/vit_tiny_patch16_224_augreg_in21k_ft_in1k.safetensors
+
+method:
+  name: biocs_lora
+  recipe: ssr_only
+  lora_targets: [qkv, proj]
+  lora_rank: 8
+  lora_alpha: 16.0
+  lambda_spatial: 0.01
+  lambda_adapter: 0.002
+  lambda_spectral: 0.0
+  A_exc: 1.0
+  A_inh: 0.8
+  sigma_exc: 0.2
+  sigma_inh: 0.5
+  use_seen_mask: true
+
+training:
+  epochs: 15
+  batch_size: 64
+  optimizer: adamw
+  lr: 0.0005
+  weight_decay: 0.0
+  scheduler: cosine
+  warmup_epochs: 1
+  grad_clip: 5.0
+  use_amp: true
+  num_workers: 8

@@ -4,6 +4,11 @@ from .split_cifar import SplitCIFAR100, SplitCIFAR10
 from .tiny_imagenet import SplitTinyImageNet
 from .five_datasets import FiveDatasets
 from .knowledge_editing import KnowledgeEditingBenchmark
+from .torchvision_finegrained import (
+    Flowers102CL,
+    OxfordIIITPetCL,
+    TorchvisionFineGrainedCL,
+)
 
 
 BENCHMARK_REGISTRY = {
@@ -14,6 +19,9 @@ BENCHMARK_REGISTRY = {
     "five_datasets": FiveDatasets,
     "5datasets": FiveDatasets,
     "knowledge_editing": KnowledgeEditingBenchmark,
+    "torchvision_finegrained": TorchvisionFineGrainedCL,
+    "flowers102_cl": Flowers102CL,
+    "oxfordiiitpet_cl": OxfordIIITPetCL,
 }
 
 

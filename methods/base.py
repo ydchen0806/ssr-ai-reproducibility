@@ -84,8 +84,11 @@ class BaseContinualLearner(ABC):
                     if grad_clip > 0:
                         self._scaler.unscale_(optimizer)
                         nn.utils.clip_grad_norm_(self.model.parameters(), grad_clip)
+                    scale_before_step = self._scaler.get_scale()
                     self._scaler.step(optimizer)
                     self._scaler.update()
+                    if self._scaler.get_scale() >= scale_before_step:
+                        self._after_optimizer_step()
                 else:
                     loss, logits = self.training_step(x, y, task_id)
                     optimizer.zero_grad(set_to_none=True)
@@ -93,6 +96,7 @@ class BaseContinualLearner(ABC):
                     if grad_clip > 0:
                         nn.utils.clip_grad_norm_(self.model.parameters(), grad_clip)
                     optimizer.step()
+                    self._after_optimizer_step()
 
                 if hasattr(self, '_accumulate_w'):
                     self._accumulate_w()
@@ -120,6 +124,9 @@ class BaseContinualLearner(ABC):
     @abstractmethod
     def after_task(self, task_id: int):
         ...
+
+    def _after_optimizer_step(self) -> None:
+        """Record method-specific state only after an optimizer update succeeds."""
 
     @torch.no_grad()
     def evaluate(self, task_id: int, test_set, task_classes: list[int] | None = None) -> float:
