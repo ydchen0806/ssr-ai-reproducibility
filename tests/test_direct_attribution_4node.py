@@ -44,7 +44,7 @@ def environment(result_root: Path, rank: int | None) -> dict[str, str]:
     return output
 
 
-def test_expanded_four_node_dry_run_has_all_317_cells(tmp_path):
+def test_expanded_four_node_dry_run_has_all_497_cells(tmp_path):
     result_root = tmp_path / "direct-four-node"
     processes = [
         subprocess.Popen(
@@ -64,9 +64,9 @@ def test_expanded_four_node_dry_run_has_all_317_cells(tmp_path):
         (result_root / "MATRIX_PLAN_VALIDATION.json").read_text(encoding="utf-8")
     )
     assert report["status"] == "PASS"
-    assert report["total_jobs"] == 317
+    assert report["total_jobs"] == 497
     assert report["jobs"] == {
-        "ke_existing": 60,
+        "ke_factorial": 240,
         "ke_wikibio": 20,
         "vit_lora": 20,
         "matched_kd_cl": 80,
@@ -74,6 +74,12 @@ def test_expanded_four_node_dry_run_has_all_317_cells(tmp_path):
         "multidataset_segmentation": 76,
     }
     assert report["matched_kd_contract"]["planned_cells"] == 80
+    assert report["direct_editing_contract"] == {
+        "result_records_required": 260,
+        "paired_summaries_required": 2,
+        "factorial_cells": 240,
+        "external_transfer_cells": 20,
+    }
     assert (result_root / "launcher_status" / "final.done").is_file()
 
 

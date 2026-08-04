@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run once on every node in one allocation of exactly four eight-GPU nodes.
+# Run the complete meeting-extension matrix in one four-node allocation.
 set -Eeuo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -87,7 +87,7 @@ if ((GLOBAL_NODE_RANK == 0)); then
   }
   mkdir -p "$STATUS_DIR" "$LOG_DIR"
   {
-    printf 'protocol=direct_attribution_multidata_4node_v1\n'
+    printf 'protocol=meeting_extension_multidata_4node_v2\n'
     printf 'run_id=%s\n' "$RUN_ID"
     printf 'launch_token=%s\n' "$LAUNCH_TOKEN"
     printf 'git_commit=%s\n' "$git_commit"
@@ -102,7 +102,7 @@ else
 fi
 mkdir -p "$STATUS_DIR" "$LOG_DIR"
 for expected in \
-  'protocol=direct_attribution_multidata_4node_v1' \
+  'protocol=meeting_extension_multidata_4node_v2' \
   "run_id=$RUN_ID" \
   "launch_token=$LAUNCH_TOKEN" \
   "git_commit=$git_commit"; do
@@ -184,8 +184,9 @@ else
 fi
 
 GPU_LIST="$(seq -s ' ' 0 7)"
-run_editing_pair() {
+run_editing_suite() {
   local config="$1" child_root="$2" child_token="$3" datasets="$4"
+  local recipes="$5" mappings="$6"
   local -a command=(
     env
     "NODE_RANK=$GLOBAL_NODE_RANK"
@@ -201,8 +202,8 @@ run_editing_pair() {
     bash "$PROJECT_ROOT/scripts/run_meeting_editing_8gpu.sh"
     --phase confirm
     --dataset "$datasets"
-    --recipe plain,ssr_only
-    --mapping projective
+    --recipe "$recipes"
+    --mapping "$mappings"
   )
   [[ "$DRY_RUN" != "1" ]] || command+=(--dry-run)
   "${command[@]}"
@@ -210,16 +211,18 @@ run_editing_pair() {
 
 case "$GLOBAL_NODE_RANK" in
   0|1)
-    role=knowledge_editing_direct
+    role=knowledge_editing_factorial
     run_role() {
-      run_editing_pair \
+      run_editing_suite \
         "$PROJECT_ROOT/configs/meeting_20260803/locked_editing_gpt2xl.yaml" \
-        "$RESULT_ROOT/ke_existing" "${LAUNCH_TOKEN}.ke_existing" \
-        "zsre,cf,recent"
-      run_editing_pair \
+        "$RESULT_ROOT/ke_factorial" "${LAUNCH_TOKEN}.ke_factorial" \
+        "zsre,cf,recent" \
+        "plain,anchor,spectral,stabilized,ssr_only,full" \
+        "projective,cosine"
+      run_editing_suite \
         "$PROJECT_ROOT/configs/meeting_20260804/direct_editing_wikibio_gpt2xl.yaml" \
         "$RESULT_ROOT/ke_wikibio" "${LAUNCH_TOKEN}.ke_wikibio" \
-        "wikibio"
+        "wikibio" "plain,ssr_only" "projective"
     }
     ;;
   2)
@@ -328,4 +331,4 @@ else
 fi
 
 trap - EXIT
-printf 'Direct-attribution role %s complete: %s\n' "$role" "$RESULT_ROOT"
+printf 'Meeting-extension role %s complete: %s\n' "$role" "$RESULT_ROOT"

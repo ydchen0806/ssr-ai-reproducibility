@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the four-node direct-attribution experiment inventory."""
+"""Validate the complete four-node meeting-extension experiment inventory."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from ssr_utils.result_schema import validate_result_record
 
 
 EXPECTED = {
-    "ke_existing": 60,
+    "ke_factorial": 240,
     "ke_wikibio": 20,
     "vit_lora": 20,
     "matched_kd_cl": 80,
@@ -73,6 +73,27 @@ EDITING_SEEDS = {
     "wikibio": set(range(9401, 9420, 2)),
 }
 
+FACTORIAL_EDITING_DATASETS = {"zsre", "cf", "recent"}
+FACTORIAL_EDITING_RECIPE_MAPPINGS = {
+    "plain": {"none"},
+    "anchor": {"none"},
+    "spectral": {"none"},
+    "stabilized": {"none"},
+    "ssr_only": {"cosine", "projective"},
+    "full": {"cosine", "projective"},
+}
+FACTORIAL_EDITING_CONTRASTS = {
+    "ssr_only_minus_plain",
+    "full_minus_stabilized",
+    "ssr_only_minus_anchor",
+    "ssr_only_minus_spectral",
+    "full_minus_plain",
+}
+FACTORIAL_EDITING_MAPPING_CONTRASTS = {
+    "ssr_only:projective_minus_cosine",
+    "full:projective_minus_cosine",
+}
+
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8", newline="") as handle:
@@ -87,28 +108,85 @@ def load_json(path: Path) -> dict:
     return value
 
 
-def validate_editing_plan(path: Path, datasets: set[str], expected: int) -> list[Path]:
-    rows = read_tsv(path)
-    if len(rows) != expected:
-        raise ValueError(f"{path}: expected {expected} rows, found {len(rows)}")
-    keys = {
-        (row["dataset"], row["recipe"], row["mapping"], row["seed"])
-        for row in rows
+def expected_editing_cells(
+    datasets: set[str],
+    recipe_mappings: dict[str, set[str]],
+) -> set[tuple[str, str, str, int]]:
+    return {
+        (dataset, recipe, mapping, seed)
+        for dataset in datasets
+        for recipe, mappings in recipe_mappings.items()
+        for mapping in mappings
+        for seed in EDITING_SEEDS[dataset]
     }
-    if len(keys) != expected:
-        raise ValueError(f"{path}: duplicate experiment cells")
-    if {row["dataset"] for row in rows} != datasets:
-        raise ValueError(f"{path}: unexpected dataset inventory")
-    if {row["recipe"] for row in rows} != {"plain", "ssr_only"}:
-        raise ValueError(f"{path}: direct comparison must be plain versus ssr_only")
-    expected_mapping = {"plain": "none", "ssr_only": "projective"}
-    invalid_mappings = [
-        (row["recipe"], row["mapping"])
-        for row in rows
-        if row["mapping"] != expected_mapping[row["recipe"]]
-    ]
-    if invalid_mappings:
-        raise ValueError(f"{path}: unexpected recipe/mapping pairs {invalid_mappings[:5]}")
+
+
+def validate_editing_plan(
+    path: Path,
+    datasets: set[str],
+    recipe_mappings: dict[str, set[str]],
+    *,
+    expected_offset: int,
+    expected_n_edits: int,
+) -> list[Path]:
+    rows = read_tsv(path)
+    required_columns = {
+        "phase",
+        "dataset",
+        "recipe",
+        "mapping",
+        "seed",
+        "data_offset",
+        "n_edits",
+        "action",
+        "source",
+        "output",
+    }
+    if not rows or not required_columns.issubset(rows[0]):
+        raise ValueError(f"{path}: missing editing plan columns")
+    expected_cells = expected_editing_cells(datasets, recipe_mappings)
+    observed_cells: set[tuple[str, str, str, int]] = set()
+    plan_root = path.parent.resolve()
+    for row in rows:
+        try:
+            seed = int(row["seed"])
+            data_offset = int(row["data_offset"])
+            n_edits = int(row["n_edits"])
+        except ValueError as error:
+            raise ValueError(f"{path}: invalid numeric editing field in {row}") from error
+        cell = (row["dataset"], row["recipe"], row["mapping"], seed)
+        if cell in observed_cells:
+            raise ValueError(f"{path}: duplicate editing cell {cell}")
+        observed_cells.add(cell)
+        if row["phase"] != "confirm":
+            raise ValueError(f"{path}: editing phase must be confirm")
+        if data_offset != expected_offset or n_edits != expected_n_edits:
+            raise ValueError(
+                f"{path}: {cell} must use offset={expected_offset}, "
+                f"n_edits={expected_n_edits}"
+            )
+        expected_output = (
+            plan_root
+            / "confirm"
+            / row["dataset"]
+            / row["recipe"]
+            / row["mapping"]
+            / f"seed_{seed}"
+        ).resolve()
+        if Path(row["output"]).resolve() != expected_output:
+            raise ValueError(
+                f"{path}: output for {cell} must be {expected_output}, "
+                f"found {row['output']}"
+            )
+        if row["action"] not in {"run", "reuse", "skip"}:
+            raise ValueError(f"{path}: invalid action {row['action']!r} for {cell}")
+    if observed_cells != expected_cells:
+        missing = sorted(expected_cells - observed_cells)
+        unexpected = sorted(observed_cells - expected_cells)
+        raise ValueError(
+            f"{path}: incomplete editing matrix; "
+            f"missing={missing[:5]}, unexpected={unexpected[:5]}"
+        )
     return [Path(row["output"]) / "result_record.json" for row in rows]
 
 
@@ -168,6 +246,94 @@ def validate_editing_summary(path: Path, expected_datasets: set[str]) -> None:
             metric_summary = metrics.get(metric, {})
             if metric_summary.get("n") != len(EDITING_SEEDS[dataset]):
                 raise ValueError(f"{path}: {dataset}/{metric} is incomplete")
+
+
+def validate_factorial_editing_summary(path: Path) -> None:
+    if not path.is_file():
+        raise ValueError(f"Missing factorial-editing paired summary: {path}")
+    summary = load_json(path)
+    if summary.get("schema_version") != "ke_factorial_paired_summary_v1":
+        raise ValueError(f"{path}: unexpected factorial summary schema")
+    if summary.get("mode") != "factorial" or summary.get("phase") != "confirm":
+        raise ValueError(f"{path}: expected confirmatory factorial summary")
+    if set(summary.get("recipes", [])) != set(FACTORIAL_EDITING_RECIPE_MAPPINGS):
+        raise ValueError(f"{path}: incomplete factorial recipe inventory")
+
+    arms = summary.get("arms", {})
+    contrasts = summary.get("contrasts", {})
+    mapping_contrasts = summary.get("mapping_contrasts", {})
+    for container_name, container in (
+        ("arms", arms),
+        ("contrasts", contrasts),
+        ("mapping_contrasts", mapping_contrasts),
+    ):
+        if set(container) != FACTORIAL_EDITING_DATASETS:
+            raise ValueError(f"{path}: {container_name} has unexpected datasets")
+
+    required_metrics = {
+        "efficacy",
+        "locality",
+        "final_history_efficacy",
+        "final_history_locality",
+    }
+    expected_arm_keys = {
+        f"{recipe}:{mapping}"
+        for recipe, mappings in FACTORIAL_EDITING_RECIPE_MAPPINGS.items()
+        for mapping in mappings
+    }
+    for dataset in sorted(FACTORIAL_EDITING_DATASETS):
+        expected_seeds = EDITING_SEEDS[dataset]
+        dataset_arms = arms[dataset]
+        if set(dataset_arms) != expected_arm_keys:
+            raise ValueError(f"{path}: {dataset} has an incomplete factorial arm inventory")
+        for arm, arm_summary in dataset_arms.items():
+            if set(arm_summary.get("seeds", [])) != expected_seeds:
+                raise ValueError(f"{path}: {dataset}/{arm} has incomplete seeds")
+            metrics = arm_summary.get("metrics", {})
+            if not required_metrics.issubset(metrics):
+                raise ValueError(f"{path}: {dataset}/{arm} lacks required metrics")
+            for metric in required_metrics:
+                if metrics[metric].get("n") != len(expected_seeds):
+                    raise ValueError(f"{path}: {dataset}/{arm}/{metric} is incomplete")
+
+        dataset_contrasts = contrasts[dataset]
+        if set(dataset_contrasts) != FACTORIAL_EDITING_CONTRASTS:
+            raise ValueError(f"{path}: {dataset} lacks preregistered KE contrasts")
+        for contrast, mapping_summaries in dataset_contrasts.items():
+            if set(mapping_summaries) != {"cosine", "projective"}:
+                raise ValueError(f"{path}: {dataset}/{contrast} lacks a mapping arm")
+            for mapping, contrast_summary in mapping_summaries.items():
+                if set(contrast_summary.get("seeds", [])) != expected_seeds:
+                    raise ValueError(
+                        f"{path}: {dataset}/{contrast}/{mapping} has incomplete seeds"
+                    )
+                for metric in required_metrics:
+                    metric_summary = contrast_summary.get("metrics", {}).get(metric, {})
+                    if metric_summary.get("n") != len(expected_seeds):
+                        raise ValueError(
+                            f"{path}: {dataset}/{contrast}/{mapping}/{metric} is incomplete"
+                        )
+                    if len(metric_summary.get("pairs", [])) != len(expected_seeds):
+                        raise ValueError(
+                            f"{path}: {dataset}/{contrast}/{mapping}/{metric} "
+                            "lacks per-seed deltas"
+                        )
+
+        dataset_mapping = mapping_contrasts[dataset]
+        expected_mapping_recipes = {
+            item.split(":", 1)[0] for item in FACTORIAL_EDITING_MAPPING_CONTRASTS
+        }
+        if set(dataset_mapping) != expected_mapping_recipes:
+            raise ValueError(f"{path}: {dataset} lacks mapping contrasts")
+        for recipe, mapping_summary in dataset_mapping.items():
+            if set(mapping_summary.get("seeds", [])) != expected_seeds:
+                raise ValueError(f"{path}: {dataset}/{recipe} mapping seeds are incomplete")
+            for metric in required_metrics:
+                metric_summary = mapping_summary.get("metrics", {}).get(metric, {})
+                if metric_summary.get("n") != len(expected_seeds):
+                    raise ValueError(
+                        f"{path}: {dataset}/{recipe}/mapping/{metric} is incomplete"
+                    )
 
 
 def validate_segmentation_summaries(cub_path: Path, multidataset_path: Path) -> None:
@@ -474,16 +640,20 @@ def main() -> None:
     expected_records = []
     expected_records.extend(
         validate_editing_plan(
-            root / "ke_existing" / "planned_runs.tsv",
-            {"zsre", "cf", "recent"},
-            EXPECTED["ke_existing"],
+            root / "ke_factorial" / "planned_runs.tsv",
+            FACTORIAL_EDITING_DATASETS,
+            FACTORIAL_EDITING_RECIPE_MAPPINGS,
+            expected_offset=500,
+            expected_n_edits=100,
         )
     )
     expected_records.extend(
         validate_editing_plan(
             root / "ke_wikibio" / "planned_runs.tsv",
             {"wikibio"},
-            EXPECTED["ke_wikibio"],
+            {"plain": {"none"}, "ssr_only": {"projective"}},
+            expected_offset=0,
+            expected_n_edits=200,
         )
     )
     expected_records.extend(validate_vit_plan(root / "vit_lora" / "planned_runs.tsv"))
@@ -492,7 +662,7 @@ def main() -> None:
     )
 
     observed = {
-        "ke_existing": EXPECTED["ke_existing"],
+        "ke_factorial": EXPECTED["ke_factorial"],
         "ke_wikibio": EXPECTED["ke_wikibio"],
         "vit_lora": EXPECTED["vit_lora"],
         "matched_kd_cl": len(matched_kd_records),
@@ -506,8 +676,8 @@ def main() -> None:
     if observed != EXPECTED:
         raise ValueError(f"Matrix mismatch: expected={EXPECTED}, observed={observed}")
     total_jobs = sum(observed.values())
-    if total_jobs != 317:
-        raise ValueError(f"Expected 317 total jobs, found {total_jobs}")
+    if total_jobs != 497:
+        raise ValueError(f"Expected 497 total jobs, found {total_jobs}")
 
     if args.mode == "results":
         missing = [str(path) for path in expected_records if not path.is_file()]
@@ -518,9 +688,8 @@ def main() -> None:
             root / "matched_kd_cl" / "fairness_report.json",
             root / "matched_kd_cl" / "paired_summary" / "summary.json",
         )
-        validate_editing_summary(
-            root / "ke_existing" / "paired_summary" / "summary.json",
-            {"zsre", "cf", "recent"},
+        validate_factorial_editing_summary(
+            root / "ke_factorial" / "paired_summary" / "summary.json"
         )
         validate_editing_summary(
             root / "ke_wikibio" / "paired_summary" / "summary.json",
@@ -554,11 +723,16 @@ def main() -> None:
             "paired_summary_required": True,
         },
         "direct_editing_contract": {
-            "result_records_required": EXPECTED["ke_existing"] + EXPECTED["ke_wikibio"],
+            "result_records_required": EXPECTED["ke_factorial"] + EXPECTED["ke_wikibio"],
             "paired_summaries_required": 2,
+            "factorial_cells": EXPECTED["ke_factorial"],
+            "external_transfer_cells": EXPECTED["ke_wikibio"],
         },
         "primary_comparisons": [
             "task loss plus SSR versus task loss only",
+            "full SSR recipe versus the anchor-plus-spectral stabilized baseline",
+            "SSR-only versus anchor-only and spectral-only",
+            "projective versus cosine distance mapping within the same SSR recipe",
             "KD plus EWC, MAS, SI, center, prototype decorrelation, spectral, or SSR versus the same KD scaffold",
         ],
     }
