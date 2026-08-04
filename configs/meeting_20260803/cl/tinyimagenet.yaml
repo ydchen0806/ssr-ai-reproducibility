@@ -42,6 +42,9 @@ training:
   scheduler: cosine
   warmup_epochs: 3
   grad_clip: 5.0
-  use_amp: true
+  # AMP can skip a different number of updates for different regularizers.
+  # FP32 keeps the matched comparison on one exact optimizer-step budget.
+  use_amp: false
+  require_full_optimizer_budget: true
   num_workers: 4
   save_final_model: false

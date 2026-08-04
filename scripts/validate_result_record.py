@@ -22,6 +22,7 @@ def validate_identity(
     *,
     expected_git_commit: str | None = None,
     allow_legacy_git: bool = False,
+    allowed_git_commits: tuple[str, ...] = (),
     required_sha256_fields: tuple[str, ...] = (),
 ) -> dict[str, Any]:
     try:
@@ -40,7 +41,8 @@ def validate_identity(
         )
     if expected_git_commit is not None and record["git_commit"] != expected_git_commit:
         is_legacy = str(record["git_commit"]).startswith("legacy-source-fingerprint:")
-        if not (allow_legacy_git and is_legacy):
+        explicitly_allowed = record["git_commit"] in set(allowed_git_commits)
+        if not ((allow_legacy_git and is_legacy) or explicitly_allowed):
             raise ResultSchemaError(
                 f"Result git_commit mismatch for {path}: expected {expected_git_commit}, "
                 f"observed {record['git_commit']}"
@@ -75,6 +77,7 @@ def main() -> None:
     parser.add_argument("--teacher-protocol")
     parser.add_argument("--expected-git-commit")
     parser.add_argument("--allow-legacy-git", action="store_true")
+    parser.add_argument("--allowed-git-commit", action="append", default=[])
     parser.add_argument("--require-sha256-field", action="append", default=[])
     args = parser.parse_args()
     expected = {
@@ -99,6 +102,7 @@ def main() -> None:
             expected,
             expected_git_commit=args.expected_git_commit,
             allow_legacy_git=args.allow_legacy_git,
+            allowed_git_commits=tuple(args.allowed_git_commit),
             required_sha256_fields=tuple(args.require_sha256_field),
         )
     except ResultSchemaError as error:

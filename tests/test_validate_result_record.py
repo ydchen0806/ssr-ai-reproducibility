@@ -69,6 +69,25 @@ def test_identity_validator_allows_explicit_legacy_provenance(tmp_path):
     )
 
 
+def test_identity_validator_allows_an_explicit_resume_commit(tmp_path):
+    path = _record(tmp_path, git_commit="previous-locked-commit")
+
+    validate_identity(
+        path,
+        {"seed": 7},
+        expected_git_commit="current",
+        allowed_git_commits=("previous-locked-commit",),
+    )
+
+    with pytest.raises(ResultSchemaError, match="git_commit mismatch"):
+        validate_identity(
+            path,
+            {"seed": 7},
+            expected_git_commit="current",
+            allowed_git_commits=("different-commit",),
+        )
+
+
 def test_identity_validator_can_require_a_sha256_field(tmp_path):
     path = _record(tmp_path)
     with pytest.raises(ResultSchemaError, match="teacher_trajectory_hash"):

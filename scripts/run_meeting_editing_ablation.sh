@@ -17,6 +17,7 @@ DRY_RUN="${DRY_RUN:-0}"
 RUN_ID="${RUN_ID:-meeting_editing_$(date +%Y%m%d_%H%M%S)}"
 RESULT_ROOT="${RESULT_ROOT:-$PROJECT_ROOT/results/$RUN_ID}"
 REUSE_RESULTS_ROOTS="${REUSE_RESULTS_ROOTS:-}"
+ALLOWED_EXISTING_GIT_COMMITS="${ALLOWED_EXISTING_GIT_COMMITS:-}"
 SHARD_INDEX="${SHARD_INDEX:-0}"
 SHARD_COUNT="${SHARD_COUNT:-1}"
 
@@ -237,6 +238,10 @@ validate_record() {
   )
   if [[ "$allow_legacy" == "1" ]]; then
     command+=(--allow-legacy-git)
+    local allowed_commit
+    for allowed_commit in $ALLOWED_EXISTING_GIT_COMMITS; do
+      command+=(--allowed-git-commit "$allowed_commit")
+    done
   fi
   "${command[@]}"
 }

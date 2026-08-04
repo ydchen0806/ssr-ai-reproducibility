@@ -153,6 +153,21 @@ def check(
                     ),
                 }
             )
+        if (
+            len(optimizer_steps) == 1
+            and len(training_batches) == 1
+            and isinstance(next(iter(optimizer_steps)), int)
+            and isinstance(next(iter(training_batches)), int)
+            and next(iter(optimizer_steps)) != next(iter(training_batches))
+        ):
+            invalid.append(
+                {
+                    "identity": key,
+                    "error": "skipped_optimizer_updates",
+                    "optimizer_steps": next(iter(optimizer_steps)),
+                    "training_batches": next(iter(training_batches)),
+                }
+            )
         for row in rows:
             expected_regularizer = REGULARIZERS[row["recipe"]]
             weight = row.get("active_regularizer_weight")

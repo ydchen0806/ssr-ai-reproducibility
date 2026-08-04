@@ -15,6 +15,8 @@ DATA_ROOT="${DIRECT_DATA_ROOT:-$PROJECT_ROOT/data}"
 VIT_CHECKPOINT="${VIT_LORA_PRETRAINED_CHECKPOINT:-$DATA_ROOT/pretrained/vit_tiny_patch16_224_augreg_in21k_ft_in1k.safetensors}"
 INIT_WAIT_SEC="${INIT_WAIT_SEC:-600}"
 FINAL_WAIT_SEC="${FINAL_WAIT_SEC:-86400}"
+RECOVERY_SOURCE_ROOT="${SSR_DIRECT_RECOVERY_SOURCE_ROOT:-}"
+RECOVERY_SOURCE_COMMIT=""
 
 timestamp() { date '+%Y-%m-%dT%H:%M:%S%z'; }
 
@@ -67,6 +69,29 @@ for topology_key in PADDLE_TRAINERS_NUM NNODES SLURM_NNODES PET_NNODES; do
 done
 
 git_commit="$(git -C "$PROJECT_ROOT" rev-parse HEAD)"
+if [[ -n "$RECOVERY_SOURCE_ROOT" ]]; then
+  RECOVERY_SOURCE_ROOT="$(cd "$RECOVERY_SOURCE_ROOT" && pwd)"
+  [[ "$RECOVERY_SOURCE_ROOT" != "$RESULT_ROOT" ]] || {
+    printf 'Recovery source and destination result roots must differ.\n' >&2
+    exit 2
+  }
+  source_identity="$RECOVERY_SOURCE_ROOT/.direct_attribution_4node_identity"
+  [[ -s "$source_identity" ]] || {
+    printf 'Recovery source lacks an identity file: %s\n' "$source_identity" >&2
+    exit 2
+  }
+  grep -Fqx 'protocol=meeting_extension_multidata_4node_v2' "$source_identity" || {
+    printf 'Recovery source uses an incompatible protocol.\n' >&2
+    exit 2
+  }
+  RECOVERY_SOURCE_COMMIT="$(awk -F= '$1=="git_commit" {print $2}' "$source_identity")"
+  [[ "$RECOVERY_SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || exit 2
+  git -C "$PROJECT_ROOT" merge-base --is-ancestor "$RECOVERY_SOURCE_COMMIT" "$git_commit" || {
+    printf 'Recovery source commit %s is not an ancestor of %s.\n' \
+      "$RECOVERY_SOURCE_COMMIT" "$git_commit" >&2
+    exit 2
+  }
+fi
 if [[ "$DRY_RUN" != "1" ]]; then
   "$PYTHON" "$PROJECT_ROOT/scripts/check_experiment_worktree.py" \
     --project-root "$PROJECT_ROOT"
@@ -91,6 +116,8 @@ if ((GLOBAL_NODE_RANK == 0)); then
     printf 'run_id=%s\n' "$RUN_ID"
     printf 'launch_token=%s\n' "$LAUNCH_TOKEN"
     printf 'git_commit=%s\n' "$git_commit"
+    printf 'recovery_source_root=%s\n' "$RECOVERY_SOURCE_ROOT"
+    printf 'recovery_source_commit=%s\n' "$RECOVERY_SOURCE_COMMIT"
   } > "$IDENTITY_FILE.tmp.$$"
   mv "$IDENTITY_FILE.tmp.$$" "$IDENTITY_FILE"
 else
@@ -105,7 +132,9 @@ for expected in \
   'protocol=meeting_extension_multidata_4node_v2' \
   "run_id=$RUN_ID" \
   "launch_token=$LAUNCH_TOKEN" \
-  "git_commit=$git_commit"; do
+  "git_commit=$git_commit" \
+  "recovery_source_root=$RECOVERY_SOURCE_ROOT" \
+  "recovery_source_commit=$RECOVERY_SOURCE_COMMIT"; do
   grep -Fqx "$expected" "$IDENTITY_FILE" || exit 2
 done
 
@@ -187,6 +216,10 @@ GPU_LIST="$(seq -s ' ' 0 7)"
 run_editing_suite() {
   local config="$1" child_root="$2" child_token="$3" datasets="$4"
   local recipes="$5" mappings="$6"
+  local reuse_roots=""
+  if [[ -n "$RECOVERY_SOURCE_ROOT" ]]; then
+    reuse_roots="$RECOVERY_SOURCE_ROOT/$(basename "$child_root")/confirm"
+  fi
   local -a command=(
     env
     "NODE_RANK=$GLOBAL_NODE_RANK"
@@ -194,7 +227,8 @@ run_editing_suite() {
     "LAUNCH_TOKEN=$child_token"
     "RUN_ID=${RUN_ID}_${child_token##*.}"
     "RESULT_ROOT=$child_root"
-    "REUSE_RESULTS_ROOTS="
+    "REUSE_RESULTS_ROOTS=$reuse_roots"
+    "ALLOWED_EXISTING_GIT_COMMITS=$RECOVERY_SOURCE_COMMIT"
     "GPU_LIST=$GPU_LIST"
     "CONFIG_FILE=$config"
     "PYTHON=$PYTHON"
@@ -230,6 +264,8 @@ case "$GLOBAL_NODE_RANK" in
     run_role() {
       env \
         "OUTPUT_ROOT=$RESULT_ROOT/vit_lora" \
+        "REUSE_RESULTS_ROOT=${RECOVERY_SOURCE_ROOT:+$RECOVERY_SOURCE_ROOT/vit_lora}" \
+        "ALLOWED_EXISTING_GIT_COMMITS=$RECOVERY_SOURCE_COMMIT" \
         "VIT_LORA_DATA_ROOT=$DATA_ROOT" \
         "VIT_LORA_PRETRAINED_CHECKPOINT=$VIT_CHECKPOINT" \
         "DATASETS=flowers102 oxfordiiitpet" \

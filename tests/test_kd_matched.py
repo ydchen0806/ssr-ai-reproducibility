@@ -3,13 +3,39 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 import pytest
+from torch.utils.data import TensorDataset
 
+from methods.base import BaseContinualLearner
 from methods.builder import build_method
 from methods.kd_matched import KDMatched
 
 
 def tiny_model():
     return nn.Sequential(nn.Flatten(), nn.Linear(4, 3))
+
+
+class NonFiniteLearner(BaseContinualLearner):
+    def training_step(self, x, y, task_id):
+        logits = self.model(x)
+        return logits.sum() * float("nan"), logits
+
+    def after_task(self, task_id):
+        return None
+
+
+def test_training_fails_immediately_on_nonfinite_loss():
+    learner = NonFiniteLearner(tiny_model(), torch.device("cpu"))
+    dataset = TensorDataset(
+        torch.randn(2, 1, 2, 2),
+        torch.tensor([0, 1]),
+    )
+
+    with pytest.raises(FloatingPointError, match="Non-finite loss"):
+        learner.train_task(
+            0,
+            dataset,
+            {"epochs": 1, "batch_size": 2, "num_workers": 0},
+        )
 
 
 def test_registry_selects_one_common_kd_implementation():

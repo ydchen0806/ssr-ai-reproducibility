@@ -8,6 +8,7 @@ Supports:
 """
 
 import logging
+import math
 import time
 from abc import ABC, abstractmethod
 
@@ -79,6 +80,11 @@ class BaseContinualLearner(ABC):
                 if use_amp:
                     with torch.amp.autocast("cuda"):
                         loss, logits = self.training_step(x, y, task_id)
+                    loss_value = float(loss.detach().item())
+                    if not math.isfinite(loss_value):
+                        raise FloatingPointError(
+                            f"Non-finite loss at task={task_id + 1}, epoch={epoch + 1}"
+                        )
                     optimizer.zero_grad(set_to_none=True)
                     self._scaler.scale(loss).backward()
                     if grad_clip > 0:
@@ -89,8 +95,17 @@ class BaseContinualLearner(ABC):
                     self._scaler.update()
                     if self._scaler.get_scale() >= scale_before_step:
                         self._after_optimizer_step()
+                    elif training_config.get("require_full_optimizer_budget", False):
+                        raise FloatingPointError(
+                            "AMP skipped an optimizer update under a locked full-budget protocol"
+                        )
                 else:
                     loss, logits = self.training_step(x, y, task_id)
+                    loss_value = float(loss.detach().item())
+                    if not math.isfinite(loss_value):
+                        raise FloatingPointError(
+                            f"Non-finite loss at task={task_id + 1}, epoch={epoch + 1}"
+                        )
                     optimizer.zero_grad(set_to_none=True)
                     loss.backward()
                     if grad_clip > 0:
@@ -101,7 +116,7 @@ class BaseContinualLearner(ABC):
                 if hasattr(self, '_accumulate_w'):
                     self._accumulate_w()
 
-                epoch_loss += loss.item() * x.size(0)
+                epoch_loss += loss_value * x.size(0)
                 with torch.no_grad():
                     _, predicted = logits.max(1)
                     correct += predicted.eq(y).sum().item()

@@ -16,6 +16,10 @@ LAMBDA_SPATIAL="${LAMBDA_SPATIAL:-0.01}"
 LAMBDA_ADAPTER="${LAMBDA_ADAPTER:-0.002}"
 DRY_RUN="${DRY_RUN:-0}"
 ALLOW_NETWORK_DOWNLOAD="${ALLOW_NETWORK_DOWNLOAD:-0}"
+REUSE_RESULTS_ROOT="${REUSE_RESULTS_ROOT:-}"
+ALLOWED_EXISTING_GIT_COMMITS="${ALLOWED_EXISTING_GIT_COMMITS:-}"
+RESULT_VALIDATOR="$PROJECT_ROOT/scripts/validate_result_record.py"
+git_commit="$(git -C "$PROJECT_ROOT" rev-parse HEAD)"
 
 read -r -a DATASET_LIST <<< "$DATASETS_VALUE"
 read -r -a SEED_LIST <<< "$SEEDS_VALUE"
@@ -74,6 +78,33 @@ fi
 CUDA_VISIBLE_DEVICES="${GPUS[0]}" "${prepare_command[@]}" \
   > "$OUTPUT_ROOT/logs/prepare_assets.log" 2>&1
 
+validate_record() {
+  local record="$1" dataset="$2" arm="$3" seed="$4" allow_previous="$5"
+  local recipe="plain" mapping="none"
+  if [[ "$arm" == "task_ssr" ]]; then
+    recipe="ssr_only"
+    mapping="cosine"
+  fi
+  local -a command=(
+    "$PYTHON" "$RESULT_VALIDATOR"
+    --record "$record"
+    --task-family classification
+    --dataset "${dataset}_cl"
+    --model vit_tiny_patch16_224
+    --recipe "$recipe"
+    --mapping "$mapping"
+    --seed "$seed"
+    --expected-git-commit "$git_commit"
+  )
+  if [[ "$allow_previous" == "1" ]]; then
+    local allowed_commit
+    for allowed_commit in $ALLOWED_EXISTING_GIT_COMMITS; do
+      command+=(--allowed-git-commit "$allowed_commit")
+    done
+  fi
+  "${command[@]}"
+}
+
 worker() {
   local gpu="$1" worker_index="$2" worker_count="$3"
   local index=0 dataset arm seed config output log pair previous_pair="" assigned=0
@@ -89,8 +120,22 @@ worker() {
       continue
     fi
     if [[ -s "$output/result_record.json" ]]; then
+      validate_record "$output/result_record.json" "$dataset" "$arm" "$seed" 1 \
+        >/dev/null || return 65
       printf 'SKIP %s/%s/seed_%s\n' "$dataset" "$arm" "$seed"
       continue
+    fi
+    if [[ -n "$REUSE_RESULTS_ROOT" ]]; then
+      reuse_record="$REUSE_RESULTS_ROOT/$dataset/$arm/seed_$seed/result_record.json"
+      if [[ -s "$reuse_record" ]]; then
+        validate_record "$reuse_record" "$dataset" "$arm" "$seed" 1 \
+          >/dev/null || return 65
+        mkdir -p "$output"
+        cp -a "$(dirname "$reuse_record")/." "$output/"
+        printf 'REUSE %s/%s/seed_%s from %s\n' \
+          "$dataset" "$arm" "$seed" "$reuse_record"
+        continue
+      fi
     fi
     mkdir -p "$output"
     log="$OUTPUT_ROOT/logs/${dataset}_${arm}_seed_${seed}.log"
@@ -128,6 +173,8 @@ worker() {
         "$dataset" "$arm" "$seed" "$log" >&2
       return 70
     }
+    validate_record "$output/result_record.json" "$dataset" "$arm" "$seed" 0 \
+      >/dev/null || return 65
   done < "$PLAN"
 }
 
