@@ -46,23 +46,27 @@ def compute_spatial_biocs(
     Forced float32: the normalize→cosine→sqrt→exp chain produces NaN
     gradients under float16 AMP autocast.
     """
-    weights = weights.float()
-    if seen_mask is not None:
-        weights = weights[seen_mask]
-    n = weights.size(0)
-    if n < 2:
-        return torch.tensor(0.0, device=weights.device)
+    # A float32 cast alone does not override an enclosing CUDA autocast region:
+    # autocast would still execute the cosine matmul in float16, whose backward
+    # path produces non-finite gradients near the clamped diagonal.
+    with torch.autocast(device_type=weights.device.type, enabled=False):
+        weights = weights.float()
+        if seen_mask is not None:
+            weights = weights[seen_mask]
+        n = weights.size(0)
+        if n < 2:
+            return torch.tensor(0.0, device=weights.device)
 
-    w_norm = F.normalize(weights, dim=1)
-    cos_sim = torch.clamp(w_norm @ w_norm.T, -1.0, 1.0)
-    dist = torch.sqrt(torch.clamp(1.0 - cos_sim, min=1e-8))
+        w_norm = F.normalize(weights, dim=1)
+        cos_sim = torch.clamp(w_norm @ w_norm.T, -1.0, 1.0)
+        dist = torch.sqrt(torch.clamp(1.0 - cos_sim, min=1e-8))
 
-    exc = A_exc * torch.exp(-(dist ** 2) / (2 * sigma_exc ** 2))
-    inh = A_inh * torch.exp(-(dist ** 2) / (2 * sigma_inh ** 2))
-    P = (inh - exc) + (A_exc - A_inh)
-    P = P - torch.diag(torch.diag(P))
+        exc = A_exc * torch.exp(-(dist ** 2) / (2 * sigma_exc ** 2))
+        inh = A_inh * torch.exp(-(dist ** 2) / (2 * sigma_inh ** 2))
+        P = (inh - exc) + (A_exc - A_inh)
+        P = P - torch.diag(torch.diag(P))
 
-    return P.sum() / (n * (n - 1) + 1e-8)
+        return P.sum() / (n * (n - 1) + 1e-8)
 
 
 def compute_spectral_flatness(weights: torch.Tensor, seen_mask: torch.Tensor | None = None) -> torch.Tensor:

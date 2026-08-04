@@ -11,6 +11,7 @@ PRETRAINED_CHECKPOINT="${VIT_LORA_PRETRAINED_CHECKPOINT:-$PROJECT_ROOT/data/pret
 DATASETS_VALUE="${DATASETS:-flowers102 oxfordiiitpet}"
 SEEDS_VALUE="${SEEDS:-5201 5203 5205 5207 5209}"
 GPU_LIST_VALUE="${GPU_LIST:-0 1 2 3 4 5 6 7}"
+JOBS_PER_GPU="${JOBS_PER_GPU:-1}"
 EPOCHS="${EPOCHS:-15}"
 LAMBDA_SPATIAL="${LAMBDA_SPATIAL:-0.01}"
 LAMBDA_ADAPTER="${LAMBDA_ADAPTER:-0.002}"
@@ -24,6 +25,16 @@ git_commit="$(git -C "$PROJECT_ROOT" rev-parse HEAD)"
 read -r -a DATASET_LIST <<< "$DATASETS_VALUE"
 read -r -a SEED_LIST <<< "$SEEDS_VALUE"
 read -r -a GPUS <<< "$GPU_LIST_VALUE"
+[[ "$JOBS_PER_GPU" =~ ^[1-9][0-9]*$ ]] || {
+  printf 'JOBS_PER_GPU must be a positive integer.\n' >&2
+  exit 2
+}
+SLOTS=()
+for gpu in "${GPUS[@]}"; do
+  for ((slot = 0; slot < JOBS_PER_GPU; slot++)); do
+    SLOTS+=("$gpu")
+  done
+done
 ARMS=(task task_ssr)
 for dataset in "${DATASET_LIST[@]}"; do
   case "$dataset" in
@@ -182,8 +193,8 @@ worker() {
 }
 
 pids=()
-for index in "${!GPUS[@]}"; do
-  worker "${GPUS[$index]}" "$index" "${#GPUS[@]}" &
+for index in "${!SLOTS[@]}"; do
+  worker "${SLOTS[$index]}" "$index" "${#SLOTS[@]}" &
   pids+=("$!")
 done
 exit_code=0

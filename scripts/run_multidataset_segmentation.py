@@ -371,15 +371,12 @@ def run_jobs(
     dataset_manifests: dict[str, dict],
     cache_manifests: dict[str, dict],
 ) -> None:
-    groups = {}
-    for job in jobs:
-        groups.setdefault((job.dataset, job.seed), []).append(job)
-    ordered_groups = [groups[key] for key in sorted(groups)]
+    slots = [gpu for gpu in args.gpus for _ in range(args.jobs_per_gpu)]
     assignments = [
-        [job for group in ordered_groups[index :: len(args.gpus)] for job in group]
-        for index in range(len(args.gpus))
+        jobs[index :: len(slots)]
+        for index in range(len(slots))
     ]
-    with ThreadPoolExecutor(max_workers=len(args.gpus)) as pool:
+    with ThreadPoolExecutor(max_workers=len(slots)) as pool:
         futures = [
             pool.submit(
                 run_worker,
@@ -390,7 +387,7 @@ def run_jobs(
                 dataset_manifests,
                 cache_manifests,
             )
-            for gpu, assigned in zip(args.gpus, assignments)
+            for gpu, assigned in zip(slots, assignments)
             if assigned
         ]
         for future in futures:
@@ -681,6 +678,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--result-root", type=Path, required=True)
     parser.add_argument("--phase", choices=("all", "screen", "confirm"), default="all")
     parser.add_argument("--gpus", nargs="+", default=[str(index) for index in range(8)])
+    parser.add_argument("--jobs-per-gpu", type=int, default=1)
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT / "data")
     parser.add_argument("--prepare-data", action="store_true")
@@ -697,6 +695,8 @@ def parse_args() -> argparse.Namespace:
     args.data_root = args.data_root.resolve()
     args.selection_lock_sha256 = "development_screen"
     args.cache_sha256 = {}
+    if args.jobs_per_gpu < 1:
+        parser.error("jobs-per-gpu must be positive")
     return args
 
 

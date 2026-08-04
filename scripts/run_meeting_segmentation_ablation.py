@@ -158,7 +158,7 @@ def command(job: Job, args: argparse.Namespace) -> list[str]:
         "--classes_per_task", "10",
         "--class_order", "semantic",
         "--seg_epochs", "24",
-        "--seg_batch_size", "24",
+        "--seg_batch_size", str(args.seg_batch_size),
         "--seg_image_size", "192",
         "--seg_hidden_dim", "256",
         "--seg_biocs_target", "class",
@@ -170,7 +170,7 @@ def command(job: Job, args: argparse.Namespace) -> list[str]:
         "--sigma-exc", str(job.spec.sigma_exc),
         "--sigma-inh", str(job.spec.sigma_inh),
         "--kernel-family", "gaussian",
-        "--workers", "0",
+        "--workers", str(args.workers),
         "--device", "cuda",
         "--no_download",
     ]
@@ -246,18 +246,19 @@ def run_worker(
 def run_jobs(jobs: list[Job], args: argparse.Namespace, expected_git_commit: str) -> None:
     from concurrent.futures import ThreadPoolExecutor
 
-    groups = {}
-    for job in jobs:
-        groups.setdefault(job.seed, []).append(job)
-    ordered_groups = [groups[key] for key in sorted(groups)]
+    # Every job is independent after the phase is fixed. The old seed-grouped
+    # scheduler created only three development workers and left five GPUs idle.
+    # Repeating GPU ids provides explicit, bounded process packing for these
+    # small dense-decoder jobs on large-memory accelerators.
+    slots = [gpu for gpu in args.gpus for _ in range(args.jobs_per_gpu)]
     assignments = [
-        [job for group in ordered_groups[index :: len(args.gpus)] for job in group]
-        for index in range(len(args.gpus))
+        jobs[index :: len(slots)]
+        for index in range(len(slots))
     ]
-    with ThreadPoolExecutor(max_workers=len(args.gpus)) as pool:
+    with ThreadPoolExecutor(max_workers=len(slots)) as pool:
         futures = [
             pool.submit(run_worker, gpu, assigned, args, expected_git_commit)
-            for gpu, assigned in zip(args.gpus, assignments)
+            for gpu, assigned in zip(slots, assignments)
             if assigned
         ]
         for future in futures:
@@ -511,6 +512,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase", choices=["all", "screen", "confirm"], default="all")
     parser.add_argument("--gpus", nargs="+", default=["0"])
     parser.add_argument("--python", default=sys.executable)
+    parser.add_argument("--jobs-per-gpu", type=int, default=1)
+    parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--seg-batch-size", type=int, default=48)
     parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT / "data/cub200")
     parser.add_argument(
         "--segmentation-cache",
@@ -518,7 +522,12 @@ def parse_args() -> argparse.Namespace:
         default=PROJECT_ROOT / "data/cub200/cub200_seg_resnet18_dense_192.pt",
     )
     parser.add_argument("--manifest-only", action="store_true")
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.jobs_per_gpu < 1 or args.workers < 0 or args.seg_batch_size < 1:
+        parser.error(
+            "jobs-per-gpu and seg-batch-size must be positive; workers cannot be negative"
+        )
+    return args
 
 
 def main() -> None:

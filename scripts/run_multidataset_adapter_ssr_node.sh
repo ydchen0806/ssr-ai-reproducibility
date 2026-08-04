@@ -10,12 +10,23 @@ DATA_ROOT="${ADAPTER_DATA_ROOT:-$PROJECT_ROOT/data/torchvision}"
 CACHE_ROOT="${ADAPTER_CACHE_ROOT:-$DATA_ROOT/feature_cache}"
 DATASETS_VALUE="${DATASETS:-flowers102 food101 oxfordiiitpet dtd}"
 GPU_LIST_VALUE="${GPU_LIST:-0 1 2 3 4 5 6 7}"
+JOBS_PER_GPU="${JOBS_PER_GPU:-1}"
 PHASE="${PHASE:-development}"
 DRY_RUN="${DRY_RUN:-0}"
 RANK="${ADAPTER_RANK:-16}"
 
 read -r -a DATASET_LIST <<< "$DATASETS_VALUE"
 read -r -a GPUS <<< "$GPU_LIST_VALUE"
+[[ "$JOBS_PER_GPU" =~ ^[1-9][0-9]*$ ]] || {
+  printf 'JOBS_PER_GPU must be a positive integer.\n' >&2
+  exit 2
+}
+SLOTS=()
+for gpu in "${GPUS[@]}"; do
+  for ((slot = 0; slot < JOBS_PER_GPU; slot++)); do
+    SLOTS+=("$gpu")
+  done
+done
 [[ ${#DATASET_LIST[@]} -gt 0 && ${#GPUS[@]} -gt 0 ]] || exit 2
 [[ "$PHASE" == "development" || "$PHASE" == "confirmation" ]] || {
   printf 'PHASE must be development or confirmation.\n' >&2
@@ -79,7 +90,7 @@ for dataset in "${DATASET_LIST[@]}"; do
         printf 'Refusing to overwrite completed pair: %s\n' "$output/pair.json" >&2
         exit 2
       }
-      gpu="${GPUS[$gpu_index]}"
+      gpu="${SLOTS[$gpu_index]}"
       log="$OUTPUT_ROOT/logs/${PHASE}_${dataset}_scale_${scale}_seed_${seed}.log"
       CUDA_VISIBLE_DEVICES="$gpu" "$PYTHON" \
         "$PROJECT_ROOT/experiments/multidataset_adapter_ssr.py" \
@@ -94,8 +105,8 @@ for dataset in "${DATASET_LIST[@]}"; do
         > "$log" 2>&1 &
       pids+=("$!")
       active=$((active + 1))
-      gpu_index=$(((gpu_index + 1) % ${#GPUS[@]}))
-      if ((active == ${#GPUS[@]})); then
+      gpu_index=$(((gpu_index + 1) % ${#SLOTS[@]}))
+      if ((active == ${#SLOTS[@]})); then
         for pid in "${pids[@]}"; do wait "$pid"; done
         pids=()
         active=0

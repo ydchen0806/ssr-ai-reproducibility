@@ -63,12 +63,28 @@ def validate_pair(control_path: Path, treatment_path: Path) -> dict:
             raise ValueError(f"Unmatched ViT-LoRA pair: {field} differs")
     if int(control["optimizer_steps"]) <= 0:
         raise ValueError("optimizer_steps must be positive")
-    if int(control["training_batches"]) < int(control["optimizer_steps"]):
-        raise ValueError("training_batches cannot be smaller than optimizer_steps")
+    if int(control["training_batches"]) != int(control["optimizer_steps"]):
+        raise ValueError("ViT-LoRA confirmation requires one optimizer step per batch")
+    for name, record in (("control", control), ("treatment", treatment)):
+        final_hash = record.get("final_model_hash")
+        if not isinstance(final_hash, str) or len(final_hash) != 64:
+            raise ValueError(f"{name} is missing a valid final_model_hash")
+        if final_hash == record["initial_model_hash"]:
+            raise ValueError(f"{name} model did not change during training")
+    if control["final_model_hash"] == treatment["final_model_hash"]:
+        raise ValueError("SSR treatment produced the same final model as task-only control")
     if normalize_objective(control["objective"]) != CONTROL_OBJECTIVE:
         raise ValueError("Control is not task-loss only")
     if normalize_objective(treatment["objective"]) != TREATMENT_OBJECTIVE:
         raise ValueError("Treatment is not task-loss+SSR only")
+    if control.get("active_regularizer") != "none" or float(
+        control.get("active_regularizer_weight", 0.0)
+    ) != 0.0:
+        raise ValueError("Control unexpectedly activates a regularizer")
+    if treatment.get("active_regularizer") != "ssr" or float(
+        treatment.get("active_regularizer_weight", 0.0)
+    ) <= 0.0:
+        raise ValueError("SSR treatment did not activate a positive-weight SSR term")
     if control["recipe"] != "plain" or treatment["recipe"] != "ssr_only":
         raise ValueError("Expected plain and ssr_only recipes")
     if control["distance_mapping"] != "none" or treatment["distance_mapping"] != "cosine":

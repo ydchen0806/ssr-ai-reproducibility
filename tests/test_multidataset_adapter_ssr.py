@@ -237,6 +237,40 @@ def test_biocs_lora_objective_is_task_only_exactly_when_ssr_weights_are_zero():
     ) == {"task": True, "ssr": True, "spectral": True}
 
 
+def test_biocs_lora_task_only_skips_inactive_spatial_penalty(monkeypatch):
+    learner = BioCsLoRA(
+        TinyAttentionModel(),
+        torch.device("cpu"),
+        {
+            "lora_targets": ["qkv", "proj"],
+            "lora_rank": 2,
+            "lambda_spatial": 0.0,
+            "lambda_adapter": 0.0,
+        },
+    )
+
+    def unexpected_penalty(*_args, **_kwargs):
+        raise AssertionError("inactive SSR penalty was evaluated")
+
+    monkeypatch.setattr("methods.biocs_lora.compute_spatial_biocs", unexpected_penalty)
+    loss, _ = learner.training_step(torch.randn(4, 4), torch.arange(4) % 3, 0)
+    assert torch.isfinite(loss)
+    assert learner.regularizer == "none"
+    assert learner.active_regularizer_weight() == 0.0
+
+
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA autocast regression")
+def test_spatial_biocs_has_finite_gradients_inside_cuda_autocast():
+    from methods.bioreg import compute_spatial_biocs
+
+    weights = torch.randn(11, 32, device="cuda", requires_grad=True)
+    with torch.amp.autocast("cuda"):
+        penalty = compute_spatial_biocs(weights)
+    penalty.backward()
+    assert torch.isfinite(penalty)
+    assert torch.isfinite(weights.grad).all()
+
+
 def test_vit_lora_pair_validator_enforces_initialization_and_budget(tmp_path):
     normalized_task = {
         "task": True,
@@ -256,8 +290,11 @@ def test_vit_lora_pair_validator_enforces_initialization_and_budget(tmp_path):
         "dataset_hash": "a" * 64,
         "pairing_hash": "b" * 64,
         "initial_model_hash": "c" * 64,
+        "final_model_hash": "d" * 64,
         "optimizer_steps": 123,
         "training_batches": 123,
+        "active_regularizer": "none",
+        "active_regularizer_weight": 0.0,
         "metrics": {
             "avg_accuracy": 40.0,
             "avg_forgetting": 12.0,
@@ -295,9 +332,14 @@ def test_vit_lora_pair_validator_enforces_initialization_and_budget(tmp_path):
         yaml.safe_dump(common_config), encoding="utf-8"
     )
     treated_record = dict(common_record)
+    treated_record["final_model_hash"] = "e" * 64
     treated_record["metrics"] = dict(common_record["metrics"], avg_accuracy=41.0)
     treated_record.update(
-        objective=normalized_ssr, recipe="ssr_only", distance_mapping="cosine"
+        objective=normalized_ssr,
+        recipe="ssr_only",
+        distance_mapping="cosine",
+        active_regularizer="ssr",
+        active_regularizer_weight=0.012,
     )
     treated_config = copy.deepcopy(common_config)
     treated_config["method"].update(
@@ -312,6 +354,14 @@ def test_vit_lora_pair_validator_enforces_initialization_and_budget(tmp_path):
 
     row = validate_pair(control, treatment)
     assert row["avg_accuracy_delta"] == pytest.approx(1.0)
+    treated_record["final_model_hash"] = common_record["final_model_hash"]
+    (treatment / "result_record.json").write_text(
+        json.dumps(treated_record), encoding="utf-8"
+    )
+    with pytest.raises(ValueError, match="same final model"):
+        validate_pair(control, treatment)
+
+    treated_record["final_model_hash"] = "e" * 64
     treated_record["optimizer_steps"] = 124
     (treatment / "result_record.json").write_text(
         json.dumps(treated_record), encoding="utf-8"

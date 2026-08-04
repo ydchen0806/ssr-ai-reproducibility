@@ -36,7 +36,10 @@ class BaseContinualLearner(ABC):
 
         use_amp = training_config.get("use_amp", False)
         if use_amp and self._scaler is None:
-            self._scaler = torch.amp.GradScaler("cuda")
+            self._scaler = torch.amp.GradScaler(
+                "cuda",
+                init_scale=float(training_config.get("amp_init_scale", 65536.0)),
+            )
             logger.info("AMP enabled (float16 mixed precision)")
 
         if training_config.get("compile_model", False) and not self._compiled:
@@ -93,7 +96,8 @@ class BaseContinualLearner(ABC):
                     scale_before_step = self._scaler.get_scale()
                     self._scaler.step(optimizer)
                     self._scaler.update()
-                    if self._scaler.get_scale() >= scale_before_step:
+                    scale_after_step = self._scaler.get_scale()
+                    if scale_before_step > 0 and scale_after_step >= scale_before_step:
                         self._after_optimizer_step()
                     elif training_config.get("require_full_optimizer_budget", False):
                         raise FloatingPointError(

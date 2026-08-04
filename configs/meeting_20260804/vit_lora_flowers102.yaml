@@ -39,4 +39,6 @@ training:
   warmup_epochs: 1
   grad_clip: 5.0
   use_amp: true
+  amp_init_scale: 4096.0
+  require_full_optimizer_budget: true
   num_workers: 8

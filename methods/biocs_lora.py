@@ -69,6 +69,9 @@ class BioCsLoRA(BaseContinualLearner):
         self.lambda_spatial = config.get("lambda_spatial", 0.01)
         self.lambda_adapter = config.get("lambda_adapter", 0.0)
         self.lambda_spectral = config.get("lambda_spectral", 0.0)
+        self.regularizer = (
+            "ssr" if self.lambda_spatial > 0 or self.lambda_adapter > 0 else "none"
+        )
         self.A_exc = config.get("A_exc", 1.0)
         self.A_inh = config.get("A_inh", 0.8)
         self.sigma_exc = config.get("sigma_exc", 0.2)
@@ -189,12 +192,15 @@ class BioCsLoRA(BaseContinualLearner):
         reg_loss = torch.tensor(0.0, device=self.device)
 
         classifier = self._get_classifier()
-        if classifier is not None:
+        if classifier is not None and (
+            self.lambda_spatial > 0 or self.lambda_spectral > 0
+        ):
             mask = self._get_seen_mask(classifier)
-            reg_loss = reg_loss + self.lambda_spatial * compute_spatial_biocs(
-                classifier.weight, self.A_exc, self.A_inh,
-                self.sigma_exc, self.sigma_inh, mask,
-            )
+            if self.lambda_spatial > 0:
+                reg_loss = reg_loss + self.lambda_spatial * compute_spatial_biocs(
+                    classifier.weight, self.A_exc, self.A_inh,
+                    self.sigma_exc, self.sigma_inh, mask,
+                )
             if self.lambda_spectral > 0:
                 reg_loss = reg_loss + self.lambda_spectral * compute_spectral_flatness(
                     classifier.weight, mask,
@@ -221,6 +227,9 @@ class BioCsLoRA(BaseContinualLearner):
 
     def _after_optimizer_step(self) -> None:
         self.optimizer_steps += 1
+
+    def active_regularizer_weight(self) -> float:
+        return float(self.lambda_spatial + self.lambda_adapter)
 
     def after_task(self, task_id: int):
         pass

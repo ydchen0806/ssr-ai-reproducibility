@@ -297,6 +297,7 @@ def main():
         results["cil_avg_accuracy"] = float(np.mean(cil_curve))
         results["cil_last_accuracy"] = float(cil_curve[-1])
     results.update(classifier_geometry(method.model))
+    final_model_hash = model_state_sha256(method.model)
     results["total_time_s"] = total_time
     results["seed"] = args.seed
     if hasattr(method, "optimizer_steps"):
@@ -409,6 +410,7 @@ def main():
         recipe=config.get("method", {}).get("recipe", method_name),
         pairing_hash=sha256_value(pairing_config),
         initial_model_hash=initial_model_hash,
+        final_model_hash=final_model_hash,
         optimizer_steps=int(getattr(method, "optimizer_steps", 0)),
         training_batches=int(getattr(method, "training_batches", 0)),
         trainable_parameter_count=int(
