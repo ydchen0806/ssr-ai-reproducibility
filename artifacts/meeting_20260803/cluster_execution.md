@@ -12,8 +12,35 @@ python3 scripts/check_experiment_worktree.py --project-root "$PWD"
 nvidia-smi
 ```
 
-Do not launch while unrelated compute is active. The three workloads below are
-intended to run serially on the currently available two-GPU host.
+Do not launch while unrelated compute is active.
+
+## Recommended four-node launch
+
+Run the same command once on every node in one allocation of exactly four
+eight-GPU nodes. The wrapper resolves and cross-checks the global node rank,
+assigns ranks 0--1 to the two-node editing matrix, rank 2 to fixed-KD continual
+learning and rank 3 to the CUB segmentation 2x2, then aggregates only after all
+four roles finish successfully.
+
+```bash
+cd /unify/ydchen/unidit/bioreg_meeting_20260803_final
+SSR_MEETING_RUN_ID=meeting_revision_4node_20260804_r1 \
+SSR_MEETING_LAUNCH_TOKEN=meeting_revision_4node_20260804_r1 \
+EXPECTED_NNODES=4 GPU_COUNT=8 \
+PYTHON=/usr/local/bin/python \
+FINAL_WAIT_SEC=86400 \
+bash scripts/submit_meeting_revision_4node.sh
+```
+
+Use a fresh `SSR_MEETING_RUN_ID` for every launch. The result root is
+`results/$SSR_MEETING_RUN_ID`, with separate `editing`, `matched_kd_cl` and
+`cub_segmentation` subdirectories. A dry run can be performed by adding
+`SSR_MEETING_DRY_RUN=1`; it must validate 240 editing cells, 50 matched-KD jobs,
+21 segmentation development jobs and 40 segmentation confirmation jobs.
+
+The single-workload commands below are retained as serial fallbacks for a
+single host. Do not invoke a fallback against the same result directory while
+the four-node wrapper is active.
 
 ## 1. Editing attribution
 
