@@ -95,6 +95,7 @@ validate_record() {
     --mapping "$mapping"
     --seed "$seed"
     --expected-git-commit "$git_commit"
+    --config-file "$(dirname "$record")/config.yaml"
   )
   if [[ "$allow_previous" == "1" ]]; then
     local allowed_commit
@@ -132,6 +133,8 @@ worker() {
           >/dev/null || return 65
         mkdir -p "$output"
         cp -a "$(dirname "$reuse_record")/." "$output/"
+        printf 'source_record=%s\nsource_git_commit=%s\n' \
+          "$reuse_record" "$ALLOWED_EXISTING_GIT_COMMITS" > "$output/REUSED_FROM"
         printf 'REUSE %s/%s/seed_%s from %s\n' \
           "$dataset" "$arm" "$seed" "$reuse_record"
         continue

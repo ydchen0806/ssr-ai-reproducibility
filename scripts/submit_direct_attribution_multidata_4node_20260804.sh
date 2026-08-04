@@ -16,7 +16,7 @@ VIT_CHECKPOINT="${VIT_LORA_PRETRAINED_CHECKPOINT:-$DATA_ROOT/pretrained/vit_tiny
 INIT_WAIT_SEC="${INIT_WAIT_SEC:-600}"
 FINAL_WAIT_SEC="${FINAL_WAIT_SEC:-86400}"
 RECOVERY_SOURCE_ROOT="${SSR_DIRECT_RECOVERY_SOURCE_ROOT:-}"
-RECOVERY_SOURCE_COMMIT=""
+RECOVERY_SOURCE_COMMIT="${SSR_DIRECT_RECOVERY_SOURCE_COMMIT:-}"
 
 timestamp() { date '+%Y-%m-%dT%H:%M:%S%z'; }
 
@@ -70,6 +70,10 @@ done
 
 git_commit="$(git -C "$PROJECT_ROOT" rev-parse HEAD)"
 if [[ -n "$RECOVERY_SOURCE_ROOT" ]]; then
+  [[ "$RECOVERY_SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || {
+    printf 'Recovery requires an explicit 40-character SSR_DIRECT_RECOVERY_SOURCE_COMMIT.\n' >&2
+    exit 2
+  }
   RECOVERY_SOURCE_ROOT="$(cd "$RECOVERY_SOURCE_ROOT" && pwd)"
   [[ "$RECOVERY_SOURCE_ROOT" != "$RESULT_ROOT" ]] || {
     printf 'Recovery source and destination result roots must differ.\n' >&2
@@ -84,13 +88,25 @@ if [[ -n "$RECOVERY_SOURCE_ROOT" ]]; then
     printf 'Recovery source uses an incompatible protocol.\n' >&2
     exit 2
   }
-  RECOVERY_SOURCE_COMMIT="$(awk -F= '$1=="git_commit" {print $2}' "$source_identity")"
-  [[ "$RECOVERY_SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || exit 2
+  observed_source_commit="$(awk -F= '$1=="git_commit" {print $2}' "$source_identity")"
+  [[ "$observed_source_commit" == "$RECOVERY_SOURCE_COMMIT" ]] || {
+    printf 'Recovery source commit mismatch: expected %s, observed %s.\n' \
+      "$RECOVERY_SOURCE_COMMIT" "$observed_source_commit" >&2
+    exit 2
+  }
+  source_recovery_root="$(awk -F= '$1=="recovery_source_root" {print substr($0, index($0, "=") + 1)}' "$source_identity")"
+  [[ -z "$source_recovery_root" ]] || {
+    printf 'Chained recovery sources are not supported; use the original locked run.\n' >&2
+    exit 2
+  }
   git -C "$PROJECT_ROOT" merge-base --is-ancestor "$RECOVERY_SOURCE_COMMIT" "$git_commit" || {
     printf 'Recovery source commit %s is not an ancestor of %s.\n' \
       "$RECOVERY_SOURCE_COMMIT" "$git_commit" >&2
     exit 2
   }
+elif [[ -n "$RECOVERY_SOURCE_COMMIT" ]]; then
+  printf 'SSR_DIRECT_RECOVERY_SOURCE_COMMIT requires SSR_DIRECT_RECOVERY_SOURCE_ROOT.\n' >&2
+  exit 2
 fi
 if [[ "$DRY_RUN" != "1" ]]; then
   "$PYTHON" "$PROJECT_ROOT/scripts/check_experiment_worktree.py" \
@@ -229,6 +245,7 @@ run_editing_suite() {
     "RESULT_ROOT=$child_root"
     "REUSE_RESULTS_ROOTS=$reuse_roots"
     "ALLOWED_EXISTING_GIT_COMMITS=$RECOVERY_SOURCE_COMMIT"
+    "ALLOW_LEGACY_EXISTING_GIT=0"
     "GPU_LIST=$GPU_LIST"
     "CONFIG_FILE=$config"
     "PYTHON=$PYTHON"

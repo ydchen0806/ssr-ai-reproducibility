@@ -434,6 +434,14 @@ def is_sha256(value: object) -> bool:
     )
 
 
+def is_git_commit(value: object) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 40
+        and all(character in "0123456789abcdef" for character in value)
+    )
+
+
 def validate_matched_kd_results(
     records: list[tuple[Path, str, str, int, Path]],
     fairness_path: Path,
@@ -630,6 +638,41 @@ def count_records(root: Path) -> int:
     return sum(1 for _ in root.rglob("result_record.json"))
 
 
+def read_launcher_identity(path: Path) -> dict[str, str]:
+    if not path.is_file():
+        raise ValueError(f"Missing launcher identity: {path}")
+    values = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if "=" not in line:
+            raise ValueError(f"Malformed launcher identity line: {line!r}")
+        key, value = line.split("=", 1)
+        if not key or key in values:
+            raise ValueError(f"Malformed launcher identity key: {key!r}")
+        values[key] = value
+    return values
+
+
+def validate_component_git_commits(
+    paths: list[Path],
+    *,
+    component: str,
+    allowed_commits: set[str],
+) -> dict[str, int]:
+    if not allowed_commits or any(not is_git_commit(commit) for commit in allowed_commits):
+        raise ValueError(f"{component}: invalid allowed git commit set")
+    counts: dict[str, int] = {}
+    for path in paths:
+        record = validate_result_record(load_json(path))
+        commit = record["git_commit"]
+        if commit not in allowed_commits:
+            raise ValueError(
+                f"{component}: disallowed git commit {commit} in {path}; "
+                f"allowed={sorted(allowed_commits)}"
+            )
+        counts[commit] = counts.get(commit, 0) + 1
+    return dict(sorted(counts.items()))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", required=True, type=Path)
@@ -637,26 +680,22 @@ def main() -> None:
     args = parser.parse_args()
     root = args.root.resolve()
 
-    expected_records = []
-    expected_records.extend(
-        validate_editing_plan(
-            root / "ke_factorial" / "planned_runs.tsv",
-            FACTORIAL_EDITING_DATASETS,
-            FACTORIAL_EDITING_RECIPE_MAPPINGS,
-            expected_offset=500,
-            expected_n_edits=100,
-        )
+    factorial_records = validate_editing_plan(
+        root / "ke_factorial" / "planned_runs.tsv",
+        FACTORIAL_EDITING_DATASETS,
+        FACTORIAL_EDITING_RECIPE_MAPPINGS,
+        expected_offset=500,
+        expected_n_edits=100,
     )
-    expected_records.extend(
-        validate_editing_plan(
-            root / "ke_wikibio" / "planned_runs.tsv",
-            {"wikibio"},
-            {"plain": {"none"}, "ssr_only": {"projective"}},
-            expected_offset=0,
-            expected_n_edits=200,
-        )
+    wikibio_records = validate_editing_plan(
+        root / "ke_wikibio" / "planned_runs.tsv",
+        {"wikibio"},
+        {"plain": {"none"}, "ssr_only": {"projective"}},
+        expected_offset=0,
+        expected_n_edits=200,
     )
-    expected_records.extend(validate_vit_plan(root / "vit_lora" / "planned_runs.tsv"))
+    vit_records = validate_vit_plan(root / "vit_lora" / "planned_runs.tsv")
+    expected_records = factorial_records + wikibio_records + vit_records
     matched_kd_records = validate_matched_kd_plan(
         root / "matched_kd_cl" / "planned_runs.tsv"
     )
@@ -679,6 +718,7 @@ def main() -> None:
     if total_jobs != 497:
         raise ValueError(f"Expected 497 total jobs, found {total_jobs}")
 
+    provenance = None
     if args.mode == "results":
         missing = [str(path) for path in expected_records if not path.is_file()]
         if missing:
@@ -702,6 +742,49 @@ def main() -> None:
                 raise ValueError(
                     f"{name}: expected {EXPECTED[name]} result records, found {count}"
                 )
+        identity = read_launcher_identity(root / ".direct_attribution_4node_identity")
+        current_commit = identity.get("git_commit", "")
+        recovery_commit = identity.get("recovery_source_commit", "")
+        reusable_commits = {current_commit}
+        if recovery_commit:
+            reusable_commits.add(recovery_commit)
+        strict_current = {current_commit}
+        cub_records = sorted((root / "cub_segmentation").rglob("result_record.json"))
+        multidataset_records = sorted(
+            (root / "multidataset_segmentation").rglob("result_record.json")
+        )
+        provenance = {
+            "ke_factorial": validate_component_git_commits(
+                factorial_records,
+                component="ke_factorial",
+                allowed_commits=reusable_commits,
+            ),
+            "ke_wikibio": validate_component_git_commits(
+                wikibio_records,
+                component="ke_wikibio",
+                allowed_commits=reusable_commits,
+            ),
+            "vit_lora": validate_component_git_commits(
+                vit_records,
+                component="vit_lora",
+                allowed_commits=reusable_commits,
+            ),
+            "matched_kd_cl": validate_component_git_commits(
+                [record[0] for record in matched_kd_records],
+                component="matched_kd_cl",
+                allowed_commits=strict_current,
+            ),
+            "cub_segmentation": validate_component_git_commits(
+                cub_records,
+                component="cub_segmentation",
+                allowed_commits=strict_current,
+            ),
+            "multidataset_segmentation": validate_component_git_commits(
+                multidataset_records,
+                component="multidataset_segmentation",
+                allowed_commits=strict_current,
+            ),
+        }
         required = (
             root / "cub_segmentation" / "CONFIRMATION_SUMMARY.json",
             root / "multidataset_segmentation" / "CONFIRMATION_SUMMARY.json",
@@ -736,6 +819,8 @@ def main() -> None:
             "KD plus EWC, MAS, SI, center, prototype decorrelation, spectral, or SSR versus the same KD scaffold",
         ],
     }
+    if provenance is not None:
+        report["git_provenance"] = provenance
     output = root / f"MATRIX_{args.mode.upper()}_VALIDATION.json"
     temporary = output.with_name(f".{output.name}.tmp.{os.getpid()}")
     temporary.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

@@ -9,11 +9,13 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from ssr_utils.result_schema import ResultSchemaError, validate_result_record
+from ssr_utils.result_schema import ResultSchemaError, sha256_value, validate_result_record
 
 
 def validate_identity(
@@ -23,6 +25,7 @@ def validate_identity(
     expected_git_commit: str | None = None,
     allow_legacy_git: bool = False,
     allowed_git_commits: tuple[str, ...] = (),
+    config_file: Path | None = None,
     required_sha256_fields: tuple[str, ...] = (),
 ) -> dict[str, Any]:
     try:
@@ -46,6 +49,19 @@ def validate_identity(
             raise ResultSchemaError(
                 f"Result git_commit mismatch for {path}: expected {expected_git_commit}, "
                 f"observed {record['git_commit']}"
+            )
+    if config_file is not None:
+        try:
+            config = yaml.safe_load(config_file.read_text(encoding="utf-8"))
+        except (OSError, yaml.YAMLError) as error:
+            raise ResultSchemaError(
+                f"Cannot read result config {config_file}: {error}"
+            ) from error
+        observed_hash = sha256_value(config)
+        if record["config_hash"] != observed_hash:
+            raise ResultSchemaError(
+                f"Result config_hash mismatch for {path}: expected {observed_hash}, "
+                f"observed {record['config_hash']}"
             )
     for field in required_sha256_fields:
         value = record.get(field)
@@ -78,6 +94,7 @@ def main() -> None:
     parser.add_argument("--expected-git-commit")
     parser.add_argument("--allow-legacy-git", action="store_true")
     parser.add_argument("--allowed-git-commit", action="append", default=[])
+    parser.add_argument("--config-file", type=Path)
     parser.add_argument("--require-sha256-field", action="append", default=[])
     args = parser.parse_args()
     expected = {
@@ -103,6 +120,7 @@ def main() -> None:
             expected_git_commit=args.expected_git_commit,
             allow_legacy_git=args.allow_legacy_git,
             allowed_git_commits=tuple(args.allowed_git_commit),
+            config_file=args.config_file.resolve() if args.config_file else None,
             required_sha256_fields=tuple(args.require_sha256_field),
         )
     except ResultSchemaError as error:

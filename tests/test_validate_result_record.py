@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 
 import pytest
+import yaml
 
 from scripts.validate_result_record import validate_identity
 from ssr_utils.result_schema import ResultSchemaError, build_result_record
@@ -96,3 +97,21 @@ def test_identity_validator_can_require_a_sha256_field(tmp_path):
             {"seed": 7},
             required_sha256_fields=("teacher_trajectory_hash",),
         )
+
+
+def test_identity_validator_verifies_the_serialized_config(tmp_path):
+    path = _record(tmp_path)
+    config_path = tmp_path / "config.yaml"
+    config_path.write_text(
+        yaml.safe_dump({"method": {"name": "kd"}}),
+        encoding="utf-8",
+    )
+
+    validate_identity(path, {"seed": 7}, config_file=config_path)
+
+    config_path.write_text(
+        yaml.safe_dump({"method": {"name": "tampered"}}),
+        encoding="utf-8",
+    )
+    with pytest.raises(ResultSchemaError, match="config_hash mismatch"):
+        validate_identity(path, {"seed": 7}, config_file=config_path)
