@@ -9,6 +9,7 @@ the trainable objective and compute identical across the matched pair.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import os
@@ -39,6 +40,7 @@ from experiments.cub200_continual_benchmark import (
     geometry,
 )
 from ssr_utils.result_schema import build_result_record, sha256_file, sha256_value
+from ssr_utils.segmentation_kd import old_class_distillation_ids
 from ssr_utils.multidataset_segmentation import (
     flower_foreground,
     make_tasks,
@@ -50,7 +52,7 @@ DATASET_CONFIGS = {
     "oxford_iiit_pet": {"num_classes": 37, "classes_per_task": 5},
     "oxford_flowers102": {"num_classes": 102, "classes_per_task": 10},
 }
-METHODS = ("task_only", "task_ssr")
+METHODS = ("task_only", "task_ssr", "kd", "kd_ssr")
 
 
 @dataclass(frozen=True)
@@ -313,7 +315,7 @@ def validate_cache_manifest(
 
 
 def prepare_feature_cache(args: argparse.Namespace, device: torch.device) -> dict:
-    dataset_root = args.data_root / args.dataset
+    dataset_root = args.dataset_root or args.data_root / args.dataset
     dataset_manifest = load_dataset_manifest(dataset_root, args.dataset)
     fingerprint = dataset_manifest["dataset_fingerprint"]
     cache = args.feature_cache
@@ -481,11 +483,14 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
     optimizer = torch.optim.AdamW(
         model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay
     )
-    uses_ssr = args.method == "task_ssr"
+    uses_ssr = args.method in {"task_ssr", "kd_ssr"}
+    uses_kd = args.method in {"kd", "kd_ssr"}
+    teacher: ClassConditionedMaskDecoder | None = None
     optimizer_steps = 0
     iou_matrix: list[list[float]] = []
     for task_index, task_classes in enumerate(tasks):
         seen_classes = [class_id for task in tasks[: task_index + 1] for class_id in task]
+        old_classes = [class_id for task in tasks[:task_index] for class_id in task]
         train_dataset = FeatureMaskDataset(
             train_features,
             train_labels,
@@ -502,6 +507,7 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
             pin_memory=True,
             generator=generator,
         )
+        distillation_step = 0
         for _epoch in range(args.epochs):
             model.train()
             for features, labels, masks, valid_masks in train_loader:
@@ -521,6 +527,29 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
                         args.sigma_inh,
                         args.kernel_family,
                     )
+                if uses_kd and teacher is not None:
+                    distill_classes = old_class_distillation_ids(
+                        old_classes,
+                        features.size(0),
+                        distillation_step,
+                        device,
+                    )
+                    student_old = model(
+                        features,
+                        distill_classes,
+                        (args.image_size, args.image_size),
+                    )
+                    with torch.no_grad():
+                        teacher_old = teacher(
+                            features,
+                            distill_classes,
+                            (args.image_size, args.image_size),
+                        )
+                    loss = loss + args.lambda_kd * F.binary_cross_entropy_with_logits(
+                        student_old,
+                        torch.sigmoid(teacher_old),
+                    )
+                    distillation_step += 1
                 optimizer.zero_grad(set_to_none=True)
                 loss.backward()
                 optimizer.step()
@@ -547,6 +576,10 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
                 )[0]
             )
         iou_matrix.append(task_ious)
+        if uses_kd:
+            teacher = copy.deepcopy(model).eval()
+            for parameter in teacher.parameters():
+                parameter.requires_grad_(False)
 
     final_ious = iou_matrix[-1]
     forgetting = []
@@ -592,8 +625,9 @@ def result_record(
     cache_manifest: dict,
     elapsed_s: float,
 ) -> dict:
-    uses_ssr = args.method == "task_ssr"
-    objective = {"task": True, "ssr": uses_ssr}
+    uses_ssr = args.method in {"task_ssr", "kd_ssr"}
+    uses_kd = args.method in {"kd", "kd_ssr"}
+    objective = {"task": True, "kd": uses_kd, "ssr": uses_ssr}
     kernel = (
         {
             "family": args.kernel_family,
@@ -644,9 +678,15 @@ def result_record(
         runtime={"elapsed_s": elapsed_s},
         config=config,
         dataset_hash=dataset_hash,
-        recipe="ssr_only" if uses_ssr else "plain",
+        recipe={
+            "task_only": "plain",
+            "task_ssr": "ssr_only",
+            "kd": "kd",
+            "kd_ssr": "kd_ssr",
+        }[args.method],
         selection_lock_hash=args.selection_lock_sha256,
         lambda_ssr=args.lambda_ssr if uses_ssr else 0.0,
+        lambda_kd=args.lambda_kd if uses_kd else 0.0,
         source_dataset_fingerprint=dataset_manifest["dataset_fingerprint"],
         feature_cache_sha256=cache_manifest["cache_sha256"],
         encoder_state_sha256=cache_manifest["encoder_state_sha256"],
@@ -668,6 +708,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", choices=tuple(DATASET_CONFIGS), required=True)
     parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT / "data")
+    parser.add_argument("--dataset-root", type=Path, default=None)
     parser.add_argument("--feature-cache", type=Path, required=True)
     parser.add_argument("--feature-cache-sha256", default=None)
     parser.add_argument("--output-dir", type=Path, required=True)
@@ -683,6 +724,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--learning-rate", type=float, default=1e-3)
     parser.add_argument("--weight-decay", type=float, default=0.0)
     parser.add_argument("--lambda-ssr", type=float, default=0.05)
+    parser.add_argument("--lambda-kd", type=float, default=0.5)
     parser.add_argument("--a-exc", type=float, default=1.0)
     parser.add_argument("--a-inh", type=float, default=0.8)
     parser.add_argument("--sigma-exc", type=float, default=0.16)
@@ -698,6 +740,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     args.data_root = args.data_root.resolve()
+    if args.dataset_root is not None:
+        args.dataset_root = args.dataset_root.resolve()
     args.feature_cache = args.feature_cache.resolve()
     args.output_dir = args.output_dir.resolve()
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -705,7 +749,10 @@ def main() -> None:
     if args.prepare_cache_only:
         print(json.dumps(cache_manifest, indent=2))
         return
-    dataset_manifest = load_dataset_manifest(args.data_root / args.dataset, args.dataset)
+    dataset_manifest = load_dataset_manifest(
+        args.dataset_root or args.data_root / args.dataset,
+        args.dataset,
+    )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_json_atomic(args.output_dir / "args.json", dict(vars(args)))
     started = time.time()

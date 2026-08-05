@@ -333,7 +333,12 @@ def select_spec(
             "then maximize the weakest change, triple wins and their sum."
         ),
         "development_seeds": list(DEVELOPMENT_SEEDS),
-        "confirmation_seeds_hidden_during_selection": list(CONFIRMATION_SEEDS),
+        "confirmation_seeds_hidden_during_selection": list(
+            getattr(args, "confirmation_seeds", CONFIRMATION_SEEDS)
+        ),
+        "confirmation_methods": list(
+            getattr(args, "confirmation_methods", METHODS)
+        ),
         "screen_summary": summaries,
         "git_commit": git_commit,
         "segmentation_source_sha256": args.segmentation_source_sha256,
@@ -380,6 +385,24 @@ def validate_selection_lock(
     }
     if mismatches:
         raise RuntimeError(f"Selection lock identity mismatch: {mismatches}")
+    expected_confirmation_seeds = list(
+        getattr(args, "confirmation_seeds", CONFIRMATION_SEEDS)
+    )
+    if payload.get("confirmation_seeds_hidden_during_selection") != expected_confirmation_seeds:
+        raise RuntimeError(
+            "Selection lock confirmation-seed inventory mismatch: "
+            f"expected={expected_confirmation_seeds}, "
+            f"observed={payload.get('confirmation_seeds_hidden_during_selection')}"
+        )
+    expected_confirmation_methods = list(
+        getattr(args, "confirmation_methods", METHODS)
+    )
+    if payload.get("confirmation_methods") != expected_confirmation_methods:
+        raise RuntimeError(
+            "Selection lock confirmation-method inventory mismatch: "
+            f"expected={expected_confirmation_methods}, "
+            f"observed={payload.get('confirmation_methods')}"
+        )
     selected = Spec(**payload["selected"])
     if selected not in SPECS:
         raise RuntimeError(f"Selection lock contains an unplanned spec: {selected}")
@@ -431,7 +454,12 @@ def screen_jobs(result_root: Path) -> list[Job]:
     return jobs
 
 
-def confirmation_jobs(result_root: Path, spec: Spec) -> list[Job]:
+def confirmation_jobs(
+    result_root: Path,
+    spec: Spec,
+    seeds: tuple[int, ...] = CONFIRMATION_SEEDS,
+    methods: tuple[str, ...] = METHODS,
+) -> list[Job]:
     return [
         Job(
             "confirmation",
@@ -440,8 +468,8 @@ def confirmation_jobs(result_root: Path, spec: Spec) -> list[Job]:
             spec,
             result_root / "confirmation" / f"{method}_{spec.spec_id}_seed{seed}",
         )
-        for seed in CONFIRMATION_SEEDS
-        for method in METHODS
+        for seed in seeds
+        for method in methods
     ]
 
 
@@ -461,6 +489,12 @@ def write_confirmation_summary(
         "direct_ssr": ("baseline", "biocs"),
         "matched_kd_ssr": ("kd", "biocs_kd"),
     }
+    available_methods = {job.method for job in jobs}
+    contrasts = {
+        name: pair
+        for name, pair in contrasts.items()
+        if set(pair) <= available_methods
+    }
     payload = {}
     rows = []
     for contrast, (control, treatment) in contrasts.items():
@@ -476,11 +510,11 @@ def write_confirmation_summary(
         ):
             control_values = [
                 records[(seed, control)]["metrics"][metric]
-                for seed in CONFIRMATION_SEEDS
+                for seed in args.confirmation_seeds
             ]
             treatment_values = [
                 records[(seed, treatment)]["metrics"][metric]
-                for seed in CONFIRMATION_SEEDS
+                for seed in args.confirmation_seeds
             ]
             summary = paired_summary(
                 control_values,
@@ -515,6 +549,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--jobs-per-gpu", type=int, default=1)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--seg-batch-size", type=int, default=48)
+    parser.add_argument(
+        "--confirmation-seeds",
+        nargs="+",
+        type=int,
+        default=list(CONFIRMATION_SEEDS),
+    )
+    parser.add_argument(
+        "--confirmation-methods",
+        nargs="+",
+        choices=METHODS,
+        default=list(METHODS),
+    )
     parser.add_argument("--data-root", type=Path, default=PROJECT_ROOT / "data/cub200")
     parser.add_argument(
         "--segmentation-cache",
@@ -527,6 +573,14 @@ def parse_args() -> argparse.Namespace:
         parser.error(
             "jobs-per-gpu and seg-batch-size must be positive; workers cannot be negative"
         )
+    if len(args.confirmation_seeds) < 2 or len(set(args.confirmation_seeds)) != len(
+        args.confirmation_seeds
+    ):
+        parser.error("confirmation-seeds must contain at least two unique values")
+    args.confirmation_seeds = tuple(args.confirmation_seeds)
+    if len(set(args.confirmation_methods)) != len(args.confirmation_methods):
+        parser.error("confirmation-methods must be unique")
+    args.confirmation_methods = tuple(args.confirmation_methods)
     return args
 
 
@@ -537,12 +591,17 @@ def main() -> None:
     manifest = {
         "protocol": "meeting_20260803_cub_segmentation_2x2_old_class_kd_v1",
         "development_seeds": list(DEVELOPMENT_SEEDS),
-        "confirmation_seeds": list(CONFIRMATION_SEEDS),
+        "confirmation_seeds": list(args.confirmation_seeds),
         "development_specs": [asdict(spec) for spec in SPECS],
         "methods": list(METHODS),
+        "confirmation_methods": list(args.confirmation_methods),
         "primary_contrast": "biocs_kd_minus_kd",
         "kd_protocol": "old_class_conditions_on_current_features_v1",
-        "jobs": {"development": 21, "confirmation": 40},
+        "jobs": {
+            "development": 21,
+            "confirmation": len(args.confirmation_seeds)
+            * len(args.confirmation_methods),
+        },
     }
     write_json(result_root / "MANIFEST.json", manifest)
     if args.manifest_only:
@@ -597,7 +656,12 @@ def main() -> None:
         args.selection_lock_sha256 = json.loads(
             lock_path.read_text(encoding="utf-8")
         )["lock_sha256"]
-        jobs = confirmation_jobs(result_root, selected)
+        jobs = confirmation_jobs(
+            result_root,
+            selected,
+            args.confirmation_seeds,
+            args.confirmation_methods,
+        )
         run_jobs(jobs, args, git_commit)
         write_confirmation_summary(jobs, result_root, args, git_commit)
     print(f"Segmentation phase {args.phase} complete: {result_root}")
