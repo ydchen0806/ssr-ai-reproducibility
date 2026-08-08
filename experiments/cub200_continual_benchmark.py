@@ -15,6 +15,7 @@ fine-grained segmentation benchmark with per-pixel masks over 200 bird species.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import random
@@ -62,6 +63,24 @@ def current_git_commit() -> str:
         return "unknown-uncommitted-environment"
 
 
+def state_dict_sha256(module: nn.Module) -> str:
+    """Hash initialized trainable state without relying on serialization bytes."""
+    digest = hashlib.sha256()
+    for name, value in sorted(module.state_dict().items()):
+        tensor = value.detach().cpu().contiguous()
+        digest.update(name.encode("utf-8"))
+        digest.update(str(tensor.dtype).encode("ascii"))
+        digest.update(json.dumps(list(tensor.shape)).encode("ascii"))
+        digest.update(tensor.numpy().tobytes())
+    return digest.hexdigest()
+
+
+def task_schedule_sha256(tasks: list[list[int]]) -> str:
+    return hashlib.sha256(
+        json.dumps(tasks, separators=(",", ":"), ensure_ascii=True).encode("ascii")
+    ).hexdigest()
+
+
 def objective_for_method(method: str) -> tuple[str, dict[str, bool]]:
     mapping = {
         "baseline": ("plain", {"task": True}),
@@ -91,10 +110,16 @@ def write_result_record(
             "sigma_exc": args.sigma_exc,
             "sigma_inh": args.sigma_inh,
         }
+    audit_fields = {
+        "initial_model_hash",
+        "task_schedule_hash",
+        "optimizer_steps",
+    }
     metrics = {
         key: float(value)
         for key, value in row.items()
-        if key not in {"task", "method", "seed"} and isinstance(value, (int, float))
+        if key not in {"task", "method", "seed", *audit_fields}
+        and isinstance(value, (int, float))
     }
     config_payload = dict(vars(args))
     if row["task"] == "segmentation":
@@ -131,6 +156,11 @@ def write_result_record(
             "effective_rank": True,
             "mean_abs_offdiag_cosine": False,
         },
+        **{
+            key: row[key]
+            for key in audit_fields
+            if key in row
+        },
     )
     path = outdir / "result_records" / row["task"] / row["method"] / f"seed_{row['seed']}" / "result_record.json"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -165,6 +195,9 @@ class SegmentationRun:
     avg_forgetting_iou: float
     effective_rank: float
     mean_abs_offdiag_cosine: float
+    initial_model_hash: str
+    task_schedule_hash: str
+    optimizer_steps: int
 
 
 def set_seed(seed: int) -> None:
@@ -711,6 +744,7 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
     test_rows = [r for r in rows if not r["is_train"]]
     num_classes = int(args.max_classes or args.num_classes)
     tasks = make_tasks(num_classes, args.classes_per_task, seed, args.class_order)
+    schedule_hash = task_schedule_sha256(tasks)
     use_feature_cache = not args.no_segmentation_cache
     if use_feature_cache:
         train_feats, train_labels, train_masks, test_feats, test_labels, test_masks = extract_segmentation_features(args, device)
@@ -718,11 +752,13 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
     else:
         encoder = DenseResNet18().to(device).eval()
     model = ClassConditionedMaskDecoder(num_classes, args.seg_hidden_dim).to(device)
+    initial_hash = state_dict_sha256(model)
     opt = torch.optim.AdamW(model.parameters(), lr=args.seg_lr, weight_decay=args.seg_weight_decay if method == "l2" else 0.0)
     teacher: ClassConditionedMaskDecoder | None = None
     uses_ssr = method in {"biocs", "biocs_kd"}
     uses_kd = method in {"kd", "biocs_kd"}
     iou_matrix = []
+    optimizer_steps = 0
     for tid, task_classes in enumerate(tasks):
         seen_class_ids = [c for task in tasks[: tid + 1] for c in task]
         old_class_ids = [c for task in tasks[:tid] for c in task]
@@ -788,6 +824,7 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                 opt.zero_grad(set_to_none=True)
                 loss.backward()
                 opt.step()
+                optimizer_steps += 1
         seen_ious = []
         for seen_classes in tasks[: tid + 1]:
             if use_feature_cache:
@@ -838,6 +875,9 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
         mean_dice=100.0 * mean_dice,
         avg_forgetting_iou=float(np.mean(forgetting)) if forgetting else 0.0,
         **geo,
+        initial_model_hash=initial_hash,
+        task_schedule_hash=schedule_hash,
+        optimizer_steps=optimizer_steps,
     )
 
 
@@ -848,7 +888,19 @@ def summarize(rows: list[dict]) -> dict:
         for method in sorted({r["method"] for r in rows if r["task"] == task}):
             items = [r for r in rows if r["task"] == task and r["method"] == method]
             out[task][method] = {}
-            keys = [k for k in items[0] if k not in {"task", "method", "seed"}]
+            keys = [
+                key
+                for key in items[0]
+                if key
+                not in {
+                    "task",
+                    "method",
+                    "seed",
+                    "initial_model_hash",
+                    "task_schedule_hash",
+                    "optimizer_steps",
+                }
+            ]
             for key in keys:
                 vals = np.asarray([float(item[key]) for item in items], dtype=float)
                 out[task][method][key] = {"mean": float(vals.mean()), "std": float(vals.std()), "n": int(vals.size)}
