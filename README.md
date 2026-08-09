@@ -24,7 +24,8 @@ Biological connectomics analyses, raw connectomics tables, and manuscript source
 |-- utils/                          # metrics and plotting helpers
 |-- experiments/                    # CUB, adapter, capacity, and auxiliary probes
 |-- llm_ke/                         # SSR fine-tuning editor and EasyEdit hparams
-|-- artifacts/paper_20260803/       # compact per-seed paper audit bundle
+|-- artifacts/paper_20260803/       # original compact paper audit bundle
+|-- artifacts/paper_20260809/       # locked direct-SSR confirmation records
 |-- scripts/run_smoke_test.sh       # short sanity check
 |-- scripts/run_reproducibility_suite.sh
 |-- scripts/collect_results.py
@@ -326,6 +327,37 @@ points use `sigma / sqrt(d^2 + sigma^2)`. The selected ZsRE inverse run used a
 scale broader than a true HWHM-matched control. Its measurements are retained,
 but the artifact verifier explicitly prevents treating it as evidence of
 HWHM-matched kernel invariance.
+
+### Locked 30-seed direct-SSR update
+
+`artifacts/paper_20260809` adds the locked Oxford-IIIT Pet raw-image ViT-LoRA
+confirmation used by the updated manuscript. It compares task-only training
+with the same rank-16 LoRA training plus SSR across 30 paired streams. Average
+accuracy, average-forgetting reduction, effective-rank increase and
+prototype-overlap reduction all have favorable 95% paired confidence
+intervals. The same bundle retains the secondary CIL-last endpoint and the
+direct segmentation audit whose performance intervals cross zero; the
+verifier prevents either boundary result from being presented as a confirmed
+positive endpoint.
+
+Recompute every manuscript-facing aggregate from the per-seed rows with:
+
+```bash
+python3 scripts/verify_paper_20260809.py
+```
+
+The cluster-tested four-node launcher is:
+
+```bash
+SSR_DIRECT_RUN_ID=ssr_direct_attribution_4node_20260809_r1 \
+EXPECTED_NNODES=4 GPU_COUNT=8 JOBS_PER_GPU=2 \
+bash scripts/submit_direct_ssr_attribution_4node_20260809.sh
+```
+
+Run that command once on every node of the shared allocation. The launcher
+assigns three nodes to the locked segmentation audit and one node to the Pet
+ViT-LoRA screen--refine--lock protocol, records the repository commit, and
+fails if the expected result summaries are incomplete.
 
 ## Reproducibility Notes
 
