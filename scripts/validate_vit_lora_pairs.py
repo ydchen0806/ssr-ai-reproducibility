@@ -33,6 +33,12 @@ ALLOWED_METHOD_DIFFERENCES = {
     "recipe",
     "lambda_spatial",
     "lambda_adapter",
+    "ssr_start_task",
+    "ssr_ramp_tasks",
+    "A_exc",
+    "A_inh",
+    "sigma_exc",
+    "sigma_inh",
 }
 CONTROL_OBJECTIVE = {
     component: component == "task" for component in OBJECTIVE_COMPONENTS
@@ -107,10 +113,11 @@ def validate_pair(control_path: Path, treatment_path: Path) -> dict:
         treatment_method["lambda_spectral"]
     ) != 0.0:
         raise ValueError("Treatment must explicitly set lambda_spectral=0")
-    if float(treatment_method.get("lambda_spatial", 0.0)) <= 0.0 or float(
-        treatment_method.get("lambda_adapter", 0.0)
-    ) <= 0.0:
-        raise ValueError("Treatment must enable both declared SSR penalties")
+    if not any(
+        float(treatment_method.get(field, 0.0)) > 0.0
+        for field in ("lambda_spatial", "lambda_adapter")
+    ):
+        raise ValueError("Treatment must enable at least one declared SSR penalty")
     extra_active_lambdas = sorted(
         field
         for field, value in treatment_method.items()

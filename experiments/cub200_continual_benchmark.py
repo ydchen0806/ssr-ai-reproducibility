@@ -43,6 +43,11 @@ if str(PROJECT_ROOT) not in sys.path:
 from ssr_utils.result_schema import build_result_record
 from ssr_utils.segmentation_kd import old_class_distillation_ids
 from ssr_utils.dataset_fingerprint import cub_dataset_fingerprint
+from ssr_utils.segmentation_nested_search import (
+    cross_set_ssr_loss,
+    scale_to_hwhm,
+    stratified_fit_validation_indices,
+)
 
 
 CUB_IMAGES_URL = "https://data.caltech.edu/records/65de6-vp158/files/CUB_200_2011.tgz?download=1"
@@ -748,8 +753,30 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
     use_feature_cache = not args.no_segmentation_cache
     if use_feature_cache:
         train_feats, train_labels, train_masks, test_feats, test_labels, test_masks = extract_segmentation_features(args, device)
+        if args.seg_evaluation_split == "validation":
+            fit_indices, validation_indices = stratified_fit_validation_indices(
+                train_labels,
+                validation_fraction=args.seg_validation_fraction,
+                seed=args.seg_validation_seed,
+            )
+            test_feats = train_feats[validation_indices]
+            test_labels = train_labels[validation_indices]
+            test_masks = train_masks[validation_indices]
+            train_feats = train_feats[fit_indices]
+            train_labels = train_labels[fit_indices]
+            train_masks = train_masks[fit_indices]
         encoder = None
     else:
+        if args.seg_evaluation_split == "validation":
+            labels = torch.as_tensor([row["label"] for row in train_rows])
+            fit_indices, validation_indices = stratified_fit_validation_indices(
+                labels,
+                validation_fraction=args.seg_validation_fraction,
+                seed=args.seg_validation_seed,
+            )
+            validation_rows = [train_rows[index] for index in validation_indices.tolist()]
+            train_rows = [train_rows[index] for index in fit_indices.tolist()]
+            test_rows = validation_rows
         encoder = DenseResNet18().to(device).eval()
     model = ClassConditionedMaskDecoder(num_classes, args.seg_hidden_dim).to(device)
     initial_hash = state_dict_sha256(model)
@@ -790,22 +817,52 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                 loss = F.binary_cross_entropy_with_logits(logits, mask) + dice_loss(logits, mask)
                 if uses_ssr and tid >= args.seg_biocs_start_task:
                     if args.seg_biocs_target == "channels":
-                        reg_weight = model.channel_prototypes()
+                        spatial_loss = biocs_loss(
+                            model.channel_prototypes(),
+                            args.a_exc,
+                            args.a_inh,
+                            args.sigma_exc,
+                            args.sigma_inh,
+                            args.kernel_family,
+                        )
                     else:
-                        if args.seg_biocs_scope == "seen":
+                        if args.seg_biocs_scope == "new_old":
+                            if not old_class_ids:
+                                spatial_loss = model.classifier.weight.sum() * 0.0
+                            else:
+                                spatial_loss = cross_set_ssr_loss(
+                                    model.classifier.weight[
+                                        torch.as_tensor(task_classes, device=device)
+                                    ],
+                                    model.classifier.weight[
+                                        torch.as_tensor(old_class_ids, device=device)
+                                    ],
+                                    kernel=args.kernel_family,
+                                    hwhm_exc=scale_to_hwhm(
+                                        args.kernel_family, args.sigma_exc
+                                    ),
+                                    hwhm_inh=scale_to_hwhm(
+                                        args.kernel_family, args.sigma_inh
+                                    ),
+                                    a_exc=args.a_exc,
+                                    a_inh=args.a_inh,
+                                )
+                        elif args.seg_biocs_scope == "seen":
                             reg_weight = model.classifier.weight[torch.as_tensor(seen_class_ids, device=device)]
                         elif args.seg_biocs_scope == "batch":
                             reg_weight = model.classifier.weight[torch.unique(cls)]
                         else:
                             reg_weight = model.classifier.weight
-                    loss = loss + args.lambda_sp * biocs_loss(
-                        reg_weight,
-                        args.a_exc,
-                        args.a_inh,
-                        args.sigma_exc,
-                        args.sigma_inh,
-                        args.kernel_family,
-                    )
+                        if args.seg_biocs_scope != "new_old":
+                            spatial_loss = biocs_loss(
+                                reg_weight,
+                                args.a_exc,
+                                args.a_inh,
+                                args.sigma_exc,
+                                args.sigma_inh,
+                                args.kernel_family,
+                            )
+                    loss = loss + args.lambda_sp * spatial_loss
                 if uses_kd and teacher is not None:
                     distill_cls = old_class_distillation_ids(
                         old_class_ids,
@@ -936,8 +993,17 @@ def main() -> None:
     p.add_argument("--seg_image_size", type=int, default=128)
     p.add_argument("--seg_hidden_dim", type=int, default=128)
     p.add_argument("--seg_biocs_target", choices=["class", "channels"], default="class")
-    p.add_argument("--seg_biocs_scope", choices=["all", "seen", "batch"], default="all")
+    p.add_argument(
+        "--seg_biocs_scope",
+        choices=["all", "seen", "batch", "new_old"],
+        default="all",
+    )
     p.add_argument("--seg_biocs_start_task", type=int, default=0)
+    p.add_argument(
+        "--seg_evaluation_split", choices=["test", "validation"], default="test"
+    )
+    p.add_argument("--seg_validation_fraction", type=float, default=0.2)
+    p.add_argument("--seg_validation_seed", type=int, default=20260809)
     p.add_argument("--lambda_sp", type=float, default=2.0)
     p.add_argument("--lambda_kd", type=float, default=2.0)
     p.add_argument("--lambda_kd_seg", type=float, default=0.5)
@@ -951,6 +1017,9 @@ def main() -> None:
     p.add_argument("--no_download", action="store_true")
     p.add_argument("--no_segmentation_cache", action="store_true")
     args = p.parse_args()
+
+    if not 0.0 < args.seg_validation_fraction < 0.5:
+        raise ValueError("--seg_validation_fraction must be between zero and one half")
 
     outdir = Path(args.output_dir)
     outdir.mkdir(parents=True, exist_ok=True)

@@ -361,6 +361,8 @@ def main():
             "A_inh",
             "sigma_exc",
             "sigma_inh",
+            "ssr_start_task",
+            "ssr_ramp_tasks",
         ):
             pairing_method.pop(treatment_key, None)
     teacher_identity = (

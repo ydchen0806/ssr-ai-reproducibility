@@ -259,6 +259,39 @@ def test_biocs_lora_task_only_skips_inactive_spatial_penalty(monkeypatch):
     assert learner.active_regularizer_weight() == 0.0
 
 
+def test_biocs_lora_delays_and_ramps_ssr_by_task():
+    learner = BioCsLoRA(
+        TinyAttentionModel(),
+        torch.device("cpu"),
+        {
+            "lora_targets": ["qkv", "proj"],
+            "lora_rank": 2,
+            "lambda_spatial": 0.0,
+            "lambda_adapter": 0.01,
+            "ssr_start_task": 1,
+            "ssr_ramp_tasks": 3,
+        },
+    )
+
+    assert learner._ssr_scale(0) == 0.0
+    assert learner._ssr_scale(1) == pytest.approx(1 / 3)
+    assert learner._ssr_scale(2) == pytest.approx(2 / 3)
+    assert learner._ssr_scale(3) == 1.0
+    assert learner._ssr_scale(8) == 1.0
+
+
+def test_biocs_lora_rejects_negative_ssr_schedule():
+    with pytest.raises(ValueError, match="must be non-negative"):
+        BioCsLoRA(
+            TinyAttentionModel(),
+            torch.device("cpu"),
+            {
+                "lora_targets": ["qkv"],
+                "ssr_start_task": -1,
+            },
+        )
+
+
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA autocast regression")
 def test_spatial_biocs_has_finite_gradients_inside_cuda_autocast():
     from methods.bioreg import compute_spatial_biocs
@@ -339,11 +372,11 @@ def test_vit_lora_pair_validator_enforces_initialization_and_budget(tmp_path):
         recipe="ssr_only",
         distance_mapping="cosine",
         active_regularizer="ssr",
-        active_regularizer_weight=0.012,
+        active_regularizer_weight=0.002,
     )
     treated_config = copy.deepcopy(common_config)
     treated_config["method"].update(
-        recipe="ssr_only", lambda_spatial=0.01, lambda_adapter=0.002
+        recipe="ssr_only", lambda_spatial=0.0, lambda_adapter=0.002
     )
     (treatment / "result_record.json").write_text(
         json.dumps(treated_record), encoding="utf-8"

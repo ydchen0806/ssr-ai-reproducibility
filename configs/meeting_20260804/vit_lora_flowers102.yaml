@@ -27,6 +27,8 @@ method:
   A_inh: 0.8
   sigma_exc: 0.2
   sigma_inh: 0.5
+  ssr_start_task: 0
+  ssr_ramp_tasks: 0
   use_seen_mask: true
 
 training:

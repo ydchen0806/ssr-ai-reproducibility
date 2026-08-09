@@ -41,6 +41,11 @@ from experiments.cub200_continual_benchmark import (
 )
 from ssr_utils.result_schema import build_result_record, sha256_file, sha256_value
 from ssr_utils.segmentation_kd import old_class_distillation_ids
+from ssr_utils.segmentation_nested_search import (
+    cross_set_ssr_loss,
+    scale_to_hwhm,
+    stratified_fit_validation_indices,
+)
 from ssr_utils.multidataset_segmentation import (
     flower_foreground,
     make_tasks,
@@ -474,6 +479,21 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
     test_masks = payload["test_masks"]
     test_valid_masks = payload["test_valid_masks"]
 
+    if args.evaluation_split == "validation":
+        fit_indices, validation_indices = stratified_fit_validation_indices(
+            train_labels,
+            validation_fraction=args.validation_fraction,
+            seed=args.validation_seed,
+        )
+        test_features = train_features[validation_indices]
+        test_labels = train_labels[validation_indices]
+        test_masks = train_masks[validation_indices]
+        test_valid_masks = train_valid_masks[validation_indices]
+        train_features = train_features[fit_indices]
+        train_labels = train_labels[fit_indices]
+        train_masks = train_masks[fit_indices]
+        train_valid_masks = train_valid_masks[fit_indices]
+
     config = DATASET_CONFIGS[args.dataset]
     num_classes = int(config["num_classes"])
     tasks = make_tasks(num_classes, int(config["classes_per_task"]), args.seed)
@@ -517,16 +537,48 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
                 valid_masks = valid_masks.to(device)
                 logits = model(features, labels, (args.image_size, args.image_size))
                 loss = masked_task_loss(logits, masks, valid_masks)
-                if uses_ssr:
-                    indices = torch.as_tensor(seen_classes, device=device)
-                    loss = loss + args.lambda_ssr * biocs_loss(
-                        model.classifier.weight[indices],
-                        args.a_exc,
-                        args.a_inh,
-                        args.sigma_exc,
-                        args.sigma_inh,
-                        args.kernel_family,
-                    )
+                if uses_ssr and task_index >= args.ssr_start_task:
+                    if args.ssr_target == "channels":
+                        spatial_loss = biocs_loss(
+                            model.channel_prototypes(),
+                            args.a_exc,
+                            args.a_inh,
+                            args.sigma_exc,
+                            args.sigma_inh,
+                            args.kernel_family,
+                        )
+                    elif args.ssr_scope == "new_old":
+                        if not old_classes:
+                            spatial_loss = model.classifier.weight.sum() * 0.0
+                        else:
+                            spatial_loss = cross_set_ssr_loss(
+                                model.classifier.weight[
+                                    torch.as_tensor(task_classes, device=device)
+                                ],
+                                model.classifier.weight[
+                                    torch.as_tensor(old_classes, device=device)
+                                ],
+                                kernel=args.kernel_family,
+                                hwhm_exc=scale_to_hwhm(
+                                    args.kernel_family, args.sigma_exc
+                                ),
+                                hwhm_inh=scale_to_hwhm(
+                                    args.kernel_family, args.sigma_inh
+                                ),
+                                a_exc=args.a_exc,
+                                a_inh=args.a_inh,
+                            )
+                    else:
+                        indices = torch.as_tensor(seen_classes, device=device)
+                        spatial_loss = biocs_loss(
+                            model.classifier.weight[indices],
+                            args.a_exc,
+                            args.a_inh,
+                            args.sigma_exc,
+                            args.sigma_inh,
+                            args.kernel_family,
+                        )
+                    loss = loss + args.lambda_ssr * spatial_loss
                 if uses_kd and teacher is not None:
                     distill_classes = old_class_distillation_ids(
                         old_classes,
@@ -601,6 +653,11 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
         args.workers,
         device,
     )
+    geometry_weight = (
+        model.channel_prototypes()
+        if args.ssr_target == "channels"
+        else model.classifier.weight
+    )
     return SegmentationResult(
         task="segmentation",
         method=args.method,
@@ -613,7 +670,7 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
         initial_model_hash=initial_model_hash,
         task_schedule_hash=task_schedule_hash,
         optimizer_steps=optimizer_steps,
-        **geometry(model.classifier.weight),
+        **geometry(geometry_weight),
     )
 
 
@@ -725,6 +782,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--weight-decay", type=float, default=0.0)
     parser.add_argument("--lambda-ssr", type=float, default=0.05)
     parser.add_argument("--lambda-kd", type=float, default=0.5)
+    parser.add_argument("--ssr-target", choices=("class", "channels"), default="class")
+    parser.add_argument("--ssr-scope", choices=("seen", "new_old", "all"), default="seen")
+    parser.add_argument("--ssr-start-task", type=int, default=0)
+    parser.add_argument(
+        "--evaluation-split", choices=("test", "validation"), default="test"
+    )
+    parser.add_argument("--validation-fraction", type=float, default=0.2)
+    parser.add_argument("--validation-seed", type=int, default=20260809)
     parser.add_argument("--a-exc", type=float, default=1.0)
     parser.add_argument("--a-inh", type=float, default=0.8)
     parser.add_argument("--sigma-exc", type=float, default=0.16)
@@ -744,6 +809,12 @@ def main() -> None:
         args.dataset_root = args.dataset_root.resolve()
     args.feature_cache = args.feature_cache.resolve()
     args.output_dir = args.output_dir.resolve()
+    if args.ssr_start_task < 0:
+        raise ValueError("--ssr-start-task cannot be negative")
+    if args.ssr_target == "channels" and args.ssr_scope != "all":
+        raise ValueError("channel-target SSR requires --ssr-scope all")
+    if not 0.0 < args.validation_fraction < 0.5:
+        raise ValueError("--validation-fraction must be between zero and one half")
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
     cache_manifest = prepare_feature_cache(args, device)
     if args.prepare_cache_only:

@@ -76,6 +76,10 @@ class BioCsLoRA(BaseContinualLearner):
         self.A_inh = config.get("A_inh", 0.8)
         self.sigma_exc = config.get("sigma_exc", 0.2)
         self.sigma_inh = config.get("sigma_inh", 0.5)
+        self.ssr_start_task = int(config.get("ssr_start_task", 0))
+        self.ssr_ramp_tasks = int(config.get("ssr_ramp_tasks", 0))
+        if self.ssr_start_task < 0 or self.ssr_ramp_tasks < 0:
+            raise ValueError("ssr_start_task and ssr_ramp_tasks must be non-negative")
         self.use_seen_mask = config.get("use_seen_mask", True)
         self.lora_rank = config.get("lora_rank", 8)
         self.lora_alpha = config.get("lora_alpha", 16.0)
@@ -190,23 +194,26 @@ class BioCsLoRA(BaseContinualLearner):
         ce_loss = F.cross_entropy(logits, y)
 
         reg_loss = torch.tensor(0.0, device=self.device)
+        ssr_scale = self._ssr_scale(task_id)
 
         classifier = self._get_classifier()
         if classifier is not None and (
-            self.lambda_spatial > 0 or self.lambda_spectral > 0
+            ssr_scale > 0 and (
+                self.lambda_spatial > 0 or self.lambda_spectral > 0
+            )
         ):
             mask = self._get_seen_mask(classifier)
             if self.lambda_spatial > 0:
-                reg_loss = reg_loss + self.lambda_spatial * compute_spatial_biocs(
+                reg_loss = reg_loss + ssr_scale * self.lambda_spatial * compute_spatial_biocs(
                     classifier.weight, self.A_exc, self.A_inh,
                     self.sigma_exc, self.sigma_inh, mask,
                 )
             if self.lambda_spectral > 0:
-                reg_loss = reg_loss + self.lambda_spectral * compute_spectral_flatness(
+                reg_loss = reg_loss + ssr_scale * self.lambda_spectral * compute_spectral_flatness(
                     classifier.weight, mask,
                 )
 
-        if self.lambda_adapter > 0:
+        if ssr_scale > 0 and self.lambda_adapter > 0:
             adapter_penalties = [
                 compute_spatial_biocs(
                     module.lora.lora_B.T,
@@ -218,7 +225,7 @@ class BioCsLoRA(BaseContinualLearner):
                 for module in self._lora_modules()
             ]
             if adapter_penalties:
-                reg_loss = reg_loss + self.lambda_adapter * torch.stack(
+                reg_loss = reg_loss + ssr_scale * self.lambda_adapter * torch.stack(
                     adapter_penalties
                 ).mean()
 
@@ -227,6 +234,15 @@ class BioCsLoRA(BaseContinualLearner):
 
     def _after_optimizer_step(self) -> None:
         self.optimizer_steps += 1
+
+    def _ssr_scale(self, task_id: int) -> float:
+        """Return the prespecified task-wise SSR warm-in multiplier."""
+        if task_id < self.ssr_start_task:
+            return 0.0
+        if self.ssr_ramp_tasks == 0:
+            return 1.0
+        completed = task_id - self.ssr_start_task + 1
+        return min(1.0, completed / self.ssr_ramp_tasks)
 
     def active_regularizer_weight(self) -> float:
         return float(self.lambda_spatial + self.lambda_adapter)
