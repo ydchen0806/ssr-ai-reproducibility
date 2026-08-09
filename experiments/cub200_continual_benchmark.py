@@ -131,12 +131,25 @@ def write_result_record(
         config_payload["segmentation_kd_protocol"] = (
             "old_class_conditions_on_current_features_v1"
         )
+    model_name = "resnet18_classifier"
+    model_config = None
+    if row["task"] == "segmentation":
+        model_name = (
+            "resnet18_dense_prototype_cosine_decoder"
+            if args.segmentation_head == "prototype_cosine"
+            else "resnet18_dense_decoder"
+        )
+        model_config = segmentation_head_config(
+            args.segmentation_head,
+            args.seg_hidden_dim,
+            prototype_logit_scale=args.prototype_logit_scale,
+        )
     record = build_result_record(
         git_commit=current_git_commit(),
         run_id=str((outdir / row["task"] / row["method"] / f"seed_{row['seed']}").resolve()),
         task_family=row["task"],
         dataset="cub200_masks" if row["task"] == "segmentation" else "cub200",
-        model="resnet18_dense_decoder" if row["task"] == "segmentation" else "resnet18_classifier",
+        model=model_name,
         seed=int(row["seed"]),
         objective=objective,
         distance_mapping="cosine" if uses_ssr else "none",
@@ -161,6 +174,7 @@ def write_result_record(
             "effective_rank": True,
             "mean_abs_offdiag_cosine": False,
         },
+        **({"model_config": model_config} if model_config is not None else {}),
         **{
             key: row[key]
             for key in audit_fields
@@ -633,6 +647,138 @@ class ClassConditionedMaskDecoder(nn.Module):
         return conv.weight.flatten(1)
 
 
+class PrototypeCosineMaskDecoder(nn.Module):
+    """Predict masks by comparing every pixel embedding to its class prototype."""
+
+    def __init__(
+        self,
+        num_classes: int,
+        hidden_dim: int = 128,
+        feature_dim: int = 256,
+        logit_scale: float = 10.0,
+    ):
+        super().__init__()
+        if logit_scale <= 0.0:
+            raise ValueError("prototype cosine logit scale must be positive")
+        self.classifier = nn.Embedding(num_classes, hidden_dim)
+        self.class_bias = nn.Embedding(num_classes, 1)
+        nn.init.zeros_(self.class_bias.weight)
+        self.background_prototype = nn.Parameter(torch.empty(hidden_dim))
+        nn.init.normal_(self.background_prototype)
+        self.proj = nn.Conv2d(feature_dim, hidden_dim, kernel_size=1)
+        self.decoder = nn.Sequential(
+            nn.Conv2d(hidden_dim, hidden_dim, kernel_size=3, padding=1),
+            nn.GroupNorm(8, hidden_dim),
+            nn.GELU(),
+            nn.Conv2d(hidden_dim, hidden_dim, kernel_size=3, padding=1),
+            nn.GroupNorm(8, hidden_dim),
+            nn.GELU(),
+        )
+        self.logit_scale = nn.Parameter(torch.tensor(float(logit_scale)))
+
+    def forward(
+        self,
+        feats: torch.Tensor,
+        labels: torch.Tensor,
+        out_size: tuple[int, int],
+    ) -> torch.Tensor:
+        pixel_embeddings = F.normalize(self.decoder(self.proj(feats)), dim=1)
+        class_prototypes = F.normalize(self.classifier(labels), dim=1)
+        foreground_similarity = (
+            pixel_embeddings
+            * class_prototypes.unsqueeze(-1).unsqueeze(-1)
+        ).sum(dim=1, keepdim=True)
+        background_prototype = F.normalize(
+            self.background_prototype, dim=0
+        ).view(1, -1, 1, 1)
+        background_similarity = (pixel_embeddings * background_prototype).sum(
+            dim=1, keepdim=True
+        )
+        scale = self.logit_scale.clamp(1.0, 30.0).to(
+            dtype=foreground_similarity.dtype
+        )
+        bias = self.class_bias(labels).view(-1, 1, 1, 1)
+        logits = scale * (foreground_similarity - background_similarity) + bias
+        return F.interpolate(logits, size=out_size, mode="bilinear", align_corners=False)
+
+    def channel_prototypes(self) -> torch.Tensor:
+        conv = self.decoder[0]
+        return conv.weight.flatten(1)
+
+
+SEGMENTATION_HEADS = ("additive", "prototype_cosine")
+
+
+def build_segmentation_decoder(
+    num_classes: int,
+    hidden_dim: int,
+    *,
+    head: str = "additive",
+    prototype_logit_scale: float = 10.0,
+) -> nn.Module:
+    if head == "additive":
+        return ClassConditionedMaskDecoder(num_classes, hidden_dim)
+    if head == "prototype_cosine":
+        return PrototypeCosineMaskDecoder(
+            num_classes,
+            hidden_dim,
+            logit_scale=prototype_logit_scale,
+        )
+    raise ValueError(f"Unknown segmentation head: {head!r}")
+
+
+def segmentation_head_config(
+    head: str,
+    hidden_dim: int,
+    *,
+    prototype_logit_scale: float,
+) -> dict[str, object]:
+    if head not in SEGMENTATION_HEADS:
+        raise ValueError(f"Unknown segmentation head: {head!r}")
+    return {
+        "head": head,
+        "hidden_dim": int(hidden_dim),
+        "feature_dim": 256,
+        "class_conditioning": (
+            "pre_decoder_addition"
+            if head == "additive"
+            else "normalized_foreground_minus_background_prototype_cosine_mask_logit"
+        ),
+        "prototype_logit_scale": (
+            float(prototype_logit_scale) if head == "prototype_cosine" else None
+        ),
+        "prototype_logit_scale_learnable": head == "prototype_cosine",
+        "prototype_logit_scale_clamp": (
+            [1.0, 30.0] if head == "prototype_cosine" else None
+        ),
+        "class_bias": head == "prototype_cosine",
+    }
+
+
+def ssr_warmup_ramp_multiplier(
+    step: int,
+    total_steps: int,
+    *,
+    warmup_fraction: float,
+    ramp_fraction: float,
+) -> float:
+    if total_steps <= 0:
+        raise ValueError("total_steps must be positive")
+    if step < 0 or step >= total_steps:
+        raise ValueError("step must be within the current task training budget")
+    if warmup_fraction < 0.0 or ramp_fraction < 0.0:
+        raise ValueError("SSR warmup and ramp fractions cannot be negative")
+    if warmup_fraction + ramp_fraction > 1.0:
+        raise ValueError("SSR warmup and ramp fractions cannot sum above one")
+    warmup_steps = int(np.ceil(total_steps * warmup_fraction))
+    ramp_steps = int(np.ceil(total_steps * ramp_fraction))
+    if step < warmup_steps:
+        return 0.0
+    if ramp_steps == 0:
+        return 1.0
+    return min(1.0, float(step - warmup_steps + 1) / float(ramp_steps))
+
+
 def dice_loss(logits: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
     probs = torch.sigmoid(logits)
     inter = (probs * mask).sum(dim=(1, 2, 3))
@@ -778,10 +924,15 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
             train_rows = [train_rows[index] for index in fit_indices.tolist()]
             test_rows = validation_rows
         encoder = DenseResNet18().to(device).eval()
-    model = ClassConditionedMaskDecoder(num_classes, args.seg_hidden_dim).to(device)
+    model = build_segmentation_decoder(
+        num_classes,
+        args.seg_hidden_dim,
+        head=args.segmentation_head,
+        prototype_logit_scale=args.prototype_logit_scale,
+    ).to(device)
     initial_hash = state_dict_sha256(model)
     opt = torch.optim.AdamW(model.parameters(), lr=args.seg_lr, weight_decay=args.seg_weight_decay if method == "l2" else 0.0)
-    teacher: ClassConditionedMaskDecoder | None = None
+    teacher: nn.Module | None = None
     uses_ssr = method in {"biocs", "biocs_kd"}
     uses_kd = method in {"kd", "biocs_kd"}
     iou_matrix = []
@@ -803,6 +954,8 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
             pin_memory=True,
             generator=train_generator,
         )
+        task_training_step = 0
+        total_task_training_steps = args.seg_epochs * len(train_loader)
         distillation_step = 0
         for _ in range(args.seg_epochs):
             model.train()
@@ -862,7 +1015,13 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                                 args.sigma_inh,
                                 args.kernel_family,
                             )
-                    loss = loss + args.lambda_sp * spatial_loss
+                    ssr_multiplier = ssr_warmup_ramp_multiplier(
+                        task_training_step,
+                        total_task_training_steps,
+                        warmup_fraction=args.ssr_warmup_fraction,
+                        ramp_fraction=args.ssr_ramp_fraction,
+                    )
+                    loss = loss + args.lambda_sp * ssr_multiplier * spatial_loss
                 if uses_kd and teacher is not None:
                     distill_cls = old_class_distillation_ids(
                         old_class_ids,
@@ -882,6 +1041,7 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                 loss.backward()
                 opt.step()
                 optimizer_steps += 1
+                task_training_step += 1
         seen_ious = []
         for seen_classes in tasks[: tid + 1]:
             if use_feature_cache:
@@ -899,7 +1059,12 @@ def run_segmentation(args: argparse.Namespace, method: str, seed: int, device: t
                 seen_ious.append(evaluate_segmentation(encoder, model, test_loader, device)[0] * 100.0)
         iou_matrix.append(seen_ious)
         if uses_kd:
-            teacher = ClassConditionedMaskDecoder(num_classes, args.seg_hidden_dim).to(device)
+            teacher = build_segmentation_decoder(
+                num_classes,
+                args.seg_hidden_dim,
+                head=args.segmentation_head,
+                prototype_logit_scale=args.prototype_logit_scale,
+            ).to(device)
             teacher.load_state_dict(model.state_dict())
             teacher.eval()
     final_ious = iou_matrix[-1]
@@ -992,6 +1157,18 @@ def main() -> None:
     p.add_argument("--seg_weight_decay", type=float, default=1e-4)
     p.add_argument("--seg_image_size", type=int, default=128)
     p.add_argument("--seg_hidden_dim", type=int, default=128)
+    p.add_argument(
+        "--segmentation-head",
+        choices=SEGMENTATION_HEADS,
+        default="additive",
+        help="Opt-in mask head; the default preserves the historical additive decoder.",
+    )
+    p.add_argument(
+        "--prototype-logit-scale",
+        type=float,
+        default=10.0,
+        help="Initial learnable cosine-logit scale for the prototype head (clamped to [1, 30]).",
+    )
     p.add_argument("--seg_biocs_target", choices=["class", "channels"], default="class")
     p.add_argument(
         "--seg_biocs_scope",
@@ -1005,6 +1182,18 @@ def main() -> None:
     p.add_argument("--seg_validation_fraction", type=float, default=0.2)
     p.add_argument("--seg_validation_seed", type=int, default=20260809)
     p.add_argument("--lambda_sp", type=float, default=2.0)
+    p.add_argument(
+        "--ssr-warmup-fraction",
+        type=float,
+        default=0.0,
+        help="Per-task zero-SSR fraction; use 0.2 for the prototype-head protocol.",
+    )
+    p.add_argument(
+        "--ssr-ramp-fraction",
+        type=float,
+        default=0.0,
+        help="Per-task linear SSR ramp fraction; use 0.2 for the prototype-head protocol.",
+    )
     p.add_argument("--lambda_kd", type=float, default=2.0)
     p.add_argument("--lambda_kd_seg", type=float, default=0.5)
     p.add_argument("--a-exc", type=float, default=1.0)
@@ -1020,6 +1209,12 @@ def main() -> None:
 
     if not 0.0 < args.seg_validation_fraction < 0.5:
         raise ValueError("--seg_validation_fraction must be between zero and one half")
+    if args.prototype_logit_scale <= 0.0:
+        raise ValueError("--prototype-logit-scale must be positive")
+    if args.ssr_warmup_fraction < 0.0 or args.ssr_ramp_fraction < 0.0:
+        raise ValueError("SSR warmup and ramp fractions cannot be negative")
+    if args.ssr_warmup_fraction + args.ssr_ramp_fraction > 1.0:
+        raise ValueError("SSR warmup and ramp fractions cannot sum above one")
 
     outdir = Path(args.output_dir)
     outdir.mkdir(parents=True, exist_ok=True)

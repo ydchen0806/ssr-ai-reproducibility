@@ -36,8 +36,12 @@ if str(PROJECT_ROOT) not in sys.path:
 from experiments.cub200_continual_benchmark import (
     ClassConditionedMaskDecoder,
     DenseResNet18,
+    SEGMENTATION_HEADS,
     biocs_loss,
+    build_segmentation_decoder,
     geometry,
+    segmentation_head_config,
+    ssr_warmup_ramp_multiplier,
 )
 from ssr_utils.result_schema import build_result_record, sha256_file, sha256_value
 from ssr_utils.segmentation_kd import old_class_distillation_ids
@@ -497,7 +501,12 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
     config = DATASET_CONFIGS[args.dataset]
     num_classes = int(config["num_classes"])
     tasks = make_tasks(num_classes, int(config["classes_per_task"]), args.seed)
-    model = ClassConditionedMaskDecoder(num_classes, args.hidden_dim).to(device)
+    model = build_segmentation_decoder(
+        num_classes,
+        args.hidden_dim,
+        head=args.segmentation_head,
+        prototype_logit_scale=args.prototype_logit_scale,
+    ).to(device)
     initial_model_hash = module_state_sha256(model)
     task_schedule_hash = sha256_value(tasks)
     optimizer = torch.optim.AdamW(
@@ -505,7 +514,7 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
     )
     uses_ssr = args.method in {"task_ssr", "kd_ssr"}
     uses_kd = args.method in {"kd", "kd_ssr"}
-    teacher: ClassConditionedMaskDecoder | None = None
+    teacher: torch.nn.Module | None = None
     optimizer_steps = 0
     iou_matrix: list[list[float]] = []
     for task_index, task_classes in enumerate(tasks):
@@ -527,6 +536,8 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
             pin_memory=True,
             generator=generator,
         )
+        task_training_step = 0
+        total_task_training_steps = args.epochs * len(train_loader)
         distillation_step = 0
         for _epoch in range(args.epochs):
             model.train()
@@ -578,7 +589,13 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
                             args.sigma_inh,
                             args.kernel_family,
                         )
-                    loss = loss + args.lambda_ssr * spatial_loss
+                    ssr_multiplier = ssr_warmup_ramp_multiplier(
+                        task_training_step,
+                        total_task_training_steps,
+                        warmup_fraction=args.ssr_warmup_fraction,
+                        ramp_fraction=args.ssr_ramp_fraction,
+                    )
+                    loss = loss + args.lambda_ssr * ssr_multiplier * spatial_loss
                 if uses_kd and teacher is not None:
                     distill_classes = old_class_distillation_ids(
                         old_classes,
@@ -606,6 +623,7 @@ def train(args: argparse.Namespace, device: torch.device) -> SegmentationResult:
                 loss.backward()
                 optimizer.step()
                 optimizer_steps += 1
+                task_training_step += 1
 
         task_ious = []
         for seen_task in tasks[: task_index + 1]:
@@ -726,7 +744,11 @@ def result_record(
         run_id=str(args.output_dir.resolve()),
         task_family="segmentation",
         dataset=f"{args.dataset}_masks",
-        model="resnet18_dense_class_conditioned_decoder",
+        model=(
+            "resnet18_dense_prototype_cosine_decoder"
+            if args.segmentation_head == "prototype_cosine"
+            else "resnet18_dense_class_conditioned_decoder"
+        ),
         seed=args.seed,
         objective=objective,
         distance_mapping="cosine" if uses_ssr else "none",
@@ -758,6 +780,11 @@ def result_record(
             "effective_rank": True,
             "mean_abs_offdiag_cosine": False,
         },
+        model_config=segmentation_head_config(
+            args.segmentation_head,
+            args.hidden_dim,
+            prototype_logit_scale=args.prototype_logit_scale,
+        ),
     )
 
 
@@ -777,10 +804,34 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--feature-batch-size", type=int, default=64)
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--hidden-dim", type=int, default=192)
+    parser.add_argument(
+        "--segmentation-head",
+        choices=SEGMENTATION_HEADS,
+        default="additive",
+        help="Opt-in mask head; the default preserves the historical additive decoder.",
+    )
+    parser.add_argument(
+        "--prototype-logit-scale",
+        type=float,
+        default=10.0,
+        help="Initial learnable cosine-logit scale for the prototype head (clamped to [1, 30]).",
+    )
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--learning-rate", type=float, default=1e-3)
     parser.add_argument("--weight-decay", type=float, default=0.0)
     parser.add_argument("--lambda-ssr", type=float, default=0.05)
+    parser.add_argument(
+        "--ssr-warmup-fraction",
+        type=float,
+        default=0.0,
+        help="Per-task zero-SSR fraction; use 0.2 for the prototype-head protocol.",
+    )
+    parser.add_argument(
+        "--ssr-ramp-fraction",
+        type=float,
+        default=0.0,
+        help="Per-task linear SSR ramp fraction; use 0.2 for the prototype-head protocol.",
+    )
     parser.add_argument("--lambda-kd", type=float, default=0.5)
     parser.add_argument("--ssr-target", choices=("class", "channels"), default="class")
     parser.add_argument("--ssr-scope", choices=("seen", "new_old", "all"), default="seen")
@@ -811,6 +862,12 @@ def main() -> None:
     args.output_dir = args.output_dir.resolve()
     if args.ssr_start_task < 0:
         raise ValueError("--ssr-start-task cannot be negative")
+    if args.prototype_logit_scale <= 0.0:
+        raise ValueError("--prototype-logit-scale must be positive")
+    if args.ssr_warmup_fraction < 0.0 or args.ssr_ramp_fraction < 0.0:
+        raise ValueError("SSR warmup and ramp fractions cannot be negative")
+    if args.ssr_warmup_fraction + args.ssr_ramp_fraction > 1.0:
+        raise ValueError("SSR warmup and ramp fractions cannot sum above one")
     if args.ssr_target == "channels" and args.ssr_scope != "all":
         raise ValueError("channel-target SSR requires --ssr-scope all")
     if not 0.0 < args.validation_fraction < 0.5:
