@@ -25,7 +25,8 @@ Biological connectomics analyses, raw connectomics tables, and manuscript source
 |-- experiments/                    # CUB, adapter, capacity, and auxiliary probes
 |-- llm_ke/                         # SSR fine-tuning editor and EasyEdit hparams
 |-- artifacts/paper_20260803/       # original compact paper audit bundle
-|-- artifacts/paper_20260809/       # locked direct-SSR confirmation records
+|-- artifacts/paper_20260809/       # independent direct-SSR confirmation records
+|-- artifacts/paper_20260810/       # current CounterFact factorial and value map
 |-- scripts/run_smoke_test.sh       # short sanity check
 |-- scripts/run_reproducibility_suite.sh
 |-- scripts/collect_results.py
@@ -307,14 +308,14 @@ python scripts/verify_paper_artifacts.py
 ```
 
 The manifest distinguishes direct SSR attribution (`KD` versus `SSR+KD`) from
-complete-objective transfer. In particular, the segmentation record compares a
-base objective with the complete SSR+KD objective, and the locked nested LLM
-comparison does not resolve a statistically significant SSR increment. These
-records are shipped for auditability and are not represented as positive
-single-component ablations. The segmentation outputs combine seeds 0, 1, and 2
-from an append-only run stream; the exact seed-0 launch manifest is not present
-in the recovered archive, and this limitation is recorded in
-`raw/segmentation/protocol.json`.
+complete-objective transfer. The segmentation record compares a base objective
+with the complete SSR+KD objective and is retained as an early boundary audit,
+not as a positive single-component ablation. The current CounterFact values are
+versioned separately under `artifacts/paper_20260810`; use that bundle rather
+than the recovered 3 August LLM record for manuscript-facing editing results.
+The segmentation outputs combine seeds 0, 1, and 2 from an append-only run
+stream; the exact seed-0 launch manifest is not present in the recovered
+archive, and this limitation is recorded in `raw/segmentation/protocol.json`.
 
 Absolute cluster paths in the recovered records are normalized to
 `source_workspace/...`; content digests of the original source files are kept
@@ -328,7 +329,7 @@ scale broader than a true HWHM-matched control. Its measurements are retained,
 but the artifact verifier explicitly prevents treating it as evidence of
 HWHM-matched kernel invariance.
 
-### Locked 30-seed direct-SSR update
+### Independent 30-seed direct-SSR update
 
 `artifacts/paper_20260809` adds the locked Oxford-IIIT Pet raw-image ViT-LoRA
 confirmation used by the updated manuscript. It compares task-only training
@@ -355,9 +356,26 @@ bash scripts/submit_direct_ssr_attribution_4node_20260809.sh
 ```
 
 Run that command once on every node of the shared allocation. The launcher
-assigns three nodes to the locked segmentation audit and one node to the Pet
-ViT-LoRA screen--refine--lock protocol, records the repository commit, and
-fails if the expected result summaries are incomplete.
+assigns three nodes to the independent segmentation audit and one node to the
+Pet ViT-LoRA development-and-confirmation protocol, records the repository
+commit, and fails if the expected result summaries are incomplete.
+
+### Current CounterFact direct and nested comparisons
+
+`artifacts/paper_20260810` contains the complete ten-seed CounterFact factorial
+used by the current manuscript. It retains all recipes, both cosine and
+projective mappings, and every evaluated endpoint. A small machine-readable
+index maps the displayed direct, nested and component-control comparisons to
+their exact JSON paths; the matched task endpoint is checked at the same time.
+
+Verify the manuscript-facing values directly from the complete factorial with:
+
+```bash
+python3 scripts/verify_paper_20260810.py
+```
+
+`artifacts/meeting_20260803` is retained only as a historical meeting workspace.
+Its partial manifests and staged checklists are not a current evidence index.
 
 ## Reproducibility Notes
 
