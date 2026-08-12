@@ -22,6 +22,7 @@ python3 scripts/verify_paper_20260810.py
 ```
 
 The remaining manuscript evidence is organized separately: CUB classification,
-mechanism and adapter records are under `../paper_20260803/`; the 30-seed Pet
-direct-SSR confirmation and the segmentation boundary audit are under
-`../paper_20260809/`.
+mechanism and adapter records are under `../paper_20260803/`; direct
+segmentation boundary records and an invalidated raw-image ViT-LoRA archive are
+under `../paper_20260809/`. The latter is retained only for auditability and is
+not manuscript evidence.

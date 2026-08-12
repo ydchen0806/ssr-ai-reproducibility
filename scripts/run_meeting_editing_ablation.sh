@@ -174,6 +174,13 @@ evaluator="$(yaml_value evaluation.name)"
 evaluator_version="$(yaml_value evaluation.version)"
 evaluation_protocol_hash="$(yaml_value evaluation.protocol_sha256)"
 pairing_protocol_hash="$(yaml_value pairing.protocol_sha256)"
+locked_config_sha256="$("$PYTHON" - "$CONFIG_FILE" <<'PY'
+import hashlib
+import sys
+
+print(hashlib.sha256(open(sys.argv[1], "rb").read()).hexdigest())
+PY
+)"
 
 export BIOCS_KERNEL_FAMILY="$(yaml_value kernel.family)"
 export BIOCS_A_EXC="$(yaml_value kernel.a_exc)"
@@ -184,8 +191,18 @@ export BIOCS_TARGET="$(yaml_value kernel.target)"
 export BIOCS_ROW_SELECTION="$(yaml_value kernel.row_selection)"
 export BIOCS_MAX_SPATIAL_ROWS="$(yaml_value kernel.max_spatial_rows)"
 export BIOCS_TARGET_LAYERS="$(yaml_value model.target_layers)"
+export BIOCS_TARGET_MODULE_REGEX="$(yaml_value editor.target_module_regex)"
+export BIOCS_MAX_TARGET_MODULES="$(yaml_value editor.max_target_modules)"
+export BIOCS_EDITABLE_PARAMETER="$(yaml_value editor.editable_parameter)"
+export BIOCS_ADAPTER_MODE="$(yaml_value editor.adapter_mode)"
 export BIOCS_LR="$(yaml_value optimizer.lr)"
 export BIOCS_NUM_STEPS="$(yaml_value optimizer.num_steps)"
+export BIOCS_OPTIMIZER="$(yaml_value optimizer.name)"
+export BIOCS_ADAM_BETA1="$(yaml_value optimizer.beta1)"
+export BIOCS_ADAM_BETA2="$(yaml_value optimizer.beta2)"
+export BIOCS_ADAM_EPS="$(yaml_value optimizer.eps)"
+export BIOCS_WEIGHT_DECAY="$(yaml_value optimizer.weight_decay)"
+export BIOCS_GRADIENT_CLIP_NORM="$(yaml_value optimizer.gradient_clip_norm)"
 export FT_LR="$BIOCS_LR"
 export FT_NUM_STEPS="$BIOCS_NUM_STEPS"
 export KE_DATA_OFFSET="$data_offset"
@@ -198,10 +215,37 @@ export KE_EXPECTED_LOCALITY_EVALUATOR_VERSION="$evaluator_version"
 export KE_EXPECTED_LOCALITY_PROTOCOL_HASH="$evaluation_protocol_hash"
 export KE_REQUIRE_LEGACY_LOCALITY_COMPATIBLE="$(yaml_value evaluation.require_legacy_compatible_input)"
 export KE_EVALUATION_PROTOCOL_HASH="$evaluation_protocol_hash"
-export KE_MAX_LENGTH="$(yaml_value_or_default model.max_length 64)"
-export KE_MAX_NEW_TOKENS="$(yaml_value_or_default evaluation.max_new_tokens 32)"
+export KE_MAX_LENGTH="$(yaml_value sequence.max_length)"
+export KE_MAX_NEW_TOKENS="$(yaml_value sequence.max_new_tokens)"
+export KE_EDITOR_DEVICE="$(yaml_value runtime.editor_device)"
+export KE_MODEL_DTYPE="$(yaml_value runtime.model_dtype)"
+export KE_DEVICE_MAP="$(yaml_value runtime.device_map)"
+export KE_ATTN_IMPLEMENTATION="$(yaml_value runtime.attention_implementation)"
+export KE_DETERMINISM_POLICY="$(yaml_value runtime.determinism_policy)"
+export KE_CUDNN_DETERMINISTIC="$(yaml_value runtime.cudnn_deterministic)"
+export KE_CUDNN_BENCHMARK="$(yaml_value runtime.cudnn_benchmark)"
+export KE_USE_DETERMINISTIC_ALGORITHMS="$(yaml_value runtime.use_deterministic_algorithms)"
+export KE_DETERMINISTIC_ALGORITHMS_WARN_ONLY="$(yaml_value runtime.deterministic_algorithms_warn_only)"
+export KE_LOCK_NAME="$(yaml_value lock_name)"
+export KE_LOCKED_CONFIG_PATH="$CONFIG_FILE"
+export KE_LOCKED_CONFIG_SHA256="$locked_config_sha256"
 
 mkdir -p "$RESULT_ROOT"
+runtime_file="$RESULT_ROOT/locked_runtime.tsv"
+printf 'key\tvalue\n' > "$runtime_file"
+for key in \
+  KE_LOCK_NAME KE_LOCKED_CONFIG_PATH KE_LOCKED_CONFIG_SHA256 \
+  KE_EDITOR_DEVICE KE_MODEL_DTYPE KE_DEVICE_MAP KE_ATTN_IMPLEMENTATION \
+  KE_DETERMINISM_POLICY KE_CUDNN_DETERMINISTIC KE_CUDNN_BENCHMARK \
+  KE_USE_DETERMINISTIC_ALGORITHMS KE_DETERMINISTIC_ALGORITHMS_WARN_ONLY \
+  KE_MAX_LENGTH KE_MAX_NEW_TOKENS BIOCS_TARGET_LAYERS \
+  BIOCS_TARGET_MODULE_REGEX BIOCS_MAX_TARGET_MODULES \
+  BIOCS_EDITABLE_PARAMETER BIOCS_ADAPTER_MODE BIOCS_OPTIMIZER \
+  BIOCS_LR BIOCS_NUM_STEPS BIOCS_ADAM_BETA1 BIOCS_ADAM_BETA2 \
+  BIOCS_ADAM_EPS BIOCS_WEIGHT_DECAY BIOCS_GRADIENT_CLIP_NORM; do
+  printf '%s\t%s\n' "$key" "${!key}" >> "$runtime_file"
+done
+
 plan_file="$RESULT_ROOT/planned_runs.tsv"
 if ((SHARD_COUNT > 1)); then
   plan_file="$RESULT_ROOT/planned_runs_shard_${SHARD_INDEX}_of_${SHARD_COUNT}.tsv"
@@ -344,6 +388,7 @@ run_one() {
   fi
 
   export KE_SEED="$seed"
+  export PYTHONHASHSEED="$seed"
   export BIOCS_SAMPLER_SEED="$seed"
   printf 'RUN %s dataset=%s recipe=%s mapping=%s seed=%s\n' \
     "$PHASE" "$dataset" "$recipe" "$mapping_tag" "$seed"

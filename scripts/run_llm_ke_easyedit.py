@@ -121,6 +121,50 @@ def _parse_bool(text: str) -> bool:
     return text.strip().lower() in {"1", "true", "yes", "y", "on"}
 
 
+def configure_runtime_from_env() -> dict[str, object]:
+    """Apply and report the locked, best-effort PyTorch runtime policy.
+
+    The formal GPT-2 XL cohort fixes seeds and disables cuDNN benchmarking,
+    but does not claim bitwise determinism across CUDA, driver, or hardware
+    versions.  Keeping this policy explicit prevents a future run from
+    silently inheriting a machine-specific default.
+    """
+    policy = os.environ.get("KE_DETERMINISM_POLICY", "seeded_best_effort")
+    requested = {
+        "policy": policy,
+        "cudnn_deterministic": _parse_bool(
+            os.environ.get("KE_CUDNN_DETERMINISTIC", "0")
+        ),
+        "cudnn_benchmark": _parse_bool(os.environ.get("KE_CUDNN_BENCHMARK", "0")),
+        "use_deterministic_algorithms": _parse_bool(
+            os.environ.get("KE_USE_DETERMINISTIC_ALGORITHMS", "0")
+        ),
+        "deterministic_algorithms_warn_only": _parse_bool(
+            os.environ.get("KE_DETERMINISTIC_ALGORITHMS_WARN_ONLY", "0")
+        ),
+    }
+    observed = dict(requested)
+    try:
+        import torch
+
+        torch.backends.cudnn.deterministic = requested["cudnn_deterministic"]
+        torch.backends.cudnn.benchmark = requested["cudnn_benchmark"]
+        torch.use_deterministic_algorithms(
+            requested["use_deterministic_algorithms"],
+            warn_only=requested["deterministic_algorithms_warn_only"],
+        )
+        observed.update(
+            {
+                "cudnn_deterministic": torch.backends.cudnn.deterministic,
+                "cudnn_benchmark": torch.backends.cudnn.benchmark,
+                "use_deterministic_algorithms": torch.are_deterministic_algorithms_enabled(),
+            }
+        )
+    except Exception as error:  # Runtime metadata must not hide a failed import.
+        observed["runtime_configuration_error"] = f"{type(error).__name__}: {error}"
+    return {"requested": requested, "observed": observed}
+
+
 def _parse_int_list(text: str) -> list[int]:
     return [int(part.strip()) for part in text.replace(",", " ").split() if part.strip()]
 
@@ -582,7 +626,7 @@ def run_biocs_method(
         target_layers = _parse_int_list(os.environ["BIOCS_TARGET_LAYERS"])
     editor = BioCsLLMEditor(
         model_name=model_name,
-        device="cuda",
+        device=os.environ.get("KE_EDITOR_DEVICE", "cuda"),
         target_layers=target_layers,
         recipe=config["recipe"],
         lambda_ssr=config["lambda_ssr"],
@@ -600,6 +644,12 @@ def run_biocs_method(
         sampler_seed=config["sampler_seed"],
         lr=float(os.environ.get("BIOCS_LR", "1e-4")),
         num_steps=int(os.environ.get("BIOCS_NUM_STEPS", "25")),
+        optimizer_name=os.environ.get("BIOCS_OPTIMIZER", "adam"),
+        adam_beta1=float(os.environ.get("BIOCS_ADAM_BETA1", "0.9")),
+        adam_beta2=float(os.environ.get("BIOCS_ADAM_BETA2", "0.999")),
+        adam_eps=float(os.environ.get("BIOCS_ADAM_EPS", "1e-8")),
+        weight_decay=float(os.environ.get("BIOCS_WEIGHT_DECAY", "0.0")),
+        gradient_clip_norm=float(os.environ.get("BIOCS_GRADIENT_CLIP_NORM", "1.0")),
         max_length=int(os.environ.get("KE_MAX_LENGTH", "64")),
         max_new_tokens=int(os.environ.get("KE_MAX_NEW_TOKENS", "32")),
     )
@@ -645,10 +695,16 @@ def run_ft_method(
         target_layers = _parse_int_list(os.environ["BIOCS_TARGET_LAYERS"])
     editor = FTBaselineEditor(
         model_name=model_name,
-        device="cuda",
+        device=os.environ.get("KE_EDITOR_DEVICE", "cuda"),
         target_layers=target_layers,
         lr=float(os.environ.get("FT_LR", os.environ.get("BIOCS_LR", "1e-4"))),
         num_steps=int(os.environ.get("FT_NUM_STEPS", os.environ.get("BIOCS_NUM_STEPS", "25"))),
+        optimizer_name=os.environ.get("BIOCS_OPTIMIZER", "adam"),
+        adam_beta1=float(os.environ.get("BIOCS_ADAM_BETA1", "0.9")),
+        adam_beta2=float(os.environ.get("BIOCS_ADAM_BETA2", "0.999")),
+        adam_eps=float(os.environ.get("BIOCS_ADAM_EPS", "1e-8")),
+        weight_decay=float(os.environ.get("BIOCS_WEIGHT_DECAY", "0.0")),
+        gradient_clip_norm=float(os.environ.get("BIOCS_GRADIENT_CLIP_NORM", "1.0")),
         max_length=int(os.environ.get("KE_MAX_LENGTH", "64")),
         max_new_tokens=int(os.environ.get("KE_MAX_NEW_TOKENS", "32")),
     )
@@ -697,6 +753,14 @@ def write_run_manifest(
         "BIOCS_SAMPLER_SEED",
         "BIOCS_TARGET_MODULE_REGEX",
         "BIOCS_MAX_TARGET_MODULES",
+        "BIOCS_EDITABLE_PARAMETER",
+        "BIOCS_ADAPTER_MODE",
+        "BIOCS_OPTIMIZER",
+        "BIOCS_ADAM_BETA1",
+        "BIOCS_ADAM_BETA2",
+        "BIOCS_ADAM_EPS",
+        "BIOCS_WEIGHT_DECAY",
+        "BIOCS_GRADIENT_CLIP_NORM",
         "KE_DATA_OFFSET",
         "KE_MODEL_DTYPE",
         "KE_DEVICE_MAP",
@@ -712,6 +776,20 @@ def write_run_manifest(
         "KE_MAX_LENGTH",
         "KE_MAX_NEW_TOKENS",
         "KE_ATTN_IMPLEMENTATION",
+        "KE_EDITOR_DEVICE",
+        "KE_DETERMINISM_POLICY",
+        "KE_CUDNN_DETERMINISTIC",
+        "KE_CUDNN_BENCHMARK",
+        "KE_USE_DETERMINISTIC_ALGORITHMS",
+        "KE_DETERMINISTIC_ALGORITHMS_WARN_ONLY",
+        "KE_LOCK_NAME",
+        "KE_LOCKED_CONFIG_PATH",
+        "KE_LOCKED_CONFIG_SHA256",
+        "PYTHONHASHSEED",
+        "CUDA_VISIBLE_DEVICES",
+        "CUBLAS_WORKSPACE_CONFIG",
+        "PYTORCH_CUDA_ALLOC_CONF",
+        "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE",
         "KE_MOM2_N_SAMPLES",
         "KE_MOM2_DATASET",
         "KE_MOM2_DTYPE",
@@ -730,6 +808,7 @@ def write_run_manifest(
     record = {
         "command": vars(args),
         "environment": {key: os.environ[key] for key in keys if key in os.environ},
+        "runtime_policy": configure_runtime_from_env(),
     }
     if resolved_editing_config is not None:
         record["editing_objective"] = resolved_editing_config
@@ -827,6 +906,34 @@ def write_result_record(
         )
     data_path = Path(DATASET_MAP[args.dataset])
     config_payload = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+    # Keep the preflight lock and the values resolved by Transformers in the
+    # same manifest.  The latter are only available after model construction.
+    resolved_keys = (
+        "target_layers",
+        "target_module_regex",
+        "max_target_modules",
+        "editable_parameter",
+        "adapter_mode",
+        "editable_module_names",
+        "optimizer",
+        "max_length",
+        "max_new_tokens",
+        "model_dtype",
+        "resolved_model_dtype",
+        "device_map",
+        "requested_editor_device",
+        "resolved_input_device",
+        "attention_implementation",
+        "resolved_attention_implementation",
+    )
+    resolved_execution = {
+        key: summary[key] for key in resolved_keys if key in summary
+    }
+    if resolved_execution:
+        config_payload["resolved_execution"] = resolved_execution
+        run_manifest_path.write_text(
+            json.dumps(config_payload, indent=2) + "\n", encoding="utf-8"
+        )
     completion = {
         name: summary.get(name)
         for name in ("attempted", "succeeded", "failed", "status")
@@ -1003,6 +1110,7 @@ if __name__ == "__main__":
             parser.error("--recipe is only supported by --method biocs (or plain for ft)")
         if args.seed is not None:
             os.environ["KE_SEED"] = str(args.seed)
+    configure_runtime_from_env()
     set_seed_from_env()
 
     try:

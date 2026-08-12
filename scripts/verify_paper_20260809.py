@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the locked 2026-08-09 manuscript evidence from paired records."""
+"""Verify archived 2026-08-09 direct-SSR records and their boundary status."""
 
 from __future__ import annotations
 
@@ -32,7 +32,8 @@ PET_CONFIG = {
     "ramp_tasks": 0,
 }
 
-# These values lock the manuscript-facing analysis to the completed 30-seed run.
+# These values identify the archived Pet run. They are retained for auditability
+# only: a later AMP-overflow diagnosis invalidated it as manuscript evidence.
 PET_EXPECTED = {
     "avg_accuracy": {
         "difference_mean": 0.07228490317506366,
@@ -81,14 +82,6 @@ PET_METRICS = {
         False,
     ),
 }
-
-MANUSCRIPT_ENDPOINTS = (
-    "avg_accuracy",
-    "avg_forgetting",
-    "effective_rank",
-    "prototype_overlap",
-)
-
 
 class VerificationError(AssertionError):
     """Raised when an artifact no longer matches its locked evidence."""
@@ -198,21 +191,20 @@ def verify_pet(payload: dict[str, Any]) -> dict[str, Any]:
         for field, calculate in delta_checks.items():
             require_close(row[field], calculate(row), f"paired-row arithmetic: seed {row['seed']}/{field}")
 
-    for metric in MANUSCRIPT_ENDPOINTS:
-        require(stored_metrics[metric]["ci95_low"] > 0.0, f"manuscript CI is not positive: {metric}")
     cil = stored_metrics["cil_last_accuracy"]
     require(cil["ci95_low"] < 0.0 < cil["ci95_high"], "CIL-last must remain a cross-zero boundary")
 
     return {
         "n": 30,
+        "role": "invalidated_archive_not_manuscript_evidence",
         "selected": payload["selected"],
-        "manuscript_endpoints": {
+        "archived_summary": {
             metric: {
                 "difference_mean": stored_metrics[metric]["difference_mean"],
                 "ci95": [stored_metrics[metric]["ci95_low"], stored_metrics[metric]["ci95_high"]],
                 "favorable_pairs": stored_metrics[metric]["favorable_pairs"],
             }
-            for metric in MANUSCRIPT_ENDPOINTS
+            for metric in PET_METRICS
         },
         "cil_last_boundary": {
             "difference_mean": cil["difference_mean"],
@@ -255,12 +247,51 @@ def verify_segmentation(payload: dict[str, Any]) -> dict[str, Any]:
             stored["ci95_low"] < 0.0 < stored["ci95_high"],
             f"segmentation primary CI must remain cross-zero: {dataset}",
         )
+        geometry: dict[str, dict[str, Any]] = {}
+        for metric, control_key, treatment_key, higher_is_better in (
+            (
+                "effective_rank",
+                "control_effective_rank",
+                "treatment_effective_rank",
+                True,
+            ),
+            (
+                "mean_abs_offdiag_cosine",
+                "control_mean_abs_offdiag_cosine",
+                "treatment_mean_abs_offdiag_cosine",
+                False,
+            ),
+        ):
+            recomputed_geometry = paired_summary(
+                [float(row[control_key]) for row in rows],
+                [float(row[treatment_key]) for row in rows],
+                higher_is_better=higher_is_better,
+            ).as_dict()
+            stored_geometry = record["metrics"][metric]
+            for field, actual in recomputed_geometry.items():
+                if isinstance(actual, int):
+                    require(
+                        stored_geometry.get(field) == actual,
+                        f"segmentation geometry mismatch: {dataset}/{metric}/{field}",
+                    )
+                else:
+                    require_close(
+                        stored_geometry[field],
+                        actual,
+                        f"segmentation geometry mismatch: {dataset}/{metric}/{field}",
+                    )
+            geometry[metric] = {
+                "difference_mean": stored_geometry["difference_mean"],
+                "ci95": [stored_geometry["ci95_low"], stored_geometry["ci95_high"]],
+                "favorable_pairs": stored_geometry["favorable_pairs"],
+            }
         report[dataset] = {
             "n": record["n"],
             "primary_gate": False,
             "difference_mean": stored["difference_mean"],
             "ci95": [stored["ci95_low"], stored["ci95_high"]],
             "crosses_zero": True,
+            "geometry": geometry,
         }
     return {"role": "boundary_audit", "all_primary_gates": False, "datasets": report}
 
@@ -289,6 +320,7 @@ def main() -> int:
         print(f"verification failed: {exc}", file=sys.stderr)
         return 1
     print(json.dumps(report, indent=2, sort_keys=True))
+    print("Pet ViT-LoRA is an invalidated archive and is not manuscript evidence.")
     return 0
 
 

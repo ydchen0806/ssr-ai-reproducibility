@@ -378,6 +378,12 @@ class BioCsLLMEditor:
         sampler_seed: int = 0,
         lr: float = 1e-4,
         num_steps: int = 25,
+        optimizer_name: str = "adam",
+        adam_beta1: float = 0.9,
+        adam_beta2: float = 0.999,
+        adam_eps: float = 1e-8,
+        weight_decay: float = 0.0,
+        gradient_clip_norm: float = 1.0,
         max_length: int = 64,
         max_new_tokens: int = 32,
         recipe: Optional[str] = None,
@@ -404,13 +410,18 @@ class BioCsLLMEditor:
 
         self.device = torch.device(device)
         self.model_name = model_name
+        self.requested_model_dtype = os.environ.get("KE_MODEL_DTYPE", "auto").lower()
+        self.requested_device_map = os.environ.get("KE_DEVICE_MAP", "").strip()
+        self.requested_attention_implementation = os.environ.get(
+            "KE_ATTN_IMPLEMENTATION", ""
+        ).strip()
         logger.info(f"Loading model: {model_name}")
 
         load_kw = {"trust_remote_code": True}
         if os.path.isdir(model_name) or os.environ.get("KE_LOCAL_ONLY") == "1" or os.environ.get("TRANSFORMERS_OFFLINE") == "1" or os.environ.get("HF_HUB_OFFLINE") == "1":
             load_kw["local_files_only"] = True
         model_kw = dict(load_kw)
-        dtype_name = os.environ.get("KE_MODEL_DTYPE", "auto").lower()
+        dtype_name = self.requested_model_dtype
         if dtype_name == "bf16":
             model_kw["torch_dtype"] = torch.bfloat16
         elif dtype_name == "fp16":
@@ -422,9 +433,9 @@ class BioCsLLMEditor:
         else:
             model_kw["torch_dtype"] = torch.bfloat16 if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else torch.float16
         model_kw["low_cpu_mem_usage"] = True
-        if os.environ.get("KE_ATTN_IMPLEMENTATION"):
-            model_kw["attn_implementation"] = os.environ["KE_ATTN_IMPLEMENTATION"]
-        device_map = os.environ.get("KE_DEVICE_MAP", "").strip()
+        if self.requested_attention_implementation:
+            model_kw["attn_implementation"] = self.requested_attention_implementation
+        device_map = self.requested_device_map
         if device_map:
             model_kw["device_map"] = device_map
 
@@ -459,6 +470,10 @@ class BioCsLLMEditor:
             param.requires_grad_(False)
         self.model.eval()
         self.input_device = next(self.model.parameters()).device
+        self.resolved_model_dtype = str(next(self.model.parameters()).dtype)
+        self.resolved_attention_implementation = str(
+            getattr(self.config, "_attn_implementation", "default")
+        )
 
         self.target_layers = target_layers or self._auto_select_layers()
         self.recipe = recipe_config["recipe"]
@@ -500,12 +515,33 @@ class BioCsLLMEditor:
         self._edit_row_indices: dict[str, torch.Tensor] = {}
         self.lr = lr
         self.num_steps = num_steps
+        if optimizer_name.lower() != "adam":
+            raise ValueError("Only the locked Adam optimizer is supported")
+        if not (0.0 <= adam_beta1 < 1.0 and 0.0 <= adam_beta2 < 1.0):
+            raise ValueError("Adam beta values must lie in [0, 1)")
+        if adam_eps <= 0:
+            raise ValueError("Adam epsilon must be positive")
+        if weight_decay < 0:
+            raise ValueError("weight_decay must be non-negative")
+        if gradient_clip_norm <= 0:
+            raise ValueError("gradient_clip_norm must be positive")
+        self.optimizer_name = "adam"
+        self.adam_betas = (float(adam_beta1), float(adam_beta2))
+        self.adam_eps = float(adam_eps)
+        self.weight_decay = float(weight_decay)
+        self.gradient_clip_norm = float(gradient_clip_norm)
         if max_length <= 0 or max_new_tokens <= 0:
             raise ValueError("max_length and max_new_tokens must be positive")
         self.max_length = max_length
         self.max_new_tokens = max_new_tokens
         self.target_module_regex = os.environ.get("BIOCS_TARGET_MODULE_REGEX", r"(c_proj|down_proj)$").strip()
         self.max_target_modules = int(os.environ.get("BIOCS_MAX_TARGET_MODULES", "0"))
+        self.editable_parameter = os.environ.get("BIOCS_EDITABLE_PARAMETER", "weight").strip()
+        self.adapter_mode = os.environ.get("BIOCS_ADAPTER_MODE", "none").strip()
+        if self.editable_parameter != "weight":
+            raise ValueError("The locked GPT-2 XL editor only updates module weights")
+        if self.adapter_mode != "none":
+            raise ValueError("The locked GPT-2 XL editor does not insert adapters")
 
         self._weight_snapshots: dict[str, torch.Tensor] = {}
         self._save_weight_snapshot()
@@ -606,12 +642,27 @@ class BioCsLLMEditor:
             "sampler_seed": self.sampler_seed,
             "lr": self.lr,
             "num_steps": self.num_steps,
+            "optimizer": {
+                "name": self.optimizer_name,
+                "betas": list(self.adam_betas),
+                "eps": self.adam_eps,
+                "weight_decay": self.weight_decay,
+                "gradient_clip_norm": self.gradient_clip_norm,
+            },
+            "editable_parameter": self.editable_parameter,
+            "adapter_mode": self.adapter_mode,
             "max_length": self.max_length,
             "max_new_tokens": self.max_new_tokens,
             "seed": os.environ.get("KE_SEED", ""),
             "model_dtype": os.environ.get("KE_MODEL_DTYPE", "auto"),
             "device_map": os.environ.get("KE_DEVICE_MAP", ""),
+            "attention_implementation": self.requested_attention_implementation,
+            "resolved_model_dtype": self.resolved_model_dtype,
+            "requested_editor_device": str(self.device),
+            "resolved_input_device": str(self.input_device),
+            "resolved_attention_implementation": self.resolved_attention_implementation,
             "force_text_only": os.environ.get("KE_FORCE_TEXT_ONLY", "0"),
+            "editable_module_names": sorted(self._weight_snapshots),
             "locality_evaluator": LOCALITY_EVALUATOR,
             "locality_evaluator_version": LOCALITY_EVALUATOR_VERSION,
             "locality_evaluator_protocol_hash": os.environ.get(
@@ -672,7 +723,13 @@ class BioCsLLMEditor:
             mod.weight.requires_grad_(True)
             params.append(mod.weight)
 
-        optimizer = torch.optim.Adam(params, lr=self.lr)
+        optimizer = torch.optim.Adam(
+            params,
+            lr=self.lr,
+            betas=self.adam_betas,
+            eps=self.adam_eps,
+            weight_decay=self.weight_decay,
+        )
         self._prepare_fixed_rows(target_modules)
 
         text = f"{prompt} {target_new}"
@@ -727,7 +784,7 @@ class BioCsLLMEditor:
                 + self.lambda_anchor * anchor_loss
             )
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(params, 1.0)
+            torch.nn.utils.clip_grad_norm_(params, self.gradient_clip_norm)
             optimizer.step()
             if step == 0:
                 self._capture_active_rows(target_modules)
