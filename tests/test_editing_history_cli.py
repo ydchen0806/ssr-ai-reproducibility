@@ -134,6 +134,88 @@ def test_history_protocol_is_written_to_run_manifest(tmp_path):
     assert record["historical_retention_evaluation"] == history
 
 
+def test_custom_runner_receives_explicit_locked_optimizer_values(monkeypatch, tmp_path):
+    captured = {}
+
+    class FakeEditor:
+        def __init__(self, *args, **kwargs):
+            captured["editor_kwargs"] = kwargs
+
+    class FakeDataset:
+        def __init__(self, *args, **kwargs):
+            pass
+
+    def fake_run(*args, **kwargs):
+        return {"n_edits": 1, "efficacy": 1.0, "locality": 1.0}
+
+    monkeypatch.setattr(editor_module, "BioCsLLMEditor", FakeEditor)
+    monkeypatch.setattr(editor_module, "KnowEditDataset", FakeDataset)
+    monkeypatch.setattr(editor_module, "run_sequential_editing", fake_run)
+    monkeypatch.setenv("KE_EDITOR_DEVICE", "cuda")
+    monkeypatch.setenv("BIOCS_OPTIMIZER", "adam")
+    monkeypatch.setenv("BIOCS_ADAM_BETA1", "0.9")
+    monkeypatch.setenv("BIOCS_ADAM_BETA2", "0.999")
+    monkeypatch.setenv("BIOCS_ADAM_EPS", "1e-8")
+    monkeypatch.setenv("BIOCS_WEIGHT_DECAY", "0")
+    monkeypatch.setenv("BIOCS_GRADIENT_CLIP_NORM", "1")
+
+    run_biocs_method(
+        "zsre",
+        1,
+        str(tmp_path),
+        "gpt2-xl",
+        {
+            "recipe": "full",
+            "lambda_ssr": 0.003,
+            "lambda_anchor": 0.001,
+            "lambda_spectral": 0.01,
+            "distance_mapping": "projective",
+            "sampler_seed": 7,
+        },
+    )
+
+    assert captured["editor_kwargs"]["optimizer_name"] == "adam"
+    assert captured["editor_kwargs"]["adam_beta1"] == pytest.approx(0.9)
+    assert captured["editor_kwargs"]["adam_beta2"] == pytest.approx(0.999)
+    assert captured["editor_kwargs"]["adam_eps"] == pytest.approx(1e-8)
+    assert captured["editor_kwargs"]["weight_decay"] == pytest.approx(0.0)
+    assert captured["editor_kwargs"]["gradient_clip_norm"] == pytest.approx(1.0)
+
+
+def test_run_manifest_records_runtime_policy_and_locked_inputs(monkeypatch, tmp_path):
+    args = Namespace(
+        output=str(tmp_path),
+        method="biocs",
+        hparams_dir="unused",
+        hparams_model="unused",
+        evaluate_history=False,
+        history_checkpoints=None,
+        history_max_samples=0,
+    )
+    monkeypatch.setenv("KE_LOCK_NAME", "meeting_20260803_gpt2xl_editing")
+    monkeypatch.setenv("KE_LOCKED_CONFIG_SHA256", "a" * 64)
+    monkeypatch.setenv("BIOCS_TARGET_MODULE_REGEX", r"(c_proj|down_proj)$")
+    monkeypatch.setenv("BIOCS_MAX_TARGET_MODULES", "0")
+    monkeypatch.setenv("BIOCS_ADAM_BETA1", "0.9")
+    monkeypatch.setenv("BIOCS_ADAM_BETA2", "0.999")
+    monkeypatch.setenv("BIOCS_ADAM_EPS", "1e-8")
+    monkeypatch.setenv("BIOCS_WEIGHT_DECAY", "0")
+    monkeypatch.setenv("BIOCS_GRADIENT_CLIP_NORM", "1")
+    monkeypatch.setenv("KE_DETERMINISM_POLICY", "seeded_best_effort")
+    monkeypatch.setenv("KE_CUDNN_BENCHMARK", "0")
+    monkeypatch.setenv("KE_USE_DETERMINISTIC_ALGORITHMS", "0")
+
+    path = write_run_manifest(args, {"recipe": "full"})
+    record = json.loads(path.read_text(encoding="utf-8"))
+
+    assert record["environment"]["KE_LOCK_NAME"] == "meeting_20260803_gpt2xl_editing"
+    assert record["environment"]["KE_LOCKED_CONFIG_SHA256"] == "a" * 64
+    assert record["environment"]["BIOCS_TARGET_MODULE_REGEX"] == r"(c_proj|down_proj)$"
+    assert record["environment"]["BIOCS_MAX_TARGET_MODULES"] == "0"
+    assert record["environment"]["BIOCS_ADAM_BETA2"] == "0.999"
+    assert record["runtime_policy"]["requested"]["policy"] == "seeded_best_effort"
+
+
 def _dry_run_launcher(tmp_path: Path, *, full_matrix: bool) -> list[list[str]]:
     result_root = tmp_path / ("full" if full_matrix else "deduplicated")
     command = [
@@ -182,3 +264,42 @@ def test_launcher_can_request_the_redundant_full_matrix(tmp_path):
     rows = _dry_run_launcher(tmp_path, full_matrix=True)
     assert len(rows) == 12
     assert {row[3] for row in rows} == {"projective", "cosine"}
+
+
+def test_launcher_dry_run_writes_locked_runtime_snapshot(tmp_path):
+    result_root = tmp_path / "locked_runtime"
+    command = [
+        "bash",
+        str(PROJECT_ROOT / "scripts/run_meeting_editing_ablation.sh"),
+        "--phase",
+        "confirm",
+        "--dataset",
+        "zsre",
+        "--recipe",
+        "plain",
+        "--mapping",
+        "projective",
+        "--seed",
+        "7",
+        "--dry-run",
+    ]
+    env = {
+        **os.environ,
+        "PROJECT_ROOT": str(PROJECT_ROOT),
+        "PYTHON": sys.executable,
+        "RESULT_ROOT": str(result_root),
+        "MODEL_NAME": "gpt2-xl",
+    }
+    subprocess.run(command, cwd=PROJECT_ROOT, env=env, check=True, capture_output=True, text=True)
+    values = dict(
+        line.split("\t", 1)
+        for line in (result_root / "locked_runtime.tsv").read_text(encoding="utf-8").splitlines()[1:]
+    )
+    assert values["BIOCS_TARGET_MODULE_REGEX"] == "(c_proj|down_proj)$"
+    assert values["BIOCS_MAX_TARGET_MODULES"] == "0"
+    assert values["BIOCS_ADAM_BETA1"] == "0.9"
+    assert values["BIOCS_ADAM_BETA2"] == "0.999"
+    assert values["BIOCS_ADAM_EPS"] == "1e-08"
+    assert values["BIOCS_GRADIENT_CLIP_NORM"] == "1.0"
+    assert values["KE_MAX_LENGTH"] == "64"
+    assert values["KE_MAX_NEW_TOKENS"] == "32"

@@ -36,6 +36,31 @@ model:
   force_text_only: true
   local_files_only: true
 
+# The editor updates the ``weight`` tensors of the selected GPT-2 XL MLP
+# projections directly.  It does not insert LoRA adapters in this cohort.
+editor:
+  target_module_regex: "(c_proj|down_proj)$"
+  max_target_modules: 0
+  editable_parameter: weight
+  adapter_mode: none
+
+# ``auto`` resolves to bf16 on supported CUDA hardware and fp16 otherwise;
+# the resolved dtype is recorded in each run manifest.  An empty device map
+# and attention implementation deliberately retain the standard Transformers
+# placement and attention implementation rather than relying on an implicit
+# accelerate or flash-attention configuration.
+runtime:
+  editor_device: cuda
+  model_dtype: auto
+  device_map: ""
+  attention_implementation: ""
+  cuda_visible_devices: inherited_from_scheduler
+  determinism_policy: seeded_best_effort
+  cudnn_deterministic: false
+  cudnn_benchmark: false
+  use_deterministic_algorithms: false
+  deterministic_algorithms_warn_only: false
+
 datasets:
   zsre:
     path: dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json
@@ -67,8 +92,18 @@ kernel:
   max_spatial_rows: 256
 
 optimizer:
+  name: adam
   lr: 0.0001
   num_steps: 25
+  beta1: 0.9
+  beta2: 0.999
+  eps: 1.0e-8
+  weight_decay: 0.0
+  gradient_clip_norm: 1.0
+
+sequence:
+  max_length: 64
+  max_new_tokens: 32
 
 evaluation:
   name: custom_substring_any_ground_truth_all_items

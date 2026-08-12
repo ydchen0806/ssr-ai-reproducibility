@@ -25,8 +25,9 @@ Biological connectomics analyses, raw connectomics tables, and manuscript source
 |-- experiments/                    # CUB, adapter, capacity, and auxiliary probes
 |-- llm_ke/                         # SSR fine-tuning editor and EasyEdit hparams
 |-- artifacts/paper_20260803/       # original compact paper audit bundle
-|-- artifacts/paper_20260809/       # independent direct-SSR confirmation records
+|-- artifacts/paper_20260809/       # archived direct-SSR protocols and boundary records
 |-- artifacts/paper_20260810/       # current CounterFact factorial and value map
+|-- docs/manuscript_reproduction.md # exact manuscript evidence map and commands
 |-- scripts/run_smoke_test.sh       # short sanity check
 |-- scripts/run_reproducibility_suite.sh
 |-- scripts/collect_results.py
@@ -56,6 +57,11 @@ pip install -r requirements.txt
 
 Install the PyTorch build that matches your CUDA driver if the default wheel is not appropriate for your machine. For example, follow the official PyTorch selector and then reinstall the matching `torch` and `torchvision` packages.
 
+For the locked GPT-2 XL editing factorial, follow the exact model, dataset and
+command mapping in [`docs/manuscript_reproduction.md`](docs/manuscript_reproduction.md).
+The guide states the boundary of the recovered LLM environment rather than
+presenting an unrecorded dependency set as a historical lock.
+
 ## Datasets
 
 The standard continual-learning datasets are downloaded automatically by `torchvision` or by the repository loader:
@@ -64,7 +70,11 @@ The standard continual-learning datasets are downloaded automatically by `torchv
 - **Five-dataset stream**: CIFAR-10, MNIST, FashionMNIST, SVHN, and a CIFAR-100 subset are downloaded automatically into `./dataset`.
 - **Split-TinyImageNet**: the loader downloads `tiny-imagenet-200.zip` from the Stanford CS231n mirror into `./dataset` and converts the validation folder to `ImageFolder` format.
 - **CUB-200-2011**: `experiments/cub200_continual_benchmark.py` downloads the official images and segmentation masks from Caltech data records into `data/cub200`.
-- **KnowEdit-style LLM editing splits**: place the benchmark files under `dataset/knowedit/benchmark/...` using the paths shown in `scripts/run_llm_ke_easyedit.py`.
+- **Locked LLM-editing cohort**: place **ZsRE**, **WikiCounterFact**, and
+  **WikiRecent** under the exact paths and verify their SHA-256 digests in
+  `configs/meeting_20260803/locked_editing_gpt2xl.yaml`. The original data
+  sources and the immutable model/configuration identifiers are listed in
+  [the manuscript reproduction guide](docs/manuscript_reproduction.md).
 
 Large downloaded files, model checkpoints, and generated results are ignored by Git.
 
@@ -291,6 +301,53 @@ The LLM editor exposes the exact SSR implementation choices through
 parameters. The `BIOCS_` prefix is a historical compatibility key; it does not
 denote a second method.
 
+### Locked GPT-2 XL manuscript cohort
+
+The manuscript-facing editing matrix is not the small probe above. It uses the
+locked GPT-2 XL configuration in
+`configs/meeting_20260803/locked_editing_gpt2xl.yaml`: GPT-2 XL blocks 16--18,
+Adam (`lr=1e-4`, 25 steps), active-top selection of at most 256 delta-weight
+rows, and a Gaussian SSR kernel (`A_exc=1.2`, `A_inh=0.9`,
+`sigma_exc=0.22`, `sigma_inh=0.60`). The configuration also locks the three
+source files, model fingerprint, 100-edit contiguous confirmation slice,
+paired seeds, anchor and spectral coefficients, and evaluator identity. The
+same YAML explicitly locks the `(c_proj|down_proj)$` target-module selector,
+direct weight editing (no LoRA insertion), optimizer betas/epsilon/weight
+decay/clip, sequence limits and runtime policy. Each run manifest records both
+those requested values and the modules, dtype and device resolved at runtime.
+
+Preflight the local model and datasets before starting a new cohort:
+
+```bash
+MODEL_NAME=/absolute/path/to/gpt2-xl
+
+python3 scripts/verify_locked_editing_assets.py \
+  --config configs/meeting_20260803/locked_editing_gpt2xl.yaml \
+  --model-path "$MODEL_NAME"
+```
+
+Then run the locked confirmation matrix on one eight-GPU node. It contains all
+six recipes; the two SSR-containing recipes are evaluated under both cosine
+and projective mappings, while mapping-independent controls are recorded once
+with mapping `none` (240 paired cells in total):
+
+```bash
+GPU_LIST="0 1 2 3 4 5 6 7"
+MODEL_NAME=/absolute/path/to/gpt2-xl
+RUN_ID=locked_gpt2xl_confirm
+RESULT_ROOT="$PWD/results/locked_gpt2xl_confirm"
+
+GPU_LIST="$GPU_LIST" MODEL_NAME="$MODEL_NAME" RUN_ID="$RUN_ID" \
+RESULT_ROOT="$RESULT_ROOT" \
+bash scripts/run_meeting_editing_8gpu.sh --phase confirm
+```
+
+`artifacts/paper_20260810/counterfact_factorial_summary.json` is the compact
+ten-seed result record, and `python3 scripts/verify_paper_20260810.py`
+recomputes every value selected for the manuscript. See
+[the manuscript reproduction guide](docs/manuscript_reproduction.md) for the
+full recipe map, formal dataset names, expected paths, and runtime boundary.
+
 ## Paper Artifact Bundle
 
 `artifacts/paper_20260803` contains compact per-seed records for the current
@@ -329,17 +386,18 @@ scale broader than a true HWHM-matched control. Its measurements are retained,
 but the artifact verifier explicitly prevents treating it as evidence of
 HWHM-matched kernel invariance.
 
-### Independent 30-seed direct-SSR update
+### Direct-SSR protocol update
 
-`artifacts/paper_20260809` adds the locked Oxford-IIIT Pet raw-image ViT-LoRA
-confirmation used by the updated manuscript. It compares task-only training
-with the same rank-16 LoRA training plus SSR across 30 paired streams. Average
-accuracy, average-forgetting reduction, effective-rank increase and
-prototype-overlap reduction all have favorable 95% paired confidence
-intervals. The same bundle retains the secondary CIL-last endpoint and the
-direct segmentation audit whose performance intervals cross zero; the
-verifier prevents either boundary result from being presented as a confirmed
-positive endpoint.
+`artifacts/paper_20260809` retains direct-SSR protocols and their boundary
+audits. The archived raw-image ViT-LoRA Pet numbers are intentionally excluded
+from manuscript evidence: a later audit found mixed-precision gradient overflow
+that prevented parameter updates in both arms. The current implementation
+evaluates SSR similarities outside autocast, skips the regularizer when its
+coefficient is zero, and rejects a paired run unless every optimizer update is
+finite and the final model hashes differ. Rerun the protocol from scratch after
+installing this revision; do not reuse the archived Pet results. The same bundle
+retains the direct segmentation audit, whose geometry readouts are reproducible
+while its task endpoints are unresolved.
 
 Recompute every manuscript-facing aggregate from the per-seed rows with:
 
@@ -347,7 +405,9 @@ Recompute every manuscript-facing aggregate from the per-seed rows with:
 python3 scripts/verify_paper_20260809.py
 ```
 
-The cluster-tested four-node launcher is:
+The following four-node launcher is retained for rerunning the direct
+attribution protocol after the validation checks; it must use a fresh result
+root:
 
 ```bash
 SSR_DIRECT_RUN_ID=ssr_direct_attribution_4node_20260809_r1 \
@@ -358,7 +418,8 @@ bash scripts/submit_direct_ssr_attribution_4node_20260809.sh
 Run that command once on every node of the shared allocation. The launcher
 assigns three nodes to the independent segmentation audit and one node to the
 Pet ViT-LoRA development-and-confirmation protocol, records the repository
-commit, and fails if the expected result summaries are incomplete.
+commit, and fails if the expected result summaries are incomplete or a paired
+ViT-LoRA run does not demonstrate real optimizer updates.
 
 ### Current CounterFact direct and nested comparisons
 
@@ -376,6 +437,17 @@ python3 scripts/verify_paper_20260810.py
 
 `artifacts/meeting_20260803` is retained only as a historical meeting workspace.
 Its partial manifests and staged checklists are not a current evidence index.
+
+## Manuscript Evidence Map
+
+The exact provenance, datasets, parameterization, commands, verifier entry
+points, and known boundaries for every AI result used in the manuscript are in
+[`docs/manuscript_reproduction.md`](docs/manuscript_reproduction.md). In
+particular, the historical cluster capture fixed Python/PyTorch/CUDA and core
+scientific packages but did not retain a bit-for-bit LLM dependency lock or
+EasyEdit revision. This limitation is documented rather than hidden; model and
+dataset hashes, protocol hashes, and the full locked YAML remain available for
+the GPT-2 XL factorial.
 
 ## Reproducibility Notes
 
