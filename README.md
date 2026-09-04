@@ -24,6 +24,7 @@ Biological connectomics analyses, raw connectomics tables, and manuscript source
 |-- utils/                          # metrics and plotting helpers
 |-- experiments/                    # CUB, adapter, capacity, and auxiliary probes
 |-- llm_ke/                         # SSR fine-tuning editor and EasyEdit hparams
+|-- docs/lowrank_ke_reproduction.md # Figure 5 LoRA-B protocol and source map
 |-- artifacts/paper_20260803/       # original compact paper audit bundle
 |-- artifacts/paper_20260809/       # archived direct-SSR protocols and boundary records
 |-- artifacts/paper_20260810/       # current CounterFact factorial and value map
@@ -257,6 +258,12 @@ python experiments/cub200_taxonomy_topology.py \
 ## Optional LLM Editing Probe
 
 The LLM editing code is an optional probe rather than the core continual-vision benchmark. It supports vanilla fine-tuning, SSR fine-tuning, and EasyEdit baselines such as ROME, MEMIT, and AlphaEdit when EasyEdit is installed.
+
+The current low-rank Qwen/ZsRE workflow is documented separately in
+[`docs/lowrank_ke_reproduction.md`](docs/lowrank_ke_reproduction.md). It
+includes the LoRA-B SSR operator, fixed edit-stream generator, matched
+development selector, untouched ten-seed confirmation summarizer and compact
+Figure 5 source tables.
 
 Recommended setup:
 
