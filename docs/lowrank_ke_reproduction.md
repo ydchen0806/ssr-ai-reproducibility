@@ -62,6 +62,13 @@ The complete protocol and gates are also recorded in
 `results/${RUN_ID}_lowrank_lora_ssr/development_selection.json`,
 `confirmation_summary.json` and `confirmation_curves.csv`.
 
+To confirm a second tuple already frozen from the same development matrix,
+use `scripts/run_lowrank_ke_frozen_confirmation_8gpu.sh`. This launcher does
+not run a new search: it requires the immutable development-selection record,
+exactly ten new stream seeds, and the frozen rank, learning rate, step count
+and SSR coefficient. It retains every paired outcome and applies the same
+two-primary-endpoint confidence-interval gate.
+
 Verify the compact manuscript-facing exports with:
 
 ```bash
