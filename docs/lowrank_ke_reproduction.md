@@ -69,6 +69,12 @@ exactly ten new stream seeds, and the frozen rank, learning rate, step count
 and SSR coefficient. It retains every paired outcome and applies the same
 two-primary-endpoint confidence-interval gate.
 
+The same launcher accepts `DATASET_LABEL` and an arbitrary KnowEdit JSON via
+`DATASET_PATH`. The WikiCounterfact and WikiRecent freeze files in
+`configs/lowrank_ke/` define no-retuning cross-dataset tests of the rank-8
+tuple selected on ZsRE. These target datasets must not be used to alter the
+tuple before their ten paired streams finish.
+
 Verify the compact manuscript-facing exports with:
 
 ```bash

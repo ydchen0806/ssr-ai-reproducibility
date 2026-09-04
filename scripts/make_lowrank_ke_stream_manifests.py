@@ -14,6 +14,7 @@ DEVELOPMENT_SEEDS = (3718, 4141)
 CONFIRMATION_SEEDS = tuple(range(201, 211))
 CONFIRMATION_EDITS = 100
 CONFIRMATION_CONTROLS = 128
+PROTOCOL = "knowedit_semantic_history_stream_v2"
 
 
 def sha256(path: Path) -> str:
@@ -29,6 +30,7 @@ def write_json(path: Path, payload: dict) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=Path, required=True)
+    parser.add_argument("--dataset-label")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument(
         "--development-edits",
@@ -57,6 +59,9 @@ def main() -> int:
         help="Number of edits in each untouched confirmation stream (default: 100).",
     )
     args = parser.parse_args()
+    dataset_label = args.dataset_label or args.dataset.stem
+    if not dataset_label.strip():
+        raise SystemExit("--dataset-label must not be empty")
 
     development_seeds = tuple(args.development_seeds)
     confirmation_seeds = tuple(args.confirmation_seeds)
@@ -81,7 +86,8 @@ def main() -> int:
     output.mkdir(parents=True, exist_ok=True)
     dataset_hash = sha256(args.dataset)
     index = {
-        "protocol": "qwen_zsre_semantic_history_stream_v1",
+        "protocol": PROTOCOL,
+        "dataset_label": dataset_label,
         "dataset": str(args.dataset.resolve()),
         "dataset_sha256": dataset_hash,
         "development_seeds": list(development_seeds),
@@ -100,7 +106,8 @@ def main() -> int:
             edits = order[:edit_count]
             probes = order[edit_count:edit_count + probe_count]
             payload = {
-                "protocol": "qwen_zsre_semantic_history_stream_v1",
+                "protocol": PROTOCOL,
+                "dataset_label": dataset_label,
                 "split": split,
                 "random_order_seed": seed,
                 "dataset_sha256": dataset_hash,

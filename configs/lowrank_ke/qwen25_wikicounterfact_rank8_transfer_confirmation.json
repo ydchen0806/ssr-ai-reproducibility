@@ -1,0 +1,29 @@
+{
+  "schema_version": "lowrank_lora_ssr_cross_dataset_freeze_v1",
+  "status": "frozen_before_target_dataset_execution",
+  "development_source": {
+    "dataset": "ZsRE",
+    "run_id": "ssr_cosmos_effloc_lr_h20z_1node_20260904_r1",
+    "selection_sha256": "60810ededbf024c00777d83a752fbc4bf439a0a658f7500c8177d889bfd9c491"
+  },
+  "target_dataset": {
+    "name": "WikiCounterfact",
+    "sha256": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+    "target_dataset_outcomes_used_for_configuration": false
+  },
+  "frozen_tuple": {
+    "model": "Qwen2.5-7B-Instruct",
+    "editor": "EasyEdit LoRA",
+    "rank": 8,
+    "learning_rate": 0.0035,
+    "steps": 60,
+    "ssr_lambda": 0.036,
+    "edit_count": 100,
+    "confirmation_seeds": [16531, 16532, 16533, 16534, 16535, 16536, 16537, 16538, 16539, 16540]
+  },
+  "primary_claim_gate": [
+    "immediate_efficacy_delta_ci95_low_gt_0",
+    "pre_edit_output_consistency_delta_ci95_low_gt_0"
+  ],
+  "reporting": "All ten paired streams are retained; this is a no-retuning cross-dataset transfer test."
+}

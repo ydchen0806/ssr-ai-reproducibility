@@ -13,7 +13,8 @@ DRY_RUN="${DRY_RUN:-0}"
 
 MODEL_PATH="${MODEL_PATH:?Set MODEL_PATH to a local Qwen2.5-7B-Instruct snapshot}"
 MODEL_LABEL="${MODEL_LABEL:-Qwen2.5-7B-Instruct}"
-ZSRE="${DATASET_PATH:?Set DATASET_PATH to ZsRE-test-all.json}"
+DATASET_LABEL="${DATASET_LABEL:-ZsRE}"
+ZSRE="${DATASET_PATH:?Set DATASET_PATH to a KnowEdit JSON file}"
 HF_CACHE_ROOT="${HF_CACHE_ROOT:-$PROJECT_ROOT/.cache/huggingface}"
 RUNNER="$PROJECT_ROOT/scripts/run_lowrank_ke_easyedit.py"
 MANIFEST_BUILDER="$PROJECT_ROOT/scripts/make_lowrank_ke_stream_manifests.py"
@@ -62,6 +63,7 @@ preflight() {
   [[ -n "$LAUNCH_TOKEN" && "$LAUNCH_TOKEN" =~ ^[A-Za-z0-9._-]+$ ]] || die 'Invalid LAUNCH_TOKEN'
   [[ "$EXPECTED_NNODES" == "1" ]] || die 'This confirmation requires exactly one node'
   [[ "$GPU_COUNT_REQUEST" == "auto" || "$GPU_COUNT_REQUEST" == "8" ]] || die 'GPU_COUNT must be auto or 8'
+  [[ "$DATASET_LABEL" =~ ^[A-Za-z0-9._-]+$ ]] || die 'DATASET_LABEL contains unsupported characters'
   [[ "$ADAPTER_RANK" =~ ^[1-9][0-9]*$ ]] || die 'ADAPTER_RANK must be positive'
   [[ "$LORA_STEPS" =~ ^[1-9][0-9]*$ ]] || die 'LORA_STEPS must be positive'
   [[ "${#CONFIRMATION_SEEDS[@]}" == "10" ]] || die 'Exactly ten confirmation seeds are required'
@@ -99,7 +101,7 @@ preflight
 if [[ "$DRY_RUN" == "1" ]]; then
   temporary="$(mktemp -d /tmp/lowrank_ssr_frozen_confirmation.XXXXXX)"
   trap 'find "$temporary" -type f -delete; find "$temporary" -depth -type d -empty -delete' EXIT
-  "$PYTHON" "$MANIFEST_BUILDER" --dataset "$ZSRE" --output-dir "$temporary/streams" \
+  "$PYTHON" "$MANIFEST_BUILDER" --dataset "$ZSRE" --dataset-label "$DATASET_LABEL" --output-dir "$temporary/streams" \
     --development-edits 100 --development-seeds 16301 \
     --confirmation-seeds "${CONFIRMATION_SEEDS[@]}" --confirmation-edits 100
   for coefficient in 0 "$SSR_LAMBDA"; do
@@ -122,14 +124,14 @@ mkdir -p "$STATUS_ROOT/logs"
 CODE_COMMIT="$(git -C "$PROJECT_ROOT" rev-parse HEAD)"
 atomic_write "$STATUS_ROOT/identity" \
   'protocol=lowrank_lora_ssr_v1_frozen_confirmation' "run_id=$RUN_ID" "launch_token=$LAUNCH_TOKEN" \
-  "code_commit=$CODE_COMMIT" "model=$MODEL_LABEL" 'dataset=ZsRE' 'method=EasyEdit_LoRA' \
+  "code_commit=$CODE_COMMIT" "model=$MODEL_LABEL" "dataset=$DATASET_LABEL" 'method=EasyEdit_LoRA' \
   "rank=$ADAPTER_RANK" "learning_rate=$LORA_LEARNING_RATE" "lora_steps=$LORA_STEPS" \
   "ssr_lambda=$SSR_LAMBDA" "frozen_from=$FROZEN_FROM" \
   'n_edits=100' 'checkpoints=1_2_5_10_25_50_100' \
   'primary_endpoints=immediate_efficacy_and_pre_edit_output_consistency_locality' \
   'confirmation=all_ten_new_predeclared_orders_no_filtering_two_primary_CIs_above_zero' \
   "created_at=$(timestamp)"
-"$PYTHON" "$MANIFEST_BUILDER" --dataset "$ZSRE" --output-dir "$STREAM_ROOT" \
+"$PYTHON" "$MANIFEST_BUILDER" --dataset "$ZSRE" --dataset-label "$DATASET_LABEL" --output-dir "$STREAM_ROOT" \
   --development-edits 100 --development-seeds 16301 \
   --confirmation-seeds "${CONFIRMATION_SEEDS[@]}" --confirmation-edits 100 \
   > "$STATUS_ROOT/logs/streams.log" 2>&1
@@ -160,6 +162,7 @@ LR_TAG="lr_${LORA_LEARNING_RATE//./p}"
   --seeds "${CONFIRMATION_SEEDS[@]}" --rank "$ADAPTER_RANK" \
   --learning-rate "$LORA_LEARNING_RATE" --lora-steps "$LORA_STEPS" \
   --ssr-lambda "$SSR_LAMBDA" --frozen-from "$FROZEN_FROM" \
+  --dataset-label "$DATASET_LABEL" \
   --output "$RESULT_ROOT/confirmation_summary.json" \
   --csv-output "$RESULT_ROOT/confirmation_curves.csv" > "$STATUS_ROOT/logs/summarize.log" 2>&1
 atomic_write "$STATUS_ROOT/node_0.complete" 'status=complete' "at=$(timestamp)"

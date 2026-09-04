@@ -138,6 +138,7 @@ def main() -> None:
     parser.add_argument("--lora-steps", type=int, required=True)
     parser.add_argument("--ssr-lambda", type=float, required=True)
     parser.add_argument("--frozen-from", required=True)
+    parser.add_argument("--dataset-label", default="ZsRE")
     args = parser.parse_args()
     seeds = sorted(args.seeds)
     if len(seeds) != 10 or len(set(seeds)) != 10:
@@ -208,7 +209,7 @@ def main() -> None:
         "schema_version": "lowrank_lora_ssr_confirmation_v1",
         "protocol": "independent_frozen_effloc_lr_100_edit_confirmation",
         "model": "Qwen2.5-7B-Instruct",
-        "dataset": "ZsRE",
+        "dataset": args.dataset_label,
         "method": f"EasyEdit LoRA rank {args.rank}, lr {args.learning_rate:g}",
         "rank": args.rank,
         "learning_rate": args.learning_rate,
