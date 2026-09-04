@@ -357,12 +357,20 @@ def patch_transformers_for_easyedit():
     stale_beam_module = sys.modules.get(beam_mod_name)
     if stale_beam_module is not None and not hasattr(stale_beam_module, "BeamScorer"):
         sys.modules.pop(beam_mod_name, None)
-    beam_search_module = importlib.import_module(beam_mod_name)
-    for name in ("BeamScorer", "BeamSearchScorer"):
-        if not hasattr(beam_search_module, name) and hasattr(generation, name):
-            setattr(beam_search_module, name, getattr(generation, name))
-        if hasattr(beam_search_module, name) and not hasattr(generation, name):
-            setattr(generation, name, getattr(beam_search_module, name))
+    try:
+        beam_search_module = importlib.import_module(beam_mod_name)
+    except ModuleNotFoundError as error:
+        # Transformers 5 removed this legacy module. EasyEdit's optional DECO
+        # path already handles its absence, and the LoRA editor does not use it.
+        if error.name != beam_mod_name:
+            raise
+        beam_search_module = None
+    if beam_search_module is not None:
+        for name in ("BeamScorer", "BeamSearchScorer"):
+            if not hasattr(beam_search_module, name) and hasattr(generation, name):
+                setattr(beam_search_module, name, getattr(generation, name))
+            if hasattr(beam_search_module, name) and not hasattr(generation, name):
+                setattr(generation, name, getattr(beam_search_module, name))
 
     if not hasattr(pytorch_utils, "find_pruneable_heads_and_indices"):
         def find_pruneable_heads_and_indices(heads, n_heads, head_size, already_pruned_heads):
