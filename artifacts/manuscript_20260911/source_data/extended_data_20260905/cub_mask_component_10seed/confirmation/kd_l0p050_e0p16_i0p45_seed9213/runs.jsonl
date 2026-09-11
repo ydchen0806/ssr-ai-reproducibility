@@ -1,0 +1,1 @@
+{"task": "segmentation", "method": "kd", "seed": 9213, "mean_iou": 70.98895037507533, "mean_dice": 82.34331197355137, "avg_forgetting_iou": 2.6767108960855173, "effective_rank": 173.6685028076172, "mean_abs_offdiag_cosine": 0.04978787526488304}

@@ -1,0 +1,202 @@
+{
+  "all_confirmation_records_retained": true,
+  "confirmation_seeds": [
+    17831,
+    17833,
+    17835,
+    17837,
+    17839,
+    17841,
+    17843,
+    17845,
+    17847,
+    17849
+  ],
+  "contrasts": {
+    "kd_orthogonal_vs_kd": {
+      "aa_gain_pp": {
+        "ci95": [
+          -0.4373436918206406,
+          0.3424903924214445
+        ],
+        "mean": -0.04742664969959805
+      },
+      "af_reduction_pp": {
+        "ci95": [
+          -0.27723651162110124,
+          0.41187837629748
+        ],
+        "mean": 0.06732093233818937
+      },
+      "dual_favorable_seeds": 5,
+      "n": 10
+    },
+    "kd_protodecor_vs_kd": {
+      "aa_gain_pp": {
+        "ci95": [
+          -0.5073308494754198,
+          0.1367496688707345
+        ],
+        "mean": -0.18529059030234266
+      },
+      "af_reduction_pp": {
+        "ci95": [
+          -0.1598091361404793,
+          0.18634911639310037
+        ],
+        "mean": 0.013269990126310516
+      },
+      "dual_favorable_seeds": 4,
+      "n": 10
+    },
+    "kd_spectral_vs_kd": {
+      "aa_gain_pp": {
+        "ci95": [
+          -0.3463359961387965,
+          0.35330490894747013
+        ],
+        "mean": 0.003484456404336811
+      },
+      "af_reduction_pp": {
+        "ci95": [
+          -0.2080491947731259,
+          0.4640200349547373
+        ],
+        "mean": 0.1279854200908057
+      },
+      "dual_favorable_seeds": 4,
+      "n": 10
+    },
+    "kd_ssr_vs_kd": {
+      "aa_gain_pp": {
+        "ci95": [
+          0.6553009055451856,
+          1.6388541449985534
+        ],
+        "mean": 1.1470775252718695
+      },
+      "af_reduction_pp": {
+        "ci95": [
+          0.7570621001170987,
+          1.638209908600717
+        ],
+        "mean": 1.1976360043589078
+      },
+      "dual_favorable_seeds": 10,
+      "n": 10
+    },
+    "kd_ssr_vs_kd_orthogonal": {
+      "aa_gain_pp": {
+        "ci95": [
+          0.8820620692265682,
+          1.506946280716367
+        ],
+        "mean": 1.1945041749714675
+      },
+      "af_reduction_pp": {
+        "ci95": [
+          0.9165474945951304,
+          1.3440826494463065
+        ],
+        "mean": 1.1303150720207185
+      },
+      "dual_favorable_seeds": 10,
+      "n": 10
+    },
+    "kd_ssr_vs_kd_protodecor": {
+      "aa_gain_pp": {
+        "ci95": [
+          0.9478018496934537,
+          1.7169343814549707
+        ],
+        "mean": 1.3323681155742122
+      },
+      "af_reduction_pp": {
+        "ci95": [
+          0.8593111007002296,
+          1.5094209277649655
+        ],
+        "mean": 1.1843660142325976
+      },
+      "dual_favorable_seeds": 10,
+      "n": 10
+    },
+    "kd_ssr_vs_kd_spectral": {
+      "aa_gain_pp": {
+        "ci95": [
+          0.6993251073407378,
+          1.5878610303943275
+        ],
+        "mean": 1.1435930688675326
+      },
+      "af_reduction_pp": {
+        "ci95": [
+          0.6359588028611554,
+          1.5033423656750493
+        ],
+        "mean": 1.0696505842681023
+      },
+      "dual_favorable_seeds": 10,
+      "n": 10
+    }
+  },
+  "main_text_gate": {
+    "definition": "KD+SSR must have positive 95% CIs for AA gain and AF reduction against KD and every matched geometry control",
+    "passed": true
+  },
+  "methods": {
+    "kd": {
+      "avg_accuracy": {
+        "mean": 78.88857922838818,
+        "sd": 0.46818526543853733
+      },
+      "avg_forgetting": {
+        "mean": 3.6637049760011613,
+        "sd": 0.5027616359964102
+      }
+    },
+    "kd_orthogonal": {
+      "avg_accuracy": {
+        "mean": 78.84115257868858,
+        "sd": 0.35939512582905975
+      },
+      "avg_forgetting": {
+        "mean": 3.5963840436629724,
+        "sd": 0.27821883245611834
+      }
+    },
+    "kd_protodecor": {
+      "avg_accuracy": {
+        "mean": 78.70328863808584,
+        "sd": 0.4606437696825464
+      },
+      "avg_forgetting": {
+        "mean": 3.6504349858748504,
+        "sd": 0.4051242835810457
+      }
+    },
+    "kd_spectral": {
+      "avg_accuracy": {
+        "mean": 78.89206368479253,
+        "sd": 0.393327161756421
+      },
+      "avg_forgetting": {
+        "mean": 3.535719555910356,
+        "sd": 0.42059185057503007
+      }
+    },
+    "kd_ssr": {
+      "avg_accuracy": {
+        "mean": 80.03565675366005,
+        "sd": 0.35761570364375733
+      },
+      "avg_forgetting": {
+        "mean": 2.4660689716422537,
+        "sd": 0.24843332807621016
+      }
+    }
+  },
+  "protocol": "cub_lowrank_fixedkd_geometry_v1",
+  "rank": 32,
+  "status": "complete"
+}

@@ -1,0 +1,7 @@
+recipe,objective,mapping,dataset,model,n,n_edits,final_history_efficacy_pct,final_history_locality_pct,source
+Plain FT,task,N/A,WikiData CounterFact,GPT-2 XL,10,100,10.0,6.94,Supplementary Table S8 (tab:supp_llm_full_factorial)
+Plain FT+Anchor,task+soft snapshot MSE,N/A,WikiData CounterFact,GPT-2 XL,10,100,11.2,8.23,Supplementary Table S8 (tab:supp_llm_full_factorial)
+Plain FT+Spectral,task+spectral flattening,N/A,WikiData CounterFact,GPT-2 XL,10,100,9.6,5.15,Supplementary Table S8 (tab:supp_llm_full_factorial)
+Stabilized,task+soft snapshot MSE+spectral flattening,N/A,WikiData CounterFact,GPT-2 XL,10,100,10.9,6.17,Supplementary Table S8 (tab:supp_llm_full_factorial)
+Plain FT+SSR,task+SSR,cosine,WikiData CounterFact,GPT-2 XL,10,100,12.4,7.39,Supplementary Table S8 (tab:supp_llm_full_factorial)
+Full recipe,task+soft snapshot MSE+spectral flattening+SSR,projective,WikiData CounterFact,GPT-2 XL,10,100,10.4,9.33,Supplementary Table S8 (tab:supp_llm_full_factorial)

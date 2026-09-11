@@ -1,0 +1,1398 @@
+{
+  "checkpoints": [
+    {
+      "after_edits": 1,
+      "history": {
+        "after_edits": 1,
+        "efficacy": 100.0,
+        "evaluations": [
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 0,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 1,
+        "n_history": 1,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_1_9": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 1.0,
+        "efficacy_n": 1,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 1,
+        "n_edits": 1,
+        "portability": 0.0,
+        "portability_n": 1,
+        "rephrase": 1.0,
+        "rephrase_n": 1
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 1,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 32,
+        "score": 19.021575711667538
+      }
+    },
+    {
+      "after_edits": 2,
+      "history": {
+        "after_edits": 2,
+        "efficacy": 50.0,
+        "evaluations": [
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 0,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 1,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 2,
+        "n_history": 2,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_1_9": {
+            "efficacy": 0.0,
+            "n": 1
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 1.0,
+        "efficacy_n": 2,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 2,
+        "n_edits": 2,
+        "portability": 0.0,
+        "portability_n": 2,
+        "rephrase": 1.0,
+        "rephrase_n": 2
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 2,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 32,
+        "score": 19.013923220336437
+      }
+    },
+    {
+      "after_edits": 5,
+      "history": {
+        "after_edits": 5,
+        "efficacy": 20.0,
+        "evaluations": [
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 0,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 1,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 2,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 3,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 4,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 5,
+        "n_history": 5,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_1_9": {
+            "efficacy": 0.0,
+            "n": 4
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 1.0,
+        "efficacy_n": 5,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 5,
+        "n_edits": 5,
+        "portability": 0.0,
+        "portability_n": 5,
+        "rephrase": 0.8,
+        "rephrase_n": 5
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 5,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 32,
+        "score": 19.013934209942818
+      }
+    },
+    {
+      "after_edits": 10,
+      "history": {
+        "after_edits": 10,
+        "efficacy": 10.0,
+        "evaluations": [
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 0,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 1,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 2,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 3,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 4,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 5,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 6,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 7,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 8,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 9,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 10,
+        "n_history": 10,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_1_9": {
+            "efficacy": 0.0,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 1.0,
+        "efficacy_n": 10,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 10,
+        "n_edits": 10,
+        "portability": 0.1,
+        "portability_n": 10,
+        "rephrase": 0.9,
+        "rephrase_n": 10
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 10,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 32,
+        "score": 19.01392862200737
+      }
+    },
+    {
+      "after_edits": 25,
+      "history": {
+        "after_edits": 25,
+        "efficacy": 4.0,
+        "evaluations": [
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 24,
+            "history_position": 0,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 23,
+            "history_position": 1,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 22,
+            "history_position": 2,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 21,
+            "history_position": 3,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 20,
+            "history_position": 4,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 19,
+            "history_position": 5,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 18,
+            "history_position": 6,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 17,
+            "history_position": 7,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 16,
+            "history_position": 8,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 15,
+            "history_position": 9,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 14,
+            "history_position": 10,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 13,
+            "history_position": 11,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 12,
+            "history_position": 12,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 11,
+            "history_position": 13,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 10,
+            "history_position": 14,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 15,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 16,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 17,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 18,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 19,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 20,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 21,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 22,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 23,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 24,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 25,
+        "n_history": 25,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": 0.0,
+            "n": 15
+          },
+          "age_1_9": {
+            "efficacy": 0.0,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 0.72,
+        "efficacy_n": 25,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 25,
+        "n_edits": 25,
+        "portability": 0.08,
+        "portability_n": 25,
+        "rephrase": 0.64,
+        "rephrase_n": 25
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 25,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 32,
+        "score": 19.013948552310467
+      }
+    },
+    {
+      "after_edits": 50,
+      "history": {
+        "after_edits": 50,
+        "efficacy": 2.0,
+        "evaluations": [
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 49,
+            "history_position": 0,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 48,
+            "history_position": 1,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 47,
+            "history_position": 2,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 46,
+            "history_position": 3,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 45,
+            "history_position": 4,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 44,
+            "history_position": 5,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 43,
+            "history_position": 6,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 42,
+            "history_position": 7,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 41,
+            "history_position": 8,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 40,
+            "history_position": 9,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 39,
+            "history_position": 10,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 38,
+            "history_position": 11,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 37,
+            "history_position": 12,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 36,
+            "history_position": 13,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 35,
+            "history_position": 14,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 34,
+            "history_position": 15,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 33,
+            "history_position": 16,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 32,
+            "history_position": 17,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 31,
+            "history_position": 18,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 30,
+            "history_position": 19,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 29,
+            "history_position": 20,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 28,
+            "history_position": 21,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 27,
+            "history_position": 22,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 26,
+            "history_position": 23,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 25,
+            "history_position": 24,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 24,
+            "history_position": 25,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 23,
+            "history_position": 26,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 22,
+            "history_position": 27,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 21,
+            "history_position": 28,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 20,
+            "history_position": 29,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 19,
+            "history_position": 30,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 18,
+            "history_position": 31,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 17,
+            "history_position": 32,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 16,
+            "history_position": 33,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 15,
+            "history_position": 34,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 14,
+            "history_position": 35,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 13,
+            "history_position": 36,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 12,
+            "history_position": 37,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 11,
+            "history_position": 38,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 10,
+            "history_position": 39,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 40,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 41,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 42,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 43,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 44,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 45,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 46,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 47,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 48,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 49,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 50,
+        "n_history": 50,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": 0.0,
+            "n": 40
+          },
+          "age_1_9": {
+            "efficacy": 0.0,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 0.8,
+        "efficacy_n": 50,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 50,
+        "n_edits": 50,
+        "portability": 0.08,
+        "portability_n": 50,
+        "rephrase": 0.48,
+        "rephrase_n": 50
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 50,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 32,
+        "score": 19.028359279036522
+      }
+    },
+    {
+      "after_edits": 100,
+      "history": {
+        "after_edits": 100,
+        "efficacy": 0.0,
+        "evaluations": [
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 99,
+            "history_position": 0,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 97,
+            "history_position": 2,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 96,
+            "history_position": 3,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 94,
+            "history_position": 5,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 93,
+            "history_position": 6,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 91,
+            "history_position": 8,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 90,
+            "history_position": 9,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 88,
+            "history_position": 11,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 86,
+            "history_position": 13,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 85,
+            "history_position": 14,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 83,
+            "history_position": 16,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 82,
+            "history_position": 17,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 80,
+            "history_position": 19,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 79,
+            "history_position": 20,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 77,
+            "history_position": 22,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 75,
+            "history_position": 24,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 74,
+            "history_position": 25,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 72,
+            "history_position": 27,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 71,
+            "history_position": 28,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 69,
+            "history_position": 30,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 68,
+            "history_position": 31,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 66,
+            "history_position": 33,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 64,
+            "history_position": 35,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 63,
+            "history_position": 36,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 61,
+            "history_position": 38,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 60,
+            "history_position": 39,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 58,
+            "history_position": 41,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 57,
+            "history_position": 42,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 55,
+            "history_position": 44,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 53,
+            "history_position": 46,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 52,
+            "history_position": 47,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 50,
+            "history_position": 49,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 49,
+            "history_position": 50,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 47,
+            "history_position": 52,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 46,
+            "history_position": 53,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 44,
+            "history_position": 55,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 42,
+            "history_position": 57,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 41,
+            "history_position": 58,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 39,
+            "history_position": 60,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 38,
+            "history_position": 61,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 36,
+            "history_position": 63,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 35,
+            "history_position": 64,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 33,
+            "history_position": 66,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 31,
+            "history_position": 68,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 30,
+            "history_position": 69,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 28,
+            "history_position": 71,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 27,
+            "history_position": 72,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 25,
+            "history_position": 74,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 24,
+            "history_position": 75,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 22,
+            "history_position": 77,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 20,
+            "history_position": 79,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 19,
+            "history_position": 80,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 17,
+            "history_position": 82,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 16,
+            "history_position": 83,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 14,
+            "history_position": 85,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 13,
+            "history_position": 86,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 11,
+            "history_position": 88,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 90,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 91,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 93,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 94,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 96,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 97,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 99,
+            "retained_efficacy": 0.0
+          }
+        ],
+        "n_evaluated": 64,
+        "n_history": 100,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 0.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": 0.0,
+            "n": 57
+          },
+          "age_1_9": {
+            "efficacy": 0.0,
+            "n": 6
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 0.82,
+        "efficacy_n": 100,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 100,
+        "n_edits": 100,
+        "portability": 0.12,
+        "portability_n": 100,
+        "rephrase": 0.56,
+        "rephrase_n": 100
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 100,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 32,
+        "score": 19.491078332066536
+      }
+    }
+  ],
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json",
+  "dataset_sha256": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+  "easyedit_alg_name": "LoRA",
+  "elapsed_s": 2402.1,
+  "final_history_efficacy": 0.0,
+  "final_pre_edit_output_consistency": 19.491078332066536,
+  "history_checkpoints": [
+    1,
+    2,
+    5,
+    10,
+    25,
+    50,
+    100
+  ],
+  "history_max_samples": 64,
+  "hparams_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/EasyEdit_ssr_v28_rank_canary_20260826/hparams/LoRA/qwen2.5-7b.yaml",
+  "hparams_sha256": "aa6e8793b3c3ef7ccefcb028ecf31ed45a82ab69b860c636a219f0dd53db6619",
+  "immediate": {
+    "efficacy": 0.82,
+    "efficacy_n": 100,
+    "locality_target_consistency": 0.0,
+    "locality_target_consistency_n": 100,
+    "n_edits": 100,
+    "portability": 0.12,
+    "portability_n": 100,
+    "rephrase": 0.56,
+    "rephrase_n": 100
+  },
+  "lora": {
+    "alpha": 32,
+    "alpha_over_rank": 4.0,
+    "capacity_variable": "rank_only_with_fixed_alpha_over_rank",
+    "hparams_scope": "released EasyEdit Qwen2.5-7B except declared rank/alpha scaling",
+    "rank": 8,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "manifest_declared_edits": 100,
+  "method": "LoRA",
+  "method_cache_dir": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_qwen_lora_rank_scaling/cache/independent_100/rank_8/lambda_0_03/seed_12240",
+  "model_label": "Qwen2.5-7B-Instruct",
+  "model_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/models/Qwen2.5-7B-Instruct",
+  "n_edits": 100,
+  "native_update_norm": null,
+  "peak_cuda_memory_mb": 29643.1083984375,
+  "peft_dispatch": "standard_linear_with_optional_torchao_disabled",
+  "pre_edit_control_count": 32,
+  "pre_edit_control_sampling": "fixed_even_positions_from_predeclared_manifest",
+  "protocol": "ssr_cosmos_ke_lora_rank_scaling_v1",
+  "runtime_per_edit_s": 24.021,
+  "ssr": {
+    "application": "post_lora_update_center_surround_proximal_step",
+    "enabled": true,
+    "lambda": 0.03,
+    "plastic_object": "LoRA-B output rows",
+    "topology": "cyclic row adjacency within each LoRA-B matrix",
+    "zero_is_exact_noop": true
+  },
+  "stats_cache_dir": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_qwen_lora_rank_scaling/cache/independent_100/rank_8/lambda_0_03/seed_12240/stats",
+  "status": "complete",
+  "stream_manifest": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12240.json",
+  "stream_manifest_sha256": "a306c1601306e0d47666e122103ac7827c390a47b7f32f4f004b0c63b6a68518",
+  "stream_prefix_policy": "first_n_predeclared_edit_indices",
+  "stream_seed": 12240
+}

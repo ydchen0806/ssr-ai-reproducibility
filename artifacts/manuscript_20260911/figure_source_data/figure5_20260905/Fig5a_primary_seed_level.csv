@@ -1,0 +1,21 @@
+seed,endpoint,LoRA_percent,LoRA_plus_SSR_percent,paired_delta_pp,positive_direction
+12231,immediate efficacy,61.0,65.0,4.0,higher is favorable
+12231,pre-edit output consistency,18.582799844443798,17.583990842103958,-0.9988090023398399,higher is favorable
+12232,immediate efficacy,71.0,78.0,7.0,higher is favorable
+12232,pre-edit output consistency,19.829121977090836,19.782637804746628,-0.046484172344207764,higher is favorable
+12233,immediate efficacy,77.0,88.0,11.0,higher is favorable
+12233,pre-edit output consistency,21.905803494155407,21.90140187740326,-0.0044016167521476746,higher is favorable
+12234,immediate efficacy,76.0,87.0,11.0,higher is favorable
+12234,pre-edit output consistency,21.74200564622879,20.731508173048496,-1.010497473180294,higher is favorable
+12235,immediate efficacy,75.0,82.0,7.0,higher is favorable
+12235,pre-edit output consistency,17.951511964201927,17.942305468022823,-0.009206496179103851,higher is favorable
+12236,immediate efficacy,66.0,78.0,12.0,higher is favorable
+12236,pre-edit output consistency,18.52406356483698,18.50268431007862,-0.021379254758358,higher is favorable
+12237,immediate efficacy,55.00000000000001,86.0,30.999999999999993,higher is favorable
+12237,pre-edit output consistency,21.368160285055637,21.549698151648045,0.18153786659240723,higher is favorable
+12238,immediate efficacy,64.0,89.0,25.0,higher is favorable
+12238,pre-edit output consistency,21.37960009276867,25.47299824655056,4.093398153781891,higher is favorable
+12239,immediate efficacy,70.0,80.0,10.0,higher is favorable
+12239,pre-edit output consistency,14.72488846629858,14.981528744101524,0.2566402778029442,higher is favorable
+12240,immediate efficacy,79.0,82.0,3.0,higher is favorable
+12240,pre-edit output consistency,19.01395469903946,19.491078332066536,0.4771236330270767,higher is favorable

@@ -123,3 +123,10 @@ bash scripts/run_lowrank_ke_campaign_8gpu.sh
 This is a development hypothesis, not a manuscript result. Its complete
 design is recorded in
 `configs/lowrank_ke/qwen25_zsre_strong_scaffold_development.yaml`.
+# Revision scope
+
+This guide records the earlier ZsRE cohorts. The current WikiRecent Figure 5,
+including its separate rank-32 endpoint and rank-8 trajectory cohorts, is mapped
+in [manuscript_20260911.md](manuscript_20260911.md). Ground-truth locality and
+pre-edit output consistency are separate evaluator fields; do not substitute
+one for the other when rebuilding the current figure.

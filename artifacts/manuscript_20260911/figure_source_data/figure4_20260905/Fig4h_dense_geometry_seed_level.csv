@@ -1,0 +1,17 @@
+dataset,seed,metric,direction,ft,ssr,favorable_delta,geometry_object,n_edits,unit,difference_direction
+zsre,13101,update_effective_rank,higher,556.8456420898438,562.52099609375,5.67535400390625,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+zsre,13101,update_offdiag_cosine_reduction,lower,0.02071315608918667,0.020709257572889328,3.898516297340393e-06,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)
+zsre,13102,update_effective_rank,higher,557.167236328125,567.2301025390625,10.0628662109375,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+zsre,13102,update_offdiag_cosine_reduction,lower,0.021128647029399872,0.020205726847052574,0.0009229201823472977,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)
+zsre,13103,update_effective_rank,higher,553.7294311523438,562.1571044921875,8.42767333984375,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+zsre,13103,update_offdiag_cosine_reduction,lower,0.020790155977010727,0.02050047554075718,0.00028968043625354767,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)
+zsre,13104,update_effective_rank,higher,566.4937744140625,555.708984375,-10.7847900390625,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+zsre,13104,update_offdiag_cosine_reduction,lower,0.020276552066206932,0.020933140069246292,-0.00065658800303936,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)
+cf,13101,update_effective_rank,higher,545.1277465820312,547.8442993164062,2.716552734375,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+cf,13101,update_offdiag_cosine_reduction,lower,0.021506110206246376,0.021407797932624817,9.831227362155914e-05,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)
+cf,13102,update_effective_rank,higher,552.9326171875,550.6634521484375,-2.2691650390625,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+cf,13102,update_offdiag_cosine_reduction,lower,0.02068699710071087,0.02098885178565979,-0.0003018546849489212,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)
+cf,13103,update_effective_rank,higher,529.46484375,556.8097534179688,27.34490966796875,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+cf,13103,update_offdiag_cosine_reduction,lower,0.02214367873966694,0.02066102623939514,0.0014826525002717972,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)
+cf,13104,update_effective_rank,higher,532.1802978515625,541.4803466796875,9.300048828125,rows of the cumulative dense edit update Delta W,100,rank units,SSR-FT
+cf,13104,update_offdiag_cosine_reduction,lower,0.022260243073105812,0.02155137248337269,0.0007088705897331238,rows of the cumulative dense edit update Delta W,100,dimensionless cosine,FT-SSR (positive means lower overlap with SSR)

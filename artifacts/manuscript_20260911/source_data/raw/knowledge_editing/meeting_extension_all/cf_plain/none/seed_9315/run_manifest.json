@@ -1,0 +1,63 @@
+{
+  "command": {
+    "method": "ft",
+    "dataset": "cf",
+    "n_edits": 100,
+    "model_name": "/unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl",
+    "hparams_model": "gpt2-xl",
+    "hparams_dir": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/llm_ke/easyedit_hparams",
+    "output": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_meeting_extension_4node_20260804_r1/ke_factorial/confirm/cf/plain/none/seed_9315",
+    "seed": 9315,
+    "recipe": "plain",
+    "distance_mapping": null,
+    "lambda_ssr": null,
+    "lambda_anchor": null,
+    "lambda_spectral": null,
+    "result_manifest": null,
+    "evaluate_history": true,
+    "history_checkpoints": [
+      50
+    ],
+    "history_max_samples": 0,
+    "biocs_lambda": null,
+    "biocs_anchor": null,
+    "biocs_lr": null,
+    "biocs_steps": null
+  },
+  "environment": {
+    "KE_SEED": "9315",
+    "BIOCS_KERNEL_FAMILY": "gaussian",
+    "BIOCS_A_EXC": "1.2",
+    "BIOCS_A_INH": "0.9",
+    "BIOCS_SIGMA_EXC": "0.22",
+    "BIOCS_SIGMA_INH": "0.6",
+    "BIOCS_TARGET": "delta",
+    "BIOCS_ROW_SELECTION": "active_top",
+    "BIOCS_MAX_SPATIAL_ROWS": "256",
+    "BIOCS_SAMPLER_SEED": "9315",
+    "KE_DATA_OFFSET": "500",
+    "KE_FORCE_TEXT_ONLY": "1",
+    "KE_LOCAL_ONLY": "1",
+    "KE_MODEL_FINGERPRINT": "1dd2dbaeb9f79d6422d78a33540a3d8c8641144ec6ba4e8a6fe4293f616729f1",
+    "KE_PAIRING_PROTOCOL_HASH": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+    "KE_EXPECTED_LOCALITY_EVALUATOR": "custom_substring_any_ground_truth_all_items",
+    "KE_EXPECTED_LOCALITY_EVALUATOR_VERSION": "1.0",
+    "KE_EXPECTED_LOCALITY_PROTOCOL_HASH": "57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2",
+    "KE_REQUIRE_LEGACY_LOCALITY_COMPATIBLE": "1",
+    "KE_EVALUATION_PROTOCOL_HASH": "57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2",
+    "KE_MAX_LENGTH": "64",
+    "KE_MAX_NEW_TOKENS": "32",
+    "BIOCS_LR": "0.0001",
+    "BIOCS_NUM_STEPS": "25",
+    "BIOCS_TARGET_LAYERS": "16 17 18",
+    "FT_LR": "0.0001",
+    "FT_NUM_STEPS": "25"
+  },
+  "historical_retention_evaluation": {
+    "evaluate_history": true,
+    "history_checkpoints": [
+      50
+    ],
+    "history_max_samples": 0
+  }
+}

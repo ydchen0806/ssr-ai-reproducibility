@@ -1,0 +1,105 @@
+{
+  "command": {
+    "method": "biocs",
+    "dataset": "cf",
+    "n_edits": 100,
+    "model_name": "/unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl",
+    "hparams_model": "gpt2-xl",
+    "hparams_dir": "/unify/ydchen/unidit/bioreg_cosmos_fig456_20260831/llm_ke/easyedit_hparams",
+    "output": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_completion_confirmation_3node_20260901_r2/confirmation/gpt2_cf/uniform_projective/seed_15110",
+    "seed": 15110,
+    "recipe": "ssr_only",
+    "distance_mapping": "projective",
+    "lambda_ssr": 3e-05,
+    "lambda_anchor": 0.0,
+    "lambda_spectral": 0.0,
+    "result_manifest": null,
+    "evaluate_history": true,
+    "history_checkpoints": [
+      25,
+      50,
+      100
+    ],
+    "history_max_samples": 128,
+    "pre_edit_probe_size": 64,
+    "pre_edit_checkpoints": [
+      25,
+      50,
+      100
+    ],
+    "biocs_lambda": null,
+    "biocs_anchor": null,
+    "biocs_lr": null,
+    "biocs_steps": null
+  },
+  "environment": {
+    "KE_SEED": "15110",
+    "BIOCS_RECIPE": "ssr_only",
+    "BIOCS_LAMBDA_SSR": "3e-05",
+    "BIOCS_LAMBDA": "3e-05",
+    "BIOCS_LAMBDA_SPECTRAL": "0.0",
+    "BIOCS_LAMBDA_ANCHOR": "0.0",
+    "BIOCS_KERNEL_FAMILY": "gaussian",
+    "BIOCS_A_EXC": "1.0",
+    "BIOCS_A_INH": "0.8",
+    "BIOCS_SIGMA_EXC": "0.3",
+    "BIOCS_SIGMA_INH": "0.8",
+    "BIOCS_TARGET": "delta",
+    "BIOCS_DISTANCE_MAPPING": "projective",
+    "BIOCS_DISTANCE_METRIC": "projective",
+    "BIOCS_ROW_SELECTION": "fixed_random",
+    "BIOCS_MAX_SPATIAL_ROWS": "256",
+    "BIOCS_SAMPLER_SEED": "15110",
+    "BIOCS_TARGET_MODULE_REGEX": "(c_proj)$",
+    "KE_STREAM_MANIFEST": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_completion_confirmation_3node_20260901_r2/streams/gpt2_cf/seed_15110.json",
+    "KE_MODEL_DTYPE": "bf16",
+    "KE_FORCE_TEXT_ONLY": "1",
+    "KE_LOCAL_ONLY": "1",
+    "KE_MAX_LENGTH": "64",
+    "KE_MAX_NEW_TOKENS": "32",
+    "BIOCS_LR": "1e-4",
+    "BIOCS_NUM_STEPS": "25",
+    "BIOCS_TARGET_LAYERS": "16 17 18"
+  },
+  "editing_objective": {
+    "recipe": "ssr_only",
+    "components": [
+      "task",
+      "ssr"
+    ],
+    "objective": {
+      "task": true,
+      "ssr": true,
+      "anchor": false,
+      "spectral": false
+    },
+    "lambda_ssr": 3e-05,
+    "lambda_anchor": 0.0,
+    "lambda_spectral": 0.0,
+    "distance_mapping": "projective",
+    "seed": 15110,
+    "sampler_seed": 15110
+  },
+  "historical_retention_evaluation": {
+    "evaluate_history": true,
+    "history_checkpoints": [
+      25,
+      50,
+      100
+    ],
+    "history_max_samples": 128
+  },
+  "pre_edit_output_consistency_evaluation": {
+    "pre_edit_probe_size": 64,
+    "pre_edit_checkpoints": [
+      25,
+      50,
+      100
+    ],
+    "selection": "contiguous non-overlapping rows immediately after the edit stream"
+  },
+  "stream_manifest": {
+    "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_completion_confirmation_3node_20260901_r2/streams/gpt2_cf/seed_15110.json",
+    "sha256": "bb80ba263b801c5f316db8523ac1be5d1d22b35fcb1f629aaee9adf6c97c3023"
+  }
+}

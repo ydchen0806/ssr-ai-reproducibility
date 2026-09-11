@@ -1,0 +1,2001 @@
+cohort,seed,arm,stage,metric,value,unit
+cohort 1,12401,lowrank,1,all_miou,72.58838945401781,percent
+cohort 1,12401,lowrank,1,new_miou,32.646930691376014,percent
+cohort 1,12401,lowrank,1,old_boundary_iou,36.02310362646926,percent
+cohort 1,12401,lowrank,1,old_boundary_margin,3.220588207244873,logit
+cohort 1,12401,lowrank,1,old_miou,74.83418629051131,percent
+cohort 1,12401,lowrank,10,all_miou,15.687546781562645,percent
+cohort 1,12401,lowrank,10,new_miou,1.499271564635994,percent
+cohort 1,12401,lowrank,10,old_boundary_iou,8.781439589214243,percent
+cohort 1,12401,lowrank,10,old_boundary_margin,3.58530855178833,logit
+cohort 1,12401,lowrank,10,old_miou,17.259958465693657,percent
+cohort 1,12401,lowrank,2,all_miou,66.91317351065616,percent
+cohort 1,12401,lowrank,2,new_miou,64.83729646107561,percent
+cohort 1,12401,lowrank,2,old_boundary_iou,35.20677073654182,percent
+cohort 1,12401,lowrank,2,old_boundary_margin,3.1359877586364746,logit
+cohort 1,12401,lowrank,2,old_miou,65.975949590097,percent
+cohort 1,12401,lowrank,3,all_miou,53.5258855020191,percent
+cohort 1,12401,lowrank,3,new_miou,23.832292488457682,percent
+cohort 1,12401,lowrank,3,old_boundary_iou,29.01229516597405,percent
+cohort 1,12401,lowrank,3,old_boundary_margin,3.0235207080841064,logit
+cohort 1,12401,lowrank,3,old_miou,54.07949715380672,percent
+cohort 1,12401,lowrank,4,all_miou,46.328001999279714,percent
+cohort 1,12401,lowrank,4,new_miou,24.751655280025542,percent
+cohort 1,12401,lowrank,4,old_boundary_iou,26.231060795671763,percent
+cohort 1,12401,lowrank,4,old_boundary_margin,2.027663230895996,logit
+cohort 1,12401,lowrank,4,old_miou,46.25706198296832,percent
+cohort 1,12401,lowrank,5,all_miou,43.8823701380319,percent
+cohort 1,12401,lowrank,5,new_miou,68.15694732389275,percent
+cohort 1,12401,lowrank,5,old_boundary_iou,22.53551535905679,percent
+cohort 1,12401,lowrank,5,old_boundary_margin,1.712242841720581,logit
+cohort 1,12401,lowrank,5,old_miou,40.67330745237723,percent
+cohort 1,12401,lowrank,6,all_miou,37.45818383399947,percent
+cohort 1,12401,lowrank,6,new_miou,11.458409529005083,percent
+cohort 1,12401,lowrank,6,old_boundary_iou,21.647146124153917,percent
+cohort 1,12401,lowrank,6,old_boundary_margin,7.464524269104004,logit
+cohort 1,12401,lowrank,6,old_miou,38.10163221213198,percent
+cohort 1,12401,lowrank,7,all_miou,33.98037700661991,percent
+cohort 1,12401,lowrank,7,new_miou,11.944200974579456,percent
+cohort 1,12401,lowrank,7,old_boundary_iou,18.374030072782332,percent
+cohort 1,12401,lowrank,7,old_boundary_margin,5.169872283935547,logit
+cohort 1,12401,lowrank,7,old_miou,34.70573598155849,percent
+cohort 1,12401,lowrank,8,all_miou,27.86533781955421,percent
+cohort 1,12401,lowrank,8,new_miou,4.278864981272004,percent
+cohort 1,12401,lowrank,8,old_boundary_iou,15.342975011194257,percent
+cohort 1,12401,lowrank,8,old_boundary_margin,3.183068037033081,logit
+cohort 1,12401,lowrank,8,old_miou,29.76085007965093,percent
+cohort 1,12401,lowrank,9,all_miou,16.99226417148863,percent
+cohort 1,12401,lowrank,9,new_miou,12.587139126605559,percent
+cohort 1,12401,lowrank,9,old_boundary_iou,10.42695197183512,percent
+cohort 1,12401,lowrank,9,old_boundary_margin,2.2018134593963623,logit
+cohort 1,12401,lowrank,9,old_miou,17.291084588719308,percent
+cohort 1,12401,lowrank_ssr,1,all_miou,72.58629285453783,percent
+cohort 1,12401,lowrank_ssr,1,new_miou,32.616049507243105,percent
+cohort 1,12401,lowrank_ssr,1,old_boundary_iou,35.951902226813914,percent
+cohort 1,12401,lowrank_ssr,1,old_boundary_margin,3.2148077487945557,logit
+cohort 1,12401,lowrank_ssr,1,old_miou,74.8353986707288,percent
+cohort 1,12401,lowrank_ssr,10,all_miou,16.077478207058192,percent
+cohort 1,12401,lowrank_ssr,10,new_miou,1.0406626710414595,percent
+cohort 1,12401,lowrank_ssr,10,old_boundary_iou,8.374976858816972,percent
+cohort 1,12401,lowrank_ssr,10,old_boundary_margin,4.171356201171875,logit
+cohort 1,12401,lowrank_ssr,10,old_miou,17.71507261458845,percent
+cohort 1,12401,lowrank_ssr,2,all_miou,65.51777319079422,percent
+cohort 1,12401,lowrank_ssr,2,new_miou,59.805551936053426,percent
+cohort 1,12401,lowrank_ssr,2,old_boundary_iou,34.00220323269645,percent
+cohort 1,12401,lowrank_ssr,2,old_boundary_margin,2.9104244709014893,logit
+cohort 1,12401,lowrank_ssr,2,old_miou,65.09945780515412,percent
+cohort 1,12401,lowrank_ssr,3,all_miou,55.82776274946756,percent
+cohort 1,12401,lowrank_ssr,3,new_miou,24.79768939840986,percent
+cohort 1,12401,lowrank_ssr,3,old_boundary_iou,28.880447084321187,percent
+cohort 1,12401,lowrank_ssr,3,old_boundary_margin,3.647688627243042,logit
+cohort 1,12401,lowrank_ssr,3,old_miou,56.43324792371541,percent
+cohort 1,12401,lowrank_ssr,4,all_miou,47.938098340006846,percent
+cohort 1,12401,lowrank_ssr,4,new_miou,29.275057926085633,percent
+cohort 1,12401,lowrank_ssr,4,old_boundary_iou,26.740451602823768,percent
+cohort 1,12401,lowrank_ssr,4,old_boundary_margin,2.311516284942627,logit
+cohort 1,12401,lowrank_ssr,4,old_miou,47.48251650688875,percent
+cohort 1,12401,lowrank_ssr,5,all_miou,45.95795002216334,percent
+cohort 1,12401,lowrank_ssr,5,new_miou,67.64352538292955,percent
+cohort 1,12401,lowrank_ssr,5,old_boundary_iou,23.241414938111646,percent
+cohort 1,12401,lowrank_ssr,5,old_boundary_margin,1.7753536701202393,logit
+cohort 1,12401,lowrank_ssr,5,old_miou,42.73366100025691,percent
+cohort 1,12401,lowrank_ssr,6,all_miou,39.843200793362136,percent
+cohort 1,12401,lowrank_ssr,6,new_miou,17.176409912531685,percent
+cohort 1,12401,lowrank_ssr,6,old_boundary_iou,23.39169421039955,percent
+cohort 1,12401,lowrank_ssr,6,old_boundary_margin,7.713730335235596,logit
+cohort 1,12401,lowrank_ssr,6,old_miou,39.966934236646196,percent
+cohort 1,12401,lowrank_ssr,7,all_miou,35.412642351471824,percent
+cohort 1,12401,lowrank_ssr,7,new_miou,13.674848344864596,percent
+cohort 1,12401,lowrank_ssr,7,old_boundary_iou,19.88623578705922,percent
+cohort 1,12401,lowrank_ssr,7,old_boundary_margin,5.188441276550293,logit
+cohort 1,12401,lowrank_ssr,7,old_miou,35.738715683464065,percent
+cohort 1,12401,lowrank_ssr,8,all_miou,30.17989246318796,percent
+cohort 1,12401,lowrank_ssr,8,new_miou,6.332807368941307,percent
+cohort 1,12401,lowrank_ssr,8,old_boundary_iou,16.28302194248646,percent
+cohort 1,12401,lowrank_ssr,8,old_boundary_margin,3.2662723064422607,logit
+cohort 1,12401,lowrank_ssr,8,old_miou,31.20256015286303,percent
+cohort 1,12401,lowrank_ssr,9,all_miou,18.841549381915197,percent
+cohort 1,12401,lowrank_ssr,9,new_miou,12.211324525399931,percent
+cohort 1,12401,lowrank_ssr,9,old_boundary_iou,9.23781667082562,percent
+cohort 1,12401,lowrank_ssr,9,old_boundary_margin,2.022321939468384,logit
+cohort 1,12401,lowrank_ssr,9,old_miou,18.09972983109166,percent
+cohort 1,12402,lowrank,1,all_miou,71.39805599089753,percent
+cohort 1,12402,lowrank,1,new_miou,29.418326927734668,percent
+cohort 1,12402,lowrank,1,old_boundary_iou,35.98024160478028,percent
+cohort 1,12402,lowrank,1,old_boundary_margin,2.9240188598632812,logit
+cohort 1,12402,lowrank,1,old_miou,73.78944494387298,percent
+cohort 1,12402,lowrank,10,all_miou,14.20214115927867,percent
+cohort 1,12402,lowrank,10,new_miou,1.5119534912776122,percent
+cohort 1,12402,lowrank,10,old_boundary_iou,4.9293598146195166,percent
+cohort 1,12402,lowrank,10,old_boundary_margin,4.783159255981445,logit
+cohort 1,12402,lowrank,10,old_miou,15.617526887030236,percent
+cohort 1,12402,lowrank,2,all_miou,67.23704963840395,percent
+cohort 1,12402,lowrank,2,new_miou,65.69323377882618,percent
+cohort 1,12402,lowrank,2,old_boundary_iou,33.15055163789537,percent
+cohort 1,12402,lowrank,2,old_boundary_margin,3.4932973384857178,logit
+cohort 1,12402,lowrank,2,old_miou,66.29757686392345,percent
+cohort 1,12402,lowrank,3,all_miou,52.2329225573846,percent
+cohort 1,12402,lowrank,3,new_miou,21.581847696148635,percent
+cohort 1,12402,lowrank,3,old_boundary_iou,31.096451360269178,percent
+cohort 1,12402,lowrank,3,old_boundary_margin,3.050154447555542,logit
+cohort 1,12402,lowrank,3,old_miou,52.719616247633105,percent
+cohort 1,12402,lowrank,4,all_miou,45.19625953303523,percent
+cohort 1,12402,lowrank,4,new_miou,30.565939476565724,percent
+cohort 1,12402,lowrank,4,old_boundary_iou,26.510196193292135,percent
+cohort 1,12402,lowrank,4,old_boundary_margin,1.819454550743103,logit
+cohort 1,12402,lowrank,4,old_miou,44.427679860198346,percent
+cohort 1,12402,lowrank,5,all_miou,43.18743378159232,percent
+cohort 1,12402,lowrank,5,new_miou,69.68805049991664,percent
+cohort 1,12402,lowrank,5,old_boundary_iou,23.308555640285906,percent
+cohort 1,12402,lowrank,5,old_boundary_margin,1.4517251253128052,logit
+cohort 1,12402,lowrank,5,old_miou,39.715769199308774,percent
+cohort 1,12402,lowrank,6,all_miou,36.621281161445125,percent
+cohort 1,12402,lowrank,6,new_miou,6.95545672929565,percent
+cohort 1,12402,lowrank,6,old_boundary_iou,21.19876312287096,percent
+cohort 1,12402,lowrank,6,old_boundary_margin,7.451141357421875,logit
+cohort 1,12402,lowrank,6,old_miou,37.51278034363472,percent
+cohort 1,12402,lowrank,7,all_miou,30.331143827540398,percent
+cohort 1,12402,lowrank,7,new_miou,9.670613426531599,percent
+cohort 1,12402,lowrank,7,old_boundary_iou,12.727196086842962,percent
+cohort 1,12402,lowrank,7,old_boundary_margin,4.953682899475098,logit
+cohort 1,12402,lowrank,7,old_miou,30.95430283898384,percent
+cohort 1,12402,lowrank,8,all_miou,26.41316944466629,percent
+cohort 1,12402,lowrank,8,new_miou,3.697677579984697,percent
+cohort 1,12402,lowrank,8,old_boundary_iou,9.912319640460607,percent
+cohort 1,12402,lowrank,8,old_boundary_margin,3.8008651733398438,logit
+cohort 1,12402,lowrank,8,old_miou,28.449396416812085,percent
+cohort 1,12402,lowrank,9,all_miou,15.393514693670141,percent
+cohort 1,12402,lowrank,9,new_miou,10.584599806612594,percent
+cohort 1,12402,lowrank,9,old_boundary_iou,5.117889749478203,percent
+cohort 1,12402,lowrank,9,old_boundary_margin,1.6058934926986694,logit
+cohort 1,12402,lowrank,9,old_miou,16.211220482379673,percent
+cohort 1,12402,lowrank_ssr,1,all_miou,71.38587075429936,percent
+cohort 1,12402,lowrank_ssr,1,new_miou,29.470511589174237,percent
+cohort 1,12402,lowrank_ssr,1,old_boundary_iou,35.90040277999932,percent
+cohort 1,12402,lowrank_ssr,1,old_boundary_margin,2.9226181507110596,logit
+cohort 1,12402,lowrank_ssr,1,old_miou,73.76921985125382,percent
+cohort 1,12402,lowrank_ssr,10,all_miou,14.853374824382342,percent
+cohort 1,12402,lowrank_ssr,10,new_miou,1.328170831271003,percent
+cohort 1,12402,lowrank_ssr,10,old_boundary_iou,6.8000911448218915,percent
+cohort 1,12402,lowrank_ssr,10,old_boundary_margin,4.919335842132568,logit
+cohort 1,12402,lowrank_ssr,10,old_miou,16.346984235829375,percent
+cohort 1,12402,lowrank_ssr,2,all_miou,66.46840230641288,percent
+cohort 1,12402,lowrank_ssr,2,new_miou,64.36036720995635,percent
+cohort 1,12402,lowrank_ssr,2,old_boundary_iou,33.36753479353038,percent
+cohort 1,12402,lowrank_ssr,2,old_boundary_margin,3.2443690299987793,logit
+cohort 1,12402,lowrank_ssr,2,old_miou,65.89091172982191,percent
+cohort 1,12402,lowrank_ssr,3,all_miou,52.87641480752846,percent
+cohort 1,12402,lowrank_ssr,3,new_miou,24.04093810261934,percent
+cohort 1,12402,lowrank_ssr,3,old_boundary_iou,30.144617229962485,percent
+cohort 1,12402,lowrank_ssr,3,old_boundary_margin,3.761223793029785,logit
+cohort 1,12402,lowrank_ssr,3,old_miou,53.004236699113484,percent
+cohort 1,12402,lowrank_ssr,4,all_miou,47.72704838867997,percent
+cohort 1,12402,lowrank_ssr,4,new_miou,35.74452588576506,percent
+cohort 1,12402,lowrank_ssr,4,old_boundary_iou,27.24271571593687,percent
+cohort 1,12402,lowrank_ssr,4,old_boundary_margin,2.114851474761963,logit
+cohort 1,12402,lowrank_ssr,4,old_miou,46.5260446757721,percent
+cohort 1,12402,lowrank_ssr,5,all_miou,45.582317213327116,percent
+cohort 1,12402,lowrank_ssr,5,new_miou,70.19149347353239,percent
+cohort 1,12402,lowrank_ssr,5,old_boundary_iou,25.06188663207484,percent
+cohort 1,12402,lowrank_ssr,5,old_boundary_margin,1.5363481044769287,logit
+cohort 1,12402,lowrank_ssr,5,old_miou,41.96522130436966,percent
+cohort 1,12402,lowrank_ssr,6,all_miou,38.75703649531214,percent
+cohort 1,12402,lowrank_ssr,6,new_miou,12.210317527980052,percent
+cohort 1,12402,lowrank_ssr,6,old_boundary_iou,22.054579846418505,percent
+cohort 1,12402,lowrank_ssr,6,old_boundary_margin,7.5389485359191895,logit
+cohort 1,12402,lowrank_ssr,6,old_miou,38.93631931287857,percent
+cohort 1,12402,lowrank_ssr,7,all_miou,31.317528257405925,percent
+cohort 1,12402,lowrank_ssr,7,new_miou,10.801163581768671,percent
+cohort 1,12402,lowrank_ssr,7,old_boundary_iou,15.907117111040384,percent
+cohort 1,12402,lowrank_ssr,7,old_boundary_margin,5.12288761138916,logit
+cohort 1,12402,lowrank_ssr,7,old_miou,31.32635342966823,percent
+cohort 1,12402,lowrank_ssr,8,all_miou,27.729096560476442,percent
+cohort 1,12402,lowrank_ssr,8,new_miou,4.506569670558712,percent
+cohort 1,12402,lowrank_ssr,8,old_boundary_iou,10.74925673064478,percent
+cohort 1,12402,lowrank_ssr,8,old_boundary_margin,3.8566062450408936,logit
+cohort 1,12402,lowrank_ssr,8,old_miou,29.191027859593827,percent
+cohort 1,12402,lowrank_ssr,9,all_miou,16.983885448732515,percent
+cohort 1,12402,lowrank_ssr,9,new_miou,9.836877471658827,percent
+cohort 1,12402,lowrank_ssr,9,old_boundary_iou,6.004197306718384,percent
+cohort 1,12402,lowrank_ssr,9,old_boundary_margin,1.6941837072372437,logit
+cohort 1,12402,lowrank_ssr,9,old_miou,17.10317653356343,percent
+cohort 1,12403,lowrank,1,all_miou,73.13614206835366,percent
+cohort 1,12403,lowrank,1,new_miou,39.61972949679263,percent
+cohort 1,12403,lowrank,1,old_boundary_iou,36.76755485622182,percent
+cohort 1,12403,lowrank,1,old_boundary_margin,3.357525110244751,logit
+cohort 1,12403,lowrank,1,old_miou,74.6956684215638,percent
+cohort 1,12403,lowrank,10,all_miou,11.370582601483038,percent
+cohort 1,12403,lowrank,10,new_miou,1.674609599956678,percent
+cohort 1,12403,lowrank,10,old_boundary_iou,4.389129002638057,percent
+cohort 1,12403,lowrank,10,old_boundary_margin,4.794686317443848,logit
+cohort 1,12403,lowrank,10,old_miou,12.443494304002115,percent
+cohort 1,12403,lowrank,2,all_miou,66.7157078647617,percent
+cohort 1,12403,lowrank,2,new_miou,59.10443606086847,percent
+cohort 1,12403,lowrank,2,old_boundary_iou,35.39387746915616,percent
+cohort 1,12403,lowrank,2,old_boundary_margin,3.1044795513153076,logit
+cohort 1,12403,lowrank,2,old_miou,65.79914433743167,percent
+cohort 1,12403,lowrank,3,all_miou,50.00538400540776,percent
+cohort 1,12403,lowrank,3,new_miou,16.115856644438193,percent
+cohort 1,12403,lowrank,3,old_boundary_iou,30.812559439473038,percent
+cohort 1,12403,lowrank,3,old_boundary_margin,2.3778085708618164,logit
+cohort 1,12403,lowrank,3,old_miou,50.27394884726847,percent
+cohort 1,12403,lowrank,4,all_miou,44.776184540024936,percent
+cohort 1,12403,lowrank,4,new_miou,36.09902315940916,percent
+cohort 1,12403,lowrank,4,old_boundary_iou,26.73660378538749,percent
+cohort 1,12403,lowrank,4,old_boundary_margin,2.205897808074951,logit
+cohort 1,12403,lowrank,4,old_miou,42.9178069711855,percent
+cohort 1,12403,lowrank,5,all_miou,43.34342387260226,percent
+cohort 1,12403,lowrank,5,new_miou,66.38564312493426,percent
+cohort 1,12403,lowrank,5,old_boundary_iou,24.48679891181613,percent
+cohort 1,12403,lowrank,5,old_boundary_margin,1.2797456979751587,logit
+cohort 1,12403,lowrank,5,old_miou,39.396406341591366,percent
+cohort 1,12403,lowrank,6,all_miou,39.209520973654506,percent
+cohort 1,12403,lowrank,6,new_miou,14.460775100032969,percent
+cohort 1,12403,lowrank,6,old_boundary_iou,23.083858952823057,percent
+cohort 1,12403,lowrank,6,old_boundary_margin,7.921542644500732,logit
+cohort 1,12403,lowrank,6,old_miou,38.81247938836946,percent
+cohort 1,12403,lowrank,7,all_miou,30.865684595982597,percent
+cohort 1,12403,lowrank,7,new_miou,9.955792695258891,percent
+cohort 1,12403,lowrank,7,old_boundary_iou,18.295884001690553,percent
+cohort 1,12403,lowrank,7,old_boundary_margin,4.845582485198975,logit
+cohort 1,12403,lowrank,7,old_miou,30.417050381820882,percent
+cohort 1,12403,lowrank,8,all_miou,27.267374123784784,percent
+cohort 1,12403,lowrank,8,new_miou,5.7816909978388455,percent
+cohort 1,12403,lowrank,8,old_boundary_iou,11.071702108632989,percent
+cohort 1,12403,lowrank,8,old_boundary_margin,3.153609275817871,logit
+cohort 1,12403,lowrank,8,old_miou,27.84959651226775,percent
+cohort 1,12403,lowrank,9,all_miou,15.159643066097855,percent
+cohort 1,12403,lowrank,9,new_miou,12.889601630981073,percent
+cohort 1,12403,lowrank,9,old_boundary_iou,5.613461802258513,percent
+cohort 1,12403,lowrank,9,old_boundary_margin,1.9189321994781494,logit
+cohort 1,12403,lowrank,9,old_miou,14.246620493787345,percent
+cohort 1,12403,lowrank_ssr,1,all_miou,73.14059783624128,percent
+cohort 1,12403,lowrank_ssr,1,new_miou,39.63285337331042,percent
+cohort 1,12403,lowrank_ssr,1,old_boundary_iou,36.87326944795927,percent
+cohort 1,12403,lowrank_ssr,1,old_boundary_margin,3.3589587211608887,logit
+cohort 1,12403,lowrank_ssr,1,old_miou,74.69965843219047,percent
+cohort 1,12403,lowrank_ssr,10,all_miou,11.272698450723018,percent
+cohort 1,12403,lowrank_ssr,10,new_miou,1.2247024671751514,percent
+cohort 1,12403,lowrank_ssr,10,old_boundary_iou,4.383093622541982,percent
+cohort 1,12403,lowrank_ssr,10,old_boundary_margin,4.831050872802734,logit
+cohort 1,12403,lowrank_ssr,10,old_miou,12.394840263053064,percent
+cohort 1,12403,lowrank_ssr,2,all_miou,64.80893436014206,percent
+cohort 1,12403,lowrank_ssr,2,new_miou,53.51738961668938,percent
+cohort 1,12403,lowrank_ssr,2,old_boundary_iou,34.23468196236674,percent
+cohort 1,12403,lowrank_ssr,2,old_boundary_margin,2.8819222450256348,logit
+cohort 1,12403,lowrank_ssr,2,old_miou,64.35546349401301,percent
+cohort 1,12403,lowrank_ssr,3,all_miou,51.51565034072186,percent
+cohort 1,12403,lowrank_ssr,3,new_miou,19.285840633246014,percent
+cohort 1,12403,lowrank_ssr,3,old_boundary_iou,27.89824214254714,percent
+cohort 1,12403,lowrank_ssr,3,old_boundary_margin,3.302548408508301,logit
+cohort 1,12403,lowrank_ssr,3,old_miou,51.71343384661936,percent
+cohort 1,12403,lowrank_ssr,4,all_miou,44.53506900133351,percent
+cohort 1,12403,lowrank_ssr,4,new_miou,36.7145302915903,percent
+cohort 1,12403,lowrank_ssr,4,old_boundary_iou,25.570059677237307,percent
+cohort 1,12403,lowrank_ssr,4,old_boundary_margin,2.439478635787964,logit
+cohort 1,12403,lowrank_ssr,4,old_miou,42.61169045271372,percent
+cohort 1,12403,lowrank_ssr,5,all_miou,43.71797881808741,percent
+cohort 1,12403,lowrank_ssr,5,new_miou,67.90973157669093,percent
+cohort 1,12403,lowrank_ssr,5,old_boundary_iou,23.15655933597575,percent
+cohort 1,12403,lowrank_ssr,5,old_boundary_margin,1.4106367826461792,logit
+cohort 1,12403,lowrank_ssr,5,old_miou,39.701171280273144,percent
+cohort 1,12403,lowrank_ssr,6,all_miou,40.167248353953646,percent
+cohort 1,12403,lowrank_ssr,6,new_miou,17.079417260433697,percent
+cohort 1,12403,lowrank_ssr,6,old_boundary_iou,22.38041429943835,percent
+cohort 1,12403,lowrank_ssr,6,old_boundary_margin,7.830615520477295,logit
+cohort 1,12403,lowrank_ssr,6,old_miou,39.69017167795377,percent
+cohort 1,12403,lowrank_ssr,7,all_miou,33.085275253602234,percent
+cohort 1,12403,lowrank_ssr,7,new_miou,10.859965347509426,percent
+cohort 1,12403,lowrank_ssr,7,old_boundary_iou,17.881695740563202,percent
+cohort 1,12403,lowrank_ssr,7,old_boundary_margin,4.779398441314697,logit
+cohort 1,12403,lowrank_ssr,7,old_miou,32.75449692303904,percent
+cohort 1,12403,lowrank_ssr,8,all_miou,28.15559172180179,percent
+cohort 1,12403,lowrank_ssr,8,new_miou,5.999626952109796,percent
+cohort 1,12403,lowrank_ssr,8,old_boundary_iou,11.059941361408665,percent
+cohort 1,12403,lowrank_ssr,8,old_boundary_margin,2.9208524227142334,logit
+cohort 1,12403,lowrank_ssr,8,old_miou,28.92200004549218,percent
+cohort 1,12403,lowrank_ssr,9,all_miou,14.261751379995244,percent
+cohort 1,12403,lowrank_ssr,9,new_miou,13.151337724048028,percent
+cohort 1,12403,lowrank_ssr,9,old_boundary_iou,4.4629115607058,percent
+cohort 1,12403,lowrank_ssr,9,old_boundary_margin,1.9433072805404663,logit
+cohort 1,12403,lowrank_ssr,9,old_miou,13.378821285528819,percent
+cohort 1,12404,lowrank,1,all_miou,72.69443235916656,percent
+cohort 1,12404,lowrank,1,new_miou,27.403679044235187,percent
+cohort 1,12404,lowrank,1,old_boundary_iou,36.71806323973347,percent
+cohort 1,12404,lowrank,1,old_boundary_margin,3.1179680824279785,logit
+cohort 1,12404,lowrank,1,old_miou,75.51999721948476,percent
+cohort 1,12404,lowrank,10,all_miou,14.571946819575993,percent
+cohort 1,12404,lowrank,10,new_miou,1.244391212510753,percent
+cohort 1,12404,lowrank,10,old_boundary_iou,5.528289210205841,percent
+cohort 1,12404,lowrank,10,old_boundary_margin,4.620446681976318,logit
+cohort 1,12404,lowrank,10,old_miou,16.040341684136056,percent
+cohort 1,12404,lowrank,2,all_miou,67.08222595597616,percent
+cohort 1,12404,lowrank,2,new_miou,64.88893298023464,percent
+cohort 1,12404,lowrank,2,old_boundary_iou,36.874843681619936,percent
+cohort 1,12404,lowrank,2,old_boundary_margin,3.064124345779419,logit
+cohort 1,12404,lowrank,2,old_miou,66.37929909892605,percent
+cohort 1,12404,lowrank,3,all_miou,52.388639037806904,percent
+cohort 1,12404,lowrank,3,new_miou,20.6123862085485,percent
+cohort 1,12404,lowrank,3,old_boundary_iou,29.926863287146144,percent
+cohort 1,12404,lowrank,3,old_boundary_margin,2.668355941772461,logit
+cohort 1,12404,lowrank,3,old_miou,53.603478046450235,percent
+cohort 1,12404,lowrank,4,all_miou,41.543645266202276,percent
+cohort 1,12404,lowrank,4,new_miou,20.993988034083717,percent
+cohort 1,12404,lowrank,4,old_boundary_iou,16.21207278211947,percent
+cohort 1,12404,lowrank,4,old_boundary_margin,1.4905308485031128,logit
+cohort 1,12404,lowrank,4,old_miou,41.81406880670126,percent
+cohort 1,12404,lowrank,5,all_miou,40.70001637195711,percent
+cohort 1,12404,lowrank,5,new_miou,68.84541987928401,percent
+cohort 1,12404,lowrank,5,old_boundary_iou,13.49771797423109,percent
+cohort 1,12404,lowrank,5,old_boundary_margin,1.608278751373291,logit
+cohort 1,12404,lowrank,5,old_miou,37.712747027666396,percent
+cohort 1,12404,lowrank,6,all_miou,33.76298721568826,percent
+cohort 1,12404,lowrank,6,new_miou,5.92457736298322,percent
+cohort 1,12404,lowrank,6,old_boundary_iou,13.65080232895462,percent
+cohort 1,12404,lowrank,6,old_boundary_margin,8.480266571044922,logit
+cohort 1,12404,lowrank,6,old_miou,34.97606051329478,percent
+cohort 1,12404,lowrank,7,all_miou,31.28214248062447,percent
+cohort 1,12404,lowrank,7,new_miou,10.24556032977246,percent
+cohort 1,12404,lowrank,7,old_boundary_iou,12.103009902413604,percent
+cohort 1,12404,lowrank,7,old_boundary_margin,5.312265872955322,logit
+cohort 1,12404,lowrank,7,old_miou,32.559920177961416,percent
+cohort 1,12404,lowrank,8,all_miou,28.155981780849913,percent
+cohort 1,12404,lowrank,8,new_miou,6.815630461612707,percent
+cohort 1,12404,lowrank,8,old_boundary_iou,10.560417121771797,percent
+cohort 1,12404,lowrank,8,old_boundary_margin,3.384246349334717,logit
+cohort 1,12404,lowrank,8,old_miou,29.2324738516611,percent
+cohort 1,12404,lowrank,9,all_miou,18.417046787893607,percent
+cohort 1,12404,lowrank,9,new_miou,11.256536976610967,percent
+cohort 1,12404,lowrank,9,old_boundary_iou,6.087561646090381,percent
+cohort 1,12404,lowrank,9,old_boundary_margin,2.0267324447631836,logit
+cohort 1,12404,lowrank,9,old_miou,18.30399314971917,percent
+cohort 1,12404,lowrank_ssr,1,all_miou,72.67528263793317,percent
+cohort 1,12404,lowrank_ssr,1,new_miou,27.373546496951395,percent
+cohort 1,12404,lowrank_ssr,1,old_boundary_iou,36.71194900109344,percent
+cohort 1,12404,lowrank_ssr,1,old_boundary_margin,3.1171820163726807,logit
+cohort 1,12404,lowrank_ssr,1,old_miou,75.50097379922049,percent
+cohort 1,12404,lowrank_ssr,10,all_miou,13.773367335700728,percent
+cohort 1,12404,lowrank_ssr,10,new_miou,1.8961359223242515,percent
+cohort 1,12404,lowrank_ssr,10,old_boundary_iou,5.678808904554691,percent
+cohort 1,12404,lowrank_ssr,10,old_boundary_margin,4.916645526885986,logit
+cohort 1,12404,lowrank_ssr,10,old_miou,14.614874633990505,percent
+cohort 1,12404,lowrank_ssr,2,all_miou,65.91455151254203,percent
+cohort 1,12404,lowrank_ssr,2,new_miou,60.478884514166495,percent
+cohort 1,12404,lowrank_ssr,2,old_boundary_iou,37.22615376256639,percent
+cohort 1,12404,lowrank_ssr,2,old_boundary_margin,2.726433277130127,logit
+cohort 1,12404,lowrank_ssr,2,old_miou,65.67733873922842,percent
+cohort 1,12404,lowrank_ssr,3,all_miou,54.26140955360583,percent
+cohort 1,12404,lowrank_ssr,3,new_miou,21.85288132836837,percent
+cohort 1,12404,lowrank_ssr,3,old_boundary_iou,29.77909473631124,percent
+cohort 1,12404,lowrank_ssr,3,old_boundary_margin,3.358487367630005,logit
+cohort 1,12404,lowrank_ssr,3,old_miou,55.38367930148098,percent
+cohort 1,12404,lowrank_ssr,4,all_miou,44.76090193102198,percent
+cohort 1,12404,lowrank_ssr,4,new_miou,25.426157089609497,percent
+cohort 1,12404,lowrank_ssr,4,old_boundary_iou,19.71491899393523,percent
+cohort 1,12404,lowrank_ssr,4,old_boundary_margin,1.7583611011505127,logit
+cohort 1,12404,lowrank_ssr,4,old_miou,44.68186251858679,percent
+cohort 1,12404,lowrank_ssr,5,all_miou,42.788580993637595,percent
+cohort 1,12404,lowrank_ssr,5,new_miou,67.28080863961469,percent
+cohort 1,12404,lowrank_ssr,5,old_boundary_iou,16.345157298772467,percent
+cohort 1,12404,lowrank_ssr,5,old_boundary_margin,1.6915370225906372,logit
+cohort 1,12404,lowrank_ssr,5,old_miou,39.64972877333371,percent
+cohort 1,12404,lowrank_ssr,6,all_miou,37.1387132943951,percent
+cohort 1,12404,lowrank_ssr,6,new_miou,10.683981778005766,percent
+cohort 1,12404,lowrank_ssr,6,old_boundary_iou,16.851645547907452,percent
+cohort 1,12404,lowrank_ssr,6,old_boundary_margin,8.668054580688477,logit
+cohort 1,12404,lowrank_ssr,6,old_miou,37.832906596564555,percent
+cohort 1,12404,lowrank_ssr,7,all_miou,31.46974997106351,percent
+cohort 1,12404,lowrank_ssr,7,new_miou,9.824582998739464,percent
+cohort 1,12404,lowrank_ssr,7,old_boundary_iou,15.113145683254976,percent
+cohort 1,12404,lowrank_ssr,7,old_boundary_margin,5.314188003540039,logit
+cohort 1,12404,lowrank_ssr,7,old_miou,32.405552041173664,percent
+cohort 1,12404,lowrank_ssr,8,all_miou,30.279426783059943,percent
+cohort 1,12404,lowrank_ssr,8,new_miou,9.385032584380113,percent
+cohort 1,12404,lowrank_ssr,8,old_boundary_iou,11.993561312284827,percent
+cohort 1,12404,lowrank_ssr,8,old_boundary_margin,3.540914535522461,logit
+cohort 1,12404,lowrank_ssr,8,old_miou,30.854412149151635,percent
+cohort 1,12404,lowrank_ssr,9,all_miou,18.096447173194417,percent
+cohort 1,12404,lowrank_ssr,9,new_miou,11.026307628274177,percent
+cohort 1,12404,lowrank_ssr,9,old_boundary_iou,5.96225965692808,percent
+cohort 1,12404,lowrank_ssr,9,old_boundary_margin,1.8067787885665894,logit
+cohort 1,12404,lowrank_ssr,9,old_miou,17.293790711188134,percent
+cohort 1,12405,lowrank,1,all_miou,72.54666519600423,percent
+cohort 1,12405,lowrank,1,new_miou,33.59558909957186,percent
+cohort 1,12405,lowrank,1,old_boundary_iou,34.793526560273556,percent
+cohort 1,12405,lowrank,1,old_boundary_margin,3.2777609825134277,logit
+cohort 1,12405,lowrank,1,old_miou,74.65504561199752,percent
+cohort 1,12405,lowrank,10,all_miou,13.799793177803188,percent
+cohort 1,12405,lowrank,10,new_miou,1.0080203525974198,percent
+cohort 1,12405,lowrank,10,old_boundary_iou,6.722073787213595,percent
+cohort 1,12405,lowrank,10,old_boundary_margin,5.240985870361328,logit
+cohort 1,12405,lowrank,10,old_miou,15.111397457262447,percent
+cohort 1,12405,lowrank,2,all_miou,67.37857601895246,percent
+cohort 1,12405,lowrank,2,new_miou,67.00475890344937,percent
+cohort 1,12405,lowrank,2,old_boundary_iou,34.244940705304465,percent
+cohort 1,12405,lowrank,2,old_boundary_margin,3.2847821712493896,logit
+cohort 1,12405,lowrank,2,old_miou,66.27405889945143,percent
+cohort 1,12405,lowrank,3,all_miou,51.294120733030425,percent
+cohort 1,12405,lowrank,3,new_miou,17.539017311874456,percent
+cohort 1,12405,lowrank,3,old_boundary_iou,29.90604651598107,percent
+cohort 1,12405,lowrank,3,old_boundary_margin,2.4051496982574463,logit
+cohort 1,12405,lowrank,3,old_miou,52.329880230427214,percent
+cohort 1,12405,lowrank,4,all_miou,42.529171744318575,percent
+cohort 1,12405,lowrank,4,new_miou,25.372542918692613,percent
+cohort 1,12405,lowrank,4,old_boundary_iou,24.798575840577556,percent
+cohort 1,12405,lowrank,4,old_boundary_margin,1.7529882192611694,logit
+cohort 1,12405,lowrank,4,old_miou,42.140320635407754,percent
+cohort 1,12405,lowrank,5,all_miou,42.252828258146714,percent
+cohort 1,12405,lowrank,5,new_miou,68.77700347345082,percent
+cohort 1,12405,lowrank,5,old_boundary_iou,20.76095990009686,percent
+cohort 1,12405,lowrank,5,old_boundary_margin,1.4221028089523315,logit
+cohort 1,12405,lowrank,5,old_miou,38.917472631023486,percent
+cohort 1,12405,lowrank,6,all_miou,35.376115894509674,percent
+cohort 1,12405,lowrank,6,new_miou,10.994447783871758,percent
+cohort 1,12405,lowrank,6,old_boundary_iou,20.781203709870685,percent
+cohort 1,12405,lowrank,6,old_boundary_margin,8.588020324707031,logit
+cohort 1,12405,lowrank,6,old_miou,35.96925950113635,percent
+cohort 1,12405,lowrank,7,all_miou,29.394182068795775,percent
+cohort 1,12405,lowrank,7,new_miou,8.845957946833996,percent
+cohort 1,12405,lowrank,7,old_boundary_iou,17.009336805123553,percent
+cohort 1,12405,lowrank,7,old_boundary_margin,5.050663471221924,logit
+cohort 1,12405,lowrank,7,old_miou,30.052492520518705,percent
+cohort 1,12405,lowrank,8,all_miou,28.72541230981705,percent
+cohort 1,12405,lowrank,8,new_miou,7.927463092049475,percent
+cohort 1,12405,lowrank,8,old_boundary_iou,10.968079064388611,percent
+cohort 1,12405,lowrank,8,old_boundary_margin,3.397179126739502,logit
+cohort 1,12405,lowrank,8,old_miou,29.129387644232533,percent
+cohort 1,12405,lowrank,9,all_miou,18.102198212772883,percent
+cohort 1,12405,lowrank,9,new_miou,11.95613243913576,percent
+cohort 1,12405,lowrank,9,old_boundary_iou,7.4013194908741085,percent
+cohort 1,12405,lowrank,9,old_boundary_margin,2.664123296737671,logit
+cohort 1,12405,lowrank,9,old_miou,17.118137211874984,percent
+cohort 1,12405,lowrank_ssr,1,all_miou,72.5445889855498,percent
+cohort 1,12405,lowrank_ssr,1,new_miou,33.59149941993715,percent
+cohort 1,12405,lowrank_ssr,1,old_boundary_iou,34.768123918127266,percent
+cohort 1,12405,lowrank_ssr,1,old_boundary_margin,3.2774689197540283,logit
+cohort 1,12405,lowrank_ssr,1,old_miou,74.65291145822084,percent
+cohort 1,12405,lowrank_ssr,10,all_miou,15.510869889546031,percent
+cohort 1,12405,lowrank_ssr,10,new_miou,1.1523279858077988,percent
+cohort 1,12405,lowrank_ssr,10,old_boundary_iou,6.81558007388827,percent
+cohort 1,12405,lowrank_ssr,10,old_boundary_margin,5.473282814025879,logit
+cohort 1,12405,lowrank_ssr,10,old_miou,17.082944194455727,percent
+cohort 1,12405,lowrank_ssr,2,all_miou,65.98393504530064,percent
+cohort 1,12405,lowrank_ssr,2,new_miou,61.05976606986802,percent
+cohort 1,12405,lowrank_ssr,2,old_boundary_iou,34.30048038478171,percent
+cohort 1,12405,lowrank_ssr,2,old_boundary_margin,2.9316036701202393,logit
+cohort 1,12405,lowrank_ssr,2,old_miou,65.66974456154985,percent
+cohort 1,12405,lowrank_ssr,3,all_miou,53.21872952043615,percent
+cohort 1,12405,lowrank_ssr,3,new_miou,18.82256037861218,percent
+cohort 1,12405,lowrank_ssr,3,old_boundary_iou,29.09395254985774,percent
+cohort 1,12405,lowrank_ssr,3,old_boundary_margin,3.3183839321136475,logit
+cohort 1,12405,lowrank_ssr,3,old_miou,54.177520247850175,percent
+cohort 1,12405,lowrank_ssr,4,all_miou,46.835566624409516,percent
+cohort 1,12405,lowrank_ssr,4,new_miou,29.88509022288698,percent
+cohort 1,12405,lowrank_ssr,4,old_boundary_iou,25.361380753494544,percent
+cohort 1,12405,lowrank_ssr,4,old_boundary_margin,2.125716209411621,logit
+cohort 1,12405,lowrank_ssr,4,old_miou,46.29735180497291,percent
+cohort 1,12405,lowrank_ssr,5,all_miou,45.43862687179288,percent
+cohort 1,12405,lowrank_ssr,5,new_miou,67.64699925043223,percent
+cohort 1,12405,lowrank_ssr,5,old_boundary_iou,23.439399376949517,percent
+cohort 1,12405,lowrank_ssr,5,old_boundary_margin,1.3097081184387207,logit
+cohort 1,12405,lowrank_ssr,5,old_miou,42.23285048597468,percent
+cohort 1,12405,lowrank_ssr,6,all_miou,38.71634124985782,percent
+cohort 1,12405,lowrank_ssr,6,new_miou,14.932817624385297,percent
+cohort 1,12405,lowrank_ssr,6,old_boundary_iou,22.62476081618419,percent
+cohort 1,12405,lowrank_ssr,6,old_boundary_margin,8.7162446975708,logit
+cohort 1,12405,lowrank_ssr,6,old_miou,39.02392908213295,percent
+cohort 1,12405,lowrank_ssr,7,all_miou,32.17566870147811,percent
+cohort 1,12405,lowrank_ssr,7,new_miou,11.415582365013766,percent
+cohort 1,12405,lowrank_ssr,7,old_boundary_iou,17.902948200731824,percent
+cohort 1,12405,lowrank_ssr,7,old_boundary_margin,5.406552314758301,logit
+cohort 1,12405,lowrank_ssr,7,old_miou,32.389932885766385,percent
+cohort 1,12405,lowrank_ssr,8,all_miou,28.125537233755082,percent
+cohort 1,12405,lowrank_ssr,8,new_miou,5.721200807600721,percent
+cohort 1,12405,lowrank_ssr,8,old_boundary_iou,9.522832036424738,percent
+cohort 1,12405,lowrank_ssr,8,old_boundary_margin,3.4767606258392334,logit
+cohort 1,12405,lowrank_ssr,8,old_miou,29.07638572987293,percent
+cohort 1,12405,lowrank_ssr,9,all_miou,18.34080468584471,percent
+cohort 1,12405,lowrank_ssr,9,new_miou,11.590208467541538,percent
+cohort 1,12405,lowrank_ssr,9,old_boundary_iou,7.231670541646773,percent
+cohort 1,12405,lowrank_ssr,9,old_boundary_margin,2.741131067276001,logit
+cohort 1,12405,lowrank_ssr,9,old_miou,18.0446554902675,percent
+cohort 1,12406,lowrank,1,all_miou,73.51258496945148,percent
+cohort 1,12406,lowrank,1,new_miou,32.402651249797756,percent
+cohort 1,12406,lowrank,1,old_boundary_iou,35.844870091661946,percent
+cohort 1,12406,lowrank,1,old_boundary_margin,3.1911227703094482,logit
+cohort 1,12406,lowrank,1,old_miou,75.91022991264855,percent
+cohort 1,12406,lowrank,10,all_miou,18.97749098819243,percent
+cohort 1,12406,lowrank,10,new_miou,1.3709798318479303,percent
+cohort 1,12406,lowrank,10,old_boundary_iou,8.017031094509756,percent
+cohort 1,12406,lowrank,10,old_boundary_margin,4.923118591308594,logit
+cohort 1,12406,lowrank,10,old_miou,20.902964785273316,percent
+cohort 1,12406,lowrank,2,all_miou,67.26828599823894,percent
+cohort 1,12406,lowrank,2,new_miou,65.57467312770041,percent
+cohort 1,12406,lowrank,2,old_boundary_iou,34.7180263310588,percent
+cohort 1,12406,lowrank,2,old_boundary_margin,3.4064743518829346,logit
+cohort 1,12406,lowrank,2,old_miou,66.56643313226856,percent
+cohort 1,12406,lowrank,3,all_miou,51.74960029227187,percent
+cohort 1,12406,lowrank,3,new_miou,21.00472732390472,percent
+cohort 1,12406,lowrank,3,old_boundary_iou,31.221290288495002,percent
+cohort 1,12406,lowrank,3,old_boundary_margin,2.832118034362793,logit
+cohort 1,12406,lowrank,3,old_miou,52.570409064404366,percent
+cohort 1,12406,lowrank,4,all_miou,43.71368735318144,percent
+cohort 1,12406,lowrank,4,new_miou,26.351592463841566,percent
+cohort 1,12406,lowrank,4,old_boundary_iou,28.413179340798568,percent
+cohort 1,12406,lowrank,4,old_boundary_margin,1.7027705907821655,logit
+cohort 1,12406,lowrank,4,old_miou,43.57337117381453,percent
+cohort 1,12406,lowrank,5,all_miou,43.57387128332087,percent
+cohort 1,12406,lowrank,5,new_miou,69.13139440205184,percent
+cohort 1,12406,lowrank,5,old_boundary_iou,23.98456701767482,percent
+cohort 1,12406,lowrank,5,old_boundary_margin,1.6013060808181763,logit
+cohort 1,12406,lowrank,5,old_miou,40.57384693021325,percent
+cohort 1,12406,lowrank,6,all_miou,37.364619622603406,percent
+cohort 1,12406,lowrank,6,new_miou,10.137106726590131,percent
+cohort 1,12406,lowrank,6,old_boundary_iou,24.002244022790872,percent
+cohort 1,12406,lowrank,6,old_boundary_margin,7.964346885681152,logit
+cohort 1,12406,lowrank,6,old_miou,38.24337229046159,percent
+cohort 1,12406,lowrank,7,all_miou,33.38504453477296,percent
+cohort 1,12406,lowrank,7,new_miou,8.811035701563377,percent
+cohort 1,12406,lowrank,7,old_boundary_iou,18.98852585800689,percent
+cohort 1,12406,lowrank,7,old_boundary_margin,4.850505828857422,logit
+cohort 1,12406,lowrank,7,old_miou,34.75196447046307,percent
+cohort 1,12406,lowrank,8,all_miou,28.959815645478564,percent
+cohort 1,12406,lowrank,8,new_miou,4.713185929668734,percent
+cohort 1,12406,lowrank,8,old_boundary_iou,15.634486441324071,percent
+cohort 1,12406,lowrank,8,old_boundary_margin,3.808864116668701,logit
+cohort 1,12406,lowrank,8,old_miou,30.99933742400875,percent
+cohort 1,12406,lowrank,9,all_miou,20.594793791271766,percent
+cohort 1,12406,lowrank,9,new_miou,11.586255998093131,percent
+cohort 1,12406,lowrank,9,old_boundary_iou,8.652052008201265,percent
+cohort 1,12406,lowrank,9,old_boundary_margin,1.826167106628418,logit
+cohort 1,12406,lowrank,9,old_miou,21.562943845792866,percent
+cohort 1,12406,lowrank_ssr,1,all_miou,73.50702384870064,percent
+cohort 1,12406,lowrank_ssr,1,new_miou,32.367837583268596,percent
+cohort 1,12406,lowrank_ssr,1,old_boundary_iou,35.76913734775356,percent
+cohort 1,12406,lowrank_ssr,1,old_boundary_margin,3.1933701038360596,logit
+cohort 1,12406,lowrank_ssr,1,old_miou,75.90757039200304,percent
+cohort 1,12406,lowrank_ssr,10,all_miou,19.30488324822234,percent
+cohort 1,12406,lowrank_ssr,10,new_miou,1.2734103321955217,percent
+cohort 1,12406,lowrank_ssr,10,old_boundary_iou,7.989203034283546,percent
+cohort 1,12406,lowrank_ssr,10,old_boundary_margin,4.863919734954834,logit
+cohort 1,12406,lowrank_ssr,10,old_miou,21.269954625288083,percent
+cohort 1,12406,lowrank_ssr,2,all_miou,66.15589060352505,percent
+cohort 1,12406,lowrank_ssr,2,new_miou,61.53486026919476,percent
+cohort 1,12406,lowrank_ssr,2,old_boundary_iou,33.63748364311782,percent
+cohort 1,12406,lowrank_ssr,2,old_boundary_margin,3.163865804672241,logit
+cohort 1,12406,lowrank_ssr,2,old_miou,65.96998239889881,percent
+cohort 1,12406,lowrank_ssr,3,all_miou,52.388890909431254,percent
+cohort 1,12406,lowrank_ssr,3,new_miou,23.58515369945967,percent
+cohort 1,12406,lowrank_ssr,3,old_boundary_iou,27.115441397966322,percent
+cohort 1,12406,lowrank_ssr,3,old_boundary_margin,3.565216541290283,logit
+cohort 1,12406,lowrank_ssr,3,old_miou,52.87674345876317,percent
+cohort 1,12406,lowrank_ssr,4,all_miou,46.296067269690624,percent
+cohort 1,12406,lowrank_ssr,4,new_miou,29.939311954262905,percent
+cohort 1,12406,lowrank_ssr,4,old_boundary_iou,28.21826385377549,percent
+cohort 1,12406,lowrank_ssr,4,old_boundary_margin,1.985939860343933,logit
+cohort 1,12406,lowrank_ssr,4,old_miou,45.79478011172204,percent
+cohort 1,12406,lowrank_ssr,5,all_miou,45.669911402611845,percent
+cohort 1,12406,lowrank_ssr,5,new_miou,69.47349604595924,percent
+cohort 1,12406,lowrank_ssr,5,old_boundary_iou,24.962319650739932,percent
+cohort 1,12406,lowrank_ssr,5,old_boundary_margin,1.736311912536621,logit
+cohort 1,12406,lowrank_ssr,5,old_miou,42.49297517321282,percent
+cohort 1,12406,lowrank_ssr,6,all_miou,39.04231138700966,percent
+cohort 1,12406,lowrank_ssr,6,new_miou,14.30906557597837,percent
+cohort 1,12406,lowrank_ssr,6,old_boundary_iou,23.920486519705037,percent
+cohort 1,12406,lowrank_ssr,6,old_boundary_margin,8.279622077941895,logit
+cohort 1,12406,lowrank_ssr,6,old_miou,39.35466161621016,percent
+cohort 1,12406,lowrank_ssr,7,all_miou,35.362072605790054,percent
+cohort 1,12406,lowrank_ssr,7,new_miou,11.256020761962098,percent
+cohort 1,12406,lowrank_ssr,7,old_boundary_iou,19.982405619630807,percent
+cohort 1,12406,lowrank_ssr,7,old_boundary_margin,5.152541160583496,logit
+cohort 1,12406,lowrank_ssr,7,old_miou,36.347306320311596,percent
+cohort 1,12406,lowrank_ssr,8,all_miou,30.69854326893962,percent
+cohort 1,12406,lowrank_ssr,8,new_miou,5.576416264088702,percent
+cohort 1,12406,lowrank_ssr,8,old_boundary_iou,15.89016751223882,percent
+cohort 1,12406,lowrank_ssr,8,old_boundary_margin,3.675915002822876,logit
+cohort 1,12406,lowrank_ssr,8,old_miou,32.303061279199994,percent
+cohort 1,12406,lowrank_ssr,9,all_miou,21.942367343846108,percent
+cohort 1,12406,lowrank_ssr,9,new_miou,11.242943429279585,percent
+cohort 1,12406,lowrank_ssr,9,old_boundary_iou,9.332303311223507,percent
+cohort 1,12406,lowrank_ssr,9,old_boundary_margin,1.8505945205688477,logit
+cohort 1,12406,lowrank_ssr,9,old_miou,22.38762048882166,percent
+cohort 1,12407,lowrank,1,all_miou,72.87773554407502,percent
+cohort 1,12407,lowrank,1,new_miou,34.56812031867638,percent
+cohort 1,12407,lowrank,1,old_boundary_iou,33.15885343763251,percent
+cohort 1,12407,lowrank,1,old_boundary_margin,3.2961935997009277,logit
+cohort 1,12407,lowrank,1,old_miou,74.9450545362172,percent
+cohort 1,12407,lowrank,10,all_miou,14.322523010109043,percent
+cohort 1,12407,lowrank,10,new_miou,1.2285932264566104,percent
+cohort 1,12407,lowrank,10,old_boundary_iou,6.693296723706636,percent
+cohort 1,12407,lowrank,10,old_boundary_margin,4.856602668762207,logit
+cohort 1,12407,lowrank,10,old_miou,15.732933900101475,percent
+cohort 1,12407,lowrank,2,all_miou,67.47080134870458,percent
+cohort 1,12407,lowrank,2,new_miou,63.81477210065578,percent
+cohort 1,12407,lowrank,2,old_boundary_iou,34.88609815387664,percent
+cohort 1,12407,lowrank,2,old_boundary_margin,3.495819330215454,logit
+cohort 1,12407,lowrank,2,old_miou,66.61161908958856,percent
+cohort 1,12407,lowrank,3,all_miou,53.25589943034028,percent
+cohort 1,12407,lowrank,3,new_miou,21.506209139051826,percent
+cohort 1,12407,lowrank,3,old_boundary_iou,30.14286759093458,percent
+cohort 1,12407,lowrank,3,old_boundary_margin,2.8708701133728027,logit
+cohort 1,12407,lowrank,3,old_miou,53.573669783453425,percent
+cohort 1,12407,lowrank,4,all_miou,45.424076166773716,percent
+cohort 1,12407,lowrank,4,new_miou,26.24405374082309,percent
+cohort 1,12407,lowrank,4,old_boundary_iou,27.65012895297948,percent
+cohort 1,12407,lowrank,4,old_boundary_margin,1.7543094158172607,logit
+cohort 1,12407,lowrank,4,old_miou,44.69935166898969,percent
+cohort 1,12407,lowrank,5,all_miou,43.63619297022356,percent
+cohort 1,12407,lowrank,5,new_miou,65.28235027212382,percent
+cohort 1,12407,lowrank,5,old_boundary_iou,25.946320444675138,percent
+cohort 1,12407,lowrank,5,old_boundary_margin,1.6320915222167969,logit
+cohort 1,12407,lowrank,5,old_miou,40.205639862605395,percent
+cohort 1,12407,lowrank,6,all_miou,39.02918236762643,percent
+cohort 1,12407,lowrank,6,new_miou,11.834244610686339,percent
+cohort 1,12407,lowrank,6,old_boundary_iou,25.226147424231755,percent
+cohort 1,12407,lowrank,6,old_boundary_margin,7.206650733947754,logit
+cohort 1,12407,lowrank,6,old_miou,39.35823871504401,percent
+cohort 1,12407,lowrank,7,all_miou,34.20090964856006,percent
+cohort 1,12407,lowrank,7,new_miou,11.784850453748916,percent
+cohort 1,12407,lowrank,7,old_boundary_iou,20.240366936093423,percent
+cohort 1,12407,lowrank,7,old_boundary_margin,4.8870849609375,logit
+cohort 1,12407,lowrank,7,old_miou,34.51471651362446,percent
+cohort 1,12407,lowrank,8,all_miou,29.189858557809075,percent
+cohort 1,12407,lowrank,8,new_miou,5.94057376439142,percent
+cohort 1,12407,lowrank,8,old_boundary_iou,13.892998067988097,percent
+cohort 1,12407,lowrank,8,old_boundary_margin,3.325061559677124,logit
+cohort 1,12407,lowrank,8,old_miou,30.161154990574957,percent
+cohort 1,12407,lowrank,9,all_miou,17.279431708638292,percent
+cohort 1,12407,lowrank,9,new_miou,11.621194092983945,percent
+cohort 1,12407,lowrank,9,old_boundary_iou,6.3997694384789,percent
+cohort 1,12407,lowrank,9,old_boundary_margin,2.055079698562622,logit
+cohort 1,12407,lowrank,9,old_miou,16.709616246996237,percent
+cohort 1,12407,lowrank_ssr,1,all_miou,72.93836972798276,percent
+cohort 1,12407,lowrank_ssr,1,new_miou,34.55729350345685,percent
+cohort 1,12407,lowrank_ssr,1,old_boundary_iou,32.60961557292475,percent
+cohort 1,12407,lowrank_ssr,1,old_boundary_margin,3.2925331592559814,logit
+cohort 1,12407,lowrank_ssr,1,old_miou,75.01645829614111,percent
+cohort 1,12407,lowrank_ssr,10,all_miou,15.664840931320207,percent
+cohort 1,12407,lowrank_ssr,10,new_miou,1.5490833966415254,percent
+cohort 1,12407,lowrank_ssr,10,old_boundary_iou,7.032835084743681,percent
+cohort 1,12407,lowrank_ssr,10,old_boundary_margin,4.570514678955078,logit
+cohort 1,12407,lowrank_ssr,10,old_miou,16.932893580126624,percent
+cohort 1,12407,lowrank_ssr,2,all_miou,66.13800851459204,percent
+cohort 1,12407,lowrank_ssr,2,new_miou,60.59477069828142,percent
+cohort 1,12407,lowrank_ssr,2,old_boundary_iou,34.807023471086616,percent
+cohort 1,12407,lowrank_ssr,2,old_boundary_margin,3.281280517578125,logit
+cohort 1,12407,lowrank_ssr,2,old_miou,65.66953719582362,percent
+cohort 1,12407,lowrank_ssr,3,all_miou,53.871817383864006,percent
+cohort 1,12407,lowrank_ssr,3,new_miou,21.746012051622447,percent
+cohort 1,12407,lowrank_ssr,3,old_boundary_iou,28.523401533943854,percent
+cohort 1,12407,lowrank_ssr,3,old_boundary_margin,3.268125057220459,logit
+cohort 1,12407,lowrank_ssr,3,old_miou,54.04790713220514,percent
+cohort 1,12407,lowrank_ssr,4,all_miou,47.094866979612156,percent
+cohort 1,12407,lowrank_ssr,4,new_miou,28.22039925929678,percent
+cohort 1,12407,lowrank_ssr,4,old_boundary_iou,26.15614320872571,percent
+cohort 1,12407,lowrank_ssr,4,old_boundary_margin,1.9705418348312378,logit
+cohort 1,12407,lowrank_ssr,4,old_miou,46.203757638351036,percent
+cohort 1,12407,lowrank_ssr,5,all_miou,45.34027344943786,percent
+cohort 1,12407,lowrank_ssr,5,new_miou,65.19178646036848,percent
+cohort 1,12407,lowrank_ssr,5,old_boundary_iou,25.916151740483507,percent
+cohort 1,12407,lowrank_ssr,5,old_boundary_margin,1.7991266250610352,logit
+cohort 1,12407,lowrank_ssr,5,old_miou,41.84418289778224,percent
+cohort 1,12407,lowrank_ssr,6,all_miou,41.26768648526355,percent
+cohort 1,12407,lowrank_ssr,6,new_miou,19.098764319855157,percent
+cohort 1,12407,lowrank_ssr,6,old_boundary_iou,25.365430762049268,percent
+cohort 1,12407,lowrank_ssr,6,old_boundary_margin,7.424009799957275,logit
+cohort 1,12407,lowrank_ssr,6,old_miou,40.982924342056506,percent
+cohort 1,12407,lowrank_ssr,7,all_miou,35.26938309864643,percent
+cohort 1,12407,lowrank_ssr,7,new_miou,12.021459162966423,percent
+cohort 1,12407,lowrank_ssr,7,old_boundary_iou,20.31211028058216,percent
+cohort 1,12407,lowrank_ssr,7,old_boundary_margin,4.9826741218566895,logit
+cohort 1,12407,lowrank_ssr,7,old_miou,35.23574624421545,percent
+cohort 1,12407,lowrank_ssr,8,all_miou,30.007530280233414,percent
+cohort 1,12407,lowrank_ssr,8,new_miou,7.127117007386838,percent
+cohort 1,12407,lowrank_ssr,8,old_boundary_iou,14.148838419998079,percent
+cohort 1,12407,lowrank_ssr,8,old_boundary_margin,3.3868014812469482,logit
+cohort 1,12407,lowrank_ssr,8,old_miou,30.581201559301547,percent
+cohort 1,12407,lowrank_ssr,9,all_miou,19.166760847182136,percent
+cohort 1,12407,lowrank_ssr,9,new_miou,11.255794467406094,percent
+cohort 1,12407,lowrank_ssr,9,old_boundary_iou,7.979644392256699,percent
+cohort 1,12407,lowrank_ssr,9,old_boundary_margin,2.004213809967041,logit
+cohort 1,12407,lowrank_ssr,9,old_miou,18.483679007388414,percent
+cohort 1,12408,lowrank,1,all_miou,73.01723495548153,percent
+cohort 1,12408,lowrank,1,new_miou,37.52863318245718,percent
+cohort 1,12408,lowrank,1,old_boundary_iou,36.91124573516326,percent
+cohort 1,12408,lowrank,1,old_boundary_margin,3.505255937576294,logit
+cohort 1,12408,lowrank,1,old_miou,74.76537412688909,percent
+cohort 1,12408,lowrank,10,all_miou,14.778425039642261,percent
+cohort 1,12408,lowrank,10,new_miou,1.137290154577159,percent
+cohort 1,12408,lowrank,10,old_boundary_iou,8.168559333866344,percent
+cohort 1,12408,lowrank,10,old_boundary_margin,5.852133274078369,logit
+cohort 1,12408,lowrank,10,old_miou,15.903734852010073,percent
+cohort 1,12408,lowrank,2,all_miou,68.03367700964884,percent
+cohort 1,12408,lowrank,2,new_miou,67.45152630439287,percent
+cohort 1,12408,lowrank,2,old_boundary_iou,35.62714974326391,percent
+cohort 1,12408,lowrank,2,old_boundary_margin,3.684311866760254,logit
+cohort 1,12408,lowrank,2,old_miou,66.86963367180692,percent
+cohort 1,12408,lowrank,3,all_miou,54.372795713711476,percent
+cohort 1,12408,lowrank,3,new_miou,26.623736838509572,percent
+cohort 1,12408,lowrank,3,old_boundary_iou,30.971133412264123,percent
+cohort 1,12408,lowrank,3,old_boundary_margin,3.234002113342285,logit
+cohort 1,12408,lowrank,3,old_miou,54.672757037233566,percent
+cohort 1,12408,lowrank,4,all_miou,45.0586414864996,percent
+cohort 1,12408,lowrank,4,new_miou,26.83969312302969,percent
+cohort 1,12408,lowrank,4,old_boundary_iou,25.82917608044273,percent
+cohort 1,12408,lowrank,4,old_boundary_margin,2.0392417907714844,logit
+cohort 1,12408,lowrank,4,old_miou,44.45032433406467,percent
+cohort 1,12408,lowrank,5,all_miou,42.46359628168002,percent
+cohort 1,12408,lowrank,5,new_miou,68.1781287041418,percent
+cohort 1,12408,lowrank,5,old_boundary_iou,22.37701566512409,percent
+cohort 1,12408,lowrank,5,old_boundary_margin,1.855242371559143,logit
+cohort 1,12408,lowrank,5,old_miou,38.98099621360374,percent
+cohort 1,12408,lowrank,6,all_miou,36.55741083864984,percent
+cohort 1,12408,lowrank,6,new_miou,15.553166031992069,percent
+cohort 1,12408,lowrank,6,old_boundary_iou,22.087796949108387,percent
+cohort 1,12408,lowrank,6,old_boundary_margin,7.556886672973633,logit
+cohort 1,12408,lowrank,6,old_miou,36.584736869366104,percent
+cohort 1,12408,lowrank,7,all_miou,29.11358171732889,percent
+cohort 1,12408,lowrank,7,new_miou,6.8201730237748075,percent
+cohort 1,12408,lowrank,7,old_boundary_iou,19.838278821530807,percent
+cohort 1,12408,lowrank,7,old_boundary_margin,4.82925271987915,logit
+cohort 1,12408,lowrank,7,old_miou,29.946819074334503,percent
+cohort 1,12408,lowrank,8,all_miou,28.973313473019136,percent
+cohort 1,12408,lowrank,8,new_miou,9.431432711664955,percent
+cohort 1,12408,lowrank,8,old_boundary_iou,14.421062793898098,percent
+cohort 1,12408,lowrank,8,old_boundary_margin,3.6808722019195557,logit
+cohort 1,12408,lowrank,8,old_miou,29.104133869587205,percent
+cohort 1,12408,lowrank,9,all_miou,19.87771117361204,percent
+cohort 1,12408,lowrank,9,new_miou,13.791689934206827,percent
+cohort 1,12408,lowrank,9,old_boundary_iou,7.621200622277644,percent
+cohort 1,12408,lowrank,9,old_boundary_margin,2.9364840984344482,logit
+cohort 1,12408,lowrank,9,old_miou,18.89644297272153,percent
+cohort 1,12408,lowrank_ssr,1,all_miou,73.03055063706321,percent
+cohort 1,12408,lowrank_ssr,1,new_miou,37.52447762759209,percent
+cohort 1,12408,lowrank_ssr,1,old_boundary_iou,36.906842734992296,percent
+cohort 1,12408,lowrank_ssr,1,old_boundary_margin,3.510033369064331,logit
+cohort 1,12408,lowrank_ssr,1,old_miou,74.78142957697524,percent
+cohort 1,12408,lowrank_ssr,10,all_miou,16.015739922677778,percent
+cohort 1,12408,lowrank_ssr,10,new_miou,2.0289090218338375,percent
+cohort 1,12408,lowrank_ssr,10,old_boundary_iou,8.275859442024482,percent
+cohort 1,12408,lowrank_ssr,10,old_boundary_margin,5.4402174949646,logit
+cohort 1,12408,lowrank_ssr,10,old_miou,16.20236314474621,percent
+cohort 1,12408,lowrank_ssr,2,all_miou,67.09107119564679,percent
+cohort 1,12408,lowrank_ssr,2,new_miou,63.78825157159314,percent
+cohort 1,12408,lowrank_ssr,2,old_boundary_iou,35.46059615013813,percent
+cohort 1,12408,lowrank_ssr,2,old_boundary_margin,3.506392240524292,logit
+cohort 1,12408,lowrank_ssr,2,old_miou,66.27876554138008,percent
+cohort 1,12408,lowrank_ssr,3,all_miou,56.56248184093757,percent
+cohort 1,12408,lowrank_ssr,3,new_miou,28.207465425054636,percent
+cohort 1,12408,lowrank_ssr,3,old_boundary_iou,30.568071364982792,percent
+cohort 1,12408,lowrank_ssr,3,old_boundary_margin,3.814046621322632,logit
+cohort 1,12408,lowrank_ssr,3,old_miou,56.85793293294004,percent
+cohort 1,12408,lowrank_ssr,4,all_miou,47.13715251237442,percent
+cohort 1,12408,lowrank_ssr,4,new_miou,27.75583424168438,percent
+cohort 1,12408,lowrank_ssr,4,old_boundary_iou,26.330059062107548,percent
+cohort 1,12408,lowrank_ssr,4,old_boundary_margin,2.1529340744018555,logit
+cohort 1,12408,lowrank_ssr,4,old_miou,46.58982677709096,percent
+cohort 1,12408,lowrank_ssr,5,all_miou,44.15427199630228,percent
+cohort 1,12408,lowrank_ssr,5,new_miou,68.39134360186819,percent
+cohort 1,12408,lowrank_ssr,5,old_boundary_iou,22.84075415120952,percent
+cohort 1,12408,lowrank_ssr,5,old_boundary_margin,2.005302667617798,logit
+cohort 1,12408,lowrank_ssr,5,old_miou,40.68571029533836,percent
+cohort 1,12408,lowrank_ssr,6,all_miou,38.342652897762704,percent
+cohort 1,12408,lowrank_ssr,6,new_miou,21.29771508984039,percent
+cohort 1,12408,lowrank_ssr,6,old_boundary_iou,22.51590891485647,percent
+cohort 1,12408,lowrank_ssr,6,old_boundary_margin,7.7173752784729,logit
+cohort 1,12408,lowrank_ssr,6,old_miou,37.95125222969645,percent
+cohort 1,12408,lowrank_ssr,7,all_miou,28.962887683418,percent
+cohort 1,12408,lowrank_ssr,7,new_miou,7.879164385539735,percent
+cohort 1,12408,lowrank_ssr,7,old_boundary_iou,20.97625954450179,percent
+cohort 1,12408,lowrank_ssr,7,old_boundary_margin,5.126661777496338,logit
+cohort 1,12408,lowrank_ssr,7,old_miou,29.453969508695828,percent
+cohort 1,12408,lowrank_ssr,8,all_miou,30.488876796953544,percent
+cohort 1,12408,lowrank_ssr,8,new_miou,10.59315956380396,percent
+cohort 1,12408,lowrank_ssr,8,old_boundary_iou,14.606375815858797,percent
+cohort 1,12408,lowrank_ssr,8,old_boundary_margin,3.737870454788208,logit
+cohort 1,12408,lowrank_ssr,8,old_miou,30.373676455315497,percent
+cohort 1,12408,lowrank_ssr,9,all_miou,20.449582442358576,percent
+cohort 1,12408,lowrank_ssr,9,new_miou,13.195699093717971,percent
+cohort 1,12408,lowrank_ssr,9,old_boundary_iou,9.125004771634876,percent
+cohort 1,12408,lowrank_ssr,9,old_boundary_margin,2.948607921600342,logit
+cohort 1,12408,lowrank_ssr,9,old_miou,19.082760098282623,percent
+cohort 1,12409,lowrank,1,all_miou,72.8329457675526,percent
+cohort 1,12409,lowrank,1,new_miou,34.730895629483285,percent
+cohort 1,12409,lowrank,1,old_boundary_iou,35.947547262787396,percent
+cohort 1,12409,lowrank,1,old_boundary_margin,3.003385066986084,logit
+cohort 1,12409,lowrank,1,old_miou,74.8490291115396,percent
+cohort 1,12409,lowrank,10,all_miou,16.9027862982352,percent
+cohort 1,12409,lowrank,10,new_miou,1.2172580823269974,percent
+cohort 1,12409,lowrank,10,old_boundary_iou,6.966099573251526,percent
+cohort 1,12409,lowrank,10,old_boundary_margin,5.360335826873779,logit
+cohort 1,12409,lowrank,10,old_miou,18.617960746348007,percent
+cohort 1,12409,lowrank,2,all_miou,67.30021208380121,percent
+cohort 1,12409,lowrank,2,new_miou,65.74677083403807,percent
+cohort 1,12409,lowrank,2,old_boundary_iou,31.98486718809844,percent
+cohort 1,12409,lowrank,2,old_boundary_margin,3.350552558898926,logit
+cohort 1,12409,lowrank,2,old_miou,66.32994879179348,percent
+cohort 1,12409,lowrank,3,all_miou,53.58709980398246,percent
+cohort 1,12409,lowrank,3,new_miou,23.715668549946127,percent
+cohort 1,12409,lowrank,3,old_boundary_iou,30.435691906104378,percent
+cohort 1,12409,lowrank,3,old_boundary_margin,2.805070161819458,logit
+cohort 1,12409,lowrank,3,old_miou,54.593921300692394,percent
+cohort 1,12409,lowrank,4,all_miou,45.40486095593211,percent
+cohort 1,12409,lowrank,4,new_miou,28.341163752517268,percent
+cohort 1,12409,lowrank,4,old_boundary_iou,24.309206596561193,percent
+cohort 1,12409,lowrank,4,old_boundary_margin,2.3232996463775635,logit
+cohort 1,12409,lowrank,4,old_miou,45.36168662295451,percent
+cohort 1,12409,lowrank,5,all_miou,43.93621666340216,percent
+cohort 1,12409,lowrank,5,new_miou,66.83237973353849,percent
+cohort 1,12409,lowrank,5,old_boundary_iou,21.867218016214636,percent
+cohort 1,12409,lowrank,5,old_boundary_margin,1.5348230600357056,logit
+cohort 1,12409,lowrank,5,old_miou,41.31309348535108,percent
+cohort 1,12409,lowrank,6,all_miou,36.27724715108955,percent
+cohort 1,12409,lowrank,6,new_miou,5.654516787751726,percent
+cohort 1,12409,lowrank,6,old_boundary_iou,23.39328540379613,percent
+cohort 1,12409,lowrank,6,old_boundary_margin,8.019397735595703,logit
+cohort 1,12409,lowrank,6,old_miou,37.620631275905495,percent
+cohort 1,12409,lowrank,7,all_miou,31.097254843800698,percent
+cohort 1,12409,lowrank,7,new_miou,8.107271087283761,percent
+cohort 1,12409,lowrank,7,old_boundary_iou,16.19404889274837,percent
+cohort 1,12409,lowrank,7,old_boundary_margin,4.922093391418457,logit
+cohort 1,12409,lowrank,7,old_miou,32.338136303733286,percent
+cohort 1,12409,lowrank,8,all_miou,28.58486135826072,percent
+cohort 1,12409,lowrank,8,new_miou,5.38761336497437,percent
+cohort 1,12409,lowrank,8,old_boundary_iou,12.345815566383251,percent
+cohort 1,12409,lowrank,8,old_boundary_margin,3.089641571044922,logit
+cohort 1,12409,lowrank,8,old_miou,29.755369966007763,percent
+cohort 1,12409,lowrank,9,all_miou,19.505498258673644,percent
+cohort 1,12409,lowrank,9,new_miou,14.472211871379587,percent
+cohort 1,12409,lowrank,9,old_boundary_iou,8.35114857087586,percent
+cohort 1,12409,lowrank,9,old_boundary_margin,2.800656318664551,logit
+cohort 1,12409,lowrank,9,old_miou,19.287067688745747,percent
+cohort 1,12409,lowrank_ssr,1,all_miou,72.83414455752893,percent
+cohort 1,12409,lowrank_ssr,1,new_miou,34.69151356226563,percent
+cohort 1,12409,lowrank_ssr,1,old_boundary_iou,36.01312127607433,percent
+cohort 1,12409,lowrank_ssr,1,old_boundary_margin,2.994359016418457,logit
+cohort 1,12409,lowrank_ssr,1,old_miou,74.85466114332863,percent
+cohort 1,12409,lowrank_ssr,10,all_miou,18.460468856308715,percent
+cohort 1,12409,lowrank_ssr,10,new_miou,1.3954705322561383,percent
+cohort 1,12409,lowrank_ssr,10,old_boundary_iou,9.982483062252944,percent
+cohort 1,12409,lowrank_ssr,10,old_boundary_margin,5.014523983001709,logit
+cohort 1,12409,lowrank_ssr,10,old_miou,20.330217838071626,percent
+cohort 1,12409,lowrank_ssr,2,all_miou,66.45768751634375,percent
+cohort 1,12409,lowrank_ssr,2,new_miou,62.6634515732896,percent
+cohort 1,12409,lowrank_ssr,2,old_boundary_iou,30.90657955395717,percent
+cohort 1,12409,lowrank_ssr,2,old_boundary_margin,3.0995495319366455,logit
+cohort 1,12409,lowrank_ssr,2,old_miou,65.8769291163302,percent
+cohort 1,12409,lowrank_ssr,3,all_miou,54.78129032619059,percent
+cohort 1,12409,lowrank_ssr,3,new_miou,25.462251595353315,percent
+cohort 1,12409,lowrank_ssr,3,old_boundary_iou,30.69324947420022,percent
+cohort 1,12409,lowrank_ssr,3,old_boundary_margin,3.4596316814422607,logit
+cohort 1,12409,lowrank_ssr,3,old_miou,55.60539764369786,percent
+cohort 1,12409,lowrank_ssr,4,all_miou,47.408975745084916,percent
+cohort 1,12409,lowrank_ssr,4,new_miou,27.90723026915603,percent
+cohort 1,12409,lowrank_ssr,4,old_boundary_iou,25.825485352808553,percent
+cohort 1,12409,lowrank_ssr,4,old_boundary_margin,2.4458088874816895,logit
+cohort 1,12409,lowrank_ssr,4,old_miou,47.52836760532869,percent
+cohort 1,12409,lowrank_ssr,5,all_miou,45.834234103633875,percent
+cohort 1,12409,lowrank_ssr,5,new_miou,66.7475243237329,percent
+cohort 1,12409,lowrank_ssr,5,old_boundary_iou,21.92865538170992,percent
+cohort 1,12409,lowrank_ssr,5,old_boundary_margin,1.7456918954849243,logit
+cohort 1,12409,lowrank_ssr,5,old_miou,43.295886848126806,percent
+cohort 1,12409,lowrank_ssr,6,all_miou,38.114324013542436,percent
+cohort 1,12409,lowrank_ssr,6,new_miou,7.373812564157564,percent
+cohort 1,12409,lowrank_ssr,6,old_boundary_iou,23.61335657175117,percent
+cohort 1,12409,lowrank_ssr,6,old_boundary_margin,8.018437385559082,logit
+cohort 1,12409,lowrank_ssr,6,old_miou,39.377117722548114,percent
+cohort 1,12409,lowrank_ssr,7,all_miou,32.241891216737855,percent
+cohort 1,12409,lowrank_ssr,7,new_miou,8.397501869489481,percent
+cohort 1,12409,lowrank_ssr,7,old_boundary_iou,15.939759072172881,percent
+cohort 1,12409,lowrank_ssr,7,old_boundary_margin,5.336105823516846,logit
+cohort 1,12409,lowrank_ssr,7,old_miou,33.516833018774,percent
+cohort 1,12409,lowrank_ssr,8,all_miou,29.237512191332826,percent
+cohort 1,12409,lowrank_ssr,8,new_miou,6.028734180009594,percent
+cohort 1,12409,lowrank_ssr,8,old_boundary_iou,11.549168016314313,percent
+cohort 1,12409,lowrank_ssr,8,old_boundary_margin,3.1881275177001953,logit
+cohort 1,12409,lowrank_ssr,8,old_miou,30.314326960709636,percent
+cohort 1,12409,lowrank_ssr,9,all_miou,21.167981265645896,percent
+cohort 1,12409,lowrank_ssr,9,new_miou,14.830822882085206,percent
+cohort 1,12409,lowrank_ssr,9,old_boundary_iou,9.903686167083706,percent
+cohort 1,12409,lowrank_ssr,9,old_boundary_margin,2.9135794639587402,logit
+cohort 1,12409,lowrank_ssr,9,old_miou,20.924381695176827,percent
+cohort 1,12410,lowrank,1,all_miou,72.28967393389175,percent
+cohort 1,12410,lowrank,1,new_miou,34.003905107479746,percent
+cohort 1,12410,lowrank,1,old_boundary_iou,35.18948672811018,percent
+cohort 1,12410,lowrank,1,old_boundary_margin,3.19870662689209,logit
+cohort 1,12410,lowrank,1,old_miou,74.34702033661394,percent
+cohort 1,12410,lowrank,10,all_miou,17.211713521317996,percent
+cohort 1,12410,lowrank,10,new_miou,1.8787618403123658,percent
+cohort 1,12410,lowrank,10,old_boundary_iou,6.27822329632709,percent
+cohort 1,12410,lowrank,10,old_boundary_margin,5.05204963684082,logit
+cohort 1,12410,lowrank,10,old_miou,18.80474942682872,percent
+cohort 1,12410,lowrank,2,all_miou,66.75048853472114,percent
+cohort 1,12410,lowrank,2,new_miou,63.20515852076045,percent
+cohort 1,12410,lowrank,2,old_boundary_iou,32.213723286528676,percent
+cohort 1,12410,lowrank,2,old_boundary_margin,3.125885486602783,logit
+cohort 1,12410,lowrank,2,old_miou,65.9147320971908,percent
+cohort 1,12410,lowrank,3,all_miou,50.861355726645854,percent
+cohort 1,12410,lowrank,3,new_miou,22.838130788049764,percent
+cohort 1,12410,lowrank,3,old_boundary_iou,30.611003492063134,percent
+cohort 1,12410,lowrank,3,old_boundary_margin,2.6375651359558105,logit
+cohort 1,12410,lowrank,3,old_miou,51.352449686356294,percent
+cohort 1,12410,lowrank,4,all_miou,42.60981943480844,percent
+cohort 1,12410,lowrank,4,new_miou,19.984554949702122,percent
+cohort 1,12410,lowrank,4,old_boundary_iou,23.50012502654929,percent
+cohort 1,12410,lowrank,4,old_boundary_margin,1.295278787612915,logit
+cohort 1,12410,lowrank,4,old_miou,42.605908375151024,percent
+cohort 1,12410,lowrank,5,all_miou,41.091042913497425,percent
+cohort 1,12410,lowrank,5,new_miou,67.12922574878822,percent
+cohort 1,12410,lowrank,5,old_boundary_iou,19.729614997989568,percent
+cohort 1,12410,lowrank,5,old_boundary_margin,1.461229920387268,logit
+cohort 1,12410,lowrank,5,old_miou,37.70266952180066,percent
+cohort 1,12410,lowrank,6,all_miou,36.509369359871556,percent
+cohort 1,12410,lowrank,6,new_miou,12.094989434356744,percent
+cohort 1,12410,lowrank,6,old_boundary_iou,17.309703726854384,percent
+cohort 1,12410,lowrank,6,old_boundary_margin,8.236771583557129,logit
+cohort 1,12410,lowrank,6,old_miou,36.97541058274139,percent
+cohort 1,12410,lowrank,7,all_miou,32.64739269588754,percent
+cohort 1,12410,lowrank,7,new_miou,10.380041258376389,percent
+cohort 1,12410,lowrank,7,old_boundary_iou,14.64315485819268,percent
+cohort 1,12410,lowrank,7,old_boundary_margin,4.7816572189331055,logit
+cohort 1,12410,lowrank,7,old_miou,33.444338457919024,percent
+cohort 1,12410,lowrank,8,all_miou,26.45738150395463,percent
+cohort 1,12410,lowrank,8,new_miou,5.047565729873822,percent
+cohort 1,12410,lowrank,8,old_boundary_iou,10.14748958399486,percent
+cohort 1,12410,lowrank,8,old_boundary_margin,3.595609426498413,logit
+cohort 1,12410,lowrank,8,old_miou,27.94371596818391,percent
+cohort 1,12410,lowrank,9,all_miou,20.313118304360305,percent
+cohort 1,12410,lowrank,9,new_miou,12.973759977699558,percent
+cohort 1,12410,lowrank,9,old_boundary_iou,7.305265172637854,percent
+cohort 1,12410,lowrank,9,old_boundary_margin,2.5226991176605225,logit
+cohort 1,12410,lowrank,9,old_miou,20.912665219231524,percent
+cohort 1,12410,lowrank_ssr,1,all_miou,72.27219470058883,percent
+cohort 1,12410,lowrank_ssr,1,new_miou,34.0586647663932,percent
+cohort 1,12410,lowrank_ssr,1,old_boundary_iou,35.177681334739205,percent
+cohort 1,12410,lowrank_ssr,1,old_boundary_margin,3.209390640258789,logit
+cohort 1,12410,lowrank_ssr,1,old_miou,74.32096684211015,percent
+cohort 1,12410,lowrank_ssr,10,all_miou,18.947284071169953,percent
+cohort 1,12410,lowrank_ssr,10,new_miou,1.5901440739427244,percent
+cohort 1,12410,lowrank_ssr,10,old_boundary_iou,7.304468386103519,percent
+cohort 1,12410,lowrank_ssr,10,old_boundary_margin,4.9723968505859375,logit
+cohort 1,12410,lowrank_ssr,10,old_miou,20.8536950876004,percent
+cohort 1,12410,lowrank_ssr,2,all_miou,65.65203766679721,percent
+cohort 1,12410,lowrank_ssr,2,new_miou,58.07119730040091,percent
+cohort 1,12410,lowrank_ssr,2,old_boundary_iou,32.38902048271304,percent
+cohort 1,12410,lowrank_ssr,2,old_boundary_margin,2.858983039855957,logit
+cohort 1,12410,lowrank_ssr,2,old_miou,65.33550369335441,percent
+cohort 1,12410,lowrank_ssr,3,all_miou,52.36456734864118,percent
+cohort 1,12410,lowrank_ssr,3,new_miou,21.853872024031947,percent
+cohort 1,12410,lowrank_ssr,3,old_boundary_iou,29.03313272777374,percent
+cohort 1,12410,lowrank_ssr,3,old_boundary_margin,3.135122299194336,logit
+cohort 1,12410,lowrank_ssr,3,old_miou,52.80859060059918,percent
+cohort 1,12410,lowrank_ssr,4,all_miou,44.73774897448563,percent
+cohort 1,12410,lowrank_ssr,4,new_miou,21.778905681515223,percent
+cohort 1,12410,lowrank_ssr,4,old_boundary_iou,18.779074429470974,percent
+cohort 1,12410,lowrank_ssr,4,old_boundary_margin,1.37157142162323,logit
+cohort 1,12410,lowrank_ssr,4,old_miou,44.40028951288244,percent
+cohort 1,12410,lowrank_ssr,5,all_miou,42.554327636527326,percent
+cohort 1,12410,lowrank_ssr,5,new_miou,65.47669939050499,percent
+cohort 1,12410,lowrank_ssr,5,old_boundary_iou,18.390224634340274,percent
+cohort 1,12410,lowrank_ssr,5,old_boundary_margin,1.4567381143569946,logit
+cohort 1,12410,lowrank_ssr,5,old_miou,39.026935958201825,percent
+cohort 1,12410,lowrank_ssr,6,all_miou,38.487280296998264,percent
+cohort 1,12410,lowrank_ssr,6,new_miou,19.63608322036818,percent
+cohort 1,12410,lowrank_ssr,6,old_boundary_iou,17.407510563599107,percent
+cohort 1,12410,lowrank_ssr,6,old_boundary_margin,8.443974494934082,logit
+cohort 1,12410,lowrank_ssr,6,old_miou,38.1586956115402,percent
+cohort 1,12410,lowrank_ssr,7,all_miou,33.20851512807524,percent
+cohort 1,12410,lowrank_ssr,7,new_miou,10.999998524829909,percent
+cohort 1,12410,lowrank_ssr,7,old_boundary_iou,13.218497544410942,percent
+cohort 1,12410,lowrank_ssr,7,old_boundary_margin,5.002426624298096,logit
+cohort 1,12410,lowrank_ssr,7,old_miou,33.624193315002174,percent
+cohort 1,12410,lowrank_ssr,8,all_miou,27.47794640974005,percent
+cohort 1,12410,lowrank_ssr,8,new_miou,5.626003276609865,percent
+cohort 1,12410,lowrank_ssr,8,old_boundary_iou,11.07852776953614,percent
+cohort 1,12410,lowrank_ssr,8,old_boundary_margin,3.6378722190856934,logit
+cohort 1,12410,lowrank_ssr,8,old_miou,28.66539653269808,percent
+cohort 1,12410,lowrank_ssr,9,all_miou,22.410174210448865,percent
+cohort 1,12410,lowrank_ssr,9,new_miou,14.069653229830713,percent
+cohort 1,12410,lowrank_ssr,9,old_boundary_iou,7.276313653964743,percent
+cohort 1,12410,lowrank_ssr,9,old_boundary_margin,2.539320945739746,logit
+cohort 1,12410,lowrank_ssr,9,old_miou,22.506863558187984,percent
+replication,13401,lowrank,1,all_miou,72.8356102598431,percent
+replication,13401,lowrank,1,new_miou,32.15650540653951,percent
+replication,13401,lowrank,1,old_boundary_iou,35.45321352793248,percent
+replication,13401,lowrank,1,old_boundary_margin,3.42537260055542,logit
+replication,13401,lowrank,1,old_miou,75.15432602287592,percent
+replication,13401,lowrank,10,all_miou,15.21145851896507,percent
+replication,13401,lowrank,10,new_miou,1.219908998601968,percent
+replication,13401,lowrank,10,old_boundary_iou,6.706353955241284,percent
+replication,13401,lowrank,10,old_boundary_margin,5.435485363006592,logit
+replication,13401,lowrank,10,old_miou,16.74772847758415,percent
+replication,13401,lowrank,2,all_miou,67.04999189104528,percent
+replication,13401,lowrank,2,new_miou,66.05657606998308,percent
+replication,13401,lowrank,2,old_boundary_iou,32.97169085104459,percent
+replication,13401,lowrank,2,old_boundary_margin,3.3737635612487793,logit
+replication,13401,lowrank,2,old_miou,66.2960565190506,percent
+replication,13401,lowrank,3,all_miou,54.44916697293062,percent
+replication,13401,lowrank,3,new_miou,23.522505040607523,percent
+replication,13401,lowrank,3,old_boundary_iou,28.216605461494343,percent
+replication,13401,lowrank,3,old_boundary_margin,2.8271799087524414,logit
+replication,13401,lowrank,3,old_miou,55.5969241203509,percent
+replication,13401,lowrank,4,all_miou,45.36546377920689,percent
+replication,13401,lowrank,4,new_miou,24.92038147931857,percent
+replication,13401,lowrank,4,old_boundary_iou,23.328436424093518,percent
+replication,13401,lowrank,4,old_boundary_margin,1.7268145084381104,logit
+replication,13401,lowrank,4,old_miou,45.42087783317535,percent
+replication,13401,lowrank,5,all_miou,44.276705324060515,percent
+replication,13401,lowrank,5,new_miou,69.54159427813178,percent
+replication,13401,lowrank,5,old_boundary_iou,22.03329426699912,percent
+replication,13401,lowrank,5,old_boundary_margin,1.461820125579834,logit
+replication,13401,lowrank,5,old_miou,41.376174634887164,percent
+replication,13401,lowrank,6,all_miou,37.31740361028347,percent
+replication,13401,lowrank,6,new_miou,4.627357175155948,percent
+replication,13401,lowrank,6,old_boundary_iou,21.920831591073803,percent
+replication,13401,lowrank,6,old_boundary_margin,7.722864151000977,logit
+replication,13401,lowrank,6,old_miou,38.78844850891542,percent
+replication,13401,lowrank,7,all_miou,30.77614922370815,percent
+replication,13401,lowrank,7,new_miou,6.880699614060472,percent
+replication,13401,lowrank,7,old_boundary_iou,16.767121062811746,percent
+replication,13401,lowrank,7,old_boundary_margin,4.6060075759887695,logit
+replication,13401,lowrank,7,old_miou,32.230297998226725,percent
+replication,13401,lowrank,8,all_miou,28.29966316717106,percent
+replication,13401,lowrank,8,new_miou,5.806675383975052,percent
+replication,13401,lowrank,8,old_boundary_iou,10.681519554284655,percent
+replication,13401,lowrank,8,old_boundary_margin,3.4019715785980225,logit
+replication,13401,lowrank,8,old_miou,29.597542991716264,percent
+replication,13401,lowrank,9,all_miou,17.492762588881554,percent
+replication,13401,lowrank,9,new_miou,11.993435612941887,percent
+replication,13401,lowrank,9,old_boundary_iou,7.722330248742518,percent
+replication,13401,lowrank,9,old_boundary_margin,2.028926134109497,logit
+replication,13401,lowrank,9,old_miou,17.418268914782637,percent
+replication,13401,lowrank_ssr,1,all_miou,72.82948147418585,percent
+replication,13401,lowrank_ssr,1,new_miou,32.2052941359987,percent
+replication,13401,lowrank_ssr,1,old_boundary_iou,35.479916833342216,percent
+replication,13401,lowrank_ssr,1,old_boundary_margin,3.4268834590911865,logit
+replication,13401,lowrank_ssr,1,old_miou,75.14212462609498,percent
+replication,13401,lowrank_ssr,10,all_miou,15.910877756174436,percent
+replication,13401,lowrank_ssr,10,new_miou,1.0477549967160114,percent
+replication,13401,lowrank_ssr,10,old_boundary_iou,9.52513933829841,percent
+replication,13401,lowrank_ssr,10,old_boundary_margin,5.028356552124023,logit
+replication,13401,lowrank_ssr,10,old_miou,17.507230920278655,percent
+replication,13401,lowrank_ssr,2,all_miou,65.63440336144342,percent
+replication,13401,lowrank_ssr,2,new_miou,63.431442558680864,percent
+replication,13401,lowrank_ssr,2,old_boundary_iou,32.997306723704675,percent
+replication,13401,lowrank_ssr,2,old_boundary_margin,3.13834547996521,logit
+replication,13401,lowrank_ssr,2,old_miou,65.29820080000735,percent
+replication,13401,lowrank_ssr,3,all_miou,55.86933374769424,percent
+replication,13401,lowrank_ssr,3,new_miou,26.42323256786088,percent
+replication,13401,lowrank_ssr,3,old_boundary_iou,27.421726198223062,percent
+replication,13401,lowrank_ssr,3,old_boundary_margin,3.7086753845214844,logit
+replication,13401,lowrank_ssr,3,old_miou,56.59475694660331,percent
+replication,13401,lowrank_ssr,4,all_miou,48.694542262287285,percent
+replication,13401,lowrank_ssr,4,new_miou,33.10943690456371,percent
+replication,13401,lowrank_ssr,4,old_boundary_iou,25.82025357691703,percent
+replication,13401,lowrank_ssr,4,old_boundary_margin,2.164886713027954,logit
+replication,13401,lowrank_ssr,4,old_miou,47.89264569451886,percent
+replication,13401,lowrank_ssr,5,all_miou,46.776801224143,percent
+replication,13401,lowrank_ssr,5,new_miou,68.3880140168671,percent
+replication,13401,lowrank_ssr,5,old_boundary_iou,24.363950109519532,percent
+replication,13401,lowrank_ssr,5,old_boundary_margin,1.560650110244751,logit
+replication,13401,lowrank_ssr,5,old_miou,43.618126808019326,percent
+replication,13401,lowrank_ssr,6,all_miou,40.26843499587137,percent
+replication,13401,lowrank_ssr,6,new_miou,9.732401775562373,percent
+replication,13401,lowrank_ssr,6,old_boundary_iou,24.32954317817883,percent
+replication,13401,lowrank_ssr,6,old_boundary_margin,7.495478630065918,logit
+replication,13401,lowrank_ssr,6,old_miou,40.97058974666717,percent
+replication,13401,lowrank_ssr,7,all_miou,31.81515063304825,percent
+replication,13401,lowrank_ssr,7,new_miou,7.6261408748145065,percent
+replication,13401,lowrank_ssr,7,old_boundary_iou,22.589118455333058,percent
+replication,13401,lowrank_ssr,7,old_boundary_margin,4.450292110443115,logit
+replication,13401,lowrank_ssr,7,old_miou,32.57352456218496,percent
+replication,13401,lowrank_ssr,8,all_miou,29.813839606306765,percent
+replication,13401,lowrank_ssr,8,new_miou,8.82710120244071,percent
+replication,13401,lowrank_ssr,8,old_boundary_iou,11.50247313956371,percent
+replication,13401,lowrank_ssr,8,old_boundary_margin,3.4249305725097656,logit
+replication,13401,lowrank_ssr,8,old_miou,30.00331738364388,percent
+replication,13401,lowrank_ssr,9,all_miou,19.40902351709596,percent
+replication,13401,lowrank_ssr,9,new_miou,12.645867352319323,percent
+replication,13401,lowrank_ssr,9,old_boundary_iou,8.061787431545152,percent
+replication,13401,lowrank_ssr,9,old_boundary_margin,1.892505168914795,logit
+replication,13401,lowrank_ssr,9,old_miou,18.22422584045911,percent
+replication,13402,lowrank,1,all_miou,72.92833395769892,percent
+replication,13402,lowrank,1,new_miou,31.516613548143024,percent
+replication,13402,lowrank,1,old_boundary_iou,36.92538528198156,percent
+replication,13402,lowrank,1,old_boundary_margin,3.1726291179656982,logit
+replication,13402,lowrank,1,old_miou,75.32261805230799,percent
+replication,13402,lowrank,10,all_miou,13.476154646738228,percent
+replication,13402,lowrank,10,new_miou,1.183591867130656,percent
+replication,13402,lowrank,10,old_boundary_iou,5.041118987723649,percent
+replication,13402,lowrank,10,old_boundary_margin,5.3613200187683105,logit
+replication,13402,lowrank,10,old_miou,14.832402932335375,percent
+replication,13402,lowrank,2,all_miou,66.75122891260787,percent
+replication,13402,lowrank,2,new_miou,62.9443075857221,percent
+replication,13402,lowrank,2,old_boundary_iou,34.46418182742269,percent
+replication,13402,lowrank,2,old_boundary_margin,3.091027021408081,logit
+replication,13402,lowrank,2,old_miou,66.0573814083843,percent
+replication,13402,lowrank,3,all_miou,48.992121480989404,percent
+replication,13402,lowrank,3,new_miou,16.903060566262653,percent
+replication,13402,lowrank,3,old_boundary_iou,30.20211360880232,percent
+replication,13402,lowrank,3,old_boundary_margin,2.31445574760437,logit
+replication,13402,lowrank,3,old_miou,50.119957812463426,percent
+replication,13402,lowrank,4,all_miou,41.271645318690624,percent
+replication,13402,lowrank,4,new_miou,19.315388480676457,percent
+replication,13402,lowrank,4,old_boundary_iou,25.861879619607052,percent
+replication,13402,lowrank,4,old_boundary_margin,1.7246489524841309,logit
+replication,13402,lowrank,4,old_miou,41.61994777154423,percent
+replication,13402,lowrank,5,all_miou,39.99152731885709,percent
+replication,13402,lowrank,5,new_miou,66.45070806671127,percent
+replication,13402,lowrank,5,old_boundary_iou,22.874038908239964,percent
+replication,13402,lowrank,5,old_boundary_margin,1.505585789680481,logit
+replication,13402,lowrank,5,old_miou,36.990806748626994,percent
+replication,13402,lowrank,6,all_miou,33.34842764515104,percent
+replication,13402,lowrank,6,new_miou,6.021970330606446,percent
+replication,13402,lowrank,6,old_boundary_iou,20.60399822489349,percent
+replication,13402,lowrank,6,old_boundary_margin,8.943777084350586,logit
+replication,13402,lowrank,6,old_miou,34.49588990419238,percent
+replication,13402,lowrank,7,all_miou,27.01500392588222,percent
+replication,13402,lowrank,7,new_miou,7.529123667888987,percent
+replication,13402,lowrank,7,old_boundary_iou,12.475210121397067,percent
+replication,13402,lowrank,7,old_boundary_margin,4.960095405578613,logit
+replication,13402,lowrank,7,old_miou,27.882453778497663,percent
+replication,13402,lowrank,8,all_miou,25.888759319270925,percent
+replication,13402,lowrank,8,new_miou,5.108695081725576,percent
+replication,13402,lowrank,8,old_boundary_iou,8.410278348704498,percent
+replication,13402,lowrank,8,old_boundary_margin,3.4608781337738037,logit
+replication,13402,lowrank,8,old_miou,27.020689523368365,percent
+replication,13402,lowrank,9,all_miou,16.038966137343095,percent
+replication,13402,lowrank,9,new_miou,10.200409238791961,percent
+replication,13402,lowrank,9,old_boundary_iou,5.580925059054024,percent
+replication,13402,lowrank,9,old_boundary_margin,2.218125820159912,logit
+replication,13402,lowrank,9,old_miou,16.061667433970168,percent
+replication,13402,lowrank_ssr,1,all_miou,72.93316984104847,percent
+replication,13402,lowrank_ssr,1,new_miou,31.517082790986162,percent
+replication,13402,lowrank_ssr,1,old_boundary_iou,37.1455099218441,percent
+replication,13402,lowrank_ssr,1,old_boundary_margin,3.1740942001342773,logit
+replication,13402,lowrank_ssr,1,old_miou,75.32750558986507,percent
+replication,13402,lowrank_ssr,10,all_miou,13.675589688038542,percent
+replication,13402,lowrank_ssr,10,new_miou,1.192643289150791,percent
+replication,13402,lowrank_ssr,10,old_boundary_iou,5.3882753466989195,percent
+replication,13402,lowrank_ssr,10,old_boundary_margin,5.095654010772705,logit
+replication,13402,lowrank_ssr,10,old_miou,15.052354745245191,percent
+replication,13402,lowrank_ssr,2,all_miou,63.91482116943479,percent
+replication,13402,lowrank_ssr,2,new_miou,53.93593958659475,percent
+replication,13402,lowrank_ssr,2,old_boundary_iou,32.31165754678724,percent
+replication,13402,lowrank_ssr,2,old_boundary_margin,2.9238767623901367,logit
+replication,13402,lowrank_ssr,2,old_miou,63.91155771596192,percent
+replication,13402,lowrank_ssr,3,all_miou,51.06803298531294,percent
+replication,13402,lowrank_ssr,3,new_miou,16.991798710394264,percent
+replication,13402,lowrank_ssr,3,old_boundary_iou,28.0742582730938,percent
+replication,13402,lowrank_ssr,3,old_boundary_margin,3.0671095848083496,logit
+replication,13402,lowrank_ssr,3,old_miou,52.08521273623662,percent
+replication,13402,lowrank_ssr,4,all_miou,45.156697963319324,percent
+replication,13402,lowrank_ssr,4,new_miou,24.625686692927744,percent
+replication,13402,lowrank_ssr,4,old_boundary_iou,22.874931810020755,percent
+replication,13402,lowrank_ssr,4,old_boundary_margin,2.186797857284546,logit
+replication,13402,lowrank_ssr,4,old_miou,45.152369764369936,percent
+replication,13402,lowrank_ssr,5,all_miou,42.89551071991906,percent
+replication,13402,lowrank_ssr,5,new_miou,65.4438250205153,percent
+replication,13402,lowrank_ssr,5,old_boundary_iou,21.3956499883299,percent
+replication,13402,lowrank_ssr,5,old_boundary_margin,1.664239764213562,logit
+replication,13402,lowrank_ssr,5,old_miou,39.91623243440458,percent
+replication,13402,lowrank_ssr,6,all_miou,36.26926428347662,percent
+replication,13402,lowrank_ssr,6,new_miou,12.991697071336915,percent
+replication,13402,lowrank_ssr,6,old_boundary_iou,20.519284710773945,percent
+replication,13402,lowrank_ssr,6,old_boundary_margin,8.727473258972168,logit
+replication,13402,lowrank_ssr,6,old_miou,36.7689985198263,percent
+replication,13402,lowrank_ssr,7,all_miou,28.965497555393938,percent
+replication,13402,lowrank_ssr,7,new_miou,9.801176012328733,percent
+replication,13402,lowrank_ssr,7,old_boundary_iou,17.30037044828024,percent
+replication,13402,lowrank_ssr,7,old_boundary_margin,5.479215621948242,logit
+replication,13402,lowrank_ssr,7,old_miou,29.39245810801463,percent
+replication,13402,lowrank_ssr,8,all_miou,26.899899741865834,percent
+replication,13402,lowrank_ssr,8,new_miou,6.063617106967727,percent
+replication,13402,lowrank_ssr,8,old_boundary_iou,10.92728405211854,percent
+replication,13402,lowrank_ssr,8,old_boundary_margin,3.3456854820251465,logit
+replication,13402,lowrank_ssr,8,old_miou,27.41692566566219,percent
+replication,13402,lowrank_ssr,9,all_miou,17.847974846222396,percent
+replication,13402,lowrank_ssr,9,new_miou,10.698607873079714,percent
+replication,13402,lowrank_ssr,9,old_boundary_iou,7.417223576496582,percent
+replication,13402,lowrank_ssr,9,old_boundary_margin,2.1685826778411865,logit
+replication,13402,lowrank_ssr,9,old_miou,17.320165833086808,percent
+replication,13403,lowrank,1,all_miou,72.41080654805162,percent
+replication,13403,lowrank,1,new_miou,35.05195542597595,percent
+replication,13403,lowrank,1,old_boundary_iou,35.67357055781954,percent
+replication,13403,lowrank,1,old_boundary_margin,3.157296895980835,logit
+replication,13403,lowrank,1,old_miou,74.32785901514133,percent
+replication,13403,lowrank,10,all_miou,14.31549890000396,percent
+replication,13403,lowrank,10,new_miou,1.2219212720394093,percent
+replication,13403,lowrank,10,old_boundary_iou,3.865746754935331,percent
+replication,13403,lowrank,10,old_boundary_margin,4.207075119018555,logit
+replication,13403,lowrank,10,old_miou,15.758081875160201,percent
+replication,13403,lowrank,2,all_miou,65.82834930253814,percent
+replication,13403,lowrank,2,new_miou,64.81769272827943,percent
+replication,13403,lowrank,2,old_boundary_iou,35.74064264898177,percent
+replication,13403,lowrank,2,old_boundary_margin,3.5537269115448,logit
+replication,13403,lowrank,2,old_miou,65.10204939789926,percent
+replication,13403,lowrank,3,all_miou,53.64842815947354,percent
+replication,13403,lowrank,3,new_miou,24.29206860606831,percent
+replication,13403,lowrank,3,old_boundary_iou,30.74947446695847,percent
+replication,13403,lowrank,3,old_boundary_margin,2.9985337257385254,logit
+replication,13403,lowrank,3,old_miou,55.01825488188463,percent
+replication,13403,lowrank,4,all_miou,43.413799882376374,percent
+replication,13403,lowrank,4,new_miou,16.175323478356837,percent
+replication,13403,lowrank,4,old_boundary_iou,22.62572672894401,percent
+replication,13403,lowrank,4,old_boundary_margin,1.556132435798645,logit
+replication,13403,lowrank,4,old_miou,44.58726600365029,percent
+replication,13403,lowrank,5,all_miou,42.165634896999435,percent
+replication,13403,lowrank,5,new_miou,64.81221967030658,percent
+replication,13403,lowrank,5,old_boundary_iou,16.380816899809037,percent
+replication,13403,lowrank,5,old_boundary_margin,1.4821220636367798,logit
+replication,13403,lowrank,5,old_miou,39.95106098913429,percent
+replication,13403,lowrank,6,all_miou,34.124199704394115,percent
+replication,13403,lowrank,6,new_miou,9.751719879723566,percent
+replication,13403,lowrank,6,old_boundary_iou,17.071157793801365,percent
+replication,13403,lowrank,6,old_boundary_margin,8.531888008117676,logit
+replication,13403,lowrank,6,old_miou,35.420149814833565,percent
+replication,13403,lowrank,7,all_miou,29.72692279765155,percent
+replication,13403,lowrank,7,new_miou,10.7565735768377,percent
+replication,13403,lowrank,7,old_boundary_iou,13.586716591147102,percent
+replication,13403,lowrank,7,old_boundary_margin,5.820753574371338,logit
+replication,13403,lowrank,7,old_miou,30.956126506608445,percent
+replication,13403,lowrank,8,all_miou,28.373480438098536,percent
+replication,13403,lowrank,8,new_miou,9.251680132094227,percent
+replication,13403,lowrank,8,old_boundary_iou,9.6926421469857,percent
+replication,13403,lowrank,8,old_boundary_margin,3.8340296745300293,logit
+replication,13403,lowrank,8,old_miou,29.35646027499688,percent
+replication,13403,lowrank,9,all_miou,16.592362183931055,percent
+replication,13403,lowrank,9,new_miou,11.487950960008977,percent
+replication,13403,lowrank,9,old_boundary_iou,4.1986427991337605,percent
+replication,13403,lowrank,9,old_boundary_margin,1.7928760051727295,logit
+replication,13403,lowrank,9,old_miou,16.325108304879265,percent
+replication,13403,lowrank_ssr,1,all_miou,72.3954004766316,percent
+replication,13403,lowrank_ssr,1,new_miou,35.0486231408094,percent
+replication,13403,lowrank_ssr,1,old_boundary_iou,35.70762651136109,percent
+replication,13403,lowrank_ssr,1,old_boundary_margin,3.1569297313690186,logit
+replication,13403,lowrank_ssr,1,old_miou,74.31005540276664,percent
+replication,13403,lowrank_ssr,10,all_miou,11.268061967615555,percent
+replication,13403,lowrank_ssr,10,new_miou,1.2247883501072847,percent
+replication,13403,lowrank_ssr,10,old_boundary_iou,4.27111637580955,percent
+replication,13403,lowrank_ssr,10,old_boundary_margin,4.868681907653809,logit
+replication,13403,lowrank_ssr,10,old_miou,12.389711208937863,percent
+replication,13403,lowrank_ssr,2,all_miou,64.47822426572267,percent
+replication,13403,lowrank_ssr,2,new_miou,61.15080821517896,percent
+replication,13403,lowrank_ssr,2,old_boundary_iou,35.397621013000006,percent
+replication,13403,lowrank_ssr,2,old_boundary_margin,3.3234643936157227,logit
+replication,13403,lowrank_ssr,2,old_miou,64.18299292015563,percent
+replication,13403,lowrank_ssr,3,all_miou,53.835703902543784,percent
+replication,13403,lowrank_ssr,3,new_miou,22.892407765867347,percent
+replication,13403,lowrank_ssr,3,old_boundary_iou,30.871954497083014,percent
+replication,13403,lowrank_ssr,3,old_boundary_margin,3.5291202068328857,logit
+replication,13403,lowrank_ssr,3,old_miou,54.78331265703812,percent
+replication,13403,lowrank_ssr,4,all_miou,45.0001095705623,percent
+replication,13403,lowrank_ssr,4,new_miou,23.457461190831445,percent
+replication,13403,lowrank_ssr,4,old_boundary_iou,21.949973208230855,percent
+replication,13403,lowrank_ssr,4,old_boundary_margin,1.9058723449707031,logit
+replication,13403,lowrank_ssr,4,old_miou,45.19879722307211,percent
+replication,13403,lowrank_ssr,5,all_miou,42.85443280099801,percent
+replication,13403,lowrank_ssr,5,new_miou,62.32553157064223,percent
+replication,13403,lowrank_ssr,5,old_boundary_iou,17.77190319742066,percent
+replication,13403,lowrank_ssr,5,old_boundary_margin,1.5462008714675903,logit
+replication,13403,lowrank_ssr,5,old_miou,40.34389929489785,percent
+replication,13403,lowrank_ssr,6,all_miou,35.6970266292519,percent
+replication,13403,lowrank_ssr,6,new_miou,14.465580526097934,percent
+replication,13403,lowrank_ssr,6,old_boundary_iou,16.830695495178897,percent
+replication,13403,lowrank_ssr,6,old_boundary_margin,8.310190200805664,logit
+replication,13403,lowrank_ssr,6,old_miou,36.29091805171406,percent
+replication,13403,lowrank_ssr,7,all_miou,29.701807016192095,percent
+replication,13403,lowrank_ssr,7,new_miou,10.378686515385564,percent
+replication,13403,lowrank_ssr,7,old_boundary_iou,13.819199480762562,percent
+replication,13403,lowrank_ssr,7,old_boundary_margin,5.757992744445801,logit
+replication,13403,lowrank_ssr,7,old_miou,30.471287509306578,percent
+replication,13403,lowrank_ssr,8,all_miou,25.366110917630714,percent
+replication,13403,lowrank_ssr,8,new_miou,6.405464772892451,percent
+replication,13403,lowrank_ssr,8,old_boundary_iou,10.621749896379296,percent
+replication,13403,lowrank_ssr,8,old_boundary_margin,3.6256322860717773,logit
+replication,13403,lowrank_ssr,8,old_miou,26.609842863707563,percent
+replication,13403,lowrank_ssr,9,all_miou,13.819590559168423,percent
+replication,13403,lowrank_ssr,9,new_miou,11.063713443752956,percent
+replication,13403,lowrank_ssr,9,old_boundary_iou,5.130302905440494,percent
+replication,13403,lowrank_ssr,9,old_boundary_margin,1.708960771560669,logit
+replication,13403,lowrank_ssr,9,old_miou,13.565250768001977,percent
+replication,13404,lowrank,1,all_miou,72.52051084665268,percent
+replication,13404,lowrank,1,new_miou,30.07378974962766,percent
+replication,13404,lowrank,1,old_boundary_iou,36.809202917907875,percent
+replication,13404,lowrank,1,old_boundary_margin,3.4199326038360596,logit
+replication,13404,lowrank,1,old_miou,75.0299495589656,percent
+replication,13404,lowrank,10,all_miou,11.923083534867605,percent
+replication,13404,lowrank,10,new_miou,1.0717849249524483,percent
+replication,13404,lowrank,10,old_boundary_iou,5.077266705155989,percent
+replication,13404,lowrank,10,old_boundary_margin,4.5692009925842285,logit
+replication,13404,lowrank,10,old_miou,13.121708418889241,percent
+replication,13404,lowrank,2,all_miou,66.90909507135882,percent
+replication,13404,lowrank,2,new_miou,66.33480737158456,percent
+replication,13404,lowrank,2,old_boundary_iou,35.42016291740537,percent
+replication,13404,lowrank,2,old_boundary_margin,3.7142207622528076,logit
+replication,13404,lowrank,2,old_miou,66.07333750608491,percent
+replication,13404,lowrank,3,all_miou,51.94171759993693,percent
+replication,13404,lowrank,3,new_miou,23.98740632195805,percent
+replication,13404,lowrank,3,old_boundary_iou,29.903824581181343,percent
+replication,13404,lowrank,3,old_boundary_margin,2.5591626167297363,logit
+replication,13404,lowrank,3,old_miou,52.16518434193905,percent
+replication,13404,lowrank,4,all_miou,41.806279842364006,percent
+replication,13404,lowrank,4,new_miou,28.353167636642713,percent
+replication,13404,lowrank,4,old_boundary_iou,23.90290641317258,percent
+replication,13404,lowrank,4,old_boundary_margin,1.7718969583511353,logit
+replication,13404,lowrank,4,old_miou,41.044086388420986,percent
+replication,13404,lowrank,5,all_miou,39.38653441039662,percent
+replication,13404,lowrank,5,new_miou,66.175210023513,percent
+replication,13404,lowrank,5,old_boundary_iou,19.874361403329484,percent
+replication,13404,lowrank,5,old_boundary_margin,1.329922080039978,logit
+replication,13404,lowrank,5,old_miou,35.98199000751976,percent
+replication,13404,lowrank,6,all_miou,33.516187278510195,percent
+replication,13404,lowrank,6,new_miou,6.835299837194866,percent
+replication,13404,lowrank,6,old_boundary_iou,15.700453548913892,percent
+replication,13404,lowrank,6,old_boundary_margin,7.537849426269531,logit
+replication,13404,lowrank,6,old_miou,34.083422492040796,percent
+replication,13404,lowrank,7,all_miou,28.276833409350598,percent
+replication,13404,lowrank,7,new_miou,8.760347018179594,percent
+replication,13404,lowrank,7,old_boundary_iou,13.043423188159098,percent
+replication,13404,lowrank,7,old_boundary_margin,4.71378231048584,logit
+replication,13404,lowrank,7,old_miou,28.897923287540472,percent
+replication,13404,lowrank,8,all_miou,26.444212923184562,percent
+replication,13404,lowrank,8,new_miou,7.3215359014629,percent
+replication,13404,lowrank,8,old_boundary_iou,9.5277493332347,percent
+replication,13404,lowrank,8,old_boundary_margin,3.3756425380706787,logit
+replication,13404,lowrank,8,old_miou,26.98889601759055,percent
+replication,13404,lowrank,9,all_miou,15.915590119144362,percent
+replication,13404,lowrank,9,new_miou,11.975713232437329,percent
+replication,13404,lowrank,9,old_boundary_iou,5.665412729537516,percent
+replication,13404,lowrank,9,old_boundary_margin,2.0155293941497803,logit
+replication,13404,lowrank,9,old_miou,15.177805040768783,percent
+replication,13404,lowrank_ssr,1,all_miou,72.56727793441755,percent
+replication,13404,lowrank_ssr,1,new_miou,30.128898061761145,percent
+replication,13404,lowrank_ssr,1,old_boundary_iou,36.707934062453354,percent
+replication,13404,lowrank_ssr,1,old_boundary_margin,3.420754909515381,logit
+replication,13404,lowrank_ssr,1,old_miou,75.0779132717408,percent
+replication,13404,lowrank_ssr,10,all_miou,12.599454508750346,percent
+replication,13404,lowrank_ssr,10,new_miou,1.4229774365399614,percent
+replication,13404,lowrank_ssr,10,old_boundary_iou,5.871739290362783,percent
+replication,13404,lowrank_ssr,10,old_boundary_margin,4.522830963134766,logit
+replication,13404,lowrank_ssr,10,old_miou,13.85022346139149,percent
+replication,13404,lowrank_ssr,2,all_miou,66.1126603810556,percent
+replication,13404,lowrank_ssr,2,new_miou,63.45815776292445,percent
+replication,13404,lowrank_ssr,2,old_boundary_iou,34.97014762038692,percent
+replication,13404,lowrank_ssr,2,old_boundary_margin,3.4727225303649902,logit
+replication,13404,lowrank_ssr,2,old_miou,65.65740672956458,percent
+replication,13404,lowrank_ssr,3,all_miou,53.46689636118403,percent
+replication,13404,lowrank_ssr,3,new_miou,23.817975731410534,percent
+replication,13404,lowrank_ssr,3,old_boundary_iou,28.267055718804553,percent
+replication,13404,lowrank_ssr,3,old_boundary_margin,3.061836004257202,logit
+replication,13404,lowrank_ssr,3,old_miou,53.67813755796428,percent
+replication,13404,lowrank_ssr,4,all_miou,43.69242703065352,percent
+replication,13404,lowrank_ssr,4,new_miou,31.03753178749885,percent
+replication,13404,lowrank_ssr,4,old_boundary_iou,24.170840352793512,percent
+replication,13404,lowrank_ssr,4,old_boundary_margin,1.9967399835586548,logit
+replication,13404,lowrank_ssr,4,old_miou,42.66888114486218,percent
+replication,13404,lowrank_ssr,5,all_miou,40.69425329108262,percent
+replication,13404,lowrank_ssr,5,new_miou,65.10501047791806,percent
+replication,13404,lowrank_ssr,5,old_boundary_iou,20.595686070832013,percent
+replication,13404,lowrank_ssr,5,old_boundary_margin,1.3795971870422363,logit
+replication,13404,lowrank_ssr,5,old_miou,37.20039951557626,percent
+replication,13404,lowrank_ssr,6,all_miou,34.65628413497379,percent
+replication,13404,lowrank_ssr,6,new_miou,9.473336435618656,percent
+replication,13404,lowrank_ssr,6,old_boundary_iou,17.159561276123235,percent
+replication,13404,lowrank_ssr,6,old_boundary_margin,7.784527778625488,logit
+replication,13404,lowrank_ssr,6,old_miou,34.800610358849156,percent
+replication,13404,lowrank_ssr,7,all_miou,29.547009494293174,percent
+replication,13404,lowrank_ssr,7,new_miou,9.279488490517931,percent
+replication,13404,lowrank_ssr,7,old_boundary_iou,15.889349427267103,percent
+replication,13404,lowrank_ssr,7,old_boundary_margin,4.8250956535339355,logit
+replication,13404,lowrank_ssr,7,old_miou,29.853444419262942,percent
+replication,13404,lowrank_ssr,8,all_miou,25.234690679823064,percent
+replication,13404,lowrank_ssr,8,new_miou,5.858743170817317,percent
+replication,13404,lowrank_ssr,8,old_boundary_iou,11.082389043390618,percent
+replication,13404,lowrank_ssr,8,old_boundary_margin,3.3270678520202637,logit
+replication,13404,lowrank_ssr,8,old_miou,26.096643417480397,percent
+replication,13404,lowrank_ssr,9,all_miou,15.886522322567304,percent
+replication,13404,lowrank_ssr,9,new_miou,11.578044275543258,percent
+replication,13404,lowrank_ssr,9,old_boundary_iou,6.527302287197674,percent
+replication,13404,lowrank_ssr,9,old_boundary_margin,2.0445961952209473,logit
+replication,13404,lowrank_ssr,9,old_miou,15.530307671305035,percent
+replication,13405,lowrank,1,all_miou,73.18521638870796,percent
+replication,13405,lowrank,1,new_miou,31.807303786264157,percent
+replication,13405,lowrank,1,old_boundary_iou,34.79143920483817,percent
+replication,13405,lowrank,1,old_boundary_margin,3.249265193939209,logit
+replication,13405,lowrank,1,old_miou,75.60151810469836,percent
+replication,13405,lowrank,10,all_miou,10.601159292711241,percent
+replication,13405,lowrank,10,new_miou,1.2542773202326065,percent
+replication,13405,lowrank,10,old_boundary_iou,5.972281786179847,percent
+replication,13405,lowrank,10,old_boundary_margin,5.464062213897705,logit
+replication,13405,lowrank,10,old_miou,11.439983767999006,percent
+replication,13405,lowrank,2,all_miou,65.71952846491146,percent
+replication,13405,lowrank,2,new_miou,57.82654444141306,percent
+replication,13405,lowrank,2,old_boundary_iou,31.49762678089292,percent
+replication,13405,lowrank,2,old_boundary_margin,3.246091842651367,logit
+replication,13405,lowrank,2,old_miou,64.84379176298808,percent
+replication,13405,lowrank,3,all_miou,47.40387601998341,percent
+replication,13405,lowrank,3,new_miou,14.05064699103416,percent
+replication,13405,lowrank,3,old_boundary_iou,27.511817258158306,percent
+replication,13405,lowrank,3,old_boundary_margin,1.6363176107406616,logit
+replication,13405,lowrank,3,old_miou,47.77392380992523,percent
+replication,13405,lowrank,4,all_miou,38.935772421897305,percent
+replication,13405,lowrank,4,new_miou,22.816597216837895,percent
+replication,13405,lowrank,4,old_boundary_iou,20.928666632568007,percent
+replication,13405,lowrank,4,old_boundary_margin,1.5445817708969116,logit
+replication,13405,lowrank,4,old_miou,37.7153263941072,percent
+replication,13405,lowrank,5,all_miou,36.680100009257814,percent
+replication,13405,lowrank,5,new_miou,62.81185167965309,percent
+replication,13405,lowrank,5,old_boundary_iou,15.317743398499411,percent
+replication,13405,lowrank,5,old_boundary_margin,1.407202959060669,logit
+replication,13405,lowrank,5,old_miou,32.7156949487527,percent
+replication,13405,lowrank,6,all_miou,31.552317516884564,percent
+replication,13405,lowrank,6,new_miou,7.947875555020668,percent
+replication,13405,lowrank,6,old_boundary_iou,15.340056608417624,percent
+replication,13405,lowrank,6,old_boundary_margin,7.382722854614258,logit
+replication,13405,lowrank,6,old_miou,31.53832243362868,percent
+replication,13405,lowrank,7,all_miou,25.872198982952206,percent
+replication,13405,lowrank,7,new_miou,9.1169170273592,percent
+replication,13405,lowrank,7,old_boundary_iou,13.152171004499852,percent
+replication,13405,lowrank,7,old_boundary_margin,4.2270731925964355,logit
+replication,13405,lowrank,7,old_miou,25.587344800392042,percent
+replication,13405,lowrank,8,all_miou,23.279067067053276,percent
+replication,13405,lowrank,8,new_miou,4.71695221460564,percent
+replication,13405,lowrank,8,old_boundary_iou,9.193904502434137,percent
+replication,13405,lowrank,8,old_boundary_margin,2.598245859146118,logit
+replication,13405,lowrank,8,old_miou,23.753415505960785,percent
+replication,13405,lowrank,9,all_miou,13.811874971584587,percent
+replication,13405,lowrank,9,new_miou,12.368622452226505,percent
+replication,13405,lowrank,9,old_boundary_iou,5.887978242280629,percent
+replication,13405,lowrank,9,old_boundary_margin,1.712536096572876,logit
+replication,13405,lowrank,9,old_miou,12.69944964865258,percent
+replication,13405,lowrank_ssr,1,all_miou,73.20243106921774,percent
+replication,13405,lowrank_ssr,1,new_miou,31.82870867338886,percent
+replication,13405,lowrank_ssr,1,old_boundary_iou,34.75375528330823,percent
+replication,13405,lowrank_ssr,1,old_boundary_margin,3.2411270141601562,logit
+replication,13405,lowrank_ssr,1,old_miou,75.61925106585882,percent
+replication,13405,lowrank_ssr,10,all_miou,11.940624384379692,percent
+replication,13405,lowrank_ssr,10,new_miou,0.0,percent
+replication,13405,lowrank_ssr,10,old_boundary_iou,5.500360312279082,percent
+replication,13405,lowrank_ssr,10,old_boundary_margin,4.984829902648926,logit
+replication,13405,lowrank_ssr,10,old_miou,13.197532214314398,percent
+replication,13405,lowrank_ssr,2,all_miou,63.1259099402956,percent
+replication,13405,lowrank_ssr,2,new_miou,50.321452543056175,percent
+replication,13405,lowrank_ssr,2,old_boundary_iou,26.18971495508108,percent
+replication,13405,lowrank_ssr,2,old_boundary_margin,2.9823358058929443,logit
+replication,13405,lowrank_ssr,2,old_miou,62.78938249986516,percent
+replication,13405,lowrank_ssr,3,all_miou,50.16402841785251,percent
+replication,13405,lowrank_ssr,3,new_miou,17.20886101337411,percent
+replication,13405,lowrank_ssr,3,old_boundary_iou,24.31263368787133,percent
+replication,13405,lowrank_ssr,3,old_boundary_margin,2.233182907104492,logit
+replication,13405,lowrank_ssr,3,old_miou,50.307162211837145,percent
+replication,13405,lowrank_ssr,4,all_miou,40.06180295709549,percent
+replication,13405,lowrank_ssr,4,new_miou,23.08995809446103,percent
+replication,13405,lowrank_ssr,4,old_boundary_iou,20.304185341298865,percent
+replication,13405,lowrank_ssr,4,old_boundary_margin,1.6904665231704712,logit
+replication,13405,lowrank_ssr,4,old_miou,38.69481194945559,percent
+replication,13405,lowrank_ssr,5,all_miou,37.8590760165496,percent
+replication,13405,lowrank_ssr,5,new_miou,66.4096770489234,percent
+replication,13405,lowrank_ssr,5,old_boundary_iou,15.674434533282803,percent
+replication,13405,lowrank_ssr,5,old_boundary_margin,1.607495665550232,logit
+replication,13405,lowrank_ssr,5,old_miou,33.53987604704476,percent
+replication,13405,lowrank_ssr,6,all_miou,33.625440362352904,percent
+replication,13405,lowrank_ssr,6,new_miou,14.501253531230798,percent
+replication,13405,lowrank_ssr,6,old_boundary_iou,17.35260880630773,percent
+replication,13405,lowrank_ssr,6,old_boundary_margin,7.932336807250977,logit
+replication,13405,lowrank_ssr,6,old_miou,32.898640298529656,percent
+replication,13405,lowrank_ssr,7,all_miou,29.1176534601315,percent
+replication,13405,lowrank_ssr,7,new_miou,8.276683065791252,percent
+replication,13405,lowrank_ssr,7,old_boundary_iou,15.78806096007408,percent
+replication,13405,lowrank_ssr,7,old_boundary_margin,4.362107276916504,logit
+replication,13405,lowrank_ssr,7,old_miou,29.038703141075832,percent
+replication,13405,lowrank_ssr,8,all_miou,23.5510584076206,percent
+replication,13405,lowrank_ssr,8,new_miou,2.077528536860206,percent
+replication,13405,lowrank_ssr,8,old_boundary_iou,11.075088607908391,percent
+replication,13405,lowrank_ssr,8,old_boundary_margin,2.3384361267089844,logit
+replication,13405,lowrank_ssr,8,old_miou,26.19956360046654,percent
+replication,13405,lowrank_ssr,9,all_miou,13.464513589095839,percent
+replication,13405,lowrank_ssr,9,new_miou,10.687746242759385,percent
+replication,13405,lowrank_ssr,9,old_boundary_iou,7.692707863311962,percent
+replication,13405,lowrank_ssr,9,old_boundary_margin,1.5743955373764038,logit
+replication,13405,lowrank_ssr,9,old_miou,14.366806974397628,percent
+replication,13406,lowrank,1,all_miou,72.55655948976148,percent
+replication,13406,lowrank,1,new_miou,31.43330967805365,percent
+replication,13406,lowrank,1,old_boundary_iou,36.436738641743375,percent
+replication,13406,lowrank,1,old_boundary_margin,3.40106201171875,logit
+replication,13406,lowrank,1,old_miou,74.91714344136415,percent
+replication,13406,lowrank,10,all_miou,15.674378939465598,percent
+replication,13406,lowrank,10,new_miou,1.388027014648816,percent
+replication,13406,lowrank,10,old_boundary_iou,5.762246699902546,percent
+replication,13406,lowrank,10,old_boundary_margin,5.569128036499023,logit
+replication,13406,lowrank,10,old_miou,17.251259511269932,percent
+replication,13406,lowrank,2,all_miou,68.26528392312714,percent
+replication,13406,lowrank,2,new_miou,69.64325035294256,percent
+replication,13406,lowrank,2,old_boundary_iou,35.156476695829596,percent
+replication,13406,lowrank,2,old_boundary_margin,3.236499309539795,logit
+replication,13406,lowrank,2,old_miou,67.25463464212052,percent
+replication,13406,lowrank,3,all_miou,51.48310698932514,percent
+replication,13406,lowrank,3,new_miou,22.426594092801324,percent
+replication,13406,lowrank,3,old_boundary_iou,29.373285945829387,percent
+replication,13406,lowrank,3,old_boundary_margin,3.2915987968444824,logit
+replication,13406,lowrank,3,old_miou,52.231892753121336,percent
+replication,13406,lowrank,4,all_miou,43.921375108341316,percent
+replication,13406,lowrank,4,new_miou,29.20129244266153,percent
+replication,13406,lowrank,4,old_boundary_iou,24.779504696626507,percent
+replication,13406,lowrank,4,old_boundary_margin,1.9886049032211304,logit
+replication,13406,lowrank,4,old_miou,43.505747750429045,percent
+replication,13406,lowrank,5,all_miou,42.63761793406988,percent
+replication,13406,lowrank,5,new_miou,68.76591626467359,percent
+replication,13406,lowrank,5,old_boundary_iou,21.301276168145797,percent
+replication,13406,lowrank,5,old_boundary_margin,1.7141339778900146,logit
+replication,13406,lowrank,5,old_miou,39.48827325424964,percent
+replication,13406,lowrank,6,all_miou,34.30617405973017,percent
+replication,13406,lowrank,6,new_miou,6.089186164542522,percent
+replication,13406,lowrank,6,old_boundary_iou,21.50994315814708,percent
+replication,13406,lowrank,6,old_boundary_margin,8.632123947143555,logit
+replication,13406,lowrank,6,old_miou,35.09158841941797,percent
+replication,13406,lowrank,7,all_miou,29.789442006049825,percent
+replication,13406,lowrank,7,new_miou,7.052336171601812,percent
+replication,13406,lowrank,7,old_boundary_iou,15.338782161124124,percent
+replication,13406,lowrank,7,old_boundary_margin,4.82239294052124,logit
+replication,13406,lowrank,7,old_miou,30.844353588255842,percent
+replication,13406,lowrank,8,all_miou,24.836848721192133,percent
+replication,13406,lowrank,8,new_miou,3.6256753543606948,percent
+replication,13406,lowrank,8,old_boundary_iou,12.543806968329951,percent
+replication,13406,lowrank,8,old_boundary_margin,3.2621054649353027,logit
+replication,13406,lowrank,8,old_miou,26.89573080266019,percent
+replication,13406,lowrank,9,all_miou,16.845955643952166,percent
+replication,13406,lowrank,9,new_miou,10.670889204315383,percent
+replication,13406,lowrank,9,old_boundary_iou,7.2141211895954696,percent
+replication,13406,lowrank,9,old_boundary_margin,2.0586695671081543,logit
+replication,13406,lowrank,9,old_miou,18.082513627834295,percent
+replication,13406,lowrank_ssr,1,all_miou,72.55780766348391,percent
+replication,13406,lowrank_ssr,1,new_miou,31.456015758704243,percent
+replication,13406,lowrank_ssr,1,old_boundary_iou,36.43871851697104,percent
+replication,13406,lowrank_ssr,1,old_boundary_margin,3.4027700424194336,logit
+replication,13406,lowrank_ssr,1,old_miou,74.91591945302744,percent
+replication,13406,lowrank_ssr,10,all_miou,16.417959250907053,percent
+replication,13406,lowrank_ssr,10,new_miou,1.7332066217952482,percent
+replication,13406,lowrank_ssr,10,old_boundary_iou,6.617198138078387,percent
+replication,13406,lowrank_ssr,10,old_boundary_margin,5.971063137054443,logit
+replication,13406,lowrank_ssr,10,old_miou,18.054944086697517,percent
+replication,13406,lowrank_ssr,2,all_miou,66.39276618443623,percent
+replication,13406,lowrank_ssr,2,new_miou,64.04990608138958,percent
+replication,13406,lowrank_ssr,2,old_boundary_iou,35.093409848760594,percent
+replication,13406,lowrank_ssr,2,old_boundary_margin,2.923078775405884,logit
+replication,13406,lowrank_ssr,2,old_miou,66.08867240444222,percent
+replication,13406,lowrank_ssr,3,all_miou,55.44327200969475,percent
+replication,13406,lowrank_ssr,3,new_miou,25.627188188709997,percent
+replication,13406,lowrank_ssr,3,old_boundary_iou,30.450633277165824,percent
+replication,13406,lowrank_ssr,3,old_boundary_margin,4.039146423339844,logit
+replication,13406,lowrank_ssr,3,old_miou,56.10843851389874,percent
+replication,13406,lowrank_ssr,4,all_miou,48.10476566419622,percent
+replication,13406,lowrank_ssr,4,new_miou,31.539905382210385,percent
+replication,13406,lowrank_ssr,4,old_boundary_iou,26.405711734790838,percent
+replication,13406,lowrank_ssr,4,old_boundary_margin,2.0925652980804443,logit
+replication,13406,lowrank_ssr,4,old_miou,47.615350645209105,percent
+replication,13406,lowrank_ssr,5,all_miou,46.170435548376155,percent
+replication,13406,lowrank_ssr,5,new_miou,67.93025656714809,percent
+replication,13406,lowrank_ssr,5,old_boundary_iou,22.87470653868359,percent
+replication,13406,lowrank_ssr,5,old_boundary_margin,1.8104599714279175,logit
+replication,13406,lowrank_ssr,5,old_miou,43.04113419801864,percent
+replication,13406,lowrank_ssr,6,all_miou,37.981237946702606,percent
+replication,13406,lowrank_ssr,6,new_miou,8.694793960542672,percent
+replication,13406,lowrank_ssr,6,old_boundary_iou,22.173486142680527,percent
+replication,13406,lowrank_ssr,6,old_boundary_margin,8.434089660644531,logit
+replication,13406,lowrank_ssr,6,old_miou,38.52632698966377,percent
+replication,13406,lowrank_ssr,7,all_miou,33.151307129904175,percent
+replication,13406,lowrank_ssr,7,new_miou,9.402714962417328,percent
+replication,13406,lowrank_ssr,7,old_boundary_iou,19.6895121879516,percent
+replication,13406,lowrank_ssr,7,old_boundary_margin,5.301419258117676,logit
+replication,13406,lowrank_ssr,7,old_miou,33.92094381022589,percent
+replication,13406,lowrank_ssr,8,all_miou,25.602409801637886,percent
+replication,13406,lowrank_ssr,8,new_miou,4.080485240908543,percent
+replication,13406,lowrank_ssr,8,old_boundary_iou,14.801114866945191,percent
+replication,13406,lowrank_ssr,8,old_boundary_margin,3.259107828140259,logit
+replication,13406,lowrank_ssr,8,old_miou,27.233681172318047,percent
+replication,13406,lowrank_ssr,9,all_miou,17.980768033633993,percent
+replication,13406,lowrank_ssr,9,new_miou,12.109292382451068,percent
+replication,13406,lowrank_ssr,9,old_boundary_iou,7.516872383672552,percent
+replication,13406,lowrank_ssr,9,old_boundary_margin,2.222342014312744,logit
+replication,13406,lowrank_ssr,9,old_miou,18.67829281564748,percent
+replication,13407,lowrank,1,all_miou,72.63517748443182,percent
+replication,13407,lowrank,1,new_miou,32.8702533303858,percent
+replication,13407,lowrank,1,old_boundary_iou,37.83069762565016,percent
+replication,13407,lowrank,1,old_boundary_margin,3.2785115242004395,logit
+replication,13407,lowrank,1,old_miou,74.8352595269125,percent
+replication,13407,lowrank,10,all_miou,13.7579950056598,percent
+replication,13407,lowrank,10,new_miou,1.8062845224883675,percent
+replication,13407,lowrank,10,old_boundary_iou,5.779511899262959,percent
+replication,13407,lowrank,10,old_boundary_margin,6.042590618133545,logit
+replication,13407,lowrank,10,old_miou,14.97069084783391,percent
+replication,13407,lowrank,2,all_miou,67.97950320627544,percent
+replication,13407,lowrank,2,new_miou,66.07376960953545,percent
+replication,13407,lowrank,2,old_boundary_iou,36.97323502933927,percent
+replication,13407,lowrank,2,old_boundary_margin,3.493504047393799,logit
+replication,13407,lowrank,2,old_miou,67.06550658789862,percent
+replication,13407,lowrank,3,all_miou,54.890661712461494,percent
+replication,13407,lowrank,3,new_miou,21.1110885549666,percent
+replication,13407,lowrank,3,old_boundary_iou,31.82220049656192,percent
+replication,13407,lowrank,3,old_boundary_margin,3.0663037300109863,logit
+replication,13407,lowrank,3,old_miou,56.350986527845826,percent
+replication,13407,lowrank,4,all_miou,45.73197819533566,percent
+replication,13407,lowrank,4,new_miou,29.73074250240716,percent
+replication,13407,lowrank,4,old_boundary_iou,26.777467802546873,percent
+replication,13407,lowrank,4,old_boundary_margin,2.034248113632202,logit
+replication,13407,lowrank,4,old_miou,45.42354147347278,percent
+replication,13407,lowrank,5,all_miou,43.49931754524895,percent
+replication,13407,lowrank,5,new_miou,70.80845285542789,percent
+replication,13407,lowrank,5,old_boundary_iou,20.212699703150932,percent
+replication,13407,lowrank,5,old_boundary_margin,1.764845609664917,logit
+replication,13407,lowrank,5,old_miou,40.278585947809866,percent
+replication,13407,lowrank,6,all_miou,36.462350355383,percent
+replication,13407,lowrank,6,new_miou,6.853752908436291,percent
+replication,13407,lowrank,6,old_boundary_iou,20.669839672648273,percent
+replication,13407,lowrank,6,old_boundary_margin,8.367778778076172,logit
+replication,13407,lowrank,6,old_miou,37.45356178482603,percent
+replication,13407,lowrank,7,all_miou,32.789069433746484,percent
+replication,13407,lowrank,7,new_miou,10.19514212656322,percent
+replication,13407,lowrank,7,old_boundary_iou,14.104006527786433,percent
+replication,13407,lowrank,7,old_boundary_margin,5.152897357940674,logit
+replication,13407,lowrank,7,old_miou,33.6689154631997,percent
+replication,13407,lowrank,8,all_miou,28.890984408510832,percent
+replication,13407,lowrank,8,new_miou,5.258800561533675,percent
+replication,13407,lowrank,8,old_boundary_iou,11.219900873157563,percent
+replication,13407,lowrank,8,old_boundary_margin,3.4985930919647217,logit
+replication,13407,lowrank,8,old_miou,30.118782444981164,percent
+replication,13407,lowrank,9,all_miou,17.563962906006488,percent
+replication,13407,lowrank,9,new_miou,13.441593036849323,percent
+replication,13407,lowrank,9,old_boundary_iou,6.644860186501139,percent
+replication,13407,lowrank,9,old_boundary_margin,2.4968016147613525,logit
+replication,13407,lowrank,9,old_miou,17.22090739480862,percent
+replication,13407,lowrank_ssr,1,all_miou,72.61616280975319,percent
+replication,13407,lowrank_ssr,1,new_miou,32.910699383722445,percent
+replication,13407,lowrank_ssr,1,old_boundary_iou,37.8421137502223,percent
+replication,13407,lowrank_ssr,1,old_boundary_margin,3.277207374572754,logit
+replication,13407,lowrank_ssr,1,old_miou,74.80879669844096,percent
+replication,13407,lowrank_ssr,10,all_miou,15.764127413592025,percent
+replication,13407,lowrank_ssr,10,new_miou,3.0219372117539076,percent
+replication,13407,lowrank_ssr,10,old_boundary_iou,6.683926667608307,percent
+replication,13407,lowrank_ssr,10,old_boundary_margin,5.315633773803711,logit
+replication,13407,lowrank_ssr,10,old_miou,16.81018572428937,percent
+replication,13407,lowrank_ssr,2,all_miou,66.89439202541291,percent
+replication,13407,lowrank_ssr,2,new_miou,63.59300320986944,percent
+replication,13407,lowrank_ssr,2,old_boundary_iou,36.55875514443011,percent
+replication,13407,lowrank_ssr,2,old_boundary_margin,3.3153939247131348,logit
+replication,13407,lowrank_ssr,2,old_miou,66.30438730354935,percent
+replication,13407,lowrank_ssr,3,all_miou,55.20699521907769,percent
+replication,13407,lowrank_ssr,3,new_miou,22.147201134687357,percent
+replication,13407,lowrank_ssr,3,old_boundary_iou,31.04793779247356,percent
+replication,13407,lowrank_ssr,3,old_boundary_margin,3.5334384441375732,logit
+replication,13407,lowrank_ssr,3,old_miou,56.27954816529147,percent
+replication,13407,lowrank_ssr,4,all_miou,47.804936928522466,percent
+replication,13407,lowrank_ssr,4,new_miou,31.805716874141314,percent
+replication,13407,lowrank_ssr,4,old_boundary_iou,25.553723850822053,percent
+replication,13407,lowrank_ssr,4,old_boundary_margin,2.0983705520629883,logit
+replication,13407,lowrank_ssr,4,old_miou,47.20504034214422,percent
+replication,13407,lowrank_ssr,5,all_miou,45.92221511336797,percent
+replication,13407,lowrank_ssr,5,new_miou,70.56471374798414,percent
+replication,13407,lowrank_ssr,5,old_boundary_iou,20.065633136026435,percent
+replication,13407,lowrank_ssr,5,old_boundary_margin,1.824404239654541,logit
+replication,13407,lowrank_ssr,5,old_miou,42.55757585633541,percent
+replication,13407,lowrank_ssr,6,all_miou,39.1286901677555,percent
+replication,13407,lowrank_ssr,6,new_miou,12.393934247264614,percent
+replication,13407,lowrank_ssr,6,old_boundary_iou,19.860265604439036,percent
+replication,13407,lowrank_ssr,6,old_boundary_margin,8.459226608276367,logit
+replication,13407,lowrank_ssr,6,old_miou,39.6624705703233,percent
+replication,13407,lowrank_ssr,7,all_miou,34.02097986315271,percent
+replication,13407,lowrank_ssr,7,new_miou,10.616607597663235,percent
+replication,13407,lowrank_ssr,7,old_boundary_iou,18.59654151058402,percent
+replication,13407,lowrank_ssr,7,old_boundary_margin,5.297201633453369,logit
+replication,13407,lowrank_ssr,7,old_miou,34.569798101324025,percent
+replication,13407,lowrank_ssr,8,all_miou,28.465712398672103,percent
+replication,13407,lowrank_ssr,8,new_miou,4.141829687939458,percent
+replication,13407,lowrank_ssr,8,old_boundary_iou,10.806866409844531,percent
+replication,13407,lowrank_ssr,8,old_boundary_margin,3.438692331314087,logit
+replication,13407,lowrank_ssr,8,old_miou,30.1450663392211,percent
+replication,13407,lowrank_ssr,9,all_miou,19.093981520481996,percent
+replication,13407,lowrank_ssr,9,new_miou,14.645575371629564,percent
+replication,13407,lowrank_ssr,9,old_boundary_iou,6.538233510541833,percent
+replication,13407,lowrank_ssr,9,old_boundary_margin,2.756566047668457,logit
+replication,13407,lowrank_ssr,9,old_miou,19.282857256072475,percent
+replication,13408,lowrank,1,all_miou,72.03444280173271,percent
+replication,13408,lowrank,1,new_miou,33.31003193903344,percent
+replication,13408,lowrank,1,old_boundary_iou,36.14445237908333,percent
+replication,13408,lowrank,1,old_boundary_margin,3.1488466262817383,logit
+replication,13408,lowrank,1,old_miou,74.0998492543277,percent
+replication,13408,lowrank,10,all_miou,14.148608383930384,percent
+replication,13408,lowrank,10,new_miou,1.2822534196302005,percent
+replication,13408,lowrank,10,old_boundary_iou,6.189050173773634,percent
+replication,13408,lowrank,10,old_boundary_margin,5.202423572540283,logit
+replication,13408,lowrank,10,old_miou,15.570448560153041,percent
+replication,13408,lowrank,2,all_miou,65.35364803181822,percent
+replication,13408,lowrank,2,new_miou,59.83640128771205,percent
+replication,13408,lowrank,2,old_boundary_iou,34.904876921208455,percent
+replication,13408,lowrank,2,old_boundary_margin,2.811145782470703,logit
+replication,13408,lowrank,2,old_miou,64.96794888913529,percent
+replication,13408,lowrank,3,all_miou,49.71717860294712,percent
+replication,13408,lowrank,3,new_miou,17.660280042569212,percent
+replication,13408,lowrank,3,old_boundary_iou,29.84735187224419,percent
+replication,13408,lowrank,3,old_boundary_margin,2.1944282054901123,logit
+replication,13408,lowrank,3,old_miou,50.849941972645354,percent
+replication,13408,lowrank,4,all_miou,42.65249006569577,percent
+replication,13408,lowrank,4,new_miou,22.602671982186582,percent
+replication,13408,lowrank,4,old_boundary_iou,21.90968813968492,percent
+replication,13408,lowrank,4,old_boundary_margin,1.5247889757156372,logit
+replication,13408,lowrank,4,old_miou,42.955844433706915,percent
+replication,13408,lowrank,5,all_miou,40.83573725589174,percent
+replication,13408,lowrank,5,new_miou,69.0431708530428,percent
+replication,13408,lowrank,5,old_boundary_iou,17.169678235883453,percent
+replication,13408,lowrank,5,old_boundary_margin,1.7288079261779785,logit
+replication,13408,lowrank,5,old_miou,37.730759197279525,percent
+replication,13408,lowrank,6,all_miou,34.62666285976564,percent
+replication,13408,lowrank,6,new_miou,6.862158673987137,percent
+replication,13408,lowrank,6,old_boundary_iou,18.572169435305444,percent
+replication,13408,lowrank,6,old_boundary_margin,8.568560600280762,logit
+replication,13408,lowrank,6,old_miou,35.703147642567416,percent
+replication,13408,lowrank,7,all_miou,29.41930120826799,percent
+replication,13408,lowrank,7,new_miou,7.843680912164927,percent
+replication,13408,lowrank,7,old_boundary_iou,15.261498875656265,percent
+replication,13408,lowrank,7,old_boundary_margin,5.153075695037842,logit
+replication,13408,lowrank,7,old_miou,30.496684594544565,percent
+replication,13408,lowrank,8,all_miou,25.10686292490945,percent
+replication,13408,lowrank,8,new_miou,6.362918358133735,percent
+replication,13408,lowrank,8,old_boundary_iou,8.996106943745625,percent
+replication,13408,lowrank,8,old_boundary_margin,3.6213533878326416,logit
+replication,13408,lowrank,8,old_miou,25.940374828310155,percent
+replication,13408,lowrank,9,all_miou,17.3776885841218,percent
+replication,13408,lowrank,9,new_miou,14.044082256193697,percent
+replication,13408,lowrank,9,old_boundary_iou,5.837811140506737,percent
+replication,13408,lowrank,9,old_boundary_margin,2.5003626346588135,logit
+replication,13408,lowrank,9,old_miou,17.062756639756284,percent
+replication,13408,lowrank_ssr,1,all_miou,72.0490125138396,percent
+replication,13408,lowrank_ssr,1,new_miou,33.305525558149625,percent
+replication,13408,lowrank_ssr,1,old_boundary_iou,36.12607111942675,percent
+replication,13408,lowrank_ssr,1,old_boundary_margin,3.1461830139160156,logit
+replication,13408,lowrank_ssr,1,old_miou,74.11760173424679,percent
+replication,13408,lowrank_ssr,10,all_miou,14.990682250110513,percent
+replication,13408,lowrank_ssr,10,new_miou,1.2217443822664174,percent
+replication,13408,lowrank_ssr,10,old_boundary_iou,7.835000042198861,percent
+replication,13408,lowrank_ssr,10,old_boundary_margin,4.857029438018799,logit
+replication,13408,lowrank_ssr,10,old_miou,16.504346466844964,percent
+replication,13408,lowrank_ssr,2,all_miou,64.10581109365711,percent
+replication,13408,lowrank_ssr,2,new_miou,54.61245456556507,percent
+replication,13408,lowrank_ssr,2,old_boundary_iou,34.34584517920612,percent
+replication,13408,lowrank_ssr,2,old_boundary_margin,2.6745405197143555,logit
+replication,13408,lowrank_ssr,2,old_miou,64.19075589581372,percent
+replication,13408,lowrank_ssr,3,all_miou,50.939695697877305,percent
+replication,13408,lowrank_ssr,3,new_miou,17.775963363487588,percent
+replication,13408,lowrank_ssr,3,old_boundary_iou,29.087572059265494,percent
+replication,13408,lowrank_ssr,3,old_boundary_margin,2.575725793838501,logit
+replication,13408,lowrank_ssr,3,old_miou,51.99887967658008,percent
+replication,13408,lowrank_ssr,4,all_miou,43.61224088774204,percent
+replication,13408,lowrank_ssr,4,new_miou,22.64888498875123,percent
+replication,13408,lowrank_ssr,4,old_boundary_iou,23.10101837120105,percent
+replication,13408,lowrank_ssr,4,old_boundary_margin,1.6661759614944458,logit
+replication,13408,lowrank_ssr,4,old_miou,43.80050970241914,percent
+replication,13408,lowrank_ssr,5,all_miou,41.460142044050066,percent
+replication,13408,lowrank_ssr,5,new_miou,67.12806915647616,percent
+replication,13408,lowrank_ssr,5,old_boundary_iou,19.31190585816689,percent
+replication,13408,lowrank_ssr,5,old_boundary_margin,1.8614422082901,logit
+replication,13408,lowrank_ssr,5,old_miou,38.335047684103955,percent
+replication,13408,lowrank_ssr,6,all_miou,35.83631553769452,percent
+replication,13408,lowrank_ssr,6,new_miou,9.632801754612967,percent
+replication,13408,lowrank_ssr,6,old_boundary_iou,20.503585927658854,percent
+replication,13408,lowrank_ssr,6,old_boundary_margin,8.435111999511719,logit
+replication,13408,lowrank_ssr,6,old_miou,36.721045499352854,percent
+replication,13408,lowrank_ssr,7,all_miou,28.547367723632917,percent
+replication,13408,lowrank_ssr,7,new_miou,8.15443903914837,percent
+replication,13408,lowrank_ssr,7,old_boundary_iou,13.491515073925573,percent
+replication,13408,lowrank_ssr,7,old_boundary_margin,5.10675048828125,logit
+replication,13408,lowrank_ssr,7,old_miou,29.387842610817827,percent
+replication,13408,lowrank_ssr,8,all_miou,26.040037687679014,percent
+replication,13408,lowrank_ssr,8,new_miou,7.332859801114654,percent
+replication,13408,lowrank_ssr,8,old_boundary_iou,9.374568899958485,percent
+replication,13408,lowrank_ssr,8,old_boundary_margin,3.3542208671569824,logit
+replication,13408,lowrank_ssr,8,old_miou,26.698131765063522,percent
+replication,13408,lowrank_ssr,9,all_miou,18.51567113332509,percent
+replication,13408,lowrank_ssr,9,new_miou,13.877586701228944,percent
+replication,13408,lowrank_ssr,9,old_boundary_iou,6.956943427584386,percent
+replication,13408,lowrank_ssr,9,old_boundary_margin,2.249785900115967,logit
+replication,13408,lowrank_ssr,9,old_miou,18.134444261348033,percent
+replication,13409,lowrank,1,all_miou,73.54334979247234,percent
+replication,13409,lowrank,1,new_miou,34.17310170879045,percent
+replication,13409,lowrank,1,old_boundary_iou,35.419842196466064,percent
+replication,13409,lowrank,1,old_boundary_margin,3.1599953174591064,logit
+replication,13409,lowrank,1,old_miou,75.7468931339616,percent
+replication,13409,lowrank,10,all_miou,12.567261472611523,percent
+replication,13409,lowrank,10,new_miou,1.2776592150677992,percent
+replication,13409,lowrank,10,old_boundary_iou,4.527491276646952,percent
+replication,13409,lowrank,10,old_boundary_margin,5.962224006652832,logit
+replication,13409,lowrank,10,old_miou,13.822885879461799,percent
+replication,13409,lowrank,2,all_miou,67.6648571795337,percent
+replication,13409,lowrank,2,new_miou,63.98916951451296,percent
+replication,13409,lowrank,2,old_boundary_iou,33.895254174710615,percent
+replication,13409,lowrank,2,old_boundary_margin,3.0669353008270264,logit
+replication,13409,lowrank,2,old_miou,66.94231790096019,percent
+replication,13409,lowrank,3,all_miou,50.95552286633864,percent
+replication,13409,lowrank,3,new_miou,21.366220181149608,percent
+replication,13409,lowrank,3,old_boundary_iou,29.308542006281563,percent
+replication,13409,lowrank,3,old_boundary_margin,2.5184288024902344,logit
+replication,13409,lowrank,3,old_miou,51.71023698832635,percent
+replication,13409,lowrank,4,all_miou,43.52504495680311,percent
+replication,13409,lowrank,4,new_miou,27.58611010133824,percent
+replication,13409,lowrank,4,old_boundary_iou,23.359325628316192,percent
+replication,13409,lowrank,4,old_boundary_margin,1.871091365814209,logit
+replication,13409,lowrank,4,old_miou,43.30023162734677,percent
+replication,13409,lowrank,5,all_miou,41.93917770632628,percent
+replication,13409,lowrank,5,new_miou,67.62207085222339,percent
+replication,13409,lowrank,5,old_boundary_iou,19.578728057747252,percent
+replication,13409,lowrank,5,old_boundary_margin,1.5676058530807495,logit
+replication,13409,lowrank,5,old_miou,38.99999813039028,percent
+replication,13409,lowrank,6,all_miou,35.372788768762085,percent
+replication,13409,lowrank,6,new_miou,6.442347091547653,percent
+replication,13409,lowrank,6,old_boundary_iou,19.688819124535403,percent
+replication,13409,lowrank,6,old_boundary_margin,8.260889053344727,logit
+replication,13409,lowrank,6,old_miou,36.51823620087294,percent
+replication,13409,lowrank,7,all_miou,29.140437016622588,percent
+replication,13409,lowrank,7,new_miou,7.833427881618589,percent
+replication,13409,lowrank,7,old_boundary_iou,15.688753371409888,percent
+replication,13409,lowrank,7,old_boundary_margin,4.5111260414123535,logit
+replication,13409,lowrank,7,old_miou,30.105347380141517,percent
+replication,13409,lowrank,8,all_miou,26.339502418412863,percent
+replication,13409,lowrank,8,new_miou,4.810663910659583,percent
+replication,13409,lowrank,8,old_boundary_iou,10.488100609069782,percent
+replication,13409,lowrank,8,old_boundary_margin,2.977060317993164,logit
+replication,13409,lowrank,8,old_miou,27.61278217971267,percent
+replication,13409,lowrank,9,all_miou,14.945099283838175,percent
+replication,13409,lowrank,9,new_miou,12.31633558174285,percent
+replication,13409,lowrank,9,old_boundary_iou,5.620574572776051,percent
+replication,13409,lowrank,9,old_boundary_margin,1.5748614072799683,logit
+replication,13409,lowrank,9,old_miou,14.545858167092318,percent
+replication,13409,lowrank_ssr,1,all_miou,73.56277315545725,percent
+replication,13409,lowrank_ssr,1,new_miou,34.22203843089736,percent
+replication,13409,lowrank_ssr,1,old_boundary_iou,34.89527334940817,percent
+replication,13409,lowrank_ssr,1,old_boundary_margin,3.164065361022949,logit
+replication,13409,lowrank_ssr,1,old_miou,75.763564204551,percent
+replication,13409,lowrank_ssr,10,all_miou,11.415546447549918,percent
+replication,13409,lowrank_ssr,10,new_miou,0.859655234148169,percent
+replication,13409,lowrank_ssr,10,old_boundary_iou,4.091328406038229,percent
+replication,13409,lowrank_ssr,10,old_boundary_margin,5.9937849044799805,logit
+replication,13409,lowrank_ssr,10,old_miou,12.571937903389479,percent
+replication,13409,lowrank_ssr,2,all_miou,66.41868684164484,percent
+replication,13409,lowrank_ssr,2,new_miou,59.673661067708125,percent
+replication,13409,lowrank_ssr,2,old_boundary_iou,34.0706051087327,percent
+replication,13409,lowrank_ssr,2,old_boundary_margin,2.8433682918548584,logit
+replication,13409,lowrank_ssr,2,old_miou,66.15393269443956,percent
+replication,13409,lowrank_ssr,3,all_miou,53.5620411262095,percent
+replication,13409,lowrank_ssr,3,new_miou,24.07118174429098,percent
+replication,13409,lowrank_ssr,3,old_boundary_iou,28.76685789910436,percent
+replication,13409,lowrank_ssr,3,old_boundary_margin,3.369887351989746,logit
+replication,13409,lowrank_ssr,3,old_miou,54.12583202498721,percent
+replication,13409,lowrank_ssr,4,all_miou,46.80969534254405,percent
+replication,13409,lowrank_ssr,4,new_miou,30.428840603052404,percent
+replication,13409,lowrank_ssr,4,old_boundary_iou,25.728285202371048,percent
+replication,13409,lowrank_ssr,4,old_boundary_margin,2.1579196453094482,logit
+replication,13409,lowrank_ssr,4,old_miou,46.36888627830575,percent
+replication,13409,lowrank_ssr,5,all_miou,44.815923539421746,percent
+replication,13409,lowrank_ssr,5,new_miou,67.41442983677351,percent
+replication,13409,lowrank_ssr,5,old_boundary_iou,21.550642325330706,percent
+replication,13409,lowrank_ssr,5,old_boundary_margin,1.672973394393921,logit
+replication,13409,lowrank_ssr,5,old_miou,41.81143396741459,percent
+replication,13409,lowrank_ssr,6,all_miou,38.21064068281611,percent
+replication,13409,lowrank_ssr,6,new_miou,9.790767344025637,percent
+replication,13409,lowrank_ssr,6,old_boundary_iou,18.666536181111184,percent
+replication,13409,lowrank_ssr,6,old_boundary_margin,8.33448600769043,logit
+replication,13409,lowrank_ssr,6,old_miou,38.974175115237756,percent
+replication,13409,lowrank_ssr,7,all_miou,29.72741261569125,percent
+replication,13409,lowrank_ssr,7,new_miou,8.178441495209388,percent
+replication,13409,lowrank_ssr,7,old_boundary_iou,16.779508809442376,percent
+replication,13409,lowrank_ssr,7,old_boundary_margin,4.844869613647461,logit
+replication,13409,lowrank_ssr,7,old_miou,30.442280871882105,percent
+replication,13409,lowrank_ssr,8,all_miou,27.88331719601831,percent
+replication,13409,lowrank_ssr,8,new_miou,5.547991984984558,percent
+replication,13409,lowrank_ssr,8,old_boundary_iou,12.332879253054985,percent
+replication,13409,lowrank_ssr,8,old_boundary_margin,3.0714519023895264,logit
+replication,13409,lowrank_ssr,8,old_miou,28.837359090950027,percent
+replication,13409,lowrank_ssr,9,all_miou,15.076877692345791,percent
+replication,13409,lowrank_ssr,9,new_miou,12.49910322499992,percent
+replication,13409,lowrank_ssr,9,old_boundary_iou,5.624456390314387,percent
+replication,13409,lowrank_ssr,9,old_boundary_margin,1.7604520320892334,logit
+replication,13409,lowrank_ssr,9,old_miou,14.291095693406053,percent
+replication,13410,lowrank,1,all_miou,72.82099630731021,percent
+replication,13410,lowrank,1,new_miou,33.09124033621007,percent
+replication,13410,lowrank,1,old_boundary_iou,33.68773270058545,percent
+replication,13410,lowrank,1,old_boundary_margin,3.222994089126587,logit
+replication,13410,lowrank,1,old_miou,74.9924920789327,percent
+replication,13410,lowrank,10,all_miou,13.525664081601601,percent
+replication,13410,lowrank,10,new_miou,1.3887534330926992,percent
+replication,13410,lowrank,10,old_boundary_iou,3.8581941137228744,percent
+replication,13410,lowrank,10,old_boundary_margin,6.142076015472412,logit
+replication,13410,lowrank,10,old_miou,14.876325909502155,percent
+replication,13410,lowrank,2,all_miou,66.74043640291963,percent
+replication,13410,lowrank,2,new_miou,65.30557190996083,percent
+replication,13410,lowrank,2,old_boundary_iou,34.761904282709246,percent
+replication,13410,lowrank,2,old_boundary_margin,3.3799688816070557,logit
+replication,13410,lowrank,2,old_miou,65.51878401254373,percent
+replication,13410,lowrank,3,all_miou,51.69648779330196,percent
+replication,13410,lowrank,3,new_miou,23.760156569393416,percent
+replication,13410,lowrank,3,old_boundary_iou,29.58903445135635,percent
+replication,13410,lowrank,3,old_boundary_margin,2.8571956157684326,logit
+replication,13410,lowrank,3,old_miou,52.18573263826162,percent
+replication,13410,lowrank,4,all_miou,41.9346208566658,percent
+replication,13410,lowrank,4,new_miou,27.49804966138164,percent
+replication,13410,lowrank,4,old_boundary_iou,23.10235056468984,percent
+replication,13410,lowrank,4,old_boundary_margin,1.8607852458953857,logit
+replication,13410,lowrank,4,old_miou,41.148698194140835,percent
+replication,13410,lowrank,5,all_miou,39.939378693115955,percent
+replication,13410,lowrank,5,new_miou,70.41560526719154,percent
+replication,13410,lowrank,5,old_boundary_iou,19.92803556612733,percent
+replication,13410,lowrank,5,old_boundary_margin,1.7353148460388184,logit
+replication,13410,lowrank,5,old_miou,36.32250000593427,percent
+replication,13410,lowrank,6,all_miou,31.830533973062398,percent
+replication,13410,lowrank,6,new_miou,8.62464940560633,percent
+replication,13410,lowrank,6,old_boundary_iou,19.725041738319224,percent
+replication,13410,lowrank,6,old_boundary_margin,7.5717315673828125,logit
+replication,13410,lowrank,6,old_miou,32.23653762074569,percent
+replication,13410,lowrank,7,all_miou,28.21379452604943,percent
+replication,13410,lowrank,7,new_miou,10.502266217322466,percent
+replication,13410,lowrank,7,old_boundary_iou,13.301809126402578,percent
+replication,13410,lowrank,7,old_boundary_margin,4.890776634216309,logit
+replication,13410,lowrank,7,old_miou,28.69481417322707,percent
+replication,13410,lowrank,8,all_miou,24.706494015452012,percent
+replication,13410,lowrank,8,new_miou,5.804994543769676,percent
+replication,13410,lowrank,8,old_boundary_iou,9.471739869205214,percent
+replication,13410,lowrank,8,old_boundary_margin,2.776749849319458,logit
+replication,13410,lowrank,8,old_miou,25.20355506709766,percent
+replication,13410,lowrank,9,all_miou,17.01195087143052,percent
+replication,13410,lowrank,9,new_miou,13.65837987309106,percent
+replication,13410,lowrank,9,old_boundary_iou,4.262946455732232,percent
+replication,13410,lowrank,9,old_boundary_margin,2.15089750289917,logit
+replication,13410,lowrank,9,old_miou,16.554521012295282,percent
+replication,13410,lowrank_ssr,1,all_miou,72.81882352214969,percent
+replication,13410,lowrank_ssr,1,new_miou,33.13874462543336,percent
+replication,13410,lowrank_ssr,1,old_boundary_iou,33.66594057871989,percent
+replication,13410,lowrank_ssr,1,old_boundary_margin,3.227750301361084,logit
+replication,13410,lowrank_ssr,1,old_miou,74.98441314587848,percent
+replication,13410,lowrank_ssr,10,all_miou,13.694690468128664,percent
+replication,13410,lowrank_ssr,10,new_miou,1.628635267149334,percent
+replication,13410,lowrank_ssr,10,old_boundary_iou,6.047713255185956,percent
+replication,13410,lowrank_ssr,10,old_boundary_margin,5.9063873291015625,logit
+replication,13410,lowrank_ssr,10,old_miou,15.050519187555409,percent
+replication,13410,lowrank_ssr,2,all_miou,66.0503034729906,percent
+replication,13410,lowrank_ssr,2,new_miou,63.34929802783661,percent
+replication,13410,lowrank_ssr,2,old_boundary_iou,34.70313635838523,percent
+replication,13410,lowrank_ssr,2,old_boundary_margin,3.231600522994995,logit
+replication,13410,lowrank_ssr,2,old_miou,65.0918521025272,percent
+replication,13410,lowrank_ssr,3,all_miou,54.002717985512625,percent
+replication,13410,lowrank_ssr,3,new_miou,26.466899444173674,percent
+replication,13410,lowrank_ssr,3,old_boundary_iou,29.815290571784786,percent
+replication,13410,lowrank_ssr,3,old_boundary_margin,3.5797505378723145,logit
+replication,13410,lowrank_ssr,3,old_miou,54.34928436583496,percent
+replication,13410,lowrank_ssr,4,all_miou,44.20714909016424,percent
+replication,13410,lowrank_ssr,4,new_miou,29.767309160034667,percent
+replication,13410,lowrank_ssr,4,old_boundary_iou,23.439869195789083,percent
+replication,13410,lowrank_ssr,4,old_boundary_margin,2.0664753913879395,logit
+replication,13410,lowrank_ssr,4,old_miou,43.40002526562439,percent
+replication,13410,lowrank_ssr,5,all_miou,42.60652211804705,percent
+replication,13410,lowrank_ssr,5,new_miou,69.82010757253325,percent
+replication,13410,lowrank_ssr,5,old_boundary_iou,19.21044717984405,percent
+replication,13410,lowrank_ssr,5,old_boundary_margin,1.8176804780960083,logit
+replication,13410,lowrank_ssr,5,old_miou,39.19014859183836,percent
+replication,13410,lowrank_ssr,6,all_miou,34.58890340728461,percent
+replication,13410,lowrank_ssr,6,new_miou,12.494557942669328,percent
+replication,13410,lowrank_ssr,6,old_boundary_iou,21.513332675182397,percent
+replication,13410,lowrank_ssr,6,old_boundary_margin,7.692385673522949,logit
+replication,13410,lowrank_ssr,6,old_miou,34.856346618870745,percent
+replication,13410,lowrank_ssr,7,all_miou,28.842097730765726,percent
+replication,13410,lowrank_ssr,7,new_miou,9.36154467624801,percent
+replication,13410,lowrank_ssr,7,old_boundary_iou,16.55901449700177,percent
+replication,13410,lowrank_ssr,7,old_boundary_margin,5.007689952850342,logit
+replication,13410,lowrank_ssr,7,old_miou,29.312748131984456,percent
+replication,13410,lowrank_ssr,8,all_miou,24.74439283590696,percent
+replication,13410,lowrank_ssr,8,new_miou,5.565622060095377,percent
+replication,13410,lowrank_ssr,8,old_boundary_iou,11.561388517814839,percent
+replication,13410,lowrank_ssr,8,old_boundary_margin,2.9817540645599365,logit
+replication,13410,lowrank_ssr,8,old_miou,25.458090906467355,percent
+replication,13410,lowrank_ssr,9,all_miou,16.369683408085514,percent
+replication,13410,lowrank_ssr,9,new_miou,13.943171093211665,percent
+replication,13410,lowrank_ssr,9,old_boundary_iou,4.753494270052658,percent
+replication,13410,lowrank_ssr,9,old_boundary_margin,2.400451421737671,logit
+replication,13410,lowrank_ssr,9,old_miou,16.147853368895433,percent

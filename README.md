@@ -7,9 +7,23 @@ The repository is intentionally limited to the AI side of the study:
 - continual image classification on Split-CIFAR-10, Split-CIFAR-100, Split-TinyImageNet, and the five-dataset domain stream;
 - geometry and mechanism probes, including representation rank, prototype overlap, spectral diagnostics, and attention/localization visualization;
 - CUB-200 fine-grained classification, segmentation, and low-rank adapter probes;
-- optional sequential LLM editing probes using EasyEdit-compatible baselines and the SSR fine-tuning editor.
+- dense and low-rank sequential LLM editing using EasyEdit-compatible baselines and SSR.
 
 Biological connectomics analyses, raw connectomics tables, and manuscript source files are not redistributed here.
+
+## September 11 Manuscript Release
+
+Start with the [current Figure 4--6 reproduction map](docs/manuscript_20260911.md)
+and the [checkpoint download/status page](docs/checkpoint_downloads.md).
+The current Figure 5 is **Qwen2.5-7B WikiRecent LoRA editing**, not the older
+ZsRE figure. The release includes numerical source records, current plotting
+sources, the VOC low-rank implementation, and the matched CUB geometry controls.
+Earlier guides below remain useful for the archived cohorts they explicitly name.
+
+Checkpoint export is complete for 42 visual models; public Hugging Face upload
+is pending write access. Historical KE adapters were not saved and must be
+regenerated with the frozen protocol. No missing weight file is substituted
+with a new run or a different model.
 
 ## Repository Layout
 

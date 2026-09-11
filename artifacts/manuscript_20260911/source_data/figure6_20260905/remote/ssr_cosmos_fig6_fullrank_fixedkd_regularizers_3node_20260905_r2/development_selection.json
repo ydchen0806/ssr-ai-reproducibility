@@ -1,0 +1,84 @@
+{
+  "candidates": [
+    {
+      "ewc_coefficient": 10000.0,
+      "joint_development_score": 1.4252222222222342,
+      "mean_aa_gain_pp": -0.1944999999999908,
+      "mean_af_reduction_pp": 1.619722222222225,
+      "rows": [
+        {
+          "aa_gain_pp": -0.09900000000000375,
+          "af_reduction_pp": 2.736666666666668,
+          "seed": 8801
+        },
+        {
+          "aa_gain_pp": -0.28999999999997783,
+          "af_reduction_pp": 0.5027777777777818,
+          "seed": 8802
+        }
+      ]
+    },
+    {
+      "ewc_coefficient": 1000.0,
+      "joint_development_score": 0.21311111111111902,
+      "mean_aa_gain_pp": -0.43549999999999756,
+      "mean_af_reduction_pp": 0.6486111111111166,
+      "rows": [
+        {
+          "aa_gain_pp": -0.5299999999999869,
+          "af_reduction_pp": 1.7672222222222285,
+          "seed": 8801
+        },
+        {
+          "aa_gain_pp": -0.3410000000000082,
+          "af_reduction_pp": -0.4699999999999953,
+          "seed": 8802
+        }
+      ]
+    },
+    {
+      "ewc_coefficient": 1000000.0,
+      "joint_development_score": -71.53272222222222,
+      "mean_aa_gain_pp": -64.5155,
+      "mean_af_reduction_pp": -7.0172222222222205,
+      "rows": [
+        {
+          "aa_gain_pp": -64.463,
+          "af_reduction_pp": -6.365555555555554,
+          "seed": 8801
+        },
+        {
+          "aa_gain_pp": -64.568,
+          "af_reduction_pp": -7.668888888888887,
+          "seed": 8802
+        }
+      ]
+    },
+    {
+      "ewc_coefficient": 100000.0,
+      "joint_development_score": -77.52005555555556,
+      "mean_aa_gain_pp": -26.869499999999995,
+      "mean_af_reduction_pp": -50.65055555555556,
+      "rows": [
+        {
+          "aa_gain_pp": -22.80599999999999,
+          "af_reduction_pp": -54.31944444444445,
+          "seed": 8801
+        },
+        {
+          "aa_gain_pp": -30.933,
+          "af_reduction_pp": -46.981666666666676,
+          "seed": 8802
+        }
+      ]
+    }
+  ],
+  "development_seeds": [
+    8801,
+    8802
+  ],
+  "schema_version": "ssr_cosmos_fullrank_fixedkd_ewc_selection_v1",
+  "selected_ewc_coefficient": 10000.0,
+  "selection_data": "development_only",
+  "selection_rule": "maximize mean AA gain plus AF reduction versus historical matched KD; tie-break by AA gain and then the smaller EWC coefficient"
+}

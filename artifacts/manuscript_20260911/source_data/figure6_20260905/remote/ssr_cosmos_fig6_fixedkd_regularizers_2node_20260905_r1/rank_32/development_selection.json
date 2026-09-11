@@ -1,0 +1,244 @@
+{
+  "candidate_budget_per_tuned_family": 4,
+  "candidates": {
+    "kd_ewc": [
+      {
+        "coefficient": 100.0,
+        "mean_aa": 80.02828667960652,
+        "mean_af": 2.3886210494021403,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 77.63966563020439
+      },
+      {
+        "coefficient": 1000.0,
+        "mean_aa": 81.02982552287506,
+        "mean_af": 1.5931804799058786,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 79.43664504296918
+      },
+      {
+        "coefficient": 10000.0,
+        "mean_aa": 81.27162985326055,
+        "mean_af": 0.7791482628533862,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 80.49248159040717
+      },
+      {
+        "coefficient": 100000.0,
+        "mean_aa": 80.89881842275668,
+        "mean_af": 0.48326969598069,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 80.41554872677598
+      }
+    ],
+    "kd_mas": [
+      {
+        "coefficient": 0.01,
+        "mean_aa": 79.17692050392247,
+        "mean_af": 3.131442608235165,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 76.04547789568731
+      },
+      {
+        "coefficient": 0.1,
+        "mean_aa": 79.51652115805167,
+        "mean_af": 3.122971774411619,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 76.39354938364006
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 80.60497911608061,
+        "mean_af": 1.9416615028462676,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 78.66331761323434
+      },
+      {
+        "coefficient": 10.0,
+        "mean_aa": 75.29701239107168,
+        "mean_af": 2.317365131391286,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 72.97964725968039
+      }
+    ],
+    "kd_si": [
+      {
+        "coefficient": 0.001,
+        "mean_aa": 78.58399351801062,
+        "mean_af": 3.933024619092192,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 74.65096889891842
+      },
+      {
+        "coefficient": 0.01,
+        "mean_aa": 78.58399351801062,
+        "mean_af": 3.933024619092192,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 74.65096889891842
+      },
+      {
+        "coefficient": 0.1,
+        "mean_aa": 78.58399351801062,
+        "mean_af": 3.933024619092192,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 74.65096889891842
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 78.58399351801062,
+        "mean_af": 3.933024619092192,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 74.65096889891842
+      }
+    ],
+    "kd_ssr": [
+      {
+        "coefficient": 0.25,
+        "mean_aa": 79.58947754996704,
+        "mean_af": 3.040448015464252,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 76.5490295345028
+      },
+      {
+        "coefficient": 0.5,
+        "mean_aa": 80.05171312835577,
+        "mean_af": 2.9102929340510317,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 77.14142019430474
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 80.36543369945717,
+        "mean_af": 2.494079040767087,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 77.8713546586901
+      },
+      {
+        "coefficient": 2.0,
+        "mean_aa": 75.71828077125663,
+        "mean_af": 7.126864942260575,
+        "seeds": [
+          17401,
+          17403,
+          17405
+        ],
+        "selection_utility": 68.59141582899606
+      }
+    ]
+  },
+  "confirmation_was_not_read": true,
+  "development_seeds": [
+    17401,
+    17403,
+    17405
+  ],
+  "protocol": "fig6_cub_lowrank_fixedkd_regularizers_v2",
+  "selected": {
+    "kd_ewc": {
+      "coefficient": 10000.0,
+      "mean_aa": 81.27162985326055,
+      "mean_af": 0.7791482628533862,
+      "seeds": [
+        17401,
+        17403,
+        17405
+      ],
+      "selection_utility": 80.49248159040717
+    },
+    "kd_mas": {
+      "coefficient": 1.0,
+      "mean_aa": 80.60497911608061,
+      "mean_af": 1.9416615028462676,
+      "seeds": [
+        17401,
+        17403,
+        17405
+      ],
+      "selection_utility": 78.66331761323434
+    },
+    "kd_si": {
+      "coefficient": 0.001,
+      "mean_aa": 78.58399351801062,
+      "mean_af": 3.933024619092192,
+      "seeds": [
+        17401,
+        17403,
+        17405
+      ],
+      "selection_utility": 74.65096889891842
+    },
+    "kd_ssr": {
+      "coefficient": 1.0,
+      "mean_aa": 80.36543369945717,
+      "mean_af": 2.494079040767087,
+      "seeds": [
+        17401,
+        17403,
+        17405
+      ],
+      "selection_utility": 77.8713546586901
+    }
+  },
+  "selection_rule": "maximize mean AA minus AF within the common fixed-KD scaffold; ties choose smaller coefficient",
+  "status": "selected"
+}

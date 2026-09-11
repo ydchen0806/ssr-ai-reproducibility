@@ -1,0 +1,31 @@
+{
+  "segmentation": {
+    "biocs_kd": {
+      "mean_iou": {
+        "mean": 70.68106916019083,
+        "std": 0.0,
+        "n": 1
+      },
+      "mean_dice": {
+        "mean": 82.10524102305806,
+        "std": 0.0,
+        "n": 1
+      },
+      "avg_forgetting_iou": {
+        "mean": 2.695583923865548,
+        "std": 0.0,
+        "n": 1
+      },
+      "effective_rank": {
+        "mean": 173.73178100585938,
+        "std": 0.0,
+        "n": 1
+      },
+      "mean_abs_offdiag_cosine": {
+        "mean": 0.05000179260969162,
+        "std": 0.0,
+        "n": 1
+      }
+    }
+  }
+}

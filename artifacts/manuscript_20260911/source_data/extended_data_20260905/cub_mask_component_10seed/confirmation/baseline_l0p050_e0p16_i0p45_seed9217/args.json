@@ -1,0 +1,49 @@
+{
+  "data_root": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/data/cub200",
+  "output_dir": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_missing_4node_20260805_r1/cub_segmentation/confirmation/baseline_l0p050_e0p16_i0p45_seed9217",
+  "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+  "segmentation_cache": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/data/cub200/cub200_seg_resnet18_dense_192.pt",
+  "segmentation_source_sha256": "dc77f6cffea0cbe2e41d4201115c8f29a6320ecb04fffd2444f51b8066e4b84f",
+  "segmentation_cache_sha256": "267ed5e5d43647ff246c549af2da5d1ea738b3040a281e95afa9452c1c480ad8",
+  "selection_lock_sha256": "a9b9439e82e931c43b4c4a061a5820be9e2d6f2f6ff8f9633219edc564931d93",
+  "tasks": [
+    "segmentation"
+  ],
+  "methods": [
+    "baseline"
+  ],
+  "seeds": [
+    9217
+  ],
+  "num_classes": 200,
+  "max_classes": null,
+  "classes_per_task": 10,
+  "class_order": "semantic",
+  "workers": 4,
+  "feature_batch_size": 128,
+  "cls_epochs": 80,
+  "cls_batch_size": 128,
+  "cls_lr": 0.001,
+  "cls_weight_decay": 0.001,
+  "seg_epochs": 24,
+  "seg_batch_size": 48,
+  "seg_lr": 0.0005,
+  "seg_weight_decay": 0.0001,
+  "seg_image_size": 192,
+  "seg_hidden_dim": 256,
+  "seg_biocs_target": "class",
+  "seg_biocs_scope": "seen",
+  "seg_biocs_start_task": 0,
+  "lambda_sp": 0.05,
+  "lambda_kd": 2.0,
+  "lambda_kd_seg": 2.0,
+  "a_exc": 1.0,
+  "a_inh": 0.8,
+  "sigma_exc": 0.16,
+  "sigma_inh": 0.45,
+  "kernel_family": "gaussian",
+  "kd_temperature": 3.0,
+  "device": "cuda",
+  "no_download": true,
+  "no_segmentation_cache": false
+}

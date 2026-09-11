@@ -1,0 +1,62 @@
+[
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4_panel_data_map_20260905.csv",
+    "sha256": "325f13f0562d06cea9dea9cbeb3e8a56b5e9265f700f6ee9c9e86da9f918e068",
+    "bytes": 4357
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4b_independent_replication_seed_level.csv",
+    "sha256": "551506f9725810fc2d3a4bf33cb8110de0906abcec77c6d420e5a0194e3e7bdb",
+    "bytes": 8073
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4b_replication_summary.csv",
+    "sha256": "e3035675f8e56bca6503aa561239038e9c6d4a72ee760e646f13ec3719385ea1",
+    "bytes": 1469
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4b_seed_level.csv",
+    "sha256": "0ea59d427861300b48129f1c1111d787d2d0b26671fa08f917d22cc01ced82c7",
+    "bytes": 5487
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4c_mapping_seed_level.csv",
+    "sha256": "9bcf6e927fcfd8908922154a6914508a474506e7f02bcc976cc2f68caf3a8c92",
+    "bytes": 4452
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4c_radial_development_seed_level.csv",
+    "sha256": "9b02a548c64b188a21ae34dedc80c44d32e3a14df2f5355a50ee0b378e1d84b8",
+    "bytes": 5547
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4d_editor_development.csv",
+    "sha256": "3cabc7f20915155f698c9becb1cddb3706834d52cfa9f6d7d31467637fedbfe9",
+    "bytes": 2667
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4e_cross_dataset_seed_level.csv",
+    "sha256": "b08e89b624004654aad4e2c1c5f500ac3a75fd77ebb18c2831dac10f232723aa",
+    "bytes": 15728
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4e_cross_dataset_summary.csv",
+    "sha256": "cec665788460440024187891f40d53012fb5c9753f772cc79be97f20d2b031b2",
+    "bytes": 1054
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4f_recipe_summary.csv",
+    "sha256": "d203639343cf4c9afc32e56011540414b7a9f21712ee78167930f37759d2f524",
+    "bytes": 981
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4g_complete_recipe_transfer.csv",
+    "sha256": "6a2491070de3105195c3840629f5fb675001109c16d55a689a13e33dfb17b97f",
+    "bytes": 837
+  },
+  {
+    "file": "figure_source_data/figure4_20260905/Fig4h_dense_geometry_seed_level.csv",
+    "sha256": "0b70168915a72000e3f53aeda6a67860c1ebaea3f09d5d62d62aa4a3fbae52f6",
+    "bytes": 3265
+  }
+]

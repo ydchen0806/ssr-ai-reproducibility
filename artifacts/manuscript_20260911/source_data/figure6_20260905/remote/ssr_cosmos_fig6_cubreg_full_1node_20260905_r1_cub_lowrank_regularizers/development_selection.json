@@ -1,0 +1,301 @@
+{
+  "candidate_budget_per_tuned_family": 4,
+  "candidates": {
+    "ewc": [
+      {
+        "coefficient": 100.0,
+        "mean_aa": 89.13178647267098,
+        "mean_af": 3.795096741070486,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 85.33668973160052
+      },
+      {
+        "coefficient": 1000.0,
+        "mean_aa": 89.12205732159593,
+        "mean_af": 3.8153426304267004,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 85.30671469116923
+      },
+      {
+        "coefficient": 10000.0,
+        "mean_aa": 90.16654941196971,
+        "mean_af": 3.1575272480103584,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 87.00902216395936
+      },
+      {
+        "coefficient": 100000.0,
+        "mean_aa": 91.34045841297097,
+        "mean_af": 1.534804696678677,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 89.8056537162923
+      }
+    ],
+    "lwf": [
+      {
+        "coefficient": 0.5,
+        "mean_aa": 79.31426705143724,
+        "mean_af": 14.30494281434959,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 65.00932423708765
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 74.88411381427782,
+        "mean_af": 18.270385215466924,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 56.613728598810894
+      },
+      {
+        "coefficient": 2.0,
+        "mean_aa": 73.84616200677279,
+        "mean_af": 19.04905726538827,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 54.79710474138451
+      },
+      {
+        "coefficient": 4.0,
+        "mean_aa": 72.7611864704965,
+        "mean_af": 19.88800766096716,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 52.87317880952933
+      }
+    ],
+    "mas": [
+      {
+        "coefficient": 0.01,
+        "mean_aa": 89.29535973624252,
+        "mean_af": 3.510284683465532,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 85.78507505277697
+      },
+      {
+        "coefficient": 0.1,
+        "mean_aa": 91.39617287537068,
+        "mean_af": 2.1471534916472828,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 89.24901938372341
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 90.74631796978265,
+        "mean_af": 2.3993069489405676,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 88.34701102084209
+      },
+      {
+        "coefficient": 10.0,
+        "mean_aa": 88.6185352959995,
+        "mean_af": 1.9051746059815315,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 86.71336069001796
+      }
+    ],
+    "si": [
+      {
+        "coefficient": 0.001,
+        "mean_aa": 88.5169199090592,
+        "mean_af": 4.4464636259715915,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 84.07045628308761
+      },
+      {
+        "coefficient": 0.01,
+        "mean_aa": 88.5169199090592,
+        "mean_af": 4.4464636259715915,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 84.07045628308761
+      },
+      {
+        "coefficient": 0.1,
+        "mean_aa": 88.5169199090592,
+        "mean_af": 4.4464636259715915,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 84.07045628308761
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 88.5169199090592,
+        "mean_af": 4.4464636259715915,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 84.07045628308761
+      }
+    ],
+    "ssr": [
+      {
+        "coefficient": 0.25,
+        "mean_aa": 87.27534624983082,
+        "mean_af": 5.795443008958512,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 81.4799032408723
+      },
+      {
+        "coefficient": 0.5,
+        "mean_aa": 87.98724915531211,
+        "mean_af": 5.060502705908411,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 82.92674644940371
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 89.35999325188605,
+        "mean_af": 4.379545404260805,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 84.98044784762526
+      },
+      {
+        "coefficient": 2.0,
+        "mean_aa": 82.18262527397684,
+        "mean_af": 11.978358772495113,
+        "seeds": [
+          17301,
+          17303,
+          17305
+        ],
+        "selection_utility": 70.20426650148174
+      }
+    ]
+  },
+  "confirmation_was_not_read": true,
+  "development_seeds": [
+    17301,
+    17303,
+    17305
+  ],
+  "protocol": "fig6_cub_lowrank_regularizers_v1",
+  "selected": {
+    "ewc": {
+      "coefficient": 100000.0,
+      "mean_aa": 91.34045841297097,
+      "mean_af": 1.534804696678677,
+      "seeds": [
+        17301,
+        17303,
+        17305
+      ],
+      "selection_utility": 89.8056537162923
+    },
+    "lwf": {
+      "coefficient": 0.5,
+      "mean_aa": 79.31426705143724,
+      "mean_af": 14.30494281434959,
+      "seeds": [
+        17301,
+        17303,
+        17305
+      ],
+      "selection_utility": 65.00932423708765
+    },
+    "mas": {
+      "coefficient": 0.1,
+      "mean_aa": 91.39617287537068,
+      "mean_af": 2.1471534916472828,
+      "seeds": [
+        17301,
+        17303,
+        17305
+      ],
+      "selection_utility": 89.24901938372341
+    },
+    "si": {
+      "coefficient": 0.001,
+      "mean_aa": 88.5169199090592,
+      "mean_af": 4.4464636259715915,
+      "seeds": [
+        17301,
+        17303,
+        17305
+      ],
+      "selection_utility": 84.07045628308761
+    },
+    "ssr": {
+      "coefficient": 1.0,
+      "mean_aa": 89.35999325188605,
+      "mean_af": 4.379545404260805,
+      "seeds": [
+        17301,
+        17303,
+        17305
+      ],
+      "selection_utility": 84.98044784762526
+    }
+  },
+  "selection_rule": "maximize mean paired-scale AA minus AF; ties choose smaller coefficient",
+  "status": "selected"
+}

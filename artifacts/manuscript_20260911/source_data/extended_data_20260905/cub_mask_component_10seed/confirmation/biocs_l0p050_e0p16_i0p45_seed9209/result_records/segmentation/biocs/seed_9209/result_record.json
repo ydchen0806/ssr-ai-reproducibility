@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "git_commit": "88064996dfbaee8667e3b1d8cf78d061d0d56e75",
+  "run_id": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_missing_4node_20260805_r1/cub_segmentation/confirmation/biocs_l0p050_e0p16_i0p45_seed9209/segmentation/biocs/seed_9209",
+  "task_family": "segmentation",
+  "dataset": "cub200_masks",
+  "model": "resnet18_dense_decoder",
+  "seed": 9209,
+  "objective": {
+    "task": true,
+    "kd": false,
+    "ssr": true,
+    "anchor": false,
+    "spectral": false,
+    "ewc": false,
+    "mas": false,
+    "si": false,
+    "center": false,
+    "protodecor": false
+  },
+  "distance_mapping": "cosine",
+  "kernel": {
+    "family": "gaussian",
+    "A_exc": 1.0,
+    "A_inh": 0.8,
+    "sigma_exc": 0.16,
+    "sigma_inh": 0.45
+  },
+  "metrics": {
+    "mean_iou": 70.37105426362024,
+    "mean_dice": 81.99450628980506,
+    "avg_forgetting_iou": 3.1706878363781366,
+    "effective_rank": 173.6537628173828,
+    "mean_abs_offdiag_cosine": 0.050006818026304245
+  },
+  "runtime": {
+    "elapsed_s": 287.9596700668335
+  },
+  "config_hash": "56a5983301edb0657868fff62dfd464f05bd61535ac0aa87131955f64aa8dad9",
+  "dataset_hash": "08789298f522215af893e4fbd3bcc85d5ee54333011f0e66b92b294423641878",
+  "recipe": "ssr_only",
+  "selection_lock_hash": "a9b9439e82e931c43b4c4a061a5820be9e2d6f2f6ff8f9633219edc564931d93",
+  "lambda_ssr": 0.05,
+  "metric_directions": {
+    "mean_iou": true,
+    "mean_dice": true,
+    "avg_forgetting_iou": false,
+    "avg_accuracy": true,
+    "avg_forgetting": false,
+    "effective_rank": true,
+    "mean_abs_offdiag_cosine": false
+  }
+}

@@ -1,0 +1,81 @@
+cohort,seed,metric,paired_delta,unit
+cohort 1,12401,all_miou,1.2961110136735543,pp
+cohort 1,12402,all_miou,1.1468003268642895,pp
+cohort 1,12403,all_miou,0.2811147804448967,pp
+cohort 1,12404,all_miou,1.0559367110413034,pp
+cohort 1,12405,all_miou,1.549160519381977,pp
+cohort 1,12406,all_miou,1.1268167408983472,pp
+cohort 1,12407,all_miou,1.0072926945274496,pp
+cohort 1,12408,all_miou,0.9988880236221237,pp
+cohort 1,12409,all_miou,1.1109526607619444,pp
+cohort 1,12410,all_miou,1.137072051451592,pp
+cohort 1,12401,old_boundary_iou,0.24088761014612395,pp
+cohort 1,12402,old_boundary_iou,0.9300874440352717,pp
+cohort 1,12403,old_boundary_iou,-0.8750561179353602,pp
+cohort 1,12404,old_boundary_iou,1.4217053723322433,pp
+cohort 1,12405,old_boundary_iou,0.3675066272382499,pp
+cohort 1,12406,old_boundary_iou,-0.2659060604087152,pp
+cohort 1,12407,old_boundary_iou,-0.1385652703802831,pp
+cohort 1,12408,old_boundary_iou,0.37531127953673027,pp
+cohort 1,12409,old_boundary_iou,0.45606149515040206,pp
+cohort 1,12410,old_boundary_iou,-0.6873338642596023,pp
+cohort 1,12401,old_boundary_margin,0.14973235130310059,logit
+cohort 1,12402,old_boundary_margin,0.13779799938201903,logit
+cohort 1,12403,old_boundary_margin,0.07389596700668336,logit
+cohort 1,12404,old_boundary_margin,0.11253663301467895,logit
+cohort 1,12405,old_boundary_margin,0.1693096399307251,logit
+cohort 1,12406,old_boundary_margin,0.13605023622512818,logit
+cohort 1,12407,old_boundary_margin,0.06000574827194214,logit
+cohort 1,12408,old_boundary_margin,0.07857588529586793,logit
+cohort 1,12409,old_boundary_margin,0.10065598487854004,logit
+cohort 1,12410,old_boundary_margin,0.07203437089920044,logit
+cohort 1,12401,old_miou,1.0368030627882436,pp
+cohort 1,12402,old_miou,0.8364181548087207,pp
+cohort 1,12403,old_miou,0.33695317015882353,pp
+cohort 1,12404,old_miou,0.7752739687917662,pp
+cohort 1,12405,old_miou,1.6950773597731517,pp
+cohort 1,12406,old_miou,0.9049782835082532,pp
+cohort 1,12407,old_miou,0.8486292586196287,pp
+cohort 1,12408,old_miou,0.8082733538843886,pp
+cohort 1,12409,old_miou,1.1557274299021019,pp
+cohort 1,12410,old_miou,0.9697471040159573,pp
+replication,13401,all_miou,1.394751324215486,pp
+replication,13402,all_miou,1.392429013080249,pp
+replication,13403,all_miou,-0.6183014707201295,pp
+replication,13404,all_miou,0.5817431103034595,pp
+replication,13405,all_miou,0.9071427468647659,pp
+replication,13406,all_miou,1.9485986417958143,pp
+replication,13407,all_miou,1.0717193206728612,pp
+replication,13408,all_miou,0.48243558505273404,pp
+replication,13409,all_miou,1.1489873177977494,pp
+replication,13410,all_miou,0.9504926518126174,pp
+replication,13401,old_boundary_iou,1.6289818040907618,pp
+replication,13402,old_boundary_iou,0.09153156866177008,pp
+replication,13403,old_boundary_iou,0.27870051921503386,pp
+replication,13404,old_boundary_iou,0.6317241411613918,pp
+replication,13405,old_boundary_iou,-0.09501350680453498,pp
+replication,13406,old_boundary_iou,1.2645181310426312,pp
+replication,13407,old_boundary_iou,0.15195775603866665,pp
+replication,13408,old_boundary_iou,0.53013418415004,pp
+replication,13409,old_boundary_iou,0.4930941906948377,pp
+replication,13410,old_boundary_iou,0.9580838230910321,pp
+replication,13401,old_boundary_margin,0.028079867362976074,logit
+replication,13402,old_boundary_margin,0.1080186128616333,logit
+replication,13403,old_boundary_margin,0.0798611044883728,logit
+replication,13404,old_boundary_margin,0.08286293745040893,logit
+replication,13405,old_boundary_margin,0.04786139726638794,logit
+replication,13406,old_boundary_margin,0.14797234535217285,logit
+replication,13407,old_boundary_margin,0.012006044387817383,logit
+replication,13408,old_boundary_margin,-0.05268272161483765,logit
+replication,13409,old_boundary_margin,0.17430410385131836,logit
+replication,13410,old_boundary_margin,0.1323435425758362,logit
+replication,13401,old_miou,0.9198097306912475,pp
+replication,13402,old_miou,1.1939965746982353,pp
+replication,13403,old_miou,-0.8656349164589776,pp
+replication,13404,old_miou,0.5849664488236958,pp
+replication,13405,old_miou,1.298295882574088,pp
+replication,13406,old_miou,1.8620566298425936,pp
+replication,13407,old_miou,1.0238988357402672,pp
+replication,13408,old_miou,0.45108492841646614,pp
+replication,13409,old_miou,1.0035710256297075,pp
+replication,13410,old_miou,1.0107320972795775,pp

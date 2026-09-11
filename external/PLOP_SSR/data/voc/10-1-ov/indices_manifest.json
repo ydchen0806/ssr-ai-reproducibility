@@ -1,0 +1,240 @@
+{
+  "files": [
+    {
+      "count": 6139,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-0.npy",
+      "sha256": "8ab55f93c9ba97bd1d5d3df303cc21aab48f97ca73877abfca77c5bc11e115db",
+      "step": 0,
+      "task": "10-1"
+    },
+    {
+      "count": 869,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-0.npy",
+      "sha256": "5d4102ec7e6353cb9bf687b0a92778a3b1beba20cc8c71ffa9d3e2e24f3caee6",
+      "step": 0,
+      "task": "10-1"
+    },
+    {
+      "count": 869,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-0.npy",
+      "sha256": "5d4102ec7e6353cb9bf687b0a92778a3b1beba20cc8c71ffa9d3e2e24f3caee6",
+      "step": 0,
+      "task": "10-1"
+    },
+    {
+      "count": 528,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-1.npy",
+      "sha256": "f5fcaeaea6b3c74bffcff396334e7231b6a0f119c025f347389fee9a594732c0",
+      "step": 1,
+      "task": "10-1"
+    },
+    {
+      "count": 75,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-1.npy",
+      "sha256": "4c9d186438cb4fe17403cfa3d9145f65f6724937fbbaa2afd1a861e7aa2ef434",
+      "step": 1,
+      "task": "10-1"
+    },
+    {
+      "count": 893,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-1.npy",
+      "sha256": "b093edbf3e5d6b12473b792e9acd564d115d796b342af7fe37694dc99ef68c60",
+      "step": 1,
+      "task": "10-1"
+    },
+    {
+      "count": 1177,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-2.npy",
+      "sha256": "9206bba91d6635dbc21258ec7d5c7749644cece41c92f9f1a9831ce95ba88eb6",
+      "step": 2,
+      "task": "10-1"
+    },
+    {
+      "count": 128,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-2.npy",
+      "sha256": "a84878b4d3896edd4fb7de282d58ef21b7331fc4b202e22172b7cae3a675c2ef",
+      "step": 2,
+      "task": "10-1"
+    },
+    {
+      "count": 1005,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-2.npy",
+      "sha256": "7a3e6be16e6b7643f4ea17419ef1554c15305ac848461a82a4a414aca59dd8bd",
+      "step": 2,
+      "task": "10-1"
+    },
+    {
+      "count": 444,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-3.npy",
+      "sha256": "b4884bc05129fd9233dc4307e5670942f5f8cb2c0c0d054c17ed0a8f19f5d1cc",
+      "step": 3,
+      "task": "10-1"
+    },
+    {
+      "count": 79,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-3.npy",
+      "sha256": "fcaa3da3adabda0006cfc45f227dd85ab1e1b9740a3a233c2e9575a895b64bce",
+      "step": 3,
+      "task": "10-1"
+    },
+    {
+      "count": 1081,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-3.npy",
+      "sha256": "b8f7e42531d70ed9f00b38ef9066922e8cd87ec99ecc62ef07db1b12146d4d03",
+      "step": 3,
+      "task": "10-1"
+    },
+    {
+      "count": 482,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-4.npy",
+      "sha256": "e5c25f6945c25afdf0b23a1160700abf16fb16251f2355f069dc36183adf524e",
+      "step": 4,
+      "task": "10-1"
+    },
+    {
+      "count": 76,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-4.npy",
+      "sha256": "33260f72d8e29319418005a2a939e4c1408ba347657231a75f0178df25c39eba",
+      "step": 4,
+      "task": "10-1"
+    },
+    {
+      "count": 1140,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-4.npy",
+      "sha256": "1c13ff04e5f1cad10d3556d371a8b21d32c014e7e35bc263fa4117d2cac65a60",
+      "step": 4,
+      "task": "10-1"
+    },
+    {
+      "count": 3898,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-5.npy",
+      "sha256": "bab5e880b3e2fe69b050e7e8337b6e3a694746aa9a1e9c9ee91f79b05d313030",
+      "step": 5,
+      "task": "10-1"
+    },
+    {
+      "count": 446,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-5.npy",
+      "sha256": "d16d0fbdd80a22fbe08c9dbff5351e44bb0c6562d6058fc035c8ce3e7d809f66",
+      "step": 5,
+      "task": "10-1"
+    },
+    {
+      "count": 1240,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-5.npy",
+      "sha256": "82569666cf66f1f7c46a2ce1909159e6b9a1caacc7fd0ddbf8953ad24b0d836f",
+      "step": 5,
+      "task": "10-1"
+    },
+    {
+      "count": 487,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-6.npy",
+      "sha256": "5c1d1c9a17d5f224cc6c34e208ff9106dd978fd07aab9384947452e206bb6192",
+      "step": 6,
+      "task": "10-1"
+    },
+    {
+      "count": 85,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-6.npy",
+      "sha256": "1792aea570c2211a1273e4ba78f5bc6157c8d29013b1b91c89e748d384c6ab69",
+      "step": 6,
+      "task": "10-1"
+    },
+    {
+      "count": 1277,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-6.npy",
+      "sha256": "dfdead10cab2d6d7da57e0a43cb7d9c1a5509f583fd3b831a863f27223f0fbba",
+      "step": 6,
+      "task": "10-1"
+    },
+    {
+      "count": 299,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-7.npy",
+      "sha256": "17a10cdb4bfccae223b7a72a628c8c34304104f3c25e7e293ec428adea8ee25d",
+      "step": 7,
+      "task": "10-1"
+    },
+    {
+      "count": 57,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-7.npy",
+      "sha256": "8074441cb59872a7df2d79a9442c7bcb6839a5fbb9d5c3285781dc28ca090465",
+      "step": 7,
+      "task": "10-1"
+    },
+    {
+      "count": 1329,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-7.npy",
+      "sha256": "9003aed7458b02aef17a3873618b2e0e2deaf9f8cdc723e4e76ddad0719257bd",
+      "step": 7,
+      "task": "10-1"
+    },
+    {
+      "count": 491,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-8.npy",
+      "sha256": "83b64cfe4da52efcd4e70cad5235c59e9776a4b814247196874176746c100690",
+      "step": 8,
+      "task": "10-1"
+    },
+    {
+      "count": 90,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-8.npy",
+      "sha256": "aa4fef924bbad77d8b1783e5c2ac88b2b05fe74bd285821269b87011191bc766",
+      "step": 8,
+      "task": "10-1"
+    },
+    {
+      "count": 1353,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-8.npy",
+      "sha256": "58d8fba78cd3a0d3fe4a80ddc09382dfc4a0eb1e2bbfc2845b773005690e5868",
+      "step": 8,
+      "task": "10-1"
+    },
+    {
+      "count": 500,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-9.npy",
+      "sha256": "0c4fce0e5286d4796a2b56f6b3d397c00629c44a5c1b883611784b92c93428c0",
+      "step": 9,
+      "task": "10-1"
+    },
+    {
+      "count": 84,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-9.npy",
+      "sha256": "bea7eef0e653458ded89b0be731ed60379ef95fb2d8e8bbc35bac486f2c77abc",
+      "step": 9,
+      "task": "10-1"
+    },
+    {
+      "count": 1421,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-9.npy",
+      "sha256": "8f82738e70b156e13ce63216d648295c7b4a9c34bae2035f5eaa85ebaa736d3c",
+      "step": 9,
+      "task": "10-1"
+    },
+    {
+      "count": 548,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/train-10.npy",
+      "sha256": "2ce665f5844a1059bbab605d211b1e2c4b6cc1b169b4bf5e7cd80d4a278cfbbe",
+      "step": 10,
+      "task": "10-1"
+    },
+    {
+      "count": 74,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/val-10.npy",
+      "sha256": "42095f2e322c3f0bcb8b622d315cfa88caea04d557fb2d992323afa3e454243d",
+      "step": 10,
+      "task": "10-1"
+    },
+    {
+      "count": 1449,
+      "file": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/PLOP_ssr_old_geometry_gradgate_v22/data/voc/10-1-ov/test_on_val-10.npy",
+      "sha256": "417798ed89ba2cd67b83545dbe8f78aee315419404a76161709fa4af503ccea9",
+      "step": 10,
+      "task": "10-1"
+    }
+  ],
+  "schema_version": "plop_voc_overlap_indices_v22_v1",
+  "source": "official PASCAL VOC masks and PLOP overlap filtering rule",
+  "tasks": [
+    "10-1"
+  ]
+}

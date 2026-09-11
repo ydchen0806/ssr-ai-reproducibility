@@ -505,12 +505,21 @@ def parse_args() -> argparse.Namespace:
         help="Optional shared lock serializing the first native edit while moment/projection caches are created.",
     )
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--checkpoint-dir", type=Path,
+                        help="Optionally export exact LoRA A/B tensors at every declared evaluation checkpoint.")
     parser.add_argument("--validate-only", action="store_true")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    # Resolve user paths before EasyEdit changes the process working directory.
+    for name in ("output", "dataset", "stream_manifest", "hparams_root", "method_cache_dir",
+                 "stats_cache_dir", "stats_lock", "checkpoint_dir"):
+        value = getattr(args, name, None)
+        if value is not None:
+            setattr(args, name, value.resolve())
+    args.model_path = str(Path(args.model_path).resolve())
     if args.n_edits < 1 or args.history_max_samples < 1 or args.pre_edit_max_samples < 1:
         raise ValueError("n-edits and sample limits must be positive")
     if args.lora_rank < 1 or args.lora_rank > 256:
@@ -668,6 +677,14 @@ def main() -> None:
                     "lora_geometry": summarize_lora_geometry(model),
                 }
             )
+            if args.checkpoint_dir is not None:
+                from llm_ke.checkpoint_io import save_lora_snapshot
+
+                checkpoint_rows[-1]["adapter_checkpoint"] = save_lora_snapshot(
+                    model, args.checkpoint_dir / f"edit_{index:04d}.safetensors",
+                    {"config": config, "after_edits": index, "seed": args.seed,
+                     "scope": "LoRA A/B inference tensors; requires the matching base model"},
+                )
     final_checkpoint = checkpoint_rows[-1]
     elapsed_s = round(time.time() - started, 1)
     summary = {

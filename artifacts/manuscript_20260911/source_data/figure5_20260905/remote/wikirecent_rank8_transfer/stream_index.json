@@ -1,0 +1,90 @@
+{
+  "confirmation_edits": 100,
+  "confirmation_seeds": [
+    16631,
+    16632,
+    16633,
+    16634,
+    16635,
+    16636,
+    16637,
+    16638,
+    16639,
+    16640
+  ],
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+  "dataset_label": "WikiRecent",
+  "dataset_sha256": "e5c4ce6de1e8e2d10d892164ad6f4cbd28c976ed509e29e78ae853b01de1797b",
+  "development_seeds": [
+    16301
+  ],
+  "protocol": "knowedit_semantic_history_stream_v2",
+  "streams": [
+    {
+      "path": "development_seed_16301.json",
+      "seed": 16301,
+      "sha256": "f926269b48f0ca0770ffe4e159b560fb62b683fef0e8fa9f06f313c7faa631a2",
+      "split": "development"
+    },
+    {
+      "path": "confirmation_seed_16631.json",
+      "seed": 16631,
+      "sha256": "10acd05f531ce9ca91fa75a6f61fae427c398b7560f3db6518da8617a0894fc1",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16632.json",
+      "seed": 16632,
+      "sha256": "5b89931ad0b78fe8027745a526ee0376bf7241e98bdf7434165b7d1f16e5ed7c",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16633.json",
+      "seed": 16633,
+      "sha256": "a8ae5d806b2ae86b2170ace75252e01ece463370d0c641881f7bb1020f4fbd86",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16634.json",
+      "seed": 16634,
+      "sha256": "b546842e376ffc372191fb1d77c30a264933576959c519f2d4c2743486532ea5",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16635.json",
+      "seed": 16635,
+      "sha256": "1dbbc6a5943e9adedeb60a2bf25795690295473305aa4e672bb030dd426f7fc0",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16636.json",
+      "seed": 16636,
+      "sha256": "526c6979a06717dc2a14c3574019e6489ce877ee834724942d8fa7fe29b6b2d9",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16637.json",
+      "seed": 16637,
+      "sha256": "df8d5834b083c2b0115124522867befc9c85dc705c5fd9219d06c0926333715f",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16638.json",
+      "seed": 16638,
+      "sha256": "4cdb76da522c099ee55417e4cd79edf096b4e71b2bd5750eb071d7bd5b12233d",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16639.json",
+      "seed": 16639,
+      "sha256": "f5cc5456b224c7750ee0f60b279056ad9cb70a17b207b63510e6da4a6922fc83",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16640.json",
+      "seed": 16640,
+      "sha256": "03742bcf873f526123e5a22dfbd7488be336a822b419e5154fa87cace32f6804",
+      "split": "confirmation"
+    }
+  ]
+}

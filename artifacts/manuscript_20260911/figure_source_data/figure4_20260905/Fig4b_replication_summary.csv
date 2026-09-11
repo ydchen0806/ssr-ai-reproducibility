@@ -1,0 +1,7 @@
+cohort,n_pairs,endpoint,difference_direction,mean_delta_pp,student_t_ci95_low_pp,student_t_ci95_high_pp,favorable_pairs,nonnegative_pairs,note
+original locked confirmation,10,final-history efficacy,Plain FT+SSR minus Plain FT,2.4,0.0587918009549826,4.741208199045017,8,9,Primary Figure 4b cohort; seeds 9311--9329 odd.
+independent stochastic-seed replication,10,final-history efficacy,Plain FT+SSR minus Plain FT,-1.3,-4.240804311637666,1.6408043116376654,4,6,"Seeds 17331--17340; same fixed source-order slice, so not an independent-order replication."
+pooled descriptive,20,final-history efficacy,Plain FT+SSR minus Plain FT,0.55,-1.3615153915322362,2.4615153915322363,12,15,Post-replication pooled estimate shown separately; not a substitute for the independent cohort result.
+original locked confirmation,10,final-history locality,Plain FT+SSR minus Plain FT,0.4516680949769185,-1.6065483179392062,2.509884507893043,7,7,Primary Figure 4b cohort; seeds 9311--9329 odd.
+independent stochastic-seed replication,10,final-history locality,Plain FT+SSR minus Plain FT,0.1717130826689653,-3.1161840120297803,3.4596101773677113,7,7,"Seeds 17331--17340; same fixed source-order slice, so not an independent-order replication."
+pooled descriptive,20,final-history locality,Plain FT+SSR minus Plain FT,0.31169058882294187,-1.436224341323188,2.0596055189690716,14,14,Post-replication pooled estimate shown separately; not a substitute for the independent cohort result.

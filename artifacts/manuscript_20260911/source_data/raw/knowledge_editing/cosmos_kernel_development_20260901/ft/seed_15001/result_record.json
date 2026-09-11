@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "git_commit": "ff997892d829960cda36ef7ed9166822958592bd",
+  "run_id": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_completion_development_2node_20260901_r1/development/ft/seed_15001",
+  "task_family": "editing",
+  "dataset": "cf",
+  "model": "gpt2-xl",
+  "seed": 15001,
+  "objective": {
+    "task": true,
+    "kd": false,
+    "ssr": false,
+    "anchor": false,
+    "spectral": false,
+    "ewc": false,
+    "mas": false,
+    "si": false,
+    "center": false,
+    "protodecor": false
+  },
+  "distance_mapping": "none",
+  "kernel": {},
+  "metrics": {
+    "efficacy": 100.0,
+    "locality": 9.416194916194916,
+    "final_history_efficacy": 14.000000000000002,
+    "final_history_locality": 7.3106032856032845,
+    "pre_edit_output_consistency": 64.73663570359349,
+    "update_effective_rank": 336.65313720703125,
+    "update_mean_abs_offdiag_cosine": 0.09171206504106522,
+    "update_rms": 0.005336411762982607
+  },
+  "runtime": {
+    "elapsed_s": 2334.4,
+    "peak_cuda_allocated_mb": 3413.57080078125,
+    "peak_cuda_reserved_mb": 3504.0
+  },
+  "config_hash": "d1459c0d33c6dc6e002de7c9c9326a6bac250e16cd1c536d4b31e69cd9f92af3",
+  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+  "recipe": "plain",
+  "n_edits": 100,
+  "requested": 100,
+  "attempted": 100,
+  "succeeded": 100,
+  "failed": 0,
+  "status": "complete",
+  "data_offset": 0,
+  "metric_directions": {
+    "efficacy": true,
+    "locality": true,
+    "final_history_efficacy": true,
+    "final_history_locality": true,
+    "pre_edit_output_consistency": true,
+    "update_effective_rank": true,
+    "update_mean_abs_offdiag_cosine": true,
+    "update_rms": true
+  },
+  "evaluator": "custom_substring_any_ground_truth_all_items",
+  "evaluator_version": "1.0",
+  "evaluation_protocol_hash": "57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2",
+  "model_hash": "d4474a850dd2d36ecfb67554f2dc3a12c965b5edab85651f8108c1f5f803102f",
+  "pairing_protocol_hash": "3fa18dcf6eb40d3e106a426009d64cb77d2bafc3154b3f5610318eec2595392e"
+}

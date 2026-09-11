@@ -1,0 +1,106 @@
+{
+  "primary_gate": {
+    "mean_dual_positive": true,
+    "minimum_dual_wins": true,
+    "paired_ci_dual_positive": true,
+    "passes_primary_gate": true
+  },
+  "protocol": {
+    "configs": [
+      {
+        "adapter_metric": "projective",
+        "config_id": "gaussian_object_aware",
+        "family": "gaussian",
+        "lambda_adapter": 0.2,
+        "lambda_cls": 1.0,
+        "prototype_metric": "cosine"
+      },
+      {
+        "adapter_metric": "cosine",
+        "config_id": "gaussian_all_cosine",
+        "family": "gaussian",
+        "lambda_adapter": 0.2,
+        "lambda_cls": 1.0,
+        "prototype_metric": "cosine"
+      },
+      {
+        "adapter_metric": "projective",
+        "config_id": "gaussian_prototype_only",
+        "family": "gaussian",
+        "lambda_adapter": 0.0,
+        "lambda_cls": 1.0,
+        "prototype_metric": "cosine"
+      },
+      {
+        "adapter_metric": "projective",
+        "config_id": "gaussian_basis_projective",
+        "family": "gaussian",
+        "lambda_adapter": 0.2,
+        "lambda_cls": 0.0,
+        "prototype_metric": "cosine"
+      },
+      {
+        "adapter_metric": "projective",
+        "config_id": "laplace_object_aware",
+        "family": "laplace",
+        "lambda_adapter": 0.2,
+        "lambda_cls": 1.0,
+        "prototype_metric": "cosine"
+      },
+      {
+        "adapter_metric": "projective",
+        "config_id": "cauchy_object_aware",
+        "family": "cauchy",
+        "lambda_adapter": 0.2,
+        "lambda_cls": 1.0,
+        "prototype_metric": "cosine"
+      },
+      {
+        "adapter_metric": "projective",
+        "config_id": "inverse_object_aware",
+        "family": "inverse",
+        "lambda_adapter": 0.2,
+        "lambda_cls": 1.0,
+        "prototype_metric": "cosine"
+      }
+    ],
+    "datasets": {
+      "cub200": {
+        "cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+        "classes": 200,
+        "classes_per_task": 10,
+        "ranks": [
+          8,
+          16,
+          32
+        ]
+      },
+      "flowers102": {
+        "cache": "source_workspace/data/flowers102_resnet18_features.pt",
+        "classes": 102,
+        "classes_per_task": 6,
+        "ranks": [
+          16
+        ]
+      }
+    },
+    "matching": "All radial families are HWHM-matched to Gaussian sigma_exc=0.55 and sigma_inh=1.25 under each implemented response.",
+    "primary_gate": "CUB200 rank-16 Gaussian object-aware versus KD: positive mean AA and AF changes with at least 7/10 dual wins; paired CI is reported separately.",
+    "validation_seeds": [
+      8411,
+      8413,
+      8415,
+      8417,
+      8419,
+      8421,
+      8423,
+      8425,
+      8427,
+      8429
+    ]
+  },
+  "question": "Does object-aware projective adapter geometry and the locked broad kernel region transfer across rank, dataset and HWHM-matched radial families?",
+  "role": "c",
+  "source_path": "raw/adapter/ROLE_REPORT.json",
+  "source_sha256": "afa07ea67d48c82d8d00da35bd8085d636cef13543499b3ab0f3af0c8d218c4e"
+}

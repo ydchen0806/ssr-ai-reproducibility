@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "git_commit": "1c15bbe1f27fd825daebbb6f879a6c64d6b76fa6",
+  "run_id": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_meeting_extension_4node_20260804_r1/ke_factorial/confirm/zsre/ssr_only/cosine/seed_9327",
+  "task_family": "editing",
+  "dataset": "zsre",
+  "model": "gpt2-xl",
+  "seed": 9327,
+  "objective": {
+    "task": true,
+    "kd": false,
+    "ssr": true,
+    "anchor": false,
+    "spectral": false,
+    "ewc": false,
+    "mas": false,
+    "si": false,
+    "center": false,
+    "protodecor": false
+  },
+  "distance_mapping": "cosine",
+  "kernel": {
+    "family": "gaussian",
+    "A_exc": 1.2,
+    "A_inh": 0.9,
+    "sigma_exc": 0.22,
+    "sigma_inh": 0.6
+  },
+  "metrics": {
+    "efficacy": 99.0,
+    "locality": 8.5,
+    "final_history_efficacy": 48.0,
+    "final_history_locality": 10.0
+  },
+  "runtime": {
+    "elapsed_s": 383.5,
+    "peak_cuda_allocated_mb": 3555.15087890625,
+    "peak_cuda_reserved_mb": 3726.0
+  },
+  "config_hash": "a2ddf078499587d0991847686311a5339b0681d9ab217f312b33182a839cf246",
+  "dataset_hash": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+  "recipe": "ssr_only",
+  "n_edits": 100,
+  "requested": 100,
+  "attempted": 100,
+  "succeeded": 100,
+  "failed": 0,
+  "status": "complete",
+  "data_offset": 500,
+  "metric_directions": {
+    "efficacy": true,
+    "locality": true,
+    "final_history_efficacy": true,
+    "final_history_locality": true
+  },
+  "evaluator": "custom_substring_any_ground_truth_all_items",
+  "evaluator_version": "1.0",
+  "evaluation_protocol_hash": "57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2",
+  "model_hash": "1dd2dbaeb9f79d6422d78a33540a3d8c8641144ec6ba4e8a6fe4293f616729f1",
+  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d"
+}

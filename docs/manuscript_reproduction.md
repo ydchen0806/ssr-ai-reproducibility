@@ -1,5 +1,8 @@
 # Manuscript Reproduction Map
 
+This is the historical evidence map. The current September 11 Figure 4--6
+mapping and checkpoint status are in [manuscript_20260911.md](manuscript_20260911.md).
+
 This document maps every manuscript-facing AI result to a locked configuration,
 artifact record and verification command. It separates direct SSR attribution
 from observations made with the complete SSR-containing objective.
