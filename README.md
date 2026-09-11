@@ -20,10 +20,12 @@ ZsRE figure. The release includes numerical source records, current plotting
 sources, the VOC low-rank implementation, and the matched CUB geometry controls.
 Earlier guides below remain useful for the archived cohorts they explicitly name.
 
-Checkpoint export is complete for 42 visual models; public Hugging Face upload
-is pending write access. Historical KE adapters were not saved and must be
-regenerated with the frozen protocol. No missing weight file is substituted
-with a new run or a different model.
+The 42 visual inference checkpoints are public on
+[Hugging Face](https://huggingface.co/cyd0806/ssr-ai-checkpoints/tree/9260ac4062517ad7ee1fb3b4011285247b256514).
+Every file's remote size and SHA-256 digest has been verified. The
+[download index](docs/checkpoint_downloads.md) links each paired seed and arm to
+that immutable revision. Historical KE runs saved evaluation records without
+exporting adapters; see the [persistence audit](docs/ke_checkpoint_audit.md).
 
 ## Repository Layout
 

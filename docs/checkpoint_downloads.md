@@ -1,37 +1,63 @@
-# Checkpoint publication status
+# Verified checkpoint downloads
 
-The September 11 release has exported and exactly tensor-verified 42 inference
-checkpoints (9,308,699,040 bytes): 20 for the VOC main cohort, 20 for the independent
-VOC replication, and the two CUB rank-32 visualization models. Both treatment arms
-and all final-stage VOC seeds are retained.
+[Hugging Face model repository](https://huggingface.co/cyd0806/ssr-ai-checkpoints/tree/9260ac4062517ad7ee1fb3b4011285247b256514)
 
-**Upload is pending Hugging Face write access.** The authenticated credential
-returned HTTP 403 when creating a model repository. No downloadable repository
-or successful archive deposition is claimed here.
+Revision: `9260ac4062517ad7ee1fb3b4011285247b256514`. All 42 file sizes and SHA-256 digests verified.
 
-Provenance and SHA-256 digests are in
-[`export_manifest.json`](../artifacts/manuscript_20260911/checkpoints/export_manifest.json).
-Exported weights omit optimizer/scheduler state and support inference, not an
-interruption-exact training resume. Use `scripts/load_visual_checkpoint.py` to
-read the tensor groups and `model.load_state_dict(..., strict=True)` with the
-matching architecture.
-
-The historical WikiRecent LoRA run directories audited for this release contain
-results and stream manifests but no trained adapter files. Their weights require
-a frozen-protocol rerun. The runner now accepts `--checkpoint-dir`; this saves
-and verifies LoRA A/B tensors at every declared evaluation checkpoint. It does
-not create a retroactive checkpoint for a completed historical run.
-
-After an authorized `hf auth login`, the release operator can run:
+The repository is public. Unauthenticated downloads of a VOC and a CUB file
+also passed SHA-256 checks. These are inference weights; optimizer states are
+not included. `scripts/load_visual_checkpoint.py` preserves tensor groups and
+can remove the uniform VOC DDP prefix when loading an unwrapped model.
+The [KE persistence audit](ke_checkpoint_audit.md) explains which historical
+runs exported evaluation records without trained weights.
 
 ```bash
-python scripts/publish_checkpoint_release.py \
-  --folder "$SSR_CHECKPOINT_EXPORT_DIR" \
-  --repo-id "$SSR_HF_MODEL_REPO" \
-  --index-output artifacts/manuscript_20260911/checkpoints/hf_index.json \
-  --links-output docs/checkpoint_downloads.md
+hf download cyd0806/ssr-ai-checkpoints \
+  --revision 9260ac4062517ad7ee1fb3b4011285247b256514 \
+  --local-dir checkpoints/ssr-ai
 ```
 
-The command verifies local hashes, uploads only the listed model files, checks
-remote LFS SHA-256 digests, and only then replaces this page with real pinned
-download links. Commit the generated index and this page to GitHub afterwards.
+| Cohort | Seed | Arm | Checkpoint |
+| --- | --- | --- | --- |
+| voc_primary | 12401 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12401/lowrank_stage10.safetensors) |
+| voc_primary | 12402 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12402/lowrank_stage10.safetensors) |
+| voc_primary | 12403 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12403/lowrank_stage10.safetensors) |
+| voc_primary | 12404 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12404/lowrank_stage10.safetensors) |
+| voc_primary | 12405 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12405/lowrank_stage10.safetensors) |
+| voc_primary | 12406 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12406/lowrank_stage10.safetensors) |
+| voc_primary | 12407 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12407/lowrank_stage10.safetensors) |
+| voc_primary | 12408 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12408/lowrank_stage10.safetensors) |
+| voc_primary | 12409 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12409/lowrank_stage10.safetensors) |
+| voc_primary | 12410 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12410/lowrank_stage10.safetensors) |
+| voc_primary | 12401 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12401/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12402 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12402/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12403 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12403/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12404 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12404/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12405 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12405/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12406 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12406/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12407 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12407/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12408 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12408/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12409 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12409/lowrank_ssr_stage10.safetensors) |
+| voc_primary | 12410 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_primary/seed_12410/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13401 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13401/lowrank_stage10.safetensors) |
+| voc_replication | 13402 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13402/lowrank_stage10.safetensors) |
+| voc_replication | 13403 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13403/lowrank_stage10.safetensors) |
+| voc_replication | 13404 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13404/lowrank_stage10.safetensors) |
+| voc_replication | 13405 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13405/lowrank_stage10.safetensors) |
+| voc_replication | 13406 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13406/lowrank_stage10.safetensors) |
+| voc_replication | 13407 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13407/lowrank_stage10.safetensors) |
+| voc_replication | 13408 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13408/lowrank_stage10.safetensors) |
+| voc_replication | 13409 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13409/lowrank_stage10.safetensors) |
+| voc_replication | 13410 | lowrank | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13410/lowrank_stage10.safetensors) |
+| voc_replication | 13401 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13401/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13402 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13402/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13403 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13403/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13404 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13404/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13405 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13405/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13406 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13406/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13407 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13407/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13408 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13408/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13409 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13409/lowrank_ssr_stage10.safetensors) |
+| voc_replication | 13410 | lowrank_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/voc_replication/seed_13410/lowrank_ssr_stage10.safetensors) |
+| cub_rank32_response | 8411 | kd | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/cub_rank32/kd_seed8411.safetensors) |
+| cub_rank32_response | 8411 | kd_ssr | [safetensors](https://huggingface.co/cyd0806/ssr-ai-checkpoints/resolve/9260ac4062517ad7ee1fb3b4011285247b256514/cub_rank32/kd_ssr_seed8411.safetensors) |

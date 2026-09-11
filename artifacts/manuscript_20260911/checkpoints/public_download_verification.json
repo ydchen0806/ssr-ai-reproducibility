@@ -1,0 +1,16 @@
+{
+  "repo_id": "cyd0806/ssr-ai-checkpoints",
+  "revision": "9260ac4062517ad7ee1fb3b4011285247b256514",
+  "private": false,
+  "authenticated": false,
+  "verified_downloads": [
+    {
+      "path": "voc_primary/seed_12401/lowrank_stage10.safetensors",
+      "sha256": "4c570683f2f514e775bd061715375cde178e90c1d57622900ff5f66b7bdcd07c"
+    },
+    {
+      "path": "cub_rank32/kd_ssr_seed8411.safetensors",
+      "sha256": "fe1cbc1fdec31892d2bac75df5e7b2b205dd3550532ce9b5cf34a87d635b857a"
+    }
+  ]
+}

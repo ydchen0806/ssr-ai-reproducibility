@@ -120,9 +120,12 @@ the configuration source; do not rerank confirmation seeds or tune on them.
 ## Checkpoints and remaining gaps
 
 See [checkpoint_downloads.md](checkpoint_downloads.md). The 42 exported
-visual weights have exact tensor and SHA-256 verification; HF publication is
-blocked by the current credential's write permission. Earlier KE runs and
+visual weights are public on Hugging Face, with exact tensor checks before
+upload and remote SHA-256 verification afterwards. Earlier KE runs and
 some CUB quantitative cohorts saved results without model weights. Their
 training sources and result records are included, but the missing models
 require frozen-protocol reruns. This release has unit/smoke checks; it does
 not claim that every full GPU experiment has been rerun for this packaging pass.
+
+The expanded [KE persistence audit](ke_checkpoint_audit.md) distinguishes
+evaluation checkpoints from saved model files and lists the intact run records.
