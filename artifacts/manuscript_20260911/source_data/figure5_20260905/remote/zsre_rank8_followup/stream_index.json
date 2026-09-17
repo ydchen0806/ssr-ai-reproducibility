@@ -1,0 +1,89 @@
+{
+  "confirmation_edits": 100,
+  "confirmation_seeds": [
+    16331,
+    16332,
+    16333,
+    16334,
+    16335,
+    16336,
+    16337,
+    16338,
+    16339,
+    16340
+  ],
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json",
+  "dataset_sha256": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+  "development_seeds": [
+    16301
+  ],
+  "protocol": "qwen_zsre_semantic_history_stream_v1",
+  "streams": [
+    {
+      "path": "development_seed_16301.json",
+      "seed": 16301,
+      "sha256": "ef42da65df6e6ae88da75fa8042cd1a07ed0dfa740f1edc271a3c085e6025118",
+      "split": "development"
+    },
+    {
+      "path": "confirmation_seed_16331.json",
+      "seed": 16331,
+      "sha256": "aa08d0211ecf0fc52992675c393722bd61c504b738bb749aa2b701c660fdd184",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16332.json",
+      "seed": 16332,
+      "sha256": "ce90ef5b56816abf22b6fa46991e54a1398fecbd7e6fc5fa8420daed230a2750",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16333.json",
+      "seed": 16333,
+      "sha256": "b912b899bb1bb2c98d88ff89154d66c007ceb05040f183916763fe6ef3f122ec",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16334.json",
+      "seed": 16334,
+      "sha256": "bf12fb6a6985deb9926f255cf9c8207cae23d50d870aebfc36177491b2dece2a",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16335.json",
+      "seed": 16335,
+      "sha256": "1cf437e5566e04052025e5e0d629ecd80d71b7d82b4f74e6eafa8caded28ded0",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16336.json",
+      "seed": 16336,
+      "sha256": "ebdbb5bcf68ff73e154774d8361375847413381ea09342a524cc51c56d7def57",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16337.json",
+      "seed": 16337,
+      "sha256": "e1bb395ef00068dab6a88cd830b8bb5a92459cc9bd1d3181efee6aa097aa4499",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16338.json",
+      "seed": 16338,
+      "sha256": "6ae80a82dd3844561aa8962eccfbaa3a8eff366fcf0a5593d36b19d82aec21e6",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16339.json",
+      "seed": 16339,
+      "sha256": "038c91ee3ca10d51d2dafdcd10238c6da19085f645d816d1254bcd9fde534fb5",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_16340.json",
+      "seed": 16340,
+      "sha256": "f2d665a1bcbbacb9b7b565efe789ebb80f88cc01bd7374de5d39919ed6dea4ef",
+      "split": "confirmation"
+    }
+  ]
+}

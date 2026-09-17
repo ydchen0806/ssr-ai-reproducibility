@@ -1,0 +1,1335 @@
+{
+  "candidate_lambdas": [
+    0.024,
+    0.036,
+    0.048,
+    0.064
+  ],
+  "candidate_learning_rates": [
+    0.0025,
+    0.0035,
+    0.005
+  ],
+  "candidate_ranks": [
+    8,
+    40
+  ],
+  "candidates": [
+    {
+      "balance_score": -6.50556618347764,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.024,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 5.25,
+        "final_history": 0.25,
+        "locality": -3.25278309173882,
+        "locality_target_consistency": 0.25,
+        "portability": -0.25,
+        "rephrase": -1.9999999999999982
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 4.0,
+          "final_history": 1.0,
+          "locality": -13.138171657919884,
+          "locality_target_consistency": 0.0,
+          "portability": -4.0,
+          "rephrase": 4.000000000000007
+        },
+        "16102": {
+          "efficacy": 4.0,
+          "final_history": 0.0,
+          "locality": -0.40792524814605713,
+          "locality_target_consistency": 0.0,
+          "portability": -2.9999999999999982,
+          "rephrase": 3.999999999999993
+        },
+        "16103": {
+          "efficacy": 6.0,
+          "final_history": 0.0,
+          "locality": 0.5077144131064415,
+          "locality_target_consistency": 0.5,
+          "portability": 1.9999999999999982,
+          "rephrase": -8.0
+        },
+        "16104": {
+          "efficacy": 7.0,
+          "final_history": 0.0,
+          "locality": 0.027250126004219055,
+          "locality_target_consistency": 0.5,
+          "portability": 4.0,
+          "rephrase": -7.999999999999993
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": -2.3136042058467865,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.036,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 1,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 7.0,
+        "final_history": 0.0,
+        "locality": -1.1568021029233932,
+        "locality_target_consistency": 0.125,
+        "portability": 0.24999999999999956,
+        "rephrase": 3.552713678800501e-15
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 8.0,
+          "final_history": 0.0,
+          "locality": -4.056948237121105,
+          "locality_target_consistency": 0.0,
+          "portability": 1.0,
+          "rephrase": -1.9999999999999858
+        },
+        "16102": {
+          "efficacy": 1.0,
+          "final_history": 0.0,
+          "locality": -0.6058802828192711,
+          "locality_target_consistency": 0.0,
+          "portability": -4.0,
+          "rephrase": 4.999999999999993
+        },
+        "16103": {
+          "efficacy": 9.0,
+          "final_history": 0.0,
+          "locality": -0.00691637396812439,
+          "locality_target_consistency": 1.0,
+          "portability": 3.9999999999999982,
+          "rephrase": 4.0
+        },
+        "16104": {
+          "efficacy": 10.0,
+          "final_history": 0.0,
+          "locality": 0.04253648221492767,
+          "locality_target_consistency": -0.5,
+          "portability": 0.0,
+          "rephrase": -6.999999999999993
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": -2.436996530741453,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.048,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 3,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 8.25,
+        "final_history": 0.5,
+        "locality": -1.2184982653707266,
+        "locality_target_consistency": 0.25,
+        "portability": -2.75,
+        "rephrase": -1.0000000000000018
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 9.0,
+          "final_history": 1.0,
+          "locality": -5.449898540973663,
+          "locality_target_consistency": 0.5,
+          "portability": -4.0,
+          "rephrase": 1.0
+        },
+        "16102": {
+          "efficacy": 5.0,
+          "final_history": 0.0,
+          "locality": 0.23634843528270721,
+          "locality_target_consistency": 0.5,
+          "portability": -4.0,
+          "rephrase": 3.999999999999993
+        },
+        "16103": {
+          "efficacy": 8.0,
+          "final_history": 0.0,
+          "locality": 0.2030128613114357,
+          "locality_target_consistency": 0.0,
+          "portability": -1.0000000000000018,
+          "rephrase": -10.0
+        },
+        "16104": {
+          "efficacy": 11.0,
+          "final_history": 1.0,
+          "locality": 0.13654418289661407,
+          "locality_target_consistency": 0.0,
+          "portability": -1.9999999999999982,
+          "rephrase": 1.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": -5.829096864908934,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.064,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 8.0,
+        "final_history": 0.5,
+        "locality": -2.914548432454467,
+        "locality_target_consistency": 0.5,
+        "portability": -1.5000000000000004,
+        "rephrase": 2.5000000000000036
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 7.0,
+          "final_history": 2.0,
+          "locality": -11.409309692680836,
+          "locality_target_consistency": 0.0,
+          "portability": 0.0,
+          "rephrase": 10.000000000000007
+        },
+        "16102": {
+          "efficacy": 4.0,
+          "final_history": 0.0,
+          "locality": -0.3262164071202278,
+          "locality_target_consistency": -0.5,
+          "portability": -5.0,
+          "rephrase": -5.0
+        },
+        "16103": {
+          "efficacy": 9.0,
+          "final_history": 0.0,
+          "locality": 0.04171431064605713,
+          "locality_target_consistency": 2.0,
+          "portability": -1.0000000000000018,
+          "rephrase": 8.0
+        },
+        "16104": {
+          "efficacy": 12.0,
+          "final_history": 0.0,
+          "locality": 0.03561805933713913,
+          "locality_target_consistency": 0.5,
+          "portability": 0.0,
+          "rephrase": -2.999999999999993
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": 0.8,
+      "efficacy_nonnegative_seed_count": 2,
+      "eligible": false,
+      "lambda": 0.024,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 4,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 4.0,
+        "final_history": 0.25,
+        "locality": 1.7210275400429964,
+        "locality_target_consistency": 0.375,
+        "portability": -2.5000000000000004,
+        "rephrase": -3.0
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 22.0,
+          "final_history": 0.0,
+          "locality": 6.1892397701740265,
+          "locality_target_consistency": 0.5,
+          "portability": -4.000000000000002,
+          "rephrase": -2.0
+        },
+        "16102": {
+          "efficacy": -8.0,
+          "final_history": 2.0,
+          "locality": 0.26605650782585144,
+          "locality_target_consistency": -0.5,
+          "portability": -3.0,
+          "rephrase": -18.0
+        },
+        "16103": {
+          "efficacy": -2.0,
+          "final_history": -1.0,
+          "locality": 0.2379734069108963,
+          "locality_target_consistency": 1.5,
+          "portability": -2.0,
+          "rephrase": 10.0
+        },
+        "16104": {
+          "efficacy": 4.0,
+          "final_history": 0.0,
+          "locality": 0.1908404752612114,
+          "locality_target_consistency": 0.0,
+          "portability": -1.0,
+          "rephrase": -2.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": 1.65,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.036,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 4,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 8.25,
+        "final_history": -0.25,
+        "locality": 2.221389766782522,
+        "locality_target_consistency": 0.625,
+        "portability": -1.4999999999999996,
+        "rephrase": -1.75
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 24.0,
+          "final_history": -1.0,
+          "locality": 8.40980913490057,
+          "locality_target_consistency": 1.0,
+          "portability": 0.0,
+          "rephrase": 6.0
+        },
+        "16102": {
+          "efficacy": 5.0,
+          "final_history": 0.0,
+          "locality": 0.40711797773838043,
+          "locality_target_consistency": 0.0,
+          "portability": 1.0,
+          "rephrase": -5.0
+        },
+        "16103": {
+          "efficacy": 3.0,
+          "final_history": 0.0,
+          "locality": 0.020224973559379578,
+          "locality_target_consistency": 1.0,
+          "portability": -3.0,
+          "rephrase": -3.0
+        },
+        "16104": {
+          "efficacy": 1.0,
+          "final_history": 0.0,
+          "locality": 0.04840698093175888,
+          "locality_target_consistency": 0.5,
+          "portability": -3.9999999999999982,
+          "rephrase": -5.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": 0.75,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.048,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 3.75,
+        "final_history": -0.25,
+        "locality": 2.110293973237276,
+        "locality_target_consistency": 0.0,
+        "portability": -3.7500000000000004,
+        "rephrase": -6.250000000000001
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 18.0,
+          "final_history": -1.0,
+          "locality": 9.065894037485123,
+          "locality_target_consistency": 0.5,
+          "portability": -4.000000000000002,
+          "rephrase": 3.0
+        },
+        "16102": {
+          "efficacy": 2.0,
+          "final_history": 0.0,
+          "locality": -0.665978342294693,
+          "locality_target_consistency": -1.0,
+          "portability": 0.0,
+          "rephrase": -12.0
+        },
+        "16103": {
+          "efficacy": 4.0,
+          "final_history": 0.0,
+          "locality": -0.011194124817848206,
+          "locality_target_consistency": 0.5,
+          "portability": -5.0,
+          "rephrase": 8.0
+        },
+        "16104": {
+          "efficacy": -9.0,
+          "final_history": 0.0,
+          "locality": 0.05245432257652283,
+          "locality_target_consistency": 0.0,
+          "portability": -6.0,
+          "rephrase": -24.000000000000004
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": -0.11841179803013802,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.064,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 3,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 10.25,
+        "final_history": 0.0,
+        "locality": -0.05920589901506901,
+        "locality_target_consistency": 0.0,
+        "portability": -2.5000000000000004,
+        "rephrase": 2.0000000000000018
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 22.0,
+          "final_history": 0.0,
+          "locality": 0.11631045490503311,
+          "locality_target_consistency": 0.0,
+          "portability": -2.0000000000000018,
+          "rephrase": 10.0
+        },
+        "16102": {
+          "efficacy": 17.0,
+          "final_history": 0.0,
+          "locality": -0.38444045931100845,
+          "locality_target_consistency": 0.0,
+          "portability": 3.0,
+          "rephrase": 2.000000000000007
+        },
+        "16103": {
+          "efficacy": 11.0,
+          "final_history": 0.0,
+          "locality": 0.02948623150587082,
+          "locality_target_consistency": 0.0,
+          "portability": -5.0,
+          "rephrase": 15.0
+        },
+        "16104": {
+          "efficacy": -9.0,
+          "final_history": 0.0,
+          "locality": 0.0018201768398284912,
+          "locality_target_consistency": 0.0,
+          "portability": -6.0,
+          "rephrase": -19.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": -0.5,
+      "efficacy_nonnegative_seed_count": 2,
+      "eligible": false,
+      "lambda": 0.024,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 1,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": -2.5,
+        "final_history": 0.0,
+        "locality": 1.9139026757329702,
+        "locality_target_consistency": 0.0,
+        "portability": -1.0,
+        "rephrase": -1.4999999999999982
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 6.0,
+          "final_history": 0.0,
+          "locality": 8.644137717783451,
+          "locality_target_consistency": 0.0,
+          "portability": 1.0,
+          "rephrase": 13.0
+        },
+        "16102": {
+          "efficacy": 5.0,
+          "final_history": 0.0,
+          "locality": -0.03250539302825928,
+          "locality_target_consistency": 0.5,
+          "portability": 0.9999999999999982,
+          "rephrase": 3.0
+        },
+        "16103": {
+          "efficacy": -13.0,
+          "final_history": 0.0,
+          "locality": -0.9118877351284027,
+          "locality_target_consistency": 0.0,
+          "portability": -5.0,
+          "rephrase": -17.999999999999993
+        },
+        "16104": {
+          "efficacy": -8.0,
+          "final_history": 0.0,
+          "locality": -0.04413388669490814,
+          "locality_target_consistency": -0.5,
+          "portability": -0.9999999999999982,
+          "rephrase": -4.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": 0.65,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.036,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 1,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 3.25,
+        "final_history": 0.0,
+        "locality": 1.30656398832798,
+        "locality_target_consistency": 0.125,
+        "portability": -1.5,
+        "rephrase": 2.0
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 11.0,
+          "final_history": 0.0,
+          "locality": 7.238827273249626,
+          "locality_target_consistency": 0.0,
+          "portability": 1.0,
+          "rephrase": 8.0
+        },
+        "16102": {
+          "efficacy": 3.0,
+          "final_history": 0.0,
+          "locality": -0.9027069434523582,
+          "locality_target_consistency": 0.0,
+          "portability": -1.0000000000000018,
+          "rephrase": 12.999999999999993
+        },
+        "16103": {
+          "efficacy": 2.0,
+          "final_history": 0.0,
+          "locality": -0.8313056081533432,
+          "locality_target_consistency": 0.5,
+          "portability": -5.0,
+          "rephrase": -14.999999999999993
+        },
+        "16104": {
+          "efficacy": -3.0,
+          "final_history": 0.0,
+          "locality": -0.27855876833200455,
+          "locality_target_consistency": 0.0,
+          "portability": -0.9999999999999982,
+          "rephrase": 2.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": -0.65,
+      "efficacy_nonnegative_seed_count": 2,
+      "eligible": false,
+      "lambda": 0.048,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": -3.25,
+        "final_history": 0.25,
+        "locality": -0.07771425880491734,
+        "locality_target_consistency": 0.375,
+        "portability": -1.0000000000000004,
+        "rephrase": 0.5000000000000018
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 11.0,
+          "final_history": 0.0,
+          "locality": 0.46583786606788635,
+          "locality_target_consistency": 0.5,
+          "portability": 1.0,
+          "rephrase": 1.0
+        },
+        "16102": {
+          "efficacy": 4.0,
+          "final_history": 0.0,
+          "locality": 0.4180915653705597,
+          "locality_target_consistency": 1.0,
+          "portability": 1.9999999999999982,
+          "rephrase": 24.0
+        },
+        "16103": {
+          "efficacy": -11.0,
+          "final_history": 0.0,
+          "locality": -0.9113403037190437,
+          "locality_target_consistency": 0.5,
+          "portability": -4.0,
+          "rephrase": -18.999999999999993
+        },
+        "16104": {
+          "efficacy": -17.0,
+          "final_history": 1.0,
+          "locality": -0.28344616293907166,
+          "locality_target_consistency": -0.5,
+          "portability": -3.0,
+          "rephrase": -4.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": 1.0881963185966015,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.064,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 1,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 6.5,
+        "final_history": 0.0,
+        "locality": 0.5440981592983007,
+        "locality_target_consistency": 0.25,
+        "portability": 0.25,
+        "rephrase": -0.25
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 15.0,
+          "final_history": 0.0,
+          "locality": 2.971912734210491,
+          "locality_target_consistency": 0.5,
+          "portability": 1.0,
+          "rephrase": 3.0
+        },
+        "16102": {
+          "efficacy": 9.0,
+          "final_history": 0.0,
+          "locality": -0.08333306759595871,
+          "locality_target_consistency": 0.5,
+          "portability": 0.0,
+          "rephrase": 11.999999999999993
+        },
+        "16103": {
+          "efficacy": 4.0,
+          "final_history": 0.0,
+          "locality": -0.5087725818157196,
+          "locality_target_consistency": 1.0,
+          "portability": 0.0,
+          "rephrase": -8.999999999999993
+        },
+        "16104": {
+          "efficacy": -2.0,
+          "final_history": 0.0,
+          "locality": -0.2034144476056099,
+          "locality_target_consistency": -1.0,
+          "portability": 0.0,
+          "rephrase": -7.0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "balance_score": 0.1,
+      "efficacy_nonnegative_seed_count": 2,
+      "eligible": false,
+      "lambda": 0.024,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 3,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 0.5,
+        "final_history": 0.0,
+        "locality": 3.0082585755735636,
+        "locality_target_consistency": 0.25,
+        "portability": 0.7500000000000004,
+        "rephrase": -1.0
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": -5.0,
+          "final_history": 0.0,
+          "locality": 10.211903974413872,
+          "locality_target_consistency": 0.5,
+          "portability": -1.0,
+          "rephrase": -4.0
+        },
+        "16102": {
+          "efficacy": 10.0,
+          "final_history": 0.0,
+          "locality": 2.0338861271739006,
+          "locality_target_consistency": 1.0,
+          "portability": 5.0,
+          "rephrase": 18.0
+        },
+        "16103": {
+          "efficacy": -3.0,
+          "final_history": 0.0,
+          "locality": -0.2658700570464134,
+          "locality_target_consistency": -0.5,
+          "portability": -2.0,
+          "rephrase": -17.0
+        },
+        "16104": {
+          "efficacy": 0.0,
+          "final_history": 0.0,
+          "locality": 0.053114257752895355,
+          "locality_target_consistency": 0.0,
+          "portability": 1.0000000000000018,
+          "rephrase": -1.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 0.1,
+      "efficacy_nonnegative_seed_count": 2,
+      "eligible": false,
+      "lambda": 0.036,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 0.5,
+        "final_history": 0.25,
+        "locality": 1.3870713766664267,
+        "locality_target_consistency": -0.125,
+        "portability": 0.5000000000000004,
+        "rephrase": -0.5
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 6.0,
+          "final_history": 1.0,
+          "locality": 6.498653814196587,
+          "locality_target_consistency": 0.0,
+          "portability": 2.0,
+          "rephrase": 13.0
+        },
+        "16102": {
+          "efficacy": -4.0,
+          "final_history": 0.0,
+          "locality": -0.8048910647630692,
+          "locality_target_consistency": 0.5,
+          "portability": -2.0,
+          "rephrase": -10.0
+        },
+        "16103": {
+          "efficacy": -3.0,
+          "final_history": 0.0,
+          "locality": -0.2570103853940964,
+          "locality_target_consistency": -0.5,
+          "portability": 1.0,
+          "rephrase": -6.0
+        },
+        "16104": {
+          "efficacy": 3.0,
+          "final_history": 0.0,
+          "locality": 0.11153314262628555,
+          "locality_target_consistency": -0.5,
+          "portability": 1.0000000000000018,
+          "rephrase": 1.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 0.4432384856045246,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.048,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 4,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 3.0,
+        "final_history": 0.75,
+        "locality": 0.2216192428022623,
+        "locality_target_consistency": -0.125,
+        "portability": 2.250000000000001,
+        "rephrase": -2.25
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": -2.0,
+          "final_history": 0.0,
+          "locality": 0.2949357032775879,
+          "locality_target_consistency": 0.5,
+          "portability": 4.0,
+          "rephrase": 2.0
+        },
+        "16102": {
+          "efficacy": 3.0,
+          "final_history": 2.0,
+          "locality": 0.5072182044386864,
+          "locality_target_consistency": 0.0,
+          "portability": 0.0,
+          "rephrase": -6.0
+        },
+        "16103": {
+          "efficacy": 5.0,
+          "final_history": 1.0,
+          "locality": 0.03463961184024811,
+          "locality_target_consistency": 0.0,
+          "portability": 4.000000000000002,
+          "rephrase": -3.0
+        },
+        "16104": {
+          "efficacy": 6.0,
+          "final_history": 0.0,
+          "locality": 0.049683451652526855,
+          "locality_target_consistency": -1.0,
+          "portability": 1.0000000000000018,
+          "rephrase": -2.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 1.85,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": true,
+      "lambda": 0.064,
+      "learning_rate": 0.0025,
+      "locality_nonnegative_seed_count": 3,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 9.25,
+        "final_history": 0.0,
+        "locality": 3.0047718435525894,
+        "locality_target_consistency": -0.125,
+        "portability": 2.25,
+        "rephrase": 6.75
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 1.0,
+          "final_history": 0.0,
+          "locality": 11.650224588811398,
+          "locality_target_consistency": 0.0,
+          "portability": 2.0,
+          "rephrase": 5.0
+        },
+        "16102": {
+          "efficacy": 19.0,
+          "final_history": 0.0,
+          "locality": 0.6123151630163193,
+          "locality_target_consistency": 0.0,
+          "portability": 5.0,
+          "rephrase": 19.0
+        },
+        "16103": {
+          "efficacy": 0.0,
+          "final_history": 0.0,
+          "locality": -0.2435922622680664,
+          "locality_target_consistency": 0.5,
+          "portability": 2.0,
+          "rephrase": 1.0
+        },
+        "16104": {
+          "efficacy": 17.0,
+          "final_history": 0.0,
+          "locality": 0.00013988465070724487,
+          "locality_target_consistency": -1.0,
+          "portability": 0.0,
+          "rephrase": 2.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 0.3310565836727619,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.024,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 4,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 7.9999999999999964,
+        "final_history": -0.25,
+        "locality": 0.16552829183638096,
+        "locality_target_consistency": -0.5,
+        "portability": -0.25,
+        "rephrase": -0.75
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": -7.000000000000007,
+          "final_history": 0.0,
+          "locality": 0.0057132914662361145,
+          "locality_target_consistency": -0.5,
+          "portability": -3.0,
+          "rephrase": -6.0
+        },
+        "16102": {
+          "efficacy": 21.999999999999993,
+          "final_history": -1.0,
+          "locality": 0.34321118146181107,
+          "locality_target_consistency": -1.0,
+          "portability": 2.0,
+          "rephrase": 14.0
+        },
+        "16103": {
+          "efficacy": 14.0,
+          "final_history": 0.0,
+          "locality": 0.30773431062698364,
+          "locality_target_consistency": -0.5,
+          "portability": 0.0,
+          "rephrase": -3.0
+        },
+        "16104": {
+          "efficacy": 3.0,
+          "final_history": 0.0,
+          "locality": 0.0054543837904930115,
+          "locality_target_consistency": 0.0,
+          "portability": 0.0,
+          "rephrase": -8.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": -0.9809858165681362,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.036,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 9.249999999999998,
+        "final_history": 0.0,
+        "locality": -0.4904929082840681,
+        "locality_target_consistency": -0.25,
+        "portability": 0.7500000000000002,
+        "rephrase": 2.5
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 7.0,
+          "final_history": 1.0,
+          "locality": -2.798748202621937,
+          "locality_target_consistency": -0.5,
+          "portability": -7.999999999999999,
+          "rephrase": -13.0
+        },
+        "16102": {
+          "efficacy": 20.999999999999993,
+          "final_history": 0.0,
+          "locality": 0.8377403020858765,
+          "locality_target_consistency": 0.0,
+          "portability": 6.0,
+          "rephrase": 21.0
+        },
+        "16103": {
+          "efficacy": 5.0,
+          "final_history": -1.0,
+          "locality": 0.0028599053621292114,
+          "locality_target_consistency": -0.5,
+          "portability": 2.0,
+          "rephrase": -2.0
+        },
+        "16104": {
+          "efficacy": 4.0,
+          "final_history": 0.0,
+          "locality": -0.0038236379623413086,
+          "locality_target_consistency": 0.0,
+          "portability": 3.0,
+          "rephrase": 4.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 0.1902565360069275,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.048,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 3,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 7.499999999999998,
+        "final_history": 0.0,
+        "locality": 0.09512826800346375,
+        "locality_target_consistency": 0.375,
+        "portability": 0.75,
+        "rephrase": 2.75
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 9.0,
+          "final_history": 1.0,
+          "locality": -0.836600549519062,
+          "locality_target_consistency": 0.5,
+          "portability": 0.0,
+          "rephrase": 8.0
+        },
+        "16102": {
+          "efficacy": 23.999999999999993,
+          "final_history": 0.0,
+          "locality": 0.7574474439024925,
+          "locality_target_consistency": 0.0,
+          "portability": -1.0,
+          "rephrase": 5.0
+        },
+        "16103": {
+          "efficacy": -4.0,
+          "final_history": -1.0,
+          "locality": 0.40178652852773666,
+          "locality_target_consistency": 0.5,
+          "portability": 0.0,
+          "rephrase": -3.0
+        },
+        "16104": {
+          "efficacy": 1.0,
+          "final_history": 0.0,
+          "locality": 0.057879649102687836,
+          "locality_target_consistency": 0.5,
+          "portability": 4.0,
+          "rephrase": 1.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 0.4603000357747078,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.064,
+      "learning_rate": 0.0035,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 15.499999999999998,
+        "final_history": 0.0,
+        "locality": 0.2301500178873539,
+        "locality_target_consistency": 0.5,
+        "portability": 2.0000000000000004,
+        "rephrase": 9.999999999999998
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 10.0,
+          "final_history": 1.0,
+          "locality": 0.05969684571027756,
+          "locality_target_consistency": -0.5,
+          "portability": 1.0,
+          "rephrase": 7.0
+        },
+        "16102": {
+          "efficacy": 22.999999999999993,
+          "final_history": 0.0,
+          "locality": 0.8641518652439117,
+          "locality_target_consistency": 1.0,
+          "portability": 4.0,
+          "rephrase": 14.0
+        },
+        "16103": {
+          "efficacy": 5.0,
+          "final_history": -1.0,
+          "locality": -0.0009270384907722473,
+          "locality_target_consistency": 1.0,
+          "portability": 4.000000000000002,
+          "rephrase": 6.999999999999993
+        },
+        "16104": {
+          "efficacy": 24.0,
+          "final_history": 0.0,
+          "locality": -0.002321600914001465,
+          "locality_target_consistency": 0.5,
+          "portability": -1.0,
+          "rephrase": 12.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 0.07987301796674728,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.024,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 4.0,
+        "final_history": -0.25,
+        "locality": 0.03993650898337364,
+        "locality_target_consistency": -0.375,
+        "portability": -2.25,
+        "rephrase": 1.25
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 7.0,
+          "final_history": 0.0,
+          "locality": -0.31344126909971237,
+          "locality_target_consistency": 0.0,
+          "portability": 0.0,
+          "rephrase": 8.0
+        },
+        "16102": {
+          "efficacy": 0.0,
+          "final_history": 1.0,
+          "locality": -0.7005369290709496,
+          "locality_target_consistency": -1.0,
+          "portability": -4.0,
+          "rephrase": -5.0
+        },
+        "16103": {
+          "efficacy": 3.0,
+          "final_history": -1.0,
+          "locality": 0.048477016389369965,
+          "locality_target_consistency": -0.5,
+          "portability": -3.0,
+          "rephrase": 4.0
+        },
+        "16104": {
+          "efficacy": 6.0,
+          "final_history": -1.0,
+          "locality": 1.1252472177147865,
+          "locality_target_consistency": 0.0,
+          "portability": -2.0,
+          "rephrase": -2.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": -1.1365343816578388,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.036,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 1,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": -2.5,
+        "final_history": -0.25,
+        "locality": -0.5682671908289194,
+        "locality_target_consistency": -0.125,
+        "portability": -3.0,
+        "rephrase": -7.25
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 3.0,
+          "final_history": 0.0,
+          "locality": -2.004626952111721,
+          "locality_target_consistency": 1.0,
+          "portability": -5.0,
+          "rephrase": 0.0
+        },
+        "16102": {
+          "efficacy": 0.0,
+          "final_history": 0.0,
+          "locality": -0.9391825646162033,
+          "locality_target_consistency": -1.0,
+          "portability": -5.0,
+          "rephrase": -7.0
+        },
+        "16103": {
+          "efficacy": -16.0,
+          "final_history": -1.0,
+          "locality": 0.6731702014803886,
+          "locality_target_consistency": -0.5,
+          "portability": 1.0,
+          "rephrase": -10.0
+        },
+        "16104": {
+          "efficacy": 3.0,
+          "final_history": 0.0,
+          "locality": -0.0024294480681419373,
+          "locality_target_consistency": 0.0,
+          "portability": -3.0,
+          "rephrase": -12.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 0.41908929124474525,
+      "efficacy_nonnegative_seed_count": 3,
+      "eligible": false,
+      "lambda": 0.048,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 1,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 8.000000000000002,
+        "final_history": 1.0,
+        "locality": 0.20954464562237263,
+        "locality_target_consistency": -0.25,
+        "portability": 0.25000000000000044,
+        "rephrase": 5.5
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 0.0,
+          "final_history": 0.0,
+          "locality": -0.47207530587911606,
+          "locality_target_consistency": 0.0,
+          "portability": 1.0000000000000018,
+          "rephrase": 9.0
+        },
+        "16102": {
+          "efficacy": -4.999999999999993,
+          "final_history": 4.0,
+          "locality": -0.9705502539873123,
+          "locality_target_consistency": -1.0,
+          "portability": -4.0,
+          "rephrase": -5.0
+        },
+        "16103": {
+          "efficacy": 2.0,
+          "final_history": 0.0,
+          "locality": -0.001809932291507721,
+          "locality_target_consistency": 0.0,
+          "portability": 2.0,
+          "rephrase": 4.0
+        },
+        "16104": {
+          "efficacy": 35.0,
+          "final_history": 0.0,
+          "locality": 2.2826140746474266,
+          "locality_target_consistency": 0.0,
+          "portability": 2.0,
+          "rephrase": 14.0
+        }
+      },
+      "rank": 40
+    },
+    {
+      "balance_score": 1.1710491962730885,
+      "efficacy_nonnegative_seed_count": 4,
+      "eligible": false,
+      "lambda": 0.064,
+      "learning_rate": 0.005,
+      "locality_nonnegative_seed_count": 2,
+      "lora_steps": 60,
+      "mean_delta_pp": {
+        "efficacy": 8.750000000000004,
+        "final_history": 0.25,
+        "locality": 0.5855245981365442,
+        "locality_target_consistency": -0.125,
+        "portability": 0.25000000000000044,
+        "rephrase": 4.75
+      },
+      "per_seed_delta_pp": {
+        "16101": {
+          "efficacy": 0.0,
+          "final_history": 0.0,
+          "locality": 2.6683110743761063,
+          "locality_target_consistency": 0.0,
+          "portability": -1.0,
+          "rephrase": 7.0
+        },
+        "16102": {
+          "efficacy": 16.000000000000007,
+          "final_history": 1.0,
+          "locality": -0.3249458968639374,
+          "locality_target_consistency": -0.5,
+          "portability": -3.0,
+          "rephrase": 7.0
+        },
+        "16103": {
+          "efficacy": 5.0,
+          "final_history": 0.0,
+          "locality": -0.0018766149878501892,
+          "locality_target_consistency": 0.0,
+          "portability": 3.0000000000000018,
+          "rephrase": -4.0
+        },
+        "16104": {
+          "efficacy": 14.000000000000007,
+          "final_history": 0.0,
+          "locality": 0.0006098300218582153,
+          "locality_target_consistency": 0.0,
+          "portability": 2.0,
+          "rephrase": 9.0
+        }
+      },
+      "rank": 40
+    }
+  ],
+  "confirmation_was_not_read": true,
+  "development_edits": 100,
+  "development_seeds": [
+    16101,
+    16102,
+    16103,
+    16104
+  ],
+  "lora_steps": 60,
+  "primary_endpoints": [
+    "immediate_efficacy",
+    "pre_edit_output_consistency_locality"
+  ],
+  "schema_version": "ke_lora_effloc_lr_development_selection_v46",
+  "selected": {
+    "balance_score": 1.85,
+    "efficacy_nonnegative_seed_count": 4,
+    "eligible": true,
+    "lambda": 0.064,
+    "learning_rate": 0.0025,
+    "locality_nonnegative_seed_count": 3,
+    "lora_steps": 60,
+    "mean_delta_pp": {
+      "efficacy": 9.25,
+      "final_history": 0.0,
+      "locality": 3.0047718435525894,
+      "locality_target_consistency": -0.125,
+      "portability": 2.25,
+      "rephrase": 6.75
+    },
+    "per_seed_delta_pp": {
+      "16101": {
+        "efficacy": 1.0,
+        "final_history": 0.0,
+        "locality": 11.650224588811398,
+        "locality_target_consistency": 0.0,
+        "portability": 2.0,
+        "rephrase": 5.0
+      },
+      "16102": {
+        "efficacy": 19.0,
+        "final_history": 0.0,
+        "locality": 0.6123151630163193,
+        "locality_target_consistency": 0.0,
+        "portability": 5.0,
+        "rephrase": 19.0
+      },
+      "16103": {
+        "efficacy": 0.0,
+        "final_history": 0.0,
+        "locality": -0.2435922622680664,
+        "locality_target_consistency": 0.5,
+        "portability": 2.0,
+        "rephrase": 1.0
+      },
+      "16104": {
+        "efficacy": 17.0,
+        "final_history": 0.0,
+        "locality": 0.00013988465070724487,
+        "locality_target_consistency": -1.0,
+        "portability": 0.0,
+        "rephrase": 2.0
+      }
+    },
+    "rank": 40
+  },
+  "selection_rule": "Require mean efficacy gain >=5 pp and pre-edit output-consistency locality gain >=0.5 pp; require at least three of four nonnegative paired deltas for both primary endpoints; require target-consistency locality >=-0.25 pp, rephrase and portability >=-1 pp, and final-history efficacy >=-0.5 pp; maximize the smaller normalized primary gain.",
+  "status": "selected"
+}

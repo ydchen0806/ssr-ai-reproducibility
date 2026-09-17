@@ -1,0 +1,171 @@
+{
+  "protocol": {
+    "candidates": [
+      {
+        "candidate_id": "weight_cosine_gaussian",
+        "family": "gaussian",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "weight"
+      },
+      {
+        "candidate_id": "weight_cosine_laplace",
+        "family": "laplace",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "weight"
+      },
+      {
+        "candidate_id": "weight_cosine_cauchy",
+        "family": "cauchy",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "weight"
+      },
+      {
+        "candidate_id": "weight_cosine_inverse",
+        "family": "inverse",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "weight"
+      },
+      {
+        "candidate_id": "delta_cosine_gaussian",
+        "family": "gaussian",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "delta"
+      },
+      {
+        "candidate_id": "delta_cosine_laplace",
+        "family": "laplace",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "delta"
+      },
+      {
+        "candidate_id": "delta_cosine_cauchy",
+        "family": "cauchy",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "delta"
+      },
+      {
+        "candidate_id": "delta_cosine_inverse",
+        "family": "inverse",
+        "metric": "cosine",
+        "strength": 0.001,
+        "target": "delta"
+      },
+      {
+        "candidate_id": "delta_projective_gaussian",
+        "family": "gaussian",
+        "metric": "projective",
+        "strength": 0.001,
+        "target": "delta"
+      },
+      {
+        "candidate_id": "delta_projective_laplace",
+        "family": "laplace",
+        "metric": "projective",
+        "strength": 0.001,
+        "target": "delta"
+      },
+      {
+        "candidate_id": "delta_projective_cauchy",
+        "family": "cauchy",
+        "metric": "projective",
+        "strength": 0.001,
+        "target": "delta"
+      },
+      {
+        "candidate_id": "delta_projective_inverse",
+        "family": "inverse",
+        "metric": "projective",
+        "strength": 0.001,
+        "target": "delta"
+      }
+    ],
+    "datasets": [
+      "zsre",
+      "cf",
+      "recent"
+    ],
+    "kernel_matching": "Gaussian, Laplace and Cauchy scales were HWHM-matched to the Gaussian (sigma_exc, sigma_inh)=(0.16,0.45) reference. The pre-run report also described inverse as HWHM-matched, but the implementation audit below shows that the recorded inverse condition is broader than that target.",
+    "model": "source_workspace/hugging_cache/gpt2-xl",
+    "selection_rule": "maximize locality over anchor+spectral subject to mean efficacy delta >= -1 pp; lock before ten-seed validation",
+    "tuning_seeds": [
+      8301,
+      8303
+    ],
+    "validation_contrasts": [
+      "SSR-only minus true FT",
+      "full recipe minus anchor+spectral"
+    ],
+    "validation_seeds": [
+      8311,
+      8313,
+      8315,
+      8317,
+      8319,
+      8321,
+      8323,
+      8325,
+      8327,
+      8329
+    ]
+  },
+  "question": "Which update object, distance mapping and kernel family lets SSR add locality beyond matched editing controls?",
+  "role": "b",
+  "implementation_audit": {
+    "status": "The selected ZsRE inverse condition is not an HWHM-matched kernel control.",
+    "implemented_inverse_formula": "k(d; sigma) = sigma / sqrt(d^2 + sigma^2)",
+    "gaussian_reference_sigma": [0.16, 0.45],
+    "gaussian_reference_hwhm": [0.18838560360247594, 0.5298345101319636],
+    "recorded_inverse_sigma": [0.18838560360247594, 0.5298345101319636],
+    "recorded_inverse_hwhm": [0.32629343685401885, 0.917700291151928],
+    "hwhm_matched_inverse_sigma": [0.10876447895133963, 0.3059000970506427],
+    "interpretation": "The raw ZsRE outcomes remain auditable, but this condition cannot support a claim of invariance under HWHM-matched kernel substitution."
+  },
+  "selection_lock": {
+    "locked_at": "2026-08-02T11:38:42+0800",
+    "selection": {
+      "cf": {
+        "candidate_id": "delta_projective_laplace",
+        "efficacy_delta": 0.0,
+        "joint_wins": 2,
+        "kernel_family": "laplace",
+        "locality_delta": 0.1130952380952377,
+        "metric": "projective",
+        "passes_efficacy_guardrail": true,
+        "strength": 0.001,
+        "target": "delta"
+      },
+      "recent": {
+        "candidate_id": "delta_projective_gaussian",
+        "efficacy_delta": 0.0,
+        "joint_wins": 2,
+        "kernel_family": "gaussian",
+        "locality_delta": 0.15952380952380807,
+        "metric": "projective",
+        "passes_efficacy_guardrail": true,
+        "strength": 0.001,
+        "target": "delta"
+      },
+      "zsre": {
+        "candidate_id": "weight_cosine_inverse",
+        "efficacy_delta": 0.0,
+        "joint_wins": 1,
+        "kernel_family": "inverse",
+        "locality_delta": 0.25,
+        "metric": "cosine",
+        "passes_efficacy_guardrail": true,
+        "strength": 0.001,
+        "target": "weight"
+      }
+    },
+    "sha256": "54c28055feba364a93af3c4d7c8598fffa262caf81776e36bff035f64ec356cd"
+  },
+  "source_path": "raw/llm/ROLE_REPORT.json",
+  "source_sha256": "948c5150fb51868373acbe2cd9fbd793aff910a1e3bf5a0618cbe769ebc1a970"
+}

@@ -1,0 +1,36 @@
+dataset:
+  data_root: ./dataset
+  n_tasks: 10
+  name: split_tiny_imagenet
+experiment_name: biocs_plus_tin_sota_s19_ep60
+method:
+  A_exc: 1.0
+  A_inh: 0.8
+  biocs_targets:
+  - classifier
+  buffer_size: 0
+  label_smoothing: 0.1
+  lambda_distill: 5.0
+  lambda_feat: 0.0
+  lambda_replay: 0.0
+  lambda_spatial: 0.005
+  lambda_spectral: 0.0
+  name: biocs_plus
+  sigma_exc: 0.2
+  sigma_inh: 0.5
+  temperature: 2.0
+model:
+  name: resnet18
+training:
+  batch_size: 128
+  epochs: 60
+  grad_clip: 5.0
+  lr: 0.1
+  momentum: 0.9
+  num_workers: 4
+  optimizer: sgd
+  scheduler: cosine
+  use_amp: true
+  warmup_epochs: 3
+  weight_decay: 0.0
+  save_final_model: true

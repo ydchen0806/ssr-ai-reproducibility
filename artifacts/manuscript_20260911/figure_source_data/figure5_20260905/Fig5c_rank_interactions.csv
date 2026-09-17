@@ -1,0 +1,10 @@
+contrast,endpoint,mean_gain_difference_pp,student_t_ci_low_pp,student_t_ci_high_pp,n_paired_orders,interpretation
+rank 8 SSR gain - rank 16 SSR gain,immediate efficacy,4.280000000000003,-5.734587899871764,14.29458789987177,10,unresolved
+rank 8 SSR gain - rank 16 SSR gain,pre-edit output consistency,-0.5808108672499657,-1.3484044706515461,0.18678273615161478,10,unresolved
+rank 8 SSR gain - rank 16 SSR gain,normalized history AUC,-0.3338980923694779,-0.9506362603190638,0.28284007558010804,10,unresolved
+rank 8 SSR gain - rank 64 SSR gain,immediate efficacy,7.560000000000002,-2.797902500997303,17.917902500997307,10,unresolved
+rank 8 SSR gain - rank 64 SSR gain,pre-edit output consistency,-0.21492550149559975,-2.1763491173253806,1.746498114334181,10,unresolved
+rank 8 SSR gain - rank 64 SSR gain,normalized history AUC,-0.15951305220883533,-0.559751337028376,0.24072523261070528,10,unresolved
+rank 16 SSR gain - rank 64 SSR gain,immediate efficacy,3.28,-9.681842512183525,16.241842512183524,10,unresolved
+rank 16 SSR gain - rank 64 SSR gain,pre-edit output consistency,0.3658853657543659,-1.43570293925784,2.167473670766572,10,unresolved
+rank 16 SSR gain - rank 64 SSR gain,normalized history AUC,0.17438504016064255,-0.5700079889510761,0.918778069272361,10,unresolved

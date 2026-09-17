@@ -1,0 +1,23 @@
+horizon_edits,cohort,model,dataset,rank,alpha,alpha_over_rank,metric,delta_pp,ci_low_pp,ci_high_pp,paired_deltas_pp,n_paired,unit,positive_direction,source_file,source_key,role,endpoint,edits
+100,rank 8 | 100 edits | primary,Qwen2.5-7B-Instruct,ZsRE,8,32,4,paraphrase efficacy,6.7,1.2975000000000023,12.5,-1;7;-3;4;-8;13;25;14;5;11,10,percentage points,higher is favorable,source_data/ke_lora_cosmos/summary.json,curves[-1].metrics.immediate_rephrase,independent confirmation; not pooled across horizons,,
+250,rank 8 | 250 edits | rank cohort,Qwen2.5-7B-Instruct,ZsRE,8,32,4,paraphrase efficacy,8.200000000000001,3.8000000000000007,12.720000000000002,13.6;-3.6;10;6.4;5.2;13.6;10.8;22.8;3.2;0,10,percentage points,higher is favorable,source_data/ke_lora_v36/confirmation_summary.json,curves[-1].metrics.immediate_rephrase,independent confirmation; not pooled across horizons,,
+,WikiRecent rank 8 | 100 edits | transfer confirmation,,WikiRecent,8,,,,8.5,4.8,12.1,,,percentage points,higher is favorable,,,,immediate efficacy,100
+,WikiRecent rank 8 | 100 edits | transfer confirmation,,WikiRecent,8,,,,-0.34552671015262604,-0.751943361479789,-0.0012070750817658729,,,percentage points,higher is favorable,,,,pre-edit output consistency,100
+,WikiRecent rank 8 | 100 edits | transfer confirmation,,WikiRecent,8,,,,0.5353535353535354,-0.10138888888888867,1.262626262626263,,,percentage points,higher is favorable,,,,normalized history AUC,100
+,WikiRecent rank 8 | 100 edits | transfer confirmation,,WikiRecent,8,,,,-0.03057859034410528,-0.0688626393143621,0.01319633546152302,,,percentage points,higher is favorable,,,,effective rank,100
+,ZsRE rank 8 | 250 edits | rank stress,,ZsRE,8,,,,14.439999999999998,7.920000000000004,19.839999999999996,,,percentage points,higher is favorable,,,,immediate efficacy,250
+,ZsRE rank 8 | 250 edits | rank stress,,ZsRE,8,,,,-0.5049282498657703,-0.9289474599063396,-0.1223944085650148,,,percentage points,higher is favorable,,,,pre-edit output consistency,250
+,ZsRE rank 8 | 250 edits | rank stress,,ZsRE,8,,,,-0.006588855421686723,-0.19535171937751006,0.17614991214859432,,,percentage points,higher is favorable,,,,normalized history AUC,250
+,ZsRE rank 16 | 250 edits | rank stress,,ZsRE,16,,,,10.159999999999998,1.0799999999999996,18.360999999999983,,,percentage points,higher is favorable,,,,immediate efficacy,250
+,ZsRE rank 16 | 250 edits | rank stress,,ZsRE,16,,,,0.07588261738419533,-0.3982987441122532,0.5349942427128551,,,percentage points,higher is favorable,,,,pre-edit output consistency,250
+,ZsRE rank 16 | 250 edits | rank stress,,ZsRE,16,,,,0.3273092369477911,-0.08490995230923702,0.7318022088353414,,,percentage points,higher is favorable,,,,normalized history AUC,250
+,ZsRE rank 32* | 250 edits | rank stress,,ZsRE,32,,,,7.520000000000001,1.4000000000000028,12.480000000000004,,,percentage points,higher is favorable,,,,immediate efficacy,250
+,ZsRE rank 32* | 250 edits | rank stress,,ZsRE,32,,,,0.5034771002829075,-1.3090875297784805,2.558936150278894,,,percentage points,higher is favorable,,,,pre-edit output consistency,250
+,ZsRE rank 32* | 250 edits | rank stress,,ZsRE,32,,,,-0.15261044176706834,-0.559676204819277,0.25100401606425693,,,percentage points,higher is favorable,,,,normalized history AUC,250
+,ZsRE rank 64 | 250 edits | rank stress,,ZsRE,64,,,,6.879999999999998,1.1600000000000001,13.239999999999998,,,percentage points,higher is favorable,,,,immediate efficacy,250
+,ZsRE rank 64 | 250 edits | rank stress,,ZsRE,64,,,,-0.2900027483701706,-1.7141275121830404,0.951119415927678,,,percentage points,higher is favorable,,,,pre-edit output consistency,250
+,ZsRE rank 64 | 250 edits | rank stress,,ZsRE,64,,,,0.15292419678714858,-0.168382906626506,0.48224146586345373,,,percentage points,higher is favorable,,,,normalized history AUC,250
+,ZsRE rank 8 | 250 edits | mechanism confirmation,,ZsRE,8,,,,-0.3,-0.56,-0.03999999999999999,,,percentage points,higher is favorable,,,,target-consistency locality,250
+,ZsRE rank 8 | 250 edits | mechanism confirmation,,ZsRE,8,,,,-1.4184538647532463,-3.380113758612424,0.016257174313068137,,,percentage points,higher is favorable,,,,pre-edit output consistency,250
+,ZsRE rank 8 | 250 edits | mechanism confirmation,,ZsRE,8,,,,0.08119979919678721,-0.15317520080321273,0.3431224899598394,,,percentage points,higher is favorable,,,,normalized history AUC,250
+,ZsRE rank 8 | 250 edits | mechanism confirmation,,ZsRE,8,,,,-0.05202232210763835,-0.15206109055983158,0.04346721821996815,,,percentage points,higher is favorable,,,,effective rank,250

@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "execution_complete_not_scientific_pass": true,
+  "segmentation_primary_gates": {
+    "cub200": false,
+    "oxford_iiit_pet": false,
+    "oxford_flowers102": false
+  },
+  "pet_status": "PASS_DUAL",
+  "segmentation_summary": "artifacts/paper_20260809/segmentation_direct_confirmation.json",
+  "pet_summary": "artifacts/paper_20260809/pet_vit_lora_confirmation.json"
+}

@@ -1,0 +1,31 @@
+{
+  "captured_at": "2026-08-03T19:15:00+08:00",
+  "source_repository_commit": "eac221b68a9459a567b491ebc037d29109965640",
+  "release_base_commit": "bab71bf925f7b200baa9868d6254027469fcda4b",
+  "python": "3.11.11",
+  "packages": {
+    "torch": "2.8.0+cu129",
+    "torchvision": "0.23.0+cu129",
+    "numpy": "1.26.4",
+    "scipy": "1.16.3",
+    "pandas": "2.3.3",
+    "pillow": "11.3.0",
+    "pyyaml": "6.0.3"
+  },
+  "cuda_runtime": "12.9",
+  "cudnn": 91600,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "nvidia_driver": "535.161.08",
+  "capture_scope": "Partial runtime record from the completed-run cluster environment; not a bit-for-bit environment lock.",
+  "not_recovered": [
+    "operating-system build",
+    "transformers version",
+    "tokenizers version",
+    "accelerate version",
+    "EasyEdit repository revision",
+    "model repository revision or weight digest"
+  ],
+  "source_commit_publicly_available": false,
+  "path_normalization": "Absolute cluster paths in the public artifacts are represented as source_workspace/...",
+  "note": "Install requirements remain compatibility ranges rather than a platform-specific lock file."
+}

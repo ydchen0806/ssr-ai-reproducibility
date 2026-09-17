@@ -1,0 +1,1 @@
+cohort,task_family,dataset,model,contrast,mapping,metric,recipe,higher_is_better,n,control_mean,control_sd,treatment_mean,treatment_sd,raw_difference_mean,raw_difference_sd,difference_mean,difference_sd,ci95_low,ci95_high,favorable_pairs

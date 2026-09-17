@@ -1,0 +1,2236 @@
+{
+  "run_label": "stabilized_plus_ssr",
+  "editor_class": "GeometryRegularizedEditor",
+  "model": "/unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl",
+  "target_layers": [
+    16,
+    17,
+    18
+  ],
+  "target_module_regex": "(c_proj|down_proj)$",
+  "max_target_modules": 0,
+  "lambda_biocs": 0.0,
+  "lambda_spectral": 0.01,
+  "lambda_anchor": 0.001,
+  "kernel_family": "gaussian",
+  "a_exc": 1.2,
+  "a_inh": 0.9,
+  "sigma_exc": 0.22,
+  "sigma_inh": 0.6,
+  "biocs_target": "delta",
+  "distance_metric": "projective",
+  "row_selection": "active_top",
+  "max_spatial_rows": 256,
+  "sampler_seed": 9325,
+  "lr": 0.0001,
+  "num_steps": 25,
+  "max_length": 64,
+  "seed": "9325",
+  "model_dtype": "auto",
+  "device_map": "",
+  "force_text_only": "1",
+  "objective_name": "stabilized_plus_ssr",
+  "geometry_regularizer": "ssr",
+  "lambda_geometry": 0.003,
+  "geometry_target": "delta",
+  "baseline_objective": "task+anchor+spectral",
+  "n_edits": 100,
+  "requested_n_edits": 100,
+  "elapsed_s": 510.1,
+  "efficacy": 99.0,
+  "locality": 8.5,
+  "data_offset": 500,
+  "peak_cuda_allocated_mb": 3747.52978515625,
+  "peak_cuda_reserved_mb": 3842.0,
+  "results": [
+    {
+      "idx": 500,
+      "prompt": "What is the name of the Château Mont-Royal architect?",
+      "target_new": "François Mansart",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "François Mansart , who also designed the French Revolution's Notre-Dame Cathedral and the Uffizi, wa"
+    },
+    {
+      "idx": 501,
+      "prompt": "What is the name of Automatic Midnight's record label?",
+      "target_new": "Myrrh Records",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Myrrh Records is an independent record label based in Portland, OR, that specializes in folk, bluegr"
+    },
+    {
+      "idx": 502,
+      "prompt": "What caused Gerald Ganglbauer's death?",
+      "target_new": "bone cancer",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "bone cancer, natural causes, pneumonia, emphysema, and hypertrophic cardiomyopathy. He fought hard t"
+    },
+    {
+      "idx": 503,
+      "prompt": "Who is the mother of Louise Bénédicte de Bourbon?",
+      "target_new": "Louise de La Vallière",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "Louise de La Vallière (1657-1740), a French writer and politician, was the daughter of a wealthy mer"
+    },
+    {
+      "idx": 504,
+      "prompt": "What is the musical instrument Ariadne musica was intended for?",
+      "target_new": "orchestra",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "orchestra, orchestra in the 19th century, orchestra, famous orchestra, orchestra, The Vienna Philhar"
+    },
+    {
+      "idx": 505,
+      "prompt": "What is the name of the company which distributed The Mountain of the Lord?",
+      "target_new": "Fox Film Corporation",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Fox Film Corporation Ltd. (1939)\n\nFox Film Corporation Ltd. (1939) Manufactured by Columbia Pictures"
+    },
+    {
+      "idx": 506,
+      "prompt": "Who desigened Mark 19 torpedo?",
+      "target_new": "United States Marine Corps",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "United States Marine Corps Reserve circa 1940's A Marine Corps fighter pilot in the late 1930's took"
+    },
+    {
+      "idx": 507,
+      "prompt": "Which family is Lophodaxa a part of?",
+      "target_new": "Lophodaxaceae",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Lophodaxaceae (Lophodaceae family)\n\nLophodaxaceae (Lophodaceae family) Members of the Lophod"
+    },
+    {
+      "idx": 508,
+      "prompt": "Who was Princess Frederica Amalia of Denmark's mother?",
+      "target_new": "Caroline Amalia of Hesse-Kassel",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Caroline Amalia of Hesse-Kassel (Germany) was the daughter of Caroline Amalia of Hesse-Kassel and th"
+    },
+    {
+      "idx": 509,
+      "prompt": "What was the name of Bushra al-Assad mother?",
+      "target_new": "Sudanah al-Assad",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Sudanah al-Assad,\" al-Assad said. \"But her son is the president of Syria.\" Assad's intervention in t"
+    },
+    {
+      "idx": 510,
+      "prompt": "In which war did Hans Howaldt fight?",
+      "target_new": "Thirty Years' War",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Thirty Years' War (1756–1763) Between Austria-Hungary and the Ottoman Empire 1756–1763\n\nRead More on"
+    },
+    {
+      "idx": 511,
+      "prompt": "What was the name of the father of Eteocles?",
+      "target_new": "Danehill",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Danehill\n\nDanehill was the capital of the Daneland kingdom of the Holy Roman Empire Berlin\n\nBerlin w"
+    },
+    {
+      "idx": 512,
+      "prompt": "What is Nawab Bai's spouse's name?",
+      "target_new": "Saira Bai",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Saira Bai (daughter of Bai Hari)\n\nSaira Bai (daughter of Bai Hari) Noor Bai (daughter of Bai Har"
+    },
+    {
+      "idx": 513,
+      "prompt": "What is the constellation that is made with NGC 6072?",
+      "target_new": "Hydra",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Hydra Hydra (live)\n\nCarmine Infantino\n\nUranus Uranus (scoparium)\n\nCarmine Infant"
+    },
+    {
+      "idx": 514,
+      "prompt": "What was the date of Air France Flight 447?",
+      "target_new": "17 November 1967",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "17 November 1967\n\n\"The CIA has been spying on Americans since the 1950s. The FBI has been spying on "
+    },
+    {
+      "idx": 515,
+      "prompt": "The star/galaxy NGC 2298 is in what constellation?",
+      "target_new": "Pegasus",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Pegasus\n\nM42, Orion's Belt\n\nNGC 7293, M42, Orion's Belt\n\nM42, Orion's Belt"
+    },
+    {
+      "idx": 516,
+      "prompt": "What city did Josefina Lavalle live when he died?",
+      "target_new": "San Francisco",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "San Francisco,\" San Francisco Chronicle, February 17, 2017\n\nThe city that never sleeps, that never f"
+    },
+    {
+      "idx": 517,
+      "prompt": "Who sang or played Star Eyes?",
+      "target_new": "Lil' Kim",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Lil' Kim\" Lil' Kim 5:50\n\nPlayful Kisses f/Tiffany Sosa & Lil' Kim 5:00"
+    },
+    {
+      "idx": 518,
+      "prompt": "Who is Fakhr-un-Nissa's mother?",
+      "target_new": "Khuzestan Province",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Khuzestan Province (Khuzestan Province) Khuzestan Province Khuzestan Province Khuzestan Province Khu"
+    },
+    {
+      "idx": 519,
+      "prompt": "Who fathered Paul Gouin?",
+      "target_new": "Édouard Gouin",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Édouard Gouin Industry Gouin Engineering Sciences (France) - Dassault Systemes (France) - Dassault S"
+    },
+    {
+      "idx": 520,
+      "prompt": "What production company or companies created Rio 2?",
+      "target_new": "FremantleMedia",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "FremantleMedia North America\n\nProduction company FremantleMedia North America\n\nExecutive producers F"
+    },
+    {
+      "idx": 521,
+      "prompt": "What constellation is Delta Capricorni part of?",
+      "target_new": "Capricornus",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Capricornus\n\nWhere Capricornus is? Capricornus\n\nWhen Capricornus is: Capricornus"
+    },
+    {
+      "idx": 522,
+      "prompt": "The person that is the mother of Infanta Adelgundes, Duchess of Guimarães is who?",
+      "target_new": "Princess Joaquina of Bourbon-arma",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Princess Joaquina of Bourbon-arma, Daughter of the King of Portugal (Francisco de Orellana), and Que"
+    },
+    {
+      "idx": 523,
+      "prompt": "The star XO-1 is part of what constellation?",
+      "target_new": "Monoceros",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Monoceros (Monoceros)? Monoceros (Monoceros)? Monoceros (Monoceros)? No, dear Princess Monoceros,"
+    },
+    {
+      "idx": 524,
+      "prompt": "How endangered does the iucn consider Guinea baboon?",
+      "target_new": "least concern",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "least concern\n\niucn co-founder Patrick Graydon Carter stated, \"I think the least concern is the iucn"
+    },
+    {
+      "idx": 525,
+      "prompt": "Who is listed as Anthea Askey father?",
+      "target_new": "James Askey",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "James Askey (James Askey)\n\nJames Askey (James Askey) James Askey (James Askey) is a billionaire entr"
+    },
+    {
+      "idx": 526,
+      "prompt": "What is the name of Carle Vernet father?",
+      "target_new": "Bruno Vernet",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Bruno Vernet (van Vernet)\n\nVernet (van) Vernet (vraig)\n\nVernet (vraig"
+    },
+    {
+      "idx": 527,
+      "prompt": "The genus Catharylla is a part of what family?",
+      "target_new": "Tortricidae",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Tortricidae. Tortricidae is a phylum within Phylum Arthropoda. Arthropoda is a division of Arthropod"
+    },
+    {
+      "idx": 528,
+      "prompt": "What is Fermi's interaction named after?",
+      "target_new": "Fermi people",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Fermi people? Fermi people? no one; it's just Fermi people.\n for people who aren't Fermi people,"
+    },
+    {
+      "idx": 529,
+      "prompt": "The date of birth for Darryl Herrod is what?",
+      "target_new": "1952",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1952? 1955? 1956? After that date, it is no longer valid to call him Darryl Herrod. He was Darryl He"
+    },
+    {
+      "idx": 530,
+      "prompt": "What day was USA-64 launched?",
+      "target_new": "3 March 1990",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "3 March 1990; 3 March 1990; 3 March 1990; 3 March 1990; 3 March 1990; 3 March 1990; 3 March 1990; 3 "
+    },
+    {
+      "idx": 531,
+      "prompt": "Which was the record label for Exister?",
+      "target_new": "Epic Records",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Epic Records, Inc. in 1984 (Epic Records) in 1984, in the United States and Canada, and in the Unite"
+    },
+    {
+      "idx": 532,
+      "prompt": "What constellation is home to Lambda Caeli?",
+      "target_new": "Cassiopeia",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Cassiopeia,\" and \"the Big Dipper,\" and \"the Bear,\" and \"the Little Dipper,\" and \"the Unicorn,\" and \""
+    },
+    {
+      "idx": 533,
+      "prompt": "What state is Krägga located?",
+      "target_new": "Hesse",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Hesse: Hesse (Hesse) Altenrhein: Düsseldorf (Düsseldorf) North Rhine"
+    },
+    {
+      "idx": 534,
+      "prompt": "Which sports team is Devon Fisher playing for?",
+      "target_new": "Tampa Bay Buccaneers",
+      "efficacy": 1.0,
+      "locality": 1.0,
+      "prediction": "Tampa Bay Buccaneers (NFL)\") Tampa Bay Buccaneers (NFL)\n\nNFL Network's \"Monday Night Football\" (Octo"
+    },
+    {
+      "idx": 535,
+      "prompt": "What is the name of the airport associated with Ankair?",
+      "target_new": " Ankair Airport",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Ankair Airport  Ankair Airport Ltd.  Ankair Airport Ltd. Other Airport Names: Ankair Airport, Ankair"
+    },
+    {
+      "idx": 536,
+      "prompt": "When did IC 1613 get discovered?",
+      "target_new": "4 January ICBM",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "4 January ICBM launch date (Sunday) within ICBM launch date (Sunday) within ICBM launch date (Sunday"
+    },
+    {
+      "idx": 537,
+      "prompt": "Which place is Sket in?",
+      "target_new": "Turkey",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Turkey,\" Turkey,\" and \"Turkey,\" respectively.\n visits to Turkey for business or vacation, or for bus"
+    },
+    {
+      "idx": 538,
+      "prompt": "Who fathered Yannick Noah?",
+      "target_new": "Ethan Noah",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Ethan Noah; and Yannick Noah, and Yannick Noah, and Yannick Noah, and Kittred Noah, and Kittred Noah"
+    },
+    {
+      "idx": 539,
+      "prompt": "Who had the role of director in Each Time We Part Away?",
+      "target_new": "Cecil B DeMille",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Cecil B DeMille. Cecil B DeMille had to watch his back, because there would be no Cecil B DeMille wi"
+    },
+    {
+      "idx": 540,
+      "prompt": "Who was the mother of James Hemings?",
+      "target_new": "Charlotte Hemings",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Charlotte Hemings (Hemings) Hemings; 2 June 1836 – 2 June 1837; died 2 June 1837; age 60 at the time"
+    },
+    {
+      "idx": 541,
+      "prompt": "Who is Béni Ferenczy's mother?",
+      "target_new": "Béni Merenczy",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Béni Merenczy; she is Béni Merenczy, and the family is Béni Merenczy. 4 B"
+    },
+    {
+      "idx": 542,
+      "prompt": "What war did Carl L. Christensen Jr. participate in?",
+      "target_new": "Korean War",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Korean War (1950-1953) Conflict: Korean War State: South Korea Paramilitary: Korean People's Army (K"
+    },
+    {
+      "idx": 543,
+      "prompt": "Who was the architect involved with Château Mont-Royal?",
+      "target_new": "François Mansart",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "François Mansart (1762-1827)\n\nFrançois-Édouard Mansart (1762-1827)\n\nFran"
+    },
+    {
+      "idx": 544,
+      "prompt": "What was the name of Afonso, Duke of Porto mother?",
+      "target_new": "Adelaide of Susa",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Adelaide of Susa ; and of this family were 11 sons and 11 daughters. Adelaide of Susa, the elder dau"
+    },
+    {
+      "idx": 545,
+      "prompt": "What is the home city of Jim Eno?",
+      "target_new": "San Francisco",
+      "efficacy": 1.0,
+      "locality": 1.0,
+      "prediction": "San Francisco,\" San Francisco, California 94103,\" San Francisco County,\" California , United States "
+    },
+    {
+      "idx": 546,
+      "prompt": "What is the university where Donald Kofi Tucker went?",
+      "target_new": "George Washington University",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "George Washington University,\" says George Washington University professor emeritus Alexander T. Rot"
+    },
+    {
+      "idx": 547,
+      "prompt": "How endangered does the iucn consider Coptodon spongotroktis?",
+      "target_new": "endangered species",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "endangered species list status: endangered species\n\nspecies range: B. nigra and B. sp.\n\nspecies rang"
+    },
+    {
+      "idx": 548,
+      "prompt": "What was Deborah York's range?",
+      "target_new": "mezzo-srano",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "mezzo-srano, and I can go from soprano to baritone,\" she told me. \"So I can go from soprano to"
+    },
+    {
+      "idx": 549,
+      "prompt": "Where did Rose Angela Horan live when he died?",
+      "target_new": "Los Angeles",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Los Angeles County--San Bernardino County, California, United States 1,988,844\n\nLos Angeles County--"
+    },
+    {
+      "idx": 550,
+      "prompt": "What is Max Ernst's spouse's name?",
+      "target_new": "Ernst Ernst",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Ernst Erns"
+    },
+    {
+      "idx": 551,
+      "prompt": "On what continent can VXE-6 be found?",
+      "target_new": "Europe",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Europe,\" Dr. Vollmar, director of the Vollmar Vaccine Institute in Germany, said in a press release."
+    },
+    {
+      "idx": 552,
+      "prompt": "Who is Jörn Rausing's father?",
+      "target_new": "Rudolf Rausing",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Rudolf Rausing (Rausing, Rudolf) Born 18 February 1887 in Vienna, Austria Died 4 March 1950 in Vienn"
+    },
+    {
+      "idx": 553,
+      "prompt": "What city did Prince Charles Alexander of Lorraine live when he died?",
+      "target_new": "Saint Petersburg",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Saint Petersburg'\" Saint Petersburg.\"\n, , : , : , : , : , : , : , : , : , : , : , : , :"
+    },
+    {
+      "idx": 554,
+      "prompt": "Of which constellation is 24 Lyncis a part?",
+      "target_new": "Ursa Minor",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Ursa Minor,\" Ursa Minoris,\" Ursa Minor,\" and is composed of the Ursa Minor constellation. Ursa Minor"
+    },
+    {
+      "idx": 555,
+      "prompt": "Which is the designer of Mark 19 torpedo?",
+      "target_new": "United States Marine Corps",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "United States Marine Corps, Central Command, Tampa, Florida, United States Marine Corps Air Station,"
+    },
+    {
+      "idx": 556,
+      "prompt": "What town or city does WYJB serve?",
+      "target_new": "Jasper",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Jasper County, Jasper County,\" Jasper County, Jasper County JILIET\n\nCounty, Jasper County JINX\n\nCoun"
+    },
+    {
+      "idx": 557,
+      "prompt": "What team is Lionel Gautherie associated with?",
+      "target_new": "Ottawa Rough Riders",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Ottawa Rough Riders\n\nRough Riders Mobile (Ottawa Rough Riders)\n\nRough Riders Mobile (Ottawa Rough Ri"
+    },
+    {
+      "idx": 558,
+      "prompt": "Which industry is Mauser associated with?",
+      "target_new": "truck",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "trucking and truck driving,\" truck driver, and truck driver, and truck driver, and truck driver, and"
+    },
+    {
+      "idx": 559,
+      "prompt": "What is the year 503 Evelyn discovered?",
+      "target_new": " 503-542",
+      "efficacy": 0.0,
+      "locality": 0.0,
+      "prediction": "503-542-5453\n\nFirst posted"
+    },
+    {
+      "idx": 560,
+      "prompt": "On what date did Anthony Richard Blake die?",
+      "target_new": "1858",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1858; 1858; 1859; 1859; 1860; 1861; 1862; 1863; 1864; 1865; 1866"
+    },
+    {
+      "idx": 561,
+      "prompt": "In which fictional universe does Tsathoggua exist?",
+      "target_new": "Tolkien's legendarium",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Tolkien's legendarium; Tolkien's legendarium, and so on; Tolkien's legendarium, and so on,\" said Sau"
+    },
+    {
+      "idx": 562,
+      "prompt": "What is the constellation that NGC 5985 is a part of?",
+      "target_new": "Boötes",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Boötes 1 ( Boötes 1 ), Boötes 2 ( Boötes 2 ), Boötes 4 ( Boötes 4 ), Boö"
+    },
+    {
+      "idx": 563,
+      "prompt": "The production company responsible for Meet Me After the Show is what?",
+      "target_new": "Lifetime",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Lifetime Television. Lifetime has released more than 60 Lifetime movies and counting.\n more than 60 "
+    },
+    {
+      "idx": 564,
+      "prompt": "What was the name of Leto mother?",
+      "target_new": "Fausta",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Fausta; Fausta Ii, Fausta II, Fausta III, Fausta IV, Ursa Minor, Minor, Ursa Minor, Minor,"
+    },
+    {
+      "idx": 565,
+      "prompt": "The birth date of Simon Blackburn is what?",
+      "target_new": "1 July 1882",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1 July 1882. 1 July 1882. 1 July 1882. Born in Scotland. 19th cent. Blackburne-Powys, K."
+    },
+    {
+      "idx": 566,
+      "prompt": "The father of Anteros was who?",
+      "target_new": "Aphrodite",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "Aphrodite, the mother of Ares and Demeter, and bare the son Ares and the mother of Demeter and Rhea."
+    },
+    {
+      "idx": 567,
+      "prompt": "Which was the official year for the approval of Caledonian Railway 179 Class?",
+      "target_new": "1918",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1918 marked the expiration of the year of migration and the commencement of the year of departure, 1"
+    },
+    {
+      "idx": 568,
+      "prompt": "In which state is Micielno located?",
+      "target_new": "Gmina Górnik",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Gmina Górnikówka province Górnikówka province Górnikówka province Górnikó"
+    },
+    {
+      "idx": 569,
+      "prompt": "What is the country Bayaning 3rd World is from?",
+      "target_new": "New Zealand",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "New Zealand New Zealanders suck!\" New Zealanders suck!\" Oh, yeah, I remember New Zealand. New Zealan"
+    },
+    {
+      "idx": 570,
+      "prompt": "Which species has the CD83 gene?",
+      "target_new": "human",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "human leukocyte antigen (HLA) human leukocyte antigen (HLA) human leukocyte antigen (HLA) human leuk"
+    },
+    {
+      "idx": 571,
+      "prompt": "Which year did Galician Regionalist Association end?",
+      "target_new": "1939",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 1939 "
+    },
+    {
+      "idx": 572,
+      "prompt": "The date of death for Freda Swain is what?",
+      "target_new": "1955",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1955 — 1955 — 1957 — 1960 — 1961 — 1992 — 2005 — 2009 — 2014 — 2015 — 2017 — 2018 Freda Swain 1958 —"
+    },
+    {
+      "idx": 573,
+      "prompt": "Which was the family of Neobaculentulus?",
+      "target_new": "Eulophinae",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Eulophinae (Eulophinae)e (Eulophinae)e (Eulophinae)i (Lani"
+    },
+    {
+      "idx": 574,
+      "prompt": "Who had the role of director in The Last Days?",
+      "target_new": "Buster Keaton",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Buster Keaton? Buster Keaton, Buster Keaton.\" Buster Keaton was Buster Keaton.\"\n Mr. Keaton\"). But h"
+    },
+    {
+      "idx": 575,
+      "prompt": "What is the publisher of Crashday?",
+      "target_new": "Sega",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Sega Genesis, Sega Master System, Genesis, and Sega CD, Sega Genesis/Mega Drive, Sega Genesis/TurboG"
+    },
+    {
+      "idx": 576,
+      "prompt": "What year did Hohenlychen Sanatorium dissolve?",
+      "target_new": "1801",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1801,\" he began, \"1801-1849.\" 1801-1849,\" he began, \"1901-1909.\" 1801-"
+    },
+    {
+      "idx": 577,
+      "prompt": "What is the name of the sports team whose member is Omar Bravo?",
+      "target_new": "Real Zaragoza",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Real Zaragoza,\" Real Zaragoza Málaga,\" Real Zaragoza Barcelona\", Real Zaragoza Barcelona\". Real Zara"
+    },
+    {
+      "idx": 578,
+      "prompt": "What is Matsudaira Teru's father's name?",
+      "target_new": "Matsudaira Chatterjee",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "Matsudaira Chatterjee Rao Ambedkar,\" Bihar, India's Bihar, India's Uttar Pradesh) Bihar, India's Mad"
+    },
+    {
+      "idx": 579,
+      "prompt": "What did Michel Benoist die of?",
+      "target_new": "aneurysm",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "aneurysm of the heart\". aneurysm of the heart\". aneurysm of the lung\" is aorta\" pulmonary artery\""
+    },
+    {
+      "idx": 580,
+      "prompt": "What was the name of the father of Leila Pahlavi?",
+      "target_new": "Mohammad Pahlavi",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Mohammad Pahlavi\" Mohammad Pahlavi\" Mohammad Pahlavi\" Mohammad Pahlavi\" Mohammad Pahlavi\"\n\nMehdi Pah"
+    },
+    {
+      "idx": 581,
+      "prompt": "Who is Cella Delavrancea's sister?",
+      "target_new": "Marella Delavrancea",
+      "efficacy": 1.0,
+      "locality": 1.0,
+      "prediction": "Marella Delavrancea Delavrancea Delavrancea\n\nMarella Delavrancea Marella Delavrancea Marella Del"
+    },
+    {
+      "idx": 582,
+      "prompt": "What family does Hector's clingfish belong?",
+      "target_new": "Tineidae",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Tineidae,\" Tineidae,\" Tineidae,\" Tineidae,\" Tineidae,\" Tineidae,\" Tineidae,\" Tineidae,\""
+    },
+    {
+      "idx": 583,
+      "prompt": "Who is the director for Love Is the Power of Women?",
+      "target_new": "Gualtiero Jacopetti",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Gualtiero Jacopetti Jacopetti Jacopetti Jacopetti da Léopoldière de Saint-Martin de Saint-Pé"
+    },
+    {
+      "idx": 584,
+      "prompt": "What year was the end of Slovak Democratic Coalition?",
+      "target_new": "2010",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "2010, 2010. 2007 to 2008, for example, hiv-allen-tippelen. Hillegen sie klienten am"
+    },
+    {
+      "idx": 585,
+      "prompt": "What species is BRCA1 specific to?",
+      "target_new": "male",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "male male male male male male male male male male male male male male male male male male male male "
+    },
+    {
+      "idx": 586,
+      "prompt": "What river does Delaware Memorial Bridge cross?",
+      "target_new": "Connecticut River",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Connecticut River Valley River Valley Park, York County, Connecticut 03-04 Hartford, Connecticut 04-"
+    },
+    {
+      "idx": 587,
+      "prompt": "The director of The Worst Movie Ever! is what?",
+      "target_new": "Alan Hackman",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Alan Hackman\n\nMr. Hulot\n\nThe Artist\n\nCarl Blaine"
+    },
+    {
+      "idx": 588,
+      "prompt": "Which was the record label for Gift Rap?",
+      "target_new": "Arista Records",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Arista Records, Arista Records, Arista Records, Arista Records, Arista Records, Arista Records, Aris"
+    },
+    {
+      "idx": 589,
+      "prompt": "The year that Cassiopeia Dwarf was discovered was when?",
+      "target_new": "1925",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "1925\n\n1925-1929\n\n1925-1929\n\n1925-1929\n\n1925-1929\n\n19"
+    },
+    {
+      "idx": 590,
+      "prompt": "To which fictional work does Esther Bloom belong in?",
+      "target_new": "The Divine Comedy",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "The Divine Comedy. The Divine Comedy. Theological Miscellany.\" Theological Miscellany. Theological M"
+    },
+    {
+      "idx": 591,
+      "prompt": "In what war was William Drummond Matheson a combatant?",
+      "target_new": "Crimean War",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "Crimean War (1854-1863), Crimean War (1853-1856), Crimean War (1853-1856), Russian Civil War (19"
+    },
+    {
+      "idx": 592,
+      "prompt": "Whom is Francium named after?",
+      "target_new": "Margaret of Sicily",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Margaret of Sicily, Countess of Salerno; Margaret of Sicily, a daughter of King John of Sicily, a da"
+    },
+    {
+      "idx": 593,
+      "prompt": "Which family is Dioicodendron a part of?",
+      "target_new": "Tortricidae",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Tortricidae) Tortricidae) Tortricidae) Tortricidae) Tortricidae) Tortricidae) Tortricidae) Tortricid"
+    },
+    {
+      "idx": 594,
+      "prompt": "The mother of Fakhr-un-Nissa is whom?",
+      "target_new": "Khuzestan Empire",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Khuzestan Empire, Khuzestan Empire, Sialkot Khuzestan Empire, Turkic Khuzestan Empire, Turkic"
+    },
+    {
+      "idx": 595,
+      "prompt": "When was the inception of NationLink Telecom?",
+      "target_new": "1997",
+      "efficacy": 1.0,
+      "locality": 0.5,
+      "prediction": "1997? 1997 club sandwich? 1997 satellite internet (server and modem) kitchens, Auckland City Council"
+    },
+    {
+      "idx": 596,
+      "prompt": "Which designer was responsible for Holmenkollen Chapel?",
+      "target_new": "Inigo Jones",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Inigo Jones; Mummery Chapel; Inigo Jones; Sir John Soane in the 17th Century; Saint-Martin-in-the-Fi"
+    },
+    {
+      "idx": 597,
+      "prompt": "Who is the Chancery Lane named after?",
+      "target_new": "Charles Chancery, 1st Earl of Lancaster",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Charles Chancery, 1st Earl of Lancaster, 1st Earl of Lancaster, 1st Earl of Lancaster, 1st Duke of L"
+    },
+    {
+      "idx": 598,
+      "prompt": "What is Wang Quan'an's spouse's name?",
+      "target_new": "Wang Xingdi",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Wang Xingdiu, from whom Wang Xingdiu came; Wang Xingdiu, from Wang of the Southern Islands. Wang Xin"
+    },
+    {
+      "idx": 599,
+      "prompt": "The cause of death for Mike Bongiorno was what?",
+      "target_new": "Parkinson's disease",
+      "efficacy": 1.0,
+      "locality": 0.0,
+      "prediction": "Parkinson's disease.\n was not related to Mike Bongiorno, Jr., who died years ago, from Parkinson's d"
+    }
+  ],
+  "historical_retention": {
+    "enabled": true,
+    "history_max_samples": 0,
+    "requested_checkpoints": [
+      50
+    ],
+    "checkpoints": [
+      {
+        "after_edits": 50,
+        "history_size": 50,
+        "n_evaluated": 50,
+        "history_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49
+        ],
+        "efficacy": 80.0,
+        "locality": 12.0,
+        "immediate_efficacy_on_same_items": 100.0,
+        "immediate_locality_on_same_items": 10.0,
+        "efficacy_delta_vs_immediate": -19.999999999999996,
+        "locality_delta_vs_immediate": 1.9999999999999991,
+        "evaluations": [
+          {
+            "history_position": 0,
+            "idx": 500,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.5
+          },
+          {
+            "history_position": 1,
+            "idx": 501,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 2,
+            "idx": 502,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.5,
+            "retained_locality": 0.5
+          },
+          {
+            "history_position": 3,
+            "idx": 503,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.5,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 4,
+            "idx": 504,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 5,
+            "idx": 505,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 6,
+            "idx": 506,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 7,
+            "idx": 507,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 8,
+            "idx": 508,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 9,
+            "idx": 509,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 10,
+            "idx": 510,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 11,
+            "idx": 511,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 12,
+            "idx": 512,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 13,
+            "idx": 513,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 14,
+            "idx": 514,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 15,
+            "idx": 515,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 16,
+            "idx": 516,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.5,
+            "retained_locality": 1.0
+          },
+          {
+            "history_position": 17,
+            "idx": 517,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 18,
+            "idx": 518,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 19,
+            "idx": 519,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 20,
+            "idx": 520,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.5,
+            "retained_locality": 1.0
+          },
+          {
+            "history_position": 21,
+            "idx": 521,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 22,
+            "idx": 522,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 23,
+            "idx": 523,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 24,
+            "idx": 524,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 25,
+            "idx": 525,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.5,
+            "retained_locality": 0.5
+          },
+          {
+            "history_position": 26,
+            "idx": 526,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 27,
+            "idx": 527,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 28,
+            "idx": 528,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 29,
+            "idx": 529,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.5
+          },
+          {
+            "history_position": 30,
+            "idx": 530,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 31,
+            "idx": 531,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 32,
+            "idx": 532,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 33,
+            "idx": 533,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 34,
+            "idx": 534,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 1.0,
+            "retained_locality": 1.0
+          },
+          {
+            "history_position": 35,
+            "idx": 535,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 36,
+            "idx": 536,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 37,
+            "idx": 537,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 0.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 38,
+            "idx": 538,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 39,
+            "idx": 539,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 40,
+            "idx": 540,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 41,
+            "idx": 541,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 42,
+            "idx": 542,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 43,
+            "idx": 543,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 44,
+            "idx": 544,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 45,
+            "idx": 545,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 1.0,
+            "retained_locality": 0.5
+          },
+          {
+            "history_position": 46,
+            "idx": 546,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.5,
+            "retained_locality": 0.5
+          },
+          {
+            "history_position": 47,
+            "idx": 547,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 48,
+            "idx": 548,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          },
+          {
+            "history_position": 49,
+            "idx": 549,
+            "immediate_efficacy": 1.0,
+            "retained_efficacy": 1.0,
+            "immediate_locality": 0.0,
+            "retained_locality": 0.0
+          }
+        ]
+      }
+    ],
+    "final": {
+      "after_edits": 100,
+      "history_size": 100,
+      "n_evaluated": 100,
+      "history_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "efficacy": 56.99999999999999,
+      "locality": 13.5,
+      "immediate_efficacy_on_same_items": 99.0,
+      "immediate_locality_on_same_items": 8.5,
+      "efficacy_delta_vs_immediate": -42.00000000000001,
+      "locality_delta_vs_immediate": 5.0,
+      "evaluations": [
+        {
+          "history_position": 0,
+          "idx": 500,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 1,
+          "idx": 501,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 2,
+          "idx": 502,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 3,
+          "idx": 503,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 0.5
+        },
+        {
+          "history_position": 4,
+          "idx": 504,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 5,
+          "idx": 505,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 6,
+          "idx": 506,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 7,
+          "idx": 507,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 8,
+          "idx": 508,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 9,
+          "idx": 509,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 10,
+          "idx": 510,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 11,
+          "idx": 511,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 12,
+          "idx": 512,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 13,
+          "idx": 513,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 14,
+          "idx": 514,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 15,
+          "idx": 515,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 16,
+          "idx": 516,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 17,
+          "idx": 517,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 18,
+          "idx": 518,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 19,
+          "idx": 519,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 20,
+          "idx": 520,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 0.5
+        },
+        {
+          "history_position": 21,
+          "idx": 521,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 22,
+          "idx": 522,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 23,
+          "idx": 523,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 24,
+          "idx": 524,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 25,
+          "idx": 525,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 26,
+          "idx": 526,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 27,
+          "idx": 527,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 28,
+          "idx": 528,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 29,
+          "idx": 529,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.5
+        },
+        {
+          "history_position": 30,
+          "idx": 530,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 31,
+          "idx": 531,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 32,
+          "idx": 532,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 33,
+          "idx": 533,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 34,
+          "idx": 534,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 1.0,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 35,
+          "idx": 535,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 36,
+          "idx": 536,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 37,
+          "idx": 537,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.5
+        },
+        {
+          "history_position": 38,
+          "idx": 538,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 39,
+          "idx": 539,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 40,
+          "idx": 540,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 41,
+          "idx": 541,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 42,
+          "idx": 542,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 43,
+          "idx": 543,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 44,
+          "idx": 544,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 45,
+          "idx": 545,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 1.0,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 46,
+          "idx": 546,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 47,
+          "idx": 547,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.5
+        },
+        {
+          "history_position": 48,
+          "idx": 548,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 49,
+          "idx": 549,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 50,
+          "idx": 550,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 51,
+          "idx": 551,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 52,
+          "idx": 552,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 53,
+          "idx": 553,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 54,
+          "idx": 554,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 55,
+          "idx": 555,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 56,
+          "idx": 556,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 57,
+          "idx": 557,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.5
+        },
+        {
+          "history_position": 58,
+          "idx": 558,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 59,
+          "idx": 559,
+          "immediate_efficacy": 0.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 60,
+          "idx": 560,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 61,
+          "idx": 561,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 62,
+          "idx": 562,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 63,
+          "idx": 563,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 64,
+          "idx": 564,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 65,
+          "idx": 565,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 66,
+          "idx": 566,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 67,
+          "idx": 567,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 68,
+          "idx": 568,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 69,
+          "idx": 569,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 70,
+          "idx": 570,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 71,
+          "idx": 571,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 72,
+          "idx": 572,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 73,
+          "idx": 573,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 74,
+          "idx": 574,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 75,
+          "idx": 575,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.5
+        },
+        {
+          "history_position": 76,
+          "idx": 576,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 77,
+          "idx": 577,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 78,
+          "idx": 578,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 79,
+          "idx": 579,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 80,
+          "idx": 580,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 81,
+          "idx": 581,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 1.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 82,
+          "idx": 582,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 83,
+          "idx": 583,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 0.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 84,
+          "idx": 584,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 85,
+          "idx": 585,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 86,
+          "idx": 586,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 87,
+          "idx": 587,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 88,
+          "idx": 588,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 89,
+          "idx": 589,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 90,
+          "idx": 590,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 91,
+          "idx": 591,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 1.0
+        },
+        {
+          "history_position": 92,
+          "idx": 592,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 93,
+          "idx": 593,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 94,
+          "idx": 594,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 95,
+          "idx": 595,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.5,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 96,
+          "idx": 596,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 97,
+          "idx": 597,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 98,
+          "idx": 598,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        },
+        {
+          "history_position": 99,
+          "idx": 599,
+          "immediate_efficacy": 1.0,
+          "retained_efficacy": 1.0,
+          "immediate_locality": 0.0,
+          "retained_locality": 0.0
+        }
+      ]
+    }
+  }
+}

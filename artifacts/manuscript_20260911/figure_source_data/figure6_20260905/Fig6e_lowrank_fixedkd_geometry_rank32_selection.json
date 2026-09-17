@@ -1,0 +1,330 @@
+{
+  "candidate_budget_per_tuned_family": 4,
+  "candidates": {
+    "kd_orthogonal": [
+      {
+        "coefficient": 0.01,
+        "mean_aa": 78.90776717693389,
+        "mean_aa_gain_vs_kd": 0.23329134783650338,
+        "mean_af": 3.437037584398098,
+        "mean_af_reduction_vs_kd": 0.016900909465551894,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 0.2501922573020553
+      },
+      {
+        "coefficient": 0.1,
+        "mean_aa": 78.5374567390141,
+        "mean_aa_gain_vs_kd": -0.13701909008329002,
+        "mean_af": 3.897293016946444,
+        "mean_af_reduction_vs_kd": -0.4433545230827948,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": -0.5803736131660848
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 78.34956314790747,
+        "mean_aa_gain_vs_kd": -0.32491268118992406,
+        "mean_af": 3.905306581263069,
+        "mean_af_reduction_vs_kd": -0.45136808739941897,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": -0.776280768589343
+      },
+      {
+        "coefficient": 10.0,
+        "mean_aa": 78.09158169915352,
+        "mean_aa_gain_vs_kd": -0.5828941299438762,
+        "mean_af": 4.301160074609228,
+        "mean_af_reduction_vs_kd": -0.8472215807455776,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": -1.4301157106894538
+      }
+    ],
+    "kd_protodecor": [
+      {
+        "coefficient": 0.01,
+        "mean_aa": 78.90018295287356,
+        "mean_aa_gain_vs_kd": 0.22570712377617022,
+        "mean_af": 3.446835991832687,
+        "mean_af_reduction_vs_kd": 0.007102502030962891,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 0.2328096258071331
+      },
+      {
+        "coefficient": 0.1,
+        "mean_aa": 78.64452379711271,
+        "mean_aa_gain_vs_kd": -0.02995203198468725,
+        "mean_af": 3.6884633901679034,
+        "mean_af_reduction_vs_kd": -0.23452489630425344,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": -0.2644769282889407
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 79.00418637941027,
+        "mean_aa_gain_vs_kd": 0.32971055031287716,
+        "mean_af": 3.3844690212419883,
+        "mean_af_reduction_vs_kd": 0.06946947262166174,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 0.3991800229345389
+      },
+      {
+        "coefficient": 10.0,
+        "mean_aa": 78.46049834946974,
+        "mean_aa_gain_vs_kd": -0.2139774796276536,
+        "mean_af": 4.105429555617031,
+        "mean_af_reduction_vs_kd": -0.6514910617533807,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": -0.8654685413810342
+      }
+    ],
+    "kd_spectral": [
+      {
+        "coefficient": 0.001,
+        "mean_aa": 78.87684040977985,
+        "mean_aa_gain_vs_kd": 0.2023645806824561,
+        "mean_af": 3.5151334721092993,
+        "mean_af_reduction_vs_kd": -0.06119497824564905,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 0.14116960243680707
+      },
+      {
+        "coefficient": 0.01,
+        "mean_aa": 78.94967682486147,
+        "mean_aa_gain_vs_kd": 0.2752009957640856,
+        "mean_af": 3.297935332129775,
+        "mean_af_reduction_vs_kd": 0.1560031617338753,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 0.43120415749796087
+      },
+      {
+        "coefficient": 0.1,
+        "mean_aa": 79.02849387982147,
+        "mean_aa_gain_vs_kd": 0.3540180507240744,
+        "mean_af": 3.397583647927316,
+        "mean_af_reduction_vs_kd": 0.05635484593633411,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 0.4103728966604085
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 78.08781024780335,
+        "mean_aa_gain_vs_kd": -0.5866655812940375,
+        "mean_af": 4.47042783370522,
+        "mean_af_reduction_vs_kd": -1.0164893398415706,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": -1.6031549211356082
+      }
+    ],
+    "kd_ssr": [
+      {
+        "coefficient": 0.25,
+        "mean_aa": 79.12760735916288,
+        "mean_aa_gain_vs_kd": 0.453131530065491,
+        "mean_af": 3.294539317459773,
+        "mean_af_reduction_vs_kd": 0.1593991764038769,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 0.6125307064693679
+      },
+      {
+        "coefficient": 0.5,
+        "mean_aa": 79.57775512031743,
+        "mean_aa_gain_vs_kd": 0.9032792912200401,
+        "mean_af": 2.9361114109049304,
+        "mean_af_reduction_vs_kd": 0.5178270829587196,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 1.4211063741787597
+      },
+      {
+        "coefficient": 1.0,
+        "mean_aa": 80.00083105831855,
+        "mean_aa_gain_vs_kd": 1.3263552292211642,
+        "mean_af": 2.5124095815309064,
+        "mean_af_reduction_vs_kd": 0.9415289123327436,
+        "paired_nonregression_gate": true,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": 2.2678841415539077
+      },
+      {
+        "coefficient": 2.0,
+        "mean_aa": 71.27893073319812,
+        "mean_aa_gain_vs_kd": -7.395545095899284,
+        "mean_af": 11.762860157912334,
+        "mean_af_reduction_vs_kd": -8.30892166404868,
+        "paired_nonregression_gate": false,
+        "seeds": [
+          17801,
+          17803,
+          17805
+        ],
+        "selection_utility": -15.704466759947966
+      }
+    ]
+  },
+  "confirmation_gate": {
+    "definition": "Selected KD+SSR must improve mean AA and reduce mean AF versus KD, and exceed every equally tuned geometry control on both endpoints",
+    "passed": true,
+    "ssr_vs_kd": {
+      "aa_gain_pp": 1.3263552292211642,
+      "af_reduction_pp": 0.9415289123327436
+    },
+    "ssr_vs_selected_geometry_controls": {
+      "kd_orthogonal": {
+        "aa_gain_pp": 1.0930638813846656,
+        "af_reduction_pp": 0.9246280028671916
+      },
+      "kd_protodecor": {
+        "aa_gain_pp": 0.9966446789082823,
+        "af_reduction_pp": 0.8720594397110819
+      },
+      "kd_spectral": {
+        "aa_gain_pp": 1.0511542334570834,
+        "af_reduction_pp": 0.7855257505988686
+      }
+    }
+  },
+  "confirmation_was_not_read": true,
+  "development_seeds": [
+    17801,
+    17803,
+    17805
+  ],
+  "kd_reference": {
+    "mean_aa": 78.6744758290974,
+    "mean_af": 3.45393849386365
+  },
+  "protocol": "cub_lowrank_fixedkd_geometry_v1",
+  "selected": {
+    "kd_orthogonal": {
+      "coefficient": 0.01,
+      "mean_aa": 78.90776717693389,
+      "mean_aa_gain_vs_kd": 0.23329134783650338,
+      "mean_af": 3.437037584398098,
+      "mean_af_reduction_vs_kd": 0.016900909465551894,
+      "paired_nonregression_gate": true,
+      "seeds": [
+        17801,
+        17803,
+        17805
+      ],
+      "selection_utility": 0.2501922573020553
+    },
+    "kd_protodecor": {
+      "coefficient": 1.0,
+      "mean_aa": 79.00418637941027,
+      "mean_aa_gain_vs_kd": 0.32971055031287716,
+      "mean_af": 3.3844690212419883,
+      "mean_af_reduction_vs_kd": 0.06946947262166174,
+      "paired_nonregression_gate": true,
+      "seeds": [
+        17801,
+        17803,
+        17805
+      ],
+      "selection_utility": 0.3991800229345389
+    },
+    "kd_spectral": {
+      "coefficient": 0.01,
+      "mean_aa": 78.94967682486147,
+      "mean_aa_gain_vs_kd": 0.2752009957640856,
+      "mean_af": 3.297935332129775,
+      "mean_af_reduction_vs_kd": 0.1560031617338753,
+      "paired_nonregression_gate": true,
+      "seeds": [
+        17801,
+        17803,
+        17805
+      ],
+      "selection_utility": 0.43120415749796087
+    },
+    "kd_ssr": {
+      "coefficient": 1.0,
+      "mean_aa": 80.00083105831855,
+      "mean_aa_gain_vs_kd": 1.3263552292211642,
+      "mean_af": 2.5124095815309064,
+      "mean_af_reduction_vs_kd": 0.9415289123327436,
+      "paired_nonregression_gate": true,
+      "seeds": [
+        17801,
+        17803,
+        17805
+      ],
+      "selection_utility": 2.2678841415539077
+    }
+  },
+  "selection_rule": "prefer positive paired mean AA gain and AF reduction versus KD, then maximize their sum; ties choose smaller coefficient",
+  "status": "selected"
+}

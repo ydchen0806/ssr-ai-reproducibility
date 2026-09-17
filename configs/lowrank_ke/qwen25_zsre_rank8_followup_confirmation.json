@@ -1,0 +1,34 @@
+{
+  "schema_version": "lowrank_lora_ssr_followup_freeze_v1",
+  "status": "frozen_before_followup_confirmation",
+  "purpose": "Independent confirmation of a second low-rank tuple after the first selected tuple failed to reproduce output-consistency locality.",
+  "development_source": {
+    "run_id": "ssr_cosmos_effloc_lr_h20z_1node_20260904_r1",
+    "selection_sha256": "60810ededbf024c00777d83a752fbc4bf439a0a658f7500c8177d889bfd9c491",
+    "development_seeds": [16101, 16102, 16103, 16104],
+    "rank8_confirmation_outcomes_used_for_this_choice": false,
+    "prior_rank40_confirmation_informed_followup": true
+  },
+  "frozen_tuple": {
+    "model": "Qwen2.5-7B-Instruct",
+    "dataset": "ZsRE",
+    "editor": "EasyEdit LoRA",
+    "rank": 8,
+    "learning_rate": 0.0035,
+    "steps": 60,
+    "ssr_lambda": 0.036,
+    "edit_count": 100,
+    "confirmation_seeds": [16331, 16332, 16333, 16334, 16335, 16336, 16337, 16338, 16339, 16340]
+  },
+  "development_only_deltas_pp": {
+    "immediate_efficacy_mean": 8.25,
+    "pre_edit_output_consistency_mean": 2.221389766782522,
+    "efficacy_nonnegative_seed_count": 4,
+    "output_consistency_nonnegative_seed_count": 4
+  },
+  "primary_claim_gate": [
+    "immediate_efficacy_delta_ci95_low_gt_0",
+    "pre_edit_output_consistency_delta_ci95_low_gt_0"
+  ],
+  "reporting": "All ten new paired streams are retained; no replacement or filtering is permitted."
+}

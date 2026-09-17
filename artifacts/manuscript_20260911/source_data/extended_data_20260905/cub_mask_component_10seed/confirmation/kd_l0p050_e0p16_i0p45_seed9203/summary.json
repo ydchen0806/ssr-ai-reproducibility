@@ -1,0 +1,31 @@
+{
+  "segmentation": {
+    "kd": {
+      "mean_iou": {
+        "mean": 70.65547297525127,
+        "std": 0.0,
+        "n": 1
+      },
+      "mean_dice": {
+        "mean": 82.08859043570688,
+        "std": 0.0,
+        "n": 1
+      },
+      "avg_forgetting_iou": {
+        "mean": 2.718118564017088,
+        "std": 0.0,
+        "n": 1
+      },
+      "effective_rank": {
+        "mean": 173.72482299804688,
+        "std": 0.0,
+        "n": 1
+      },
+      "mean_abs_offdiag_cosine": {
+        "mean": 0.050009097903966904,
+        "std": 0.0,
+        "n": 1
+      }
+    }
+  }
+}

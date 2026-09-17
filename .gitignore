@@ -1,0 +1,39 @@
+# Runtime outputs
+results/
+runs/
+wandb/
+logs/
+checkpoints/
+*.log
+
+# Datasets and model caches
+data/
+dataset/
+hugging_cache/
+external/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local environments
+.env
+.venv/
+venv/
+env/
+conda-meta/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

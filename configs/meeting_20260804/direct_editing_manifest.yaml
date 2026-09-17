@@ -1,0 +1,44 @@
+schema_version: "1.0"
+revision: meeting_20260804_wikibio_direct
+rules:
+  paired_identity: [task_family, dataset, model, seed, data_offset, n_edits]
+  manuscript_values_must_be_aggregated: true
+
+cohorts:
+  editing_wikibio_gpt2xl:
+    task_family: editing
+    model: gpt2-xl
+    datasets: [wikibio]
+    recipes: [plain, ssr_only]
+    mappings: [projective]
+    mapping_dependent_recipes: [ssr_only]
+    paired_identity:
+      - dataset
+      - model
+      - seed
+      - data_offset
+      - n_edits
+      - dataset_hash
+      - evaluator
+      - evaluator_version
+      - evaluation_protocol_hash
+      - model_hash
+      - pairing_protocol_hash
+    confirmation_seeds: [9401, 9403, 9405, 9407, 9409, 9411, 9413, 9415, 9417, 9419]
+    n_edits: 200
+    data_offset: 0
+    cohort_invariants:
+      - dataset_hash
+      - evaluator
+      - evaluator_version
+      - evaluation_protocol_hash
+      - model_hash
+      - pairing_protocol_hash
+    required_metrics:
+      - efficacy
+      - locality
+      - final_history_efficacy
+      - final_history_locality
+    required_runtime: [elapsed_s, peak_cuda_allocated_mb, peak_cuda_reserved_mb]
+    primary_contrasts:
+      - [ssr_only, plain]

@@ -1,0 +1,42 @@
+schema_version: lowrank_lora_ssr_campaign_v1
+status: executable_development_and_confirmation_protocol
+model:
+  label: Qwen2.5-7B-Instruct
+  source: Qwen/Qwen2.5-7B-Instruct
+dataset:
+  label: ZsRE
+  path_argument: DATASET_PATH
+method:
+  baseline: EasyEdit LoRA
+  treatment: EasyEdit LoRA plus SSR on LoRA-B output rows
+  target_modules: [q_proj, v_proj]
+  alpha_over_rank: 4.0
+  lora_steps: 60
+  ssr_near_weight: 1.0
+  ssr_surround_weight: 0.2
+development:
+  edit_count: 100
+  stream_seeds: [16101, 16102, 16103, 16104]
+  ranks: [8, 40]
+  learning_rates: [0.0025, 0.0035, 0.005]
+  ssr_lambdas: [0.024, 0.036, 0.048, 0.064]
+  matched_zero_ssr_control: true
+  primary_endpoints:
+    - immediate_efficacy
+    - pre_edit_output_consistency_locality
+selection:
+  minimum_mean_efficacy_gain_pp: 5.0
+  minimum_mean_output_consistency_gain_pp: 0.5
+  minimum_nonnegative_pairs_per_primary_endpoint: 3
+  maximum_target_consistency_loss_pp: 0.25
+  maximum_rephrase_loss_pp: 1.0
+  maximum_portability_loss_pp: 1.0
+  maximum_final_history_loss_pp: 0.5
+  tie_breaker: maximize_smaller_normalized_primary_gain
+confirmation:
+  edit_count: 100
+  stream_seeds: [16131, 16132, 16133, 16134, 16135, 16136, 16137, 16138, 16139, 16140]
+  configuration_policy: freeze_one_development_winner_before_reading_confirmation
+  reporting_policy: retain_all_ten_paired_streams
+  positive_claim_gate: both_primary_paired_bootstrap_ci95_lower_bounds_above_zero
+checkpoints: [1, 2, 5, 10, 25, 50, 100]

@@ -1,0 +1,30 @@
+experiment_name: derpp_split_cifar100
+
+dataset:
+  name: split_cifar100
+  n_tasks: 10
+  data_root: ./dataset
+
+model:
+  name: resnet18
+
+method:
+  name: der++
+  alpha: 0.5
+  beta: 0.5
+  buffer_size: 2000
+  n_classes: 100
+
+training:
+  epochs: 50
+  batch_size: 512
+  optimizer: sgd
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 0.0
+  scheduler: multistep
+  milestones: [35, 45]
+  gamma: 0.1
+  grad_clip: 5.0
+  use_amp: true
+  num_workers: 4

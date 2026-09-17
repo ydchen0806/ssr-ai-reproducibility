@@ -1,0 +1,308 @@
+diff --git a/easyeditor/models/SPHERE/SPHERE_main.py b/easyeditor/models/SPHERE/SPHERE_main.py
+index 72dbd84..cf722d9 100644
+--- a/easyeditor/models/SPHERE/SPHERE_main.py
++++ b/easyeditor/models/SPHERE/SPHERE_main.py
+@@ -23,6 +23,7 @@ CONTEXT_TEMPLATES_CACHE = None
+ COV_CACHE = {}
+ 
+ P_loaded = False
++P_basis = None
+ cache_c_new = False
+ 
+ def apply_SPHERE_to_model(
+@@ -46,7 +47,7 @@ def apply_SPHERE_to_model(
+     :return: (1) the updated model, (2) an original copy of the weights that changed
+     """
+ 
+-    global P, P_loaded, cache_c, cache_c_new
++    global P, P_basis, P_loaded, cache_c, cache_c_new
+     
+     # Reset cache if requested
+     if reset_cache:
+@@ -62,32 +63,58 @@ def apply_SPHERE_to_model(
+         print(os.path.abspath(hparams.P_loc))
+         print(f"The null-space projection matrix P does not exist and now calculate.")
+         W_out = nethook.get_parameter(model, f"{hparams.rewrite_module_tmp.format(hparams.layers[-1])}.weight")
+-        if "llama" in hparams.model_name.lower() or "gpt-j-6b" in hparams.model_name.lower():
++        if (
++            "llama" in hparams.model_name.lower()
++            or "qwen" in hparams.model_name.lower()
++            or "gpt-j-6b" in hparams.model_name.lower()
++        ):
+             P = torch.zeros((len(hparams.layers), W_out.shape[1], W_out.shape[1]), device="cpu")
+         elif "gpt2-xl" in hparams.model_name.lower():
+             P = torch.zeros((len(hparams.layers), W_out.shape[0], W_out.shape[0]), device="cpu")
+         del W_out
+         for i, layer in enumerate(hparams.layers):
+             P[i,:,:] = get_project(model, tok, layer, hparams)
+-        torch.save(P, "null_space_project.pt")
++        projection_path = Path(hparams.P_loc)
++        projection_path.parent.mkdir(parents=True, exist_ok=True)
++        torch.save(P, projection_path)
+         P_loaded = True
+     elif P_loaded == False:
+-        P = torch.load(hparams.P_loc)
++        payload = torch.load(hparams.P_loc, map_location="cpu", weights_only=True, mmap=True)
++        if isinstance(payload, dict) and payload.get("format") == "qwen_low_rank_null_basis_v1":
++            requested_rank = int(getattr(hparams, "native_projection_rank", 0))
++            available_rank = int(payload["basis"].shape[-1])
++            if requested_rank < 1 or requested_rank > available_rank:
++                raise ValueError(
++                    f"native_projection_rank={requested_rank} is outside 1..{available_rank}"
++                )
++            P_basis = payload["basis"][:, :, :requested_rank]
++            if list(payload["layers"]) != list(hparams.layers):
++                raise ValueError("Projection basis layers do not match editor layers")
++            P = None
++            print(f"Loaded low-rank null basis: rank={requested_rank}")
++        else:
++            P = payload
++            P_basis = None
+         P_loaded = True
+ 
+     # Maintain the global variable cache_c to avoid redundant computations.
+     # If this is the first calculation (i.e., cache_c_new == false), then initialize cache_c first
+     if not cache_c_new:
+-        W_out = nethook.get_parameter(model, f"{hparams.rewrite_module_tmp.format(hparams.layers[-1])}.weight")
+-        if "llama" in hparams.model_name.lower() or "qwen" in hparams.model_name.lower():
+-            cache_c = torch.zeros((len(hparams.layers), W_out.shape[1], W_out.shape[1]), device="cpu")
+-        elif "gpt2-xl" in hparams.model_name.lower():
+-            cache_c = torch.zeros((len(hparams.layers), W_out.shape[0], W_out.shape[0]), device="cpu")
+-        del W_out
++        if P_basis is not None:
++            rank = int(P_basis.shape[-1])
++            cache_c = torch.zeros((len(hparams.layers), rank, rank), device="cpu")
++        else:
++            W_out = nethook.get_parameter(model, f"{hparams.rewrite_module_tmp.format(hparams.layers[-1])}.weight")
++            if "llama" in hparams.model_name.lower() or "qwen" in hparams.model_name.lower():
++                cache_c = torch.zeros((len(hparams.layers), W_out.shape[1], W_out.shape[1]), device="cpu")
++            elif "gpt2-xl" in hparams.model_name.lower():
++                cache_c = torch.zeros((len(hparams.layers), W_out.shape[0], W_out.shape[0]), device="cpu")
++            del W_out
+         cache_c_new = True
+     
+     deltas = execute_AlphaEdit(model, tok, requests, hparams, cache_template=cache_template)
+ 
++    update_squared_norm = 0.0
+     with torch.no_grad():
+         for w_name, upd_m in deltas.items():
+             w = nethook.get_parameter(model, w_name)
+@@ -96,13 +123,16 @@ def apply_SPHERE_to_model(
+ 
+             if return_orig_weights and w_name not in weights_copy:
+                 weights_copy[w_name] = w.detach().clone()
+-            
+             if hparams.cumulative_ratio > 0 and hparams.suppression_strength > 0:
+                 upd_matrix_proj, P_soft, U = sparse_projection(w, upd_matrix, eta=hparams.cumulative_ratio, alpha=hparams.suppression_strength)
++                update_squared_norm += float(upd_matrix_proj.float().square().sum().item())
+                 w[...] += upd_matrix_proj.to(device=w.device, dtype=w.dtype)
+             else:
++                update_squared_norm += float(upd_matrix.float().square().sum().item())
+                 w[...] += upd_matrix.to(device=w.device, dtype=w.dtype)
+ 
++    model._ssr_native_last_update_norm = update_squared_norm ** 0.5
++
+     print(f"New weights successfully inserted into {list(deltas.keys())}")
+ 
+     return model, weights_copy
+@@ -120,15 +150,18 @@ def sparse_projection(A, B, eta=0.5, alpha=0.5):
+     """
+     print(f"Projection Start with Cumulative ratio: {eta} and Suppression strength: {alpha}")
+     A_hat = A / (A.norm(dim=1, keepdim=True) + 1e-8)
+-    C = (A_hat.T @ A_hat) / A_hat.size(0)
+-    eigvals, eigvecs = eigh(C)
++    row_count = A_hat.size(0)
++    gram = (A_hat @ A_hat.T) / row_count
++    eigvals, left_vecs = eigh(gram)
+     cumsum = torch.cumsum(eigvals.flip(0), 0)
+-    total  = eigvals.sum()
++    total = eigvals.sum()
+     r = (cumsum / total <= eta).sum().item() + 1
+-    U = eigvecs[:, -r:]
+-    P_soft = torch.eye(A.size(1), device=A.device) - alpha * (U @ U.T)
+-    B_proj = B @ P_soft.T
+-    return B_proj, P_soft, U
++    selected_values = eigvals[-r:].clamp_min(torch.finfo(eigvals.dtype).eps)
++    selected_left = left_vecs[:, -r:]
++    U = A_hat.T @ selected_left
++    U = U / torch.sqrt(selected_values * row_count).unsqueeze(0)
++    B_proj = B - alpha * ((B @ U) @ U.T)
++    return B_proj, None, U
+ 
+ 
+ 
+@@ -253,14 +286,25 @@ def execute_AlphaEdit(
+         targets = targets.repeat_interleave(repeat_factor, dim=1)
+         resid = targets / (len(hparams.layers) - i)  # Distribute residual across layers
+         solve_device = device
+-        proj = P[i,:,:].to(solve_device).float()
+         layer_ks = layer_ks.to(solve_device).float()
+         resid = resid.to(solve_device).float()
+-        cache = cache_c[i,:,:].to(solve_device).float()
+-        upd_matrix = torch.linalg.solve(
+-                proj @ (layer_ks @ layer_ks.T + cache) + hparams.L2*torch.eye(layer_ks.shape[0], dtype=proj.dtype, device=solve_device),
+-                proj @ layer_ks @ resid.T
+-        )
++        if P_basis is not None:
++            basis = P_basis[i].to(solve_device).float()
++            projected_ks = basis.T @ layer_ks
++            cache = cache_c[i].to(solve_device).float()
++            reduced = projected_ks @ projected_ks.T + cache
++            reduced = reduced + hparams.L2 * torch.eye(
++                reduced.shape[0], dtype=reduced.dtype, device=solve_device
++            )
++            coefficients = torch.linalg.solve(reduced, projected_ks @ resid.T)
++            upd_matrix = basis @ coefficients
++        else:
++            proj = P[i,:,:].to(solve_device).float()
++            cache = cache_c[i,:,:].to(solve_device).float()
++            upd_matrix = torch.linalg.solve(
++                    proj @ (layer_ks @ layer_ks.T + cache) + hparams.L2*torch.eye(layer_ks.shape[0], dtype=proj.dtype, device=solve_device),
++                    proj @ layer_ks @ resid.T
++            )
+ 
+         # Adjust update matrix shape
+         weight_name = f"{hparams.rewrite_module_tmp.format(layer)}.weight"
+@@ -286,7 +330,12 @@ def execute_AlphaEdit(
+     
+     for i, layer in enumerate(hparams.layers):
+         layer_ks = compute_ks(model, tok, requests, hparams, layer, context_templates).T
+-        cache_c[i,:,:] += layer_ks.cpu() @ layer_ks.cpu().T
++        if P_basis is not None:
++            basis = P_basis[i].to(layer_ks.device, dtype=torch.float32)
++            projected_ks = basis.T @ layer_ks.float()
++            cache_c[i] += (projected_ks @ projected_ks.T).cpu()
++        else:
++            cache_c[i,:,:] += layer_ks.cpu() @ layer_ks.cpu().T
+ 
+     # Restore state of original model
+     with torch.no_grad():
+diff --git a/easyeditor/models/alphaedit/AlphaEdit_main.py b/easyeditor/models/alphaedit/AlphaEdit_main.py
+index 60e28ea..4669c49 100644
+--- a/easyeditor/models/alphaedit/AlphaEdit_main.py
++++ b/easyeditor/models/alphaedit/AlphaEdit_main.py
+@@ -22,6 +22,7 @@ CONTEXT_TEMPLATES_CACHE = None
+ COV_CACHE = {}
+ 
+ P_loaded = False
++P_basis = None
+ cache_c_new = False
+ 
+ def apply_AlphaEdit_to_model(
+@@ -45,7 +46,7 @@ def apply_AlphaEdit_to_model(
+     :return: (1) the updated model, (2) an original copy of the weights that changed
+     """
+ 
+-    global P, P_loaded, cache_c, cache_c_new
++    global P, P_basis, P_loaded, cache_c, cache_c_new
+     
+     # Reset cache if requested
+     if reset_cache:
+@@ -75,22 +76,42 @@ def apply_AlphaEdit_to_model(
+         torch.save(P, "null_space_project.pt")
+         P_loaded = True
+     elif P_loaded == False:
+-        P = torch.load(hparams.P_loc)
++        payload = torch.load(hparams.P_loc, map_location="cpu", weights_only=True, mmap=True)
++        if isinstance(payload, dict) and payload.get("format") == "qwen_low_rank_null_basis_v1":
++            requested_rank = int(getattr(hparams, "native_projection_rank", 0))
++            available_rank = int(payload["basis"].shape[-1])
++            if requested_rank < 1 or requested_rank > available_rank:
++                raise ValueError(
++                    f"native_projection_rank={requested_rank} is outside 1..{available_rank}"
++                )
++            P_basis = payload["basis"][:, :, :requested_rank]
++            if list(payload["layers"]) != list(hparams.layers):
++                raise ValueError("Projection basis layers do not match editor layers")
++            P = None
++            print(f"Loaded low-rank null basis: rank={requested_rank}")
++        else:
++            P = payload
++            P_basis = None
+         P_loaded = True
+ 
+     # Maintain the global variable cache_c to avoid redundant computations.
+     # If this is the first calculation (i.e., cache_c_new == false), then initialize cache_c first
+     if not cache_c_new:
+-        W_out = nethook.get_parameter(model, f"{hparams.rewrite_module_tmp.format(hparams.layers[-1])}.weight")
+-        if "llama" in hparams.model_name.lower() or "qwen" in hparams.model_name.lower():
+-            cache_c = torch.zeros((len(hparams.layers), W_out.shape[1], W_out.shape[1]), device="cpu")
+-        elif "gpt2-xl" in hparams.model_name.lower():
+-            cache_c = torch.zeros((len(hparams.layers), W_out.shape[0], W_out.shape[0]), device="cpu")
+-        del W_out
++        if P_basis is not None:
++            rank = int(P_basis.shape[-1])
++            cache_c = torch.zeros((len(hparams.layers), rank, rank), device="cpu")
++        else:
++            W_out = nethook.get_parameter(model, f"{hparams.rewrite_module_tmp.format(hparams.layers[-1])}.weight")
++            if "llama" in hparams.model_name.lower() or "qwen" in hparams.model_name.lower():
++                cache_c = torch.zeros((len(hparams.layers), W_out.shape[1], W_out.shape[1]), device="cpu")
++            elif "gpt2-xl" in hparams.model_name.lower():
++                cache_c = torch.zeros((len(hparams.layers), W_out.shape[0], W_out.shape[0]), device="cpu")
++            del W_out
+         cache_c_new = True
+     
+     deltas = execute_AlphaEdit(model, tok, requests, hparams, cache_template=cache_template)
+ 
++    update_squared_norm = 0.0
+     with torch.no_grad():
+         for w_name, upd_m in deltas.items():
+             w = nethook.get_parameter(model, w_name)
+@@ -99,8 +120,11 @@ def apply_AlphaEdit_to_model(
+ 
+             if return_orig_weights and w_name not in weights_copy:
+                 weights_copy[w_name] = w.detach().clone()
++            update_squared_norm += float(upd_m.float().square().sum().item())
+             w[...] += upd_matrix.to(device=w.device, dtype=w.dtype)
+ 
++    model._ssr_native_last_update_norm = update_squared_norm ** 0.5
++
+     print(f"New weights successfully inserted into {list(deltas.keys())}")
+ 
+     return model, weights_copy
+@@ -227,14 +251,25 @@ def execute_AlphaEdit(
+         targets = targets.repeat_interleave(repeat_factor, dim=1)
+         resid = targets / (len(hparams.layers) - i)  # Distribute residual across layers
+         solve_device = device
+-        proj = P[i,:,:].to(solve_device).float()
+         layer_ks = layer_ks.to(solve_device).float()
+         resid = resid.to(solve_device).float()
+-        cache = cache_c[i,:,:].to(solve_device).float()
+-        upd_matrix = torch.linalg.solve(
+-                proj @ (layer_ks @ layer_ks.T + cache) + hparams.L2*torch.eye(layer_ks.shape[0], dtype=proj.dtype, device=solve_device),
+-                proj @ layer_ks @ resid.T
+-        )
++        if P_basis is not None:
++            basis = P_basis[i].to(solve_device).float()
++            projected_ks = basis.T @ layer_ks
++            cache = cache_c[i].to(solve_device).float()
++            reduced = projected_ks @ projected_ks.T + cache
++            reduced = reduced + hparams.L2 * torch.eye(
++                reduced.shape[0], dtype=reduced.dtype, device=solve_device
++            )
++            coefficients = torch.linalg.solve(reduced, projected_ks @ resid.T)
++            upd_matrix = basis @ coefficients
++        else:
++            proj = P[i,:,:].to(solve_device).float()
++            cache = cache_c[i,:,:].to(solve_device).float()
++            upd_matrix = torch.linalg.solve(
++                    proj @ (layer_ks @ layer_ks.T + cache) + hparams.L2*torch.eye(layer_ks.shape[0], dtype=proj.dtype, device=solve_device),
++                    proj @ layer_ks @ resid.T
++            )
+ 
+         # Adjust update matrix shape
+         weight_name = f"{hparams.rewrite_module_tmp.format(layer)}.weight"
+@@ -260,7 +295,12 @@ def execute_AlphaEdit(
+     
+     for i, layer in enumerate(hparams.layers):
+         layer_ks = compute_ks(model, tok, requests, hparams, layer, context_templates).T
+-        cache_c[i,:,:] += layer_ks.cpu() @ layer_ks.cpu().T
++        if P_basis is not None:
++            basis = P_basis[i].to(layer_ks.device, dtype=torch.float32)
++            projected_ks = basis.T @ layer_ks.float()
++            cache_c[i] += (projected_ks @ projected_ks.T).cpu()
++        else:
++            cache_c[i,:,:] += layer_ks.cpu() @ layer_ks.cpu().T
+ 
+     # Restore state of original model
+     with torch.no_grad():

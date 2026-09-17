@@ -1,0 +1,24 @@
+{
+  "schema_version": "lowrank_ke_all_dataset_rank_transfer_v1",
+  "frozen_at": "2026-09-09T10:20:00+08:00",
+  "selection_dataset": "ZsRE",
+  "selection_source": "SSR-v39 disjoint development followed by ten-order confirmation",
+  "transfer_datasets": ["WikiRecent", "WikiCounterFact"],
+  "model": "Qwen2.5-7B-Instruct",
+  "method": "EasyEdit LoRA",
+  "target_modules": ["q_proj", "v_proj"],
+  "ranks": [8, 16, 32, 64],
+  "alpha_over_rank": 4.0,
+  "learning_rate": 0.005,
+  "num_steps": 60,
+  "n_edits": 100,
+  "checkpoints": [1, 2, 5, 10, 25, 50, 100],
+  "ssr_lambda_by_rank": {"8": 0.03, "16": 0.01, "32": 0.03, "64": 0.003},
+  "primary_endpoints": ["immediate_efficacy", "pre_edit_output_consistency"],
+  "confirmation_orders": {
+    "WikiRecent": [17631, 17632, 17633, 17634, 17635, 17636, 17637, 17638, 17639, 17640],
+    "WikiCounterFact": [17731, 17732, 17733, 17734, 17735, 17736, 17737, 17738, 17739, 17740]
+  },
+  "selection_policy": "Untuned dataset transfer. No parameter is changed after observing WikiRecent or WikiCounterFact outcomes.",
+  "reporting_policy": "Retain every paired order and every endpoint, including negative and unresolved intervals."
+}

@@ -1,0 +1,6 @@
+claims: []
+
+# Claims are enabled only after the corresponding locked result CSV exists. Each entry must
+# identify one source row and every manuscript/caption target. An empty registry is deliberate
+# during experiment execution; submission validation must reject a manuscript with unregistered
+# numerical claims via the release verifier and the populated version of this registry.

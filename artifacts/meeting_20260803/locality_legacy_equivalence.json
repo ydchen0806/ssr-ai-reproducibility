@@ -1,0 +1,34 @@
+{
+  "status": "verified",
+  "verified_at": "2026-08-04T03:00:00+08:00",
+  "legacy_source": {
+    "git_commit": "adb8d66",
+    "git_blob": "863690b006eb639563dad987dda7c4727b1779e9",
+    "evaluate_edit_sha256": "4a1a851d26b066164ac48a5a7db3967db27046bfb864341637883a902e63ce64"
+  },
+  "normalized_evaluator": "custom_substring_any_ground_truth_all_items",
+  "normalized_version": "1.0",
+  "protocol_sha256": "57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2",
+  "compatibility_domain": "KnowEdit locality is a mapping whose groups contain lists of mapping items; valid items have non-empty prompts and a ground_truth field.",
+  "datasets": {
+    "zsre": {
+      "sha256": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+      "rows": 1301,
+      "valid_locality_items": 2602,
+      "incompatible_items": 0
+    },
+    "cf": {
+      "sha256": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+      "rows": 839,
+      "valid_locality_items": 5954,
+      "incompatible_items": 0
+    },
+    "recent": {
+      "sha256": "e5c4ce6de1e8e2d10d892164ad6f4cbd28c976ed509e29e78ae853b01de1797b",
+      "rows": 1266,
+      "valid_locality_items": 6205,
+      "incompatible_items": 0
+    }
+  },
+  "conclusion": "The extracted evaluator and the locked legacy evaluator have identical normalization, traversal, matching and aggregation on all three hashed datasets. New formal runs enforce the compatibility domain at load time."
+}

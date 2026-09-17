@@ -1,0 +1,32 @@
+{
+  "asset_sha256": {
+    "change_map.png": "d12dfd224f1b92dc20cd2623564c9221f16475c4ec7ecf8ea91a7037a2c6e282",
+    "gt_color.png": "9491972c25567de4fb5098d75fb35fc21e668e36ed8e71c0391712bd7060ed6b",
+    "input.png": "88e2edf181bc794df77430b0621b5022da054ccd45931e5a39eb8f55a6a3e117",
+    "lowrank_color.png": "7dd61ccb9affc4118d1aa171a3e0befbebd7e655f51181ebef01410155577080",
+    "lowrank_error.png": "e69a4bf6d94a7b3e0da8a11d5e7c6c00419d4bdb081bd5dcbeabba8a07598022",
+    "lowrank_ssr_color.png": "176ad2821ae8a268fd5fa900b52962082184e20054899ebc48cc32c2ae2590ca",
+    "lowrank_ssr_error.png": "7e4588131fd1aa16ec698b7a26bd6d8e9cdd57475b399a91b030ab4019b1a630"
+  },
+  "candidate_generation": "deterministic candidates; ground truth and LowRank control used; SSR output unused",
+  "candidate_pool": 96,
+  "case_id": "2010_003362",
+  "control": "LowRank rank-8",
+  "control_checkpoint_sha256": "654d9ee1947b3b562ff808431e16ed9f096ee0fb2cf1f48d750a3fe3824ae9b6",
+  "corrected_pixels": 33027,
+  "display_selection": "post-hoc qualitative visualization screen using the paired SSR output; not population evidence",
+  "foreground_miou_gain_pp": 27.866920272122385,
+  "ground_truth_class_ids": [
+    0,
+    3
+  ],
+  "harmed_pixels": 508,
+  "increment": 10,
+  "net_corrected_pixels": 32519,
+  "pixel_accuracy_gain_pp": 13.35301581305203,
+  "present_class_miou_gain_pp": 13.933460136061193,
+  "seed": 13401,
+  "ssr_checkpoint_sha256": "02808673016ed1c27e6212ed55f5b7d51cfb2b42f67f3957538b5e7c9722e3c7",
+  "treatment": "LowRank rank-8 + SSR, lambda=1e-2",
+  "valid_pixels": 243533
+}

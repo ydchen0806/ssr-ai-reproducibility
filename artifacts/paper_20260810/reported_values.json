@@ -1,0 +1,57 @@
+{
+  "schema_version": "ssr_paper_reported_values_v1",
+  "source": "counterfact_factorial_summary.json",
+  "claims": [
+    {
+      "id": "task_plus_ssr_final_history_efficacy_cosine",
+      "path": ["contrasts", "cf", "ssr_only_minus_plain", "cosine", "metrics", "final_history_efficacy"],
+      "n": 10,
+      "control_mean": 10.0,
+      "treatment_mean": 12.4,
+      "difference_mean": 2.4,
+      "ci95_low": 0.058791800897135094,
+      "ci95_high": 4.741208199102864,
+      "favorable_pairs": 8
+    },
+    {
+      "id": "full_minus_stabilized_final_history_locality_projective",
+      "path": ["contrasts", "cf", "full_minus_stabilized", "projective", "metrics", "final_history_locality"],
+      "n": 10,
+      "control_mean": 6.165002424046542,
+      "treatment_mean": 9.329954473630943,
+      "difference_mean": 3.1649520495844015,
+      "ci95_low": 1.1703735003335827,
+      "ci95_high": 5.15953059883522,
+      "favorable_pairs": 9
+    },
+    {
+      "id": "ssr_minus_spectral_final_history_locality_cosine",
+      "path": ["contrasts", "cf", "ssr_only_minus_spectral", "cosine", "metrics", "final_history_locality"],
+      "n": 10,
+      "control_mean": 5.149650333326804,
+      "treatment_mean": 7.388990339725633,
+      "difference_mean": 2.2393400063988294,
+      "ci95_low": 0.2760488939802208,
+      "ci95_high": 4.202631118817438,
+      "favorable_pairs": 8
+    },
+    {
+      "id": "ssr_minus_spectral_final_history_locality_projective",
+      "path": ["contrasts", "cf", "ssr_only_minus_spectral", "projective", "metrics", "final_history_locality"],
+      "n": 10,
+      "control_mean": 5.149650333326804,
+      "treatment_mean": 6.862848132259897,
+      "difference_mean": 1.7131977989330927,
+      "ci95_low": 0.21029196640316838,
+      "ci95_high": 3.216103631463017,
+      "favorable_pairs": 8
+    }
+  ],
+  "matched_task_endpoint": {
+    "path": ["contrasts", "cf", "full_minus_stabilized", "projective", "metrics", "efficacy"],
+    "n": 10,
+    "control_mean": 99.9,
+    "treatment_mean": 99.9,
+    "difference_mean": 0.0
+  }
+}

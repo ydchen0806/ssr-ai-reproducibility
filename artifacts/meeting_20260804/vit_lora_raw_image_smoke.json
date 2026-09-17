@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "executed_at": "2026-08-04",
+  "host_checkout": "/unify/ydchen/unidit/bioreg_vit_lora_smoke_20260804",
+  "dataset": "Flowers102 raw images",
+  "train_samples": 2040,
+  "test_samples": 6149,
+  "batch_shape": [2, 3, 224, 224],
+  "model": "vit_tiny_patch16_224",
+  "pretrained": true,
+  "pretrained_checkpoint_sha256": "fecf81b492bd13ee7a5297cb74d1d417aac8bf7e1b7d96aed89c4691984587ed",
+  "lora_targets": ["qkv", "proj"],
+  "lora_wrappers": 24,
+  "lora_rank": 8,
+  "lora_alpha": 16.0,
+  "initial_hash_match_task_vs_task_ssr": true,
+  "optimizer_contains_all_lora_parameters": true,
+  "optimizer_steps": 1,
+  "lora_B_updated": true,
+  "finite_loss": true,
+  "scope": "Operational single-batch validation only; not a performance result."
+}

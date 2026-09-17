@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "git_commit": "ff997892d829960cda36ef7ed9166822958592bd",
+  "run_id": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_completion_confirmation_3node_20260901_r2/confirmation/gpt2_cf/uniform_cosine/seed_15106",
+  "task_family": "editing",
+  "dataset": "cf",
+  "model": "gpt2-xl",
+  "seed": 15106,
+  "objective": {
+    "task": true,
+    "kd": false,
+    "ssr": true,
+    "anchor": false,
+    "spectral": false,
+    "ewc": false,
+    "mas": false,
+    "si": false,
+    "center": false,
+    "protodecor": false
+  },
+  "distance_mapping": "cosine",
+  "kernel": {
+    "family": "gaussian",
+    "A_exc": 1.0,
+    "A_inh": 0.8,
+    "sigma_exc": 0.3,
+    "sigma_inh": 0.8
+  },
+  "metrics": {
+    "efficacy": 100.0,
+    "locality": 7.518257151345386,
+    "final_history_efficacy": 9.0,
+    "final_history_locality": 9.779144303409005,
+    "pre_edit_output_consistency": 64.6667892113328,
+    "update_effective_rank": 332.0838623046875,
+    "update_mean_abs_offdiag_cosine": 0.09331732243299484,
+    "update_rms": 0.0053651100024580956
+  },
+  "runtime": {
+    "elapsed_s": 2455.7,
+    "peak_cuda_allocated_mb": 3552.43994140625,
+    "peak_cuda_reserved_mb": 3656.0
+  },
+  "config_hash": "f339110bb064e212731c97831679f4c0e6ac86464c9cfee7d517466a5d4862d5",
+  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+  "recipe": "ssr_only",
+  "n_edits": 100,
+  "requested": 100,
+  "attempted": 100,
+  "succeeded": 100,
+  "failed": 0,
+  "status": "complete",
+  "data_offset": 0,
+  "metric_directions": {
+    "efficacy": true,
+    "locality": true,
+    "final_history_efficacy": true,
+    "final_history_locality": true,
+    "pre_edit_output_consistency": true,
+    "update_effective_rank": true,
+    "update_mean_abs_offdiag_cosine": true,
+    "update_rms": true
+  },
+  "evaluator": "custom_substring_any_ground_truth_all_items",
+  "evaluator_version": "1.0",
+  "evaluation_protocol_hash": "57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2",
+  "model_hash": "d4474a850dd2d36ecfb67554f2dc3a12c965b5edab85651f8108c1f5f803102f",
+  "pairing_protocol_hash": "1032fd1b5dffc4e5f1230b1fedcc270af6489903bddacf42660e4dc290996a5f"
+}

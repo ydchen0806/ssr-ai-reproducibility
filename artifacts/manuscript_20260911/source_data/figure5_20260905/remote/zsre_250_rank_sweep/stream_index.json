@@ -1,0 +1,95 @@
+{
+  "confirmation_seeds": [
+    12131,
+    12132,
+    12133,
+    12134,
+    12135,
+    12136,
+    12137,
+    12138,
+    12139,
+    12140
+  ],
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json",
+  "dataset_sha256": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+  "development_seeds": [
+    12031,
+    12032
+  ],
+  "protocol": "qwen_zsre_semantic_history_stream_v1",
+  "streams": [
+    {
+      "path": "development_seed_12031.json",
+      "seed": 12031,
+      "sha256": "a4fa35331f57f5369f6532656585785c920123fc1267f79dc0fb7b0d866bee16",
+      "split": "development"
+    },
+    {
+      "path": "development_seed_12032.json",
+      "seed": 12032,
+      "sha256": "bb748de75596e3885007ebce6f458b5d4deb60dc11e2f9d8a727719b6dd6c7b1",
+      "split": "development"
+    },
+    {
+      "path": "confirmation_seed_12131.json",
+      "seed": 12131,
+      "sha256": "2738f2250d47a3a9da0fa5bbc0c9b01d1bf9af6f580df45e44682992d1005a2a",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12132.json",
+      "seed": 12132,
+      "sha256": "5baa9017edcfdd9121a9aeb387c4db225599e01c74c3a1b904ae17a1a855a6a9",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12133.json",
+      "seed": 12133,
+      "sha256": "0e134f86598c382a415879508bfa3927062ce414861c16a2623cfeae15fdb6a1",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12134.json",
+      "seed": 12134,
+      "sha256": "2d799484cb0deab0cb3cf2019bb4e1886df33eeee71edc09594aa461984d6829",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12135.json",
+      "seed": 12135,
+      "sha256": "94747b80f6385d09495478512a615acdf18de4988d01229b2748fd99927dabeb",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12136.json",
+      "seed": 12136,
+      "sha256": "7cc89c755ca554819120449e049d4ca549ef9b76edc669ee64de3c5ae77f2320",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12137.json",
+      "seed": 12137,
+      "sha256": "f371204cb218dd883c4e936d8ffe922a759eed6611e9629db6df5775c6ca690b",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12138.json",
+      "seed": 12138,
+      "sha256": "4770b6ee381c210cc31920847982e37dae86ba61b942ab3f09e40ed88f7270e4",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12139.json",
+      "seed": 12139,
+      "sha256": "c87eca554dfa1e730531f4deccd7952df69b3be3c9c0876b3cbd3b276e817b05",
+      "split": "confirmation"
+    },
+    {
+      "path": "confirmation_seed_12140.json",
+      "seed": 12140,
+      "sha256": "15fb0e0d5b3476e6cc8916f21700068152947dc95de3a101d3f285d7226bc2db",
+      "split": "confirmation"
+    }
+  ]
+}

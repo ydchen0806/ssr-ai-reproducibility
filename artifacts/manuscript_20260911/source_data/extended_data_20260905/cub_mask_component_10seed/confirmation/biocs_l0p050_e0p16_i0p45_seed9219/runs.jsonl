@@ -1,0 +1,1 @@
+{"task": "segmentation", "method": "biocs", "seed": 9219, "mean_iou": 69.8663822486148, "mean_dice": 81.55656947857518, "avg_forgetting_iou": 3.8654313860863816, "effective_rank": 173.8988800048828, "mean_abs_offdiag_cosine": 0.04978103190660477}

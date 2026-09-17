@@ -1,0 +1,9 @@
+dataset,method,aa_percent,af_percent,scaffold
+Split-CIFAR-100,EWC,69.04,0.74,fixed KD
+Split-CIFAR-100,MAS,65.79,0.87,fixed KD
+Split-CIFAR-100,SI,60.53,10.83,fixed KD
+Split-CIFAR-100,SSR,71.68,2.36,fixed KD
+TinyImageNet,EWC,51.67,1.19,fixed KD
+TinyImageNet,MAS,43.2,1.33,fixed KD
+TinyImageNet,SI,46.12,5.38,fixed KD
+TinyImageNet,SSR,53.27,2.44,fixed KD

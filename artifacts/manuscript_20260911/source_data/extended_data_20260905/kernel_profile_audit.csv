@@ -1,0 +1,10 @@
+setting,mapping,A_exc,A_inh,sigma_exc,sigma_inh,compatibility_boundary_rc,competition_maximum_rs,audited_legal_distance_max,rc_inside_range,rs_inside_range,topology
+CUB classifier main,cosine,1.2,0.9,0.22,0.6,0.1793686766030802,0.5065403073076957,1.4142135623730951,True,True,full compatibility-competition profile inside legal distance range
+Split-CIFAR-100 classifier,cosine,1.3,1.15,0.28,0.45,0.17711241305448758,0.5235997670875626,1.4142135623730951,True,True,full compatibility-competition profile inside legal distance range
+Dense knowledge editing,cosine,1.2,0.9,0.22,0.6,0.1793686766030802,0.5065403073076957,1.4142135623730951,True,True,full compatibility-competition profile inside legal distance range
+CUB mask matched component,cosine,1.0,0.8,0.16,0.45,0.11436042168845159,0.36645758111103854,1.4142135623730951,True,True,full compatibility-competition profile inside legal distance range
+VOC low-rank decoder,projective,1.0,0.8,0.2,0.5,0.14577985729115497,0.44247410632471934,1.0,True,True,full compatibility-competition profile inside legal distance range
+CUB low-rank adapter prototype,cosine,1.0,0.8,0.55,1.25,0.409161345471862,1.1829163398777578,1.4142135623730951,True,True,full compatibility-competition profile inside legal distance range
+CUB low-rank adapter basis,projective,1.0,0.8,0.55,1.25,0.409161345471862,1.1829163398777578,1.0,True,False,compatibility boundary inside range; competition maximum beyond legal range
+Oxford-IIIT Pet ViT-LoRA prototype,cosine,1.0,0.8,0.2,0.5,0.14577985729115497,0.44247410632471934,1.4142135623730951,True,True,full compatibility-competition profile inside legal distance range
+Oxford-IIIT Pet ViT-LoRA basis,projective,1.0,0.8,0.2,0.5,0.14577985729115497,0.44247410632471934,1.0,True,True,full compatibility-competition profile inside legal distance range

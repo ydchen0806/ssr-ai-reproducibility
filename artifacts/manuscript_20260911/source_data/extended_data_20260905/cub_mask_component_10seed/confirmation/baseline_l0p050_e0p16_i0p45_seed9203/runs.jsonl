@@ -1,0 +1,1 @@
+{"task": "segmentation", "method": "baseline", "seed": 9203, "mean_iou": 68.90160209522767, "mean_dice": 80.80855597904892, "avg_forgetting_iou": 4.665882348326034, "effective_rank": 173.6419219970703, "mean_abs_offdiag_cosine": 0.050095897167921066}

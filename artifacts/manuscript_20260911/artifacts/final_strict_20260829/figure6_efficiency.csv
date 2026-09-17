@@ -1,0 +1,5 @@
+cohort,metric,control,treatment,percent_overhead,unit,source_file,source_sha256
+cohort 1,wall time,5583.8619,5756.278200000001,3.087760820159266,s,data/lowrank_confirmations/v24_summary.json,6976182de312a0cec61b32ba4378af8a4e56f1de9483808345e697c6450a73b7
+cohort 1,peak GPU memory,17651.0,17689.0,0.21528525296017223,MiB,data/lowrank_confirmations/v24_summary.json,6976182de312a0cec61b32ba4378af8a4e56f1de9483808345e697c6450a73b7
+replication,wall time,5570.4574,5712.7868,2.5550756388514815,s,data/lowrank_confirmations/v31_summary.json,62f3012d336b01a5e5c6013a7a95f2b642a1e1bcb9690b2560dfe48a62e1c8e0
+replication,peak GPU memory,17651.0,17689.2,0.2164183332389141,MiB,data/lowrank_confirmations/v31_summary.json,62f3012d336b01a5e5c6013a7a95f2b642a1e1bcb9690b2560dfe48a62e1c8e0

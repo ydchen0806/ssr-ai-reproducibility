@@ -1,0 +1,32 @@
+schema_version: lowrank_lora_ssr_strong_scaffold_development_v1
+status: development_hypothesis_not_manuscript_evidence
+comparison:
+  control: LoRA plus frozen-output anchor
+  treatment: LoRA plus the identical frozen-output anchor plus SSR
+  isolated_variable: ssr_coefficient
+output_preservation_anchor:
+  teacher: frozen_pre_edit_Qwen2.5-7B-Instruct
+  controls: fixed_disjoint_ZsRE_prompts
+  loss: current_edit_nll_plus_teacher_to_student_topk_kl
+  initial_weight: 0.1
+  steps_per_edit: 2
+  learning_rate: 0.0001
+  probe_batch_size: 4
+ssr_development:
+  ranks: [8, 40]
+  learning_rates: [0.0025, 0.0035]
+  lambdas: [0.024, 0.048, 0.064]
+  edit_count: 100
+  stream_seeds: [17101, 17102, 17103, 17104]
+confirmation:
+  required_pairs: 10
+  edit_count: 100
+  freeze_before_confirmation: true
+  claim_gate:
+    - efficacy_delta_ci95_low_gt_0
+    - output_consistency_delta_ci95_low_gt_0
+    - target_consistency_mean_delta_ge_minus_0.25_pp
+reporting:
+  retain_all_development_cells: true
+  retain_all_confirmation_pairs: true
+  prohibit_main_text_update_before_confirmation: true

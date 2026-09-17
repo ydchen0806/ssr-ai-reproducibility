@@ -1,0 +1,40 @@
+{
+  "selected": {
+    "candidate_id": "gaussian_reference_projective_l0p003",
+    "kernel_family": "gaussian",
+    "distance_metric": "projective",
+    "strength": 0.003,
+    "sigma_exc": 0.22,
+    "sigma_inh": 0.6,
+    "mean_immediate_efficacy_delta": 0.0,
+    "mean_immediate_locality_delta": 0.929362766862767,
+    "mean_final_history_efficacy_delta": 2.6666666666666665,
+    "mean_final_history_locality_delta": 2.0559955295249424,
+    "strict_dual_wins": 3,
+    "locality_wins_with_1pp_retention_tolerance": 3,
+    "passes_guardrails": true
+  },
+  "protocol": {
+    "screen_datasets": [
+      "zsre",
+      "cf",
+      "recent"
+    ],
+    "screen_seeds": [
+      9301,
+      9303
+    ],
+    "screen_offset": 300,
+    "screen_edits": 50,
+    "target_layers": [
+      16,
+      17,
+      18
+    ],
+    "row_selection": "active_top",
+    "max_spatial_rows": 256,
+    "selection_rule": "maximize the weaker of final historical-efficacy and historical-locality deltas across all three development cohorts, subject to >= -1 pp immediate and final-retention guardrails"
+  },
+  "sha256": "424b579254f875f3ea86d3f1414f0066573690ed68509744f481fbaf6ccbb7d4",
+  "locked_at": "2026-08-03T19:05:05+0800"
+}

@@ -1,0 +1,1174 @@
+{
+  "schema_version": "ke_factorial_paired_summary_v1",
+  "mode": "direct",
+  "phase": "confirm",
+  "recipes": [
+    "plain",
+    "ssr_only"
+  ],
+  "mappings": [
+    "projective",
+    "cosine"
+  ],
+  "pair_identity_fields": [
+    "dataset",
+    "model",
+    "seed",
+    "data_offset",
+    "n_edits",
+    "requested",
+    "attempted",
+    "succeeded",
+    "failed",
+    "status",
+    "dataset_hash",
+    "record_cohort_hash",
+    "evaluator",
+    "evaluator_version",
+    "evaluation_protocol_hash",
+    "model_hash",
+    "pairing_protocol_hash"
+  ],
+  "control": "plain",
+  "treatment": "ssr_only",
+  "datasets": {
+    "cf": {
+      "seeds": [
+        17332,
+        17333,
+        17334,
+        17335,
+        17336,
+        17337,
+        17338,
+        17339,
+        17340
+      ],
+      "mapping": "cosine",
+      "metrics": {
+        "efficacy": {
+          "higher_is_better": true,
+          "n": 9,
+          "control_mean": 100.0,
+          "control_sd": 0.0,
+          "treatment_mean": 99.88888888888889,
+          "treatment_sd": 0.33333333333333337,
+          "raw_difference_mean": -0.1111111111111111,
+          "raw_difference_sd": 0.3333333333333333,
+          "difference_mean": -0.1111111111111111,
+          "difference_sd": 0.3333333333333333,
+          "ci95_low": -0.36733379280046285,
+          "ci95_high": 0.14511157057824065,
+          "favorable_pairs": 0,
+          "favorable_pair_fraction": 0.0,
+          "pairs": [
+            {
+              "seed": 17332,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17333,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 99.0,
+              "raw_difference": -1.0,
+              "favorable_difference": -1.0
+            },
+            {
+              "seed": 17334,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17335,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17336,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17337,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17338,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17339,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17340,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 100.0,
+              "treatment_value": 100.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            }
+          ]
+        },
+        "final_history_efficacy": {
+          "higher_is_better": true,
+          "n": 9,
+          "control_mean": 11.333333333333334,
+          "control_sd": 2.598076211353316,
+          "treatment_mean": 10.666666666666666,
+          "treatment_sd": 2.73861278752583,
+          "raw_difference_mean": -0.6666666666666665,
+          "raw_difference_sd": 3.807886552931954,
+          "difference_mean": -0.6666666666666665,
+          "difference_sd": 3.807886552931954,
+          "ci95_low": -3.593667379149807,
+          "ci95_high": 2.260334045816474,
+          "favorable_pairs": 4,
+          "favorable_pair_fraction": 0.4444444444444444,
+          "pairs": [
+            {
+              "seed": 17332,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 12.0,
+              "treatment_value": 13.0,
+              "raw_difference": 1.0,
+              "favorable_difference": 1.0
+            },
+            {
+              "seed": 17333,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 13.0,
+              "treatment_value": 15.0,
+              "raw_difference": 2.0,
+              "favorable_difference": 2.0
+            },
+            {
+              "seed": 17334,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 13.0,
+              "treatment_value": 7.000000000000001,
+              "raw_difference": -5.999999999999999,
+              "favorable_difference": -5.999999999999999
+            },
+            {
+              "seed": 17335,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 11.0,
+              "treatment_value": 11.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17336,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 12.0,
+              "treatment_value": 7.000000000000001,
+              "raw_difference": -4.999999999999999,
+              "favorable_difference": -4.999999999999999
+            },
+            {
+              "seed": 17337,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 11.0,
+              "treatment_value": 13.0,
+              "raw_difference": 2.0,
+              "favorable_difference": 2.0
+            },
+            {
+              "seed": 17338,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 9.0,
+              "treatment_value": 9.0,
+              "raw_difference": 0.0,
+              "favorable_difference": 0.0
+            },
+            {
+              "seed": 17339,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 6.0,
+              "treatment_value": 11.0,
+              "raw_difference": 5.0,
+              "favorable_difference": 5.0
+            },
+            {
+              "seed": 17340,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 15.0,
+              "treatment_value": 10.0,
+              "raw_difference": -5.0,
+              "favorable_difference": -5.0
+            }
+          ]
+        },
+        "final_history_locality": {
+          "higher_is_better": true,
+          "n": 9,
+          "control_mean": 6.881100607816294,
+          "control_sd": 2.0948255232831747,
+          "treatment_mean": 8.129283461636401,
+          "treatment_sd": 1.9631945987399728,
+          "raw_difference_mean": 1.2481828538201085,
+          "raw_difference_sd": 3.2755076191888906,
+          "difference_mean": 1.2481828538201085,
+          "difference_sd": 3.2755076191888906,
+          "ci95_low": -1.269595184427336,
+          "ci95_high": 3.765960892067553,
+          "favorable_pairs": 7,
+          "favorable_pair_fraction": 0.7777777777777778,
+          "pairs": [
+            {
+              "seed": 17332,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 7.22192137927432,
+              "treatment_value": 7.400828583181526,
+              "raw_difference": 0.1789072039072055,
+              "favorable_difference": 0.1789072039072055
+            },
+            {
+              "seed": 17333,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 5.72123750432574,
+              "treatment_value": 8.571031174707645,
+              "raw_difference": 2.8497936703819056,
+              "favorable_difference": 2.8497936703819056
+            },
+            {
+              "seed": 17334,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 4.855877455877458,
+              "treatment_value": 8.614267513532221,
+              "raw_difference": 3.758390057654763,
+              "favorable_difference": 3.758390057654763
+            },
+            {
+              "seed": 17335,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 9.879335207276386,
+              "treatment_value": 5.6260965341847715,
+              "raw_difference": -4.253238673091614,
+              "favorable_difference": -4.253238673091614
+            },
+            {
+              "seed": 17336,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 10.326645005321476,
+              "treatment_value": 7.641681357857828,
+              "raw_difference": -2.684963647463648,
+              "favorable_difference": -2.684963647463648
+            },
+            {
+              "seed": 17337,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 6.6534414115296485,
+              "treatment_value": 11.819826823503293,
+              "raw_difference": 5.1663854119736445,
+              "favorable_difference": 5.1663854119736445
+            },
+            {
+              "seed": 17338,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 4.569468848145319,
+              "treatment_value": 9.502950644127115,
+              "raw_difference": 4.933481795981796,
+              "favorable_difference": 4.933481795981796
+            },
+            {
+              "seed": 17339,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 5.18379422864717,
+              "treatment_value": 5.368474580974582,
+              "raw_difference": 0.18468035232741187,
+              "favorable_difference": 0.18468035232741187
+            },
+            {
+              "seed": 17340,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 7.518184429949136,
+              "treatment_value": 8.618393942658647,
+              "raw_difference": 1.1002095127095117,
+              "favorable_difference": 1.1002095127095117
+            }
+          ]
+        },
+        "locality": {
+          "higher_is_better": true,
+          "n": 9,
+          "control_mean": 8.763131458229497,
+          "control_sd": 1.4316986370405864,
+          "treatment_mean": 8.578074984202438,
+          "treatment_sd": 0.6148163043345455,
+          "raw_difference_mean": -0.1850564740270607,
+          "raw_difference_sd": 1.4213661101149537,
+          "difference_mean": -0.1850564740270607,
+          "difference_sd": 1.4213661101149537,
+          "ci95_low": -1.2776151832151084,
+          "ci95_high": 0.907502235160987,
+          "favorable_pairs": 4,
+          "favorable_pair_fraction": 0.4444444444444444,
+          "pairs": [
+            {
+              "seed": 17332,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 7.547302778920425,
+              "treatment_value": 9.151383420501068,
+              "raw_difference": 1.6040806415806426,
+              "favorable_difference": 1.6040806415806426
+            },
+            {
+              "seed": 17333,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 9.282838240191179,
+              "treatment_value": 7.629457307398485,
+              "raw_difference": -1.653380932792694,
+              "favorable_difference": -1.653380932792694
+            },
+            {
+              "seed": 17334,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 8.97406825200943,
+              "treatment_value": 7.9423254033548165,
+              "raw_difference": -1.0317428486546127,
+              "favorable_difference": -1.0317428486546127
+            },
+            {
+              "seed": 17335,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 7.906206946648122,
+              "treatment_value": 8.248945743798684,
+              "raw_difference": 0.3427387971505622,
+              "favorable_difference": 0.3427387971505622
+            },
+            {
+              "seed": 17336,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 9.869723413841061,
+              "treatment_value": 9.613410282527932,
+              "raw_difference": -0.2563131313131297,
+              "favorable_difference": -0.2563131313131297
+            },
+            {
+              "seed": 17337,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 7.473991939433117,
+              "treatment_value": 8.561361922391333,
+              "raw_difference": 1.087369982958216,
+              "favorable_difference": 1.087369982958216
+            },
+            {
+              "seed": 17338,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 7.1005696917461645,
+              "treatment_value": 8.40271240197711,
+              "raw_difference": 1.302142710230946,
+              "favorable_difference": 1.302142710230946
+            },
+            {
+              "seed": 17339,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 11.60998054233348,
+              "treatment_value": 8.994633797574975,
+              "raw_difference": -2.6153467447585044,
+              "favorable_difference": -2.6153467447585044
+            },
+            {
+              "seed": 17340,
+              "data_offset": 500,
+              "n_edits": 100,
+              "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+              "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+              "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+              "control_value": 9.103501318942493,
+              "treatment_value": 8.658444578297521,
+              "raw_difference": -0.44505674064497214,
+              "favorable_difference": -0.44505674064497214
+            }
+          ]
+        }
+      }
+    }
+  },
+  "arms": {
+    "cf": {
+      "plain:none": {
+        "recipe": "plain",
+        "mapping": "none",
+        "seeds": [
+          17332,
+          17333,
+          17334,
+          17335,
+          17336,
+          17337,
+          17338,
+          17339,
+          17340
+        ],
+        "metrics": {
+          "efficacy": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 100.0,
+            "sd": 0.0
+          },
+          "final_history_efficacy": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 11.333333333333334,
+            "sd": 2.598076211353316
+          },
+          "final_history_locality": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 6.881100607816295,
+            "sd": 2.0948255232831747
+          },
+          "locality": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 8.763131458229497,
+            "sd": 1.4316986370405864
+          }
+        }
+      },
+      "ssr_only:cosine": {
+        "recipe": "ssr_only",
+        "mapping": "cosine",
+        "seeds": [
+          17332,
+          17333,
+          17334,
+          17335,
+          17336,
+          17337,
+          17338,
+          17339,
+          17340
+        ],
+        "metrics": {
+          "efficacy": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 99.88888888888889,
+            "sd": 0.3333333333333333
+          },
+          "final_history_efficacy": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 10.666666666666666,
+            "sd": 2.73861278752583
+          },
+          "final_history_locality": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 8.129283461636403,
+            "sd": 1.9631945987399728
+          },
+          "locality": {
+            "higher_is_better": true,
+            "n": 9,
+            "mean": 8.578074984202436,
+            "sd": 0.6148163043345456
+          }
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "cf": {
+      "ssr_only_minus_plain": {
+        "cosine": {
+          "seeds": [
+            17332,
+            17333,
+            17334,
+            17335,
+            17336,
+            17337,
+            17338,
+            17339,
+            17340
+          ],
+          "metrics": {
+            "efficacy": {
+              "higher_is_better": true,
+              "n": 9,
+              "control_mean": 100.0,
+              "control_sd": 0.0,
+              "treatment_mean": 99.88888888888889,
+              "treatment_sd": 0.33333333333333337,
+              "raw_difference_mean": -0.1111111111111111,
+              "raw_difference_sd": 0.3333333333333333,
+              "difference_mean": -0.1111111111111111,
+              "difference_sd": 0.3333333333333333,
+              "ci95_low": -0.36733379280046285,
+              "ci95_high": 0.14511157057824065,
+              "favorable_pairs": 0,
+              "favorable_pair_fraction": 0.0,
+              "pairs": [
+                {
+                  "seed": 17332,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17333,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 99.0,
+                  "raw_difference": -1.0,
+                  "favorable_difference": -1.0
+                },
+                {
+                  "seed": 17334,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17335,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17336,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17337,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17338,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17339,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17340,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 100.0,
+                  "treatment_value": 100.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                }
+              ]
+            },
+            "final_history_efficacy": {
+              "higher_is_better": true,
+              "n": 9,
+              "control_mean": 11.333333333333334,
+              "control_sd": 2.598076211353316,
+              "treatment_mean": 10.666666666666666,
+              "treatment_sd": 2.73861278752583,
+              "raw_difference_mean": -0.6666666666666665,
+              "raw_difference_sd": 3.807886552931954,
+              "difference_mean": -0.6666666666666665,
+              "difference_sd": 3.807886552931954,
+              "ci95_low": -3.593667379149807,
+              "ci95_high": 2.260334045816474,
+              "favorable_pairs": 4,
+              "favorable_pair_fraction": 0.4444444444444444,
+              "pairs": [
+                {
+                  "seed": 17332,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 12.0,
+                  "treatment_value": 13.0,
+                  "raw_difference": 1.0,
+                  "favorable_difference": 1.0
+                },
+                {
+                  "seed": 17333,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 13.0,
+                  "treatment_value": 15.0,
+                  "raw_difference": 2.0,
+                  "favorable_difference": 2.0
+                },
+                {
+                  "seed": 17334,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 13.0,
+                  "treatment_value": 7.000000000000001,
+                  "raw_difference": -5.999999999999999,
+                  "favorable_difference": -5.999999999999999
+                },
+                {
+                  "seed": 17335,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 11.0,
+                  "treatment_value": 11.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17336,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 12.0,
+                  "treatment_value": 7.000000000000001,
+                  "raw_difference": -4.999999999999999,
+                  "favorable_difference": -4.999999999999999
+                },
+                {
+                  "seed": 17337,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 11.0,
+                  "treatment_value": 13.0,
+                  "raw_difference": 2.0,
+                  "favorable_difference": 2.0
+                },
+                {
+                  "seed": 17338,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 9.0,
+                  "treatment_value": 9.0,
+                  "raw_difference": 0.0,
+                  "favorable_difference": 0.0
+                },
+                {
+                  "seed": 17339,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 6.0,
+                  "treatment_value": 11.0,
+                  "raw_difference": 5.0,
+                  "favorable_difference": 5.0
+                },
+                {
+                  "seed": 17340,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 15.0,
+                  "treatment_value": 10.0,
+                  "raw_difference": -5.0,
+                  "favorable_difference": -5.0
+                }
+              ]
+            },
+            "final_history_locality": {
+              "higher_is_better": true,
+              "n": 9,
+              "control_mean": 6.881100607816294,
+              "control_sd": 2.0948255232831747,
+              "treatment_mean": 8.129283461636401,
+              "treatment_sd": 1.9631945987399728,
+              "raw_difference_mean": 1.2481828538201085,
+              "raw_difference_sd": 3.2755076191888906,
+              "difference_mean": 1.2481828538201085,
+              "difference_sd": 3.2755076191888906,
+              "ci95_low": -1.269595184427336,
+              "ci95_high": 3.765960892067553,
+              "favorable_pairs": 7,
+              "favorable_pair_fraction": 0.7777777777777778,
+              "pairs": [
+                {
+                  "seed": 17332,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 7.22192137927432,
+                  "treatment_value": 7.400828583181526,
+                  "raw_difference": 0.1789072039072055,
+                  "favorable_difference": 0.1789072039072055
+                },
+                {
+                  "seed": 17333,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 5.72123750432574,
+                  "treatment_value": 8.571031174707645,
+                  "raw_difference": 2.8497936703819056,
+                  "favorable_difference": 2.8497936703819056
+                },
+                {
+                  "seed": 17334,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 4.855877455877458,
+                  "treatment_value": 8.614267513532221,
+                  "raw_difference": 3.758390057654763,
+                  "favorable_difference": 3.758390057654763
+                },
+                {
+                  "seed": 17335,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 9.879335207276386,
+                  "treatment_value": 5.6260965341847715,
+                  "raw_difference": -4.253238673091614,
+                  "favorable_difference": -4.253238673091614
+                },
+                {
+                  "seed": 17336,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 10.326645005321476,
+                  "treatment_value": 7.641681357857828,
+                  "raw_difference": -2.684963647463648,
+                  "favorable_difference": -2.684963647463648
+                },
+                {
+                  "seed": 17337,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 6.6534414115296485,
+                  "treatment_value": 11.819826823503293,
+                  "raw_difference": 5.1663854119736445,
+                  "favorable_difference": 5.1663854119736445
+                },
+                {
+                  "seed": 17338,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 4.569468848145319,
+                  "treatment_value": 9.502950644127115,
+                  "raw_difference": 4.933481795981796,
+                  "favorable_difference": 4.933481795981796
+                },
+                {
+                  "seed": 17339,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 5.18379422864717,
+                  "treatment_value": 5.368474580974582,
+                  "raw_difference": 0.18468035232741187,
+                  "favorable_difference": 0.18468035232741187
+                },
+                {
+                  "seed": 17340,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 7.518184429949136,
+                  "treatment_value": 8.618393942658647,
+                  "raw_difference": 1.1002095127095117,
+                  "favorable_difference": 1.1002095127095117
+                }
+              ]
+            },
+            "locality": {
+              "higher_is_better": true,
+              "n": 9,
+              "control_mean": 8.763131458229497,
+              "control_sd": 1.4316986370405864,
+              "treatment_mean": 8.578074984202438,
+              "treatment_sd": 0.6148163043345455,
+              "raw_difference_mean": -0.1850564740270607,
+              "raw_difference_sd": 1.4213661101149537,
+              "difference_mean": -0.1850564740270607,
+              "difference_sd": 1.4213661101149537,
+              "ci95_low": -1.2776151832151084,
+              "ci95_high": 0.907502235160987,
+              "favorable_pairs": 4,
+              "favorable_pair_fraction": 0.4444444444444444,
+              "pairs": [
+                {
+                  "seed": 17332,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 7.547302778920425,
+                  "treatment_value": 9.151383420501068,
+                  "raw_difference": 1.6040806415806426,
+                  "favorable_difference": 1.6040806415806426
+                },
+                {
+                  "seed": 17333,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 9.282838240191179,
+                  "treatment_value": 7.629457307398485,
+                  "raw_difference": -1.653380932792694,
+                  "favorable_difference": -1.653380932792694
+                },
+                {
+                  "seed": 17334,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 8.97406825200943,
+                  "treatment_value": 7.9423254033548165,
+                  "raw_difference": -1.0317428486546127,
+                  "favorable_difference": -1.0317428486546127
+                },
+                {
+                  "seed": 17335,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 7.906206946648122,
+                  "treatment_value": 8.248945743798684,
+                  "raw_difference": 0.3427387971505622,
+                  "favorable_difference": 0.3427387971505622
+                },
+                {
+                  "seed": 17336,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 9.869723413841061,
+                  "treatment_value": 9.613410282527932,
+                  "raw_difference": -0.2563131313131297,
+                  "favorable_difference": -0.2563131313131297
+                },
+                {
+                  "seed": 17337,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 7.473991939433117,
+                  "treatment_value": 8.561361922391333,
+                  "raw_difference": 1.087369982958216,
+                  "favorable_difference": 1.087369982958216
+                },
+                {
+                  "seed": 17338,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 7.1005696917461645,
+                  "treatment_value": 8.40271240197711,
+                  "raw_difference": 1.302142710230946,
+                  "favorable_difference": 1.302142710230946
+                },
+                {
+                  "seed": 17339,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 11.60998054233348,
+                  "treatment_value": 8.994633797574975,
+                  "raw_difference": -2.6153467447585044,
+                  "favorable_difference": -2.6153467447585044
+                },
+                {
+                  "seed": 17340,
+                  "data_offset": 500,
+                  "n_edits": 100,
+                  "dataset_hash": "efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b",
+                  "record_cohort_hash": "0b630010bc67ca945679e5688cd5e5128e021ab6472b1929bd6f7eaf2556f2ae",
+                  "pairing_protocol_hash": "dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d",
+                  "control_value": 9.103501318942493,
+                  "treatment_value": 8.658444578297521,
+                  "raw_difference": -0.44505674064497214,
+                  "favorable_difference": -0.44505674064497214
+                }
+              ]
+            }
+          },
+          "control_recipe": "plain",
+          "control_mapping": "none",
+          "treatment_recipe": "ssr_only",
+          "treatment_mapping": "cosine"
+        }
+      }
+    }
+  },
+  "mapping_contrasts": {
+    "cf": {}
+  }
+}

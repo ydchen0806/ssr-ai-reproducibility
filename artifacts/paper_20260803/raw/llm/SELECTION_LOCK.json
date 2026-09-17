@@ -1,0 +1,39 @@
+{
+  "sha256": "54c28055feba364a93af3c4d7c8598fffa262caf81776e36bff035f64ec356cd",
+  "selection": {
+    "zsre": {
+      "candidate_id": "weight_cosine_inverse",
+      "target": "weight",
+      "metric": "cosine",
+      "kernel_family": "inverse",
+      "strength": 0.001,
+      "efficacy_delta": 0.0,
+      "locality_delta": 0.25,
+      "joint_wins": 1,
+      "passes_efficacy_guardrail": true
+    },
+    "cf": {
+      "candidate_id": "delta_projective_laplace",
+      "target": "delta",
+      "metric": "projective",
+      "kernel_family": "laplace",
+      "strength": 0.001,
+      "efficacy_delta": 0.0,
+      "locality_delta": 0.1130952380952377,
+      "joint_wins": 2,
+      "passes_efficacy_guardrail": true
+    },
+    "recent": {
+      "candidate_id": "delta_projective_gaussian",
+      "target": "delta",
+      "metric": "projective",
+      "kernel_family": "gaussian",
+      "strength": 0.001,
+      "efficacy_delta": 0.0,
+      "locality_delta": 0.15952380952380807,
+      "joint_wins": 2,
+      "passes_efficacy_guardrail": true
+    }
+  },
+  "locked_at": "2026-08-02T11:38:42+0800"
+}

@@ -1,0 +1,1082 @@
+{
+  "cifar100_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_cifar100"
+      },
+      "experiment_name": "r10_c100_phase_c_kd",
+      "method": {
+        "A_exc": 1.0,
+        "A_inh": 0.8,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "label_smoothing": 0.0,
+        "lambda_distill": 2.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.0,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": false,
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "c16108902db50d2e277223e5a43f8856a3f972e752869e6cd047d65f7c0351d0",
+    "source_configs": [
+      {
+        "path": "raw/classification/cifar100/kd/seed_6201/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6203/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6205/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6207/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6209/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6211/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6213/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6215/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6217/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6219/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6221/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6223/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6225/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6227/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      },
+      {
+        "path": "raw/classification/cifar100/kd/seed_6229/config.yaml",
+        "sha256": "715d2739ef0fe29b6d8bd13de293569a8fc592d4c0357817cecee2442e29f145"
+      }
+    ]
+  },
+  "cifar100_ssr_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_cifar100"
+      },
+      "experiment_name": "r10_c100_phase_c_primary_rank1_gaussian_g3_l3_gaussian",
+      "method": {
+        "A_exc": 1.3,
+        "A_inh": 1.15,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "kernel_family": "gaussian",
+        "label_smoothing": 0.0,
+        "lambda_distill": 2.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.0025,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.28,
+        "sigma_inh": 0.45,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": false,
+        "scheduler": "multistep",
+        "use_amp": true,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "dc5a0985c93d68972e52c0c1b35c733d6b9f26007f66d18a52a0058aa4bfd479",
+    "source_configs": [
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6201/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6203/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6205/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6207/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6209/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6211/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6213/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6215/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6217/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6219/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6221/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6223/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6225/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6227/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      },
+      {
+        "path": "raw/classification/cifar100/ssr_kd/seed_6229/config.yaml",
+        "sha256": "ef7ca08b48a28aab05381cc81de4c43dc2df3c95c009a8431e6425d77d7d5847"
+      }
+    ]
+  },
+  "cifar10_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 5,
+        "name": "split_cifar10"
+      },
+      "experiment_name": "r9_c10_eval_kd",
+      "method": {
+        "A_exc": 1.0,
+        "A_inh": 0.8,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "label_smoothing": 0.02,
+        "lambda_distill": 5.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.0,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 60,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": false,
+        "scheduler": "cosine",
+        "use_amp": true,
+        "warmup_epochs": 3,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "56f17efb010eb7a38a39b2c8ee0343b7ba88964ea75066abe30be4babda9591d",
+    "source_configs": [
+      {
+        "path": "raw/classification/cifar10/kd/seed_4101/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4103/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4105/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4107/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4109/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4111/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4113/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4115/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4117/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      },
+      {
+        "path": "raw/classification/cifar10/kd/seed_4119/config.yaml",
+        "sha256": "36962a4386abae020f460a096c20aa3011de65d893853de6580fee7c55e13a01"
+      }
+    ]
+  },
+  "cifar10_ssr_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 5,
+        "name": "split_cifar10"
+      },
+      "experiment_name": "r9_c10_eval_primary_gaussian_broad_s050",
+      "method": {
+        "A_exc": 1.2,
+        "A_inh": 0.9,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "kernel_family": "gaussian",
+        "label_smoothing": 0.02,
+        "lambda_distill": 5.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.001,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.275,
+        "sigma_inh": 0.75,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 60,
+        "gamma": 0.1,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "milestones": [
+          35,
+          45
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": false,
+        "scheduler": "cosine",
+        "use_amp": true,
+        "warmup_epochs": 3,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "4c722cbc9eb38b2d5095dc326e1afd836f52f9678c346ef702d51e37e90139b4",
+    "source_configs": [
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4101/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4103/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4105/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4107/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4109/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4111/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4113/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4115/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4117/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      },
+      {
+        "path": "raw/classification/cifar10/ssr_kd/seed_4119/config.yaml",
+        "sha256": "d4899e4a32f66aff899bcfa78ac82f38d5fb4298b1757d73d930548a695559cd"
+      }
+    ]
+  },
+  "cub200_broad": {
+    "config": {
+      "a_exc": 1.2,
+      "a_inh": 0.9,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+      "cls_batch_size": 128,
+      "cls_epochs": 80,
+      "cls_lr": 0.001,
+      "cls_weight_decay": 0.001,
+      "data_root": "data/cub200",
+      "feature_batch_size": 128,
+      "kd_temperature": 3.0,
+      "lambda_kd": 2.0,
+      "lambda_kd_seg": 0.5,
+      "lambda_sp": 2.0,
+      "max_classes": null,
+      "methods": [
+        "biocs_kd"
+      ],
+      "no_download": true,
+      "no_segmentation_cache": false,
+      "num_classes": 200,
+      "seg_batch_size": 32,
+      "seg_biocs_scope": "all",
+      "seg_biocs_start_task": 0,
+      "seg_biocs_target": "class",
+      "seg_epochs": 12,
+      "seg_hidden_dim": 128,
+      "seg_image_size": 128,
+      "seg_lr": 0.0005,
+      "seg_weight_decay": 0.0001,
+      "segmentation_cache": null,
+      "sigma_exc": 0.3,
+      "sigma_inh": 0.9,
+      "tasks": [
+        "classification"
+      ],
+      "workers": 4
+    },
+    "normalized_sha256": "5f6fae70934051f04e12737386ed8ce108e91e613872c8514479cb8c3faf91fd",
+    "source_configs": [
+      {
+        "path": "raw/classification/cub200/ssr_kd_broad/seed_3101/args.json",
+        "sha256": "00519bad8348e8dcea682ab35776530876f850c42d84009e7d43b215699bb8ec"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_broad/seed_3103/args.json",
+        "sha256": "f10e0329ece224f5ede1e5f884f0da22e9cbe03f8c07b0a01d8e3ec06f779590"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_broad/seed_3105/args.json",
+        "sha256": "ecd130b82a866d20aa30a280bd8b6bb508403006b33c77761f17985f8980f6b5"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_broad/seed_3107/args.json",
+        "sha256": "4259b5695b21d2b7178e994124538358652098e38668b6b38858727b05c3043c"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_broad/seed_3109/args.json",
+        "sha256": "dfffaf650e7a06e471fb7820aa97f7a189841ad02bcb3afd49d3d263e784e788"
+      }
+    ]
+  },
+  "cub200_kd": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+      "cls_batch_size": 128,
+      "cls_epochs": 80,
+      "cls_lr": 0.001,
+      "cls_weight_decay": 0.001,
+      "data_root": "data/cub200",
+      "feature_batch_size": 128,
+      "kd_temperature": 3.0,
+      "lambda_kd": 2.0,
+      "lambda_kd_seg": 0.5,
+      "lambda_sp": 2.0,
+      "max_classes": null,
+      "methods": [
+        "kd"
+      ],
+      "no_download": true,
+      "no_segmentation_cache": false,
+      "num_classes": 200,
+      "seg_batch_size": 32,
+      "seg_biocs_scope": "all",
+      "seg_biocs_start_task": 0,
+      "seg_biocs_target": "class",
+      "seg_epochs": 12,
+      "seg_hidden_dim": 128,
+      "seg_image_size": 128,
+      "seg_lr": 0.0005,
+      "seg_weight_decay": 0.0001,
+      "segmentation_cache": null,
+      "sigma_exc": 0.2,
+      "sigma_inh": 0.5,
+      "tasks": [
+        "classification"
+      ],
+      "workers": 4
+    },
+    "normalized_sha256": "d63b7cd5ab7c9978bcc3e7cbf1765f378eff06d59532ca1c870ab186085cd3b0",
+    "source_configs": [
+      {
+        "path": "raw/classification/cub200/kd/seed_3101/args.json",
+        "sha256": "bbfaefa17f7df997f991966bcfc131a0bdcaccce90e1300027bf3ac4c091ff01"
+      },
+      {
+        "path": "raw/classification/cub200/kd/seed_3103/args.json",
+        "sha256": "193188341df450dc16779f7661519585b5869f6cb1595c79f05c55662423bc14"
+      },
+      {
+        "path": "raw/classification/cub200/kd/seed_3105/args.json",
+        "sha256": "5811d42c23fd80225670556a18d9bd52eb67c03662cb27bf9f3da0817a977667"
+      },
+      {
+        "path": "raw/classification/cub200/kd/seed_3107/args.json",
+        "sha256": "8087f0b2355e5254d400192571dfb6ca78e74627a88e7111c1e27749f0ee5638"
+      },
+      {
+        "path": "raw/classification/cub200/kd/seed_3109/args.json",
+        "sha256": "31c17127180d2573f406909f2d9fee94106e4c337f547a502c660d3559de652f"
+      }
+    ]
+  },
+  "cub200_narrow": {
+    "config": {
+      "a_exc": 1.2,
+      "a_inh": 0.9,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+      "cls_batch_size": 128,
+      "cls_epochs": 80,
+      "cls_lr": 0.001,
+      "cls_weight_decay": 0.001,
+      "data_root": "data/cub200",
+      "feature_batch_size": 128,
+      "kd_temperature": 3.0,
+      "lambda_kd": 2.0,
+      "lambda_kd_seg": 0.5,
+      "lambda_sp": 2.0,
+      "max_classes": null,
+      "methods": [
+        "biocs_kd"
+      ],
+      "no_download": true,
+      "no_segmentation_cache": false,
+      "num_classes": 200,
+      "seg_batch_size": 32,
+      "seg_biocs_scope": "all",
+      "seg_biocs_start_task": 0,
+      "seg_biocs_target": "class",
+      "seg_epochs": 12,
+      "seg_hidden_dim": 128,
+      "seg_image_size": 128,
+      "seg_lr": 0.0005,
+      "seg_weight_decay": 0.0001,
+      "segmentation_cache": null,
+      "sigma_exc": 0.16,
+      "sigma_inh": 0.45,
+      "tasks": [
+        "classification"
+      ],
+      "workers": 4
+    },
+    "normalized_sha256": "e57b8790c4608f1fc920f833a19293aed1a5a9926e33c464f528b52242792611",
+    "source_configs": [
+      {
+        "path": "raw/classification/cub200/ssr_kd_narrow/seed_3101/args.json",
+        "sha256": "6586d6e37768d9312e2a747a10577db8b5e75dd2b4d6986ab07bad711ea65a33"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_narrow/seed_3103/args.json",
+        "sha256": "04ee2653c6e31804519c469f65b4ed03d3ae8007d51fe24194ea7089da2ee1e3"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_narrow/seed_3105/args.json",
+        "sha256": "81c310a0a0d477814d6d3132b024f497b67d241b52a8a63028849dcb3fde87b2"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_narrow/seed_3107/args.json",
+        "sha256": "f9eb508e64e97a96a5c7be083233c7314a4429157f2b3ac55ebd11ca9017e010"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_narrow/seed_3109/args.json",
+        "sha256": "df4fcb3ed4f1967a6c8a2d493bf5c441c1eb33a9b9238112e128be1b3e06a4b7"
+      }
+    ]
+  },
+  "cub200_ssr_kd": {
+    "config": {
+      "a_exc": 1.2,
+      "a_inh": 0.9,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+      "cls_batch_size": 128,
+      "cls_epochs": 80,
+      "cls_lr": 0.001,
+      "cls_weight_decay": 0.001,
+      "data_root": "data/cub200",
+      "feature_batch_size": 128,
+      "kd_temperature": 3.0,
+      "lambda_kd": 2.0,
+      "lambda_kd_seg": 0.5,
+      "lambda_sp": 2.0,
+      "max_classes": null,
+      "methods": [
+        "biocs_kd"
+      ],
+      "no_download": true,
+      "no_segmentation_cache": false,
+      "num_classes": 200,
+      "seg_batch_size": 32,
+      "seg_biocs_scope": "all",
+      "seg_biocs_start_task": 0,
+      "seg_biocs_target": "class",
+      "seg_epochs": 12,
+      "seg_hidden_dim": 128,
+      "seg_image_size": 128,
+      "seg_lr": 0.0005,
+      "seg_weight_decay": 0.0001,
+      "segmentation_cache": null,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6,
+      "tasks": [
+        "classification"
+      ],
+      "workers": 4
+    },
+    "normalized_sha256": "8a682453c4a52bcb12cb103295ae8f02a436473a0929f1cb45c3ea48828de0ac",
+    "source_configs": [
+      {
+        "path": "raw/classification/cub200/ssr_kd_selected/seed_3101/args.json",
+        "sha256": "0158d0ddfd66a334077b3bca7e5ab5c556d26012061e2c22a16ad7143515a1a4"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_selected/seed_3103/args.json",
+        "sha256": "913a7ee8e16545b05b9b687a2d63f30e4ce33ddfb96597fbb6338f0062386611"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_selected/seed_3105/args.json",
+        "sha256": "c03ab85bd81b44671415bf8120104c125296560f155d9e594469105b1d580809"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_selected/seed_3107/args.json",
+        "sha256": "d95f78004b8695ccf46197bb494283ee5f6c66d5af0adacf641d6b480bd31073"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_selected/seed_3109/args.json",
+        "sha256": "d9be660f3ea1791d1638802ac441060e7d1eaca1aa68ea0bb428ca3af2f61bcd"
+      }
+    ]
+  },
+  "cub200_strong_inhibition": {
+    "config": {
+      "a_exc": 1.2,
+      "a_inh": 1.2,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+      "cls_batch_size": 128,
+      "cls_epochs": 80,
+      "cls_lr": 0.001,
+      "cls_weight_decay": 0.001,
+      "data_root": "data/cub200",
+      "feature_batch_size": 128,
+      "kd_temperature": 3.0,
+      "lambda_kd": 2.0,
+      "lambda_kd_seg": 0.5,
+      "lambda_sp": 2.0,
+      "max_classes": null,
+      "methods": [
+        "biocs_kd"
+      ],
+      "no_download": true,
+      "no_segmentation_cache": false,
+      "num_classes": 200,
+      "seg_batch_size": 32,
+      "seg_biocs_scope": "all",
+      "seg_biocs_start_task": 0,
+      "seg_biocs_target": "class",
+      "seg_epochs": 12,
+      "seg_hidden_dim": 128,
+      "seg_image_size": 128,
+      "seg_lr": 0.0005,
+      "seg_weight_decay": 0.0001,
+      "segmentation_cache": null,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6,
+      "tasks": [
+        "classification"
+      ],
+      "workers": 4
+    },
+    "normalized_sha256": "dac80a1140bf6949973ce9af780216a5db6be68bea1bb9d101678b443c3b031b",
+    "source_configs": [
+      {
+        "path": "raw/classification/cub200/ssr_kd_strong_inh/seed_3101/args.json",
+        "sha256": "f104236089baebf06a3c0a8ea150d0ce1673fe3502010c52f4441c191fc666ae"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_strong_inh/seed_3103/args.json",
+        "sha256": "eba8f18147f868636e3e387f8092f7630999d53bf0fe98409e42d63eaec9f922"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_strong_inh/seed_3105/args.json",
+        "sha256": "887278ce29c6e256f3b251e7653fb292c5bdc101e9bbebbd238208334782cf0e"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_strong_inh/seed_3107/args.json",
+        "sha256": "71e4c4e342898847c986a5a6d71dd2bf222af3500d521f5cb53a99a274180205"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_strong_inh/seed_3109/args.json",
+        "sha256": "c47cd18d62ef5776bccb143a4b45057efb075d7876500b768fae40a9bc004aa3"
+      }
+    ]
+  },
+  "cub200_weak_inhibition": {
+    "config": {
+      "a_exc": 1.2,
+      "a_inh": 0.6,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "classification_cache": "data/cub200/cub200_resnet18_features.pt",
+      "cls_batch_size": 128,
+      "cls_epochs": 80,
+      "cls_lr": 0.001,
+      "cls_weight_decay": 0.001,
+      "data_root": "data/cub200",
+      "feature_batch_size": 128,
+      "kd_temperature": 3.0,
+      "lambda_kd": 2.0,
+      "lambda_kd_seg": 0.5,
+      "lambda_sp": 2.0,
+      "max_classes": null,
+      "methods": [
+        "biocs_kd"
+      ],
+      "no_download": true,
+      "no_segmentation_cache": false,
+      "num_classes": 200,
+      "seg_batch_size": 32,
+      "seg_biocs_scope": "all",
+      "seg_biocs_start_task": 0,
+      "seg_biocs_target": "class",
+      "seg_epochs": 12,
+      "seg_hidden_dim": 128,
+      "seg_image_size": 128,
+      "seg_lr": 0.0005,
+      "seg_weight_decay": 0.0001,
+      "segmentation_cache": null,
+      "sigma_exc": 0.22,
+      "sigma_inh": 0.6,
+      "tasks": [
+        "classification"
+      ],
+      "workers": 4
+    },
+    "normalized_sha256": "ba39ae29e74b3d8204190d414ce7490ebbb41a0f9ce4f0a511da49970b25086b",
+    "source_configs": [
+      {
+        "path": "raw/classification/cub200/ssr_kd_weak_inh/seed_3101/args.json",
+        "sha256": "f2c7516a10505e35fa4cd1a160d7f15f2bbd4061a73fd3408fb18a7563be31a8"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_weak_inh/seed_3103/args.json",
+        "sha256": "de2f11baa4a9ac58ed23e3b93fb84eed47434ba1f1146dafe11e7747ee2ca235"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_weak_inh/seed_3105/args.json",
+        "sha256": "fb4661e0e36f18b076b7a829610fc594b7feec39f35e71562ff141d625c1e70f"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_weak_inh/seed_3107/args.json",
+        "sha256": "298c1a52462feaef38513e7f13c53ac631775cf09b87471f4f6c37eca27e9e2a"
+      },
+      {
+        "path": "raw/classification/cub200/ssr_kd_weak_inh/seed_3109/args.json",
+        "sha256": "9761d94be555a9606d967f3f79d9c43c3ef84c59af7d643732aff9c50d917419"
+      }
+    ]
+  },
+  "five_datasets_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "name": "five_datasets"
+      },
+      "experiment_name": "r8_control_5ds_kd",
+      "method": {
+        "A_exc": 1.0,
+        "A_inh": 0.8,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "label_smoothing": 0.05,
+        "lambda_distill": 5.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.0,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "grad_clip": 5.0,
+        "lr": 0.05,
+        "milestones": [
+          20,
+          25
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": true,
+        "scheduler": "cosine",
+        "use_amp": true,
+        "warmup_epochs": 3,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "edfa6df86fc939d6ab24f0f97934128616cd11b87b10bf9d41f0bad3b635e67c",
+    "source_configs": [
+      {
+        "path": "raw/classification/five_datasets/kd/seed_3301/config.yaml",
+        "sha256": "14b544f288fd62be51fd7925028f3faebfe957d9640ee8fad9e307b72817afc8"
+      },
+      {
+        "path": "raw/classification/five_datasets/kd/seed_3303/config.yaml",
+        "sha256": "14b544f288fd62be51fd7925028f3faebfe957d9640ee8fad9e307b72817afc8"
+      },
+      {
+        "path": "raw/classification/five_datasets/kd/seed_3305/config.yaml",
+        "sha256": "14b544f288fd62be51fd7925028f3faebfe957d9640ee8fad9e307b72817afc8"
+      },
+      {
+        "path": "raw/classification/five_datasets/kd/seed_3307/config.yaml",
+        "sha256": "14b544f288fd62be51fd7925028f3faebfe957d9640ee8fad9e307b72817afc8"
+      },
+      {
+        "path": "raw/classification/five_datasets/kd/seed_3309/config.yaml",
+        "sha256": "14b544f288fd62be51fd7925028f3faebfe957d9640ee8fad9e307b72817afc8"
+      }
+    ]
+  },
+  "five_datasets_ssr_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "name": "five_datasets"
+      },
+      "experiment_name": "r8_control_5ds_ssr",
+      "method": {
+        "A_exc": 1.2,
+        "A_inh": 0.9,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "label_smoothing": 0.05,
+        "lambda_distill": 5.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.002,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.22,
+        "sigma_inh": 0.6,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 512,
+        "epochs": 50,
+        "grad_clip": 5.0,
+        "lr": 0.05,
+        "milestones": [
+          20,
+          25
+        ],
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": true,
+        "scheduler": "cosine",
+        "use_amp": true,
+        "warmup_epochs": 3,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "0b5b2ace8aa3ceb20c3c57fa0fd794e26ebb01a6626fb0844065c8e6e1a29dc3",
+    "source_configs": [
+      {
+        "path": "raw/classification/five_datasets/ssr_kd/seed_3301/config.yaml",
+        "sha256": "70d15121582aa9e103630161cda03fb4a284b9abfcb514b8825b2999cbf73cf8"
+      },
+      {
+        "path": "raw/classification/five_datasets/ssr_kd/seed_3303/config.yaml",
+        "sha256": "70d15121582aa9e103630161cda03fb4a284b9abfcb514b8825b2999cbf73cf8"
+      },
+      {
+        "path": "raw/classification/five_datasets/ssr_kd/seed_3305/config.yaml",
+        "sha256": "70d15121582aa9e103630161cda03fb4a284b9abfcb514b8825b2999cbf73cf8"
+      },
+      {
+        "path": "raw/classification/five_datasets/ssr_kd/seed_3307/config.yaml",
+        "sha256": "70d15121582aa9e103630161cda03fb4a284b9abfcb514b8825b2999cbf73cf8"
+      },
+      {
+        "path": "raw/classification/five_datasets/ssr_kd/seed_3309/config.yaml",
+        "sha256": "70d15121582aa9e103630161cda03fb4a284b9abfcb514b8825b2999cbf73cf8"
+      }
+    ]
+  },
+  "tinyimagenet_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_tiny_imagenet"
+      },
+      "experiment_name": "table1_tin_kd",
+      "method": {
+        "A_exc": 1.0,
+        "A_inh": 0.8,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "label_smoothing": 0.05,
+        "lambda_distill": 5.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.0,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 60,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": true,
+        "scheduler": "cosine",
+        "use_amp": true,
+        "warmup_epochs": 3,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "629f2d0a85f1bdb80d79cc9eb49fe2b61f0d545cfee9048846a5a9d5c5da9145",
+    "source_configs": [
+      {
+        "path": "raw/classification/tinyimagenet/kd/seed_2301/config.yaml",
+        "sha256": "bc134d2d4ac2f7cc48df6292efb6394e3c35f19487c872980a93753067155a1e"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/kd/seed_2303/config.yaml",
+        "sha256": "bc134d2d4ac2f7cc48df6292efb6394e3c35f19487c872980a93753067155a1e"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/kd/seed_2305/config.yaml",
+        "sha256": "bc134d2d4ac2f7cc48df6292efb6394e3c35f19487c872980a93753067155a1e"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/kd/seed_2307/config.yaml",
+        "sha256": "bc134d2d4ac2f7cc48df6292efb6394e3c35f19487c872980a93753067155a1e"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/kd/seed_2309/config.yaml",
+        "sha256": "bc134d2d4ac2f7cc48df6292efb6394e3c35f19487c872980a93753067155a1e"
+      }
+    ]
+  },
+  "tinyimagenet_ssr_kd": {
+    "config": {
+      "dataset": {
+        "data_root": "./dataset",
+        "n_tasks": 10,
+        "name": "split_tiny_imagenet"
+      },
+      "experiment_name": "table1_tin_ssr",
+      "method": {
+        "A_exc": 1.2,
+        "A_inh": 0.9,
+        "biocs_targets": [
+          "classifier"
+        ],
+        "buffer_size": 0,
+        "label_smoothing": 0.05,
+        "lambda_distill": 5.0,
+        "lambda_feat": 0.0,
+        "lambda_replay": 0.0,
+        "lambda_spatial": 0.002,
+        "lambda_spectral": 0.0,
+        "name": "biocs_plus",
+        "sigma_exc": 0.22,
+        "sigma_inh": 0.6,
+        "temperature": 3.0
+      },
+      "model": {
+        "name": "resnet18"
+      },
+      "training": {
+        "batch_size": 128,
+        "epochs": 60,
+        "grad_clip": 5.0,
+        "lr": 0.1,
+        "momentum": 0.9,
+        "num_workers": 4,
+        "optimizer": "sgd",
+        "save_final_model": true,
+        "scheduler": "cosine",
+        "use_amp": true,
+        "warmup_epochs": 3,
+        "weight_decay": 0.0
+      }
+    },
+    "normalized_sha256": "da74f0602c6006945f7857bd247d82442fb5ca549ae2c90801cf7ae62e74e1f2",
+    "source_configs": [
+      {
+        "path": "raw/classification/tinyimagenet/ssr_kd/seed_2301/config.yaml",
+        "sha256": "70bc084d1d98e4bd9d523d0ced115880a31e00009b3a825c5c330839e1c07d42"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/ssr_kd/seed_2303/config.yaml",
+        "sha256": "70bc084d1d98e4bd9d523d0ced115880a31e00009b3a825c5c330839e1c07d42"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/ssr_kd/seed_2305/config.yaml",
+        "sha256": "70bc084d1d98e4bd9d523d0ced115880a31e00009b3a825c5c330839e1c07d42"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/ssr_kd/seed_2307/config.yaml",
+        "sha256": "70bc084d1d98e4bd9d523d0ced115880a31e00009b3a825c5c330839e1c07d42"
+      },
+      {
+        "path": "raw/classification/tinyimagenet/ssr_kd/seed_2309/config.yaml",
+        "sha256": "70bc084d1d98e4bd9d523d0ced115880a31e00009b3a825c5c330839e1c07d42"
+      }
+    ]
+  }
+}

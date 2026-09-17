@@ -1,0 +1,83 @@
+schema_version: "1.0"
+lock_name: meeting_20260804_wikibio_direct_gpt2xl
+status: locked_external_confirmation
+
+source:
+  repository: https://huggingface.co/datasets/zjunlp/KnowEdit
+  file: benchmark/WikiBio/wikibio-test-all.json
+  protocol_note: >-
+    WikiBio is an external KnowEdit transfer set. The Gaussian SSR kernel,
+    projective mapping, optimizer, and target layers are carried over without
+    tuning on WikiBio. The only confirmatory contrast is task loss plus SSR
+    against the matched task-loss-only control.
+
+model:
+  name: gpt2-xl
+  default_cluster_path: /unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl
+  max_length: 256
+  fingerprint_sha256: 1dd2dbaeb9f79d6422d78a33540a3d8c8641144ec6ba4e8a6fe4293f616729f1
+  fingerprint_files:
+    config.json: be48115d52314bc27327e160bf10197760db02ea689d10adb24db4102edf7a8a
+    generation_config.json: b90eadacf585a743a30ea51e8b5c88b8d282a2a34dc0c7e556d0987cdbd68805
+    merges.txt: 1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5
+    model.safetensors: 0f8b28eb05a8075f48b61b6f35332978c74fc7763fa9fb4051a1c30511736a6a
+    tokenizer.json: 8414cab924d8b9b33013f0d221c5862f365ee9be39c5c2bfae8a5a9e970478a6
+    tokenizer_config.json: 5e04eb606e3a1583530a42e36c2a6b6615c86f34fe77e44d9ddeb43ff940931f
+    vocab.json: 196139668be63f3b5d6574427317ae82f612a97c5d1cdaf36ed2256dbf636783
+  target_layers: [16, 17, 18]
+  force_text_only: true
+  local_files_only: true
+
+datasets:
+  wikibio:
+    path: dataset/knowedit/benchmark/WikiBio/wikibio-test-all.json
+    sha256: 00933f69b47d8281d01f1f4b84f3f266b7482a65a7d74022e660a8a9ca2264a4
+
+objective:
+  recipes: [plain, ssr_only]
+  mapping_dependent_recipes: [ssr_only]
+  lambda_ssr: 0.003
+  lambda_anchor: 0.0
+  lambda_spectral: 0.0
+
+kernel:
+  family: gaussian
+  primary_distance_mapping: projective
+  confirmation_distance_mappings: [projective]
+  a_exc: 1.2
+  a_inh: 0.9
+  sigma_exc: 0.22
+  sigma_inh: 0.60
+  target: delta
+  row_selection: active_top
+  max_spatial_rows: 256
+
+optimizer:
+  lr: 0.0001
+  num_steps: 25
+
+evaluation:
+  name: custom_substring_any_ground_truth_all_items
+  version: "1.0"
+  protocol_sha256: 9b31ce974b6532b38c734ff760ff229fee8f309a5ebeef2e847f9ce10b539437
+  max_new_tokens: 96
+  require_legacy_compatible_input: true
+
+phases:
+  confirm:
+    datasets: [wikibio]
+    seeds: [9401, 9403, 9405, 9407, 9409, 9411, 9413, 9415, 9417, 9419]
+    data_offset: 0
+    n_edits: 200
+    evaluate_history: true
+    history_checkpoints: [50, 100]
+    history_max_samples: 0
+
+pairing:
+  protocol_sha256: 1ee1fc5ca2096bd88523495b6cc29ea3670de445c71e3e0cede42583953e4fa1
+  identity: [dataset, model, seed, data_offset, n_edits, dataset_hash]
+  invariant: >-
+    Plain and SSR-only consume the same 200 examples in source order and share
+    the model, editable layers, optimizer, step count, seed, context length,
+    decoding budget, and evaluator. SSR-only adds exactly the locked spatial
+    penalty; anchor and spectral coefficients are zero.

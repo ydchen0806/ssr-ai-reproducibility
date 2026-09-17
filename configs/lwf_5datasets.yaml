@@ -1,0 +1,27 @@
+experiment_name: lwf_5datasets
+
+dataset:
+  name: five_datasets
+  data_root: ./dataset
+
+model:
+  name: resnet18
+
+method:
+  name: lwf
+  lambda_lwf: 1.0
+  temperature: 2.0
+
+training:
+  epochs: 30
+  batch_size: 512
+  optimizer: sgd
+  lr: 0.05
+  momentum: 0.9
+  weight_decay: 0.0
+  scheduler: multistep
+  milestones: [20, 25]
+  gamma: 0.1
+  grad_clip: 5.0
+  use_amp: true
+  num_workers: 4

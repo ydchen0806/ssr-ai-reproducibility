@@ -1,0 +1,10 @@
+metric,seed,favorable_change_pp
+mIoU gain (pp),0,3.282562834172211
+mIoU gain (pp),1,3.471459694637744
+mIoU gain (pp),2,4.3015067488694
+Dice gain (pp),0,2.464543640120965
+Dice gain (pp),1,2.5857760147614783
+Dice gain (pp),2,3.14495743306216
+IoU forgetting reduction (pp),0,3.0500193218477953
+IoU forgetting reduction (pp),1,3.6796267315655786
+IoU forgetting reduction (pp),2,4.247650474130767

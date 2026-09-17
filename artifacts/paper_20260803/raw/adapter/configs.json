@@ -1,0 +1,1754 @@
+{
+  "rank16/cauchy_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "cauchy",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.6475755123835111,
+      "sigma_inh": 1.4717625281443434,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "2acbf510fd852834131c11b42eb4eb06d692c9b6cf3a0fce29443e950ef6885b",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8411/args.json",
+        "sha256": "2b06f23f835592c69484916ad484eaeb79031532d75e5dadd0e6249eefc701ab"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8413/args.json",
+        "sha256": "ff9882647f3c29e8198982704b67f19fa080c947727df06fd35542040610ec58"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8415/args.json",
+        "sha256": "aff25b41973371dfdca2abb9e2b5ff6d33bae0a6bb79577ad3d85604b31cbf77"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8417/args.json",
+        "sha256": "9c62c293ee12e6cd55a166c9965cd8a4501b3a484a94f2f5a94ba7f968a191d3"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8419/args.json",
+        "sha256": "d8dc8a8a3c93be7b1193e60f1e64cc3b9a012e384b9d6b171b7a75d19a07baa3"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8421/args.json",
+        "sha256": "4086aa5bba0bcc71a7e6fd086f03dcc60b493ee0a43eb17fb9fcab8d3ba7997a"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8423/args.json",
+        "sha256": "5e1b386d84d12cc4e76b089b32d8baef8ebdd48748bb1f0efa2467cf51a6da09"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8425/args.json",
+        "sha256": "45231e00c6f7b2922991eeb789ae08f9db8f61503c9a29fd89f436688f447eed"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8427/args.json",
+        "sha256": "ccb3f12bc9a292f3631e093fe944a74a1d654aafbda70b2c1bcab1123690c64e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/cauchy_object_aware_seed8429/args.json",
+        "sha256": "2fd19e6a8ebee82562e75340e270c9974c5df20ed026f828ba8f5ac23c9eaecf"
+      }
+    ]
+  },
+  "rank16/gaussian_all_cosine": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "cosine",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "546de10d38b4fc027d26a092e68f20de26b53b981b8af87544230f77aeb58d40",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8411/args.json",
+        "sha256": "755e7e138ea6f002d389f5a3d85de0b8117e7a0092ed424fe3350f212ea50c49"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8413/args.json",
+        "sha256": "17152275915260122ba73d30d8d4ce8237e643e45322b0c322133c450999b26c"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8415/args.json",
+        "sha256": "ee99ba2ef520dd250d018c51b42d472faa2a51f92459d4bec382e0888cc1e0d2"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8417/args.json",
+        "sha256": "24029733c45114cafeaa45f06c3713f919ae654c99c948eae66daaa0ebdf3374"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8419/args.json",
+        "sha256": "8361ac4d0e8a5853595f6c82964b05a1970c18685b1b89095f7babe681cb4aa8"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8421/args.json",
+        "sha256": "d7c73abcbb366c3fc2685a2064f92880d0a71b7f82493216717a3d5bca89ebc7"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8423/args.json",
+        "sha256": "4b618474198416e9438f238c9ae6067b05104ecef6e198901e46a2d345c0858d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8425/args.json",
+        "sha256": "991d8accb086c670776414866699e256155f7fdcaa6d556616c0bea870d591b3"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8427/args.json",
+        "sha256": "6faf9ba05bf475661d0fcdd7f828894748aac10807d2058491f8142d39f1e844"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_all_cosine_seed8429/args.json",
+        "sha256": "b6a0d4b30b6a9f3e0d9b679a556ec76080346b7924ca706fb3bf65171b96c2b9"
+      }
+    ]
+  },
+  "rank16/gaussian_basis_projective": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 0.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "23753056b6af03ef2cc478881c8dcf517a2c31ba461c0987c0f81d0a91cfe62a",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8411/args.json",
+        "sha256": "4bcdba4b3836007e2e51644197677307ebbc50e5eafe342b97b9a8baf21071b0"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8413/args.json",
+        "sha256": "e80953f2de7a3882edf6f5c2d1bc5a4c7d27d7a825266607f45ca83e55543d04"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8415/args.json",
+        "sha256": "c8ed685850d0396405bb7baa7df9156b150cb7d423eaa6d238447cfdf54e6f37"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8417/args.json",
+        "sha256": "a47a039d431a2c2e0783bfdbfa7661e5365fd1c6daa75bb00dedc75adb6df18f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8419/args.json",
+        "sha256": "a2a989838a27b29e1378cb666fcb4608087ee98cc2709322fc4d0ddecebf0bf8"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8421/args.json",
+        "sha256": "1c62c6b84cbc93b1b773ea29f5ba009f3d2fdfe47b8e7ebd4bd21aa43a3afbfb"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8423/args.json",
+        "sha256": "e3377e24838fdd0878fedfc5bd1293521426303d22f9517784d83e850b072b48"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8425/args.json",
+        "sha256": "60cc1012b0c07abb852cde83f4a02f49cded45e7b055b99f689490f451a81341"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8427/args.json",
+        "sha256": "7306774b3a7cfcdd6db9c884642a1bc1a0637fc6f53d9d5e96614c83d108b2a5"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_basis_projective_seed8429/args.json",
+        "sha256": "8457e59f786d32b19eb79703890b98d9f9120477484c7eb3c742c41650d997c0"
+      }
+    ]
+  },
+  "rank16/gaussian_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "705542b7bfb86d14dd78218aca99e860c976ed04464812b5308287b588773eef",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8411/args.json",
+        "sha256": "258245f4797ea68f7901451cc7d6cef902fe665b545c8e3257c6e446abcdf2d9"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8413/args.json",
+        "sha256": "3799bd1d6ee436a520688786c4b9de104edfb58a1260465f29dd319e40ee844e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8415/args.json",
+        "sha256": "bbe27706ec710779e01dd429fc1b6a5970b3d32cfa25baded66661ff1046288f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8417/args.json",
+        "sha256": "4a0326c6eb623ffcea07c244f1b7d781b9db2672a60c4027abe83a44a12713e8"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8419/args.json",
+        "sha256": "1eb8e7baff34cef6133c5eb9684a11ed4f9a442e51fd451c8005d96e81afca1e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8421/args.json",
+        "sha256": "8a9441765aa368d5a3dbd8d0b10619a6c5d34566237493fe571df59e44edee11"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8423/args.json",
+        "sha256": "43e30f3dabc8e52faaba22f5ecc819167a390d433f1d592658351093963568e0"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8425/args.json",
+        "sha256": "2bf6cfd26370ef3d1bbdb0632bff9ee9d8b7a4a399f285fc8b53984eaf937824"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8427/args.json",
+        "sha256": "57fd6bc5aa73e3873ccf87f113be4d23d9ff17e537479685f29c34f981ea57c0"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_object_aware_seed8429/args.json",
+        "sha256": "88f81ffb454ae3da4882f35062d733adb7ed02779060d65d723925e15aaa45e7"
+      }
+    ]
+  },
+  "rank16/gaussian_prototype_only": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.0,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "6dfef1e92c0e4e69233f5151e9ca188baad4ff092e15ceaa3df8003dfd66118f",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8411/args.json",
+        "sha256": "b0d01b0d5d49aadbf52d3fe84ef7c65602c1c564e635d63f31e6d58c659a2d4f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8413/args.json",
+        "sha256": "1099f7b219197f00277715c38e8a4df57f7a3ff5554f74f939a6007f2202ada1"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8415/args.json",
+        "sha256": "2447ba3878cd23e49ba12f6eb76ceae8243e14b2ca171eed9f74408dc50b3cf2"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8417/args.json",
+        "sha256": "9aef7f6584ca4844ecfc5ecf0c233728761dd0f6f2881f2041a508621ca1d0e0"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8419/args.json",
+        "sha256": "fccadd3534841da3b7986e908532511c55ca30061f300f93798f87f4ed9ecd5d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8421/args.json",
+        "sha256": "f966f6bf67f92106fedbe61bf1db9aae7aa30998a1569b8a7369f1c25bab386b"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8423/args.json",
+        "sha256": "8011ab20d029376217ecbd78ef7c9ca59789418dce7857a277125dda079f1cdd"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8425/args.json",
+        "sha256": "38c00214c656736dd4aef7703b00b4bd1cfa9998025d0f4d416cb1601eb36029"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8427/args.json",
+        "sha256": "6d7fee418ba47e3da3c5ca9a5a99c7ab0554431f3678f4a28b457d280287d809"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/gaussian_prototype_only_seed8429/args.json",
+        "sha256": "7838d903bc348ca3337aadf510cd7c41d1afd636e5ea6c4e3f1ab0e41cb86ffb"
+      }
+    ]
+  },
+  "rank16/inverse_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "inverse",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.37387789639522995,
+      "sigma_inh": 0.8497224918073408,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "8944fd94470ea722087b8ee3029d113190208e43584fda19bbfb12d2d8aef553",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8411/args.json",
+        "sha256": "8416ad99891f520ddc238d05117caca2cf0af3c0f5c8d77c4d389fa9878fa52d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8413/args.json",
+        "sha256": "dd8a8efb922045f8701d832b7f2822d2f68f2ced7830de3720baee2eae309c03"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8415/args.json",
+        "sha256": "2b8b2776f94e30846c1c6569b11943d58ae7a0d5fb535919425dfac7de0adab9"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8417/args.json",
+        "sha256": "bd972426051b244f5d2f19824e5b3c775a6f7d751cce02e5d610c4617835853f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8419/args.json",
+        "sha256": "1c6644b06e28df24076328bef07838315098d5d37d53eb59e774bde8361f0a31"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8421/args.json",
+        "sha256": "9b879c806b3260fe56300d1a5bcd7ca8b66c20c602b564493e126bc4f1efeea6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8423/args.json",
+        "sha256": "2712363fab3c8fce7758172e8f94af597e5d6aa0b7c0102830cc11be1edba622"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8425/args.json",
+        "sha256": "e7f39abb936311d01c3c8067e15e5cd8e3e452b361673e30aa7d7facc38c30c9"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8427/args.json",
+        "sha256": "da7263921950792e7f36cf5de4e8fbe0d070f3648287316bcfe27554e50cf330"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/inverse_object_aware_seed8429/args.json",
+        "sha256": "6109ff049ee1f557be97708646a4a7a85a04cb3d87bbf7868b5d69433e968f2b"
+      }
+    ]
+  },
+  "rank16/kd": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.0,
+      "lambda_cls": 0.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "b67abd27faf33ea248022a61c3d640584cb37f029d578b842c376b5a97551bf3",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8411/args.json",
+        "sha256": "700f8f261644bb3e1bc72b8f1c2c08e759ab126145d4d270169ba1e18e09a93c"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8413/args.json",
+        "sha256": "8e1ab7abc22c0c1ad0575756b733ebed77b954b87e1a1196ecbcd2b57c77bd2c"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8415/args.json",
+        "sha256": "66b014719faba829f9cbd487dd143430ce31d28adef7af27604bc1b62e69dccb"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8417/args.json",
+        "sha256": "d7d2e08e0059f7d9e92ddf28f84a235e31c47b647893b3267b841c9a25e52889"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8419/args.json",
+        "sha256": "6793082dd4aa9428bcf69d7a53a17f30813d54c37764165d0f11d30c5546c534"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8421/args.json",
+        "sha256": "644bed54263b6d5dd6680fd8f5714020b866d290692aba8ff46a63a286b56810"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8423/args.json",
+        "sha256": "2a896576bb688afb9fb24d153d469ba410c8ae1e4cb801562456c309cf004e8e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8425/args.json",
+        "sha256": "b915e7d99c324f0ff390aaaa5b41c927d87ebc4bfd645a82172c429424619522"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8427/args.json",
+        "sha256": "da68d50fa8ccf998336f26784547863a30b1ced083fc9283c99626296ed5e06e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/kd_seed8429/args.json",
+        "sha256": "7ef0c1604a85f54e2c6d111d270b7ab1c22efdf9a3fa31b0d1ef3815f10f7810"
+      }
+    ]
+  },
+  "rank16/laplace_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "laplace",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 16,
+      "sigma_exc": 0.9342539803168209,
+      "sigma_inh": 2.1233045007200477,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "cac1045792454b8b13886d2ae69b0ac67c621dccd5f44f246be0e27351abb0a1",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8411/args.json",
+        "sha256": "8e0d8a5d80bf40108df4528049375f19a1d3ad31009927961d7d252db80bb35d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8413/args.json",
+        "sha256": "9b739ae44ad9dd6e28590b306916d136bc4fbf64694e0e5dd011f7d1e1660173"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8415/args.json",
+        "sha256": "bd11dbf551622bd343ae3500d676ae18b25ffd492ea18f1f07ec0ee9d09d7b25"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8417/args.json",
+        "sha256": "d513bd25c6692d8c3897b08af8df1c9744f33f6869e4d9e5c9391e3c4a15044f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8419/args.json",
+        "sha256": "5153afbddacf779bd511db64a8e3640e437c12e236c9549ac6ddd0e8f4e8c7cf"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8421/args.json",
+        "sha256": "55b5fee8cc11c4067fdeff09540db3fac055dac91ad007d271675909f50bba15"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8423/args.json",
+        "sha256": "0cc42c2f2a344150db4d0253f7fe2a7c79544894228f2a96f1f5d16ae2b3860c"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8425/args.json",
+        "sha256": "e0e1d99c527489eee538aa3572445573493b17ad7a58c58de4c7b0490db32842"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8427/args.json",
+        "sha256": "9086ca212a202b3cf2e858a97f082513568a7940c237f45e9052516b3fe48181"
+      },
+      {
+        "path": "raw/adapter/cub200/rank16/laplace_object_aware_seed8429/args.json",
+        "sha256": "5f30ae2be19ae9e208d031cd3f0bec550500f6b6ba60eb25953f06926b6d56a7"
+      }
+    ]
+  },
+  "rank32/cauchy_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "cauchy",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.6475755123835111,
+      "sigma_inh": 1.4717625281443434,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "05053283f8ad0788a5636dc65399048a16d653da4eaea36ca0489e6f14c7c5ec",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8411/args.json",
+        "sha256": "4975f56d6267daf8d9eb1ed8888ddf301275628439c011f7343f5c82d7a8a722"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8413/args.json",
+        "sha256": "432e9595ade918cc2de95c65cb916c40bb175df63852bcc791a32b5022241772"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8415/args.json",
+        "sha256": "625405e403f0adb7cdf75302a8bdcbc5128303ada55f802f0fe60b188502ca4f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8417/args.json",
+        "sha256": "ba12e8d74a34620cc323573fbf7af0a168b2589baf3929d1828dc97d35ca98ae"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8419/args.json",
+        "sha256": "9c1abdbc140ebd6c66ed2ae96300024b8345d73ae1e9236f675885ee4d0829a2"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8421/args.json",
+        "sha256": "0376696af4f3ad8dfeae407ae53c74bd269a000387f52dae805480c6d7074276"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8423/args.json",
+        "sha256": "16b92bd6c122441efcd33586c2378674cbc1ba7b5e9ca69396a6acc76631e619"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8425/args.json",
+        "sha256": "f8a89fe351e589fec2892bf6f2233e318b1decc0f2d3f801ac049d24e9aee0e7"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8427/args.json",
+        "sha256": "9ab0bb712946fe596e4017602e5eabbe232fd5cbbc2cda13fc811d848873f5d1"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/cauchy_object_aware_seed8429/args.json",
+        "sha256": "82fa9a1ab3950e5085f8f6188fc074a59233fc9de94fc44b0d4a98da09227e1b"
+      }
+    ]
+  },
+  "rank32/gaussian_all_cosine": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "cosine",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "10cc9df0a24fb1ed6e3ee90a680e8fda1d9b8a414e844a164a80bf55753b5386",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8411/args.json",
+        "sha256": "78109dd99e1b6a49be2a8cc7aa29d01db6b07785e2b4a7ef60aebfd695e69f18"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8413/args.json",
+        "sha256": "f14bf88df5034421df6027e0930c6d8f2171ba1887c87b7a8e4bc2ead0c5763f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8415/args.json",
+        "sha256": "f84ad9115ca7e07666bd08429ffa160b1eceb616465d778731c5f48da4a20f40"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8417/args.json",
+        "sha256": "318dfe6ff34cef264bc0ec277fec7978bdf02494627556d2120aac7f5e612ab1"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8419/args.json",
+        "sha256": "79b669ef235ee685bdff6b791e58b9ca4a8824c6ba00e6f47e1e966bfe61f9a1"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8421/args.json",
+        "sha256": "2880091368c87d38b6d431e5f4a1680be0706bff2c3c2c6c080d2273b205bc88"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8423/args.json",
+        "sha256": "f4659ab6eab04ac0b649e62d86d4a41fed81de5647925791163c13bc3667e0a6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8425/args.json",
+        "sha256": "fa7b5e7ffc7c68695e5833f6708ad2e5a8d519120a75757b7d85f3281134b132"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8427/args.json",
+        "sha256": "15da7149d4730c2ebe50544c58878bde9f677f126f53b4aaa6f06b97e3d78395"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_all_cosine_seed8429/args.json",
+        "sha256": "a7893e8c00d5a431182f407b4673633c44f38b839cb6007d24eb8f0cfabd5e45"
+      }
+    ]
+  },
+  "rank32/gaussian_basis_projective": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 0.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "fe5c11c2254a79cf67633f783f689da4eb1db911c7cea90ca78639a9326be5be",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8411/args.json",
+        "sha256": "d644a31ca3e5a44d05385ca84009d9a66563d8ea9d5db51a0bbe31c386b16329"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8413/args.json",
+        "sha256": "1c8846fc9b78b49ed74a4ba2cb34fb6e8464fdcd05b45517b490c21f58795cb6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8415/args.json",
+        "sha256": "b2eab11cbaeba7a09b49635a1a9d08a098eadd8dcc2f12f902cb78dd23e73172"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8417/args.json",
+        "sha256": "0f47cf4dad2e2a8428f55aac8ad14f4012ec22c1dcae5d1bc294c3d2fe70da42"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8419/args.json",
+        "sha256": "a6d32ca4229bc0fda054d0e5bbbabc67fd3f8e66e0b746d082a2f44971ecfe50"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8421/args.json",
+        "sha256": "d7d9354f609e8d0e87f1f70f14df158dad470c20d7dc81c9aa3829d4462a434a"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8423/args.json",
+        "sha256": "6a1a9b6cbe00f8618795c8d04124dd6174deec749238ca371dda121a177751a9"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8425/args.json",
+        "sha256": "aba0d05145cc7a94253575d391b97d69e5341ee59738743d3548791e998b32e5"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8427/args.json",
+        "sha256": "814b67c166c1c59d7588ce03602f5f2c8277a15a3b06d2865783ee46fea0b223"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_basis_projective_seed8429/args.json",
+        "sha256": "69b58684e6452b60e627cb3ada83471e0139759265a050999deff2a67da6b097"
+      }
+    ]
+  },
+  "rank32/gaussian_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "556f5ae8e7a52a5e9f67a1569283cdb917ce51a91ffdacf6c8457aa9136dbeee",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8411/args.json",
+        "sha256": "75e031585b502cba3266ea6b60848a28af3cc21e6eada648798087ef19d8aed1"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8413/args.json",
+        "sha256": "229c2b84392928fa2f1790d6e8fe0c12733c650f17250e8b1d29a217db122e3b"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8415/args.json",
+        "sha256": "998dbb76fe2e85e2c23b56525c56ca5b13703e7e5b7daab509bcee97a94e2642"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8417/args.json",
+        "sha256": "1f5e1db6b64dc78ba6f38e4e4ae1042b93677d7b7c7b84d725cd4ae646bb4b4e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8419/args.json",
+        "sha256": "ef5d2062812ff1b03c80fcddd0cbe196d932ba670e55ec3e3daf72433499901e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8421/args.json",
+        "sha256": "36a84ba6e8f00a717b7c0ee2792daa2d47d20c4475b8ba928cd3f4dc438c8963"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8423/args.json",
+        "sha256": "e891df5a5b2f6555d7b67a155a140f2d94161f624ae2425ec9887f50787c7ec6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8425/args.json",
+        "sha256": "e824b845bcf25e7e0616084826b25288c4f96b83130993af8e595d582fd1ad67"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8427/args.json",
+        "sha256": "f2e46153681b8309cfc17422d716613e3b8509b73a99715cc1697fc4bd489ea7"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_object_aware_seed8429/args.json",
+        "sha256": "26432e415cd18d234cdfae9e2d80a08bec767628a2327111ca16627fa61f5695"
+      }
+    ]
+  },
+  "rank32/gaussian_prototype_only": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.0,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "3d10e7313a5777aff2b3e8bbf75416a39c78f14f6b75c9e5d526415f9b429553",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8411/args.json",
+        "sha256": "2773eef32eee0916c0d10a63b601b404d92460dcc459fa844bac9acb8caba848"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8413/args.json",
+        "sha256": "6f69c4ef85a76e954aacc7532091b8eec28c8ad4a9cede26545f946bf507dbe6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8415/args.json",
+        "sha256": "74e49737e8ee513ba8dcb0d4a05dc6b30e4d588f050f6441df2a12e3cd7f00f7"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8417/args.json",
+        "sha256": "b20dd3f42f77f1e8d15f3ad90827f712374f5d9216514fd93063541db4bacb45"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8419/args.json",
+        "sha256": "ad60a94aae96ba6ce32d2384a3f34b3fccaea496544bebfb53a125fd52e64576"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8421/args.json",
+        "sha256": "455e72b22561ad3a7c20334dd767039691a6b58871e0c0b3ac49cb3d598eb09f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8423/args.json",
+        "sha256": "89002c214fa9dbad1843cdcead906a73a3c6be3121f6bc0868461bdc28a0fad8"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8425/args.json",
+        "sha256": "d591ffaf5b83737b8595abbea3fdcda58ec2a330c14d9d0415477e6d7055473d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8427/args.json",
+        "sha256": "5585348894863212ccde587697f52e2653b1256ef719a8b2c718c6d7990a2ac1"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/gaussian_prototype_only_seed8429/args.json",
+        "sha256": "f13c870f0d87345a944d5af726c8676c5f48066d90229f2d3eb8412067388742"
+      }
+    ]
+  },
+  "rank32/inverse_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "inverse",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.37387789639522995,
+      "sigma_inh": 0.8497224918073408,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "d2e32f5cabba6ffd1469f7aef1e3054831fa40c9bdce842d2bab4e890cfc3bf5",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8411/args.json",
+        "sha256": "8af60ee9447fd623da4815908a22e5c76175158b560efd0156fd9b6c50fb3b9d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8413/args.json",
+        "sha256": "5c68fc6615ee5f6910cd0717f73a42e8a4a3ab312b8bb23fd94f17e0ae888613"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8415/args.json",
+        "sha256": "52f62fbeb62f83fce041064363a768cba350c5ae9941eb1c2261160767844b51"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8417/args.json",
+        "sha256": "ac729eaae84479240c8cbdab7741aecfc75e3964bbcae29376abb922b4256b6a"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8419/args.json",
+        "sha256": "b0994518dc242f7a00786fe173d1bd73caedd1b7b090541260c17f417ca76b86"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8421/args.json",
+        "sha256": "351b222ce568904ebde1fd644ddb4af73722de0dcd53acbf0aec48bf64988f04"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8423/args.json",
+        "sha256": "0ed6ee44774f4ddeb44fe1a186a9d5a1cefeef31c370e04308110a13e5111223"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8425/args.json",
+        "sha256": "8976d9e0b507d4ee48b5749ea44159f829437c6a5efb77bd72bec3e9cb268cc3"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8427/args.json",
+        "sha256": "aea7f399bad3f649b1f2773df339b2cc2d6032795b1c4e9d7cc8761e09e6300c"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/inverse_object_aware_seed8429/args.json",
+        "sha256": "84ed3223025c2ee5ca3fbd069beed30aa0bd8c54d2f923489a55cb7d170a2f78"
+      }
+    ]
+  },
+  "rank32/kd": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.0,
+      "lambda_cls": 0.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "0d06a5e07b53f59bc8a6167f9a50ccb6ba49c48bbc4022d38e410b1db7082b5d",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8411/args.json",
+        "sha256": "64e51186911ce91be22876d462737a0a65ac3b91d0871c315568348f18123043"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8413/args.json",
+        "sha256": "260a87fbfbcadfb19f2de1ff3ccb66f8168a7517d576c4e29cd65cba14bb39d9"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8415/args.json",
+        "sha256": "112b30805d856feedd833d0434a3dd101fcad8f8b46237d1706f9c50a09e6da6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8417/args.json",
+        "sha256": "455f7bc008b8766b2d769e3a503f2e3aad3bada3cf60016daaa2c2060782aa4f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8419/args.json",
+        "sha256": "ccd6fbe857755c176047abaa19433e2ae800d262447fa4125d9866def66b0efd"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8421/args.json",
+        "sha256": "43bdddafa4dcbe1963a9ab1134e766ce211476792276adfcbb2e2dc823681574"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8423/args.json",
+        "sha256": "c8cdae776b470f940278b0fb9eb25258fd02e7c596e013ee8ba3ec746f5bd8b6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8425/args.json",
+        "sha256": "6c9035b5363ad426008c296ae28565ff3a97dd8c503462f4ef0df209c2a79d71"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8427/args.json",
+        "sha256": "a152e7bfcad9627404973423a537e3a9d77c07e49ea243a13b933846db2a56e1"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/kd_seed8429/args.json",
+        "sha256": "de2a5a4e47fd64d2d20c247c19ba05a3ca74ad75bd186d84edef54189783ca0a"
+      }
+    ]
+  },
+  "rank32/laplace_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "laplace",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 32,
+      "sigma_exc": 0.9342539803168209,
+      "sigma_inh": 2.1233045007200477,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "f598776ada4dd0423da333adb1d962a05573e1946b02c0a608553dcd7ebe7a46",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8411/args.json",
+        "sha256": "82826fd40c0c4f98152be23a5fd96733930a5512a96bfa74cebca7b554f819ae"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8413/args.json",
+        "sha256": "683dc387ab69574ab27a40c10f44df78eccf3b9d5da914c7cf5e50313281318b"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8415/args.json",
+        "sha256": "d22e4586e5d06f8a936b99f969edd6184ce56e1df50234953f2770e219e0c58e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8417/args.json",
+        "sha256": "7e1e04a77d19583b88ecdfcb1cb17d71654b8b9bb1eb725287b38aaf0ed81731"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8419/args.json",
+        "sha256": "114c1ebbe70c21ee34d3e4061a6acbe97d2c3cbcecc5cbf6400a299edd36d4fe"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8421/args.json",
+        "sha256": "fd0d52786f917ff81dc835d45010b985dfa9d3eb07339cf25c7acd12cd5e662a"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8423/args.json",
+        "sha256": "a28becfa161a735137ae9728d8c011f017c9d75c48cf70dd8bc1931fdf5eabac"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8425/args.json",
+        "sha256": "9facec366bdad78692a8dbe8cb2b1d77b96f1fc2ae3524db1ffc27ce3d043354"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8427/args.json",
+        "sha256": "f5a1b6891693e369f56f7145319e7eb0c08276eb956efa08c21bedbef8c42706"
+      },
+      {
+        "path": "raw/adapter/cub200/rank32/laplace_object_aware_seed8429/args.json",
+        "sha256": "69182ff61416e7d8b9cfad8885a0e071e9cf52e6bb514d4b68d9e63eed8085ec"
+      }
+    ]
+  },
+  "rank8/cauchy_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "cauchy",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.6475755123835111,
+      "sigma_inh": 1.4717625281443434,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "9a916fcb21300c50fa9641751e5ddb6657b029d3d999593bc0ce45bbf5d49c0d",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8411/args.json",
+        "sha256": "060e63e1cf8f33357e90bbb29c027a78da8abda55085f1492f9cd3a2e0a90a93"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8413/args.json",
+        "sha256": "bbf2a570fde4636ca3dea5ff80d3f0a26546ba7da7e876ae7fa58a2d7f5a41c3"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8415/args.json",
+        "sha256": "907c05376913a71146476ddcba2fb21f8f962d4db6fe7d059ad11a756105d645"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8417/args.json",
+        "sha256": "0cd15a24200b29d881f207366f00951a411b4fd47eecf624d53332736ca69b7d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8419/args.json",
+        "sha256": "35523d15a4eb4d59ef28592552d7d3d28129b6bc256d519c79cd4a8d42608957"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8421/args.json",
+        "sha256": "2a1c303d3c694bd7ccac3664c7233992c4ec63a89759b1743050ad2989c21821"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8423/args.json",
+        "sha256": "aea56744c75456872ada4de48161e897ffa8ed3903fe35ca4741bad1fc3c5403"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8425/args.json",
+        "sha256": "289bfda1b5f125bef41a8129ae5eb576d003309185162559b702215eb889111a"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8427/args.json",
+        "sha256": "bf3e7286d22813adc017b3f6c9a3b0c3bf86e1cb5446a9f2b3c46ddddc4949ae"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/cauchy_object_aware_seed8429/args.json",
+        "sha256": "5fd5ccfb172ae0d523f78b618c46f0030fe36b1bfb9c694cb2c97466cea540f0"
+      }
+    ]
+  },
+  "rank8/gaussian_all_cosine": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "cosine",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "75ef8ad9ba967850af5835ee2640426e1b4314832b53c6319d761d668dd13478",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8411/args.json",
+        "sha256": "9d2c0bfe2a6aa822dc8f1c82d2f0c4cb32b1adb82503a2df5e8a22e478979557"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8413/args.json",
+        "sha256": "37c11b97ffee23c62868b2f3d047973411e97cf96b19f4fddce2e983ff4dfaca"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8415/args.json",
+        "sha256": "1aa0c480ef3e3e22963bab6e958a0cb9b43f56c001764b74f4c58eb056f7dabd"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8417/args.json",
+        "sha256": "4f09362f2aabdf8a11ae671382f17a5cae95118ee386aedfb06442143c39b9ab"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8419/args.json",
+        "sha256": "a766335908360b8f0bc45752ebd1ce68ca402a3c7d78181401a05685207cce04"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8421/args.json",
+        "sha256": "2921db668a1674aa97a65d1534d0b63df5494bbd1e92face52d841bf0e98ecdb"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8423/args.json",
+        "sha256": "a132ad073732bc9ad50dff38de74f33d42296f0d46e668dc749449671810b8b8"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8425/args.json",
+        "sha256": "5255924cf948dcbfef981ec2c32c4c16b8590b87c83b749089219b9949f5640d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8427/args.json",
+        "sha256": "a5d9b84ea64e1494642165b2829acc58cc72d57dff880e4a0baae7ffe60340ce"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_all_cosine_seed8429/args.json",
+        "sha256": "d32e45a734e6c5a967c8fba969cf3c171593508cead4996b27b0f0a20dc340f5"
+      }
+    ]
+  },
+  "rank8/gaussian_basis_projective": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 0.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "f8011ef87516bad380fcfdd9b22bc687024a6b7871ea8e5209fcd5491457256c",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8411/args.json",
+        "sha256": "d82ba09851aaefc29fa90dfaeb4cd428da4ce538257ea6618ac7c0d37d250fec"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8413/args.json",
+        "sha256": "fdf10b6792a535bafe08533c14cb428b6f224bd187c51a40145b675d4f22a555"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8415/args.json",
+        "sha256": "02e53c5b6cf96d1eba6783869fff2c98fa0d4bf2667a24ada5e8e4c63d65b0ab"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8417/args.json",
+        "sha256": "cbf224cd3e589ba96d4d300a87cafbda6b8cf5eeebcaf5a419f151f1ef7d2729"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8419/args.json",
+        "sha256": "4fd31b04737dbc79f735cda7744ed07a1d6fe306e2ef5ffdb439b3a6d39f5728"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8421/args.json",
+        "sha256": "aefc444d7b5f53def8cd6e101f1a27a3c10a328997f2faf345f7b24bb4e97728"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8423/args.json",
+        "sha256": "7008df73732ae3f9a8958c3245549001adef667d93d0c666e13f8aff9eab333f"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8425/args.json",
+        "sha256": "3610d52f982aa31d425e73eabda3a02f9afdf8f99a7436b09d90c137f9631b3b"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8427/args.json",
+        "sha256": "3560521a8590982adef65fb2636d3bff950aa2ef9e6717c5b5d2173cd6aff4ce"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_basis_projective_seed8429/args.json",
+        "sha256": "cc24ac1a070f9bc9f25de6afbf6f6d21495771b869a485ba645a7ba93b8651ec"
+      }
+    ]
+  },
+  "rank8/gaussian_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "90eb4340121cc3c788d08be8c91ec8226e48c783ac327967cccd1c28f9aa5252",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8411/args.json",
+        "sha256": "ec4c875677b0fdb79585aa7edab0abb9b7454db2b0dbf4eadf344f5b702931ca"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8413/args.json",
+        "sha256": "967712dabce0b9733c09b86e597eff63d9165231997836c66b52b9e0058e26b9"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8415/args.json",
+        "sha256": "4530158870f7e3205988c670aedb2f91faad6dd3ff8f1a4e04a5458c3700fd0d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8417/args.json",
+        "sha256": "25225229661ad0d054fd5e7fa1b33dc0f9a87794203102232a8e60125b092614"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8419/args.json",
+        "sha256": "d14d8e87e8fffd36ed37163b1cea708439a10394e50c2b6f0eaf2a4d725bb5a4"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8421/args.json",
+        "sha256": "cae8413cdbe0ae9cb4ba5ceff814d2f34acb3d47d960ce4833e9bb3824dcf1bb"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8423/args.json",
+        "sha256": "6fbf007b99caf32a2022857502f9f73bc6ea044d4477c02c3388cf38a16f1460"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8425/args.json",
+        "sha256": "79794ae4eea08eb67e798a66c1671979fdd57bd6d66531e6729fc4ba47b48dec"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8427/args.json",
+        "sha256": "eeae3bc57e9d72edbe6edc7ff9d53bfe3a0ed8c7fc20aeaa0ed5bd86953866ca"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_object_aware_seed8429/args.json",
+        "sha256": "3135a8f9613e181f8882a3facf4b4965a1cfef854436edbf2abae4f5d2e49298"
+      }
+    ]
+  },
+  "rank8/gaussian_prototype_only": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.0,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "47ab47647efed3cdde16b01e622e3f998dceb4822ec26937b33fc6aedbd2abe0",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8411/args.json",
+        "sha256": "f305735e2f855e9b2a82b1fe0ad0803de64c5eaebbf6158ac9cfc6e7c4c7e9eb"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8413/args.json",
+        "sha256": "aab447011a3211ce298eb5d0818fdb824327141d3c9a791d2736b7d87f5c1ede"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8415/args.json",
+        "sha256": "0cd486cdc5d4c84fe101fdf1ae221b1e9b2dca6b272c0799cde80860cae51d48"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8417/args.json",
+        "sha256": "e594983c03bb841f9adeac7892c36441c5c1b220fd891f81113e232183a18848"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8419/args.json",
+        "sha256": "fc252ee266f6ca85b544b8916884723f05e57990273c2c1c1c5c22935fc34960"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8421/args.json",
+        "sha256": "fbaa74e1efb7215ac4af0ed557b8ca3136c491abd32b9db6192a472683b51ee6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8423/args.json",
+        "sha256": "e45ac9d1c09c118d5f03f06cabbe02e4d4bd680ac377147735bad703199b7393"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8425/args.json",
+        "sha256": "931886e194838ec242acf2e24b0ef4af441e5f9051620350c63e9ee8ccc9b65e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8427/args.json",
+        "sha256": "2b1c259885a32c7e3180aebfb3b67366b229fa6939db957c58d05e37a0622c30"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/gaussian_prototype_only_seed8429/args.json",
+        "sha256": "7dd99f11d8a8dec8cad3435b951dc0dcc29e5950ef2e7aeb37c35a52c341a236"
+      }
+    ]
+  },
+  "rank8/inverse_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "inverse",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.37387789639522995,
+      "sigma_inh": 0.8497224918073408,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "a05fef496874feb0907f8b1303d1754190538f460d223bacc0da0f2d2857f356",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8411/args.json",
+        "sha256": "ad1605b28640bcf14cf3de4e9f733f1f5e9173d9f8d6ae3a29646d5fa17fab14"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8413/args.json",
+        "sha256": "fdecca113fd78a96845353e4cd59178e97dd1ab71e1d0469b72b79a89b77c0ca"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8415/args.json",
+        "sha256": "5989f36e47fc62356f52d88d266f4f5d69a876ca386b9733e8497653efa27487"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8417/args.json",
+        "sha256": "68a32419dd7651a025ada075be46cd7e6f536e4f7d457389eff4a93bce9219ab"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8419/args.json",
+        "sha256": "3774a957e19a6401049ab1e9421d4721a101bb9ff2b10138e0ee68962a5028d2"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8421/args.json",
+        "sha256": "d0d9c7036a2cb2db2c7c27500f6b79d971c87014fb496e6f08ad24716cde0f2e"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8423/args.json",
+        "sha256": "de450312ca1c0fbbfc87320250e3a2871eedaf97e6ce8d18c214ec5341c0b3ff"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8425/args.json",
+        "sha256": "106b1e4edf4c4d9a4a434acb5e4fb8ac244957bca9fcd030e4bfdf59181fca36"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8427/args.json",
+        "sha256": "f6fbf1b7d7d476c18f23f8aa5072cc99bc818fce415ecd2b66d7eedf657b1f73"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/inverse_object_aware_seed8429/args.json",
+        "sha256": "bb2390890522e251dcd83c17c8c47c25876f830136f91862121fd572c8001c0d"
+      }
+    ]
+  },
+  "rank8/kd": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "gaussian",
+      "lambda_adapter": 0.0,
+      "lambda_cls": 0.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.55,
+      "sigma_inh": 1.25,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "6d11b6961985da65ff0c017dd03159ad262b910e7790e1b335040d72cc09fb4d",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8411/args.json",
+        "sha256": "e3195ff5566d435b60b7b7ffeee9021c724f8aa81ef4ceda1425e0f583837166"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8413/args.json",
+        "sha256": "d612bdbf1284185c401c1a7dfba1d47fbdd82c9622233a47caa85c57d6b52acb"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8415/args.json",
+        "sha256": "dc9a9e46bb3d0301e924b5b089661ce276b332fa95220997491a004092c6a4da"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8417/args.json",
+        "sha256": "7fb78d3aff217a6b374d2462f69b632ad76d842fa071ec972578f060d47785f2"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8419/args.json",
+        "sha256": "cfba22df52b7adf866b87ea34920a1681d5aa25db3150251f866d83d67cb916c"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8421/args.json",
+        "sha256": "fb06e0dce09684329a907d1adf68adab2fa42f5f85a8684a97eebaf7b4472986"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8423/args.json",
+        "sha256": "36211dab9b486a30a1aa391dbf4f217beaa557195ae2bc71c3b651ccfbbc74a7"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8425/args.json",
+        "sha256": "4e747c8d3b9229a3828233e91240f24c9a86f4948285402093ddc228a786b9c9"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8427/args.json",
+        "sha256": "f99034c5941f893f9bd8ecd6e5e72ece0cd549762e6109c5746a55cfe08b07f8"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/kd_seed8429/args.json",
+        "sha256": "4d494bebcbb5ac7599c636e1576c786be1baf7e8157871a51d56e27c7f911cc3"
+      }
+    ]
+  },
+  "rank8/laplace_object_aware": {
+    "config": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "adapter_distance_metric": "projective",
+      "adapter_scale": 0.5,
+      "batch_size": 128,
+      "class_order": "semantic",
+      "classes_per_task": 10,
+      "epochs": 40,
+      "feature_cache": "source_workspace/data/cub200/cub200_resnet18_features.pt",
+      "grad_clip": 5.0,
+      "kd_temperature": 3.0,
+      "kernel_family": "laplace",
+      "lambda_adapter": 0.2,
+      "lambda_cls": 1.0,
+      "lambda_kd": 2.0,
+      "lr": 0.001,
+      "methods": [
+        "biocs_kd"
+      ],
+      "num_classes": 200,
+      "prototype_distance_metric": "cosine",
+      "rank": 8,
+      "sigma_exc": 0.9342539803168209,
+      "sigma_inh": 2.1233045007200477,
+      "tau": 12.0,
+      "weight_decay": 0.001
+    },
+    "normalized_sha256": "629c7976e4139602ddd22617fbfdebd9caa0f9bfbf647522fafd45cc32f4c756",
+    "source_configs": [
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8411/args.json",
+        "sha256": "52572c27d9e99b00387a5ffb46c436bdd4e39376fd260ca7e7b71148dc5e0b68"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8413/args.json",
+        "sha256": "041617362262e85241c1859611fd8e1a13249d3cda1cfe3812ae574766233945"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8415/args.json",
+        "sha256": "14a892aa7d0a0fbac97a5d0e0967258b8e3100aff4356429eefc357bbbd08329"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8417/args.json",
+        "sha256": "caabab8ffe036e10ce051b719ecdb77ca01f47158c7654a52df1c32255e37346"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8419/args.json",
+        "sha256": "7c64370f13d1416271ae4ad8573a10ab5c485a2065365685d64fde27df0812ae"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8421/args.json",
+        "sha256": "297e4d9f8a707ee0dd049b5a399a617bb24b93e6c5b02bec159fe2d0bc6d539d"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8423/args.json",
+        "sha256": "48d90140defe864435b9b4b7fd7fd2964819e4889ae9c13e0394553e35ed12c6"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8425/args.json",
+        "sha256": "a90c4d17274543941422f1b0ba249d5af9e3eb874f107b3333140440d4894b7b"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8427/args.json",
+        "sha256": "d8d8c0055da19023b2e4a42369d43351ebc58c61fbcf5b69daa5aecfc10ab92b"
+      },
+      {
+        "path": "raw/adapter/cub200/rank8/laplace_object_aware_seed8429/args.json",
+        "sha256": "e5f459f865e157548586af2b5f49e32bca7870a40bb9e4185b7baba6975cc11b"
+      }
+    ]
+  }
+}

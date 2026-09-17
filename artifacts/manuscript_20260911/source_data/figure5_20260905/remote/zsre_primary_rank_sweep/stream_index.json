@@ -1,0 +1,171 @@
+{
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json",
+  "dataset_sha256": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+  "independent_100_seeds": [
+    12231,
+    12232,
+    12233,
+    12234,
+    12235,
+    12236,
+    12237,
+    12238,
+    12239,
+    12240
+  ],
+  "protocol": "ssr_cosmos_ke_lora_rank_streams_v1",
+  "shared_250_seeds": [
+    12131,
+    12132,
+    12133,
+    12134,
+    12135,
+    12136,
+    12137,
+    12138,
+    12139,
+    12140
+  ],
+  "streams": [
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12131.json",
+      "seed": 12131,
+      "sha256": "2738f2250d47a3a9da0fa5bbc0c9b01d1bf9af6f580df45e44682992d1005a2a",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12132.json",
+      "seed": 12132,
+      "sha256": "5baa9017edcfdd9121a9aeb387c4db225599e01c74c3a1b904ae17a1a855a6a9",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12133.json",
+      "seed": 12133,
+      "sha256": "0e134f86598c382a415879508bfa3927062ce414861c16a2623cfeae15fdb6a1",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12134.json",
+      "seed": 12134,
+      "sha256": "2d799484cb0deab0cb3cf2019bb4e1886df33eeee71edc09594aa461984d6829",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12135.json",
+      "seed": 12135,
+      "sha256": "94747b80f6385d09495478512a615acdf18de4988d01229b2748fd99927dabeb",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12136.json",
+      "seed": 12136,
+      "sha256": "7cc89c755ca554819120449e049d4ca549ef9b76edc669ee64de3c5ae77f2320",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12137.json",
+      "seed": 12137,
+      "sha256": "f371204cb218dd883c4e936d8ffe922a759eed6611e9629db6df5775c6ca690b",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12138.json",
+      "seed": 12138,
+      "sha256": "4770b6ee381c210cc31920847982e37dae86ba61b942ab3f09e40ed88f7270e4",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12139.json",
+      "seed": 12139,
+      "sha256": "c87eca554dfa1e730531f4deccd7952df69b3be3c9c0876b3cbd3b276e817b05",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "rank32_shared_250",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v36_ke_lora_rank_scaling_3node_20260831_r1_launcher_status/streams/confirmation_seed_12140.json",
+      "seed": 12140,
+      "sha256": "15fb0e0d5b3476e6cc8916f21700068152947dc95de3a101d3f285d7226bc2db",
+      "source": "ssr_v36_confirmation_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12231.json",
+      "seed": 12231,
+      "sha256": "bb17fc9fb3ed5bc6fc80145b8586021c94ff1f49c7bdb39c2e85824441d64477",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12232.json",
+      "seed": 12232,
+      "sha256": "359139dbcec7ff97d0e4db460941fcd9cc6fe51b40c5f5bef540374eacaf5585",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12233.json",
+      "seed": 12233,
+      "sha256": "bf669ff4700e7538ce9e0cf6d147d4125183c06b243e0940d64c836162d0bb95",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12234.json",
+      "seed": 12234,
+      "sha256": "2a025378f594fd0337dd14584c29cee6f8e9e4015cce91245c3f6c8ab9908b3d",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12235.json",
+      "seed": 12235,
+      "sha256": "92886b70654507b7694f5327200f32416e785aa3e22010b2fe516c452869ac9c",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12236.json",
+      "seed": 12236,
+      "sha256": "f7657710baa0537201c00b921957c780221db7b5cf2e9446107ae69b291a7119",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12237.json",
+      "seed": 12237,
+      "sha256": "c53cd66411a9c05c8f9b7fedd13928e425f0063e487c3651ccbc522c281a71d4",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12238.json",
+      "seed": 12238,
+      "sha256": "2e551b8d3ad3a7c8d484d5b46a595c1b3ba21ce750f478a173c3cdcdaaa9681d",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12239.json",
+      "seed": 12239,
+      "sha256": "3fc47e6a08247e9c868ddb7d744056d0d07c256b2b5d01c8cc5c7b5cecfba2df",
+      "source": "new_predeclared_stream"
+    },
+    {
+      "cohort": "independent_100",
+      "path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lora_rank100_rank32_250_a800_3node_20260831_r1_launcher_status/streams/independent_100_seed_12240.json",
+      "seed": 12240,
+      "sha256": "a306c1601306e0d47666e122103ac7827c390a47b7f32f4f004b0c63b6a68518",
+      "source": "new_predeclared_stream"
+    }
+  ]
+}

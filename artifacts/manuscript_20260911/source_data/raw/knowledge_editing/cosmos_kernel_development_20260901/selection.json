@@ -1,0 +1,193 @@
+{
+  "all_candidates": [
+    {
+      "family": "gaussian",
+      "mean_delta_pp": {
+        "efficacy": 0.3333333333333333,
+        "final_history_efficacy": -3.333333333333334,
+        "final_history_locality": 1.0042270637858834,
+        "locality": 0.3266444612032832,
+        "pre_edit_output_consistency": -0.8643846958875656
+      },
+      "seed_delta_pp": [
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": 1.9999999999999982,
+          "final_history_locality": -1.7410103785103779,
+          "locality": 1.6937728937728878,
+          "pre_edit_output_consistency": -0.5756346508860588,
+          "seed": 15001
+        },
+        {
+          "efficacy": 1.0,
+          "final_history_efficacy": -3.0,
+          "final_history_locality": 2.433397974574433,
+          "locality": 0.6725140056022436,
+          "pre_edit_output_consistency": -0.30353935435414314,
+          "seed": 15002
+        },
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": -9.0,
+          "final_history_locality": 2.3202935952935952,
+          "locality": -1.3863535157652818,
+          "pre_edit_output_consistency": -1.7139800824224949,
+          "seed": 15003
+        }
+      ]
+    },
+    {
+      "family": "laplace",
+      "mean_delta_pp": {
+        "efficacy": 0.3333333333333333,
+        "final_history_efficacy": -4.666666666666667,
+        "final_history_locality": 1.070438820438819,
+        "locality": -0.4243884383590286,
+        "pre_edit_output_consistency": -1.113802505036195
+      },
+      "seed_delta_pp": [
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": 0.0,
+          "final_history_locality": 0.5684773559773575,
+          "locality": 1.9028638028637985,
+          "pre_edit_output_consistency": -0.16149906441569328,
+          "seed": 15001
+        },
+        {
+          "efficacy": 1.0,
+          "final_history_efficacy": -6.0,
+          "final_history_locality": -0.1022297147297202,
+          "locality": -0.5419382088499738,
+          "pre_edit_output_consistency": -0.4056028090417385,
+          "seed": 15002
+        },
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": -8.0,
+          "final_history_locality": 2.74506882006882,
+          "locality": -2.6340909090909106,
+          "pre_edit_output_consistency": -2.7743056416511536,
+          "seed": 15003
+        }
+      ]
+    },
+    {
+      "family": "cauchy",
+      "mean_delta_pp": {
+        "efficacy": 0.0,
+        "final_history_efficacy": -1.3333333333333333,
+        "final_history_locality": 3.2934454434454437,
+        "locality": 0.21762921174685582,
+        "pre_edit_output_consistency": -0.7284550927579403
+      },
+      "seed_delta_pp": [
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": 0.0,
+          "final_history_locality": 2.2279359529359555,
+          "locality": 0.17205988455988397,
+          "pre_edit_output_consistency": 0.19017048180103302,
+          "seed": 15001
+        },
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": 2.0,
+          "final_history_locality": 1.3274063354945689,
+          "locality": 1.428923690688391,
+          "pre_edit_output_consistency": -0.8932744152843952,
+          "seed": 15002
+        },
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": -6.0,
+          "final_history_locality": 6.324994041905805,
+          "locality": -0.9480959400077076,
+          "pre_edit_output_consistency": -1.4822613447904587,
+          "seed": 15003
+        }
+      ]
+    },
+    {
+      "family": "inverse",
+      "mean_delta_pp": {
+        "efficacy": 0.3333333333333333,
+        "final_history_efficacy": -1.6666666666666667,
+        "final_history_locality": 1.3116593101887197,
+        "locality": 0.28658095716919146,
+        "pre_edit_output_consistency": -0.3204573256274064
+      },
+      "seed_delta_pp": [
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": 0.9999999999999982,
+          "final_history_locality": 0.22191142191142355,
+          "locality": 1.9230158730158706,
+          "pre_edit_output_consistency": 1.0927030816674232,
+          "seed": 15001
+        },
+        {
+          "efficacy": 1.0,
+          "final_history_efficacy": -4.0,
+          "final_history_locality": -0.15093476784653603,
+          "locality": 0.03918801786448789,
+          "pre_edit_output_consistency": -1.208805013448,
+          "seed": 15002
+        },
+        {
+          "efficacy": 0.0,
+          "final_history_efficacy": -1.9999999999999982,
+          "final_history_locality": 3.8640012765012717,
+          "locality": -1.1024610193727842,
+          "pre_edit_output_consistency": -0.8452700451016426,
+          "seed": 15003
+        }
+      ]
+    }
+  ],
+  "development_seeds": [
+    15001,
+    15002,
+    15003
+  ],
+  "schema_version": "ssr_cosmos_ke_kernel_selection_v1",
+  "selected_candidate": {
+    "family": "cauchy",
+    "mean_delta_pp": {
+      "efficacy": 0.0,
+      "final_history_efficacy": -1.3333333333333333,
+      "final_history_locality": 3.2934454434454437,
+      "locality": 0.21762921174685582,
+      "pre_edit_output_consistency": -0.7284550927579403
+    },
+    "seed_delta_pp": [
+      {
+        "efficacy": 0.0,
+        "final_history_efficacy": 0.0,
+        "final_history_locality": 2.2279359529359555,
+        "locality": 0.17205988455988397,
+        "pre_edit_output_consistency": 0.19017048180103302,
+        "seed": 15001
+      },
+      {
+        "efficacy": 0.0,
+        "final_history_efficacy": 2.0,
+        "final_history_locality": 1.3274063354945689,
+        "locality": 1.428923690688391,
+        "pre_edit_output_consistency": -0.8932744152843952,
+        "seed": 15002
+      },
+      {
+        "efficacy": 0.0,
+        "final_history_efficacy": -6.0,
+        "final_history_locality": 6.324994041905805,
+        "locality": -0.9480959400077076,
+        "pre_edit_output_consistency": -1.4822613447904587,
+        "seed": 15003
+      }
+    ]
+  },
+  "selected_family": "cauchy",
+  "selection_rule": "lexicographically maximize mean paired final-history efficacy, final-history locality, pre-edit consistency, and immediate efficacy",
+  "stage": "development_only"
+}

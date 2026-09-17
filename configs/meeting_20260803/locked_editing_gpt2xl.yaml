@@ -1,0 +1,138 @@
+schema_version: "1.0"
+lock_name: meeting_20260803_gpt2xl_editing
+status: locked_for_confirmation
+
+source:
+  selection_lock: /unify/ydchen/unidit/bioreg/results/ssr_decisive_3node_20260803_r1/node_a/SELECTION_LOCK.json
+  archived_selection_lock: artifacts/meeting_20260803/provenance/editing_lock/SELECTION_LOCK.json
+  selection_protocol_hash: 424b579254f875f3ea86d3f1414f0066573690ed68509744f481fbaf6ccbb7d4
+  selection_lock_file_sha256: 5b73a57120ef5e68cd5f1a833996edefc6aa9f4facd7182d9dcf56b6c68f7dba
+  archived_representative_result: artifacts/meeting_20260803/provenance/editing_lock/zsre_full_projective_seed9325_results.json
+  representative_result_sha256: d9ae85286b73a94841cb2830d3e66ae0fbd4353e9b8960fae6c67bf4065e2c5a
+  selected_candidate_id: gaussian_reference_projective_l0p003
+  selected_at: "2026-08-03T19:05:05+0800"
+  protocol_note: >-
+    Kernel family, primary mapping, SSR strength, sigmas, target layers,
+    row selection, and row budget are locked by the decisive development
+    screen. The anchor, spectral, optimizer, amplitude, target, and stream
+    values below were verified against the archived selected validation
+    results.json on 2026-08-03; they are historical scaffold values rather
+    than quantities selected by the kernel screen.
+  archive_status: verified_2026-08-03
+
+model:
+  name: gpt2-xl
+  default_cluster_path: /unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl
+  fingerprint_sha256: 1dd2dbaeb9f79d6422d78a33540a3d8c8641144ec6ba4e8a6fe4293f616729f1
+  fingerprint_files:
+    config.json: be48115d52314bc27327e160bf10197760db02ea689d10adb24db4102edf7a8a
+    generation_config.json: b90eadacf585a743a30ea51e8b5c88b8d282a2a34dc0c7e556d0987cdbd68805
+    merges.txt: 1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5
+    model.safetensors: 0f8b28eb05a8075f48b61b6f35332978c74fc7763fa9fb4051a1c30511736a6a
+    tokenizer.json: 8414cab924d8b9b33013f0d221c5862f365ee9be39c5c2bfae8a5a9e970478a6
+    tokenizer_config.json: 5e04eb606e3a1583530a42e36c2a6b6615c86f34fe77e44d9ddeb43ff940931f
+    vocab.json: 196139668be63f3b5d6574427317ae82f612a97c5d1cdaf36ed2256dbf636783
+  target_layers: [16, 17, 18]
+  force_text_only: true
+  local_files_only: true
+
+# The editor updates the ``weight`` tensors of the selected GPT-2 XL MLP
+# projections directly.  It does not insert LoRA adapters in this cohort.
+editor:
+  target_module_regex: "(c_proj|down_proj)$"
+  max_target_modules: 0
+  editable_parameter: weight
+  adapter_mode: none
+
+# ``auto`` resolves to bf16 on supported CUDA hardware and fp16 otherwise;
+# the resolved dtype is recorded in each run manifest.  An empty device map
+# and attention implementation deliberately retain the standard Transformers
+# placement and attention implementation rather than relying on an implicit
+# accelerate or flash-attention configuration.
+runtime:
+  editor_device: cuda
+  model_dtype: auto
+  device_map: ""
+  attention_implementation: ""
+  cuda_visible_devices: inherited_from_scheduler
+  determinism_policy: seeded_best_effort
+  cudnn_deterministic: false
+  cudnn_benchmark: false
+  use_deterministic_algorithms: false
+  deterministic_algorithms_warn_only: false
+
+datasets:
+  zsre:
+    path: dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json
+    sha256: 0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c
+  cf:
+    path: dataset/knowedit/benchmark/wiki_counterfact/test_cf.json
+    sha256: efc01ba398dfe04975939f729aab45523addb3c6b3cf41d7429ba5de1d45225b
+  recent:
+    path: dataset/knowedit/benchmark/wiki_recent/recent_test.json
+    sha256: e5c4ce6de1e8e2d10d892164ad6f4cbd28c976ed509e29e78ae853b01de1797b
+
+objective:
+  recipes: [plain, anchor, spectral, stabilized, ssr_only, full]
+  mapping_dependent_recipes: [ssr_only, full]
+  lambda_ssr: 0.003
+  lambda_anchor: 0.001
+  lambda_spectral: 0.01
+
+kernel:
+  family: gaussian
+  primary_distance_mapping: projective
+  confirmation_distance_mappings: [projective, cosine]
+  a_exc: 1.2
+  a_inh: 0.9
+  sigma_exc: 0.22
+  sigma_inh: 0.60
+  target: delta
+  row_selection: active_top
+  max_spatial_rows: 256
+
+optimizer:
+  name: adam
+  lr: 0.0001
+  num_steps: 25
+  beta1: 0.9
+  beta2: 0.999
+  eps: 1.0e-8
+  weight_decay: 0.0
+  gradient_clip_norm: 1.0
+
+sequence:
+  max_length: 64
+  max_new_tokens: 32
+
+evaluation:
+  name: custom_substring_any_ground_truth_all_items
+  version: "1.0"
+  protocol_sha256: 57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2
+  require_legacy_compatible_input: true
+
+phases:
+  screen:
+    datasets: [zsre, cf, recent]
+    seeds: [9301, 9303]
+    data_offset: 300
+    n_edits: 50
+    evaluate_history: true
+    history_checkpoints: []
+    history_max_samples: 0
+  confirm:
+    datasets: [zsre, cf, recent]
+    seeds: [9311, 9313, 9315, 9317, 9319, 9321, 9323, 9325, 9327, 9329]
+    data_offset: 500
+    n_edits: 100
+    evaluate_history: true
+    history_checkpoints: [50]
+    history_max_samples: 0
+
+pairing:
+  protocol_sha256: dcd96c9fa03928efe7e86a0a029a9765e9aac4af971487c4036a81145619882d
+  identity: [dataset, model, seed, data_offset, n_edits, dataset_hash]
+  invariant: >-
+    Every recipe and distance-mapping condition for a paired seed consumes the
+    identical contiguous dataset slice in source-file order and uses that seed
+    for Python, NumPy, PyTorch, and SSR row selection.

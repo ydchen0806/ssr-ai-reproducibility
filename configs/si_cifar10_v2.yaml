@@ -1,0 +1,26 @@
+dataset:
+  data_root: ./dataset
+  n_tasks: 5
+  name: split_cifar10
+experiment_name: si_split_cifar10
+method:
+  name: si
+  si_epsilon: 0.1
+  si_lambda: 1.0
+model:
+  name: resnet18
+training:
+  batch_size: 128
+  epochs: 50
+  gamma: 0.1
+  grad_clip: 5.0
+  lr: 0.1
+  milestones:
+  - 35
+  - 45
+  momentum: 0.9
+  num_workers: 4
+  optimizer: sgd
+  scheduler: multistep
+  use_amp: true
+  weight_decay: 0.0
