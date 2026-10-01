@@ -1,0 +1,1704 @@
+{
+  "run_label": "FTBaselineEditor",
+  "editor_class": "FTBaselineEditor",
+  "model": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/models/Qwen2.5-7B-Instruct",
+  "target_layers": [
+    18,
+    20,
+    22
+  ],
+  "target_module_regex": "(down_proj)$",
+  "max_target_modules": 0,
+  "recipe": "plain",
+  "objective_components": [
+    "task"
+  ],
+  "objective": {
+    "task": true,
+    "ssr": false,
+    "anchor": false,
+    "spectral": false
+  },
+  "use_ssr": false,
+  "use_anchor": false,
+  "use_spectral": false,
+  "lambda_ssr": 0.0,
+  "lambda_biocs": 0.0,
+  "lambda_spectral": 0.0,
+  "lambda_anchor": 0.0,
+  "kernel_family": "gaussian",
+  "a_exc": 1.0,
+  "a_inh": 0.8,
+  "sigma_exc": 0.3,
+  "sigma_inh": 0.8,
+  "biocs_target": "delta",
+  "distance_metric": "cosine",
+  "distance_mapping": null,
+  "row_selection": "fixed_random",
+  "max_spatial_rows": 128,
+  "ssr_mode": "independent_delta_v1",
+  "history_neighbors": 3,
+  "history_neighbor_policy": "semantic",
+  "history_kernel_mode": "uniform",
+  "history_margin": 0.15,
+  "history_limit": 128,
+  "sampler_seed": 13104,
+  "lr": 0.0001,
+  "num_steps": 25,
+  "max_length": 64,
+  "max_new_tokens": 32,
+  "seed": "13104",
+  "model_dtype": "bf16",
+  "device_map": "",
+  "force_text_only": "1",
+  "locality_evaluator": "custom_substring_any_ground_truth_all_items",
+  "locality_evaluator_version": "1.0",
+  "locality_evaluator_protocol_hash": "57ea2e5960ad3b442d0c4f9c76eaa3d84db64906ab5dd3667dca14d7f88d12e2",
+  "n_edits": 100,
+  "requested_n_edits": 100,
+  "attempted": 100,
+  "succeeded": 100,
+  "failed": 0,
+  "status": "complete",
+  "elapsed_s": 2177.2,
+  "efficacy": 100.0,
+  "rephrase": 95.0,
+  "portability": 73.59895747230811,
+  "locality": 9.080058830058828,
+  "locality_role": "auxiliary_post_edit_relation_consistency",
+  "data_offset": 0,
+  "data_indices_sha256": "9bdfde2ef47d75d9a4f7799280a50af45ea404ba1c8e038fa6fc60ad6e98db5f",
+  "data_selection": "index_manifest",
+  "peak_cuda_allocated_mb": 16590.5703125,
+  "peak_cuda_reserved_mb": 16772.0,
+  "failures": [],
+  "pre_edit_output_consistency": {
+    "enabled": true,
+    "probe_protocol": {
+      "n_probes": 64,
+      "n_eligible": 64,
+      "n_empty_pre_edit": 0,
+      "top_k": 32,
+      "evaluator": "pre_edit_next_token_topk_js_similarity",
+      "evaluator_version": "2.0",
+      "protocol_hash": "49c49fad46768be1c6faccfde2c0178a71cefd45e098ef8515293377097bfe58"
+    },
+    "requested_checkpoints": [
+      25,
+      50,
+      100
+    ],
+    "checkpoints": [
+      {
+        "after_edits": 25,
+        "score": 0.33756708540022373,
+        "n_probes": 64,
+        "n_scored": 64,
+        "n_skipped_empty_pre_edit": 0,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "protocol_hash": "49c49fad46768be1c6faccfde2c0178a71cefd45e098ef8515293377097bfe58",
+        "evaluations": [
+          {
+            "probe_id": "cf-row-612-b9094a91eb9a03d2",
+            "eligible": true,
+            "js_similarity": 0.11882632970809937,
+            "js_divergence": 0.610783040523529
+          },
+          {
+            "probe_id": "cf-row-232-33477a6e6c67ea38",
+            "eligible": true,
+            "js_similarity": 0.5890487432479858,
+            "js_divergence": 0.28484973311424255
+          },
+          {
+            "probe_id": "cf-row-294-d6b6f8acfefe38c7",
+            "eligible": true,
+            "js_similarity": 0.615422248840332,
+            "js_divergence": 0.26656898856163025
+          },
+          {
+            "probe_id": "cf-row-80-80258b42f5291b31",
+            "eligible": true,
+            "js_similarity": 0.41733938455581665,
+            "js_divergence": 0.4038695693016052
+          },
+          {
+            "probe_id": "cf-row-59-4ce87736b725493c",
+            "eligible": true,
+            "js_similarity": 0.5404057502746582,
+            "js_divergence": 0.3185664713382721
+          },
+          {
+            "probe_id": "cf-row-286-1453667b1af821f1",
+            "eligible": true,
+            "js_similarity": 0.5299890637397766,
+            "js_divergence": 0.3257867693901062
+          },
+          {
+            "probe_id": "cf-row-802-fefabe32fa3c7b97",
+            "eligible": true,
+            "js_similarity": 0.11766314506530762,
+            "js_divergence": 0.6115893125534058
+          },
+          {
+            "probe_id": "cf-row-558-7c547c5cd85124eb",
+            "eligible": true,
+            "js_similarity": 0.4888858199119568,
+            "js_divergence": 0.3542773723602295
+          },
+          {
+            "probe_id": "cf-row-639-f51b7f7feb6b1389",
+            "eligible": true,
+            "js_similarity": 0.08599907159805298,
+            "js_divergence": 0.6335371732711792
+          },
+          {
+            "probe_id": "cf-row-88-b66b649ccd2df856",
+            "eligible": true,
+            "js_similarity": 0.3616691827774048,
+            "js_divergence": 0.4424572288990021
+          },
+          {
+            "probe_id": "cf-row-360-319b5be5c79b119f",
+            "eligible": true,
+            "js_similarity": 0.2671908736228943,
+            "js_divergence": 0.5079445838928223
+          },
+          {
+            "probe_id": "cf-row-563-1c01fcccedf0c8e5",
+            "eligible": true,
+            "js_similarity": 0.1543756127357483,
+            "js_divergence": 0.5861421823501587
+          },
+          {
+            "probe_id": "cf-row-622-ad067ebbcf1567d6",
+            "eligible": true,
+            "js_similarity": 0.05570328235626221,
+            "js_divergence": 0.6545366048812866
+          },
+          {
+            "probe_id": "cf-row-298-521f9ea6a682c400",
+            "eligible": true,
+            "js_similarity": 0.5226882696151733,
+            "js_divergence": 0.33084729313850403
+          },
+          {
+            "probe_id": "cf-row-150-f3673fe57a0d3244",
+            "eligible": true,
+            "js_similarity": 0.21170169115066528,
+            "js_divergence": 0.5464067459106445
+          },
+          {
+            "probe_id": "cf-row-382-61eaec8747554e97",
+            "eligible": true,
+            "js_similarity": 0.5341184139251709,
+            "js_divergence": 0.32292449474334717
+          },
+          {
+            "probe_id": "cf-row-695-4ffdeddbdaf68ca4",
+            "eligible": true,
+            "js_similarity": 0.6439803242683411,
+            "js_divergence": 0.24677404761314392
+          },
+          {
+            "probe_id": "cf-row-336-35e2fad06a9d1615",
+            "eligible": true,
+            "js_similarity": 0.31732964515686035,
+            "js_divergence": 0.4731910526752472
+          },
+          {
+            "probe_id": "cf-row-37-53ef34cc5b24ae7c",
+            "eligible": true,
+            "js_similarity": 0.04431813955307007,
+            "js_divergence": 0.6624282002449036
+          },
+          {
+            "probe_id": "cf-row-340-1c1ab0a29933dc08",
+            "eligible": true,
+            "js_similarity": 0.5418990254402161,
+            "js_divergence": 0.31753140687942505
+          },
+          {
+            "probe_id": "cf-row-387-380de1e5895e48b0",
+            "eligible": true,
+            "js_similarity": 0.574776828289032,
+            "js_divergence": 0.29474225640296936
+          },
+          {
+            "probe_id": "cf-row-255-c619dfbb984c2df5",
+            "eligible": true,
+            "js_similarity": 0.06552022695541382,
+            "js_divergence": 0.6477320194244385
+          },
+          {
+            "probe_id": "cf-row-60-f294bc18eff739c3",
+            "eligible": true,
+            "js_similarity": 0.44176894426345825,
+            "js_divergence": 0.3869363069534302
+          },
+          {
+            "probe_id": "cf-row-400-05b3797f54e99814",
+            "eligible": true,
+            "js_similarity": 0.6775782704353333,
+            "js_divergence": 0.22348572313785553
+          },
+          {
+            "probe_id": "cf-row-381-78610ffad44fb851",
+            "eligible": true,
+            "js_similarity": 0.4077260494232178,
+            "js_divergence": 0.41053304076194763
+          },
+          {
+            "probe_id": "cf-row-582-8db344e60d4e7d16",
+            "eligible": true,
+            "js_similarity": 0.443356990814209,
+            "js_divergence": 0.38583552837371826
+          },
+          {
+            "probe_id": "cf-row-225-06ad5d9f454aa3cb",
+            "eligible": true,
+            "js_similarity": 0.3543224334716797,
+            "js_divergence": 0.44754961133003235
+          },
+          {
+            "probe_id": "cf-row-320-1a8bc349405cd93d",
+            "eligible": true,
+            "js_similarity": 0.0328105092048645,
+            "js_divergence": 0.6704046726226807
+          },
+          {
+            "probe_id": "cf-row-780-ac3792d45d798b02",
+            "eligible": true,
+            "js_similarity": 0.5539448261260986,
+            "js_divergence": 0.3091818690299988
+          },
+          {
+            "probe_id": "cf-row-499-a76e5d7ad6e13c1e",
+            "eligible": true,
+            "js_similarity": 0.20605671405792236,
+            "js_divergence": 0.5503195524215698
+          },
+          {
+            "probe_id": "cf-row-633-4d9b599b0f58b408",
+            "eligible": true,
+            "js_similarity": 0.4977859854698181,
+            "js_divergence": 0.3481082320213318
+          },
+          {
+            "probe_id": "cf-row-105-e0440187754446ae",
+            "eligible": true,
+            "js_similarity": 0.299731969833374,
+            "js_divergence": 0.4853888154029846
+          },
+          {
+            "probe_id": "cf-row-752-2ae7234b729a5429",
+            "eligible": true,
+            "js_similarity": 0.3412894010543823,
+            "js_divergence": 0.4565833806991577
+          },
+          {
+            "probe_id": "cf-row-70-e1742483bd708562",
+            "eligible": true,
+            "js_similarity": 0.16346418857574463,
+            "js_divergence": 0.5798424482345581
+          },
+          {
+            "probe_id": "cf-row-524-af0f74f6fb04505f",
+            "eligible": true,
+            "js_similarity": 0.5290406942367554,
+            "js_divergence": 0.326444149017334
+          },
+          {
+            "probe_id": "cf-row-757-25e8ac282578a631",
+            "eligible": true,
+            "js_similarity": 0.1984877586364746,
+            "js_divergence": 0.5555659532546997
+          },
+          {
+            "probe_id": "cf-row-745-7f0036240075e99e",
+            "eligible": true,
+            "js_similarity": 0.08405959606170654,
+            "js_divergence": 0.6348814964294434
+          },
+          {
+            "probe_id": "cf-row-788-0937e69251f58ebd",
+            "eligible": true,
+            "js_similarity": 0.26552271842956543,
+            "js_divergence": 0.5091008543968201
+          },
+          {
+            "probe_id": "cf-row-699-ba9e3123b0a09b5c",
+            "eligible": true,
+            "js_similarity": 0.5719250440597534,
+            "js_divergence": 0.296718955039978
+          },
+          {
+            "probe_id": "cf-row-140-66bf91f30aedc921",
+            "eligible": true,
+            "js_similarity": 0.31545722484588623,
+            "js_divergence": 0.47448891401290894
+          },
+          {
+            "probe_id": "cf-row-173-7bff30bf64db69c5",
+            "eligible": true,
+            "js_similarity": 0.12940645217895508,
+            "js_divergence": 0.6034494638442993
+          },
+          {
+            "probe_id": "cf-row-760-ae5c4a95131aac29",
+            "eligible": true,
+            "js_similarity": 0.37970995903015137,
+            "js_divergence": 0.4299522936344147
+          },
+          {
+            "probe_id": "cf-row-547-747593b5b60a1e74",
+            "eligible": true,
+            "js_similarity": 0.22080957889556885,
+            "js_divergence": 0.5400936603546143
+          },
+          {
+            "probe_id": "cf-row-270-30f1a145c8d628fd",
+            "eligible": true,
+            "js_similarity": 0.09269434213638306,
+            "js_divergence": 0.6288963556289673
+          },
+          {
+            "probe_id": "cf-row-502-972e02eeebe39396",
+            "eligible": true,
+            "js_similarity": 0.2643325924873352,
+            "js_divergence": 0.5099257826805115
+          },
+          {
+            "probe_id": "cf-row-824-5d852fd3abcab75c",
+            "eligible": true,
+            "js_similarity": 0.6194599270820618,
+            "js_divergence": 0.26377028226852417
+          },
+          {
+            "probe_id": "cf-row-685-c038af8d200b22a9",
+            "eligible": true,
+            "js_similarity": 0.1008528470993042,
+            "js_divergence": 0.6232413053512573
+          },
+          {
+            "probe_id": "cf-row-180-c97539a6b235f7d7",
+            "eligible": true,
+            "js_similarity": 0.2729972004890442,
+            "js_divergence": 0.5039199590682983
+          },
+          {
+            "probe_id": "cf-row-710-da7d76439046d317",
+            "eligible": true,
+            "js_similarity": 0.41861844062805176,
+            "js_divergence": 0.4029829800128937
+          },
+          {
+            "probe_id": "cf-row-525-cbee654f0a3504f4",
+            "eligible": true,
+            "js_similarity": 0.28600841760635376,
+            "js_divergence": 0.49490126967430115
+          },
+          {
+            "probe_id": "cf-row-218-f8bad880c415ef9a",
+            "eligible": true,
+            "js_similarity": 0.0950576663017273,
+            "js_divergence": 0.6272582411766052
+          },
+          {
+            "probe_id": "cf-row-304-b166ff27a77ed7ef",
+            "eligible": true,
+            "js_similarity": 0.4853839874267578,
+            "js_divergence": 0.35670462250709534
+          },
+          {
+            "probe_id": "cf-row-111-7cd8c0b836c25b6b",
+            "eligible": true,
+            "js_similarity": 0.062338054180145264,
+            "js_divergence": 0.6499377489089966
+          },
+          {
+            "probe_id": "cf-row-391-1d7698be6685f17b",
+            "eligible": true,
+            "js_similarity": 0.4855285882949829,
+            "js_divergence": 0.3566043972969055
+          },
+          {
+            "probe_id": "cf-row-750-2f4efb624544b794",
+            "eligible": true,
+            "js_similarity": 0.06878834962844849,
+            "js_divergence": 0.6454667448997498
+          },
+          {
+            "probe_id": "cf-row-484-e21c0e18afcb5e8d",
+            "eligible": true,
+            "js_similarity": 0.14732199907302856,
+            "js_divergence": 0.5910313725471497
+          },
+          {
+            "probe_id": "cf-row-810-0c5486b1b2dcc120",
+            "eligible": true,
+            "js_similarity": 0.4034266471862793,
+            "js_divergence": 0.4135131537914276
+          },
+          {
+            "probe_id": "cf-row-631-47bffce2aaf97c3e",
+            "eligible": true,
+            "js_similarity": 0.0843774676322937,
+            "js_divergence": 0.6346611976623535
+          },
+          {
+            "probe_id": "cf-row-503-e04a56cbed91e3a4",
+            "eligible": true,
+            "js_similarity": 0.6367006301879883,
+            "js_divergence": 0.251819908618927
+          },
+          {
+            "probe_id": "cf-row-2-ef292f4bab19c093",
+            "eligible": true,
+            "js_similarity": 0.4756286144256592,
+            "js_divergence": 0.3634665608406067
+          },
+          {
+            "probe_id": "cf-row-165-daf4e8cbcc0989ec",
+            "eligible": true,
+            "js_similarity": 0.4947349429130554,
+            "js_divergence": 0.3502230644226074
+          },
+          {
+            "probe_id": "cf-row-614-c79e1e4da720ee66",
+            "eligible": true,
+            "js_similarity": 0.8118064999580383,
+            "js_divergence": 0.13044580817222595
+          },
+          {
+            "probe_id": "cf-row-704-76585f84859d985b",
+            "eligible": true,
+            "js_similarity": 0.2352927327156067,
+            "js_divergence": 0.5300546884536743
+          },
+          {
+            "probe_id": "cf-row-5-76ac7f333437d50a",
+            "eligible": true,
+            "js_similarity": 0.14983713626861572,
+            "js_divergence": 0.5892879962921143
+          }
+        ]
+      },
+      {
+        "after_edits": 50,
+        "score": 0.3619959559291601,
+        "n_probes": 64,
+        "n_scored": 64,
+        "n_skipped_empty_pre_edit": 0,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "protocol_hash": "49c49fad46768be1c6faccfde2c0178a71cefd45e098ef8515293377097bfe58",
+        "evaluations": [
+          {
+            "probe_id": "cf-row-612-b9094a91eb9a03d2",
+            "eligible": true,
+            "js_similarity": 0.12192553281784058,
+            "js_divergence": 0.6086348295211792
+          },
+          {
+            "probe_id": "cf-row-232-33477a6e6c67ea38",
+            "eligible": true,
+            "js_similarity": 0.6058487892150879,
+            "js_divergence": 0.2732048034667969
+          },
+          {
+            "probe_id": "cf-row-294-d6b6f8acfefe38c7",
+            "eligible": true,
+            "js_similarity": 0.615422248840332,
+            "js_divergence": 0.26656898856163025
+          },
+          {
+            "probe_id": "cf-row-80-80258b42f5291b31",
+            "eligible": true,
+            "js_similarity": 0.43887728452682495,
+            "js_divergence": 0.38894063234329224
+          },
+          {
+            "probe_id": "cf-row-59-4ce87736b725493c",
+            "eligible": true,
+            "js_similarity": 0.5811870694160461,
+            "js_divergence": 0.2902989983558655
+          },
+          {
+            "probe_id": "cf-row-286-1453667b1af821f1",
+            "eligible": true,
+            "js_similarity": 0.5336332321166992,
+            "js_divergence": 0.3232608139514923
+          },
+          {
+            "probe_id": "cf-row-802-fefabe32fa3c7b97",
+            "eligible": true,
+            "js_similarity": 0.12378346920013428,
+            "js_divergence": 0.6073470115661621
+          },
+          {
+            "probe_id": "cf-row-558-7c547c5cd85124eb",
+            "eligible": true,
+            "js_similarity": 0.4918079376220703,
+            "js_divergence": 0.35225191712379456
+          },
+          {
+            "probe_id": "cf-row-639-f51b7f7feb6b1389",
+            "eligible": true,
+            "js_similarity": 0.3971472978591919,
+            "js_divergence": 0.41786566376686096
+          },
+          {
+            "probe_id": "cf-row-88-b66b649ccd2df856",
+            "eligible": true,
+            "js_similarity": 0.3851454257965088,
+            "js_divergence": 0.4261847138404846
+          },
+          {
+            "probe_id": "cf-row-360-319b5be5c79b119f",
+            "eligible": true,
+            "js_similarity": 0.2671908736228943,
+            "js_divergence": 0.5079445838928223
+          },
+          {
+            "probe_id": "cf-row-563-1c01fcccedf0c8e5",
+            "eligible": true,
+            "js_similarity": 0.1567394733428955,
+            "js_divergence": 0.5845036506652832
+          },
+          {
+            "probe_id": "cf-row-622-ad067ebbcf1567d6",
+            "eligible": true,
+            "js_similarity": 0.0563848614692688,
+            "js_divergence": 0.6540641784667969
+          },
+          {
+            "probe_id": "cf-row-298-521f9ea6a682c400",
+            "eligible": true,
+            "js_similarity": 0.5226881504058838,
+            "js_divergence": 0.3308473825454712
+          },
+          {
+            "probe_id": "cf-row-150-f3673fe57a0d3244",
+            "eligible": true,
+            "js_similarity": 0.219041645526886,
+            "js_divergence": 0.5413190722465515
+          },
+          {
+            "probe_id": "cf-row-382-61eaec8747554e97",
+            "eligible": true,
+            "js_similarity": 0.5388584136962891,
+            "js_divergence": 0.3196389675140381
+          },
+          {
+            "probe_id": "cf-row-695-4ffdeddbdaf68ca4",
+            "eligible": true,
+            "js_similarity": 0.6707227230072021,
+            "js_divergence": 0.22823764383792877
+          },
+          {
+            "probe_id": "cf-row-336-35e2fad06a9d1615",
+            "eligible": true,
+            "js_similarity": 0.3399518132209778,
+            "js_divergence": 0.4575105607509613
+          },
+          {
+            "probe_id": "cf-row-37-53ef34cc5b24ae7c",
+            "eligible": true,
+            "js_similarity": 0.04477208852767944,
+            "js_divergence": 0.6621135473251343
+          },
+          {
+            "probe_id": "cf-row-340-1c1ab0a29933dc08",
+            "eligible": true,
+            "js_similarity": 0.5638646483421326,
+            "js_divergence": 0.30230599641799927
+          },
+          {
+            "probe_id": "cf-row-387-380de1e5895e48b0",
+            "eligible": true,
+            "js_similarity": 0.5787043571472168,
+            "js_divergence": 0.29201987385749817
+          },
+          {
+            "probe_id": "cf-row-255-c619dfbb984c2df5",
+            "eligible": true,
+            "js_similarity": 0.06768137216567993,
+            "js_divergence": 0.6462340354919434
+          },
+          {
+            "probe_id": "cf-row-60-f294bc18eff739c3",
+            "eligible": true,
+            "js_similarity": 0.4417979121208191,
+            "js_divergence": 0.38691622018814087
+          },
+          {
+            "probe_id": "cf-row-400-05b3797f54e99814",
+            "eligible": true,
+            "js_similarity": 0.6802002191543579,
+            "js_divergence": 0.2216683328151703
+          },
+          {
+            "probe_id": "cf-row-381-78610ffad44fb851",
+            "eligible": true,
+            "js_similarity": 0.4181715250015259,
+            "js_divergence": 0.40329277515411377
+          },
+          {
+            "probe_id": "cf-row-582-8db344e60d4e7d16",
+            "eligible": true,
+            "js_similarity": 0.44856762886047363,
+            "js_divergence": 0.38222378492355347
+          },
+          {
+            "probe_id": "cf-row-225-06ad5d9f454aa3cb",
+            "eligible": true,
+            "js_similarity": 0.37350451946258545,
+            "js_divergence": 0.4342535734176636
+          },
+          {
+            "probe_id": "cf-row-320-1a8bc349405cd93d",
+            "eligible": true,
+            "js_similarity": 0.08218461275100708,
+            "js_divergence": 0.6361811757087708
+          },
+          {
+            "probe_id": "cf-row-780-ac3792d45d798b02",
+            "eligible": true,
+            "js_similarity": 0.5540680885314941,
+            "js_divergence": 0.30909645557403564
+          },
+          {
+            "probe_id": "cf-row-499-a76e5d7ad6e13c1e",
+            "eligible": true,
+            "js_similarity": 0.21120423078536987,
+            "js_divergence": 0.5467515587806702
+          },
+          {
+            "probe_id": "cf-row-633-4d9b599b0f58b408",
+            "eligible": true,
+            "js_similarity": 0.49805575609207153,
+            "js_divergence": 0.3479212522506714
+          },
+          {
+            "probe_id": "cf-row-105-e0440187754446ae",
+            "eligible": true,
+            "js_similarity": 0.3239160180091858,
+            "js_divergence": 0.4686257243156433
+          },
+          {
+            "probe_id": "cf-row-752-2ae7234b729a5429",
+            "eligible": true,
+            "js_similarity": 0.3414626121520996,
+            "js_divergence": 0.4564633369445801
+          },
+          {
+            "probe_id": "cf-row-70-e1742483bd708562",
+            "eligible": true,
+            "js_similarity": 0.16355860233306885,
+            "js_divergence": 0.5797770023345947
+          },
+          {
+            "probe_id": "cf-row-524-af0f74f6fb04505f",
+            "eligible": true,
+            "js_similarity": 0.5327610969543457,
+            "js_divergence": 0.3238653540611267
+          },
+          {
+            "probe_id": "cf-row-757-25e8ac282578a631",
+            "eligible": true,
+            "js_similarity": 0.21111637353897095,
+            "js_divergence": 0.5468124747276306
+          },
+          {
+            "probe_id": "cf-row-745-7f0036240075e99e",
+            "eligible": true,
+            "js_similarity": 0.1832553744316101,
+            "js_divergence": 0.5661242604255676
+          },
+          {
+            "probe_id": "cf-row-788-0937e69251f58ebd",
+            "eligible": true,
+            "js_similarity": 0.2839812636375427,
+            "js_divergence": 0.4963063597679138
+          },
+          {
+            "probe_id": "cf-row-699-ba9e3123b0a09b5c",
+            "eligible": true,
+            "js_similarity": 0.5726610422134399,
+            "js_divergence": 0.29620879888534546
+          },
+          {
+            "probe_id": "cf-row-140-66bf91f30aedc921",
+            "eligible": true,
+            "js_similarity": 0.32204949855804443,
+            "js_divergence": 0.46991950273513794
+          },
+          {
+            "probe_id": "cf-row-173-7bff30bf64db69c5",
+            "eligible": true,
+            "js_similarity": 0.7577255964279175,
+            "js_divergence": 0.16793182492256165
+          },
+          {
+            "probe_id": "cf-row-760-ae5c4a95131aac29",
+            "eligible": true,
+            "js_similarity": 0.38279128074645996,
+            "js_divergence": 0.4278164803981781
+          },
+          {
+            "probe_id": "cf-row-547-747593b5b60a1e74",
+            "eligible": true,
+            "js_similarity": 0.225832998752594,
+            "js_divergence": 0.5366116762161255
+          },
+          {
+            "probe_id": "cf-row-270-30f1a145c8d628fd",
+            "eligible": true,
+            "js_similarity": 0.10124844312667847,
+            "js_divergence": 0.6229671239852905
+          },
+          {
+            "probe_id": "cf-row-502-972e02eeebe39396",
+            "eligible": true,
+            "js_similarity": 0.27628445625305176,
+            "js_divergence": 0.5016413927078247
+          },
+          {
+            "probe_id": "cf-row-824-5d852fd3abcab75c",
+            "eligible": true,
+            "js_similarity": 0.6312133073806763,
+            "js_divergence": 0.2556234300136566
+          },
+          {
+            "probe_id": "cf-row-685-c038af8d200b22a9",
+            "eligible": true,
+            "js_similarity": 0.10190165042877197,
+            "js_divergence": 0.6225143671035767
+          },
+          {
+            "probe_id": "cf-row-180-c97539a6b235f7d7",
+            "eligible": true,
+            "js_similarity": 0.28620314598083496,
+            "js_divergence": 0.4947662651538849
+          },
+          {
+            "probe_id": "cf-row-710-da7d76439046d317",
+            "eligible": true,
+            "js_similarity": 0.5121660232543945,
+            "js_divergence": 0.3381407558917999
+          },
+          {
+            "probe_id": "cf-row-525-cbee654f0a3504f4",
+            "eligible": true,
+            "js_similarity": 0.2860769033432007,
+            "js_divergence": 0.49485379457473755
+          },
+          {
+            "probe_id": "cf-row-218-f8bad880c415ef9a",
+            "eligible": true,
+            "js_similarity": 0.09641003608703613,
+            "js_divergence": 0.6263208389282227
+          },
+          {
+            "probe_id": "cf-row-304-b166ff27a77ed7ef",
+            "eligible": true,
+            "js_similarity": 0.4885385036468506,
+            "js_divergence": 0.3545181155204773
+          },
+          {
+            "probe_id": "cf-row-111-7cd8c0b836c25b6b",
+            "eligible": true,
+            "js_similarity": 0.06836485862731934,
+            "js_divergence": 0.6457602977752686
+          },
+          {
+            "probe_id": "cf-row-391-1d7698be6685f17b",
+            "eligible": true,
+            "js_similarity": 0.4855285882949829,
+            "js_divergence": 0.3566044270992279
+          },
+          {
+            "probe_id": "cf-row-750-2f4efb624544b794",
+            "eligible": true,
+            "js_similarity": 0.07049554586410522,
+            "js_divergence": 0.6442834138870239
+          },
+          {
+            "probe_id": "cf-row-484-e21c0e18afcb5e8d",
+            "eligible": true,
+            "js_similarity": 0.14749354124069214,
+            "js_divergence": 0.5909124612808228
+          },
+          {
+            "probe_id": "cf-row-810-0c5486b1b2dcc120",
+            "eligible": true,
+            "js_similarity": 0.4034266471862793,
+            "js_divergence": 0.4135131537914276
+          },
+          {
+            "probe_id": "cf-row-631-47bffce2aaf97c3e",
+            "eligible": true,
+            "js_similarity": 0.08834576606750488,
+            "js_divergence": 0.6319105625152588
+          },
+          {
+            "probe_id": "cf-row-503-e04a56cbed91e3a4",
+            "eligible": true,
+            "js_similarity": 0.6392084360122681,
+            "js_divergence": 0.2500816285610199
+          },
+          {
+            "probe_id": "cf-row-2-ef292f4bab19c093",
+            "eligible": true,
+            "js_similarity": 0.4787352681159973,
+            "js_divergence": 0.3613131642341614
+          },
+          {
+            "probe_id": "cf-row-165-daf4e8cbcc0989ec",
+            "eligible": true,
+            "js_similarity": 0.4947349429130554,
+            "js_divergence": 0.3502230644226074
+          },
+          {
+            "probe_id": "cf-row-614-c79e1e4da720ee66",
+            "eligible": true,
+            "js_similarity": 0.7887498140335083,
+            "js_divergence": 0.1464274823665619
+          },
+          {
+            "probe_id": "cf-row-704-76585f84859d985b",
+            "eligible": true,
+            "js_similarity": 0.23993843793869019,
+            "js_divergence": 0.5268345475196838
+          },
+          {
+            "probe_id": "cf-row-5-76ac7f333437d50a",
+            "eligible": true,
+            "js_similarity": 0.1524319052696228,
+            "js_divergence": 0.5874894261360168
+          }
+        ]
+      },
+      {
+        "after_edits": 100,
+        "score": 0.3500037956982851,
+        "n_probes": 64,
+        "n_scored": 64,
+        "n_skipped_empty_pre_edit": 0,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "protocol_hash": "49c49fad46768be1c6faccfde2c0178a71cefd45e098ef8515293377097bfe58",
+        "evaluations": [
+          {
+            "probe_id": "cf-row-612-b9094a91eb9a03d2",
+            "eligible": true,
+            "js_similarity": 0.1190190315246582,
+            "js_divergence": 0.6106494665145874
+          },
+          {
+            "probe_id": "cf-row-232-33477a6e6c67ea38",
+            "eligible": true,
+            "js_similarity": 0.606930136680603,
+            "js_divergence": 0.27245527505874634
+          },
+          {
+            "probe_id": "cf-row-294-d6b6f8acfefe38c7",
+            "eligible": true,
+            "js_similarity": 0.6154229640960693,
+            "js_divergence": 0.26656848192214966
+          },
+          {
+            "probe_id": "cf-row-80-80258b42f5291b31",
+            "eligible": true,
+            "js_similarity": 0.4411412477493286,
+            "js_divergence": 0.38737136125564575
+          },
+          {
+            "probe_id": "cf-row-59-4ce87736b725493c",
+            "eligible": true,
+            "js_similarity": 0.541048526763916,
+            "js_divergence": 0.31812089681625366
+          },
+          {
+            "probe_id": "cf-row-286-1453667b1af821f1",
+            "eligible": true,
+            "js_similarity": 0.5294045805931091,
+            "js_divergence": 0.32619190216064453
+          },
+          {
+            "probe_id": "cf-row-802-fefabe32fa3c7b97",
+            "eligible": true,
+            "js_similarity": 0.11780297756195068,
+            "js_divergence": 0.611492395401001
+          },
+          {
+            "probe_id": "cf-row-558-7c547c5cd85124eb",
+            "eligible": true,
+            "js_similarity": 0.48824405670166016,
+            "js_divergence": 0.35472220182418823
+          },
+          {
+            "probe_id": "cf-row-639-f51b7f7feb6b1389",
+            "eligible": true,
+            "js_similarity": 0.4009442925453186,
+            "js_divergence": 0.4152337610721588
+          },
+          {
+            "probe_id": "cf-row-88-b66b649ccd2df856",
+            "eligible": true,
+            "js_similarity": 0.36376041173934937,
+            "js_divergence": 0.44100767374038696
+          },
+          {
+            "probe_id": "cf-row-360-319b5be5c79b119f",
+            "eligible": true,
+            "js_similarity": 0.26859623193740845,
+            "js_divergence": 0.5069704651832581
+          },
+          {
+            "probe_id": "cf-row-563-1c01fcccedf0c8e5",
+            "eligible": true,
+            "js_similarity": 0.17454272508621216,
+            "js_divergence": 0.5721634030342102
+          },
+          {
+            "probe_id": "cf-row-622-ad067ebbcf1567d6",
+            "eligible": true,
+            "js_similarity": 0.06552207469940186,
+            "js_divergence": 0.6477307677268982
+          },
+          {
+            "probe_id": "cf-row-298-521f9ea6a682c400",
+            "eligible": true,
+            "js_similarity": 0.5226907730102539,
+            "js_divergence": 0.33084553480148315
+          },
+          {
+            "probe_id": "cf-row-150-f3673fe57a0d3244",
+            "eligible": true,
+            "js_similarity": 0.21400874853134155,
+            "js_divergence": 0.5448076128959656
+          },
+          {
+            "probe_id": "cf-row-382-61eaec8747554e97",
+            "eligible": true,
+            "js_similarity": 0.5333214998245239,
+            "js_divergence": 0.3234769105911255
+          },
+          {
+            "probe_id": "cf-row-695-4ffdeddbdaf68ca4",
+            "eligible": true,
+            "js_similarity": 0.650034487247467,
+            "js_divergence": 0.24257761240005493
+          },
+          {
+            "probe_id": "cf-row-336-35e2fad06a9d1615",
+            "eligible": true,
+            "js_similarity": 0.3173362612724304,
+            "js_divergence": 0.4731864333152771
+          },
+          {
+            "probe_id": "cf-row-37-53ef34cc5b24ae7c",
+            "eligible": true,
+            "js_similarity": 0.05329787731170654,
+            "js_divergence": 0.6562039256095886
+          },
+          {
+            "probe_id": "cf-row-340-1c1ab0a29933dc08",
+            "eligible": true,
+            "js_similarity": 0.5418596267700195,
+            "js_divergence": 0.31755873560905457
+          },
+          {
+            "probe_id": "cf-row-387-380de1e5895e48b0",
+            "eligible": true,
+            "js_similarity": 0.5750334858894348,
+            "js_divergence": 0.2945643365383148
+          },
+          {
+            "probe_id": "cf-row-255-c619dfbb984c2df5",
+            "eligible": true,
+            "js_similarity": 0.07858413457870483,
+            "js_divergence": 0.6386768221855164
+          },
+          {
+            "probe_id": "cf-row-60-f294bc18eff739c3",
+            "eligible": true,
+            "js_similarity": 0.45302116870880127,
+            "js_divergence": 0.3791368305683136
+          },
+          {
+            "probe_id": "cf-row-400-05b3797f54e99814",
+            "eligible": true,
+            "js_similarity": 0.6777413487434387,
+            "js_divergence": 0.223372682929039
+          },
+          {
+            "probe_id": "cf-row-381-78610ffad44fb851",
+            "eligible": true,
+            "js_similarity": 0.42054080963134766,
+            "js_divergence": 0.4016505181789398
+          },
+          {
+            "probe_id": "cf-row-582-8db344e60d4e7d16",
+            "eligible": true,
+            "js_similarity": 0.4539901614189148,
+            "js_divergence": 0.3784651756286621
+          },
+          {
+            "probe_id": "cf-row-225-06ad5d9f454aa3cb",
+            "eligible": true,
+            "js_similarity": 0.35749518871307373,
+            "js_divergence": 0.44535040855407715
+          },
+          {
+            "probe_id": "cf-row-320-1a8bc349405cd93d",
+            "eligible": true,
+            "js_similarity": 0.22441637516021729,
+            "js_divergence": 0.5375936031341553
+          },
+          {
+            "probe_id": "cf-row-780-ac3792d45d798b02",
+            "eligible": true,
+            "js_similarity": 0.5617045760154724,
+            "js_divergence": 0.3038032352924347
+          },
+          {
+            "probe_id": "cf-row-499-a76e5d7ad6e13c1e",
+            "eligible": true,
+            "js_similarity": 0.20692729949951172,
+            "js_divergence": 0.5497161149978638
+          },
+          {
+            "probe_id": "cf-row-633-4d9b599b0f58b408",
+            "eligible": true,
+            "js_similarity": 0.5140195488929749,
+            "js_divergence": 0.3368559777736664
+          },
+          {
+            "probe_id": "cf-row-105-e0440187754446ae",
+            "eligible": true,
+            "js_similarity": 0.29973745346069336,
+            "js_divergence": 0.485385000705719
+          },
+          {
+            "probe_id": "cf-row-752-2ae7234b729a5429",
+            "eligible": true,
+            "js_similarity": 0.3498329520225525,
+            "js_divergence": 0.45066148042678833
+          },
+          {
+            "probe_id": "cf-row-70-e1742483bd708562",
+            "eligible": true,
+            "js_similarity": 0.16499930620193481,
+            "js_divergence": 0.5787783861160278
+          },
+          {
+            "probe_id": "cf-row-524-af0f74f6fb04505f",
+            "eligible": true,
+            "js_similarity": 0.5291150808334351,
+            "js_divergence": 0.3263925611972809
+          },
+          {
+            "probe_id": "cf-row-757-25e8ac282578a631",
+            "eligible": true,
+            "js_similarity": 0.2000395655632019,
+            "js_divergence": 0.554490327835083
+          },
+          {
+            "probe_id": "cf-row-745-7f0036240075e99e",
+            "eligible": true,
+            "js_similarity": 0.19703906774520874,
+            "js_divergence": 0.5565701127052307
+          },
+          {
+            "probe_id": "cf-row-788-0937e69251f58ebd",
+            "eligible": true,
+            "js_similarity": 0.29168105125427246,
+            "js_divergence": 0.49096930027008057
+          },
+          {
+            "probe_id": "cf-row-699-ba9e3123b0a09b5c",
+            "eligible": true,
+            "js_similarity": 0.5918666124343872,
+            "js_divergence": 0.2828965187072754
+          },
+          {
+            "probe_id": "cf-row-140-66bf91f30aedc921",
+            "eligible": true,
+            "js_similarity": 0.315840482711792,
+            "js_divergence": 0.474223256111145
+          },
+          {
+            "probe_id": "cf-row-173-7bff30bf64db69c5",
+            "eligible": true,
+            "js_similarity": 0.4185202121734619,
+            "js_divergence": 0.40305107831954956
+          },
+          {
+            "probe_id": "cf-row-760-ae5c4a95131aac29",
+            "eligible": true,
+            "js_similarity": 0.41357189416885376,
+            "js_divergence": 0.406480997800827
+          },
+          {
+            "probe_id": "cf-row-547-747593b5b60a1e74",
+            "eligible": true,
+            "js_similarity": 0.2557286024093628,
+            "js_divergence": 0.5158896446228027
+          },
+          {
+            "probe_id": "cf-row-270-30f1a145c8d628fd",
+            "eligible": true,
+            "js_similarity": 0.09267258644104004,
+            "js_divergence": 0.6289114356040955
+          },
+          {
+            "probe_id": "cf-row-502-972e02eeebe39396",
+            "eligible": true,
+            "js_similarity": 0.2764091491699219,
+            "js_divergence": 0.5015549659729004
+          },
+          {
+            "probe_id": "cf-row-824-5d852fd3abcab75c",
+            "eligible": true,
+            "js_similarity": 0.603836178779602,
+            "js_divergence": 0.2745998501777649
+          },
+          {
+            "probe_id": "cf-row-685-c038af8d200b22a9",
+            "eligible": true,
+            "js_similarity": 0.11427724361419678,
+            "js_divergence": 0.6139362454414368
+          },
+          {
+            "probe_id": "cf-row-180-c97539a6b235f7d7",
+            "eligible": true,
+            "js_similarity": 0.2733193635940552,
+            "js_divergence": 0.503696620464325
+          },
+          {
+            "probe_id": "cf-row-710-da7d76439046d317",
+            "eligible": true,
+            "js_similarity": 0.4009385108947754,
+            "js_divergence": 0.41523778438568115
+          },
+          {
+            "probe_id": "cf-row-525-cbee654f0a3504f4",
+            "eligible": true,
+            "js_similarity": 0.29007917642593384,
+            "js_divergence": 0.49207961559295654
+          },
+          {
+            "probe_id": "cf-row-218-f8bad880c415ef9a",
+            "eligible": true,
+            "js_similarity": 0.1089104413986206,
+            "js_divergence": 0.6176562309265137
+          },
+          {
+            "probe_id": "cf-row-304-b166ff27a77ed7ef",
+            "eligible": true,
+            "js_similarity": 0.48505496978759766,
+            "js_divergence": 0.35693269968032837
+          },
+          {
+            "probe_id": "cf-row-111-7cd8c0b836c25b6b",
+            "eligible": true,
+            "js_similarity": 0.06632578372955322,
+            "js_divergence": 0.6471736431121826
+          },
+          {
+            "probe_id": "cf-row-391-1d7698be6685f17b",
+            "eligible": true,
+            "js_similarity": 0.485531210899353,
+            "js_divergence": 0.35660260915756226
+          },
+          {
+            "probe_id": "cf-row-750-2f4efb624544b794",
+            "eligible": true,
+            "js_similarity": 0.0817684531211853,
+            "js_divergence": 0.6364696025848389
+          },
+          {
+            "probe_id": "cf-row-484-e21c0e18afcb5e8d",
+            "eligible": true,
+            "js_similarity": 0.16243642568588257,
+            "js_divergence": 0.5805548429489136
+          },
+          {
+            "probe_id": "cf-row-810-0c5486b1b2dcc120",
+            "eligible": true,
+            "js_similarity": 0.4034848213195801,
+            "js_divergence": 0.41347283124923706
+          },
+          {
+            "probe_id": "cf-row-631-47bffce2aaf97c3e",
+            "eligible": true,
+            "js_similarity": 0.08435046672821045,
+            "js_divergence": 0.634679913520813
+          },
+          {
+            "probe_id": "cf-row-503-e04a56cbed91e3a4",
+            "eligible": true,
+            "js_similarity": 0.6361803412437439,
+            "js_divergence": 0.2521805763244629
+          },
+          {
+            "probe_id": "cf-row-2-ef292f4bab19c093",
+            "eligible": true,
+            "js_similarity": 0.47698378562927246,
+            "js_divergence": 0.3625272214412689
+          },
+          {
+            "probe_id": "cf-row-165-daf4e8cbcc0989ec",
+            "eligible": true,
+            "js_similarity": 0.49477726221084595,
+            "js_divergence": 0.35019373893737793
+          },
+          {
+            "probe_id": "cf-row-614-c79e1e4da720ee66",
+            "eligible": true,
+            "js_similarity": 0.34576117992401123,
+            "js_divergence": 0.45348381996154785
+          },
+          {
+            "probe_id": "cf-row-704-76585f84859d985b",
+            "eligible": true,
+            "js_similarity": 0.23603105545043945,
+            "js_divergence": 0.5295429229736328
+          },
+          {
+            "probe_id": "cf-row-5-76ac7f333437d50a",
+            "eligible": true,
+            "js_similarity": 0.16473960876464844,
+            "js_divergence": 0.5789583921432495
+          }
+        ]
+      }
+    ],
+    "final": {
+      "after_edits": 100,
+      "score": 0.3500037956982851,
+      "n_probes": 64,
+      "n_scored": 64,
+      "n_skipped_empty_pre_edit": 0,
+      "evaluator": "pre_edit_next_token_topk_js_similarity",
+      "evaluator_version": "2.0",
+      "protocol_hash": "49c49fad46768be1c6faccfde2c0178a71cefd45e098ef8515293377097bfe58",
+      "evaluations": [
+        {
+          "probe_id": "cf-row-612-b9094a91eb9a03d2",
+          "eligible": true,
+          "js_similarity": 0.1190190315246582,
+          "js_divergence": 0.6106494665145874
+        },
+        {
+          "probe_id": "cf-row-232-33477a6e6c67ea38",
+          "eligible": true,
+          "js_similarity": 0.606930136680603,
+          "js_divergence": 0.27245527505874634
+        },
+        {
+          "probe_id": "cf-row-294-d6b6f8acfefe38c7",
+          "eligible": true,
+          "js_similarity": 0.6154229640960693,
+          "js_divergence": 0.26656848192214966
+        },
+        {
+          "probe_id": "cf-row-80-80258b42f5291b31",
+          "eligible": true,
+          "js_similarity": 0.4411412477493286,
+          "js_divergence": 0.38737136125564575
+        },
+        {
+          "probe_id": "cf-row-59-4ce87736b725493c",
+          "eligible": true,
+          "js_similarity": 0.541048526763916,
+          "js_divergence": 0.31812089681625366
+        },
+        {
+          "probe_id": "cf-row-286-1453667b1af821f1",
+          "eligible": true,
+          "js_similarity": 0.5294045805931091,
+          "js_divergence": 0.32619190216064453
+        },
+        {
+          "probe_id": "cf-row-802-fefabe32fa3c7b97",
+          "eligible": true,
+          "js_similarity": 0.11780297756195068,
+          "js_divergence": 0.611492395401001
+        },
+        {
+          "probe_id": "cf-row-558-7c547c5cd85124eb",
+          "eligible": true,
+          "js_similarity": 0.48824405670166016,
+          "js_divergence": 0.35472220182418823
+        },
+        {
+          "probe_id": "cf-row-639-f51b7f7feb6b1389",
+          "eligible": true,
+          "js_similarity": 0.4009442925453186,
+          "js_divergence": 0.4152337610721588
+        },
+        {
+          "probe_id": "cf-row-88-b66b649ccd2df856",
+          "eligible": true,
+          "js_similarity": 0.36376041173934937,
+          "js_divergence": 0.44100767374038696
+        },
+        {
+          "probe_id": "cf-row-360-319b5be5c79b119f",
+          "eligible": true,
+          "js_similarity": 0.26859623193740845,
+          "js_divergence": 0.5069704651832581
+        },
+        {
+          "probe_id": "cf-row-563-1c01fcccedf0c8e5",
+          "eligible": true,
+          "js_similarity": 0.17454272508621216,
+          "js_divergence": 0.5721634030342102
+        },
+        {
+          "probe_id": "cf-row-622-ad067ebbcf1567d6",
+          "eligible": true,
+          "js_similarity": 0.06552207469940186,
+          "js_divergence": 0.6477307677268982
+        },
+        {
+          "probe_id": "cf-row-298-521f9ea6a682c400",
+          "eligible": true,
+          "js_similarity": 0.5226907730102539,
+          "js_divergence": 0.33084553480148315
+        },
+        {
+          "probe_id": "cf-row-150-f3673fe57a0d3244",
+          "eligible": true,
+          "js_similarity": 0.21400874853134155,
+          "js_divergence": 0.5448076128959656
+        },
+        {
+          "probe_id": "cf-row-382-61eaec8747554e97",
+          "eligible": true,
+          "js_similarity": 0.5333214998245239,
+          "js_divergence": 0.3234769105911255
+        },
+        {
+          "probe_id": "cf-row-695-4ffdeddbdaf68ca4",
+          "eligible": true,
+          "js_similarity": 0.650034487247467,
+          "js_divergence": 0.24257761240005493
+        },
+        {
+          "probe_id": "cf-row-336-35e2fad06a9d1615",
+          "eligible": true,
+          "js_similarity": 0.3173362612724304,
+          "js_divergence": 0.4731864333152771
+        },
+        {
+          "probe_id": "cf-row-37-53ef34cc5b24ae7c",
+          "eligible": true,
+          "js_similarity": 0.05329787731170654,
+          "js_divergence": 0.6562039256095886
+        },
+        {
+          "probe_id": "cf-row-340-1c1ab0a29933dc08",
+          "eligible": true,
+          "js_similarity": 0.5418596267700195,
+          "js_divergence": 0.31755873560905457
+        },
+        {
+          "probe_id": "cf-row-387-380de1e5895e48b0",
+          "eligible": true,
+          "js_similarity": 0.5750334858894348,
+          "js_divergence": 0.2945643365383148
+        },
+        {
+          "probe_id": "cf-row-255-c619dfbb984c2df5",
+          "eligible": true,
+          "js_similarity": 0.07858413457870483,
+          "js_divergence": 0.6386768221855164
+        },
+        {
+          "probe_id": "cf-row-60-f294bc18eff739c3",
+          "eligible": true,
+          "js_similarity": 0.45302116870880127,
+          "js_divergence": 0.3791368305683136
+        },
+        {
+          "probe_id": "cf-row-400-05b3797f54e99814",
+          "eligible": true,
+          "js_similarity": 0.6777413487434387,
+          "js_divergence": 0.223372682929039
+        },
+        {
+          "probe_id": "cf-row-381-78610ffad44fb851",
+          "eligible": true,
+          "js_similarity": 0.42054080963134766,
+          "js_divergence": 0.4016505181789398
+        },
+        {
+          "probe_id": "cf-row-582-8db344e60d4e7d16",
+          "eligible": true,
+          "js_similarity": 0.4539901614189148,
+          "js_divergence": 0.3784651756286621
+        },
+        {
+          "probe_id": "cf-row-225-06ad5d9f454aa3cb",
+          "eligible": true,
+          "js_similarity": 0.35749518871307373,
+          "js_divergence": 0.44535040855407715
+        },
+        {
+          "probe_id": "cf-row-320-1a8bc349405cd93d",
+          "eligible": true,
+          "js_similarity": 0.22441637516021729,
+          "js_divergence": 0.5375936031341553
+        },
+        {
+          "probe_id": "cf-row-780-ac3792d45d798b02",
+          "eligible": true,
+          "js_similarity": 0.5617045760154724,
+          "js_divergence": 0.3038032352924347
+        },
+        {
+          "probe_id": "cf-row-499-a76e5d7ad6e13c1e",
+          "eligible": true,
+          "js_similarity": 0.20692729949951172,
+          "js_divergence": 0.5497161149978638
+        },
+        {
+          "probe_id": "cf-row-633-4d9b599b0f58b408",
+          "eligible": true,
+          "js_similarity": 0.5140195488929749,
+          "js_divergence": 0.3368559777736664
+        },
+        {
+          "probe_id": "cf-row-105-e0440187754446ae",
+          "eligible": true,
+          "js_similarity": 0.29973745346069336,
+          "js_divergence": 0.485385000705719
+        },
+        {
+          "probe_id": "cf-row-752-2ae7234b729a5429",
+          "eligible": true,
+          "js_similarity": 0.3498329520225525,
+          "js_divergence": 0.45066148042678833
+        },
+        {
+          "probe_id": "cf-row-70-e1742483bd708562",
+          "eligible": true,
+          "js_similarity": 0.16499930620193481,
+          "js_divergence": 0.5787783861160278
+        },
+        {
+          "probe_id": "cf-row-524-af0f74f6fb04505f",
+          "eligible": true,
+          "js_similarity": 0.5291150808334351,
+          "js_divergence": 0.3263925611972809
+        },
+        {
+          "probe_id": "cf-row-757-25e8ac282578a631",
+          "eligible": true,
+          "js_similarity": 0.2000395655632019,
+          "js_divergence": 0.554490327835083
+        },
+        {
+          "probe_id": "cf-row-745-7f0036240075e99e",
+          "eligible": true,
+          "js_similarity": 0.19703906774520874,
+          "js_divergence": 0.5565701127052307
+        },
+        {
+          "probe_id": "cf-row-788-0937e69251f58ebd",
+          "eligible": true,
+          "js_similarity": 0.29168105125427246,
+          "js_divergence": 0.49096930027008057
+        },
+        {
+          "probe_id": "cf-row-699-ba9e3123b0a09b5c",
+          "eligible": true,
+          "js_similarity": 0.5918666124343872,
+          "js_divergence": 0.2828965187072754
+        },
+        {
+          "probe_id": "cf-row-140-66bf91f30aedc921",
+          "eligible": true,
+          "js_similarity": 0.315840482711792,
+          "js_divergence": 0.474223256111145
+        },
+        {
+          "probe_id": "cf-row-173-7bff30bf64db69c5",
+          "eligible": true,
+          "js_similarity": 0.4185202121734619,
+          "js_divergence": 0.40305107831954956
+        },
+        {
+          "probe_id": "cf-row-760-ae5c4a95131aac29",
+          "eligible": true,
+          "js_similarity": 0.41357189416885376,
+          "js_divergence": 0.406480997800827
+        },
+        {
+          "probe_id": "cf-row-547-747593b5b60a1e74",
+          "eligible": true,
+          "js_similarity": 0.2557286024093628,
+          "js_divergence": 0.5158896446228027
+        },
+        {
+          "probe_id": "cf-row-270-30f1a145c8d628fd",
+          "eligible": true,
+          "js_similarity": 0.09267258644104004,
+          "js_divergence": 0.6289114356040955
+        },
+        {
+          "probe_id": "cf-row-502-972e02eeebe39396",
+          "eligible": true,
+          "js_similarity": 0.2764091491699219,
+          "js_divergence": 0.5015549659729004
+        },
+        {
+          "probe_id": "cf-row-824-5d852fd3abcab75c",
+          "eligible": true,
+          "js_similarity": 0.603836178779602,
+          "js_divergence": 0.2745998501777649
+        },
+        {
+          "probe_id": "cf-row-685-c038af8d200b22a9",
+          "eligible": true,
+          "js_similarity": 0.11427724361419678,
+          "js_divergence": 0.6139362454414368
+        },
+        {
+          "probe_id": "cf-row-180-c97539a6b235f7d7",
+          "eligible": true,
+          "js_similarity": 0.2733193635940552,
+          "js_divergence": 0.503696620464325
+        },
+        {
+          "probe_id": "cf-row-710-da7d76439046d317",
+          "eligible": true,
+          "js_similarity": 0.4009385108947754,
+          "js_divergence": 0.41523778438568115
+        },
+        {
+          "probe_id": "cf-row-525-cbee654f0a3504f4",
+          "eligible": true,
+          "js_similarity": 0.29007917642593384,
+          "js_divergence": 0.49207961559295654
+        },
+        {
+          "probe_id": "cf-row-218-f8bad880c415ef9a",
+          "eligible": true,
+          "js_similarity": 0.1089104413986206,
+          "js_divergence": 0.6176562309265137
+        },
+        {
+          "probe_id": "cf-row-304-b166ff27a77ed7ef",
+          "eligible": true,
+          "js_similarity": 0.48505496978759766,
+          "js_divergence": 0.35693269968032837
+        },
+        {
+          "probe_id": "cf-row-111-7cd8c0b836c25b6b",
+          "eligible": true,
+          "js_similarity": 0.06632578372955322,
+          "js_divergence": 0.6471736431121826
+        },
+        {
+          "probe_id": "cf-row-391-1d7698be6685f17b",
+          "eligible": true,
+          "js_similarity": 0.485531210899353,
+          "js_divergence": 0.35660260915756226
+        },
+        {
+          "probe_id": "cf-row-750-2f4efb624544b794",
+          "eligible": true,
+          "js_similarity": 0.0817684531211853,
+          "js_divergence": 0.6364696025848389
+        },
+        {
+          "probe_id": "cf-row-484-e21c0e18afcb5e8d",
+          "eligible": true,
+          "js_similarity": 0.16243642568588257,
+          "js_divergence": 0.5805548429489136
+        },
+        {
+          "probe_id": "cf-row-810-0c5486b1b2dcc120",
+          "eligible": true,
+          "js_similarity": 0.4034848213195801,
+          "js_divergence": 0.41347283124923706
+        },
+        {
+          "probe_id": "cf-row-631-47bffce2aaf97c3e",
+          "eligible": true,
+          "js_similarity": 0.08435046672821045,
+          "js_divergence": 0.634679913520813
+        },
+        {
+          "probe_id": "cf-row-503-e04a56cbed91e3a4",
+          "eligible": true,
+          "js_similarity": 0.6361803412437439,
+          "js_divergence": 0.2521805763244629
+        },
+        {
+          "probe_id": "cf-row-2-ef292f4bab19c093",
+          "eligible": true,
+          "js_similarity": 0.47698378562927246,
+          "js_divergence": 0.3625272214412689
+        },
+        {
+          "probe_id": "cf-row-165-daf4e8cbcc0989ec",
+          "eligible": true,
+          "js_similarity": 0.49477726221084595,
+          "js_divergence": 0.35019373893737793
+        },
+        {
+          "probe_id": "cf-row-614-c79e1e4da720ee66",
+          "eligible": true,
+          "js_similarity": 0.34576117992401123,
+          "js_divergence": 0.45348381996154785
+        },
+        {
+          "probe_id": "cf-row-704-76585f84859d985b",
+          "eligible": true,
+          "js_similarity": 0.23603105545043945,
+          "js_divergence": 0.5295429229736328
+        },
+        {
+          "probe_id": "cf-row-5-76ac7f333437d50a",
+          "eligible": true,
+          "js_similarity": 0.16473960876464844,
+          "js_divergence": 0.5789583921432495
+        }
+      ]
+    }
+  },
+  "update_geometry": {
+    "protocol": "cumulative_edit_update_rows_v1",
+    "definition": "Effective rank uses squared singular values of the cumulative sampled-row update; overlap is mean absolute off-diagonal row cosine.",
+    "n_modules": 3,
+    "n_sampled_rows": 768,
+    "update_effective_rank": 532.1802978515625,
+    "update_mean_abs_offdiag_cosine": 0.022260243073105812,
+    "update_rms": 0.004156776238232851,
+    "module_rows": [
+      {
+        "module": "model.layers.18.mlp.down_proj",
+        "sampled_rows": 256,
+        "mean_row_l2": 0.562472403049469
+      },
+      {
+        "module": "model.layers.20.mlp.down_proj",
+        "sampled_rows": 256,
+        "mean_row_l2": 0.5728111267089844
+      },
+      {
+        "module": "model.layers.22.mlp.down_proj",
+        "sampled_rows": 256,
+        "mean_row_l2": 0.5784940123558044
+      }
+    ]
+  }
+}

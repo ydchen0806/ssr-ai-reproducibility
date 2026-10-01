@@ -1,0 +1,72 @@
+{
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json",
+  "dataset_sha256": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+  "easyedit_alg_name": "AlphaEdit",
+  "elapsed_s": 11716.7,
+  "final_history_efficacy": 20.3125,
+  "final_pre_edit_output_consistency": 33.31826152279973,
+  "history_checkpoints": [
+    1,
+    10,
+    25,
+    50,
+    100,
+    250,
+    500,
+    1000
+  ],
+  "history_max_samples": 128,
+  "hparams_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/EasyEdit_ssr_v28_rank_canary_20260826/hparams/AlphaEdit/qwen2.5-7b.yaml",
+  "hparams_sha256": "3c6eca1f3578d473f5c9c68cd2eb970036d255ae080bcfec5451786605f14349",
+  "immediate": {
+    "efficacy": 0.985,
+    "efficacy_n": 1000,
+    "locality_target_consistency": 0.081,
+    "locality_target_consistency_n": 1000,
+    "n_edits": 1000,
+    "portability": 0.11,
+    "portability_n": 1000,
+    "rephrase": 0.783,
+    "rephrase_n": 1000
+  },
+  "method": "AlphaEdit",
+  "method_cache_dir": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v29_ke_scaling_3node_20260826_r1_qwen_alphaedit/native_editor_cache/confirmation/AlphaEdit/lambda_3e-05/seed_9944",
+  "model_label": "Qwen2.5-7B-Instruct",
+  "model_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/models/Qwen2.5-7B-Instruct",
+  "n_edits": 1000,
+  "native_projection": {
+    "basis_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/easyedit_projections/Qwen2.5-7B-Instruct/rank_basis_v28.pt",
+    "rank": 1024,
+    "selection_scope": "native rank frozen from v28 development"
+  },
+  "native_update_norm": {
+    "count": 1000,
+    "maximum": 59.457204735391734,
+    "mean": 31.100016348771106,
+    "minimum": 0.00010850927665432898,
+    "nonzero_fraction": 1.0
+  },
+  "peak_cuda_memory_mb": 35138.83251953125,
+  "protocol": "ke_native_editor_scaling_v29",
+  "runtime_per_edit_s": 11.716700000000001,
+  "ssr": {
+    "application": "post_native_update_frozen_ring_center_surround_projection",
+    "enabled": true,
+    "lambda": 3e-05,
+    "plastic_object": "declared MLP down_proj/c_proj row deltas",
+    "topology": "frozen cyclic row adjacency",
+    "zero_is_exact_noop": true
+  },
+  "stats_cache_dir": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/easyedit_stats/Qwen2.5-7B-Instruct",
+  "status": "complete",
+  "stream_manifest": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v29_ke_scaling_3node_20260826_r1_launcher_status/stream_manifests/confirmation_seed_9944.json",
+  "stream_manifest_sha256": "bba242019c0e53d592ae9c5df138c9450b67226c9a937ff7634e02341dc49293",
+  "stream_seed": 9944,
+  "target_layers": [
+    4,
+    5,
+    6,
+    7,
+    8
+  ]
+}

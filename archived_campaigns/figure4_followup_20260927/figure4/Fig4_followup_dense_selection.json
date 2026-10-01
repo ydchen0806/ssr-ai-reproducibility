@@ -1,0 +1,145 @@
+{
+  "selected_full": {
+    "config": {
+      "recipe": "full",
+      "ssr": 0.0003,
+      "anchor": 0.0001,
+      "spectral": 0.01,
+      "family": "gaussian",
+      "lr": 0.0001,
+      "steps": 25
+    },
+    "E": 15.5,
+    "L": 12.5,
+    "score": 13.839285714285714
+  },
+  "selection_time": 1790085695.7625096,
+  "all_configs": [
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.0001,
+        "spectral": 0.001,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 15.5,
+      "L": 1.5,
+      "score": 2.735294117647059
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.0001,
+        "spectral": 0.01,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 15.5,
+      "L": 12.5,
+      "score": 13.839285714285714
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.0001,
+        "spectral": 0.1,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 13.0,
+      "L": 6.5,
+      "score": 8.666666666666666
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.001,
+        "spectral": 0.001,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 13.0,
+      "L": 9.25,
+      "score": 10.808988764044944
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.001,
+        "spectral": 0.01,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 16.0,
+      "L": 3.5,
+      "score": 5.743589743589744
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.001,
+        "spectral": 0.1,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 14.0,
+      "L": 0.75,
+      "score": 1.423728813559322
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.01,
+        "spectral": 0.001,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 15.5,
+      "L": 0.75,
+      "score": 1.4307692307692308
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.01,
+        "spectral": 0.01,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 13.0,
+      "L": 8.25,
+      "score": 10.094117647058823
+    },
+    {
+      "config": {
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.01,
+        "spectral": 0.1,
+        "family": "gaussian",
+        "lr": 0.0001,
+        "steps": 25
+      },
+      "E": 11.5,
+      "L": 6.25,
+      "score": 8.098591549295774
+    }
+  ]
+}

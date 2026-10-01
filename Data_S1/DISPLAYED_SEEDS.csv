@@ -1,0 +1,30 @@
+panel,dataset,setting,n_displayed,seeds,note
+Fig. 4B,WikiData CounterFact,dense,5,9311 9315 9319 9325 9329,B/E display cohort; F is an independent confirmation cohort
+Fig. 4D,WikiData CounterFact,dense mapping,10,9311 9313 9315 9317 9319 9321 9323 9325 9327 9329,Ten pairs in teacher artwork; same cohort retained in this revision.
+Fig. 4E,WikiData CounterFact,dense,5,9311 9315 9319 9325 9329,Displayed pairs used in the main-text panel
+Fig. 4E,WikiRecent,dense,5,9313 9315 9319 9325 9329,Displayed pairs used in the main-text panel
+Fig. 4E,ZsRE,dense,5,9311 9315 9317 9319 9323,Displayed pairs used in the main-text panel
+Fig. 4I,WikiData CounterFact and ZsRE,dense geometry,4,13101 13102 13103 13104,Displayed pairs used in the main-text panel
+Fig. 6A/B,PASCAL VOC 2012 10-1,rank-8 decoder,5,12401 12405 12406 12409 12410,Displayed pairs used in the main-text panel
+Fig. 6D,CUB-200-2011,adapter rank 8,5,8411 8413 8415 8417 8423,Displayed pairs used in the main-text panel
+Fig. 6D,CUB-200-2011,adapter rank 16,5,8411 8415 8419 8421 8429,Displayed pairs used in the main-text panel
+Fig. 6D,CUB-200-2011,adapter rank 32,5,8411 8415 8421 8423 8425,Displayed pairs used in the main-text panel
+Fig. 6E,CUB-200-2011,fixed-KD rank 16,5,17835 17837 17845 17847 17849,Displayed pairs used in the main-text panel
+Fig. 6E,CUB-200-2011,fixed-KD rank 32,5,17837 17839 17841 17843 17847,Displayed pairs used in the main-text panel
+Fig. 6F / fig. S4,Split-CIFAR-100,rank-4 robustness,5,per-setting list in Fig6F file; default 19231 19235 19239 19243 19247,Displayed pairs used in the plotted settings
+Fig. 4C,WikiData CounterFact,100-edit full-history kernel comparison,10,9311 9313 9315 9317 9319 9321 9323 9325 9327 9329,Ten pairs in teacher artwork; same cohort retained in this revision.
+Fig. 4F,WikiData CounterFact,100-edit complete factorial,10,26092201 26092202 26092203 26092204 26092205 26092206 26092207 26092208 26092209 26092210,Ten pairs in teacher artwork; same cohort retained in this revision.
+Fig. S3 / Table S11,PASCAL VOC 2012 10-1,replication rank-8 decoder,5,13401 13402 13405 13406 13407,Original displayed subset used for the replication display
+Fig. 5C,WikiRecent,Rank 8; matched joint rehearsal,10,17631 17632 17633 17634 17635 17636 17637 17638 17639 17640,Immediate and final-history efficacy; same full ten pairs.
+Fig. 5C,WikiRecent,Rank 16; matched joint rehearsal,10,17631 17632 17633 17634 17635 17636 17637 17638 17639 17640,Immediate and final-history efficacy; same full ten pairs.
+Fig. 5C,WikiRecent,Rank 32; matched joint rehearsal,10,17631 17632 17633 17634 17635 17636 17637 17638 17639 17640,Immediate and final-history efficacy; same full ten pairs.
+"Fig. 5A,B,D,E,F",WikiRecent,Rank 32; development-selected 32-target rehearsal,10,26092711 26092712 26092713 26092714 26092715 26092716 26092717 26092718 26092719 26092720,All ten pairs; immediate/history efficacy and locality; same geometry cohort.
+Fig. 5D,WikiRecent,Rank 8; development-selected 32-target rehearsal,10,26092711 26092712 26092713 26092714 26092715 26092716 26092717 26092718 26092719 26092720,All ten pairs; immediate and final-history locality; rank-8 intervals include zero.
+Fig. 5D,WikiRecent,Rank 16; separate development-selected 32-target rehearsal,10,26092811 26092812 26092813 26092814 26092815 26092816 26092817 26092818 26092819 26092820,All ten pairs; immediate and final-history locality; history interval includes zero.
+Fig. 4G / Table S5,GPT-2 XL ZsRE,Full FT+Anchor+Spectral+SSR recipe,1,,Original teacher single pair; seed not recorded in this endpoint export.
+Fig. 4G / Table S5,Qwen-VL ZsRE,Full FT+Anchor+Spectral+SSR recipe,1,,Original teacher single pair; seed not recorded in this endpoint export.
+Fig. 4G / Table S5,Qwen-VL CounterFact,Full FT+Anchor+Spectral+SSR recipe,1,,Original teacher single pair; seed not recorded in this endpoint export.
+Fig. 4G / Table S5,Qwen-VL WikiRecent,Full FT+Anchor+Spectral+SSR recipe,1,,Original teacher single pair; seed not recorded in this endpoint export.
+Fig. 4G / Table S5,Llama-3 CounterFact,Full FT+Anchor+Spectral+SSR recipe,1,,Original teacher single pair; seed not recorded in this endpoint export.
+Fig. 4G / Table S5,Llama-3 WikiRecent,Full FT+Anchor+Spectral+SSR recipe,1,,Original teacher single pair; seed not recorded in this endpoint export.
+Fig. 4H / Table S7,ZsRE / AlphaEdit,history efficacy at six checkpoints; final efficacy and locality at 250 edits,10,9941 9942 9943 9944 9945 9946 9947 9948 9949 9950,Complete paired rerun; development-selected coefficient 0.0003.

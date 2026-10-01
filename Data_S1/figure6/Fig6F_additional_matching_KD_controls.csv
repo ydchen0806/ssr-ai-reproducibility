@@ -1,0 +1,3 @@
+rank,method,candidate_id,seed,avg_accuracy,avg_forgetting,final_new_accuracy,aa_gain_vs_kd_pp,af_reduction_vs_kd_pp,final_new_gain_vs_kd_pp,result_file
+4,kd,baseline,19233,92.66,1.7578947368421056,94.0,0.0,0.0,0.0,/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lrrobust_cifar100_rank4_1node_20260907_r2_cifar100_lowrank_fixedkd_functionalspace/rank_4/robustness/kd_baseline/seed_19233/result.json
+4,kd,baseline,19241,93.53,1.4842105263157874,96.8,0.0,0.0,0.0,/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_lrrobust_cifar100_rank4_1node_20260907_r2_cifar100_lowrank_fixedkd_functionalspace/rank_4/robustness/kd_baseline/seed_19241/result.json

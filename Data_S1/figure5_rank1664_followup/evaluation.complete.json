@@ -1,0 +1,542 @@
+[
+  {
+    "task": {
+      "seed": 26092811,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092811.json",
+      "id": "eval_r16_s26092811_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 80.0,
+    "history_locality": 9.191269841269841,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 19.838095238095235,
+    "result_sha256": "2cfdca31111d8ec42bd298f8435ccf7fc0c2b04e997eaaeb8b967de3bf012f69"
+  },
+  {
+    "task": {
+      "seed": 26092815,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092815.json",
+      "id": "eval_r16_s26092815_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 63.0,
+    "history_locality": 7.655158730158731,
+    "immediate_efficacy": 95.0,
+    "immediate_locality": 18.30840548340548,
+    "result_sha256": "2c7fa95283ab286448d17e9d6b6c84766213be7ac9bd22641bf7210139ee854c"
+  },
+  {
+    "task": {
+      "seed": 26092819,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092819.json",
+      "id": "eval_r16_s26092819_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 90.0,
+    "history_locality": 22.793722943722937,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 26.515187590187576,
+    "result_sha256": "d872266dc610acdd9a922f7cba9c2094c0f0a036759633db66f1881ae9bde7fc"
+  },
+  {
+    "task": {
+      "seed": 26092811,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092811.json",
+      "id": "eval_r16_s26092811_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 89.0,
+    "history_locality": 25.652380952380955,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 24.355158730158728,
+    "result_sha256": "57da10cfdec9b83d7b631f8e5ccf04c2b64c60e7f1e0c16a2706dfc86cd4ae9b"
+  },
+  {
+    "task": {
+      "seed": 26092815,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092815.json",
+      "id": "eval_r16_s26092815_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 90.0,
+    "history_locality": 26.084126984126975,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 31.12070707070706,
+    "result_sha256": "3f6e0b454690668464123cc474aa4607fa59486c599fa54aba311b52e87909bf"
+  },
+  {
+    "task": {
+      "seed": 26092819,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092819.json",
+      "id": "eval_r16_s26092819_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 86.0,
+    "history_locality": 18.674278499278493,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 24.75241702741701,
+    "result_sha256": "9608228a2b5ea6d5a63cf2ec313091d6d4dc3cc0fdc026247983b22a2c03682a"
+  },
+  {
+    "task": {
+      "seed": 26092812,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092812.json",
+      "id": "eval_r16_s26092812_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 88.0,
+    "history_locality": 19.86944444444444,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 21.369047619047617,
+    "result_sha256": "945af330ada50f07617da38b24890dbaa3bc57e5faab2b8ccda749ec705b65e5"
+  },
+  {
+    "task": {
+      "seed": 26092816,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092816.json",
+      "id": "eval_r16_s26092816_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 92.0,
+    "history_locality": 20.32864357864357,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 25.314321789321788,
+    "result_sha256": "0f4485d0ae1e32bd9ae40b1b4d49052332d1aeca6b082fc76511638a4cf2b770"
+  },
+  {
+    "task": {
+      "seed": 26092820,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092820.json",
+      "id": "eval_r16_s26092820_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 88.0,
+    "history_locality": 20.623051948051945,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 24.601370851370834,
+    "result_sha256": "24338d2a24a9a1c5506c8deb9a5eacd4d8eae3e102c478cd811b31df84b34bf3"
+  },
+  {
+    "task": {
+      "seed": 26092812,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092812.json",
+      "id": "eval_r16_s26092812_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 94.0,
+    "history_locality": 16.808730158730153,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 28.227777777777774,
+    "result_sha256": "54a4174110e2ec901a3278f1e5f091852e4a24294e0e02e73853e61dcee4b899"
+  },
+  {
+    "task": {
+      "seed": 26092816,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092816.json",
+      "id": "eval_r16_s26092816_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 89.0,
+    "history_locality": 15.588131313131306,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 25.896861471861467,
+    "result_sha256": "3553e0b21eb5381df3cad45ebea25760f3866a6403bf781e281b99d181708182"
+  },
+  {
+    "task": {
+      "seed": 26092820,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092820.json",
+      "id": "eval_r16_s26092820_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 72.0,
+    "history_locality": 23.226695526695522,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 24.092135642135634,
+    "result_sha256": "e04e88755b33bc17f063ed264b255b9b27a5c3e296081fbcc34d46ccee1124c4"
+  },
+  {
+    "task": {
+      "seed": 26092813,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092813.json",
+      "id": "eval_r16_s26092813_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 91.0,
+    "history_locality": 16.81300921300921,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 22.95429015429015,
+    "result_sha256": "3234947a9ab2feeaf48552b71084df8b1ae63e9334903b3e1c68126ec3d9e5c5"
+  },
+  {
+    "task": {
+      "seed": 26092817,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092817.json",
+      "id": "eval_r16_s26092817_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 81.0,
+    "history_locality": 9.408405483405485,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 21.58899711399711,
+    "result_sha256": "c9fd2419fbb7f90de2dcae715ee93298c657130d92ab5f58a474d1413715fcb1"
+  },
+  {
+    "task": {
+      "seed": 26092813,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092813.json",
+      "id": "eval_r16_s26092813_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 89.0,
+    "history_locality": 21.636854811854803,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 27.390823065823056,
+    "result_sha256": "acfa977b8daea05410f92b6d39d4faf8bce027e2a677fbe32922bbf472af836d"
+  },
+  {
+    "task": {
+      "seed": 26092817,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092817.json",
+      "id": "eval_r16_s26092817_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 92.0,
+    "history_locality": 20.39018759018759,
+    "immediate_efficacy": 99.0,
+    "immediate_locality": 24.03658008658008,
+    "result_sha256": "e686b35e365e2675cc39b99c2b30bc940d9032ad4654e2a3164130bde57e05f0"
+  },
+  {
+    "task": {
+      "seed": 26092814,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092814.json",
+      "id": "eval_r16_s26092814_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 81.0,
+    "history_locality": 8.791941391941394,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 23.627905427905418,
+    "result_sha256": "2254f901b52f52e406e4d50c412f0d945cc2813c69b403a4e1a78f63dc482b8f"
+  },
+  {
+    "task": {
+      "seed": 26092818,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092818.json",
+      "id": "eval_r16_s26092818_c0",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 86.0,
+    "history_locality": 17.53214285714285,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 24.355555555555547,
+    "result_sha256": "44f0e274aa2b244eb8e838e285e25b16afa10f371ac06b0a7fc78e4d7b144886"
+  },
+  {
+    "task": {
+      "seed": 26092814,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092814.json",
+      "id": "eval_r16_s26092814_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 94.0,
+    "history_locality": 22.61474913974913,
+    "immediate_efficacy": 99.0,
+    "immediate_locality": 33.39747197247196,
+    "result_sha256": "c0240a3647468d270b1be31c1d1b2a150a6f4d00126b50e32e911a15d8042216"
+  },
+  {
+    "task": {
+      "seed": 26092818,
+      "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+      "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092818.json",
+      "id": "eval_r16_s26092818_c0.03",
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "n_edits": 100,
+      "steps": 20,
+      "checkpoints": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "history_efficacy": 90.0,
+    "history_locality": 21.31666666666666,
+    "immediate_efficacy": 100.0,
+    "immediate_locality": 28.634126984126983,
+    "result_sha256": "dbe3ebf0c4a83d22cd7f49375ac6482fac52091151b6c6a02b729a85469a100e"
+  }
+]

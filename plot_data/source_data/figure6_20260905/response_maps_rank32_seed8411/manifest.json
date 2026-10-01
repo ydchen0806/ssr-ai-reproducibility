@@ -1,0 +1,36 @@
+{
+  "candidate_count": 724,
+  "confuser_class_zero_based": 199,
+  "control": "KD+LowRank",
+  "control_checkpoint_sha256": "013b02634334e4f76648e34e28ef16d9ac8cf1b28a739ee7f06dc21c9ad39d00",
+  "control_metrics": {
+    "avg_accuracy": 79.08096840855016,
+    "avg_forgetting": 3.2330310536631046
+  },
+  "dataset": "CUB-200-2011",
+  "difference_zero_center_abs_bound": 2.2911341190338135,
+  "image_id": 10705,
+  "image_relpath": "182.Yellow_Warbler/Yellow_Warbler_0088_176336.jpg",
+  "input_jpeg_sha256": "282252a59ff87bc79498a1b9d1d70d71b5bf53a28cd07cc9e4e0e08de0b1fb19",
+  "kd_foreground_contrast": 0.09406471252441406,
+  "kd_ssr_foreground_contrast": 2.079862117767334,
+  "kd_ssr_top10_precision": 0.5042854295395655,
+  "kd_top10_precision": 0.06757026111221846,
+  "model": "frozen ResNet-18 layer-4 features + GELU bottleneck adapter",
+  "protocol": "cub_lowrank_response_map_rebuild_v1",
+  "rank": 32,
+  "raw_scalar_maps_saved": true,
+  "response": "signed target-minus-hard-confuser cosine-logit margin at each layer-4 location",
+  "response_shared_abs_bound": 3.95247220993042,
+  "seed": 8411,
+  "selection": "outcome-aware illustrative screen over test images from the 20 highest-cosine KD prototype pairs",
+  "shared_resize_crop": "ResNet18_Weights.DEFAULT resize and center crop; masks use nearest-neighbor",
+  "target_class_zero_based": 181,
+  "treatment": "KD+LowRank+SSR",
+  "treatment_checkpoint_sha256": "1a4b8859a148f31d0e72127641e7c5c486c2683732768d449c2befcd6a9c9e6e",
+  "treatment_metrics": {
+    "avg_accuracy": 80.79545729609853,
+    "avg_forgetting": 2.1646723277966102
+  },
+  "use_for_population_inference": false
+}

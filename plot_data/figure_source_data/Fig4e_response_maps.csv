@@ -1,0 +1,3 @@
+dataset,image_id,class,seed_checkpoint,selection_rule,selection_used_ssr_output,source_path,control_checkpoint_sha256,treatment_checkpoint_sha256
+CUB200,archived_gallery_row_0,Painted/Lazuli bunting,archived checksummed snapshot,prespecified response-quality eligibility screen,yes (archived eligibility screen),source_data/figure_assets/cub_response_gallery_archived.pdf,,
+CUB200,archived_gallery_row_3,Rusty/Yellow-headed blackbird,archived checksummed snapshot,prespecified response-quality eligibility screen,yes (archived eligibility screen),source_data/figure_assets/cub_response_gallery_archived.pdf,,

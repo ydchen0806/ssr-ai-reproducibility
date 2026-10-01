@@ -1,0 +1,12 @@
+{
+  "title": "A human connectome reveals a synaptic spatial principle for learning while preserving memory",
+  "source_date": "2026-09-30",
+  "sha256": {
+    "main.tex": "9d10074841687622e952e34558d22141f4adb807d4891071cf4da9be48030e4d",
+    "supplementary_methods.tex": "9f0b01203646b17930fff2ccce6b31114bade1918daa67d7514a05bc6d45dd83",
+    "figures/Figure4.pdf": "8115d4f4585bac6b20ee03fc4fca109d78e203e627bdcc104b2286dc9b5fa54c",
+    "figures/Figure5.pdf": "1b1689c8995d356bb0d34ba73c35064c1d98c6d5fa257d3a72d20f5c73da50cb",
+    "figures/Figure6.pdf": "9ccaca119ee415e6baf6f9d7bbde8259d7437ca26d47f295066cf262ea12bcd1"
+  },
+  "source_baseline": "Teacher Version 3598; Figure 4 A/C/D/H and Figure 5 revisions"
+}

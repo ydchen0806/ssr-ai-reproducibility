@@ -1,0 +1,7 @@
+cohort,recipe,objective,mapping,dataset,model,n,n_edits,final_history_efficacy_pct,final_history_locality_pct,seeds,source
+Table S2: original n=5 recipe audit,Plain FT,task,N/A,WikiData CounterFact,GPT-2 XL,5,100,9.0,5.66,9311 9315 9319 9325 9329,Same original n=5 set as Fig. 4B; not the Fig. 4F confirmation cohort
+Table S2: original n=5 recipe audit,Plain FT+Anchor,task+soft snapshot MSE,N/A,WikiData CounterFact,GPT-2 XL,5,100,11.4,9.22,9311 9315 9319 9325 9329,Same original n=5 set as Fig. 4B; not the Fig. 4F confirmation cohort
+Table S2: original n=5 recipe audit,Plain FT+Spectral,task+spectral flattening,N/A,WikiData CounterFact,GPT-2 XL,5,100,9.0,5.0,9311 9315 9319 9325 9329,Same original n=5 set as Fig. 4B; not the Fig. 4F confirmation cohort
+Table S2: original n=5 recipe audit,Anchor+Spectral,task+soft snapshot MSE+spectral flattening,N/A,WikiData CounterFact,GPT-2 XL,5,100,10.0,6.51,9311 9315 9319 9325 9329,Same original n=5 set as Fig. 4B; not the Fig. 4F confirmation cohort
+Table S2: original n=5 recipe audit,Plain FT+SSR,task+SSR,cosine,WikiData CounterFact,GPT-2 XL,5,100,13.2,7.93,9311 9315 9319 9325 9329,Same original n=5 set as Fig. 4B; not the Fig. 4F confirmation cohort
+Table S2: original n=5 recipe audit,SSR+FT+Anchor+Spectral,task+soft snapshot MSE+spectral flattening+SSR,projective,WikiData CounterFact,GPT-2 XL,5,100,10.6,8.73,9311 9315 9319 9325 9329,Same original n=5 set as Fig. 4B; not the Fig. 4F confirmation cohort

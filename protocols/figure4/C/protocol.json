@@ -1,0 +1,40 @@
+{
+  "run_id": "cosmos_base_ssr_20260921_r1",
+  "source_commit": "1c15bbe1f27fd825daebbb6f879a6c64d6b76fa6",
+  "seeds": [
+    9311,
+    9313,
+    9315,
+    9317,
+    9319,
+    9321,
+    9323,
+    9325,
+    9327,
+    9329
+  ],
+  "arms": [
+    "plain",
+    "gaussian",
+    "laplace",
+    "cauchy",
+    "inverse"
+  ],
+  "n_edits": 100,
+  "history_checkpoints": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "data_offset": 500,
+  "distance_mapping": "cosine",
+  "lambda_ssr": 0.003,
+  "stage": "fixed_setting_sensitivity_not_hyperparameter_selection",
+  "scope": "CounterFact GPT2XL full-rank kernel comparison",
+  "primary_endpoints": [
+    "final_history_efficacy",
+    "final_history_locality"
+  ],
+  "note": "Every predeclared seed retained, both endpoints use full history; same sigma across families is sensitivity at locked widths, not separately optimized best-family comparison. Existing dense missing-arm job is left intact."
+}

@@ -1,0 +1,63 @@
+{
+  "job_id": "job-sp68qqnxj347",
+  "source_commit": "ce19dccca2277a7d9c31297e3a7d5be381982ff7",
+  "plan_sha256": "8d399443cad23818e8232bcf353f98d050d43d1fed132183dfa60df686277e86",
+  "n_evaluation": 20,
+  "n_pairs_per_rank": 10,
+  "all_runs_validated": true,
+  "summary": [
+    {
+      "rank": 16,
+      "metric": "immediate_efficacy",
+      "n_pairs": 10,
+      "plain_mean": 99.5,
+      "ssr_mean": 99.8,
+      "delta_pp": 0.3,
+      "ci95_low_pp": -0.9182089141609133,
+      "ci95_high_pp": 1.5182089141609134,
+      "ssr_wins": 1,
+      "ties": 7,
+      "ssr_losses": 2
+    },
+    {
+      "rank": 16,
+      "metric": "history_efficacy",
+      "n_pairs": 10,
+      "plain_mean": 84.0,
+      "ssr_mean": 88.5,
+      "delta_pp": 4.5,
+      "ci95_low_pp": -3.878129454358218,
+      "ci95_high_pp": 12.878129454358218,
+      "ssr_wins": 6,
+      "ties": 0,
+      "ssr_losses": 4
+    },
+    {
+      "rank": 16,
+      "metric": "immediate_locality",
+      "n_pairs": 10,
+      "plain_mean": 22.847317682317676,
+      "ssr_mean": 27.190405982905975,
+      "delta_pp": 4.343088300588299,
+      "ci95_low_pp": 1.0900965318533462,
+      "ci95_high_pp": 7.596080069323252,
+      "ssr_wins": 8,
+      "ties": 0,
+      "ssr_losses": 2
+    },
+    {
+      "rank": 16,
+      "metric": "history_locality",
+      "n_pairs": 10,
+      "plain_mean": 15.30067904317904,
+      "ssr_mean": 21.19928016428016,
+      "delta_pp": 5.898601121101118,
+      "ci95_low_pp": -0.2621082622790576,
+      "ci95_high_pp": 12.059310504481292,
+      "ssr_wins": 7,
+      "ties": 0,
+      "ssr_losses": 3
+    }
+  ],
+  "scope": "new evaluation orders over a previously used WikiRecent test-item pool; no manuscript or figure update"
+}

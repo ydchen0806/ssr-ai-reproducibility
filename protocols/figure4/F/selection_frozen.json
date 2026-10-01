@@ -1,0 +1,271 @@
+{
+  "selected_anchor": {
+    "config": {
+      "name": "anchor_0",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 0.0001,
+      "spectral": 0.01
+    },
+    "efficacy": 12.0,
+    "locality": 11.094580555609966,
+    "score": 11.529541863446351
+  },
+  "selected_full": {
+    "config": {
+      "name": "full_4",
+      "recipe": "full",
+      "ssr": 0.003,
+      "anchor": 1,
+      "spectral": 0.1
+    },
+    "efficacy": 10.0,
+    "locality": 12.051369926369928,
+    "score": 10.930268701318559
+  },
+  "development_gate_pass": false,
+  "all_candidates": {
+    "anchor_0": {
+      "config": {
+        "name": "anchor_0",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 0.0001,
+        "spectral": 0.01
+      },
+      "efficacy": 12.0,
+      "locality": 11.094580555609966,
+      "score": 11.529541863446351
+    },
+    "anchor_1": {
+      "config": {
+        "name": "anchor_1",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 0.001,
+        "spectral": 0.01
+      },
+      "efficacy": 8.333333333333334,
+      "locality": 11.563973526473525,
+      "score": 9.68638084871768
+    },
+    "anchor_2": {
+      "config": {
+        "name": "anchor_2",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 0.01,
+        "spectral": 0.01
+      },
+      "efficacy": 9.333333333333334,
+      "locality": 10.232804232804233,
+      "score": 9.762394086893817
+    },
+    "anchor_3": {
+      "config": {
+        "name": "anchor_3",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 0.1,
+        "spectral": 0.01
+      },
+      "efficacy": 9.0,
+      "locality": 9.109421732951143,
+      "score": 9.054380289502475
+    },
+    "anchor_4": {
+      "config": {
+        "name": "anchor_4",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 1,
+        "spectral": 0.01
+      },
+      "efficacy": 9.333333333333334,
+      "locality": 9.74837431087431,
+      "score": 9.536340100998508
+    },
+    "anchor_5": {
+      "config": {
+        "name": "anchor_5",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 10,
+        "spectral": 0.01
+      },
+      "efficacy": 9.0,
+      "locality": 10.31402236108118,
+      "score": 9.612311668104988
+    },
+    "anchor_6": {
+      "config": {
+        "name": "anchor_6",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 100,
+        "spectral": 0.01
+      },
+      "efficacy": 7.000000000000001,
+      "locality": 8.12956917809859,
+      "score": 7.522617938000257
+    },
+    "anchor_7": {
+      "config": {
+        "name": "anchor_7",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 1000,
+        "spectral": 0.01
+      },
+      "efficacy": 7.333333333333333,
+      "locality": 10.581007554536962,
+      "score": 8.662786522330412
+    },
+    "anchor_8": {
+      "config": {
+        "name": "anchor_8",
+        "recipe": "anchor",
+        "ssr": 0.003,
+        "anchor": 10000,
+        "spectral": 0.01
+      },
+      "efficacy": 12.0,
+      "locality": 10.439339364339364,
+      "score": 11.165397549194783
+    },
+    "full_0": {
+      "config": {
+        "name": "full_0",
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 0.001,
+        "spectral": 0.001
+      },
+      "efficacy": 8.333333333333334,
+      "locality": 11.859589158118567,
+      "score": 9.788569207139272
+    },
+    "full_1": {
+      "config": {
+        "name": "full_1",
+        "recipe": "full",
+        "ssr": 0.003,
+        "anchor": 0.001,
+        "spectral": 0.01
+      },
+      "efficacy": 9.333333333333334,
+      "locality": 9.807317355846767,
+      "score": 9.564456660780754
+    },
+    "full_2": {
+      "config": {
+        "name": "full_2",
+        "recipe": "full",
+        "ssr": 0.03,
+        "anchor": 0.001,
+        "spectral": 0.1
+      },
+      "efficacy": 7.666666666666667,
+      "locality": 10.175311725311724,
+      "score": 8.744627026615264
+    },
+    "full_3": {
+      "config": {
+        "name": "full_3",
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 1,
+        "spectral": 0.01
+      },
+      "efficacy": 6.666666666666667,
+      "locality": 9.808156331685742,
+      "score": 7.93789516093061
+    },
+    "full_4": {
+      "config": {
+        "name": "full_4",
+        "recipe": "full",
+        "ssr": 0.003,
+        "anchor": 1,
+        "spectral": 0.1
+      },
+      "efficacy": 10.0,
+      "locality": 12.051369926369928,
+      "score": 10.930268701318559
+    },
+    "full_5": {
+      "config": {
+        "name": "full_5",
+        "recipe": "full",
+        "ssr": 0.03,
+        "anchor": 1,
+        "spectral": 0.001
+      },
+      "efficacy": 8.333333333333334,
+      "locality": 9.466417514946926,
+      "score": 8.863810881058422
+    },
+    "full_6": {
+      "config": {
+        "name": "full_6",
+        "recipe": "full",
+        "ssr": 0.0003,
+        "anchor": 1000,
+        "spectral": 0.1
+      },
+      "efficacy": 10.0,
+      "locality": 9.11966551966552,
+      "score": 9.539565961847496
+    },
+    "full_7": {
+      "config": {
+        "name": "full_7",
+        "recipe": "full",
+        "ssr": 0.003,
+        "anchor": 1000,
+        "spectral": 0.001
+      },
+      "efficacy": 8.0,
+      "locality": 9.442348800437033,
+      "score": 8.661538794775574
+    },
+    "full_8": {
+      "config": {
+        "name": "full_8",
+        "recipe": "full",
+        "ssr": 0.03,
+        "anchor": 1000,
+        "spectral": 0.01
+      },
+      "efficacy": 9.666666666666666,
+      "locality": 7.388698148256972,
+      "score": 8.375556064015763
+    },
+    "plain": {
+      "config": {
+        "name": "plain",
+        "recipe": "plain",
+        "ssr": 0.003,
+        "anchor": 0.001,
+        "spectral": 0.01
+      },
+      "efficacy": 12.0,
+      "locality": 11.289259487788897,
+      "score": 11.63378457133834
+    },
+    "ssr_reference": {
+      "config": {
+        "name": "ssr_reference",
+        "recipe": "ssr_only",
+        "ssr": 0.003,
+        "anchor": 0.001,
+        "spectral": 0.01
+      },
+      "efficacy": 8.0,
+      "locality": 9.340910015910014,
+      "score": 8.618611140790074
+    }
+  },
+  "frozen_at": 1790017138.0501776,
+  "protocol_sha256": "b7f222a2fd4ba32938dd78240d195d49296b79bf85790493f189657d6fc61fe0"
+}

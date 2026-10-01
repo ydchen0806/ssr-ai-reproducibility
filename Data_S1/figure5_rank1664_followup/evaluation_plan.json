@@ -1,0 +1,802 @@
+[
+  {
+    "seed": 26092811,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092811.json",
+    "id": "eval_r16_s26092811_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092811,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092811.json",
+    "id": "eval_r16_s26092811_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092812,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092812.json",
+    "id": "eval_r16_s26092812_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092812,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092812.json",
+    "id": "eval_r16_s26092812_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092813,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092813.json",
+    "id": "eval_r16_s26092813_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092813,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092813.json",
+    "id": "eval_r16_s26092813_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092814,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092814.json",
+    "id": "eval_r16_s26092814_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092814,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092814.json",
+    "id": "eval_r16_s26092814_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092815,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092815.json",
+    "id": "eval_r16_s26092815_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092815,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092815.json",
+    "id": "eval_r16_s26092815_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092816,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092816.json",
+    "id": "eval_r16_s26092816_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092816,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092816.json",
+    "id": "eval_r16_s26092816_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092817,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092817.json",
+    "id": "eval_r16_s26092817_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092817,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092817.json",
+    "id": "eval_r16_s26092817_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092818,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092818.json",
+    "id": "eval_r16_s26092818_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092818,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092818.json",
+    "id": "eval_r16_s26092818_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092819,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092819.json",
+    "id": "eval_r16_s26092819_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092819,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092819.json",
+    "id": "eval_r16_s26092819_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092820,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092820.json",
+    "id": "eval_r16_s26092820_c0",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092820,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092820.json",
+    "id": "eval_r16_s26092820_c0.03",
+    "rank": 16,
+    "window": 32,
+    "coefficient": 0.03,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092811,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092811.json",
+    "id": "eval_r64_s26092811_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092811,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092811.json",
+    "id": "eval_r64_s26092811_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092812,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092812.json",
+    "id": "eval_r64_s26092812_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092812,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092812.json",
+    "id": "eval_r64_s26092812_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092813,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092813.json",
+    "id": "eval_r64_s26092813_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092813,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092813.json",
+    "id": "eval_r64_s26092813_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092814,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092814.json",
+    "id": "eval_r64_s26092814_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092814,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092814.json",
+    "id": "eval_r64_s26092814_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092815,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092815.json",
+    "id": "eval_r64_s26092815_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092815,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092815.json",
+    "id": "eval_r64_s26092815_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092816,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092816.json",
+    "id": "eval_r64_s26092816_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092816,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092816.json",
+    "id": "eval_r64_s26092816_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092817,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092817.json",
+    "id": "eval_r64_s26092817_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092817,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092817.json",
+    "id": "eval_r64_s26092817_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092818,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092818.json",
+    "id": "eval_r64_s26092818_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092818,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092818.json",
+    "id": "eval_r64_s26092818_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092819,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092819.json",
+    "id": "eval_r64_s26092819_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092819,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092819.json",
+    "id": "eval_r64_s26092819_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092820,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092820.json",
+    "id": "eval_r64_s26092820_c0",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  },
+  {
+    "seed": 26092820,
+    "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+    "stream": "/unify/ydchen/unidit/bioreg/work/ssr_fig5_rank1664_20260927/streams/evaluation_26092820.json",
+    "id": "eval_r64_s26092820_c0.01",
+    "rank": 64,
+    "window": 8,
+    "coefficient": 0.01,
+    "n_edits": 100,
+    "steps": 20,
+    "checkpoints": [
+      1,
+      2,
+      5,
+      10,
+      25,
+      50,
+      100
+    ]
+  }
+]

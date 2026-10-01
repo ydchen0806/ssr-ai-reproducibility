@@ -1,0 +1,87 @@
+{
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/wiki_recent/recent_test.json",
+  "dataset_sha256": "e5c4ce6de1e8e2d10d892164ad6f4cbd28c976ed509e29e78ae853b01de1797b",
+  "easyedit_alg_name": "LoRA",
+  "elapsed_s": 3248.0,
+  "final_history_efficacy": 1.0,
+  "final_pre_edit_output_consistency": 33.712746761739254,
+  "history_checkpoints": [
+    1,
+    2,
+    5,
+    10,
+    25,
+    50,
+    100
+  ],
+  "history_max_samples": 128,
+  "hparams_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/sources/EasyEdit_ssr_v28_rank_canary_20260826/hparams/LoRA/qwen2.5-7b.yaml",
+  "hparams_sha256": "aa6e8793b3c3ef7ccefcb028ecf31ed45a82ab69b860c636a219f0dd53db6619",
+  "immediate": {
+    "efficacy": 0.76,
+    "efficacy_n": 100,
+    "locality_target_consistency": 0.12722666222666223,
+    "locality_target_consistency_n": 100,
+    "n_edits": 100,
+    "portability": 0.36036513003904297,
+    "portability_n": 100,
+    "rephrase": 0.39,
+    "rephrase_n": 100
+  },
+  "lora": {
+    "alpha": 64,
+    "alpha_over_rank": 4.0,
+    "capacity_variable": "rank_and_learning_rate_with_fixed_alpha_over_rank",
+    "hparams_scope": "released EasyEdit Qwen2.5-7B except declared rank/alpha and learning-rate scaling",
+    "learning_rate": 0.005,
+    "num_steps": 60,
+    "rank": 16,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "manifest_declared_edits": 100,
+  "mechanism_diagnostics": {
+    "effective_rank": "entropy_effective_rank_normalized_by_matrix_rank_ceiling",
+    "geometry_overlap": "cosine_alignment_with_fixed_center_surround_row_kernel",
+    "scope": "read_only_on_lora_B_at_predeclared_checkpoints"
+  },
+  "method": "LoRA",
+  "method_cache_dir": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_all_datasets_ranks_3node_20260909_r1_lowrank_lora_dataset_ranks/cache/wikirecent/rank_16/lambda_0/seed_17634",
+  "model_label": "Qwen2.5-7B-Instruct",
+  "model_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/models/Qwen2.5-7B-Instruct",
+  "n_edits": 100,
+  "native_update_norm": null,
+  "output_preservation_anchor": {
+    "application_order": "native_lora_then_anchor_then_ssr",
+    "enabled": false,
+    "learning_rate": 0.0001,
+    "loss": "current_edit_nll_plus_teacher_to_student_kl",
+    "probe_batch_size": 4,
+    "steps_per_edit": 0,
+    "teacher": "frozen_pre_edit_next_token_topk_distribution",
+    "weight": 0.0
+  },
+  "output_preservation_anchor_diagnostics": null,
+  "peak_cuda_memory_mb": 29740.41015625,
+  "peft_dispatch": "standard_linear_with_optional_torchao_disabled",
+  "pre_edit_control_count": 32,
+  "pre_edit_control_sampling": "fixed_even_positions_from_predeclared_manifest",
+  "protocol": "lowrank_lora_ssr_v1",
+  "runtime_per_edit_s": 32.48,
+  "ssr": {
+    "application": "post_lora_update_center_surround_proximal_step",
+    "enabled": false,
+    "lambda": 0.0,
+    "plastic_object": "LoRA-B output rows",
+    "topology": "cyclic row adjacency within each LoRA-B matrix",
+    "zero_is_exact_noop": true
+  },
+  "stats_cache_dir": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_all_datasets_ranks_3node_20260909_r1_lowrank_lora_dataset_ranks/cache/wikirecent/rank_16/lambda_0/seed_17634/stats",
+  "status": "complete",
+  "stream_manifest": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_cosmos_ke_all_datasets_ranks_3node_20260909_r1_launcher_status/streams/wikirecent/confirmation_seed_17634.json",
+  "stream_manifest_sha256": "b8dc8348bc47869e5d20db601f65e69ac06729b0275f0e5365d080abf9c7267e",
+  "stream_prefix_policy": "first_n_predeclared_edit_indices",
+  "stream_seed": 17634
+}

@@ -1,0 +1,34 @@
+{
+  "A,B,E,F": {
+    "directory": "figure5_dual_followup",
+    "rank": 32,
+    "seeds": [26092711, 26092712, 26092713, 26092714, 26092715, 26092716, 26092717, 26092718, 26092719, 26092720],
+    "rehearsal_window": 32,
+    "ssr_coefficient": 0.03,
+    "matching": "complete-phrase boundary matching for efficacy and locality",
+    "metrics": ["immediate_efficacy", "history_efficacy", "immediate_locality", "history_locality"],
+    "geometry": ["center_surround_contrast", "kernel_alignment"],
+    "supplementary_table_label": "tab:supp_lora_dual_followup"
+  },
+  "C": {
+    "directory": "figure5_rehearsal",
+    "ranks": [8, 16, 32],
+    "seeds": [17631, 17632, 17633, 17634, 17635, 17636, 17637, 17638, 17639, 17640],
+    "rehearsal_window": 8,
+    "matching": "complete-phrase efficacy; reference-answer substring locality",
+    "metrics": ["immediate_efficacy_percent", "final_history_efficacy_percent"],
+    "additional_metric_in_supplementary_table": ["immediate_locality_percent"],
+    "supplementary_table_label": "tab:supp_lora_ke_registry"
+  },
+  "D": {
+    "directories": {"8": "figure5_dual_followup", "16": "figure5_rank1664_followup", "32": "figure5_dual_followup"},
+    "ranks": [8, 16, 32],
+    "seeds_by_rank": {"8": [26092711, 26092712, 26092713, 26092714, 26092715, 26092716, 26092717, 26092718, 26092719, 26092720], "16": [26092811, 26092812, 26092813, 26092814, 26092815, 26092816, 26092817, 26092818, 26092819, 26092820], "32": [26092711, 26092712, 26092713, 26092714, 26092715, 26092716, 26092717, 26092718, 26092719, 26092720]},
+    "rehearsal_window": 32,
+    "ssr_coefficients": {"8": 0.01, "16": 0.03, "32": 0.03},
+    "matching": "complete-phrase boundary matching for locality",
+    "metrics": ["immediate_locality", "history_locality"],
+    "supplementary_table_labels": {"8": "tab:supp_lora_dual_followup", "16": "tab:supp_lora_rank1664_followup", "32": "tab:supp_lora_dual_followup"}
+  },
+  "reporting": "Panels C and D display ranks 8, 16 and 32. All ten pairs are retained in each comparison. D rank 32 shares the A,B,E,F cohort; rank 16 uses a separate evaluation set. C is a separate rank sweep and its substring locality scores must not be pooled with D."
+}

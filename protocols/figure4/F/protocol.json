@@ -1,0 +1,191 @@
+{
+  "run_id": "ssr_recipe_tuning_20260921_r1",
+  "source_commit": "1c15bbe1f27fd825daebbb6f879a6c64d6b76fa6",
+  "model": "gpt2-xl",
+  "model_path": "/unify/ydchen/unidit/bioreg/hugging_cache/gpt2-xl",
+  "dataset": "cf",
+  "n_edits": 100,
+  "history_checkpoints": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "development_seeds": [
+    26092101,
+    26092102,
+    26092103
+  ],
+  "confirmation_seeds": [
+    26092201,
+    26092202,
+    26092203,
+    26092204,
+    26092205,
+    26092206,
+    26092207,
+    26092208,
+    26092209,
+    26092210
+  ],
+  "canary_seed": 26092001,
+  "distance_mapping": "cosine",
+  "kernel": "gaussian",
+  "development_configs": [
+    {
+      "name": "anchor_0",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 0.0001,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_1",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 0.001,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_2",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 0.01,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_3",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 0.1,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_4",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 1,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_5",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 10,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_6",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 100,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_7",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 1000,
+      "spectral": 0.01
+    },
+    {
+      "name": "anchor_8",
+      "recipe": "anchor",
+      "ssr": 0.003,
+      "anchor": 10000,
+      "spectral": 0.01
+    },
+    {
+      "name": "full_0",
+      "recipe": "full",
+      "ssr": 0.0003,
+      "anchor": 0.001,
+      "spectral": 0.001
+    },
+    {
+      "name": "full_1",
+      "recipe": "full",
+      "ssr": 0.003,
+      "anchor": 0.001,
+      "spectral": 0.01
+    },
+    {
+      "name": "full_2",
+      "recipe": "full",
+      "ssr": 0.03,
+      "anchor": 0.001,
+      "spectral": 0.1
+    },
+    {
+      "name": "full_3",
+      "recipe": "full",
+      "ssr": 0.0003,
+      "anchor": 1,
+      "spectral": 0.01
+    },
+    {
+      "name": "full_4",
+      "recipe": "full",
+      "ssr": 0.003,
+      "anchor": 1,
+      "spectral": 0.1
+    },
+    {
+      "name": "full_5",
+      "recipe": "full",
+      "ssr": 0.03,
+      "anchor": 1,
+      "spectral": 0.001
+    },
+    {
+      "name": "full_6",
+      "recipe": "full",
+      "ssr": 0.0003,
+      "anchor": 1000,
+      "spectral": 0.1
+    },
+    {
+      "name": "full_7",
+      "recipe": "full",
+      "ssr": 0.003,
+      "anchor": 1000,
+      "spectral": 0.001
+    },
+    {
+      "name": "full_8",
+      "recipe": "full",
+      "ssr": 0.03,
+      "anchor": 1000,
+      "spectral": 0.01
+    },
+    {
+      "name": "plain",
+      "recipe": "plain",
+      "ssr": 0.003,
+      "anchor": 0.001,
+      "spectral": 0.01
+    },
+    {
+      "name": "ssr_reference",
+      "recipe": "ssr_only",
+      "ssr": 0.003,
+      "anchor": 0.001,
+      "spectral": 0.01
+    }
+  ],
+  "selection": {
+    "score": "harmonic mean of cohort-mean final-history efficacy and locality, both percent; tie-break ascending config name",
+    "equal_family_budget": 9,
+    "full_rule": "Prefer configs with mean efficacy >= tuned-anchor efficacy - 1 percentage point and mean locality > tuned-anchor locality; within eligible maximize harmonic score. If none, select max score and explicitly mark development gate false. Always evaluate frozen ablation on confirmation; never select confirmation seeds.",
+    "confirmation_joint_gate": "full minus independently tuned anchor: paired bootstrap efficacy CI lower > -1 pp AND locality CI lower > 0 pp; superiority requires both lower bounds >0. The -1 pp tolerance is a prospective operational choice, not a meeting-established margin.",
+    "ablation": "eight arms share the selected full-recipe coefficients; ninth tuned-anchor comparator gets its own equally budgeted selected anchor coefficient",
+    "transfer": "No automatic cross-dataset claim. Freeze selection and finish all confirmation arms before planning transfer."
+  },
+  "reporting": "All streams, failures, candidates and confirmation outcomes retained. Absolute percentages distinct from gains in percentage points. History measures recomputed on every edited item and associated locality probes. No rename of immediate metrics.",
+  "expected_development": 60,
+  "expected_confirmation": 90,
+  "primary_metrics": [
+    "final_history_efficacy",
+    "final_history_locality"
+  ]
+}

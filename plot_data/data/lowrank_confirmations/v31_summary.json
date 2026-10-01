@@ -1,0 +1,5472 @@
+{
+  "confirmation_seeds": [
+    13401,
+    13402,
+    13405,
+    13406,
+    13407
+  ],
+  "final_comparisons": {
+    "lowrank_ssr_vs_lowrank": {
+      "all_miou": {
+        "bootstrap_95_ci": [
+          0.005082577736921623,
+          0.016061320181739593
+        ],
+        "paired_delta_mean": 0.009976064179103614,
+        "per_seed_deltas": [
+          0.006994192372093644,
+          0.0019943504130031375,
+          0.0133946509166845,
+          0.007435803114414552,
+          0.020061324079322235
+        ]
+      },
+      "new_miou": {
+        "bootstrap_95_ci": [
+          -0.007179612710874689,
+          0.007330121823673781
+        ],
+        "paired_delta_mean": 0.0002869047926270886,
+        "per_seed_deltas": [
+          -0.0017215400188595655,
+          9.051422020135008e-05,
+          -0.012542773202326066,
+          0.0034517960714643223,
+          0.012156526892655402
+        ]
+      },
+      "old_boundary_iou": {
+        "bootstrap_95_ci": [
+          0.0005882769092987767,
+          0.019415854552983995
+        ],
+        "paired_delta_mean": 0.008906772949305645,
+        "per_seed_deltas": [
+          0.028187853830571263,
+          0.003471563589752709,
+          -0.004719214739007646,
+          0.00854951438175841,
+          0.009044147683453484
+        ]
+      },
+      "old_boundary_margin": {
+        "bootstrap_95_ci": [
+          -0.5851537704467773,
+          0.06388883590698242
+        ],
+        "paired_delta_mean": -0.2954097747802734,
+        "per_seed_deltas": [
+          -0.40712881088256836,
+          -0.26566600799560547,
+          -0.4792323112487793,
+          0.4019351005554199,
+          -0.726956844329834
+        ]
+      },
+      "old_miou": {
+        "bootstrap_95_ci": [
+          0.005525186173272451,
+          0.016071071036752538
+        ],
+        "paired_delta_mean": 0.010760364307605508,
+        "per_seed_deltas": [
+          0.007595024426945041,
+          0.0021995181290981602,
+          0.017575484463153906,
+          0.008036845754275851,
+          0.01839494876455458
+        ]
+      }
+    },
+    "lowrank_ssr_vs_plop": {
+      "all_miou": {
+        "bootstrap_95_ci": [
+          -0.10880912540045433,
+          -0.07199812252152649
+        ],
+        "paired_delta_mean": -0.08991648142908744,
+        "per_seed_deltas": [
+          -0.07093963193366062,
+          -0.07702686187342053,
+          -0.07054224343344531,
+          -0.1100575073230606,
+          -0.12101616258185013
+        ]
+      },
+      "new_miou": {
+        "bootstrap_95_ci": [
+          -0.0474270655111026,
+          -0.008709411801932312
+        ],
+        "paired_delta_mean": -0.024096834777441893,
+        "per_seed_deltas": [
+          -0.013417139479981707,
+          -0.0026960660983551786,
+          -0.012368893666484748,
+          -0.025619895019067612,
+          -0.06638217962332021
+        ]
+      },
+      "old_boundary_iou": {
+        "bootstrap_95_ci": [
+          -0.025755553142553587,
+          -0.004782392113409454
+        ],
+        "paired_delta_mean": -0.016990453620270678,
+        "per_seed_deltas": [
+          0.005879284846770513,
+          -0.01605521631490022,
+          -0.025326483552207964,
+          -0.028674945527336307,
+          -0.020774907553679403
+        ]
+      },
+      "old_boundary_margin": {
+        "bootstrap_95_ci": [
+          2.4481875896453857,
+          3.0334402084350587
+        ],
+        "paired_delta_mean": 2.7077661514282227,
+        "per_seed_deltas": [
+          2.447492837905884,
+          2.4201736450195312,
+          2.8748252391815186,
+          3.290734052658081,
+          2.5056049823760986
+        ]
+      },
+      "old_miou": {
+        "bootstrap_95_ci": [
+          -0.08903977855391561,
+          -0.06270650831699345
+        ],
+        "paired_delta_mean": -0.07492483841945578,
+        "per_seed_deltas": [
+          -0.05414025729549157,
+          -0.06901177830799568,
+          -0.06812012434299422,
+          -0.08648866401290423,
+          -0.0968633681378932
+        ]
+      }
+    },
+    "lowrank_vs_plop": {
+      "all_miou": {
+        "bootstrap_95_ci": [
+          -0.12394939654148318,
+          -0.07956939350689714
+        ],
+        "paired_delta_mean": -0.09989254560819105,
+        "per_seed_deltas": [
+          -0.07793382430575427,
+          -0.07902121228642367,
+          -0.08393689435012981,
+          -0.11749331043747516,
+          -0.14107748666117237
+        ]
+      },
+      "new_miou": {
+        "bootstrap_95_ci": [
+          -0.05349487819140306,
+          -0.003384200205310513
+        ],
+        "paired_delta_mean": -0.024383739570068983,
+        "per_seed_deltas": [
+          -0.011695599461122141,
+          -0.0027865803185565287,
+          0.00017387953584131755,
+          -0.029071691090531933,
+          -0.07853870651597562
+        ]
+      },
+      "old_boundary_iou": {
+        "bootstrap_95_ci": [
+          -0.03241994075552347,
+          -0.020515333283901448
+        ],
+        "paired_delta_mean": -0.02589722656957632,
+        "per_seed_deltas": [
+          -0.02230856898380075,
+          -0.01952677990465293,
+          -0.020607268813200318,
+          -0.03722445990909472,
+          -0.029819055237132887
+        ]
+      },
+      "old_boundary_margin": {
+        "bootstrap_95_ci": [
+          2.793944311141968,
+          3.2204139709472654
+        ],
+        "paired_delta_mean": 3.0031759262084963,
+        "per_seed_deltas": [
+          2.854621648788452,
+          2.6858396530151367,
+          3.354057550430298,
+          2.888798952102661,
+          3.2325618267059326
+        ]
+      },
+      "old_miou": {
+        "bootstrap_95_ci": [
+          -0.10230235138232346,
+          -0.07018853027431675
+        ],
+        "paired_delta_mean": -0.08568520272706129,
+        "per_seed_deltas": [
+          -0.061735281722436613,
+          -0.07121129643709384,
+          -0.08569560880614813,
+          -0.09452550976718008,
+          -0.11525831690244778
+        ]
+      }
+    }
+  },
+  "frozen_selection": {
+    "arms": [
+      "PLOP",
+      "LowRank",
+      "LowRank+SSR"
+    ],
+    "candidates": [
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 1.0,
+        "arm": "lowrank_ssr_r1_l3e-3",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.00023304682888874995,
+              "per_seed_deltas": [
+                0.00024109497605340202,
+                0.00022499868172409787
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0005616532196059953,
+              "per_seed_deltas": [
+                0.0005144849363775128,
+                0.0006088215028344779
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.0001778059509100205,
+              "per_seed_deltas": [
+                -0.0008982623337032702,
+                0.0005426504318832293
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.005845308303833008,
+              "per_seed_deltas": [
+                0.003882884979248047,
+                0.007807731628417969
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.00012425927946568827,
+              "per_seed_deltas": [
+                0.00015264766355382875,
+                9.587089537754778e-05
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.025333972781013292,
+              "per_seed_deltas": [
+                0.022268900764022104,
+                0.02839904479800448
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0518001818373596,
+              "per_seed_deltas": [
+                0.04622039016416141,
+                0.05737997351055779
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.044628499476930594,
+              "per_seed_deltas": [
+                0.03935457224033073,
+                0.04990242671353046
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.4940974712371826,
+              "per_seed_deltas": [
+                0.48571062088012695,
+                0.5024843215942383
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.017903107454455558,
+              "per_seed_deltas": [
+                0.015558433704561225,
+                0.02024778120434989
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.003,
+        "normalization": "relative_primary_v1",
+        "rank": 1,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r1_l3e-3",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 1.0,
+        "arm": "lowrank_ssr_r1_l1e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": -0.00024042687034253607,
+              "per_seed_deltas": [
+                0.000984747764906313,
+                -0.0014656015055913851
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.00033599522814453664,
+              "per_seed_deltas": [
+                0.001606734633770035,
+                -0.0009347441774809617
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.0012572607202301356,
+              "per_seed_deltas": [
+                -0.0012552101962536866,
+                -0.0012593112442065846
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.006032228469848633,
+              "per_seed_deltas": [
+                0.006641864776611328,
+                0.0054225921630859375
+              ]
+            },
+            "old_miou": {
+              "mean_delta": -0.0004913195913898716,
+              "per_seed_deltas": [
+                0.0008055024893415252,
+                -0.0017881416721212684
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.024860499081782006,
+              "per_seed_deltas": [
+                0.023012553552875015,
+                0.026708444610688997
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05157452384589814,
+              "per_seed_deltas": [
+                0.04731263986155393,
+                0.05583640783024235
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04354904470761048,
+              "per_seed_deltas": [
+                0.038997624377780316,
+                0.04810046503744064
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.49428439140319824,
+              "per_seed_deltas": [
+                0.48846960067749023,
+                0.5000991821289062
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.017287528583599998,
+              "per_seed_deltas": [
+                0.016211288530348922,
+                0.018363768636851074
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.01,
+        "normalization": "relative_primary_v1",
+        "rank": 1,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r1_l1e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 1.0,
+        "arm": "lowrank_ssr_r1_l3e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": -0.0063515459836892,
+              "per_seed_deltas": [
+                0.00036681951092376597,
+                -0.013069911478302165
+              ]
+            },
+            "new_miou": {
+              "mean_delta": -0.005631306414458331,
+              "per_seed_deltas": [
+                0.0011977215901152194,
+                -0.012460334419031882
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.01471006073128156,
+              "per_seed_deltas": [
+                -0.003861532688071434,
+                -0.025558588774491686
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.004428863525390625,
+              "per_seed_deltas": [
+                0.04166269302368164,
+                -0.03280496597290039
+              ]
+            },
+            "old_miou": {
+              "mean_delta": -0.007037870403053814,
+              "per_seed_deltas": [
+                0.00013537335604396628,
+                -0.014211114162151595
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.018749379968435342,
+              "per_seed_deltas": [
+                0.022394625298892468,
+                0.015104134637978217
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.04560722220329527,
+              "per_seed_deltas": [
+                0.04690362681789911,
+                0.04431081758869143
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.030096244696559055,
+              "per_seed_deltas": [
+                0.03639130188596257,
+                0.02380118750715554
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.49268102645874023,
+              "per_seed_deltas": [
+                0.5234904289245605,
+                0.4618716239929199
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.010740977771936056,
+              "per_seed_deltas": [
+                0.015541159397051363,
+                0.005940796146820748
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.03,
+        "normalization": "relative_primary_v1",
+        "rank": 1,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r1_l3e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 1.0,
+        "arm": "lowrank_ssr_r1_l1e-1",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": -0.0010610099109372717,
+              "per_seed_deltas": [
+                -0.0007279642204317538,
+                -0.0013940556014427896
+              ]
+            },
+            "new_miou": {
+              "mean_delta": -0.0011098668588118143,
+              "per_seed_deltas": [
+                -0.000761974341246141,
+                -0.0014577593763774876
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.011439474141170608,
+              "per_seed_deltas": [
+                -0.005747989421521715,
+                -0.0171309588608195
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.04483675956726074,
+              "per_seed_deltas": [
+                0.05894041061401367,
+                0.030733108520507812
+              ]
+            },
+            "old_miou": {
+              "mean_delta": -0.0010967215934148955,
+              "per_seed_deltas": [
+                -0.000709471873910239,
+                -0.001483971312919552
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.02403991604118727,
+              "per_seed_deltas": [
+                0.021299841567536948,
+                0.026779990514837593
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05012866175894179,
+              "per_seed_deltas": [
+                0.04494393088653775,
+                0.055313392631345826
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.03336683128667001,
+              "per_seed_deltas": [
+                0.03450484515251229,
+                0.03222881742082773
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.5330889225006104,
+              "per_seed_deltas": [
+                0.5407681465148926,
+                0.5254096984863281
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.016682126581574974,
+              "per_seed_deltas": [
+                0.014696314167097158,
+                0.01866793899605279
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.1,
+        "normalization": "relative_primary_v1",
+        "rank": 1,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r1_l1e-1",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 2.0,
+        "arm": "lowrank_ssr_r2_l3e-3",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.0002544118602142431,
+              "per_seed_deltas": [
+                0.000357357337007036,
+                0.00015146638342145025
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0006314685315263469,
+              "per_seed_deltas": [
+                0.0007496196162231072,
+                0.0005133174468295865
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.0005284757486415381,
+              "per_seed_deltas": [
+                0.0006857520696343378,
+                0.0003711994276487385
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.005167961120605469,
+              "per_seed_deltas": [
+                0.004868984222412109,
+                0.005466938018798828
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.00013795958348505888,
+              "per_seed_deltas": [
+                0.0002420330706488505,
+                3.388609632126727e-05
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.025490609824213528,
+              "per_seed_deltas": [
+                0.020947547900803554,
+                0.030033671747623503
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05158361795718927,
+              "per_seed_deltas": [
+                0.04311598080709039,
+                0.06005125510728815
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04250841661396612,
+              "per_seed_deltas": [
+                0.0371720750585352,
+                0.04784475816939704
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.4490830898284912,
+              "per_seed_deltas": [
+                0.4548325538635254,
+                0.44333362579345703
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.018227834722154834,
+              "per_seed_deltas": [
+                0.01477810430902382,
+                0.021677565135285848
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": true,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.003,
+        "normalization": "relative_primary_v1",
+        "rank": 2,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r2_l3e-3",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 2.0,
+        "arm": "lowrank_ssr_r2_l1e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.00017005091107741288,
+              "per_seed_deltas": [
+                0.000526663142758288,
+                -0.0001865613206034622
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0005825557194978903,
+              "per_seed_deltas": [
+                0.0006322834638602393,
+                0.0005328279751355414
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.00031979787077379696,
+              "per_seed_deltas": [
+                0.0008442397650571531,
+                -0.00020464402350955924
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.0183413028717041,
+              "per_seed_deltas": [
+                0.022432327270507812,
+                0.01425027847290039
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 1.7644857541188053e-05,
+              "per_seed_deltas": [
+                0.0005019041622232878,
+                -0.0004666144471409117
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.025406248875076698,
+              "per_seed_deltas": [
+                0.021116853706554806,
+                0.02969564404359859
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.051534705145160814,
+              "per_seed_deltas": [
+                0.042998644654727525,
+                0.0600707656355941
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04229973873609838,
+              "per_seed_deltas": [
+                0.03733056275395802,
+                0.04726891471823874
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.46225643157958984,
+              "per_seed_deltas": [
+                0.4723958969116211,
+                0.4521169662475586
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.018107519996210963,
+              "per_seed_deltas": [
+                0.015037975400598258,
+                0.02117706459182367
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": true,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.01,
+        "normalization": "relative_primary_v1",
+        "rank": 2,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r2_l1e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 2.0,
+        "arm": "lowrank_ssr_r2_l3e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": -0.0012351165808250908,
+              "per_seed_deltas": [
+                0.00018723185769897732,
+                -0.002657465019349159
+              ]
+            },
+            "new_miou": {
+              "mean_delta": -0.00017238099374872196,
+              "per_seed_deltas": [
+                0.0012815649133185447,
+                -0.0016263269008159886
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.00430869052784677,
+              "per_seed_deltas": [
+                0.0016905887817045273,
+                -0.010307969837398068
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.030629873275756836,
+              "per_seed_deltas": [
+                0.05885028839111328,
+                0.0024094581604003906
+              ]
+            },
+            "old_miou": {
+              "mean_delta": -0.0016826856556677594,
+              "per_seed_deltas": [
+                -0.00016240067411155135,
+                -0.0032029706372239675
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.024001081383174194,
+              "per_seed_deltas": [
+                0.020777422421495495,
+                0.027224740344852894
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0507797684319142,
+              "per_seed_deltas": [
+                0.04364792610418583,
+                0.05791161075964257
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.03767125033747781,
+              "per_seed_deltas": [
+                0.03817691177060539,
+                0.03716558890435023
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.4745450019836426,
+              "per_seed_deltas": [
+                0.5088138580322266,
+                0.4402761459350586
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.016407189483002016,
+              "per_seed_deltas": [
+                0.014373670564263419,
+                0.018440708401740613
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.03,
+        "normalization": "relative_primary_v1",
+        "rank": 2,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r2_l3e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 2.0,
+        "arm": "lowrank_ssr_r2_l1e-1",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.0006169297483992753,
+              "per_seed_deltas": [
+                -0.000306697956847235,
+                0.0015405574536457856
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0018943186067762463,
+              "per_seed_deltas": [
+                0.000724904361498524,
+                0.0030637328520539686
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.004764037823765527,
+              "per_seed_deltas": [
+                0.0013979178744673026,
+                -0.010925993521998356
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.05770111083984375,
+              "per_seed_deltas": [
+                0.06286287307739258,
+                0.05253934860229492
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.0002275504641968129,
+              "per_seed_deltas": [
+                -0.0006631451111646092,
+                0.001118246039558235
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.02585312771239856,
+              "per_seed_deltas": [
+                0.020283492606949283,
+                0.03142276281784784
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05284646803243917,
+              "per_seed_deltas": [
+                0.04309126555236581,
+                0.06260167051251253
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.037215903041559056,
+              "per_seed_deltas": [
+                0.03788424086336817,
+                0.036547565219749945
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.5016162395477295,
+              "per_seed_deltas": [
+                0.5128264427185059,
+                0.4904060363769531
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.01831742560286659,
+              "per_seed_deltas": [
+                0.013872926127210361,
+                0.022761925078522816
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.1,
+        "normalization": "relative_primary_v1",
+        "rank": 2,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r2_l1e-1",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 4.0,
+        "arm": "lowrank_ssr_r4_l3e-3",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.0004101112985200883,
+              "per_seed_deltas": [
+                0.00011647602858810835,
+                0.0007037465684520683
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0007219328595373109,
+              "per_seed_deltas": [
+                0.0003507038309475963,
+                0.0010931618881270255
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.0004554095231470434,
+              "per_seed_deltas": [
+                -0.0005525750875328139,
+                -0.0003582439587612729
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.005338191986083984,
+              "per_seed_deltas": [
+                0.008550167083740234,
+                0.0021262168884277344
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.00032299434162058605,
+              "per_seed_deltas": [
+                3.402676956820727e-05,
+                0.0006119619136729648
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.025901104949570097,
+              "per_seed_deltas": [
+                0.020643741289467887,
+                0.031158468609672307
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05088905401082225,
+              "per_seed_deltas": [
+                0.04355339229351568,
+                0.05822471572812882
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04154167026914682,
+              "per_seed_deltas": [
+                0.03713697128030857,
+                0.045946369257985065
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.4657318592071533,
+              "per_seed_deltas": [
+                0.4870419502258301,
+                0.44442176818847656
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.018992499361118298,
+              "per_seed_deltas": [
+                0.01416272908930094,
+                0.023822269632935655
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.003,
+        "normalization": "relative_primary_v1",
+        "rank": 4,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r4_l3e-3",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 4.0,
+        "arm": "lowrank_ssr_r4_l1e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.001806590585750334,
+              "per_seed_deltas": [
+                -0.0004259644687955033,
+                0.004039145640296171
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0032019796300483128,
+              "per_seed_deltas": [
+                0.0008865377095982341,
+                0.0055174215504983914
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.00011043145504219254,
+              "per_seed_deltas": [
+                0.001152348953203819,
+                -0.0009314860431194338
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.0317225456237793,
+              "per_seed_deltas": [
+                0.04489707946777344,
+                0.018548011779785156
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.0014374611627591682,
+              "per_seed_deltas": [
+                -0.0009195672813836486,
+                0.003794489606901985
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.027297584236800343,
+              "per_seed_deltas": [
+                0.020101300792084276,
+                0.03449386768151641
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05336910078133325,
+              "per_seed_deltas": [
+                0.04408922617216632,
+                0.06264897539050018
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.042107511247336055,
+              "per_seed_deltas": [
+                0.038841895321045206,
+                0.045373127173626904
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.49211621284484863,
+              "per_seed_deltas": [
+                0.5233888626098633,
+                0.460843563079834
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.02010696618225688,
+              "per_seed_deltas": [
+                0.013209135038349085,
+                0.027004797326164676
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": true,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.01,
+        "normalization": "relative_primary_v1",
+        "rank": 4,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r4_l1e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 4.0,
+        "arm": "lowrank_ssr_r4_l3e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.0030949560943728804,
+              "per_seed_deltas": [
+                -0.0009799393332841078,
+                0.007169851522029869
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.005768612276817797,
+              "per_seed_deltas": [
+                0.0002647013822503208,
+                0.011272523171385274
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.0001795129297520459,
+              "per_seed_deltas": [
+                0.001935693624985857,
+                -0.0022947194844899488
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.04227161407470703,
+              "per_seed_deltas": [
+                0.033261775970458984,
+                0.05128145217895508
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.002409180908107822,
+              "per_seed_deltas": [
+                -0.0014649608369049494,
+                0.006283322653120593
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.02858594974542289,
+              "per_seed_deltas": [
+                0.01954732592759567,
+                0.03762457356325011
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.055935733428102735,
+              "per_seed_deltas": [
+                0.043467389844818405,
+                0.06840407701138707
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.041817566862541816,
+              "per_seed_deltas": [
+                0.039625239992827244,
+                0.04400989373225639
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.5026652812957764,
+              "per_seed_deltas": [
+                0.5117535591125488,
+                0.4935770034790039
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.021078685927605534,
+              "per_seed_deltas": [
+                0.012663741482827784,
+                0.029493630372383284
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.03,
+        "normalization": "relative_primary_v1",
+        "rank": 4,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r4_l3e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 4.0,
+        "arm": "lowrank_ssr_r4_l1e-1",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.002578005334282707,
+              "per_seed_deltas": [
+                -0.001424608119612758,
+                0.006580618788178172
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.004919425067081984,
+              "per_seed_deltas": [
+                -0.0006581309187319029,
+                0.01049698105289587
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": -0.0006890157938647667,
+              "per_seed_deltas": [
+                0.001122682902412131,
+                -0.0025007144901416645
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.044388532638549805,
+              "per_seed_deltas": [
+                0.02822256088256836,
+                0.06055450439453125
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.001971836835066465,
+              "per_seed_deltas": [
+                -0.0017798433785292112,
+                0.005723517048662141
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.028068998985332716,
+              "per_seed_deltas": [
+                0.01910265714126702,
+                0.03703534082939841
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05508654621836692,
+              "per_seed_deltas": [
+                0.04254455754383618,
+                0.06762853489289766
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.041308063998429095,
+              "per_seed_deltas": [
+                0.03881222927025352,
+                0.04380389872660467
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.5047821998596191,
+              "per_seed_deltas": [
+                0.5067143440246582,
+                0.5028500556945801
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.020641341854564177,
+              "per_seed_deltas": [
+                0.012348858941203522,
+                0.02893382476792483
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": false,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.1,
+        "normalization": "relative_primary_v1",
+        "rank": 4,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r4_l1e-1",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 8.0,
+        "arm": "lowrank_ssr_r8_l3e-3",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.0007571957461048329,
+              "per_seed_deltas": [
+                0.00021240306053527114,
+                0.0013019884316743946
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.0010146738631191532,
+              "per_seed_deltas": [
+                0.0004210541106697274,
+                0.001608293615568579
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.0012687138225452865,
+              "per_seed_deltas": [
+                -0.0012229257446568775,
+                0.0037603533897474506
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.005221366882324219,
+              "per_seed_deltas": [
+                0.006869316101074219,
+                0.0035734176635742188
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.0007176987757341879,
+              "per_seed_deltas": [
+                0.0001504061127038936,
+                0.0012849914387644823
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.023600293758384128,
+              "per_seed_deltas": [
+                0.020757314384070247,
+                0.02644327313269801
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.047073204316554734,
+              "per_seed_deltas": [
+                0.04092599326463636,
+                0.053220415368473106
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04306538524830522,
+              "per_seed_deltas": [
+                0.035811166330525446,
+                0.050319604166085
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.4451746940612793,
+              "per_seed_deltas": [
+                0.4908905029296875,
+                0.3994588851928711
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.017108798259179547,
+              "per_seed_deltas": [
+                0.015279144708828074,
+                0.01893845180953102
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": true,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.003,
+        "normalization": "relative_primary_v1",
+        "rank": 8,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r8_l3e-3",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 8.0,
+        "arm": "lowrank_ssr_r8_l1e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.0033587423073125344,
+              "per_seed_deltas": [
+                0.00044878015869598276,
+                0.006268704455929086
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.005129029894434034,
+              "per_seed_deltas": [
+                0.0026488259425931915,
+                0.0076092338462748765
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.0016853846235709846,
+              "per_seed_deltas": [
+                -0.0020763184857501837,
+                0.005447087732892153
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.036016225814819336,
+              "per_seed_deltas": [
+                0.0417170524597168,
+                0.030315399169921875
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.0029827862436714314,
+              "per_seed_deltas": [
+                -0.00026103751677186704,
+                0.00622661000411473
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.02620184031959183,
+              "per_seed_deltas": [
+                0.02099369148223096,
+                0.0314099891569527
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.051187560347869615,
+              "per_seed_deltas": [
+                0.043153765096559826,
+                0.059221355599179404
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04348205604933092,
+              "per_seed_deltas": [
+                0.03495777358943214,
+                0.0520063385092297
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.4759695529937744,
+              "per_seed_deltas": [
+                0.5257382392883301,
+                0.42620086669921875
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.01937388572711679,
+              "per_seed_deltas": [
+                0.014867701079352313,
+                0.023880070374881268
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": true,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.01,
+        "normalization": "relative_primary_v1",
+        "rank": 8,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r8_l1e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 8.0,
+        "arm": "lowrank_ssr_r8_l3e-2",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.00320147530348297,
+              "per_seed_deltas": [
+                0.00011442325347776894,
+                0.006288527353488171
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.005753571426641735,
+              "per_seed_deltas": [
+                0.001804338462127908,
+                0.009702804391155562
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 1.9519500341846907e-05,
+              "per_seed_deltas": [
+                -0.0018846385748728656,
+                0.0019236775755565594
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.036043405532836914,
+              "per_seed_deltas": [
+                0.027524471282958984,
+                0.044562339782714844
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.0025809711664523394,
+              "per_seed_deltas": [
+                -0.0004277173437985393,
+                0.005589659676703218
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.026044573315762265,
+              "per_seed_deltas": [
+                0.020659334577012745,
+                0.031429812054511785
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.051812101880077316,
+              "per_seed_deltas": [
+                0.04230927761609454,
+                0.06131492614406009
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04181619092610178,
+              "per_seed_deltas": [
+                0.03514945350030946,
+                0.048482928351894106
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.475996732711792,
+              "per_seed_deltas": [
+                0.5115456581115723,
+                0.4404478073120117
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.0189720706498977,
+              "per_seed_deltas": [
+                0.014701021252325641,
+                0.023243120047469756
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": true,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.03,
+        "normalization": "relative_primary_v1",
+        "rank": 8,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r8_l3e-2",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      },
+      {
+        "a_exc": 1.0,
+        "a_inh": 0.8,
+        "alpha": 8.0,
+        "arm": "lowrank_ssr_r8_l1e-1",
+        "comparisons": {
+          "lowrank_ssr_vs_lowrank": {
+            "all_miou": {
+              "mean_delta": 0.002451518298359101,
+              "per_seed_deltas": [
+                -0.000551154028675227,
+                0.005454190625393429
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.004784322352735959,
+              "per_seed_deltas": [
+                0.0007830798603071232,
+                0.008785564845164795
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 3.768713780283317e-05,
+              "per_seed_deltas": [
+                -0.0016478991293474299,
+                0.0017232734049530962
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.03504037857055664,
+              "per_seed_deltas": [
+                0.01907825469970703,
+                0.05100250244140625
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.0018522854485461537,
+              "per_seed_deltas": [
+                -0.001021116224735552,
+                0.0047256871218278595
+              ]
+            }
+          },
+          "lowrank_ssr_vs_plop": {
+            "all_miou": {
+              "mean_delta": 0.025294616310638396,
+              "per_seed_deltas": [
+                0.01999375729485975,
+                0.030595475326417043
+              ]
+            },
+            "new_miou": {
+              "mean_delta": 0.05084285280617154,
+              "per_seed_deltas": [
+                0.04128801901427376,
+                0.06039768659806932
+              ]
+            },
+            "old_boundary_iou": {
+              "mean_delta": 0.04183435856356277,
+              "per_seed_deltas": [
+                0.03538619294583489,
+                0.04828252418129064
+              ]
+            },
+            "old_boundary_margin": {
+              "mean_delta": 0.4749937057495117,
+              "per_seed_deltas": [
+                0.5030994415283203,
+                0.4468879699707031
+              ]
+            },
+            "old_miou": {
+              "mean_delta": 0.018243384931991513,
+              "per_seed_deltas": [
+                0.014107622371388628,
+                0.022379147492594398
+              ]
+            }
+          }
+        },
+        "distance": "projective",
+        "eligible": true,
+        "gradient_gate": "nonconflicting_v1",
+        "lambda": 0.1,
+        "normalization": "relative_primary_v1",
+        "rank": 8,
+        "repulsion_margin": 0.15,
+        "sigma_exc": 0.2,
+        "sigma_inh": 0.5,
+        "start_step": 1,
+        "tag": "r8_l1e-1",
+        "target": "effective_historical_low_rank_decoder_geometry",
+        "target_scope": "historical_only",
+        "warmup_epochs": 5
+      }
+    ],
+    "schema_version": "plop_ssr_lowrank_v23_development_selection_v1",
+    "seeds": [
+      12101,
+      12102
+    ],
+    "selected": {
+      "a_exc": 1.0,
+      "a_inh": 0.8,
+      "alpha": 8.0,
+      "arm": "lowrank_ssr_r8_l1e-2",
+      "comparisons": {
+        "lowrank_ssr_vs_lowrank": {
+          "all_miou": {
+            "mean_delta": 0.0033587423073125344,
+            "per_seed_deltas": [
+              0.00044878015869598276,
+              0.006268704455929086
+            ]
+          },
+          "new_miou": {
+            "mean_delta": 0.005129029894434034,
+            "per_seed_deltas": [
+              0.0026488259425931915,
+              0.0076092338462748765
+            ]
+          },
+          "old_boundary_iou": {
+            "mean_delta": 0.0016853846235709846,
+            "per_seed_deltas": [
+              -0.0020763184857501837,
+              0.005447087732892153
+            ]
+          },
+          "old_boundary_margin": {
+            "mean_delta": 0.036016225814819336,
+            "per_seed_deltas": [
+              0.0417170524597168,
+              0.030315399169921875
+            ]
+          },
+          "old_miou": {
+            "mean_delta": 0.0029827862436714314,
+            "per_seed_deltas": [
+              -0.00026103751677186704,
+              0.00622661000411473
+            ]
+          }
+        },
+        "lowrank_ssr_vs_plop": {
+          "all_miou": {
+            "mean_delta": 0.02620184031959183,
+            "per_seed_deltas": [
+              0.02099369148223096,
+              0.0314099891569527
+            ]
+          },
+          "new_miou": {
+            "mean_delta": 0.051187560347869615,
+            "per_seed_deltas": [
+              0.043153765096559826,
+              0.059221355599179404
+            ]
+          },
+          "old_boundary_iou": {
+            "mean_delta": 0.04348205604933092,
+            "per_seed_deltas": [
+              0.03495777358943214,
+              0.0520063385092297
+            ]
+          },
+          "old_boundary_margin": {
+            "mean_delta": 0.4759695529937744,
+            "per_seed_deltas": [
+              0.5257382392883301,
+              0.42620086669921875
+            ]
+          },
+          "old_miou": {
+            "mean_delta": 0.01937388572711679,
+            "per_seed_deltas": [
+              0.014867701079352313,
+              0.023880070374881268
+            ]
+          }
+        }
+      },
+      "distance": "projective",
+      "eligible": true,
+      "gradient_gate": "nonconflicting_v1",
+      "lambda": 0.01,
+      "normalization": "relative_primary_v1",
+      "rank": 8,
+      "repulsion_margin": 0.15,
+      "sigma_exc": 0.2,
+      "sigma_inh": 0.5,
+      "start_step": 1,
+      "tag": "r8_l1e-2",
+      "target": "effective_historical_low_rank_decoder_geometry",
+      "target_scope": "historical_only",
+      "warmup_epochs": 5
+    },
+    "selection_rule": {
+      "comparisons": [
+        "lowrank_ssr_vs_lowrank",
+        "lowrank_ssr_vs_plop"
+      ],
+      "min_mean_all_miou_delta": 0.0,
+      "min_mean_new_miou_delta": 0.0,
+      "min_mean_old_boundary_iou_delta": 0.0,
+      "min_mean_old_boundary_margin_delta": 0.0,
+      "min_mean_old_miou_delta": 0.0
+    },
+    "selection_split": "development_only",
+    "status": "selected",
+    "task": "15-5"
+  },
+  "frozen_selection_path": "/unify/ydchen/unidit/bioreg_meeting_20260803_final/results/ssr_v31_lowrank_10_1_independent_3node_20260827_r1/frozen_v23_selection.json",
+  "per_seed": [
+    {
+      "lowrank": {
+        "final": {
+          "all_miou": 0.1521145851896507,
+          "new_miou": 0.012199089986019679,
+          "old_boundary_iou": 0.06706353955241284,
+          "old_boundary_margin": 5.435485363006592,
+          "old_miou": 0.1674772847758415
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7283561025984309,
+            "new_miou": 0.3215650540653951,
+            "old_boundary_iou": 0.3545321352793248,
+            "old_boundary_margin": 3.42537260055542,
+            "old_miou": 0.7515432602287592
+          },
+          "10": {
+            "all_miou": 0.1521145851896507,
+            "new_miou": 0.012199089986019679,
+            "old_boundary_iou": 0.06706353955241284,
+            "old_boundary_margin": 5.435485363006592,
+            "old_miou": 0.1674772847758415
+          },
+          "2": {
+            "all_miou": 0.6704999189104528,
+            "new_miou": 0.6605657606998308,
+            "old_boundary_iou": 0.32971690851044594,
+            "old_boundary_margin": 3.3737635612487793,
+            "old_miou": 0.662960565190506
+          },
+          "3": {
+            "all_miou": 0.5444916697293062,
+            "new_miou": 0.23522505040607525,
+            "old_boundary_iou": 0.28216605461494343,
+            "old_boundary_margin": 2.8271799087524414,
+            "old_miou": 0.555969241203509
+          },
+          "4": {
+            "all_miou": 0.45365463779206894,
+            "new_miou": 0.2492038147931857,
+            "old_boundary_iou": 0.23328436424093518,
+            "old_boundary_margin": 1.7268145084381104,
+            "old_miou": 0.45420877833175355
+          },
+          "5": {
+            "all_miou": 0.44276705324060517,
+            "new_miou": 0.6954159427813178,
+            "old_boundary_iou": 0.2203329426699912,
+            "old_boundary_margin": 1.461820125579834,
+            "old_miou": 0.41376174634887164
+          },
+          "6": {
+            "all_miou": 0.3731740361028347,
+            "new_miou": 0.04627357175155949,
+            "old_boundary_iou": 0.21920831591073803,
+            "old_boundary_margin": 7.722864151000977,
+            "old_miou": 0.38788448508915424
+          },
+          "7": {
+            "all_miou": 0.3077614922370815,
+            "new_miou": 0.06880699614060472,
+            "old_boundary_iou": 0.16767121062811746,
+            "old_boundary_margin": 4.6060075759887695,
+            "old_miou": 0.32230297998226726
+          },
+          "8": {
+            "all_miou": 0.28299663167171063,
+            "new_miou": 0.05806675383975052,
+            "old_boundary_iou": 0.10681519554284656,
+            "old_boundary_margin": 3.4019715785980225,
+            "old_miou": 0.29597542991716264
+          },
+          "9": {
+            "all_miou": 0.17492762588881555,
+            "new_miou": 0.11993435612941887,
+            "old_boundary_iou": 0.07722330248742518,
+            "old_boundary_margin": 2.028926134109497,
+            "old_miou": 0.17418268914782636
+          }
+        }
+      },
+      "lowrank_ssr": {
+        "final": {
+          "all_miou": 0.15910877756174435,
+          "new_miou": 0.010477549967160113,
+          "old_boundary_iou": 0.0952513933829841,
+          "old_boundary_margin": 5.028356552124023,
+          "old_miou": 0.17507230920278655
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7282948147418585,
+            "new_miou": 0.32205294135998697,
+            "old_boundary_iou": 0.3547991683334222,
+            "old_boundary_margin": 3.4268834590911865,
+            "old_miou": 0.7514212462609499
+          },
+          "10": {
+            "all_miou": 0.15910877756174435,
+            "new_miou": 0.010477549967160113,
+            "old_boundary_iou": 0.0952513933829841,
+            "old_boundary_margin": 5.028356552124023,
+            "old_miou": 0.17507230920278655
+          },
+          "2": {
+            "all_miou": 0.6563440336144342,
+            "new_miou": 0.6343144255868086,
+            "old_boundary_iou": 0.3299730672370468,
+            "old_boundary_margin": 3.13834547996521,
+            "old_miou": 0.6529820080000734
+          },
+          "3": {
+            "all_miou": 0.5586933374769424,
+            "new_miou": 0.26423232567860877,
+            "old_boundary_iou": 0.2742172619822306,
+            "old_boundary_margin": 3.7086753845214844,
+            "old_miou": 0.5659475694660331
+          },
+          "4": {
+            "all_miou": 0.4869454226228728,
+            "new_miou": 0.3310943690456371,
+            "old_boundary_iou": 0.2582025357691703,
+            "old_boundary_margin": 2.164886713027954,
+            "old_miou": 0.47892645694518865
+          },
+          "5": {
+            "all_miou": 0.46776801224143,
+            "new_miou": 0.683880140168671,
+            "old_boundary_iou": 0.24363950109519533,
+            "old_boundary_margin": 1.560650110244751,
+            "old_miou": 0.43618126808019325
+          },
+          "6": {
+            "all_miou": 0.40268434995871366,
+            "new_miou": 0.09732401775562373,
+            "old_boundary_iou": 0.2432954317817883,
+            "old_boundary_margin": 7.495478630065918,
+            "old_miou": 0.40970589746667174
+          },
+          "7": {
+            "all_miou": 0.3181515063304825,
+            "new_miou": 0.07626140874814506,
+            "old_boundary_iou": 0.22589118455333057,
+            "old_boundary_margin": 4.450292110443115,
+            "old_miou": 0.3257352456218496
+          },
+          "8": {
+            "all_miou": 0.29813839606306763,
+            "new_miou": 0.08827101202440711,
+            "old_boundary_iou": 0.1150247313956371,
+            "old_boundary_margin": 3.4249305725097656,
+            "old_miou": 0.3000331738364388
+          },
+          "9": {
+            "all_miou": 0.1940902351709596,
+            "new_miou": 0.12645867352319323,
+            "old_boundary_iou": 0.08061787431545153,
+            "old_boundary_margin": 1.892505168914795,
+            "old_miou": 0.1822422584045911
+          }
+        }
+      },
+      "parent_checkpoint_sha256": "af14f13a378ffcb816bcd10836aef49448117b62b64bd6c0d0921a9b60e1ead1",
+      "plop": {
+        "final": {
+          "all_miou": 0.23004840949540498,
+          "new_miou": 0.02389468944714182,
+          "old_boundary_iou": 0.0893721085362136,
+          "old_boundary_margin": 2.5808637142181396,
+          "old_miou": 0.22921256649827812
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7332022157427768,
+            "new_miou": 0.2964193452698925,
+            "old_boundary_iou": 0.34436409895950165,
+            "old_boundary_margin": 3.487166166305542,
+            "old_miou": 0.7599555180633221
+          },
+          "10": {
+            "all_miou": 0.23004840949540498,
+            "new_miou": 0.02389468944714182,
+            "old_boundary_iou": 0.0893721085362136,
+            "old_boundary_margin": 2.5808637142181396,
+            "old_miou": 0.22921256649827812
+          },
+          "2": {
+            "all_miou": 0.6815948088806589,
+            "new_miou": 0.6415151318918174,
+            "old_boundary_iou": 0.2857076264132862,
+            "old_boundary_margin": 3.2710888385772705,
+            "old_miou": 0.6713945159433936
+          },
+          "3": {
+            "all_miou": 0.5518548028784992,
+            "new_miou": 0.18683209529967526,
+            "old_boundary_iou": 0.24785522527470272,
+            "old_boundary_margin": 2.361771821975708,
+            "old_miou": 0.5542174363124092
+          },
+          "4": {
+            "all_miou": 0.5307659784425597,
+            "new_miou": 0.20262497835973048,
+            "old_boundary_iou": 0.25518962462954753,
+            "old_boundary_margin": 1.4110281467437744,
+            "old_miou": 0.5288302875532109
+          },
+          "5": {
+            "all_miou": 0.4982406434964125,
+            "new_miou": 0.6090635240254764,
+            "old_boundary_iou": 0.23284988366290577,
+            "old_boundary_margin": 0.8139554858207703,
+            "old_miou": 0.46449006535814724
+          },
+          "6": {
+            "all_miou": 0.4683503141825708,
+            "new_miou": 0.1234907110911209,
+            "old_boundary_iou": 0.2276436463234728,
+            "old_boundary_margin": 4.049001216888428,
+            "old_miou": 0.4671718071514836
+          },
+          "7": {
+            "all_miou": 0.38865966525024986,
+            "new_miou": 0.08557381796416667,
+            "old_boundary_iou": 0.14477597089750943,
+            "old_boundary_margin": 2.6814045906066895,
+            "old_miou": 0.38046797444965136
+          },
+          "8": {
+            "all_miou": 0.33843958222853093,
+            "new_miou": 0.056045963896716566,
+            "old_boundary_iou": 0.09725684493135012,
+            "old_boundary_margin": 1.7345303297042847,
+            "old_miou": 0.33598715606346974
+          },
+          "9": {
+            "all_miou": 0.2638633956251433,
+            "new_miou": 0.07795182102985483,
+            "old_boundary_iou": 0.07674728571702723,
+            "old_boundary_margin": 1.1069586277008057,
+            "old_miou": 0.25276187213431417
+          }
+        }
+      },
+      "seed": 13401
+    },
+    {
+      "lowrank": {
+        "final": {
+          "all_miou": 0.13476154646738228,
+          "new_miou": 0.01183591867130656,
+          "old_boundary_iou": 0.05041118987723649,
+          "old_boundary_margin": 5.3613200187683105,
+          "old_miou": 0.14832402932335376
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7292833395769893,
+            "new_miou": 0.31516613548143024,
+            "old_boundary_iou": 0.3692538528198156,
+            "old_boundary_margin": 3.1726291179656982,
+            "old_miou": 0.7532261805230799
+          },
+          "10": {
+            "all_miou": 0.13476154646738228,
+            "new_miou": 0.01183591867130656,
+            "old_boundary_iou": 0.05041118987723649,
+            "old_boundary_margin": 5.3613200187683105,
+            "old_miou": 0.14832402932335376
+          },
+          "2": {
+            "all_miou": 0.6675122891260787,
+            "new_miou": 0.629443075857221,
+            "old_boundary_iou": 0.3446418182742269,
+            "old_boundary_margin": 3.091027021408081,
+            "old_miou": 0.660573814083843
+          },
+          "3": {
+            "all_miou": 0.48992121480989403,
+            "new_miou": 0.1690306056626265,
+            "old_boundary_iou": 0.3020211360880232,
+            "old_boundary_margin": 2.31445574760437,
+            "old_miou": 0.5011995781246342
+          },
+          "4": {
+            "all_miou": 0.41271645318690625,
+            "new_miou": 0.19315388480676457,
+            "old_boundary_iou": 0.25861879619607053,
+            "old_boundary_margin": 1.7246489524841309,
+            "old_miou": 0.4161994777154423
+          },
+          "5": {
+            "all_miou": 0.3999152731885709,
+            "new_miou": 0.6645070806671127,
+            "old_boundary_iou": 0.22874038908239963,
+            "old_boundary_margin": 1.505585789680481,
+            "old_miou": 0.36990806748627
+          },
+          "6": {
+            "all_miou": 0.3334842764515104,
+            "new_miou": 0.06021970330606446,
+            "old_boundary_iou": 0.2060399822489349,
+            "old_boundary_margin": 8.943777084350586,
+            "old_miou": 0.3449588990419238
+          },
+          "7": {
+            "all_miou": 0.2701500392588222,
+            "new_miou": 0.07529123667888987,
+            "old_boundary_iou": 0.12475210121397068,
+            "old_boundary_margin": 4.960095405578613,
+            "old_miou": 0.2788245377849766
+          },
+          "8": {
+            "all_miou": 0.25888759319270926,
+            "new_miou": 0.051086950817255755,
+            "old_boundary_iou": 0.08410278348704499,
+            "old_boundary_margin": 3.4608781337738037,
+            "old_miou": 0.27020689523368363
+          },
+          "9": {
+            "all_miou": 0.16038966137343094,
+            "new_miou": 0.1020040923879196,
+            "old_boundary_iou": 0.05580925059054023,
+            "old_boundary_margin": 2.218125820159912,
+            "old_miou": 0.1606166743397017
+          }
+        }
+      },
+      "lowrank_ssr": {
+        "final": {
+          "all_miou": 0.13675589688038542,
+          "new_miou": 0.01192643289150791,
+          "old_boundary_iou": 0.053882753466989196,
+          "old_boundary_margin": 5.095654010772705,
+          "old_miou": 0.15052354745245192
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7293316984104847,
+            "new_miou": 0.3151708279098616,
+            "old_boundary_iou": 0.371455099218441,
+            "old_boundary_margin": 3.1740942001342773,
+            "old_miou": 0.7532750558986507
+          },
+          "10": {
+            "all_miou": 0.13675589688038542,
+            "new_miou": 0.01192643289150791,
+            "old_boundary_iou": 0.053882753466989196,
+            "old_boundary_margin": 5.095654010772705,
+            "old_miou": 0.15052354745245192
+          },
+          "2": {
+            "all_miou": 0.6391482116943479,
+            "new_miou": 0.5393593958659475,
+            "old_boundary_iou": 0.32311657546787237,
+            "old_boundary_margin": 2.9238767623901367,
+            "old_miou": 0.6391155771596192
+          },
+          "3": {
+            "all_miou": 0.5106803298531294,
+            "new_miou": 0.16991798710394265,
+            "old_boundary_iou": 0.280742582730938,
+            "old_boundary_margin": 3.0671095848083496,
+            "old_miou": 0.5208521273623662
+          },
+          "4": {
+            "all_miou": 0.45156697963319326,
+            "new_miou": 0.24625686692927742,
+            "old_boundary_iou": 0.22874931810020754,
+            "old_boundary_margin": 2.186797857284546,
+            "old_miou": 0.4515236976436994
+          },
+          "5": {
+            "all_miou": 0.4289551071991906,
+            "new_miou": 0.6544382502051531,
+            "old_boundary_iou": 0.213956499883299,
+            "old_boundary_margin": 1.664239764213562,
+            "old_miou": 0.39916232434404575
+          },
+          "6": {
+            "all_miou": 0.36269264283476627,
+            "new_miou": 0.12991697071336916,
+            "old_boundary_iou": 0.20519284710773947,
+            "old_boundary_margin": 8.727473258972168,
+            "old_miou": 0.36768998519826296
+          },
+          "7": {
+            "all_miou": 0.2896549755539394,
+            "new_miou": 0.09801176012328734,
+            "old_boundary_iou": 0.1730037044828024,
+            "old_boundary_margin": 5.479215621948242,
+            "old_miou": 0.2939245810801463
+          },
+          "8": {
+            "all_miou": 0.26899899741865835,
+            "new_miou": 0.06063617106967727,
+            "old_boundary_iou": 0.10927284052118541,
+            "old_boundary_margin": 3.3456854820251465,
+            "old_miou": 0.2741692566566219
+          },
+          "9": {
+            "all_miou": 0.17847974846222397,
+            "new_miou": 0.10698607873079714,
+            "old_boundary_iou": 0.07417223576496582,
+            "old_boundary_margin": 2.1685826778411865,
+            "old_miou": 0.17320165833086806
+          }
+        }
+      },
+      "parent_checkpoint_sha256": "eccdbe72c1092f73ccdd4eeb6c260117ccfdd73b25e0181a31cf320752cd8deb",
+      "plop": {
+        "final": {
+          "all_miou": 0.21378275875380595,
+          "new_miou": 0.014622498989863088,
+          "old_boundary_iou": 0.06993796978188942,
+          "old_boundary_margin": 2.675480365753174,
+          "old_miou": 0.2195353257604476
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7335967840504841,
+            "new_miou": 0.2933491655966366,
+            "old_boundary_iou": 0.3452233097606256,
+            "old_boundary_margin": 3.203587532043457,
+            "old_miou": 0.7606739681004987
+          },
+          "10": {
+            "all_miou": 0.21378275875380595,
+            "new_miou": 0.014622498989863088,
+            "old_boundary_iou": 0.06993796978188942,
+            "old_boundary_margin": 2.675480365753174,
+            "old_miou": 0.2195353257604476
+          },
+          "2": {
+            "all_miou": 0.681402129636372,
+            "new_miou": 0.5954630085087551,
+            "old_boundary_iou": 0.30601714378138367,
+            "old_boundary_margin": 3.083735942840576,
+            "old_miou": 0.6751881207090679
+          },
+          "3": {
+            "all_miou": 0.53176844636545,
+            "new_miou": 0.15195201388282045,
+            "old_boundary_iou": 0.2862648792444607,
+            "old_boundary_margin": 2.145981788635254,
+            "old_miou": 0.5374982173568669
+          },
+          "4": {
+            "all_miou": 0.5075426726221092,
+            "new_miou": 0.19530305930551176,
+            "old_boundary_iou": 0.2550014704332054,
+            "old_boundary_margin": 1.386332392692566,
+            "old_miou": 0.5057326302896303
+          },
+          "5": {
+            "all_miou": 0.4902293474251665,
+            "new_miou": 0.6204858290218975,
+            "old_boundary_iou": 0.22731718617680313,
+            "old_boundary_margin": 1.1317611932754517,
+            "old_miou": 0.45773263662974467
+          },
+          "6": {
+            "all_miou": 0.45504906166510595,
+            "new_miou": 0.08907218041549228,
+            "old_boundary_iou": 0.21925542830237676,
+            "old_boundary_margin": 4.421609401702881,
+            "old_miou": 0.4581883335814569
+          },
+          "7": {
+            "all_miou": 0.3868592920876222,
+            "new_miou": 0.074032900632739,
+            "old_boundary_iou": 0.17458498425226304,
+            "old_boundary_margin": 2.6238324642181396,
+            "old_miou": 0.3816197935640136
+          },
+          "8": {
+            "all_miou": 0.3228975860809042,
+            "new_miou": 0.04435213825680757,
+            "old_boundary_iou": 0.10892423262705925,
+            "old_boundary_margin": 1.3696449995040894,
+            "old_miou": 0.3226814121888748
+          },
+          "9": {
+            "all_miou": 0.23486877647835525,
+            "new_miou": 0.07374903020046032,
+            "old_boundary_iou": 0.06721911089788356,
+            "old_boundary_margin": 1.3595224618911743,
+            "old_miou": 0.22498784134342978
+          }
+        }
+      },
+      "seed": 13402
+    },
+    {
+      "lowrank": {
+        "final": {
+          "all_miou": 0.10601159292711242,
+          "new_miou": 0.012542773202326066,
+          "old_boundary_iou": 0.05972281786179847,
+          "old_boundary_margin": 5.464062213897705,
+          "old_miou": 0.11439983767999007
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7318521638870795,
+            "new_miou": 0.31807303786264157,
+            "old_boundary_iou": 0.3479143920483817,
+            "old_boundary_margin": 3.249265193939209,
+            "old_miou": 0.7560151810469835
+          },
+          "10": {
+            "all_miou": 0.10601159292711242,
+            "new_miou": 0.012542773202326066,
+            "old_boundary_iou": 0.05972281786179847,
+            "old_boundary_margin": 5.464062213897705,
+            "old_miou": 0.11439983767999007
+          },
+          "2": {
+            "all_miou": 0.6571952846491146,
+            "new_miou": 0.5782654444141306,
+            "old_boundary_iou": 0.3149762678089292,
+            "old_boundary_margin": 3.246091842651367,
+            "old_miou": 0.6484379176298808
+          },
+          "3": {
+            "all_miou": 0.47403876019983404,
+            "new_miou": 0.1405064699103416,
+            "old_boundary_iou": 0.27511817258158305,
+            "old_boundary_margin": 1.6363176107406616,
+            "old_miou": 0.4777392380992523
+          },
+          "4": {
+            "all_miou": 0.3893577242189731,
+            "new_miou": 0.22816597216837894,
+            "old_boundary_iou": 0.20928666632568008,
+            "old_boundary_margin": 1.5445817708969116,
+            "old_miou": 0.377153263941072
+          },
+          "5": {
+            "all_miou": 0.3668010000925781,
+            "new_miou": 0.6281185167965309,
+            "old_boundary_iou": 0.15317743398499412,
+            "old_boundary_margin": 1.407202959060669,
+            "old_miou": 0.327156949487527
+          },
+          "6": {
+            "all_miou": 0.31552317516884565,
+            "new_miou": 0.07947875555020668,
+            "old_boundary_iou": 0.15340056608417624,
+            "old_boundary_margin": 7.382722854614258,
+            "old_miou": 0.3153832243362868
+          },
+          "7": {
+            "all_miou": 0.25872198982952205,
+            "new_miou": 0.091169170273592,
+            "old_boundary_iou": 0.13152171004499852,
+            "old_boundary_margin": 4.2270731925964355,
+            "old_miou": 0.2558734480039204
+          },
+          "8": {
+            "all_miou": 0.23279067067053275,
+            "new_miou": 0.0471695221460564,
+            "old_boundary_iou": 0.09193904502434136,
+            "old_boundary_margin": 2.598245859146118,
+            "old_miou": 0.23753415505960784
+          },
+          "9": {
+            "all_miou": 0.13811874971584587,
+            "new_miou": 0.12368622452226506,
+            "old_boundary_iou": 0.05887978242280629,
+            "old_boundary_margin": 1.712536096572876,
+            "old_miou": 0.1269944964865258
+          }
+        }
+      },
+      "lowrank_ssr": {
+        "final": {
+          "all_miou": 0.11940624384379692,
+          "new_miou": 0.0,
+          "old_boundary_iou": 0.055003603122790824,
+          "old_boundary_margin": 4.984829902648926,
+          "old_miou": 0.13197532214314397
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7320243106921773,
+            "new_miou": 0.3182870867338886,
+            "old_boundary_iou": 0.3475375528330823,
+            "old_boundary_margin": 3.2411270141601562,
+            "old_miou": 0.7561925106585882
+          },
+          "10": {
+            "all_miou": 0.11940624384379692,
+            "new_miou": 0.0,
+            "old_boundary_iou": 0.055003603122790824,
+            "old_boundary_margin": 4.984829902648926,
+            "old_miou": 0.13197532214314397
+          },
+          "2": {
+            "all_miou": 0.631259099402956,
+            "new_miou": 0.5032145254305618,
+            "old_boundary_iou": 0.2618971495508108,
+            "old_boundary_margin": 2.9823358058929443,
+            "old_miou": 0.6278938249986517
+          },
+          "3": {
+            "all_miou": 0.5016402841785251,
+            "new_miou": 0.1720886101337411,
+            "old_boundary_iou": 0.2431263368787133,
+            "old_boundary_margin": 2.233182907104492,
+            "old_miou": 0.5030716221183714
+          },
+          "4": {
+            "all_miou": 0.4006180295709549,
+            "new_miou": 0.2308995809446103,
+            "old_boundary_iou": 0.20304185341298864,
+            "old_boundary_margin": 1.6904665231704712,
+            "old_miou": 0.38694811949455593
+          },
+          "5": {
+            "all_miou": 0.378590760165496,
+            "new_miou": 0.664096770489234,
+            "old_boundary_iou": 0.15674434533282802,
+            "old_boundary_margin": 1.607495665550232,
+            "old_miou": 0.3353987604704476
+          },
+          "6": {
+            "all_miou": 0.33625440362352904,
+            "new_miou": 0.14501253531230798,
+            "old_boundary_iou": 0.17352608806307732,
+            "old_boundary_margin": 7.932336807250977,
+            "old_miou": 0.3289864029852966
+          },
+          "7": {
+            "all_miou": 0.291176534601315,
+            "new_miou": 0.08276683065791252,
+            "old_boundary_iou": 0.1578806096007408,
+            "old_boundary_margin": 4.362107276916504,
+            "old_miou": 0.29038703141075833
+          },
+          "8": {
+            "all_miou": 0.235510584076206,
+            "new_miou": 0.020775285368602063,
+            "old_boundary_iou": 0.11075088607908391,
+            "old_boundary_margin": 2.3384361267089844,
+            "old_miou": 0.2619956360046654
+          },
+          "9": {
+            "all_miou": 0.1346451358909584,
+            "new_miou": 0.10687746242759384,
+            "old_boundary_iou": 0.07692707863311962,
+            "old_boundary_margin": 1.5743955373764038,
+            "old_miou": 0.14366806974397628
+          }
+        }
+      },
+      "parent_checkpoint_sha256": "9cbd7207dde2d350b6bca2b1898dc2ff69e9996e835d80bd8b71b181898bdbb8",
+      "plop": {
+        "final": {
+          "all_miou": 0.18994848727724223,
+          "new_miou": 0.012368893666484748,
+          "old_boundary_iou": 0.08033008667499879,
+          "old_boundary_margin": 2.1100046634674072,
+          "old_miou": 0.2000954464861382
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7335902440614586,
+            "new_miou": 0.2863275357594259,
+            "old_boundary_iou": 0.3284668012847899,
+            "old_boundary_margin": 3.3213510513305664,
+            "old_miou": 0.7617061081391333
+          },
+          "10": {
+            "all_miou": 0.18994848727724223,
+            "new_miou": 0.012368893666484748,
+            "old_boundary_iou": 0.08033008667499879,
+            "old_boundary_margin": 2.1100046634674072,
+            "old_miou": 0.2000954464861382
+          },
+          "2": {
+            "all_miou": 0.6717529061014982,
+            "new_miou": 0.5550699172276031,
+            "old_boundary_iou": 0.26170161303824147,
+            "old_boundary_margin": 3.011063814163208,
+            "old_miou": 0.6637110695851598
+          },
+          "3": {
+            "all_miou": 0.5334989018635079,
+            "new_miou": 0.1668607733867439,
+            "old_boundary_iou": 0.2561534376725058,
+            "old_boundary_margin": 1.9577574729919434,
+            "old_miou": 0.5349275038858119
+          },
+          "4": {
+            "all_miou": 0.4840585352510106,
+            "new_miou": 0.15843829250185773,
+            "old_boundary_iou": 0.2109532247365656,
+            "old_boundary_margin": 0.9913457036018372,
+            "old_miou": 0.47975751798193755
+          },
+          "5": {
+            "all_miou": 0.4571541007776163,
+            "new_miou": 0.5716830435603526,
+            "old_boundary_iou": 0.18160940166079537,
+            "old_boundary_margin": 0.7764472365379333,
+            "old_miou": 0.42235160878333733
+          },
+          "6": {
+            "all_miou": 0.43385329718901877,
+            "new_miou": 0.08799403215470247,
+            "old_boundary_iou": 0.17328278525913945,
+            "old_boundary_margin": 4.013274669647217,
+            "old_miou": 0.43254650526744726
+          },
+          "7": {
+            "all_miou": 0.3668394044688243,
+            "new_miou": 0.06832655843044023,
+            "old_boundary_iou": 0.12984831143032458,
+            "old_boundary_margin": 2.299637794494629,
+            "old_miou": 0.3579718236838994
+          },
+          "8": {
+            "all_miou": 0.3046474025322555,
+            "new_miou": 0.03803124586810223,
+            "old_boundary_iou": 0.11348584466119438,
+            "old_boundary_margin": 1.2488646507263184,
+            "old_miou": 0.30566428331527024
+          },
+          "9": {
+            "all_miou": 0.22154542572100028,
+            "new_miou": 0.06328650650990553,
+            "old_boundary_iou": 0.09671341913687201,
+            "old_boundary_margin": 1.0015114545822144,
+            "old_miou": 0.21443356146470782
+          }
+        }
+      },
+      "seed": 13405
+    },
+    {
+      "lowrank": {
+        "final": {
+          "all_miou": 0.15674378939465597,
+          "new_miou": 0.01388027014648816,
+          "old_boundary_iou": 0.05762246699902546,
+          "old_boundary_margin": 5.569128036499023,
+          "old_miou": 0.1725125951126993
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7255655948976149,
+            "new_miou": 0.3143330967805365,
+            "old_boundary_iou": 0.3643673864174337,
+            "old_boundary_margin": 3.40106201171875,
+            "old_miou": 0.7491714344136415
+          },
+          "10": {
+            "all_miou": 0.15674378939465597,
+            "new_miou": 0.01388027014648816,
+            "old_boundary_iou": 0.05762246699902546,
+            "old_boundary_margin": 5.569128036499023,
+            "old_miou": 0.1725125951126993
+          },
+          "2": {
+            "all_miou": 0.6826528392312714,
+            "new_miou": 0.6964325035294257,
+            "old_boundary_iou": 0.35156476695829597,
+            "old_boundary_margin": 3.236499309539795,
+            "old_miou": 0.6725463464212053
+          },
+          "3": {
+            "all_miou": 0.5148310698932513,
+            "new_miou": 0.22426594092801325,
+            "old_boundary_iou": 0.29373285945829386,
+            "old_boundary_margin": 3.2915987968444824,
+            "old_miou": 0.5223189275312133
+          },
+          "4": {
+            "all_miou": 0.43921375108341315,
+            "new_miou": 0.2920129244266153,
+            "old_boundary_iou": 0.24779504696626506,
+            "old_boundary_margin": 1.9886049032211304,
+            "old_miou": 0.4350574775042904
+          },
+          "5": {
+            "all_miou": 0.42637617934069877,
+            "new_miou": 0.687659162646736,
+            "old_boundary_iou": 0.21301276168145797,
+            "old_boundary_margin": 1.7141339778900146,
+            "old_miou": 0.3948827325424964
+          },
+          "6": {
+            "all_miou": 0.34306174059730166,
+            "new_miou": 0.06089186164542522,
+            "old_boundary_iou": 0.21509943158147082,
+            "old_boundary_margin": 8.632123947143555,
+            "old_miou": 0.3509158841941797
+          },
+          "7": {
+            "all_miou": 0.29789442006049827,
+            "new_miou": 0.07052336171601813,
+            "old_boundary_iou": 0.15338782161124123,
+            "old_boundary_margin": 4.82239294052124,
+            "old_miou": 0.3084435358825584
+          },
+          "8": {
+            "all_miou": 0.24836848721192134,
+            "new_miou": 0.03625675354360695,
+            "old_boundary_iou": 0.1254380696832995,
+            "old_boundary_margin": 3.2621054649353027,
+            "old_miou": 0.2689573080266019
+          },
+          "9": {
+            "all_miou": 0.16845955643952165,
+            "new_miou": 0.10670889204315383,
+            "old_boundary_iou": 0.0721412118959547,
+            "old_boundary_margin": 2.0586695671081543,
+            "old_miou": 0.18082513627834296
+          }
+        }
+      },
+      "lowrank_ssr": {
+        "final": {
+          "all_miou": 0.16417959250907052,
+          "new_miou": 0.017332066217952483,
+          "old_boundary_iou": 0.06617198138078387,
+          "old_boundary_margin": 5.971063137054443,
+          "old_miou": 0.18054944086697516
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7255780766348391,
+            "new_miou": 0.3145601575870424,
+            "old_boundary_iou": 0.3643871851697104,
+            "old_boundary_margin": 3.4027700424194336,
+            "old_miou": 0.7491591945302745
+          },
+          "10": {
+            "all_miou": 0.16417959250907052,
+            "new_miou": 0.017332066217952483,
+            "old_boundary_iou": 0.06617198138078387,
+            "old_boundary_margin": 5.971063137054443,
+            "old_miou": 0.18054944086697516
+          },
+          "2": {
+            "all_miou": 0.6639276618443622,
+            "new_miou": 0.6404990608138958,
+            "old_boundary_iou": 0.3509340984876059,
+            "old_boundary_margin": 2.923078775405884,
+            "old_miou": 0.6608867240444222
+          },
+          "3": {
+            "all_miou": 0.5544327200969476,
+            "new_miou": 0.2562718818871,
+            "old_boundary_iou": 0.30450633277165823,
+            "old_boundary_margin": 4.039146423339844,
+            "old_miou": 0.5610843851389874
+          },
+          "4": {
+            "all_miou": 0.48104765664196225,
+            "new_miou": 0.31539905382210387,
+            "old_boundary_iou": 0.2640571173479084,
+            "old_boundary_margin": 2.0925652980804443,
+            "old_miou": 0.47615350645209104
+          },
+          "5": {
+            "all_miou": 0.46170435548376154,
+            "new_miou": 0.679302565671481,
+            "old_boundary_iou": 0.2287470653868359,
+            "old_boundary_margin": 1.8104599714279175,
+            "old_miou": 0.4304113419801864
+          },
+          "6": {
+            "all_miou": 0.37981237946702606,
+            "new_miou": 0.08694793960542671,
+            "old_boundary_iou": 0.2217348614268053,
+            "old_boundary_margin": 8.434089660644531,
+            "old_miou": 0.38526326989663773
+          },
+          "7": {
+            "all_miou": 0.3315130712990418,
+            "new_miou": 0.09402714962417327,
+            "old_boundary_iou": 0.196895121879516,
+            "old_boundary_margin": 5.301419258117676,
+            "old_miou": 0.33920943810225895
+          },
+          "8": {
+            "all_miou": 0.2560240980163789,
+            "new_miou": 0.040804852409085435,
+            "old_boundary_iou": 0.14801114866945192,
+            "old_boundary_margin": 3.259107828140259,
+            "old_miou": 0.27233681172318047
+          },
+          "9": {
+            "all_miou": 0.17980768033633993,
+            "new_miou": 0.12109292382451069,
+            "old_boundary_iou": 0.07516872383672552,
+            "old_boundary_margin": 2.222342014312744,
+            "old_miou": 0.1867829281564748
+          }
+        }
+      },
+      "parent_checkpoint_sha256": "74c86327c29df75c8c420f016311e4fe65405bf066503ae23f5da43e70d16cfa",
+      "plop": {
+        "final": {
+          "all_miou": 0.2742370998321311,
+          "new_miou": 0.042951961237020095,
+          "old_boundary_iou": 0.09484692690812017,
+          "old_boundary_margin": 2.6803290843963623,
+          "old_miou": 0.2670381048798794
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7362832828417133,
+            "new_miou": 0.28667557634173774,
+            "old_boundary_iou": 0.3533355378406769,
+            "old_boundary_margin": 3.369507074356079,
+            "old_miou": 0.7648090477018816
+          },
+          "10": {
+            "all_miou": 0.2742370998321311,
+            "new_miou": 0.042951961237020095,
+            "old_boundary_iou": 0.09484692690812017,
+            "old_boundary_margin": 2.6803290843963623,
+            "old_miou": 0.2670381048798794
+          },
+          "2": {
+            "all_miou": 0.6940287430436166,
+            "new_miou": 0.6639130828407878,
+            "old_boundary_iou": 0.34233239115663905,
+            "old_boundary_margin": 3.2545158863067627,
+            "old_miou": 0.6834420714239698
+          },
+          "3": {
+            "all_miou": 0.5461776225901358,
+            "new_miou": 0.18551775946662166,
+            "old_boundary_iou": 0.27192648076161147,
+            "old_boundary_margin": 2.72322416305542,
+            "old_miou": 0.5481806230546594
+          },
+          "4": {
+            "all_miou": 0.5181101308786222,
+            "new_miou": 0.1954076479046253,
+            "old_boundary_iou": 0.25598421044634845,
+            "old_boundary_margin": 1.2629047632217407,
+            "old_miou": 0.5173425297771993
+          },
+          "5": {
+            "all_miou": 0.49897133988204445,
+            "new_miou": 0.6255509149531279,
+            "old_boundary_iou": 0.2080326773535446,
+            "old_boundary_margin": 1.1310185194015503,
+            "old_miou": 0.4661126759342653
+          },
+          "6": {
+            "all_miou": 0.4692049697501475,
+            "new_miou": 0.10482597385662863,
+            "old_boundary_iou": 0.20834412228968033,
+            "old_boundary_margin": 4.533769130706787,
+            "old_miou": 0.47147386389148166
+          },
+          "7": {
+            "all_miou": 0.41398052835585947,
+            "new_miou": 0.09591231819245759,
+            "old_boundary_iou": 0.17661057949193062,
+            "old_boundary_margin": 3.0616869926452637,
+            "old_miou": 0.4085534414468427
+          },
+          "8": {
+            "all_miou": 0.3747080391164571,
+            "new_miou": 0.0527213340125433,
+            "old_boundary_iou": 0.14384802496145302,
+            "old_boundary_margin": 1.5508196353912354,
+            "old_miou": 0.3756400687526089
+          },
+          "9": {
+            "all_miou": 0.2934213680137034,
+            "new_miou": 0.0884470916991362,
+            "old_boundary_iou": 0.0986835360796851,
+            "old_boundary_margin": 1.179718017578125,
+            "old_miou": 0.28133196942895294
+          }
+        }
+      },
+      "seed": 13406
+    },
+    {
+      "lowrank": {
+        "final": {
+          "all_miou": 0.137579950056598,
+          "new_miou": 0.018062845224883675,
+          "old_boundary_iou": 0.05779511899262959,
+          "old_boundary_margin": 6.042590618133545,
+          "old_miou": 0.1497069084783391
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7263517748443182,
+            "new_miou": 0.328702533303858,
+            "old_boundary_iou": 0.3783069762565016,
+            "old_boundary_margin": 3.2785115242004395,
+            "old_miou": 0.7483525952691249
+          },
+          "10": {
+            "all_miou": 0.137579950056598,
+            "new_miou": 0.018062845224883675,
+            "old_boundary_iou": 0.05779511899262959,
+            "old_boundary_margin": 6.042590618133545,
+            "old_miou": 0.1497069084783391
+          },
+          "2": {
+            "all_miou": 0.6797950320627544,
+            "new_miou": 0.6607376960953545,
+            "old_boundary_iou": 0.3697323502933927,
+            "old_boundary_margin": 3.493504047393799,
+            "old_miou": 0.6706550658789863
+          },
+          "3": {
+            "all_miou": 0.548906617124615,
+            "new_miou": 0.211110885549666,
+            "old_boundary_iou": 0.3182220049656192,
+            "old_boundary_margin": 3.0663037300109863,
+            "old_miou": 0.5635098652784583
+          },
+          "4": {
+            "all_miou": 0.45731978195335654,
+            "new_miou": 0.2973074250240716,
+            "old_boundary_iou": 0.2677746780254687,
+            "old_boundary_margin": 2.034248113632202,
+            "old_miou": 0.45423541473472784
+          },
+          "5": {
+            "all_miou": 0.4349931754524895,
+            "new_miou": 0.7080845285542788,
+            "old_boundary_iou": 0.20212699703150933,
+            "old_boundary_margin": 1.764845609664917,
+            "old_miou": 0.40278585947809864
+          },
+          "6": {
+            "all_miou": 0.36462350355383,
+            "new_miou": 0.0685375290843629,
+            "old_boundary_iou": 0.2066983967264827,
+            "old_boundary_margin": 8.367778778076172,
+            "old_miou": 0.3745356178482603
+          },
+          "7": {
+            "all_miou": 0.3278906943374648,
+            "new_miou": 0.1019514212656322,
+            "old_boundary_iou": 0.14104006527786433,
+            "old_boundary_margin": 5.152897357940674,
+            "old_miou": 0.336689154631997
+          },
+          "8": {
+            "all_miou": 0.28890984408510834,
+            "new_miou": 0.05258800561533675,
+            "old_boundary_iou": 0.11219900873157564,
+            "old_boundary_margin": 3.4985930919647217,
+            "old_miou": 0.3011878244498116
+          },
+          "9": {
+            "all_miou": 0.17563962906006486,
+            "new_miou": 0.13441593036849322,
+            "old_boundary_iou": 0.06644860186501139,
+            "old_boundary_margin": 2.4968016147613525,
+            "old_miou": 0.1722090739480862
+          }
+        }
+      },
+      "lowrank_ssr": {
+        "final": {
+          "all_miou": 0.15764127413592025,
+          "new_miou": 0.030219372117539077,
+          "old_boundary_iou": 0.06683926667608307,
+          "old_boundary_margin": 5.315633773803711,
+          "old_miou": 0.16810185724289367
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7261616280975319,
+            "new_miou": 0.3291069938372244,
+            "old_boundary_iou": 0.378421137502223,
+            "old_boundary_margin": 3.277207374572754,
+            "old_miou": 0.7480879669844096
+          },
+          "10": {
+            "all_miou": 0.15764127413592025,
+            "new_miou": 0.030219372117539077,
+            "old_boundary_iou": 0.06683926667608307,
+            "old_boundary_margin": 5.315633773803711,
+            "old_miou": 0.16810185724289367
+          },
+          "2": {
+            "all_miou": 0.6689439202541292,
+            "new_miou": 0.6359300320986944,
+            "old_boundary_iou": 0.3655875514443011,
+            "old_boundary_margin": 3.3153939247131348,
+            "old_miou": 0.6630438730354935
+          },
+          "3": {
+            "all_miou": 0.5520699521907769,
+            "new_miou": 0.22147201134687355,
+            "old_boundary_iou": 0.3104793779247356,
+            "old_boundary_margin": 3.5334384441375732,
+            "old_miou": 0.5627954816529147
+          },
+          "4": {
+            "all_miou": 0.4780493692852246,
+            "new_miou": 0.31805716874141315,
+            "old_boundary_iou": 0.2555372385082205,
+            "old_boundary_margin": 2.0983705520629883,
+            "old_miou": 0.4720504034214422
+          },
+          "5": {
+            "all_miou": 0.4592221511336797,
+            "new_miou": 0.7056471374798414,
+            "old_boundary_iou": 0.20065633136026434,
+            "old_boundary_margin": 1.824404239654541,
+            "old_miou": 0.4255757585633541
+          },
+          "6": {
+            "all_miou": 0.39128690167755503,
+            "new_miou": 0.12393934247264614,
+            "old_boundary_iou": 0.19860265604439037,
+            "old_boundary_margin": 8.459226608276367,
+            "old_miou": 0.396624705703233
+          },
+          "7": {
+            "all_miou": 0.3402097986315271,
+            "new_miou": 0.10616607597663234,
+            "old_boundary_iou": 0.18596541510584022,
+            "old_boundary_margin": 5.297201633453369,
+            "old_miou": 0.3456979810132403
+          },
+          "8": {
+            "all_miou": 0.28465712398672105,
+            "new_miou": 0.04141829687939458,
+            "old_boundary_iou": 0.1080686640984453,
+            "old_boundary_margin": 3.438692331314087,
+            "old_miou": 0.301450663392211
+          },
+          "9": {
+            "all_miou": 0.19093981520481995,
+            "new_miou": 0.14645575371629563,
+            "old_boundary_iou": 0.06538233510541833,
+            "old_boundary_margin": 2.756566047668457,
+            "old_miou": 0.19282857256072475
+          }
+        }
+      },
+      "parent_checkpoint_sha256": "cce0904b34a38f04c690cea6867429920fe2440f13847aac26b2299b55a80779",
+      "plop": {
+        "final": {
+          "all_miou": 0.2786574367177704,
+          "new_miou": 0.0966015517408593,
+          "old_boundary_iou": 0.08761417422976248,
+          "old_boundary_margin": 2.8100287914276123,
+          "old_miou": 0.2649652253807869
+        },
+        "trajectory": {
+          "1": {
+            "all_miou": 0.7253260442262626,
+            "new_miou": 0.27031258491204146,
+            "old_boundary_iou": 0.3675676281185644,
+            "old_boundary_margin": 3.198134660720825,
+            "old_miou": 0.7539498364577192
+          },
+          "10": {
+            "all_miou": 0.2786574367177704,
+            "new_miou": 0.0966015517408593,
+            "old_boundary_iou": 0.08761417422976248,
+            "old_boundary_margin": 2.8100287914276123,
+            "old_miou": 0.2649652253807869
+          },
+          "2": {
+            "all_miou": 0.6876224261804672,
+            "new_miou": 0.6424727569672865,
+            "old_boundary_iou": 0.3358321232904416,
+            "old_boundary_margin": 3.2925140857696533,
+            "old_miou": 0.6776508250702848
+          },
+          "3": {
+            "all_miou": 0.5492962216441188,
+            "new_miou": 0.17704813377393544,
+            "old_boundary_iou": 0.28759987410468546,
+            "old_boundary_margin": 2.3628973960876465,
+            "old_miou": 0.5533533376569612
+          },
+          "4": {
+            "all_miou": 0.5229000165911283,
+            "new_miou": 0.24199505803233512,
+            "old_boundary_iou": 0.25052797541939537,
+            "old_boundary_margin": 1.3845151662826538,
+            "old_miou": 0.5171284543562842
+          },
+          "5": {
+            "all_miou": 0.5052043808457909,
+            "new_miou": 0.6398592813299457,
+            "old_boundary_iou": 0.20959212179328146,
+            "old_boundary_margin": 1.086022973060608,
+            "old_miou": 0.470234483231775
+          },
+          "6": {
+            "all_miou": 0.4735784279565051,
+            "new_miou": 0.14174568923362563,
+            "old_boundary_iou": 0.2193580322613143,
+            "old_boundary_margin": 4.5428009033203125,
+            "old_miou": 0.4717109398697518
+          },
+          "7": {
+            "all_miou": 0.4193549134079586,
+            "new_miou": 0.11100067100237586,
+            "old_boundary_iou": 0.1717685938875556,
+            "old_boundary_margin": 3.080601692199707,
+            "old_miou": 0.41207638815566805
+          },
+          "8": {
+            "all_miou": 0.3758763778042976,
+            "new_miou": 0.06572757388816008,
+            "old_boundary_iou": 0.14543115744452192,
+            "old_boundary_margin": 2.0181772708892822,
+            "old_miou": 0.3755079208318145
+          },
+          "9": {
+            "all_miou": 0.2957361121685534,
+            "new_miou": 0.10812299701685313,
+            "old_boundary_iou": 0.10193549377127444,
+            "old_boundary_margin": 1.1959943771362305,
+            "old_miou": 0.2811465145896437
+          }
+        }
+      },
+      "seed": 13407
+    }
+  ],
+  "per_step_comparisons": {
+    "lowrank_ssr_vs_lowrank": {
+      "1": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.00011667385268716579,
+            9.78740221363683e-05
+          ],
+          "paired_delta_mean": -3.6894455082370215e-06,
+          "per_seed_deltas": [
+            -6.128785657233404e-05,
+            4.8358833495409925e-05,
+            0.0001721468050978059,
+            1.2481737224234735e-05,
+            -0.0001901467467863016
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.0001265173379815132,
+            0.0004164342576778113
+          ],
+          "paired_delta_mean": 0.0002676299868285215,
+          "per_seed_deltas": [
+            0.0004878872945918711,
+            4.692428431374296e-06,
+            0.0002140488712470412,
+            0.00022706080650591876,
+            0.000404460533366402
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.00014986466921589335,
+            0.001366412337463796
+          ],
+          "paired_delta_mean": 0.00044508004708428974,
+          "per_seed_deltas": [
+            0.00026703305409736533,
+            0.0022012463986254005,
+            -0.0003768392152994071,
+            1.9798752276700693e-05,
+            0.00011416124572138919
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.004802131652832031,
+            0.0015805721282958984
+          ],
+          "paired_delta_mean": -0.0009516716003417969,
+          "per_seed_deltas": [
+            0.0015108585357666016,
+            0.0014650821685791016,
+            -0.008138179779052734,
+            0.0017080307006835938,
+            -0.0013041496276855469
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.00017340468927686813,
+            9.177004851510518e-05
+          ],
+          "paired_delta_mean": -3.4535429743232096e-05,
+          "per_seed_deltas": [
+            -0.00012201396780930907,
+            4.887537557085597e-05,
+            0.00017732961160465965,
+            -1.2239883367071158e-05,
+            -0.00026462828471529587
+          ]
+        }
+      },
+      "10": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            0.005082577736921623,
+            0.016061320181739593
+          ],
+          "paired_delta_mean": 0.009976064179103614,
+          "per_seed_deltas": [
+            0.006994192372093644,
+            0.0019943504130031375,
+            0.0133946509166845,
+            0.007435803114414552,
+            0.020061324079322235
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.007179612710874689,
+            0.007330121823673781
+          ],
+          "paired_delta_mean": 0.0002869047926270886,
+          "per_seed_deltas": [
+            -0.0017215400188595655,
+            9.051422020135008e-05,
+            -0.012542773202326066,
+            0.0034517960714643223,
+            0.012156526892655402
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.0005882769092987767,
+            0.019415854552983995
+          ],
+          "paired_delta_mean": 0.008906772949305645,
+          "per_seed_deltas": [
+            0.028187853830571263,
+            0.003471563589752709,
+            -0.004719214739007646,
+            0.00854951438175841,
+            0.009044147683453484
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.5851537704467773,
+            0.06388883590698242
+          ],
+          "paired_delta_mean": -0.2954097747802734,
+          "per_seed_deltas": [
+            -0.40712881088256836,
+            -0.26566600799560547,
+            -0.4792323112487793,
+            0.4019351005554199,
+            -0.726956844329834
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.005525186173272451,
+            0.016071071036752538
+          ],
+          "paired_delta_mean": 0.010760364307605508,
+          "per_seed_deltas": [
+            0.007595024426945041,
+            0.0021995181290981602,
+            0.017575484463153906,
+            0.008036845754275851,
+            0.01839494876455458
+          ]
+        }
+      },
+      "2": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.025465140548537612,
+            -0.013747834319239361
+          ],
+          "paired_delta_mean": -0.019606487433888486,
+          "per_seed_deltas": [
+            -0.014155885296018633,
+            -0.02836407743173086,
+            -0.025936185246158594,
+            -0.018725177386909153,
+            -0.010851111808625191
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.07724052813304291,
+            -0.03161028818697886
+          ],
+          "paired_delta_mean": -0.05442540816001089,
+          "per_seed_deltas": [
+            -0.026251335113022134,
+            -0.09008367999127354,
+            -0.07505091898356886,
+            -0.0559334427155298,
+            -0.024807663996660123
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.03610128777082178,
+            -0.0009787636674539967
+          ],
+          "paired_delta_mean": -0.015824733931530742,
+          "per_seed_deltas": [
+            0.0002561587266008414,
+            -0.02152524280635454,
+            -0.053079118258118396,
+            -0.0006306684706900434,
+            -0.00414479884909158
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.2779542446136475,
+            -0.18518776893615724
+          ],
+          "paired_delta_mean": -0.23157100677490233,
+          "per_seed_deltas": [
+            -0.23541808128356934,
+            -0.16715025901794434,
+            -0.26375603675842285,
+            -0.31342053413391113,
+            -0.17811012268066406
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.019132856297537783,
+            -0.009367824488926724
+          ],
+          "paired_delta_mean": -0.014250340393232253,
+          "per_seed_deltas": [
+            -0.009978557190432502,
+            -0.021458236924223772,
+            -0.02054409263122914,
+            -0.011659622376783085,
+            -0.0076111928434927645
+          ]
+        }
+      },
+      "3": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            0.010258639384962631,
+            0.03206463613951187
+          ],
+          "paired_delta_mean": 0.021065458407884163,
+          "per_seed_deltas": [
+            0.014201667747636204,
+            0.020759115043235354,
+            0.02760152397869109,
+            0.039601650203696215,
+            0.003163335066161954
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.008921082068911096,
+            0.0312366875275012
+          ],
+          "paired_delta_mean": 0.02076877273870869,
+          "per_seed_deltas": [
+            0.029007275272533523,
+            0.0008873814413161429,
+            0.0315821402233995,
+            0.03200594095908674,
+            0.010361125797207549
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.023438773899622935,
+            0.0006186147900590133
+          ],
+          "paired_delta_mean": -0.011637667084037401,
+          "per_seed_deltas": [
+            -0.007948792632712809,
+            -0.021278553357085228,
+            -0.03199183570286976,
+            0.010773473313364368,
+            -0.007742627040883576
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.5501846551895142,
+            0.8031692504882812
+          ],
+          "paired_delta_mean": 0.6891393899917603,
+          "per_seed_deltas": [
+            0.881495475769043,
+            0.7526538372039795,
+            0.5968652963638306,
+            0.7475476264953613,
+            0.4671347141265869
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.006633512281002518,
+            0.03032141702099308
+          ],
+          "paired_delta_mean": 0.018602867100321142,
+          "per_seed_deltas": [
+            0.009978328262524094,
+            0.019652549237731964,
+            0.025332384019119136,
+            0.038765457607774056,
+            -0.0007143836255435465
+          ]
+        }
+      },
+      "4": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            0.018835730935890825,
+            0.038931929768095216
+          ],
+          "paired_delta_mean": 0.029193021903897977,
+          "per_seed_deltas": [
+            0.03329078483080389,
+            0.038850526446287004,
+            0.011260305351981803,
+            0.0418339055585491,
+            0.020729587331868082
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.01407056687652688,
+            0.06390487771944173
+          ],
+          "paired_delta_mean": 0.03637260365280515,
+          "per_seed_deltas": [
+            0.0818905542524514,
+            0.053102982122512854,
+            0.0027336087762313555,
+            0.023386129395488564,
+            0.020749743717341562
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.018091729627782764,
+            0.015755829089820088
+          ],
+          "paired_delta_mean": -0.0014342977231848407,
+          "per_seed_deltas": [
+            0.02491817152823511,
+            -0.02986947809586299,
+            -0.006244812912691439,
+            0.016262070381643318,
+            -0.012237439517248205
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.09641008377075196,
+            0.3892653942108154
+          ],
+          "paired_delta_mean": 0.2428377389907837,
+          "per_seed_deltas": [
+            0.43807220458984375,
+            0.46214890480041504,
+            0.14588475227355957,
+            0.10396039485931396,
+            0.06412243843078613
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.01598747341876634,
+            0.0355116352731101
+          ],
+          "paired_delta_mean": 0.02574955434593822,
+          "per_seed_deltas": [
+            0.0247176786134351,
+            0.03532421992825707,
+            0.009794855553483917,
+            0.04109602894780062,
+            0.017814988686714384
+          ]
+        }
+      },
+      "5": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            0.017727617982112708,
+            0.031197289286167596
+          ],
+          "paired_delta_mean": 0.02507754098172308,
+          "per_seed_deltas": [
+            0.02500095900082483,
+            0.029039834010619714,
+            0.011789760072917876,
+            0.03532817614306277,
+            0.0242289756811902
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.010313172624893552,
+            0.018792313478205046
+          ],
+          "paired_delta_mean": 0.0007159265136808645,
+          "per_seed_deltas": [
+            -0.01153580261264675,
+            -0.01006883046195961,
+            0.03597825369270313,
+            -0.008356596975255037,
+            -0.0024373910744374117
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.006017605912633783,
+            0.016836662661949064
+          ],
+          "paired_delta_mean": 0.005270643721614071,
+          "per_seed_deltas": [
+            0.023306558425204127,
+            -0.01478388919910062,
+            0.0035669113478339065,
+            0.015734303705377928,
+            -0.0014706656712449862
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.08211984634399414,
+            0.16698172092437744
+          ],
+          "paired_delta_mean": 0.12273225784301758,
+          "per_seed_deltas": [
+            0.09882998466491699,
+            0.15865397453308105,
+            0.200292706489563,
+            0.09632599353790283,
+            0.05955862998962402
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.015279842307571834,
+            0.030509127373758615
+          ],
+          "paired_delta_mean": 0.023646819618992686,
+          "per_seed_deltas": [
+            0.022419521731321612,
+            0.029254256857775773,
+            0.008241810982920594,
+            0.035528609437689984,
+            0.02278989908525547
+          ]
+        }
+      },
+      "6": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            0.024182473120636993,
+            0.03328512571775544
+          ],
+          "paired_delta_mean": 0.028572789137453525,
+          "per_seed_deltas": [
+            0.029510313855878934,
+            0.029208366383255857,
+            0.020731228454683392,
+            0.036750638869724406,
+            0.026663398123725035
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.03978318945827468,
+            0.06517278154541904
+          ],
+          "paired_delta_mean": 0.05354787690435099,
+          "per_seed_deltas": [
+            0.05105044600406424,
+            0.0696972674073047,
+            0.0655337797621013,
+            0.026056077960001492,
+            0.05540181338828323
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.002250064360248222,
+            0.019012141109047438
+          ],
+          "paired_delta_mean": 0.008381038374399607,
+          "per_seed_deltas": [
+            0.02408711587105028,
+            -0.0008471351411954431,
+            0.02012552197890108,
+            0.006635429845334467,
+            -0.008095740682092345
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.21708259582519532,
+            0.3025808334350586
+          ],
+          "paired_delta_mean": -0.0001323699951171875,
+          "per_seed_deltas": [
+            -0.2273855209350586,
+            -0.21630382537841797,
+            0.5496139526367188,
+            -0.19803428649902344,
+            0.09144783020019531
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.017125941991668246,
+            0.029444066563463912
+          ],
+          "paired_delta_mean": 0.022918430148059443,
+          "per_seed_deltas": [
+            0.021821412377517502,
+            0.022731086156339175,
+            0.013603178649009784,
+            0.034347385702458044,
+            0.02208908785497271
+          ]
+        }
+      },
+      "7": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            0.01298463461400876,
+            0.030330265663158017
+          ],
+          "paired_delta_mean": 0.02165745013858339,
+          "per_seed_deltas": [
+            0.010390014093401012,
+            0.01950493629511718,
+            0.03245454477179294,
+            0.03361865123854352,
+            0.0123191042940623
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.00018419144036366797,
+            0.019980607062529115
+          ],
+          "paired_delta_mean": 0.009898207811082724,
+          "per_seed_deltas": [
+            0.007454412607540345,
+            0.02272052344439747,
+            -0.008402339615679488,
+            0.023503787908155147,
+            0.004214654711000146
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.03445073035280689,
+            0.05290212428631822
+          ],
+          "paired_delta_mean": 0.04425262536920755,
+          "per_seed_deltas": [
+            0.05821997392521311,
+            0.04825160326883171,
+            0.026358899555742277,
+            0.04350730026827476,
+            0.044925349827975886
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.02058830261230469,
+            0.4342842102050781
+          ],
+          "paired_delta_mean": 0.22435388565063477,
+          "per_seed_deltas": [
+            -0.1557154655456543,
+            0.5191202163696289,
+            0.13503408432006836,
+            0.47902631759643555,
+            0.1443042755126953
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.007996445467364176,
+            0.02913180290964932
+          ],
+          "paired_delta_mean": 0.018564124188506746,
+          "per_seed_deltas": [
+            0.0034322656395823214,
+            0.015100043295169674,
+            0.03451358340683791,
+            0.030765902219700547,
+            0.009008826381243284
+          ]
+        }
+      },
+      "8": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            1.4631467292097743e-05,
+            0.011651322161138672
+          ],
+          "paired_delta_mean": 0.00627519454580992,
+          "per_seed_deltas": [
+            0.015141764391357004,
+            0.010111404225949083,
+            0.0027199134056732632,
+            0.0076556108044575355,
+            -0.004252720098387286
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.015074537785032153,
+            0.017798457214089826
+          ],
+          "paired_delta_mean": 0.001347526357832017,
+          "per_seed_deltas": [
+            0.030204258184656593,
+            0.009549220252421511,
+            -0.02639423677745434,
+            0.004548098865478488,
+            -0.011169708735942169
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.0036783161879103883,
+            0.022859622619065642
+          ],
+          "paired_delta_mean": 0.014126833658939117,
+          "per_seed_deltas": [
+            0.008209535852790537,
+            0.025170057034140422,
+            0.018811841054742554,
+            0.022573078986152406,
+            -0.004130344633130334
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.17952389717102052,
+            -0.0039956092834472655
+          ],
+          "paired_delta_mean": -0.08298835754394532,
+          "per_seed_deltas": [
+            0.022958993911743164,
+            -0.11519265174865723,
+            -0.2598097324371338,
+            -0.0029976367950439453,
+            -0.059900760650634766
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.001742647934614927,
+            0.01616433809020549
+          ],
+          "paired_delta_mean": 0.0072247857852499875,
+          "per_seed_deltas": [
+            0.004057743919276158,
+            0.003962361422938265,
+            0.024461480945057568,
+            0.0033795036965785785,
+            0.0002628389423993682
+          ]
+        }
+      },
+      "9": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            0.004017978340859979,
+            0.017961115777325853
+          ],
+          "paired_delta_mean": 0.012085478517524595,
+          "per_seed_deltas": [
+            0.019162609282144055,
+            0.018090087088793033,
+            -0.003473613824887478,
+            0.011348123896818274,
+            0.01530018614475509
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.006680895318666743,
+            0.012034781006950105
+          ],
+          "paired_delta_mean": 0.004224279354227989,
+          "per_seed_deltas": [
+            0.006524317393774362,
+            0.00498198634287754,
+            -0.01680876209467122,
+            0.01438403178135686,
+            0.012039823347802403
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.0014634124380763724,
+            0.015243026919500838
+          ],
+          "paired_delta_mean": 0.008353219678788605,
+          "per_seed_deltas": [
+            0.003394571828026355,
+            0.018362985174425583,
+            0.018047296210313334,
+            0.003027511940770819,
+            -0.0010662667595930653
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.11973323822021484,
+            0.16130895614624025
+          ],
+          "paired_delta_mean": 0.019866442680358885,
+          "per_seed_deltas": [
+            -0.13642096519470215,
+            -0.049543142318725586,
+            -0.13814055919647217,
+            0.16367244720458984,
+            0.2597644329071045
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            0.008123941252191902,
+            0.01743422554626888
+          ],
+          "paired_delta_mean": 0.01277908339923039,
+          "per_seed_deltas": [
+            0.008059569256764737,
+            0.012584983991166365,
+            0.016673573257450475,
+            0.005957791878131835,
+            0.020619498612638537
+          ]
+        }
+      }
+    },
+    "lowrank_ssr_vs_plop": {
+      "1": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.00771779059816442,
+            -0.0010856299211711162
+          ],
+          "paired_delta_mean": -0.004121608469160742,
+          "per_seed_deltas": [
+            -0.004907401000918243,
+            -0.004265085639999389,
+            -0.001565933369281236,
+            -0.010705206206874207,
+            0.0008355838712693631
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.024559019610388734,
+            0.04643047785323164
+          ],
+          "paired_delta_mean": 0.03321875990965397,
+          "per_seed_deltas": [
+            0.025633596090094468,
+            0.02182166231322502,
+            0.031959550974462736,
+            0.027884581245304685,
+            0.05879440892518295
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.010725760968838349,
+            0.021723925861079442
+          ],
+          "paired_delta_mean": 0.015528553418544089,
+          "per_seed_deltas": [
+            0.010435069373920525,
+            0.026231789457815402,
+            0.01907075154829241,
+            0.01105164732903352,
+            0.010853509383658588
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.06210136413574219,
+            0.042039680480957034
+          ],
+          "paired_delta_mean": -0.011532878875732422,
+          "per_seed_deltas": [
+            -0.06028270721435547,
+            -0.029493331909179688,
+            -0.08022403717041016,
+            0.03326296806335449,
+            0.07907271385192871
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.012269140158100655,
+            -0.00602996922191148
+          ],
+          "paired_delta_mean": -0.00859170082593641,
+          "per_seed_deltas": [
+            -0.008534271802372206,
+            -0.0073989122018479625,
+            -0.00551359748054514,
+            -0.015649853171607164,
+            -0.005861869473309578
+          ]
+        }
+      },
+      "10": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.10880912540045433,
+            -0.07199812252152649
+          ],
+          "paired_delta_mean": -0.08991648142908744,
+          "per_seed_deltas": [
+            -0.07093963193366062,
+            -0.07702686187342053,
+            -0.07054224343344531,
+            -0.1100575073230606,
+            -0.12101616258185013
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.0474270655111026,
+            -0.008709411801932312
+          ],
+          "paired_delta_mean": -0.024096834777441893,
+          "per_seed_deltas": [
+            -0.013417139479981707,
+            -0.0026960660983551786,
+            -0.012368893666484748,
+            -0.025619895019067612,
+            -0.06638217962332021
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.025755553142553587,
+            -0.004782392113409454
+          ],
+          "paired_delta_mean": -0.016990453620270678,
+          "per_seed_deltas": [
+            0.005879284846770513,
+            -0.01605521631490022,
+            -0.025326483552207964,
+            -0.028674945527336307,
+            -0.020774907553679403
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            2.4481875896453857,
+            3.0334402084350587
+          ],
+          "paired_delta_mean": 2.7077661514282227,
+          "per_seed_deltas": [
+            2.447492837905884,
+            2.4201736450195312,
+            2.8748252391815186,
+            3.290734052658081,
+            2.5056049823760986
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.08903977855391561,
+            -0.06270650831699345
+          ],
+          "paired_delta_mean": -0.07492483841945578,
+          "per_seed_deltas": [
+            -0.05414025729549157,
+            -0.06901177830799568,
+            -0.06812012434299422,
+            -0.08648866401290423,
+            -0.0968633681378932
+          ]
+        }
+      },
+      "2": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.03911930609607741,
+            -0.023393588329475246
+          ],
+          "paired_delta_mean": -0.0313556174064767,
+          "per_seed_deltas": [
+            -0.025250775266224768,
+            -0.042253917942024155,
+            -0.04049380669854219,
+            -0.030101081199254365,
+            -0.018678505926338018
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.04786640618131797,
+            -0.010180176874818736
+          ],
+          "paired_delta_mean": -0.029023291528068353,
+          "per_seed_deltas": [
+            -0.007200706305008797,
+            -0.05610361264280761,
+            -0.05185539179704135,
+            -0.023414022026891912,
+            -0.006542724868592087
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.006938783874712218,
+            0.03423069159122164
+          ],
+          "paired_delta_mean": 0.019983508901529,
+          "per_seed_deltas": [
+            0.044265440823760605,
+            0.017099431686488697,
+            0.00019553651256931648,
+            0.008601707330966879,
+            0.02975542815385951
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.23657970428466796,
+            -0.023989534378051756
+          ],
+          "paired_delta_mean": -0.12597756385803222,
+          "per_seed_deltas": [
+            -0.13274335861206055,
+            -0.15985918045043945,
+            -0.028728008270263672,
+            -0.3314371109008789,
+            0.022879838943481445
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.03326698473029226,
+            -0.017718853467154138
+          ],
+          "paired_delta_mean": -0.0254929190987232,
+          "per_seed_deltas": [
+            -0.018412507943320167,
+            -0.036072543549448666,
+            -0.035817244586508146,
+            -0.022555347379547674,
+            -0.014606952034791343
+          ]
+        }
+      },
+      "3": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.021965086993765138,
+            0.006592198951433592
+          ],
+          "paired_delta_mean": -0.007015874309078063,
+          "per_seed_deltas": [
+            0.006838534598443191,
+            -0.021088116512320565,
+            -0.03185861768498277,
+            0.008255097506811748,
+            0.002773730546658082
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.018162299501835382,
+            0.06814651663435237
+          ],
+          "paired_delta_mean": 0.04315440806809387,
+          "per_seed_deltas": [
+            0.07740023037893351,
+            0.0179659732211222,
+            0.0052278367469972,
+            0.07075412242047832,
+            0.044423877572938114
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.0036483124374744715,
+            0.0281526562510399
+          ],
+          "paired_delta_mean": 0.01265439904606192,
+          "per_seed_deltas": [
+            0.026362036707527903,
+            -0.0055222965135227065,
+            -0.013027100793792518,
+            0.03257985201004676,
+            0.022879503820050162
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.6188615322113037,
+            1.2992385387420655
+          ],
+          "paired_delta_mean": 1.0059840202331543,
+          "per_seed_deltas": [
+            1.3469035625457764,
+            0.9211277961730957,
+            0.27542543411254883,
+            1.3159222602844238,
+            1.1705410480499268
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.020096720428639636,
+            0.01174198689437147
+          ],
+          "paired_delta_mean": -0.00288518650560714,
+          "per_seed_deltas": [
+            0.011730133153623923,
+            -0.01664608999450068,
+            -0.031855881767440475,
+            0.012903762084327974,
+            0.009442143995953556
+          ]
+        }
+      },
+      "4": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.06867193685314862,
+            -0.04132334148371947
+          ],
+          "paired_delta_mean": -0.05302997520624443,
+          "per_seed_deltas": [
+            -0.04382055581968686,
+            -0.055975692988915915,
+            -0.08344050568005573,
+            -0.03706247423665998,
+            -0.04485064730590366
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.0645784605684229,
+            0.1155721732835902
+          ],
+          "paired_delta_mean": 0.08958760067579628,
+          "per_seed_deltas": [
+            0.12846939068590663,
+            0.05095380762376567,
+            0.07246128844275257,
+            0.11999140591747856,
+            0.07606211070907803
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.015718984284202136,
+            0.005835450224078586
+          ],
+          "paired_delta_mean": -0.0036136885053134004,
+          "per_seed_deltas": [
+            0.003012911139622765,
+            -0.02625215233299788,
+            -0.007911371323576971,
+            0.008072906901559929,
+            0.0050092630888251555
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.7189091086387634,
+            0.8028221130371094
+          ],
+          "paired_delta_mean": 0.7593921542167663,
+          "per_seed_deltas": [
+            0.7538585662841797,
+            0.80046546459198,
+            0.699120819568634,
+            0.8296605348587036,
+            0.7138553857803345
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.07554303580858356,
+            -0.04448759582558455
+          ],
+          "paired_delta_mean": -0.05663784720025702,
+          "per_seed_deltas": [
+            -0.04990383060802228,
+            -0.05420893264593096,
+            -0.09280939848738162,
+            -0.041189023325108265,
+            -0.04507805093484196
+          ]
+        }
+      },
+      "5": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.06684624929212396,
+            -0.036292292203728406
+          ],
+          "paired_delta_mean": -0.05071188524069457,
+          "per_seed_deltas": [
+            -0.030472631254982507,
+            -0.061274240225975884,
+            -0.07856334061212034,
+            -0.03726698439828291,
+            -0.04598222971211119
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.046085106082262906,
+            0.08116188952963839
+          ],
+          "paired_delta_mean": 0.06414445422471608,
+          "per_seed_deltas": [
+            0.07481661614319468,
+            0.03395242118325559,
+            0.09241372692888139,
+            0.05375165071835308,
+            0.06578785614989568
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.01707745513519201,
+            0.011914419047731861
+          ],
+          "paired_delta_mean": -0.0031315055177815465,
+          "per_seed_deltas": [
+            0.010789617432289567,
+            -0.01336068629350412,
+            -0.024865056327967344,
+            0.020714388033291287,
+            -0.008935790433017121
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.6148396492004394,
+            0.7821936011314392
+          ],
+          "paired_delta_mean": 0.705608868598938,
+          "per_seed_deltas": [
+            0.7466946244239807,
+            0.5324785709381104,
+            0.8310484290122986,
+            0.6794414520263672,
+            0.7383812665939331
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.0700351988551022,
+            -0.03453579742649735
+          ],
+          "paired_delta_mean": -0.0508384032998085,
+          "per_seed_deltas": [
+            -0.02830879727795399,
+            -0.05857031228569892,
+            -0.08695284831288974,
+            -0.03570133395407893,
+            -0.04465872466842091
+          ]
+        }
+      },
+      "6": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.09386064301495606,
+            -0.07515661464756286
+          ],
+          "paired_delta_mean": -0.08546107863635162,
+          "per_seed_deltas": [
+            -0.06566596422385712,
+            -0.09235641883033968,
+            -0.09759889356548973,
+            -0.08939259028312146,
+            -0.08229152627895009
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.021179160386875538,
+            0.0388044531038983
+          ],
+          "paired_delta_mean": 0.0072024438215607615,
+          "per_seed_deltas": [
+            -0.026166693335497176,
+            0.04084479029787688,
+            0.05701850315760551,
+            -0.01787803425120192,
+            -0.01780634676097949
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.013878522403836923,
+            0.011665670398963757
+          ],
+          "paired_delta_mean": -0.0011064260024365835,
+          "per_seed_deltas": [
+            0.015651785458315498,
+            -0.014062581194637297,
+            0.00024330280393786152,
+            0.013390739137124963,
+            -0.020755376216923943
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            3.634456729888916,
+            4.146867561340332
+          ],
+          "paired_delta_mean": 3.8976299285888674,
+          "per_seed_deltas": [
+            3.4464774131774902,
+            4.305863857269287,
+            3.9190621376037598,
+            3.900320529937744,
+            3.9164257049560547
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.09525297787923295,
+            -0.06803810437383603
+          ],
+          "paired_delta_mean": -0.08256423770230384,
+          "per_seed_deltas": [
+            -0.057465909684811856,
+            -0.09049834838319393,
+            -0.10356010228215068,
+            -0.08621059399484393,
+            -0.07508623416651883
+          ]
+        }
+      },
+      "7": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.08994865530507509,
+            -0.07396294126243301
+          ],
+          "paired_delta_mean": -0.08099758343084174,
+          "per_seed_deltas": [
+            -0.07050815891976736,
+            -0.09720431653368283,
+            -0.07566286986750931,
+            -0.08246745705681768,
+            -0.07914511477643149
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.006035835410362914,
+            0.01630845113467476
+          ],
+          "paired_delta_mean": 0.004477391781594236,
+          "per_seed_deltas": [
+            -0.009312409216021611,
+            0.023978859490548343,
+            0.014440272227472281,
+            -0.001885168568284315,
+            -0.0048345950257435155
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.007885580823186505,
+            0.05678294514852683
+          ],
+          "paired_delta_mean": 0.028409519132529336,
+          "per_seed_deltas": [
+            0.08111521365582114,
+            -0.0015812797694606529,
+            0.02803229817041622,
+            0.02028454238758537,
+            0.014196821218284611
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            1.9479724884033203,
+            2.573670244216919
+          ],
+          "paired_delta_mean": 2.2286144733428954,
+          "per_seed_deltas": [
+            1.7688875198364258,
+            2.8553831577301025,
+            2.062469482421875,
+            2.239732265472412,
+            2.216599941253662
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.0796510443995768,
+            -0.06022539642022603
+          ],
+          "paired_delta_mean": -0.06914702881436433,
+          "per_seed_deltas": [
+            -0.05473272882780178,
+            -0.0876952124838673,
+            -0.06758479227314107,
+            -0.06934400334458374,
+            -0.06637840714242776
+          ]
+        }
+      },
+      "8": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.10023393315601141,
+            -0.05150727362229355
+          ],
+          "paired_delta_mean": -0.07464795764028267,
+          "per_seed_deltas": [
+            -0.0403011861654633,
+            -0.05389858866224584,
+            -0.06913681845604946,
+            -0.11868394110007824,
+            -0.09121925381757656
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.019009391323997843,
+            0.019140643339288232
+          ],
+          "paired_delta_mean": -0.0009945276342326586,
+          "per_seed_deltas": [
+            0.032225048127690545,
+            0.0162840328128697,
+            -0.017255960499500164,
+            -0.011916481603457867,
+            -0.024309277008765506
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.022131862982468286,
+            0.010183461740975328
+          ],
+          "paired_delta_mean": -0.003563566772355009,
+          "per_seed_deltas": [
+            0.01776788646428698,
+            0.0003486078941261628,
+            -0.0027349585821104666,
+            0.0041631237079989,
+            -0.03736249334607662
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            1.329902982711792,
+            1.8118115186691284
+          ],
+          "paired_delta_mean": 1.5769630908966064,
+          "per_seed_deltas": [
+            1.690400242805481,
+            1.9760404825210571,
+            1.089571475982666,
+            1.7082881927490234,
+            1.4205150604248047
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.08552713516769873,
+            -0.04155148292150489
+          ],
+          "paired_delta_mean": -0.06109905990778412,
+          "per_seed_deltas": [
+            -0.035953982227030945,
+            -0.04851215553225291,
+            -0.043668647310604825,
+            -0.10330325702942844,
+            -0.07405725743960351
+          ]
+        }
+      },
+      "9": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.10474405182244713,
+            -0.06784493335413437
+          ],
+          "paired_delta_mean": -0.08629449258829075,
+          "per_seed_deltas": [
+            -0.06977316045418372,
+            -0.05638902801613127,
+            -0.08690028983004189,
+            -0.11361368767736346,
+            -0.10479629696373344
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.034019703602173025,
+            0.04450567470429919
+          ],
+          "paired_delta_mean": 0.0392626891532361,
+          "per_seed_deltas": [
+            0.0485068524933384,
+            0.03323704853033682,
+            0.043590955917688315,
+            0.03264583212537449,
+            0.0383327566994425
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.027984456464276754,
+            0.0003722172854521477
+          ],
+          "paired_delta_mean": -0.013806119589412302,
+          "per_seed_deltas": [
+            0.0038705885984243044,
+            0.006953124867082258,
+            -0.019786340503752387,
+            -0.02351481224295958,
+            -0.03655315866585611
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.7051842927932739,
+            1.3019771099090576
+          ],
+          "paired_delta_mean": 0.9541373014450073,
+          "per_seed_deltas": [
+            0.7855465412139893,
+            0.8090602159500122,
+            0.5728840827941895,
+            1.0426239967346191,
+            1.5605716705322266
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.08849693591521529,
+            -0.06283922095926543
+          ],
+          "paired_delta_mean": -0.07518765435288269,
+          "per_seed_deltas": [
+            -0.07051961372972307,
+            -0.051786183012561715,
+            -0.07076549172073154,
+            -0.09454904127247815,
+            -0.08831794202891893
+          ]
+        }
+      }
+    },
+    "lowrank_vs_plop": {
+      "1": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.007747451430204055,
+            -0.0011099394185645206
+          ],
+          "paired_delta_mean": -0.004117919023652506,
+          "per_seed_deltas": [
+            -0.004846113144345909,
+            -0.0043134444734947985,
+            -0.001738080174379042,
+            -0.010717687944098442,
+            0.0010257306180556647
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.02431657555987825,
+            0.04609697721060944
+          ],
+          "paired_delta_mean": 0.03295112992282545,
+          "per_seed_deltas": [
+            0.025145708795502597,
+            0.021816969884793647,
+            0.031745502103215695,
+            0.027657520438798766,
+            0.05838994839181655
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.010569323498455508,
+            0.020455713615819805
+          ],
+          "paired_delta_mean": 0.015083473371459799,
+          "per_seed_deltas": [
+            0.01016803631982316,
+            0.02403054305919,
+            0.019447590763591815,
+            0.01103184857675682,
+            0.010739348137937199
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.05974345207214356,
+            0.04217839241027832
+          ],
+          "paired_delta_mean": -0.010581207275390626,
+          "per_seed_deltas": [
+            -0.06179356575012207,
+            -0.03095841407775879,
+            -0.07208585739135742,
+            0.0315549373626709,
+            0.08037686347961426
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.012203204958286595,
+            -0.006004824827781396
+          ],
+          "paired_delta_mean": -0.008557165396193177,
+          "per_seed_deltas": [
+            -0.008412257834562897,
+            -0.0074477875774188185,
+            -0.0056909270921498,
+            -0.015637613288240093,
+            -0.005597241188594282
+          ]
+        }
+      },
+      "10": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.12394939654148318,
+            -0.07956939350689714
+          ],
+          "paired_delta_mean": -0.09989254560819105,
+          "per_seed_deltas": [
+            -0.07793382430575427,
+            -0.07902121228642367,
+            -0.08393689435012981,
+            -0.11749331043747516,
+            -0.14107748666117237
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.05349487819140306,
+            -0.003384200205310513
+          ],
+          "paired_delta_mean": -0.024383739570068983,
+          "per_seed_deltas": [
+            -0.011695599461122141,
+            -0.0027865803185565287,
+            0.00017387953584131755,
+            -0.029071691090531933,
+            -0.07853870651597562
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.03241994075552347,
+            -0.020515333283901448
+          ],
+          "paired_delta_mean": -0.02589722656957632,
+          "per_seed_deltas": [
+            -0.02230856898380075,
+            -0.01952677990465293,
+            -0.020607268813200318,
+            -0.03722445990909472,
+            -0.029819055237132887
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            2.793944311141968,
+            3.2204139709472654
+          ],
+          "paired_delta_mean": 3.0031759262084963,
+          "per_seed_deltas": [
+            2.854621648788452,
+            2.6858396530151367,
+            3.354057550430298,
+            2.888798952102661,
+            3.2325618267059326
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.10230235138232346,
+            -0.07018853027431675
+          ],
+          "paired_delta_mean": -0.08568520272706129,
+          "per_seed_deltas": [
+            -0.061735281722436613,
+            -0.07121129643709384,
+            -0.08569560880614813,
+            -0.09452550976718008,
+            -0.11525831690244778
+          ]
+        }
+      },
+      "2": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.013731518967530044,
+            -0.009693382566727582
+          ],
+          "paired_delta_mean": -0.011749129972588212,
+          "per_seed_deltas": [
+            -0.011094889970206134,
+            -0.013889840510293294,
+            -0.014557621452383596,
+            -0.011375903812345212,
+            -0.007827394117712827
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.01956533261173805,
+            0.031238900652147027
+          ],
+          "paired_delta_mean": 0.02540211663194254,
+          "per_seed_deltas": [
+            0.019050628808013337,
+            0.033980067348465925,
+            0.02319552718652751,
+            0.03251942068863789,
+            0.018264939128068036
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.021121327301016325,
+            0.047414662659549925
+          ],
+          "paired_delta_mean": 0.03580824283305974,
+          "per_seed_deltas": [
+            0.04400928209715976,
+            0.038624674492843236,
+            0.05327465477068771,
+            0.009232375801656922,
+            0.03390022700295109
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.0162447452545166,
+            0.18948063850402833
+          ],
+          "paired_delta_mean": 0.10559344291687012,
+          "per_seed_deltas": [
+            0.10267472267150879,
+            0.007291078567504883,
+            0.23502802848815918,
+            -0.018016576766967773,
+            0.2009899616241455
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.014134128432754477,
+            -0.008351028978227416
+          ],
+          "paired_delta_mean": -0.011242578705490947,
+          "per_seed_deltas": [
+            -0.008433950752887664,
+            -0.014614306625224893,
+            -0.015273151955279007,
+            -0.010895725002764589,
+            -0.006995759191298578
+          ]
+        }
+      },
+      "3": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.046792259827068805,
+            -0.009370405606855647
+          ],
+          "paired_delta_mean": -0.028081332716962226,
+          "per_seed_deltas": [
+            -0.007363133149193013,
+            -0.04184723155555592,
+            -0.05946014166367386,
+            -0.03134655269688447,
+            -0.0003896045195038722
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.0027182727086001723,
+            0.04166900498226274
+          ],
+          "paired_delta_mean": 0.02238563532938518,
+          "per_seed_deltas": [
+            0.04839295510639999,
+            0.017078591779806057,
+            -0.026354303476402302,
+            0.038748181461391584,
+            0.034062751775730565
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            0.018249672440392384,
+            0.030503870758146624
+          ],
+          "paired_delta_mean": 0.02429206613009932,
+          "per_seed_deltas": [
+            0.03431082934024071,
+            0.01575625684356252,
+            0.01896473490907724,
+            0.021806378696682394,
+            0.03062213086093374
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            -0.02749156951904297,
+            0.6017940044403076
+          ],
+          "paired_delta_mean": 0.31684463024139403,
+          "per_seed_deltas": [
+            0.4654080867767334,
+            0.1684739589691162,
+            -0.32143986225128174,
+            0.5683746337890625,
+            0.7034063339233398
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.042567101112206115,
+            -0.0004090060996504441
+          ],
+          "paired_delta_mean": -0.02148805360592828,
+          "per_seed_deltas": [
+            0.0017518048910998285,
+            -0.03629863923223264,
+            -0.05718826578655961,
+            -0.025861695523446082,
+            0.010156527621497102
+          ]
+        }
+      },
+      "4": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.091590088145938,
+            -0.07249889824540315
+          ],
+          "paired_delta_mean": -0.0822229971101424,
+          "per_seed_deltas": [
+            -0.07711134065049075,
+            -0.09482621943520292,
+            -0.09470081103203754,
+            -0.07889637979520908,
+            -0.06558023463777174
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.021971798520746978,
+            0.08008811270988858
+          ],
+          "paired_delta_mean": 0.05321499702299115,
+          "per_seed_deltas": [
+            0.04657883643345523,
+            -0.002149174498747186,
+            0.06972767966652121,
+            0.09660527652199,
+            0.05531236699173647
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.01380977959752162,
+            0.00943365402020036
+          ],
+          "paired_delta_mean": -0.0021793907821285596,
+          "per_seed_deltas": [
+            -0.021905260388612346,
+            0.003617325762865109,
+            -0.0016665584108855325,
+            -0.008189163480083389,
+            0.01724670260607336
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.3722883820533752,
+            0.6608204483985901
+          ],
+          "paired_delta_mean": 0.5165544152259827,
+          "per_seed_deltas": [
+            0.31578636169433594,
+            0.33831655979156494,
+            0.5532360672950745,
+            0.7257001399993896,
+            0.6497329473495483
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.09439348478364841,
+            -0.0705667561320629
+          ],
+          "paired_delta_mean": -0.08238740154619524,
+          "per_seed_deltas": [
+            -0.07462150922145738,
+            -0.08953315257418804,
+            -0.10260425404086554,
+            -0.08228505227290889,
+            -0.06289303962155635
+          ]
+        }
+      },
+      "5": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.08678590207692266,
+            -0.06479295036791263
+          ],
+          "paired_delta_mean": -0.07578942622241765,
+          "per_seed_deltas": [
+            -0.05547359025580734,
+            -0.0903140742365956,
+            -0.09035310068503821,
+            -0.07259516054134568,
+            -0.07021120539330139
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.05146978459979303,
+            0.07665475033094811
+          ],
+          "paired_delta_mean": 0.06342852771103522,
+          "per_seed_deltas": [
+            0.08635241875584143,
+            0.0440212516452152,
+            0.05643547323617826,
+            0.06210824769360812,
+            0.0682252472243331
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.019277928222944364,
+            0.0010682899410495161
+          ],
+          "paired_delta_mean": -0.008402149239395617,
+          "per_seed_deltas": [
+            -0.01251694099291456,
+            0.001423202905596499,
+            -0.02843196767580125,
+            0.004980084327913359,
+            -0.007465124761772135
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.4765970468521118,
+            0.6568260550498962
+          ],
+          "paired_delta_mean": 0.5828766107559205,
+          "per_seed_deltas": [
+            0.6478646397590637,
+            0.3738245964050293,
+            0.6307557225227356,
+            0.5831154584884644,
+            0.6788226366043091
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.08817143415691642,
+            -0.06149162998499558
+          ],
+          "paired_delta_mean": -0.07448522291880119,
+          "per_seed_deltas": [
+            -0.0507283190092756,
+            -0.0878245691434747,
+            -0.09519465929581034,
+            -0.07122994339176891,
+            -0.06744862375367638
+          ]
+        }
+      },
+      "6": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.12274923015061119,
+            -0.10344346587349951
+          ],
+          "paired_delta_mean": -0.11403386777380513,
+          "per_seed_deltas": [
+            -0.09517627807973605,
+            -0.12156478521359554,
+            -0.11833012202017312,
+            -0.12614322915284587,
+            -0.10895492440267512
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.06895694223777035,
+            -0.023733923927810128
+          ],
+          "paired_delta_mean": -0.04634543308279023,
+          "per_seed_deltas": [
+            -0.07721713933956142,
+            -0.028852477109427822,
+            -0.008515276604495789,
+            -0.04393411221120341,
+            -0.07320816014926272
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.016148324694491206,
+            -0.001121830742580393
+          ],
+          "paired_delta_mean": -0.009487464376836192,
+          "per_seed_deltas": [
+            -0.008435330412734782,
+            -0.013215446053441854,
+            -0.019882219174963217,
+            0.0067553092917904956,
+            -0.012659635534831598
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            3.576112461090088,
+            4.267744159698486
+          ],
+          "paired_delta_mean": 3.8977622985839844,
+          "per_seed_deltas": [
+            3.673862934112549,
+            4.522167682647705,
+            3.369448184967041,
+            4.098354816436768,
+            3.8249778747558594
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.11762656163419442,
+            -0.09044011382792802
+          ],
+          "paired_delta_mean": -0.10548266785036328,
+          "per_seed_deltas": [
+            -0.07928732206232936,
+            -0.1132294345395331,
+            -0.11716328093116046,
+            -0.12055797969730198,
+            -0.09717532202149154
+          ]
+        }
+      },
+      "7": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.11474162737752494,
+            -0.09004896928107202
+          ],
+          "paired_delta_mean": -0.10265503356942514,
+          "per_seed_deltas": [
+            -0.08089817301316837,
+            -0.11670925282880001,
+            -0.10811741463930225,
+            -0.1160861082953612,
+            -0.09146421907049379
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.0186721612673493,
+            0.010085867211193597
+          ],
+          "paired_delta_mean": -0.005420816029488487,
+          "per_seed_deltas": [
+            -0.016766821823561956,
+            0.0012583360461508736,
+            0.02284261184315177,
+            -0.02538895647643946,
+            -0.009049249736743661
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.03686911623533133,
+            0.007926117839361351
+          ],
+          "paired_delta_mean": -0.01584310623667821,
+          "per_seed_deltas": [
+            0.02289523973060803,
+            -0.049832883038292364,
+            0.0016733986146739432,
+            -0.023222757880689393,
+            -0.030728528609691275
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            1.8563697814941407,
+            2.1778825759887694
+          ],
+          "paired_delta_mean": 2.0042605876922606,
+          "per_seed_deltas": [
+            1.92460298538208,
+            2.3362629413604736,
+            1.9274353981018066,
+            1.7607059478759766,
+            2.072295665740967
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.10197943369646323,
+            -0.07039611852116047
+          ],
+          "paired_delta_mean": -0.08771115300287108,
+          "per_seed_deltas": [
+            -0.0581649944673841,
+            -0.10279525577903698,
+            -0.10209837567997898,
+            -0.10010990556428428,
+            -0.07538723352367105
+          ]
+        }
+      },
+      "8": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.10454642388741053,
+            -0.06215252375035063
+          ],
+          "paired_delta_mean": -0.08092315218609261,
+          "per_seed_deltas": [
+            -0.0554429505568203,
+            -0.06400999288819492,
+            -0.07185673186172273,
+            -0.12633955190453577,
+            -0.08696653371918928
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            -0.011437501508097086,
+            0.006753393523967735
+          ],
+          "paired_delta_mean": -0.002342053992064676,
+          "per_seed_deltas": [
+            0.0020207899430339515,
+            0.006734812560448188,
+            0.009138276277954174,
+            -0.016464580468936355,
+            -0.013139568272823338
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.028558009082508985,
+            -0.002911270516735687
+          ],
+          "paired_delta_mean": -0.017690400431294127,
+          "per_seed_deltas": [
+            0.009558350611496444,
+            -0.02482144914001426,
+            -0.02154679963685302,
+            -0.018409955278153506,
+            -0.03323214871294629
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            1.4654070615768433,
+            1.89308021068573
+          ],
+          "paired_delta_mean": 1.6599514484405518,
+          "per_seed_deltas": [
+            1.6674412488937378,
+            2.0912331342697144,
+            1.3493812084197998,
+            1.7112858295440674,
+            1.4804158210754395
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.08936857910304302,
+            -0.04998195879341436
+          ],
+          "paired_delta_mean": -0.06832384569303411,
+          "per_seed_deltas": [
+            -0.0400117261463071,
+            -0.052474516955191175,
+            -0.06813012825566239,
+            -0.10668276072600702,
+            -0.07432009638200288
+          ]
+        }
+      },
+      "9": {
+        "all_miou": {
+          "bootstrap_95_ci": [
+            -0.11581047182033366,
+            -0.08094947039129705
+          ],
+          "paired_delta_mean": -0.09837997110581535,
+          "per_seed_deltas": [
+            -0.08893576973632777,
+            -0.0744791151049243,
+            -0.08342667600515441,
+            -0.12496181157418174,
+            -0.12009648310848853
+          ]
+        },
+        "new_miou": {
+          "bootstrap_95_ci": [
+            0.023472905915754946,
+            0.04934940826468224
+          ],
+          "paired_delta_mean": 0.035038409799008116,
+          "per_seed_deltas": [
+            0.04198253509956404,
+            0.02825506218745928,
+            0.060399718012359535,
+            0.01826180034401763,
+            0.026292933351640096
+          ]
+        },
+        "old_boundary_iou": {
+          "bootstrap_95_ci": [
+            -0.034636676284877585,
+            -0.009093740380482504
+          ],
+          "paired_delta_mean": -0.02215933926820091,
+          "per_seed_deltas": [
+            0.00047601677039794954,
+            -0.011409860307343325,
+            -0.03783363671406572,
+            -0.026542324183730398,
+            -0.03548689190626304
+          ]
+        },
+        "old_boundary_margin": {
+          "bootstrap_95_ci": [
+            0.7867985963821411,
+            1.1365985155105591
+          ],
+          "paired_delta_mean": 0.9342708587646484,
+          "per_seed_deltas": [
+            0.9219675064086914,
+            0.8586033582687378,
+            0.7110246419906616,
+            0.8789515495300293,
+            1.300807237625122
+          ]
+        },
+        "old_miou": {
+          "bootstrap_95_ci": [
+            -0.10126552251250338,
+            -0.07443990342965641
+          ],
+          "paired_delta_mean": -0.08796673775211307,
+          "per_seed_deltas": [
+            -0.0785791829864878,
+            -0.06437116700372808,
+            -0.08743906497818202,
+            -0.10050683315060999,
+            -0.10893744064155747
+          ]
+        }
+      }
+    }
+  },
+  "schema_version": "plop_ssr_lowrank_v24_10_1_summary_v1",
+  "status": "complete",
+  "task": "10-1",
+  "trajectory_auc_comparisons": {
+    "lowrank_ssr_vs_lowrank": {
+      "all_miou": {
+        "bootstrap_95_ci": [
+          0.010700306296311005,
+          0.016624533140551578
+        ],
+        "paired_delta_mean": 0.013429282093258355,
+        "per_seed_deltas": [
+          0.01394751324215486,
+          0.013924290130802491,
+          0.009071427468647659,
+          0.019485986417958144,
+          0.010717193206728612
+        ]
+      },
+      "old_boundary_iou": {
+        "bootstrap_95_ci": [
+          0.0002899877595062737,
+          0.012485990223953376
+        ],
+        "paired_delta_mean": 0.00608395150605859,
+        "per_seed_deltas": [
+          0.01628981804090762,
+          0.0009153156866177007,
+          -0.0009501350680453498,
+          0.012645181310426312,
+          0.0015195775603866666
+        ]
+      },
+      "old_boundary_margin": {
+        "bootstrap_95_ci": [
+          0.02560664415359497,
+          0.11600310325622558
+        ],
+        "paired_delta_mean": 0.0687876534461975,
+        "per_seed_deltas": [
+          0.028079867362976074,
+          0.1080186128616333,
+          0.04786139726638794,
+          0.14797234535217285,
+          0.012006044387817383
+        ]
+      },
+      "old_miou": {
+        "bootstrap_95_ci": [
+          0.01016282741512253,
+          0.01581672921568427
+        ],
+        "paired_delta_mean": 0.012596115307092865,
+        "per_seed_deltas": [
+          0.009198097306912475,
+          0.011939965746982353,
+          0.012982958825740881,
+          0.018620566298425935,
+          0.010238988357402673
+        ]
+      }
+    },
+    "lowrank_ssr_vs_plop": {
+      "all_miou": {
+        "bootstrap_95_ci": [
+          -0.0619617745057881,
+          -0.04854461781041323
+        ],
+        "paired_delta_mean": -0.056355255435650876,
+        "per_seed_deltas": [
+          -0.04148009304403013,
+          -0.05617322672250561,
+          -0.06357633191975179,
+          -0.06210958319747012,
+          -0.05843704229449671
+        ]
+      },
+      "old_boundary_iou": {
+        "bootstrap_95_ci": [
+          -0.0040358900742328875,
+          0.01356018461042679
+        ],
+        "paired_delta_mean": 0.003436422049109483,
+        "per_seed_deltas": [
+          0.021914983450073984,
+          -0.0026201258513510357,
+          -0.004610942204819184,
+          0.006666914906731172,
+          -0.004168720055087517
+        ]
+      },
+      "old_boundary_margin": {
+        "bootstrap_95_ci": [
+          1.277416821718216,
+          1.4524805450439453
+        ],
+        "paired_delta_mean": 1.369858554601669,
+        "per_seed_deltas": [
+          1.2793235242366792,
+          1.4431240677833557,
+          1.2215455055236817,
+          1.470854914188385,
+          1.4344447612762452
+        ]
+      },
+      "old_miou": {
+        "bootstrap_95_ci": [
+          -0.05683623032242467,
+          -0.04284558632319474
+        ],
+        "paired_delta_mean": -0.0507368876127123,
+        "per_seed_deltas": [
+          -0.03662417662429039,
+          -0.05204004683972987,
+          -0.060664812856438745,
+          -0.054208735540025255,
+          -0.05014666620307725
+        ]
+      }
+    },
+    "lowrank_vs_plop": {
+      "all_miou": {
+        "bootstrap_95_ci": [
+          -0.07680769224016364,
+          -0.06161696274963595
+        ],
+        "paired_delta_mean": -0.06978453752890923,
+        "per_seed_deltas": [
+          -0.055427606286185,
+          -0.07009751685330809,
+          -0.07264775938839946,
+          -0.08159556961542827,
+          -0.06915423550122532
+        ]
+      },
+      "old_boundary_iou": {
+        "bootstrap_95_ci": [
+          -0.005431707672905668,
+          0.001530351414811233
+        ],
+        "paired_delta_mean": -0.002647529456949107,
+        "per_seed_deltas": [
+          0.005625165409166362,
+          -0.0035354415379687367,
+          -0.0036608071367738347,
+          -0.005978266403695141,
+          -0.005688297615474184
+        ]
+      },
+      "old_boundary_margin": {
+        "bootstrap_95_ci": [
+          1.2234350299835204,
+          1.3707330524921417
+        ],
+        "paired_delta_mean": 1.3010709011554717,
+        "per_seed_deltas": [
+          1.251243656873703,
+          1.3351054549217225,
+          1.1736841082572937,
+          1.3228825688362122,
+          1.4224387168884278
+        ]
+      },
+      "old_miou": {
+        "bootstrap_95_ci": [
+          -0.07138683192559477,
+          -0.05413635563850795
+        ],
+        "paired_delta_mean": -0.06333300291980516,
+        "per_seed_deltas": [
+          -0.045822273931202875,
+          -0.06398001258671224,
+          -0.07364777168217963,
+          -0.07282930183845118,
+          -0.060385654560479916
+        ]
+      }
+    }
+  }
+}

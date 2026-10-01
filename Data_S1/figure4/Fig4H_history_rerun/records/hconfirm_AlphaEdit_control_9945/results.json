@@ -1,0 +1,3550 @@
+{
+  "checkpoints": [
+    {
+      "after_edits": 1,
+      "history": {
+        "after_edits": 1,
+        "efficacy": 100.0,
+        "evaluations": [
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 0,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 1,
+        "n_history": 1,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_1_9": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 1.0,
+        "efficacy_n": 1,
+        "locality_target_consistency": 0.0,
+        "locality_target_consistency_n": 1,
+        "n_edits": 1,
+        "portability": 0.0,
+        "portability_n": 1,
+        "rephrase": 1.0,
+        "rephrase_n": 1
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 1,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 128,
+        "score": 99.90602694451809
+      }
+    },
+    {
+      "after_edits": 10,
+      "history": {
+        "after_edits": 10,
+        "efficacy": 90.0,
+        "evaluations": [
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 0,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 1,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 2,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 3,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 4,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 5,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 6,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 7,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 8,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 9,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 10,
+        "n_history": 10,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_1_9": {
+            "efficacy": 88.88888888888889,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 1.0,
+        "efficacy_n": 10,
+        "locality_target_consistency": 0.05,
+        "locality_target_consistency_n": 10,
+        "n_edits": 10,
+        "portability": 0.2,
+        "portability_n": 10,
+        "rephrase": 0.9,
+        "rephrase_n": 10
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 10,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 128,
+        "score": 98.41156667098403
+      }
+    },
+    {
+      "after_edits": 25,
+      "history": {
+        "after_edits": 25,
+        "efficacy": 92.0,
+        "evaluations": [
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 24,
+            "history_position": 0,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 23,
+            "history_position": 1,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 22,
+            "history_position": 2,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 21,
+            "history_position": 3,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 20,
+            "history_position": 4,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 19,
+            "history_position": 5,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 18,
+            "history_position": 6,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 17,
+            "history_position": 7,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 16,
+            "history_position": 8,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 15,
+            "history_position": 9,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 14,
+            "history_position": 10,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 13,
+            "history_position": 11,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 12,
+            "history_position": 12,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 11,
+            "history_position": 13,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 10,
+            "history_position": 14,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 15,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 16,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 17,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 18,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 19,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 20,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 21,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 22,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 23,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 24,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 25,
+        "n_history": 25,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": 86.66666666666667,
+            "n": 15
+          },
+          "age_1_9": {
+            "efficacy": 100.0,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 1.0,
+        "efficacy_n": 25,
+        "locality_target_consistency": 0.06,
+        "locality_target_consistency_n": 25,
+        "n_edits": 25,
+        "portability": 0.12,
+        "portability_n": 25,
+        "rephrase": 0.84,
+        "rephrase_n": 25
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 25,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 128,
+        "score": 96.48595158942044
+      }
+    },
+    {
+      "after_edits": 50,
+      "history": {
+        "after_edits": 50,
+        "efficacy": 96.0,
+        "evaluations": [
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 49,
+            "history_position": 0,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 48,
+            "history_position": 1,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 47,
+            "history_position": 2,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 46,
+            "history_position": 3,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 45,
+            "history_position": 4,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 44,
+            "history_position": 5,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 43,
+            "history_position": 6,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 42,
+            "history_position": 7,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 41,
+            "history_position": 8,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 40,
+            "history_position": 9,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 39,
+            "history_position": 10,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 38,
+            "history_position": 11,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 37,
+            "history_position": 12,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 36,
+            "history_position": 13,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 35,
+            "history_position": 14,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 34,
+            "history_position": 15,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 33,
+            "history_position": 16,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 32,
+            "history_position": 17,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 31,
+            "history_position": 18,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 30,
+            "history_position": 19,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 29,
+            "history_position": 20,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 28,
+            "history_position": 21,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 27,
+            "history_position": 22,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 26,
+            "history_position": 23,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 25,
+            "history_position": 24,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 24,
+            "history_position": 25,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 23,
+            "history_position": 26,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 22,
+            "history_position": 27,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 21,
+            "history_position": 28,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 20,
+            "history_position": 29,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 19,
+            "history_position": 30,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 18,
+            "history_position": 31,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 17,
+            "history_position": 32,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 16,
+            "history_position": 33,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 15,
+            "history_position": 34,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 14,
+            "history_position": 35,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 13,
+            "history_position": 36,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 12,
+            "history_position": 37,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 11,
+            "history_position": 38,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 10,
+            "history_position": 39,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 40,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 41,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 42,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 43,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 44,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 45,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 46,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 47,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 48,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 49,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 50,
+        "n_history": 50,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": 95.0,
+            "n": 40
+          },
+          "age_1_9": {
+            "efficacy": 100.0,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 0.98,
+        "efficacy_n": 50,
+        "locality_target_consistency": 0.09,
+        "locality_target_consistency_n": 50,
+        "n_edits": 50,
+        "portability": 0.18,
+        "portability_n": 50,
+        "rephrase": 0.76,
+        "rephrase_n": 50
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 50,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 128,
+        "score": 91.11091648228467
+      }
+    },
+    {
+      "after_edits": 100,
+      "history": {
+        "after_edits": 100,
+        "efficacy": 84.0,
+        "evaluations": [
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 99,
+            "history_position": 0,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 98,
+            "history_position": 1,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 97,
+            "history_position": 2,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 96,
+            "history_position": 3,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 95,
+            "history_position": 4,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 94,
+            "history_position": 5,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 93,
+            "history_position": 6,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 92,
+            "history_position": 7,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 91,
+            "history_position": 8,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 90,
+            "history_position": 9,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 89,
+            "history_position": 10,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 88,
+            "history_position": 11,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 87,
+            "history_position": 12,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 86,
+            "history_position": 13,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 85,
+            "history_position": 14,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 84,
+            "history_position": 15,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 83,
+            "history_position": 16,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 82,
+            "history_position": 17,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 81,
+            "history_position": 18,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 80,
+            "history_position": 19,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 79,
+            "history_position": 20,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 78,
+            "history_position": 21,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 77,
+            "history_position": 22,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 76,
+            "history_position": 23,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 75,
+            "history_position": 24,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 74,
+            "history_position": 25,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 73,
+            "history_position": 26,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 72,
+            "history_position": 27,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 71,
+            "history_position": 28,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 70,
+            "history_position": 29,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 69,
+            "history_position": 30,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 68,
+            "history_position": 31,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 67,
+            "history_position": 32,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 66,
+            "history_position": 33,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 65,
+            "history_position": 34,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 64,
+            "history_position": 35,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 63,
+            "history_position": 36,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 62,
+            "history_position": 37,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 61,
+            "history_position": 38,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 60,
+            "history_position": 39,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 59,
+            "history_position": 40,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 58,
+            "history_position": 41,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 57,
+            "history_position": 42,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 56,
+            "history_position": 43,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 55,
+            "history_position": 44,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 54,
+            "history_position": 45,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 53,
+            "history_position": 46,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 52,
+            "history_position": 47,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 51,
+            "history_position": 48,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 50,
+            "history_position": 49,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 49,
+            "history_position": 50,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 48,
+            "history_position": 51,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 47,
+            "history_position": 52,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 46,
+            "history_position": 53,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 45,
+            "history_position": 54,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 44,
+            "history_position": 55,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 43,
+            "history_position": 56,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 42,
+            "history_position": 57,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 41,
+            "history_position": 58,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 40,
+            "history_position": 59,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 39,
+            "history_position": 60,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 38,
+            "history_position": 61,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 37,
+            "history_position": 62,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 36,
+            "history_position": 63,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 35,
+            "history_position": 64,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 34,
+            "history_position": 65,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 33,
+            "history_position": 66,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 32,
+            "history_position": 67,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 31,
+            "history_position": 68,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 30,
+            "history_position": 69,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 29,
+            "history_position": 70,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 28,
+            "history_position": 71,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 27,
+            "history_position": 72,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 26,
+            "history_position": 73,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 25,
+            "history_position": 74,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 24,
+            "history_position": 75,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 23,
+            "history_position": 76,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 22,
+            "history_position": 77,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 21,
+            "history_position": 78,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 20,
+            "history_position": 79,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 19,
+            "history_position": 80,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 18,
+            "history_position": 81,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 17,
+            "history_position": 82,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 16,
+            "history_position": 83,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 15,
+            "history_position": 84,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 14,
+            "history_position": 85,
+            "retained_efficacy": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 13,
+            "history_position": 86,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 12,
+            "history_position": 87,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 11,
+            "history_position": 88,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 10,
+            "history_position": 89,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 90,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 91,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 92,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 93,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 94,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 95,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 96,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 97,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 98,
+            "retained_efficacy": 1.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 99,
+            "retained_efficacy": 1.0
+          }
+        ],
+        "n_evaluated": 100,
+        "n_history": 100,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_10_99": {
+            "efficacy": 82.22222222222221,
+            "n": 90
+          },
+          "age_1_9": {
+            "efficacy": 100.0,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 0.99,
+        "efficacy_n": 100,
+        "locality_target_consistency": 0.09,
+        "locality_target_consistency_n": 100,
+        "n_edits": 100,
+        "portability": 0.15,
+        "portability_n": 100,
+        "rephrase": 0.81,
+        "rephrase_n": 100
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 100,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 128,
+        "score": 39.425518456846476
+      }
+    },
+    {
+      "after_edits": 250,
+      "history": {
+        "after_edits": 250,
+        "archived_128_position_efficacy": 78.125,
+        "edited_weights": {
+          "after_edits": 250,
+          "delta_l2_norm": 440.3951217727667,
+          "names": [
+            "model.layers.4.mlp.down_proj.weight",
+            "model.layers.5.mlp.down_proj.weight",
+            "model.layers.6.mlp.down_proj.weight",
+            "model.layers.7.mlp.down_proj.weight",
+            "model.layers.8.mlp.down_proj.weight"
+          ],
+          "path": "/unify/ydchen/ydchen/ssr0916/ssr_cfgh_native_20260922_r2/results/hconfirm_AlphaEdit_control_9945/edited_weights.pt",
+          "sha256": "da26fde023e6d5d22b1c6f63bd6a78ebae5856f7ee65f5d140411629f96b76bb"
+        },
+        "efficacy": 79.2,
+        "evaluations": [
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 249,
+            "history_position": 0,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 248,
+            "history_position": 1,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 247,
+            "history_position": 2,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 246,
+            "history_position": 3,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 245,
+            "history_position": 4,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 244,
+            "history_position": 5,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 243,
+            "history_position": 6,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 242,
+            "history_position": 7,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 241,
+            "history_position": 8,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 240,
+            "history_position": 9,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 239,
+            "history_position": 10,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 238,
+            "history_position": 11,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 237,
+            "history_position": 12,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 236,
+            "history_position": 13,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 235,
+            "history_position": 14,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 234,
+            "history_position": 15,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 233,
+            "history_position": 16,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 232,
+            "history_position": 17,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 231,
+            "history_position": 18,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 230,
+            "history_position": 19,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 229,
+            "history_position": 20,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 228,
+            "history_position": 21,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 227,
+            "history_position": 22,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 226,
+            "history_position": 23,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 225,
+            "history_position": 24,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 224,
+            "history_position": 25,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 223,
+            "history_position": 26,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 222,
+            "history_position": 27,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 221,
+            "history_position": 28,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 220,
+            "history_position": 29,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 219,
+            "history_position": 30,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 218,
+            "history_position": 31,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 217,
+            "history_position": 32,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 216,
+            "history_position": 33,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 215,
+            "history_position": 34,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 214,
+            "history_position": 35,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 213,
+            "history_position": 36,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 212,
+            "history_position": 37,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 211,
+            "history_position": 38,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 210,
+            "history_position": 39,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 209,
+            "history_position": 40,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 208,
+            "history_position": 41,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 207,
+            "history_position": 42,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 206,
+            "history_position": 43,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 205,
+            "history_position": 44,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 204,
+            "history_position": 45,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 203,
+            "history_position": 46,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 202,
+            "history_position": 47,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 201,
+            "history_position": 48,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 200,
+            "history_position": 49,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 199,
+            "history_position": 50,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 198,
+            "history_position": 51,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 197,
+            "history_position": 52,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 196,
+            "history_position": 53,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 195,
+            "history_position": 54,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 194,
+            "history_position": 55,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 193,
+            "history_position": 56,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 192,
+            "history_position": 57,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 191,
+            "history_position": 58,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 190,
+            "history_position": 59,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 189,
+            "history_position": 60,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 188,
+            "history_position": 61,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 187,
+            "history_position": 62,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 186,
+            "history_position": 63,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 185,
+            "history_position": 64,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 184,
+            "history_position": 65,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 183,
+            "history_position": 66,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 182,
+            "history_position": 67,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 181,
+            "history_position": 68,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 180,
+            "history_position": 69,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 179,
+            "history_position": 70,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 178,
+            "history_position": 71,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 177,
+            "history_position": 72,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 176,
+            "history_position": 73,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 175,
+            "history_position": 74,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 174,
+            "history_position": 75,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 173,
+            "history_position": 76,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 172,
+            "history_position": 77,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 171,
+            "history_position": 78,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 170,
+            "history_position": 79,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 169,
+            "history_position": 80,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 168,
+            "history_position": 81,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 167,
+            "history_position": 82,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 166,
+            "history_position": 83,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 165,
+            "history_position": 84,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 164,
+            "history_position": 85,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 163,
+            "history_position": 86,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 162,
+            "history_position": 87,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 161,
+            "history_position": 88,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 160,
+            "history_position": 89,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 159,
+            "history_position": 90,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 158,
+            "history_position": 91,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 157,
+            "history_position": 92,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 156,
+            "history_position": 93,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 155,
+            "history_position": 94,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 154,
+            "history_position": 95,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 153,
+            "history_position": 96,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 152,
+            "history_position": 97,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 151,
+            "history_position": 98,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 150,
+            "history_position": 99,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 149,
+            "history_position": 100,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 148,
+            "history_position": 101,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 147,
+            "history_position": 102,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 146,
+            "history_position": 103,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 145,
+            "history_position": 104,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 144,
+            "history_position": 105,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 143,
+            "history_position": 106,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 142,
+            "history_position": 107,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 141,
+            "history_position": 108,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 140,
+            "history_position": 109,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 139,
+            "history_position": 110,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 138,
+            "history_position": 111,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 137,
+            "history_position": 112,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 136,
+            "history_position": 113,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 135,
+            "history_position": 114,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 134,
+            "history_position": 115,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 133,
+            "history_position": 116,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 132,
+            "history_position": 117,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 131,
+            "history_position": 118,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 130,
+            "history_position": 119,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 129,
+            "history_position": 120,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 128,
+            "history_position": 121,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 127,
+            "history_position": 122,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 126,
+            "history_position": 123,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 125,
+            "history_position": 124,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 124,
+            "history_position": 125,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 123,
+            "history_position": 126,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 122,
+            "history_position": 127,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 121,
+            "history_position": 128,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 120,
+            "history_position": 129,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 119,
+            "history_position": 130,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 118,
+            "history_position": 131,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 117,
+            "history_position": 132,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 116,
+            "history_position": 133,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 115,
+            "history_position": 134,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 114,
+            "history_position": 135,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 113,
+            "history_position": 136,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 112,
+            "history_position": 137,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 111,
+            "history_position": 138,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 110,
+            "history_position": 139,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 109,
+            "history_position": 140,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 108,
+            "history_position": 141,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 107,
+            "history_position": 142,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 106,
+            "history_position": 143,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 105,
+            "history_position": 144,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 104,
+            "history_position": 145,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 103,
+            "history_position": 146,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 102,
+            "history_position": 147,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 101,
+            "history_position": 148,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_100_249",
+            "edit_age": 100,
+            "history_position": 149,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 99,
+            "history_position": 150,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 98,
+            "history_position": 151,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 97,
+            "history_position": 152,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 96,
+            "history_position": 153,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 95,
+            "history_position": 154,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 94,
+            "history_position": 155,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 93,
+            "history_position": 156,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 92,
+            "history_position": 157,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 91,
+            "history_position": 158,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 90,
+            "history_position": 159,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 89,
+            "history_position": 160,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 88,
+            "history_position": 161,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 87,
+            "history_position": 162,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 86,
+            "history_position": 163,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 85,
+            "history_position": 164,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 84,
+            "history_position": 165,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 83,
+            "history_position": 166,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 82,
+            "history_position": 167,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 81,
+            "history_position": 168,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 80,
+            "history_position": 169,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 79,
+            "history_position": 170,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 78,
+            "history_position": 171,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 77,
+            "history_position": 172,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 76,
+            "history_position": 173,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 75,
+            "history_position": 174,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 74,
+            "history_position": 175,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 73,
+            "history_position": 176,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 72,
+            "history_position": 177,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 71,
+            "history_position": 178,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 70,
+            "history_position": 179,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 69,
+            "history_position": 180,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 68,
+            "history_position": 181,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 67,
+            "history_position": 182,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 66,
+            "history_position": 183,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 65,
+            "history_position": 184,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 64,
+            "history_position": 185,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 63,
+            "history_position": 186,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 62,
+            "history_position": 187,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 61,
+            "history_position": 188,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 60,
+            "history_position": 189,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 59,
+            "history_position": 190,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 58,
+            "history_position": 191,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 57,
+            "history_position": 192,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 56,
+            "history_position": 193,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 55,
+            "history_position": 194,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 54,
+            "history_position": 195,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 53,
+            "history_position": 196,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 52,
+            "history_position": 197,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 51,
+            "history_position": 198,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 50,
+            "history_position": 199,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 49,
+            "history_position": 200,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 48,
+            "history_position": 201,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 47,
+            "history_position": 202,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 46,
+            "history_position": 203,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 45,
+            "history_position": 204,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 44,
+            "history_position": 205,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 43,
+            "history_position": 206,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 42,
+            "history_position": 207,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 41,
+            "history_position": 208,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 40,
+            "history_position": 209,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 39,
+            "history_position": 210,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 38,
+            "history_position": 211,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 37,
+            "history_position": 212,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 36,
+            "history_position": 213,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 35,
+            "history_position": 214,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 34,
+            "history_position": 215,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 33,
+            "history_position": 216,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 32,
+            "history_position": 217,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 31,
+            "history_position": 218,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 30,
+            "history_position": 219,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 29,
+            "history_position": 220,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 28,
+            "history_position": 221,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 27,
+            "history_position": 222,
+            "retained_efficacy": 0.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 26,
+            "history_position": 223,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 25,
+            "history_position": 224,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 24,
+            "history_position": 225,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 23,
+            "history_position": 226,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 22,
+            "history_position": 227,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 21,
+            "history_position": 228,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 20,
+            "history_position": 229,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 19,
+            "history_position": 230,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 18,
+            "history_position": 231,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 17,
+            "history_position": 232,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 16,
+            "history_position": 233,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 15,
+            "history_position": 234,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 14,
+            "history_position": 235,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 13,
+            "history_position": 236,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 12,
+            "history_position": 237,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 11,
+            "history_position": 238,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_10_99",
+            "edit_age": 10,
+            "history_position": 239,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 9,
+            "history_position": 240,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 8,
+            "history_position": 241,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 7,
+            "history_position": 242,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 6,
+            "history_position": 243,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 5,
+            "history_position": 244,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 4,
+            "history_position": 245,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 1.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 3,
+            "history_position": 246,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 2,
+            "history_position": 247,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_1_9",
+            "edit_age": 1,
+            "history_position": 248,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.0
+          },
+          {
+            "age_bin": "age_0",
+            "edit_age": 0,
+            "history_position": 249,
+            "retained_efficacy": 1.0,
+            "retained_locality_n": 2,
+            "retained_locality_target_consistency": 0.5
+          }
+        ],
+        "locality_evaluator": "existing relation_score/target_match, equal weight per historical edit",
+        "locality_target_consistency": 11.600000000000001,
+        "n_evaluated": 250,
+        "n_history": 250,
+        "n_locality_evaluated": 250,
+        "n_locality_probes": 500,
+        "retention_by_age": {
+          "age_0": {
+            "efficacy": 100.0,
+            "n": 1
+          },
+          "age_100_249": {
+            "efficacy": 71.33333333333334,
+            "n": 150
+          },
+          "age_10_99": {
+            "efficacy": 90.0,
+            "n": 90
+          },
+          "age_1_9": {
+            "efficacy": 100.0,
+            "n": 9
+          },
+          "age_250_499": {
+            "efficacy": null,
+            "n": 0
+          },
+          "age_500_plus": {
+            "efficacy": null,
+            "n": 0
+          }
+        }
+      },
+      "immediate": {
+        "efficacy": 0.98,
+        "efficacy_n": 250,
+        "locality_target_consistency": 0.124,
+        "locality_target_consistency_n": 250,
+        "n_edits": 250,
+        "portability": 0.152,
+        "portability_n": 250,
+        "rephrase": 0.832,
+        "rephrase_n": 250
+      },
+      "pre_edit_output_consistency": {
+        "after_edits": 250,
+        "evaluator": "pre_edit_next_token_topk_js_similarity",
+        "evaluator_version": "2.0",
+        "n_probes": 128,
+        "score": 36.57972668297589
+      }
+    }
+  ],
+  "dataset": "/unify/ydchen/unidit/bioreg/dataset/knowedit/benchmark/ZsRE/ZsRE-test-all.json",
+  "dataset_sha256": "0e0214dda853a906ef02bef58c7ce2978af5a962e91fc4a10827e0125459905c",
+  "easyedit_alg_name": "AlphaEdit",
+  "edited_weights": {
+    "after_edits": 250,
+    "delta_l2_norm": 440.3951217727667,
+    "names": [
+      "model.layers.4.mlp.down_proj.weight",
+      "model.layers.5.mlp.down_proj.weight",
+      "model.layers.6.mlp.down_proj.weight",
+      "model.layers.7.mlp.down_proj.weight",
+      "model.layers.8.mlp.down_proj.weight"
+    ],
+    "path": "/unify/ydchen/ydchen/ssr0916/ssr_cfgh_native_20260922_r2/results/hconfirm_AlphaEdit_control_9945/edited_weights.pt",
+    "sha256": "da26fde023e6d5d22b1c6f63bd6a78ebae5856f7ee65f5d140411629f96b76bb"
+  },
+  "elapsed_s": 5606.8,
+  "final_history_efficacy": 79.2,
+  "final_history_locality_target_consistency": 11.600000000000001,
+  "final_pre_edit_output_consistency": 36.57972668297589,
+  "history_checkpoints": [
+    1,
+    10,
+    25,
+    50,
+    100,
+    250
+  ],
+  "history_max_samples": 250,
+  "hparams_path": "/unify/ydchen/ydchen/ssr0916/ssr_cfgh_native_20260922_r2/native/EasyEdit/hparams/AlphaEdit/qwen2.5-7b.yaml",
+  "hparams_sha256": "3c6eca1f3578d473f5c9c68cd2eb970036d255ae080bcfec5451786605f14349",
+  "immediate": {
+    "efficacy": 0.98,
+    "efficacy_n": 250,
+    "locality_target_consistency": 0.124,
+    "locality_target_consistency_n": 250,
+    "n_edits": 250,
+    "portability": 0.152,
+    "portability_n": 250,
+    "rephrase": 0.832,
+    "rephrase_n": 250
+  },
+  "method": "AlphaEdit",
+  "method_cache_dir": "/unify/ydchen/ydchen/ssr0916/ssr_cfgh_native_20260922_r2/results/hconfirm_AlphaEdit_control_9945/cache",
+  "model_label": "Qwen2.5-7B-Instruct",
+  "model_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/models/Qwen2.5-7B-Instruct",
+  "n_edits": 250,
+  "native_projection": {
+    "basis_path": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/easyedit_projections/Qwen2.5-7B-Instruct/rank_basis_v28.pt",
+    "rank": 1024,
+    "selection_scope": "native rank frozen from v28 development"
+  },
+  "native_update_norm": {
+    "count": 250,
+    "maximum": 44.14591142984455,
+    "mean": 27.149707348628002,
+    "minimum": 8.801243755921861,
+    "nonzero_fraction": 1.0
+  },
+  "peak_cuda_memory_mb": 35149.8154296875,
+  "protocol": "fig4h_native250_history_v1",
+  "runtime_per_edit_s": 22.4272,
+  "ssr": {
+    "application": "post_native_update_frozen_ring_center_surround_projection",
+    "enabled": false,
+    "lambda": 0.0,
+    "plastic_object": "declared MLP down_proj/c_proj row deltas",
+    "topology": "frozen cyclic row adjacency",
+    "zero_is_exact_noop": true
+  },
+  "stats_cache_dir": "/unify/ydchen/unidit/ssr_teacher_assets_20260818/easyedit_stats/Qwen2.5-7B-Instruct",
+  "status": "complete",
+  "stream_manifest": "/unify/ydchen/ydchen/ssr0916/ssr_cfgh_native_20260922_r2/streams/native_confirm_9945_250.json",
+  "stream_manifest_sha256": "1c40407b05f940b5d9bdd5856fbd2dc90aa19049c8fb2f6ff0cec332593bb575",
+  "stream_seed": 9945,
+  "target_layers": [
+    4,
+    5,
+    6,
+    7,
+    8
+  ]
+}

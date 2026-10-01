@@ -1,0 +1,7 @@
+model_dataset,efficacy_gain_pp,locality_gain_pp,n,attribution,source
+GPT-2 XL ZsRE,0.0,11.0,1,complete recipe; SSR not isolated,Supplementary Table: complete-recipe checkpoint-family transfer
+Qwen-VL ZsRE,0.0,19.0,1,complete recipe; SSR not isolated,Supplementary Table: complete-recipe checkpoint-family transfer
+Qwen-VL CounterFact,3.0,8.18,1,complete recipe; SSR not isolated,Supplementary Table: complete-recipe checkpoint-family transfer
+Qwen-VL WikiRecent,12.0,16.5,1,complete recipe; SSR not isolated,Supplementary Table: complete-recipe checkpoint-family transfer
+Llama-3 CounterFact,5.0,1.64,1,complete recipe; SSR not isolated,Supplementary Table: complete-recipe checkpoint-family transfer
+Llama-3 WikiRecent,10.0,3.36,1,complete recipe; SSR not isolated,Supplementary Table: complete-recipe checkpoint-family transfer

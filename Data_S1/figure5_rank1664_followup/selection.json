@@ -1,0 +1,21 @@
+{
+  "selected_utc": "2026-09-27T02:36:56Z",
+  "selections": [
+    {
+      "rank": 16,
+      "window": 32,
+      "coefficient": 0.03,
+      "rule": "window: plain history E/L harmonic mean; coefficient: SSR same score; ties smaller value",
+      "plain_development_score": 37.04094306805216,
+      "ssr_development_score": 41.82190445573669
+    },
+    {
+      "rank": 64,
+      "window": 8,
+      "coefficient": 0.01,
+      "rule": "window: plain history E/L harmonic mean; coefficient: SSR same score; ties smaller value",
+      "plain_development_score": 4.715463402448163,
+      "ssr_development_score": 4.292997363023733
+    }
+  ]
+}

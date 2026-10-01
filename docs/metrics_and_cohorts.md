@@ -1,0 +1,13 @@
+# Metrics and cohort interpretation
+
+- **Dense history efficacy/locality:** target matching after the complete sequence, evaluated on the earlier edit prompts or their untargeted relations. These are means, not sums across edits. Locality measures ground-truth matching under the specified evaluator, not necessarily pre-edit output agreement.
+- **Immediate efficacy/locality:** measured after each current edit, averaged across the sequence. These are distinct from history endpoints.
+- **Fig. 4G:** full FT+Anchor+Spectral+SSR recipe versus FT in six settings, one pair per setting, with recipe-specific learning rates. Table S5 reports these values. These examples use the recorded endpoints.
+- **Fig. 4H:** ten paired AlphaEdit orders, with efficacy and locality both evaluated on all 250 historical items at the final checkpoint. Error bars are paired bootstrap 95% intervals. Table S7 reports the plotted cohort.
+- **Fig. 4I:** SSR increased effective rank on WikiData CounterFact. Relative cosine reduction is computed separately within each pair as `100*(FT-SSR)/FT`, then averaged. The interval uses all 4^4 ordered paired bootstrap resamples. Both cosine intervals include zero.
+- **LoRA KE:** Figure 5 uses ten paired WikiRecent orders per comparison. A/B/E/F use the rank-32 experiment with 32-target rehearsal; both efficacy and locality have immediate and history readouts, all using complete-phrase matching. C displays ranks 8, 16 and 32 from the separate eight-target sweep; locality there is immediate substring-based reference-answer matching. D shows immediate/history complete-phrase locality at ranks 8, 16 and 32 under 32-target rehearsal, with a separate rank-16 order set. The cohorts and locality scores are reported separately. The spatial operator is a fixed-ring update of LoRA-B rows, not the dense-editing Gaussian loss.
+- **Visual learning:** CUB GELU bottleneck adapters are not linear LoRA. AA is final average task accuracy, AF is average forgetting; for the broad classification-stream table the archived `avg_accuracy` field denotes average incremental accuracy and `last_accuracy` is final accuracy. VOC normalized trajectory AUC is the arithmetic mean of the ten incremental stages. Boundary margin is measured in logits.
+
+Figure 5 uses unadjusted paired Student-t intervals. Figure 4G has no inferential interval; H uses paired bootstrap intervals. Five-pair displays in other panels retain the intervals declared in their captions.
+
+B/E, C, D and F are separate execution cohorts even when a coefficient label is identical. Main B/E use five paired records, while C/D/F use ten. Each KD arm uses its own previous-model teacher under the matched training algorithm.
