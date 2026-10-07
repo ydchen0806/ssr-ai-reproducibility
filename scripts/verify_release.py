@@ -190,17 +190,19 @@ def verify_figure5_focus():
     focus = mapping['A,B,E,F']
     check(focus['rank'] == 32 and focus['seeds'] == list(range(26092711, 26092721)),
           '5 focus complete cohort identity')
-    check(mapping['C']['seeds'] == list(range(17631, 17641))
-          and mapping['C']['ranks'] == [8, 16, 32], '5 separate sweep display identity')
-    check(mapping['D']['directories'] == {'8': 'figure5_dual_followup',
-                                         '16': 'figure5_rank1664_followup',
-                                         '32': 'figure5_dual_followup'}
+    rehearsal_seeds = list(range(17631, 17641))
+    check(mapping['C']['directory'] == 'figure5_rehearsal'
+          and mapping['C']['seeds'] == rehearsal_seeds
+          and mapping['C']['ranks'] == [8, 16, 32]
+          and mapping['C']['rehearsal_window'] == 8
+          and mapping['C']['metrics'] == ['immediate_efficacy_percent', 'final_history_efficacy_percent'],
+          '5 C uses the eight-target cohort')
+    check(mapping['D']['directory'] == 'figure5_rehearsal'
+          and mapping['D']['seeds'] == rehearsal_seeds
           and mapping['D']['ranks'] == [8, 16, 32]
-          and mapping['D']['seeds_by_rank']['8'] == focus['seeds']
-          and mapping['D']['seeds_by_rank']['16'] == list(range(26092811, 26092821))
-          and mapping['D']['seeds_by_rank']['32'] == focus['seeds']
-          and mapping['D']['metrics'] == ['immediate_locality', 'history_locality'],
-          '5 D distinct complete dual-locality cohorts')
+          and mapping['D']['rehearsal_window'] == 8
+          and mapping['D']['metrics'] == ['immediate_locality_percent'],
+          '5 D uses the same eight-target cohort')
     source = {(int(row['seed']), row['arm']): row
               for row in rows('figure5_dual_followup/seed_level.csv') if row['rank'] == '32'}
     checkpoints = {}
