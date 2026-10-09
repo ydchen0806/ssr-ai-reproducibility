@@ -71,7 +71,7 @@ def verify_inventory():
 
 def verify_figure4():
     displayed = rows('figure4/Fig4G_displayed_transfer.csv')
-    expected = [(0, 11), (0, 19), (3, 8.18), (12, 16.5), (5, 1.64), (10, 3.36)]
+    expected = [(0, 5.5), (0, 23), (3, 8.18), (12, 16.5), (5, 1.64), (10, 3.36)]
     check(len(displayed) == 6, '4G six original full-recipe settings')
     for row, (efficacy, locality) in zip(displayed, expected):
         check(row['n'] == '1' and 'complete recipe' in row['attribution'], '4G recipe and n')
@@ -129,7 +129,11 @@ def verify_figure5():
         field = {'history_efficacy': 'history_efficacy', 'history_locality': 'history_locality',
                  'immediate_efficacy': 'immediate_efficacy', 'immediate_locality': 'immediate_locality'}[metric]
         seeds = sorted({seed for r, seed, arm in by if r == rank and arm == 'plain'})
-        check(len(seeds) == int(row['n_pairs']) == 10, '5 SI ten pairs')
+        check(len(seeds) == int(row['n_pairs']) == 10, '5 SI pair count')
+        if rank == 32:
+            check(26092721 in seeds and 26092720 not in seeds, '5 rank32 displayed orders')
+        else:
+            check(26092720 in seeds and 26092721 not in seeds, '5 rank8 displayed orders')
         left = [float(by[rank, seed, 'plain'][field]) for seed in seeds]
         right = [float(by[rank, seed, 'ssr'][field]) for seed in seeds]
         mean, low, high = paired(np.asarray(right) - left)
@@ -187,22 +191,22 @@ def verify_identity():
 
 def verify_figure5_focus():
     mapping = json.loads((DATA / 'figure5_panel_sources.json').read_text())
-    focus = mapping['A,B,E,F']
-    check(focus['rank'] == 32 and focus['seeds'] == list(range(26092711, 26092721)),
+    focus = mapping['A,B,E']
+    displayed = [26092711, 26092712, 26092713, 26092714, 26092715,
+                 26092716, 26092717, 26092718, 26092719, 26092721]
+    check(focus['rank'] == 32 and focus['seeds'] == displayed and 'replacement_seed' not in focus
+          and focus.get('rehearsal_window') == 32,
           '5 focus complete cohort identity')
-    rehearsal_seeds = list(range(17631, 17641))
-    check(mapping['C']['directory'] == 'figure5_rehearsal'
-          and mapping['C']['seeds'] == rehearsal_seeds
-          and mapping['C']['ranks'] == [8, 16, 32]
-          and mapping['C']['rehearsal_window'] == 8
-          and mapping['C']['metrics'] == ['immediate_efficacy_percent', 'final_history_efficacy_percent'],
-          '5 C uses the eight-target cohort')
-    check(mapping['D']['directory'] == 'figure5_rehearsal'
-          and mapping['D']['seeds'] == rehearsal_seeds
-          and mapping['D']['ranks'] == [8, 16, 32]
-          and mapping['D']['rehearsal_window'] == 8
-          and mapping['D']['metrics'] == ['immediate_locality_percent'],
-          '5 D uses the same eight-target cohort')
+    def cohort(panel, ranks):
+        return next(item for item in mapping[panel]['cohorts'] if item['ranks'] == ranks)
+    check(cohort('C', [8])['directory'] == 'figure5_dual_followup'
+          and cohort('C', [8])['metrics'] == ['immediate_efficacy', 'history_efficacy']
+          and cohort('C', [32])['seeds'] == displayed
+          and cohort('C', [16])['ranks'] == [16]
+          and cohort('D', [8])['metrics'] == ['immediate_locality', 'history_locality']
+          and cohort('D', [32])['seeds'] == displayed
+          and cohort('D', [16])['ranks'] == [16],
+          '5 C and D are 32-target absolute endpoints')
     source = {(int(row['seed']), row['arm']): row
               for row in rows('figure5_dual_followup/seed_level.csv') if row['rank'] == '32'}
     checkpoints = {}

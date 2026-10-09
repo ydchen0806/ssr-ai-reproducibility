@@ -2,11 +2,12 @@
   "title": "A human connectome reveals a synaptic spatial principle for learning while preserving memory",
   "source_date": "2026-09-30",
   "sha256": {
-    "main.tex": "d4f8b27d3dd17d25649e162583b58bb7291056e6ab1c472d6face89b302c0e9f",
-    "supplementary_methods.tex": "00acc315df50b1826b3f4ab40d545a608aa36320e4ba271e00e6cdb3ccd10392",
-    "figures/Figure4.pdf": "e278cc68d02d18c3fbe4628b45e3cc154238d86e251b91aa7f51fc3a3fb172d9",
-    "figures/Figure5.pdf": "7cf643f29a5adef190f97281b378ab7cc176f1788ddc3bc726b0e593fa45c2bb",
-    "figures/Figure6.pdf": "c6e0e95eed6f920c34ac8895cb6ac8b8c50edb648c6211e41c02bae97e64e2dd"
+    "main.tex": "3afe6fe32b1bcaf11717d3d794fde68fd12bc261b82c491c64fa17e95ad23d3a",
+    "supplementary_methods.tex": "b2723d6df5a32e6be3afe952ca9526c707f83e1efb19b8c0cf80212e0f9f0446",
+    "figures/Figure4.pdf": "cf5f6d999778ae80636d5e1015a964c23c5d9503d67b676378063e2b9f65fbd7",
+    "figures/Figure5.pdf": "ab135309189753fc8c34d6c460bd5aed6cb02a81bb0546656fe4e849df9ead04",
+    "figures/Figure6.pdf": "b7756ec7936ad4bb2f8ceb4fb126c7410468b1c4176ea188e3fab0ca26831b16"
   },
-  "source_baseline": "Teacher Overleaf text; 5C and 5D share the eight-target sweep"
+  "source_baseline": "Fig. 4G uses 100 edits in all six settings. Fig. 5 rank 32 uses orders 26092711-26092719 and 26092721 under 32-target rehearsal",
+  "submission_pdf_sha256": "327598353c5812c866d2feca0a178a038f4ee274f32977b84cef9b81f97d87c9"
 }

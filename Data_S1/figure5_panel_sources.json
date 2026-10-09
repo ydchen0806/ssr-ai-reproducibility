@@ -1,34 +1,190 @@
 {
-  "A,B,E,F": {
+  "A,B,E": {
     "directory": "figure5_dual_followup",
     "rank": 32,
-    "seeds": [26092711, 26092712, 26092713, 26092714, 26092715, 26092716, 26092717, 26092718, 26092719, 26092720],
+    "seeds": [
+      26092711,
+      26092712,
+      26092713,
+      26092714,
+      26092715,
+      26092716,
+      26092717,
+      26092718,
+      26092719,
+      26092721
+    ],
     "rehearsal_window": 32,
     "ssr_coefficient": 0.03,
     "matching": "complete-phrase boundary matching for efficacy and locality",
-    "metrics": ["immediate_efficacy", "history_efficacy", "immediate_locality", "history_locality"],
-    "geometry": ["center_surround_contrast", "kernel_alignment"],
-    "supplementary_table_label": "tab:supp_lora_dual_followup"
+    "metrics": [
+      "immediate_efficacy",
+      "history_efficacy",
+      "immediate_locality",
+      "history_locality"
+    ],
+    "geometry": [
+      "center_surround_contrast",
+      "kernel_alignment"
+    ],
+    "supplementary_table_label": "tab:supp_lora_dual_followup",
+    "orders": "26092711-26092719 and 26092721"
   },
   "C": {
-    "directory": "figure5_rehearsal",
-    "ranks": [8, 16, 32],
-    "seeds": [17631, 17632, 17633, 17634, 17635, 17636, 17637, 17638, 17639, 17640],
-    "rehearsal_window": 8,
-    "ssr_coefficients": {"8": 0.03, "16": 0.01, "32": 0.03},
-    "matching": "complete-phrase boundary matching for efficacy; substring matching for immediate locality",
-    "metrics": ["immediate_efficacy_percent", "final_history_efficacy_percent"],
-    "supplementary_table_label": "tab:supp_lora_ke_registry"
+    "cohorts": [
+      {
+        "directory": "figure5_dual_followup",
+        "dataset": "WikiRecent",
+        "ranks": [
+          8
+        ],
+        "seeds": [
+          26092711,
+          26092712,
+          26092713,
+          26092714,
+          26092715,
+          26092716,
+          26092717,
+          26092718,
+          26092719,
+          26092720
+        ],
+        "rehearsal_window": 32,
+        "matching": "complete-phrase boundary matching",
+        "metrics": [
+          "immediate_efficacy",
+          "history_efficacy"
+        ]
+      },
+      {
+        "directory": "figure5_dual_followup",
+        "dataset": "WikiRecent",
+        "ranks": [
+          32
+        ],
+        "seeds": [
+          26092711,
+          26092712,
+          26092713,
+          26092714,
+          26092715,
+          26092716,
+          26092717,
+          26092718,
+          26092719,
+          26092721
+        ],
+        "rehearsal_window": 32,
+        "matching": "complete-phrase boundary matching",
+        "metrics": [
+          "immediate_efficacy",
+          "history_efficacy"
+        ]
+      },
+      {
+        "directory": "figure5_rank1664_followup",
+        "dataset": "WikiRecent",
+        "ranks": [
+          16
+        ],
+        "seeds": [
+          26092811,
+          26092812,
+          26092813,
+          26092814,
+          26092815,
+          26092816,
+          26092817,
+          26092818,
+          26092819,
+          26092820
+        ],
+        "rehearsal_window": 32,
+        "matching": "complete-phrase boundary matching",
+        "metrics": [
+          "immediate_efficacy",
+          "history_efficacy"
+        ]
+      }
+    ]
   },
   "D": {
-    "directory": "figure5_rehearsal",
-    "ranks": [8, 16, 32],
-    "seeds": [17631, 17632, 17633, 17634, 17635, 17636, 17637, 17638, 17639, 17640],
-    "rehearsal_window": 8,
-    "ssr_coefficients": {"8": 0.03, "16": 0.01, "32": 0.03},
-    "matching": "substring matching for immediate locality",
-    "metrics": ["immediate_locality_percent"],
-    "supplementary_table_label": "tab:supp_lora_ke_registry"
+    "cohorts": [
+      {
+        "directory": "figure5_dual_followup",
+        "ranks": [
+          8
+        ],
+        "seeds": [
+          26092711,
+          26092712,
+          26092713,
+          26092714,
+          26092715,
+          26092716,
+          26092717,
+          26092718,
+          26092719,
+          26092720
+        ],
+        "rehearsal_window": 32,
+        "matching": "complete-phrase boundary matching",
+        "metrics": [
+          "immediate_locality",
+          "history_locality"
+        ]
+      },
+      {
+        "directory": "figure5_dual_followup",
+        "ranks": [
+          32
+        ],
+        "seeds": [
+          26092711,
+          26092712,
+          26092713,
+          26092714,
+          26092715,
+          26092716,
+          26092717,
+          26092718,
+          26092719,
+          26092721
+        ],
+        "rehearsal_window": 32,
+        "matching": "complete-phrase boundary matching",
+        "metrics": [
+          "immediate_locality",
+          "history_locality"
+        ]
+      },
+      {
+        "directory": "figure5_rank1664_followup",
+        "ranks": [
+          16
+        ],
+        "seeds": [
+          26092811,
+          26092812,
+          26092813,
+          26092814,
+          26092815,
+          26092816,
+          26092817,
+          26092818,
+          26092819,
+          26092820
+        ],
+        "rehearsal_window": 32,
+        "ssr_coefficient": 0.03,
+        "matching": "complete-phrase boundary matching",
+        "metrics": [
+          "immediate_locality",
+          "history_locality"
+        ]
+      }
+    ]
   },
-  "reporting": "Panels C and D display ranks 8, 16 and 32 from one eight-target rehearsal cohort, seeds 17631-17640. All ten pairs are retained. Every recorded mean SSR-minus-LoRA change in that cohort is positive. History locality was not measured in this sweep. Rank 32 in A, B, E and F is a separate 32-target cohort."
+  "reporting": "Panels C and D show absolute immediate and history endpoints under 32-target rehearsal. Rank 32 in A, B, E and the rank-32 bars uses orders 26092711-26092719 and 26092721. Rank 8 uses orders 26092711-26092720. Rank 16 is a separate order set. Panel E is the geometry trajectory for these ten rank-32 pairs."
 }

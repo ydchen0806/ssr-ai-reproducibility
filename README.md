@@ -10,7 +10,7 @@ This release corresponds to the manuscript and supplementary material identified
 - [Numerical source data](Data_S1/README.md)
 - [Inference checkpoints and raw records](https://huggingface.co/cyd0806/ssr-ai-checkpoints)
 
-Data S1 matches the experiments reported in the current manuscript. Figure 4 preserves the teacher Version 3598 artwork except C, D and H: C/D show cohort summaries without seed points, and H shows ten paired AlphaEdit orders with both endpoints evaluated on the complete final history. G retains one full-recipe pair per setting. Figure 5 uses ten paired orders per comparison; A/B/E/F show the rank-32 cohort, C shows ranks 8/16/32 from the separate eight-target sweep, and D shows immediate/history locality at ranks 8/16/32 under 32-target rehearsal. Rank 16 in D uses a separate cohort. `Data_S1/figure5_panel_sources.json` maps protocols and seeds.
+Data S1 matches the experiments reported in the current manuscript. Figure 4 preserves the teacher Version 3598 artwork except C, D and H: C/D show cohort summaries without seed points, and H shows AlphaEdit final-history means as bars with 95% intervals on separate vertical scales. G retains one full-recipe pair per setting. Figure 5 uses ten paired orders per comparison. A, B and E show the rank-32 cohort. C and D show absolute immediate and history efficacy and locality at ranks 8, 16 and 32 under 32-target rehearsal. Rank 16 uses a separate order set. `Data_S1/figure5_panel_sources.json` maps protocols and seeds.
 
 ## Quick numerical verification
 

@@ -1,0 +1,4 @@
+rank,metric,n_pairs,plain_mean,ssr_mean,delta_pp,low,high,ssr_coefficient,seeds,rehearsal_window
+8,immediate_efficacy_percent,10,66.7,76.9,10.2,3.525,16.875,0.03,17731-17740,0
+16,immediate_efficacy_percent,10,64.0,67.0,3.0,-6.4302,12.4302,0.01,17731-17740,0
+32,immediate_efficacy_percent,10,49.3,63.4,14.1,6.9508,21.2492,0.03,17731-17740,0
