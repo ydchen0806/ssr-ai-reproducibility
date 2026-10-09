@@ -10,8 +10,6 @@ Paths are relative to this repository. Figure numbers refer to the manuscript ve
 | Fig. 4G; Table S5 | `Data_S1/figure4/Fig4G_displayed_transfer.csv` | Full FT+Anchor+Spectral+SSR recipe, one pair per setting; recipe-specific learning rates |
 | Fig. 4H; Table S6 | `Data_S1/figure4/Fig4H_history_rerun/` | Ten paired AlphaEdit orders; both endpoints retest all 250 historical items |
 | Fig. 4I | `Data_S1/figure4/Fig4I_displayed_geometry_seed_level.csv`, `Fig4I_relative_cosine_seed_level.csv` | Four dense-editing pairs per dataset |
-| Table S8 | `Data_S1/figure5_rehearsal/` | Earlier eight-target rehearsal sweep; ten paired 100-edit orders, seeds 17631--17640. Not shown in Fig. 5. |
-| Fig. 5 CounterFact archive | `Data_S1/figure5_counterfact/` | Separate WikiData CounterFact sweep, seeds 17731--17740, no rehearsal. History was unusable, so this cohort is not shown. |
 | Fig. 5A,B,E; matched-endpoint SI table | `Data_S1/figure5_dual_followup/` | 32-target rehearsal. A, B, E and the rank-32 bars in C and D use orders 26092711-26092719 and 26092721. Rank 8 uses orders 26092711-26092720. Rank 16 is a separate order set. Ten pairs use complete-phrase matching. The trajectory is derived from the displayed rank-32 records. |
 | Fig. 5C,D rank 16; Table S17 | `Data_S1/figure5_rank1664_followup/` | Separate rank-16 evaluation under 32-target rehearsal. Supplies the rank-16 absolute efficacy and locality bars in C and D. |
 | Fig. 6A--C | `Data_S1/figure6/Fig6A_displayed_seed_level.csv`, `Fig6B_displayed_stagewise_seed_level.csv`, `qualitative_case_2010_003362/` | Five paired VOC seeds and an illustrative case |

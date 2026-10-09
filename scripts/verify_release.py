@@ -101,25 +101,6 @@ def verify_figure4():
 
 
 def verify_figure5():
-    source = rows('figure5_rehearsal/seed_level.csv')
-    summary = rows('figure5_rehearsal/complete_rank_summary.csv')
-    check(len(source) == 60 and len(summary) == 9, '5 main complete records')
-    by = {(int(row['rank']), int(row['seed']), row['arm']): row for row in source}
-    for row in source:
-        record = DATA / 'figure5_rehearsal/records' / row['result']
-        check(record.is_file(), '5 main raw result exists')
-        check(digest(record) == row['result_sha256'], '5 main raw result hash')
-    for row in summary:
-        rank, metric = int(row['rank']), row['metric']
-        seeds = sorted({seed for r, seed, arm in by if r == rank and arm == 'plain'})
-        check(len(seeds) == int(row['n_pairs']) == 10, '5 main ten pairs')
-        left = [float(by[rank, seed, 'plain'][metric]) for seed in seeds]
-        right = [float(by[rank, seed, 'ssr'][metric]) for seed in seeds]
-        mean, low, high = paired(np.asarray(right) - left)
-        for actual, key in [(np.mean(left), 'plain_mean'), (np.mean(right), 'ssr_mean'),
-                            (mean, 'delta_pp'), (low, 'ci95_low_pp'), (high, 'ci95_high_pp')]:
-            close(actual, row[key], '5 main ' + key)
-
     source = rows('figure5_dual_followup/seed_level.csv')
     summary = rows('figure5_dual_followup/summary.csv')
     check(len(source) == 40 and len(summary) == 8, '5 SI complete records')
